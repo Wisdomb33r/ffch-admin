@@ -6,25 +6,26 @@ import {Injectable, OnInit} from '@angular/core';
 @Injectable()
 export class CharactersService {
 
-  charactersFromDataMining = null;
+  public charactersFromDataMining = null;
+  public character: Character = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {}
 
-  loadCharactersFromDataMining() {
+  public loadCharactersFromDataMining() {
     if (this.charactersFromDataMining == null) {
       this.dataMiningClientService.getCharacters$()
         .subscribe(data => this.charactersFromDataMining = data);
     }
   }
 
-  searchForCharacterByName(name: string): Character {
+  public searchForCharacterByName(name: string) {
+    this.character = null;
     if (this.charactersFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
-      const filteredProperties = propertyNames.filter(propertyName => this.charactersFromDataMining[propertyName].name === name);
-      if (filteredProperties.length === 1) {
-        return this.charactersFromDataMining[filteredProperties[0]];
+      const property = propertyNames.find(propertyName => this.charactersFromDataMining[propertyName].name === name);
+      if (property) {
+        this.character = this.charactersFromDataMining[property];
       }
     }
-    return null;
   }
 }

@@ -11,9 +11,8 @@ import {FormControl, Validators} from '@angular/forms';
 export class CharactersComponent implements OnInit {
 
   name: FormControl;
-  character: Character;
 
-  constructor(private service: CharactersService) {
+  constructor(public service: CharactersService) {
     this.name = new FormControl('', Validators.required);
   }
 
@@ -21,8 +20,11 @@ export class CharactersComponent implements OnInit {
     this.service.loadCharactersFromDataMining();
   }
 
-  searchCharacterInDataMining() {
-    this.character = this.service.searchForCharacterByName(this.name.value);
-    console.log(this.character);
+  public searchCharacterInDataMining() {
+    this.service.searchForCharacterByName(this.name.value);
+  }
+
+  public isCharacterDisplayed(): boolean {
+    return this.service.character != null;
   }
 }

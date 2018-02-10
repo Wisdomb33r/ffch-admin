@@ -48,22 +48,22 @@ describe('CharactersService', () => {
     expect(this.dataMiningService.getCharacters$).toHaveBeenCalled();
   }));
 
-  it('should return the correct character when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
+  it('should find the correct character when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
     service.loadCharactersFromDataMining();
     // WHEN
-    const result = service.searchForCharacterByName('Hunter Rain');
+    service.searchForCharacterByName('Hunter Rain');
     // THEN
-    expect(result).toBeTruthy();
-    expect(result).toEqual(JSON.parse('{"rarity_min": 5,"rarity_max": 6,"name": "Hunter Rain"}'));
+    expect(service.character).toBeTruthy();
+    expect(service.character).toEqual(JSON.parse('{"rarity_min": 5,"rarity_max": 6,"name": "Hunter Rain"}'));
   }));
 
-  it('should return null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
+  it('should find null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
     service.loadCharactersFromDataMining();
     // WHEN
-    const result = service.searchForCharacterByName('Raining');
+    service.searchForCharacterByName('Raining');
     // THEN
-    expect(result).toBeFalsy();
+    expect(service.character).toBeFalsy();
   }));
 });
