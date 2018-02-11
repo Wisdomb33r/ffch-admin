@@ -14,15 +14,4 @@ export class CharacterDisplayComponent implements OnInit {
   ngOnInit() {
   }
 
-  public getCharacterName() {
-    return this.service.character.names[FFBE_FRENCH_TABLE_INDEX];
-  }
-
-  public getCharacterJob() {
-    return this.service.character.job;
-  }
-
-  public getCharacterGame() {
-    return FFBE_GAMES.find(game => game.gumiId === this.service.character.game_id).name;
-  }
 }

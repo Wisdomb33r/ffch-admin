@@ -25,6 +25,6 @@ export class CharactersComponent implements OnInit {
   }
 
   public isCharacterDisplayed(): boolean {
-    return this.service.character != null;
+    return this.service.personnage != null;
   }
 }
