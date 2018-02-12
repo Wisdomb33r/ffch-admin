@@ -1,6 +1,5 @@
-import {FFBE_FRENCH_TABLE_INDEX, FFBE_GAMES} from '../ffbe.constants';
-import {CharactersService} from '../services/characters.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Personnage} from '../model/personnage.model';
 
 @Component({
   selector: 'app-character-display',
@@ -9,7 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CharacterDisplayComponent implements OnInit {
 
-  constructor(public service: CharactersService) {}
+  @Input() personnage: Personnage;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

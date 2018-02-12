@@ -1,6 +1,6 @@
 <div>
-	<label>Nom </label> : <input [formControl]="name">
+  <label>Nom </label> : <input [formControl]="name">
 </div>
-<button type="submit" (click)="searchCharacterInDataMining()">Test</button>
+<button type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
 
-<app-character-display *ngIf="isCharacterDisplayed()"></app-character-display>
+<app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
