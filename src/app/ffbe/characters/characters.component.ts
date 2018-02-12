@@ -13,7 +13,7 @@ export class CharactersComponent implements OnInit {
   name: FormControl;
   personnage: Personnage;
 
-  constructor(public service: CharactersService) {
+  constructor(private service: CharactersService) {
     this.name = new FormControl('', Validators.required);
   }
 

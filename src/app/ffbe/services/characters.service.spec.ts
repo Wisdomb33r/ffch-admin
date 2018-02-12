@@ -45,7 +45,7 @@ describe('CharactersService', () => {
     service.loadCharactersFromDataMining();
     // THEN
     expect(service.charactersFromDataMining).toBeTruthy();
-    expect(this.dataMiningService.getCharacters$).toHaveBeenCalled();
+    expect(this.dataMiningService.getCharacters$).toHaveBeenCalledTimes(1);
   }));
 
   it('should find the correct character when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
