@@ -1,15 +1,16 @@
-import {Character} from '../model/character.model';
+import {Personnage} from '../model/personnage.model';
+import {CharacterMapper} from '../mappers/character-mapper';
 import {DataMiningClientService} from './data-mining-client.service';
-import {HttpClient} from '@angular/common/http';
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class CharactersService {
 
   public charactersFromDataMining = null;
-  public character: Character = null;
 
-  constructor(private dataMiningClientService: DataMiningClientService) {}
+  constructor(private dataMiningClientService: DataMiningClientService) {
+    this.loadCharactersFromDataMining();
+  }
 
   public loadCharactersFromDataMining() {
     if (this.charactersFromDataMining == null) {
@@ -18,14 +19,15 @@ export class CharactersService {
     }
   }
 
-  public searchForCharacterByName(name: string) {
-    this.character = null;
+  public searchForCharacterByName(name: string): Personnage {
     if (this.charactersFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
       const property = propertyNames.find(propertyName => this.charactersFromDataMining[propertyName].name === name);
       if (property) {
-        this.character = this.charactersFromDataMining[property];
+        return CharacterMapper.toPersonnage(this.charactersFromDataMining[property], +property);
       }
     }
+    return null;
   }
 }
+
