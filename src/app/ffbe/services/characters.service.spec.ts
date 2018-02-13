@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {CharactersService} from './characters.service';
 import {DataMiningClientService} from './data-mining-client.service';
+import {Personnage} from '../model/personnage.model';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -52,7 +53,7 @@ describe('CharactersService', () => {
     // GIVEN
     service.loadCharactersFromDataMining();
     // WHEN
-    const personnage = service.searchForCharacterByName('Hunter Rain');
+    const personnage: Personnage = service.searchForCharacterByName('Hunter Rain');
     // THEN
     expect(personnage).toBeTruthy();
     expect(personnage.gumi_id).toEqual(100000115);

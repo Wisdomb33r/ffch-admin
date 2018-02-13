@@ -29,9 +29,23 @@ describe('DataMiningClientService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should delegate to HttpClient', inject([DataMiningClientService], (service: DataMiningClientService) => {
+  it('should delegate to HttpClient for accessing characters', inject([DataMiningClientService], (service: DataMiningClientService) => {
     // WHEN
     service.getCharacters$();
+    // THEN
+    expect(httpClient.get).toHaveBeenCalled();
+  }));
+
+  it('should delegate to HttpClient for accessing limit bursts', inject([DataMiningClientService], (service: DataMiningClientService) => {
+    // WHEN
+    service.getLimitBursts$();
+    // THEN
+    expect(httpClient.get).toHaveBeenCalled();
+  }));
+
+  it('should delegate to HttpClient for accessing skills', inject([DataMiningClientService], (service: DataMiningClientService) => {
+    // WHEN
+    service.getSkills$();
     // THEN
     expect(httpClient.get).toHaveBeenCalled();
   }));
