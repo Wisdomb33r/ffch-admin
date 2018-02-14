@@ -2,7 +2,7 @@ import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Game} from '../model/game.model';
 import {Character} from '../model/character.model';
 import {Personnage} from '../model/personnage.model';
-import {EntryMapper} from './entry-mapper';
+import {CharacterEntryMapper} from './character-entry-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class CharacterMapper {
@@ -12,7 +12,7 @@ export class CharacterMapper {
     let perso = new Personnage(
       game, character.job, character.name, character.names[FFBE_FRENCH_TABLE_INDEX], character.rarity_min, character.rarity_max, gumi_id
     );
-    perso.unites = EntryMapper.toUniteArray(character.entries, perso);
+    perso.unites = CharacterEntryMapper.toUniteArray(character.entries, perso);
     return perso;
   }
 
