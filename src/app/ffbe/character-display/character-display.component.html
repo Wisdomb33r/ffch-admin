@@ -16,4 +16,11 @@
 		<th>Gumi ID :</th>
 		<td>{{personnage.gumi_id}}</td>
 	</tr>
+	<div *ngIf="personnage.unites.length>0">
+	<ul>
+    <li *ngFor="let unite of personnage.unites">
+      {{ unite.stars }}
+    </li>
+	</ul>
+</div>
 </table>
