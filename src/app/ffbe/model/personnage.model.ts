@@ -1,4 +1,5 @@
 import {Game} from '../model/game.model';
+import {Unite} from '../model/unite.model';
 
 export class Personnage {
   constructor(
@@ -10,4 +11,6 @@ export class Personnage {
     public max_rank: number,
     public gumi_id: number
   ) {}
+
+  public unites: Array<Unite>;
 }

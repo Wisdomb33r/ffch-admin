@@ -5,4 +5,5 @@ export class Character {
   names: Array<string>;
   game_id: number;
   job: string;
+  entries: any;
 }
