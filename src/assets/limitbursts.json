@@ -1,0 +1,1355 @@
+{
+  "100000102": {
+    "name": "Flame Sword",
+    "cost": 0,
+    "attack_count": [
+      2
+    ],
+    "attack_damage": [
+      [
+        20,
+        80
+      ]
+    ],
+    "attack_frames": [
+      [
+        3,
+        59
+      ]
+    ],
+    "effect_frames": [
+      [
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 5,
+    "min_level": {
+      "cost": 8,
+      "effects": [
+        "Physical fire damage (1.8x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            180
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 8,
+      "effects": [
+        "Physical fire damage (2x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            200
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Flame Sword",
+        "火焰劍",
+        "불꽃검",
+        "Pyrolame",
+        "Flammenschwert",
+        "Espada ígnea"
+      ],
+      "desc": [
+        "Fire damage to one enemy",
+        "對1名敵人發動火屬性攻擊",
+        "적 1명에게 불속성 피해",
+        "Dégâts de feu sur un ennemi",
+        "Feuerschaden, ein Ziel",
+        "Daño de fuego a un enemigo"
+      ]
+    }
+  },
+  "100000103": {
+    "name": "Crimson Slash",
+    "cost": 0,
+    "attack_count": [
+      2
+    ],
+    "attack_damage": [
+      [
+        20,
+        80
+      ]
+    ],
+    "attack_frames": [
+      [
+        3,
+        59
+      ]
+    ],
+    "effect_frames": [
+      [
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 10,
+    "min_level": {
+      "cost": 10,
+      "effects": [
+        "Physical fire damage (2x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            200
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 10,
+      "effects": [
+        "Physical fire damage (2.45x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            245
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Crimson Slash",
+        "深紅斬擊",
+        "진홍빛 참격",
+        "Entaille pourpre",
+        "Blutsense",
+        "Corte carmesí"
+      ],
+      "desc": [
+        "Fire damage to one enemy",
+        "對1名敵人發動火屬性攻擊",
+        "적 1명에게 불속성 피해",
+        "Dégâts de feu sur un ennemi",
+        "Feuerschaden, ein Ziel",
+        "Daño de fuego a un enemigo"
+      ]
+    }
+  },
+  "100000104": {
+    "name": "Blazing Storm",
+    "cost": 0,
+    "attack_count": [
+      2
+    ],
+    "attack_damage": [
+      [
+        20,
+        80
+      ]
+    ],
+    "attack_frames": [
+      [
+        3,
+        59
+      ]
+    ],
+    "effect_frames": [
+      [
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 15,
+    "min_level": {
+      "cost": 12,
+      "effects": [
+        "Physical fire damage (2.2x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            220
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 12,
+      "effects": [
+        "Physical fire damage (2.9x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            290
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Blazing Storm",
+        "炙熱風暴",
+        "맹렬한 폭풍",
+        "Tempête embrasée",
+        "Flammensturm",
+        "Tormenta ardiente"
+      ],
+      "desc": [
+        "Fire damage to all enemies",
+        "對全體敵人發動火屬性攻擊",
+        "적 전체에 불속성 피해",
+        "Dégâts de feu sur tous les ennemis",
+        "Feuerschaden, alle Ziele",
+        "Daño de fuego a todos los enemigos"
+      ]
+    }
+  },
+  "100000105": {
+    "name": "Shining Nova",
+    "cost": 0,
+    "attack_count": [
+      2
+    ],
+    "attack_damage": [
+      [
+        20,
+        80
+      ]
+    ],
+    "attack_frames": [
+      [
+        3,
+        59
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 20,
+    "min_level": {
+      "cost": 14,
+      "effects": [
+        "Physical fire damage (2.4x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            240
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 14,
+      "effects": [
+        "Physical fire damage (3.35x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            335
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Shining Nova",
+        "閃光新星",
+        "샛별의 광휘",
+        "Nova étincelante",
+        "Novaglanz",
+        "Nova deslumbrante"
+      ],
+      "desc": [
+        "Fire damage to all enemies",
+        "對全體敵人發動火屬性攻擊",
+        "적 전체에 불속성 피해",
+        "Dégâts de feu sur tous les ennemis",
+        "Feuerschaden, alle Ziele",
+        "Daño de fuego a todos los enemigos"
+      ]
+    }
+  },
+  "100000106": {
+    "name": "Shining Nova",
+    "cost": 0,
+    "attack_count": [
+      2
+    ],
+    "attack_damage": [
+      [
+        20,
+        80
+      ]
+    ],
+    "attack_frames": [
+      [
+        3,
+        42
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 25,
+    "min_level": {
+      "cost": 16,
+      "effects": [
+        "Physical fire damage (2.7x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            270
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 16,
+      "effects": [
+        "Physical fire damage (3.9x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            390
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Shining Nova",
+        "閃光新星",
+        "새벽의 광휘",
+        "Nova étincelante",
+        "Novaglanz",
+        "Nova deslumbrante"
+      ],
+      "desc": [
+        "Fire damage to all enemies",
+        "對全體敵人發動火屬性攻擊",
+        "적 전체에 불속성 피해",
+        "Dégâts de feu sur tous les ennemis",
+        "Feuerschaden, alle Ziele",
+        "Daño de fuego a todos los enemigos"
+      ]
+    }
+  },
+  "100000115": {
+    "name": "溜め斬り",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        130
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        128,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 20,
+    "min_level": {
+      "cost": 16,
+      "effects": [
+        "Physical fire damage (6x, ATK) to one enemy (ignore cover)"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          21,
+          [
+            0,
+            0,
+            300,
+            -50
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 16,
+      "effects": [
+        "Physical fire damage (9.8x, ATK) to one enemy (ignore cover)"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          21,
+          [
+            0,
+            0,
+            490,
+            -50
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": null,
+      "desc": [
+        "Deal partial unmitigated fire damage to one enemy",
+        "對1名敵人發動火屬性無視部分防禦的攻擊",
+        "적 1명에게 불속성 일부 방어 무시 피해",
+        "Inflige des dégâts de feu en partie fixes sur un ennemi",
+        "Teilweise direkter Feuerschaden, ein Gegner.",
+        "Daño absoluto parcial de fuego a un enemigo"
+      ]
+    }
+  },
+  "100000116": {
+    "name": "溜め斬り",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        130
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        128,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Fire"
+    ],
+    "levels": 25,
+    "min_level": {
+      "cost": 20,
+      "effects": [
+        "Physical fire damage (8x, ATK) to one enemy (ignore cover)"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          21,
+          [
+            0,
+            0,
+            400,
+            -50
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 20,
+      "effects": [
+        "Physical fire damage (12.8x, ATK) to one enemy (ignore cover)"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          21,
+          [
+            0,
+            0,
+            640,
+            -50
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": null,
+      "desc": [
+        "Deal partial unmitigated fire damage to one enemy",
+        "對1名敵人發動火屬性無視部分防禦的攻擊",
+        "적 1명에게 불속성 일부 방어 무시 피해",
+        "Inflige des dégâts de feu en partie fixes sur un ennemi",
+        "Teilweise direkter Feuerschaden, ein Gegner.",
+        "Daño absoluto parcial de fuego a un enemigo"
+      ]
+    }
+  },
+  "100000202": {
+    "name": "Blade Flash",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        60
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Ice"
+    ],
+    "levels": 5,
+    "min_level": {
+      "cost": 8,
+      "effects": [
+        "Physical ice damage (1.8x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            180
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 8,
+      "effects": [
+        "Physical ice damage (2x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            200
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Blade Flash",
+        "紫電一閃",
+        "자전일섬",
+        "Éclat métallique",
+        "Flimmerklinge",
+        "Destello de hoja"
+      ],
+      "desc": [
+        "Ice damage to one enemy",
+        "對1名敵人發動冰屬性攻擊",
+        "적 1명에게 얼음속성 피해",
+        "Dégâts de glace sur un ennemi",
+        "Eisschaden, ein Ziel",
+        "Daño de hielo a un enemigo"
+      ]
+    }
+  },
+  "100000203": {
+    "name": "Retribution",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        60
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Ice"
+    ],
+    "levels": 10,
+    "min_level": {
+      "cost": 10,
+      "effects": [
+        "Physical ice damage (2x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            200
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 10,
+      "effects": [
+        "Physical ice damage (2.45x, ATK) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            245
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Retribution",
+        "因果報應",
+        "인과응보",
+        "Rétribution",
+        "Vergeltung",
+        "Castigo"
+      ],
+      "desc": [
+        "Ice damage to one enemy",
+        "對1名敵人發動冰屬性攻擊",
+        "적 1명에게 얼음속성 피해",
+        "Dégâts de glace sur un ennemi",
+        "Eisschaden, ein Ziel",
+        "Daño de hielo a un enemigo"
+      ]
+    }
+  },
+  "100000204": {
+    "name": "Judgment",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        60
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Ice"
+    ],
+    "levels": 15,
+    "min_level": {
+      "cost": 12,
+      "effects": [
+        "Physical ice damage (2.2x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            220
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 12,
+      "effects": [
+        "Physical ice damage (2.9x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            290
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Judgment",
+        "破邪顯正",
+        "파사현정",
+        "Justice",
+        "Richtspruch",
+        "Juicio"
+      ],
+      "desc": [
+        "Ice damage to all enemies",
+        "對全體敵人發動冰屬性攻擊",
+        "적 전체에 얼음속성 피해",
+        "Dégâts de glace sur tous les ennemis",
+        "Eisschaden, alle Ziele",
+        "Daño de hielo a todos los enemigos"
+      ]
+    }
+  },
+  "100000205": {
+    "name": "Azure Sky",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        80
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Ice"
+    ],
+    "levels": 20,
+    "min_level": {
+      "cost": 14,
+      "effects": [
+        "Physical ice damage (2.4x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            240
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 14,
+      "effects": [
+        "Physical ice damage (3.35x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            335
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Azure Sky",
+        "雲外蒼天",
+        "운외창천",
+        "Ciel sans nuage",
+        "Wolkenbeben",
+        "Cielo azul"
+      ],
+      "desc": [
+        "Ice damage to all enemies",
+        "對全體敵人發動冰屬性攻擊",
+        "적 전체에 얼음속성 피해",
+        "Dégâts de glace sur tous les ennemis",
+        "Eisschaden, alle Ziele",
+        "Daño de hielo a todos los enemigos"
+      ]
+    }
+  },
+  "100000206": {
+    "name": "Azure Sky",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        80
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Ice"
+    ],
+    "levels": 25,
+    "min_level": {
+      "cost": 16,
+      "effects": [
+        "Physical ice damage (2.7x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            270
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 16,
+      "effects": [
+        "Physical ice damage (3.9x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            390
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Azure Sky",
+        "雲外蒼天",
+        "운외창천",
+        "Ciel azur",
+        "Wolkenbeben",
+        "Cielo azul"
+      ],
+      "desc": [
+        "Ice damage to all enemies",
+        "對全體敵人發動冰屬性攻擊",
+        "적 전체에 얼음속성 피해",
+        "Dégâts de glace sur tous les ennemis",
+        "Eisschaden, alle Ziele",
+        "Daño de hielo a todos los enemigos"
+      ]
+    }
+  },
+  "100000215": {
+    "name": "気刃大回転斬り",
+    "cost": 0,
+    "attack_count": [
+      6
+    ],
+    "attack_damage": [
+      [
+        10,
+        10,
+        10,
+        10,
+        10,
+        50
+      ]
+    ],
+    "attack_frames": [
+      [
+        40,
+        78,
+        102,
+        112,
+        144,
+        188
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        186,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Lightning"
+    ],
+    "levels": 20,
+    "min_level": {
+      "cost": 16,
+      "effects": [
+        "Physical lightning damage (5x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            500
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 16,
+      "effects": [
+        "Physical lightning damage (6.9x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            690
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": null,
+      "desc": [
+        "Lightning damage to all enemies",
+        "對全體敵人發動雷屬性攻擊",
+        "적 전체에 번개속성 피해",
+        "Dégâts de foudre pour tous les ennemis",
+        "Blitzschaden, alle Ziele",
+        "Daño de rayo a todos los enemigos"
+      ]
+    }
+  },
+  "100000216": {
+    "name": "気刃大回転斬り",
+    "cost": 0,
+    "attack_count": [
+      6
+    ],
+    "attack_damage": [
+      [
+        10,
+        10,
+        10,
+        10,
+        10,
+        50
+      ]
+    ],
+    "attack_frames": [
+      [
+        40,
+        78,
+        102,
+        112,
+        144,
+        188
+      ]
+    ],
+    "effect_frames": [
+      [
+        0,
+        186,
+        0
+      ]
+    ],
+    "move_type": 1,
+    "damage_type": "Physical",
+    "element_inflict": [
+      "Lightning"
+    ],
+    "levels": 25,
+    "min_level": {
+      "cost": 20,
+      "effects": [
+        "Physical lightning damage (6x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            600
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 20,
+      "effects": [
+        "Physical lightning damage (8.4x, ATK) to all enemies"
+      ],
+      "effects_raw": [
+        [
+          2,
+          1,
+          1,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            840
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": null,
+      "desc": [
+        "Lightning damage to all enemies",
+        "對全體敵人發動雷屬性攻擊",
+        "적 전체에 번개속성 피해",
+        "Dégâts de foudre pour tous les ennemis",
+        "Blitzschaden, alle Ziele",
+        "Daño de rayo a todos los enemigos"
+      ]
+    }
+  },
+  "100000302": {
+    "name": "Holy Ray",
+    "cost": 0,
+    "attack_count": [
+      1
+    ],
+    "attack_damage": [
+      [
+        100
+      ]
+    ],
+    "attack_frames": [
+      [
+        103
+      ]
+    ],
+    "effect_frames": [
+      [
+        0
+      ]
+    ],
+    "move_type": 4,
+    "damage_type": "Magic",
+    "element_inflict": [
+      "Light"
+    ],
+    "levels": 5,
+    "min_level": {
+      "cost": 8,
+      "effects": [
+        "Magic light damage (1.8x, MAG) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          15,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            180
+          ]
+        ]
+      ]
+    },
+    "max_level": {
+      "cost": 8,
+      "effects": [
+        "Magic light damage (2x, MAG) to one enemy"
+      ],
+      "effects_raw": [
+        [
+          1,
+          1,
+          15,
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            200
+          ]
+        ]
+      ]
+    },
+    "strings": {
+      "name": [
+        "Holy Ray",
+        "神聖光線",
+        "성스러운 광선",
+        "Rayon sacré",
+        "Heiliger Strahl",
+        "Rayo sagrado"
+      ],
+      "desc": [
+        "Light damage to one enemy",
+        "對1名敵人發動光屬性攻擊",
+        "적 1명에게 빛속성 피해",
+        "Dégâts de lumière sur un ennemi",
+        "Lichtschaden, ein Ziel",
+        "Daño de luz a un enemigo"
+      ]
+    }
+  }
+}

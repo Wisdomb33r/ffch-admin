@@ -1,6 +1,12 @@
-<div>
-	<label>Nom </label> : <input [formControl]="name">
+<div *ngIf="isDataMiningLoading()" style="width: 100px; margin: auto;">
+  <mat-spinner></mat-spinner>
+  Chargement en cours...
 </div>
-<button type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
+<div *ngIf="!isDataMiningLoading()">
+  <div>
+    <label>Nom </label> : <input [formControl]="name">
+  </div>
+  <button type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
 
-<app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
+  <app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
+</div>

@@ -1,12 +1,14 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {CharactersService} from './characters.service';
 import {DataMiningClientService} from './data-mining-client.service';
+import {Personnage} from '../model/personnage.model';
+import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
-    return Observable.of(JSON.parse('{"100000102": {"rarity_min": 2,"rarity_max": 6,"name": "Rain","names": ["Rain","雷因","레인","Rain","Rain","Rain"]},"100000115": {"rarity_min": 5,"rarity_max": 6,"name": "Hunter Rain","names": ["Hunter Rain","獵人雷因","헌터 레인","Rain chasseur","Jäger-Rain","Rain cazador"]}}'));
+    return Observable.of(JSON.parse(CHARACTER_TEST_DATA));
   }
 }
 
@@ -52,7 +54,7 @@ describe('CharactersService', () => {
     // GIVEN
     service.loadCharactersFromDataMining();
     // WHEN
-    const personnage = service.searchForCharacterByName('Hunter Rain');
+    const personnage: Personnage = service.searchForCharacterByName('Hunter Rain');
     // THEN
     expect(personnage).toBeTruthy();
     expect(personnage.gumi_id).toEqual(100000115);
