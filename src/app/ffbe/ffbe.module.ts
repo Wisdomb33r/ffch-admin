@@ -6,7 +6,10 @@ import {CharactersService} from './services/characters.service';
 import {DataMiningClientService} from './services/data-mining-client.service';
 import {CharacterDisplayComponent} from './character-display/character-display.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {MatProgressSpinnerModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
 
@@ -17,6 +20,10 @@ import {SkillsService} from './services/skills.service';
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   declarations: [CharactersComponent, CharacterDisplayComponent],
   exports: [CharactersComponent, CharacterDisplayComponent],

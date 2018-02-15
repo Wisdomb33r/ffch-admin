@@ -1,26 +1,28 @@
-<h1>{{personnage.nom}} ({{personnage.jeu.name}})</h1>
-<table>
-	<tr>
-		<th>Job :</th>
-		<td>{{personnage.job}}</td>
-	</tr>
-	<tr>
-		<th>Rang min :</th>
-		<td>{{personnage.min_rank}}</td>
-	</tr>
-	<tr>
-		<th>Rang max :</th>
-		<td>{{personnage.max_rank}}</td>
-	</tr>
-	<tr>
-		<th>Gumi ID :</th>
-		<td>{{personnage.gumi_id}}</td>
-	</tr>
-	<div *ngIf="personnage.unites.length>0">
-	<ul>
-    <li *ngFor="let unite of personnage.unites">
-      {{ unite.stars }}
-    </li>
-	</ul>
-</div>
-</table>
+<mat-card>
+  <mat-card-title>{{personnage.nom}} ({{personnage.jeu.name}})</mat-card-title>
+  <table>
+    <tr>
+      <th>Job :</th>
+      <td>{{personnage.job}}</td>
+    </tr>
+    <tr>
+      <th>Rang min :</th>
+      <td>{{personnage.min_rank}}</td>
+    </tr>
+    <tr>
+      <th>Rang max :</th>
+      <td>{{personnage.max_rank}}</td>
+    </tr>
+    <tr>
+      <th>Gumi ID :</th>
+      <td>{{personnage.gumi_id}}</td>
+    </tr>
+    <div *ngIf="personnage.unites.length>0">
+      <ul>
+        <li *ngFor="let unite of personnage.unites">
+          {{ unite.stars }}
+        </li>
+      </ul>
+    </div>
+  </table>
+</mat-card>
