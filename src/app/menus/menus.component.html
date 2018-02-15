@@ -1,0 +1,6 @@
+<mat-card>
+  <button mat-button [matMenuTriggerFor]="ffbemenu">FFBE</button>
+  <mat-menu #ffbemenu="matMenu" yPosition="below" [overlapTrigger]="false">
+    <button mat-menu-item (click)="routeToFfbeCharacters()">Personnages</button>
+  </mat-menu>
+</mat-card>
