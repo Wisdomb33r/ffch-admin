@@ -7,11 +7,16 @@ import {DataMiningClientService} from './services/data-mining-client.service';
 import {CharacterDisplayComponent} from './character-display/character-display.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule,
   MatProgressSpinnerModule
 } from '@angular/material';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
+import {UnitDisplayComponent} from './unit-display/unit-display.component';
 
 @NgModule({
   imports: [
@@ -24,9 +29,10 @@ import {SkillsService} from './services/skills.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatExpansionModule,
   ],
-  declarations: [CharactersComponent, CharacterDisplayComponent],
-  exports: [CharactersComponent, CharacterDisplayComponent],
+  declarations: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],
+  exports: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],
   providers: [
     DataMiningClientService,
     CharactersService,

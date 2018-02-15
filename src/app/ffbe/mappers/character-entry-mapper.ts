@@ -6,7 +6,7 @@ export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
     return new Unite(
-      perso, entry.rarity, "", "", "", "", 0, gumi_id
+      perso, entry.rarity, entry.limitburst_id, gumi_id
     );
   }
 

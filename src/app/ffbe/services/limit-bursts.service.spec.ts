@@ -3,8 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {LimitBurstsService} from './limit-bursts.service';
 import {DataMiningClientService} from './data-mining-client.service';
-import {Limite} from '../model/limite.model';
 import {LIMIT_BURST_TEST_DATA} from '../model/limit-burst.model.spec';
+import {LimitBurst} from '../model/limit-burst.model';
+import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 class DataMiningMock {
   public getLimitBursts$(): Observable<Object> {
@@ -37,7 +38,7 @@ describe('LimitBurstsService', () => {
     // WHEN
     service.loadLimitBurstsFromDataMining();
     // THEN
-    expect(service.limitBurstsFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
   }));
 
   it('should not load twice the data mining if loading requested twice', inject([LimitBurstsService], (service: LimitBurstsService) => {
@@ -46,7 +47,7 @@ describe('LimitBurstsService', () => {
     // WHEN
     service.loadLimitBurstsFromDataMining();
     // THEN
-    expect(service.limitBurstsFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
     expect(this.dataMiningService.getLimitBursts$).toHaveBeenCalledTimes(1);
   }));
 
@@ -54,19 +55,19 @@ describe('LimitBurstsService', () => {
     // GIVEN
     service.loadLimitBurstsFromDataMining();
     // WHEN
-    const limite: Limite = service.searchForLimitBurstByGumiId(100000103);
+    const limite: LimitBurst = service.searchForLimitBurstByGumiId(100000103);
     // THEN
     expect(limite).toBeTruthy();
-    expect(limite.nom).toEqual('Entaille pourpre');
-    expect(limite.description).toEqual('Dégâts de feu sur un ennemi');
-    expect(limite.frames).toEqual('3 59');
+    expect(limite.strings.name[FFBE_FRENCH_TABLE_INDEX]).toEqual('Entaille pourpre');
+    expect(limite.strings.desc[FFBE_FRENCH_TABLE_INDEX]).toEqual('Dégâts de feu sur un ennemi');
+    expect(limite.attack_frames[0]).toEqual([3, 59]);
   }));
 
   it('should find null when searched if limit burst not present', inject([LimitBurstsService], (service: LimitBurstsService) => {
     // GIVEN
     service.loadLimitBurstsFromDataMining();
     // WHEN
-    const limite: Limite = service.searchForLimitBurstByGumiId(900000103);
+    const limite: LimitBurst = service.searchForLimitBurstByGumiId(900000103);
     // THEN
     expect(limite).toBeFalsy();
   }));

@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class CharactersService {
 
-  public charactersFromDataMining = null;
+  private charactersFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadCharactersFromDataMining();
@@ -28,6 +28,10 @@ export class CharactersService {
       }
     }
     return null;
+  }
+
+  public isLoaded(): boolean {
+    return this.charactersFromDataMining != null;
   }
 }
 

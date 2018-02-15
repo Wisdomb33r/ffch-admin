@@ -6,7 +6,7 @@ import {SkillMapper} from '../mappers/skill-mapper';
 @Injectable()
 export class SkillsService {
 
-  public skillsFromDataMining = null;
+  private skillsFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadSkillsFromDataMining();
@@ -28,6 +28,10 @@ export class SkillsService {
       }
     }
     return null;
+  }
+
+  public isLoaded(): boolean {
+    return this.skillsFromDataMining != null;
   }
 }
 

@@ -37,7 +37,7 @@ describe('CharactersService', () => {
     // WHEN
     service.loadCharactersFromDataMining();
     // THEN
-    expect(service.charactersFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
   }));
 
   it('should not load twice the data mining if loading requested twice', inject([CharactersService], (service: CharactersService) => {
@@ -46,7 +46,7 @@ describe('CharactersService', () => {
     // WHEN
     service.loadCharactersFromDataMining();
     // THEN
-    expect(service.charactersFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
     expect(this.dataMiningService.getCharacters$).toHaveBeenCalledTimes(1);
   }));
 
