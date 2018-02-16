@@ -12,7 +12,8 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatTableModule
 } from '@angular/material';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
@@ -30,6 +31,7 @@ import {UnitDisplayComponent} from './unit-display/unit-display.component';
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
+    MatTableModule,
   ],
   declarations: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],
   exports: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],

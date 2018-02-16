@@ -9,6 +9,7 @@ import {Unite} from '../model/unite.model';
 export class UnitDisplayComponent implements OnInit {
 
   @Input() unite: Unite;
+  skillsColumnsToDisplay = ['gumi_id', 'nom', 'description'];
 
   constructor() {
   }
