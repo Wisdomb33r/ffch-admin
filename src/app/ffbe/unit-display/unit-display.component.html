@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <th>Limite :</th>
-      <td>{{unite.limite}}<br />{{unite.lim_desc}}</td>
+      <td>{{unite.limite}}<br/>{{unite.lim_desc}}</td>
     </tr>
     <tr>
       <th>Limite niveaux :</th>
@@ -63,16 +63,26 @@
       <td>{{unite.carac.psy_pots}}</td>
     </tr>
   </table>
-  <table>
-    <tr>
-      <th>Gumi ID</th>
-      <th>Nom</th>
-      <th>Description</th>
-    </tr>
-    <tr  *ngFor="let competence of unite.competences">
-      <td>{{competence.gumi_id}}</td>
-      <td>{{competence.nom}}</td>
-      <td>{{competence.description}}</td>
-    </tr>
-  </table>
+
+  <mat-table [dataSource]="unite.competences">
+
+    <ng-container matColumnDef="gumi_id">
+      <mat-header-cell *matHeaderCellDef>Gumi id</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.gumi_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.nom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: skillsColumnsToDisplay;"></mat-row>
+
+  </mat-table>
 </mat-expansion-panel>
