@@ -27,10 +27,12 @@ export class CharactersComponent implements OnInit {
 
   public searchCharacterInDataMining() {
     this.personnage = this.charactersService.searchForCharacterByName(this.name.value);
-    this.personnage.unites.forEach(unite => {
-      const limit = this.limitBurstsService.searchForLimitBurstByGumiId(unite.limite_gumi_id);
-      UniteMapper.updateLimite(unite, limit);
-    });
+    if (this.personnage) {
+      this.personnage.unites.forEach(unite => {
+        const limit = this.limitBurstsService.searchForLimitBurstByGumiId(unite.limite_gumi_id);
+        UniteMapper.updateLimite(unite, limit);
+      });
+    }
   }
 
   public isCharacterDisplayed(): boolean {
