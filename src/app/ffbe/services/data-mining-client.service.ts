@@ -2,9 +2,9 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-const charactersURL = 'http://localhost:4200/assets/units.json';
-const lbURL = 'http://localhost:4200/assets/limitbursts.json';
-const skillsURL = 'http://localhost:4200/assets/skills.json';
+const charactersURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/units.json';
+const lbURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/limitbursts.json';
+const skillsURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/skills.json';
 
 @Injectable()
 export class DataMiningClientService {

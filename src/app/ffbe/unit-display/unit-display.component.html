@@ -18,4 +18,16 @@
       <td>{{unite.lim_frames}}</td>
     </tr>
   </table>
+  <table>
+    <tr>
+      <th>Gumi ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+    </tr>
+    <tr  *ngFor="let competence of unite.competences">
+      <td>{{competence.gumi_id}}</td>
+      <td>{{competence.nom}}</td>
+      <td>{{competence.description}}</td>
+    </tr>
+  </table>
 </mat-expansion-panel>

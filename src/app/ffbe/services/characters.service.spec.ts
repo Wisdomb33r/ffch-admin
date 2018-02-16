@@ -5,10 +5,17 @@ import {CharactersService} from './characters.service';
 import {DataMiningClientService} from './data-mining-client.service';
 import {Personnage} from '../model/personnage.model';
 import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
+import {SkillsService} from './skills.service';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
     return Observable.of(JSON.parse(CHARACTER_TEST_DATA));
+  }
+}
+
+class SkillsServiceMock {
+  public searchForSkills(skills) {
+    return [];
   }
 }
 
@@ -19,7 +26,8 @@ describe('CharactersService', () => {
     TestBed.configureTestingModule({
       providers: [
         CharactersService,
-        {provide: DataMiningClientService, useClass: DataMiningMock}
+        {provide: DataMiningClientService, useClass: DataMiningMock},
+        {provide: SkillsService, useClass: SkillsServiceMock},
       ]
     });
   });
