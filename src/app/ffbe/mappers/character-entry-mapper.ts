@@ -1,13 +1,16 @@
 import {CharacterEntry} from '../model/character-entry.model';
 import {Unite} from '../model/unite.model';
 import {Personnage} from '../model/personnage.model';
+import { CharacterEntryStatsMapper } from '../mappers/character-entry-stats.mapper';
 
 export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
-    return new Unite(
+    let unite = new Unite(
       perso, entry.rarity, entry.limitburst_id, gumi_id
     );
+    unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
+    return unite;
   }
 
   public static toUniteArray(entries: any, perso: Personnage): Array<Unite> {
