@@ -17,6 +17,12 @@
       <th>Gumi ID :</th>
       <td>{{personnage.gumi_id}}</td>
     </tr>
+    <tr>
+      <th>Équipement :</th>
+      <td><img *ngFor="let equipement of personnage.equipements" src="assets/equipments/{{equipement.imageName}}"
+               alt="{{equipement.name}}" title="{{equipement.name}}" class="equipment"/>
+      </td>
+    </tr>
   </table>
   <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
 </mat-card>
