@@ -8,6 +8,15 @@ export class FfbeUtils {
   }
 
   public static findEquipmentByGumiId(equipment_id: number): Equipment {
-    return FFBE_EQUIPMENTS.find(equiment => equiment.gumiId === equipment_id);
+    return FFBE_EQUIPMENTS.find(equipment => equipment.gumiId === equipment_id);
+  }
+
+  public static findEquipmentsByGumiIds(equipment_ids: Array<number>) : Array<Equipment> {
+    let equipments = new Array<Equipment>();
+    equipment_ids.forEach(function(id: number) {
+      console.log(id);
+      equipments.push(FfbeUtils.findEquipmentByGumiId(id));
+    });
+    return equipments;
   }
 }
