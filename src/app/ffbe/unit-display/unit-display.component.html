@@ -1,0 +1,88 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>{{unite.stars}}&#9733;</mat-expansion-panel-header>
+  <table>
+    <tr>
+      <th>Limite ID :</th>
+      <td>{{unite.limite_gumi_id}}</td>
+    </tr>
+    <tr>
+      <th>Limite :</th>
+      <td>{{unite.limite}}<br/>{{unite.lim_desc}}</td>
+    </tr>
+    <tr>
+      <th>Limite niveaux :</th>
+      <td>{{unite.lim_nb_niv}}</td>
+    </tr>
+    <tr>
+      <th>Limite hits :</th>
+      <td>{{unite.lim_hits}}</td>
+    </tr>
+    <tr>
+      <th>Limite frames :</th>
+      <td>{{unite.lim_frames}}</td>
+    </tr>
+    <tr>
+      <th>Niveau :</th>
+      <td>{{unite.carac.level}}/{{unite.carac.level_max}}</td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th>Stats</th>
+      <th>Base</th>
+      <th>Pots</th>
+    </tr>
+    <tr>
+      <td>PV</td>
+      <td>{{unite.carac.pv}}</td>
+      <td>{{unite.carac.pv_pots}}</td>
+    </tr>
+    <tr>
+      <td>PM</td>
+      <td>{{unite.carac.pm}}</td>
+      <td>{{unite.carac.pm_pots}}</td>
+    </tr>
+    <tr>
+      <td>ATT</td>
+      <td>{{unite.carac.att}}</td>
+      <td>{{unite.carac.att_pots}}</td>
+    </tr>
+    <tr>
+      <td>DÉF</td>
+      <td>{{unite.carac.def}}</td>
+      <td>{{unite.carac.def_pots}}</td>
+    </tr>
+    <tr>
+      <td>MAGIE</td>
+      <td>{{unite.carac.mag}}</td>
+      <td>{{unite.carac.mag_pots}}</td>
+    </tr>
+    <tr>
+      <td>PSY</td>
+      <td>{{unite.carac.psy}}</td>
+      <td>{{unite.carac.psy_pots}}</td>
+    </tr>
+  </table>
+
+  <mat-table [dataSource]="unite.competences">
+
+    <ng-container matColumnDef="gumi_id">
+      <mat-header-cell *matHeaderCellDef>Gumi id</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.gumi_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.nom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: skillsColumnsToDisplay;"></mat-row>
+
+  </mat-table>
+</mat-expansion-panel>

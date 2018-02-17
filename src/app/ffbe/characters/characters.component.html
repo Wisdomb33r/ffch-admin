@@ -1,12 +1,12 @@
-<div *ngIf="isDataMiningLoading()" style="width: 100px; margin: auto;">
+<mat-card *ngIf="isDataMiningLoading()">
+  <mat-card-title>Chargement en cours...</mat-card-title>
   <mat-spinner></mat-spinner>
-  Chargement en cours...
-</div>
-<div *ngIf="!isDataMiningLoading()">
-  <div>
-    <label>Nom </label> : <input [formControl]="name">
-  </div>
-  <button type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
-
-  <app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
-</div>
+</mat-card>
+<mat-card *ngIf="!isDataMiningLoading()">
+  <mat-card-title>Importer un personnage</mat-card-title>
+  <mat-form-field>
+    <input matInput [formControl]="name" placeholder="Nom" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
+</mat-card>
+<app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>

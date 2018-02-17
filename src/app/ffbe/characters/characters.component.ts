@@ -4,6 +4,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {Personnage} from '../model/personnage.model';
 import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
+import {UniteMapper} from '../mappers/unite.mapper';
 
 @Component({
   selector: 'app-characters',
@@ -26,6 +27,12 @@ export class CharactersComponent implements OnInit {
 
   public searchCharacterInDataMining() {
     this.personnage = this.charactersService.searchForCharacterByName(this.name.value);
+    if (this.personnage) {
+      this.personnage.unites.forEach(unite => {
+        const limit = this.limitBurstsService.searchForLimitBurstByGumiId(unite.limite_gumi_id);
+        UniteMapper.updateLimite(unite, limit);
+      });
+    }
   }
 
   public isCharacterDisplayed(): boolean {
@@ -33,8 +40,8 @@ export class CharactersComponent implements OnInit {
   }
 
   public isDataMiningLoading(): boolean {
-    return this.charactersService.charactersFromDataMining == null
-      || this.limitBurstsService.limitBurstsFromDataMining == null
-      || this.skillsService.skillsFromDataMining == null;
+    return !this.charactersService.isLoaded()
+      || !this.limitBurstsService.isLoaded()
+      || !this.skillsService.isLoaded();
   }
 }

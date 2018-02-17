@@ -7,6 +7,9 @@ import {AppComponent} from './app.component';
 import {CharactersComponent} from './ffbe/characters/characters.component';
 import {FfbeModule} from './ffbe/ffbe.module';
 import {CommonModule} from '@angular/common';
+import {MenusComponent} from './menus/menus.component';
+import {MatButtonModule, MatCardModule, MatMenuModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: 'ffbe/characters', component: CharactersComponent},
@@ -14,16 +17,23 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenusComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
     FfbeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [MenusComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

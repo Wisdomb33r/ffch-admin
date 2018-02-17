@@ -1,12 +1,11 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
-import {LimitBurstMapper} from '../mappers/limit-burst-mapper';
-import {Limite} from '../model/limite.model';
+import {LimitBurst} from '../model/limit-burst.model';
 
 @Injectable()
 export class LimitBurstsService {
 
-  public limitBurstsFromDataMining = null;
+  private limitBurstsFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadLimitBurstsFromDataMining();
@@ -19,15 +18,19 @@ export class LimitBurstsService {
     }
   }
 
-  public searchForLimitBurstByGumiId(id: number): Limite {
+  public searchForLimitBurstByGumiId(id: number): LimitBurst {
     if (this.limitBurstsFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.limitBurstsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
-        return LimitBurstMapper.toLimite(this.limitBurstsFromDataMining[property]);
+        return this.limitBurstsFromDataMining[property];
       }
     }
     return null;
+  }
+
+  public isLoaded(): boolean {
+    return this.limitBurstsFromDataMining != null;
   }
 }
 

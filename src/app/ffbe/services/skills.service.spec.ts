@@ -37,7 +37,7 @@ describe('SkillsService', () => {
     // WHEN
     service.loadSkillsFromDataMining();
     // THEN
-    expect(service.skillsFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
   }));
 
   it('should not load twice the data mining if loading requested twice', inject([SkillsService], (service: SkillsService) => {
@@ -46,7 +46,7 @@ describe('SkillsService', () => {
     // WHEN
     service.loadSkillsFromDataMining();
     // THEN
-    expect(service.skillsFromDataMining).toBeTruthy();
+    expect(service.isLoaded()).toBeTruthy();
     expect(this.dataMiningService.getSkills$).toHaveBeenCalledTimes(1);
   }));
 

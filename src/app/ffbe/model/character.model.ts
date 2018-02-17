@@ -1,3 +1,5 @@
+import {CharacterSkill} from './character-skill.model';
+
 export class Character {
   rarity_min: number;
   rarity_max: number;
@@ -5,4 +7,6 @@ export class Character {
   names: Array<string>;
   game_id: number;
   job: string;
+  entries: any;
+  skills: Array<CharacterSkill>;
 }
