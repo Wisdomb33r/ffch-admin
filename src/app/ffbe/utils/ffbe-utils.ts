@@ -11,11 +11,9 @@ export class FfbeUtils {
     return FFBE_EQUIPMENTS.find(equipment => equipment.gumiId === equipment_id);
   }
 
-  public static findEquipmentsByGumiIds(equipment_ids: Array<number>) : Array<Equipment> {
+  public static findEquipmentsByGumiIds(equipment_ids: Array<number>): Array<Equipment> {
     let equipments = new Array<Equipment>();
-    equipment_ids.forEach(function(id: number) {
-      equipments.push(FfbeUtils.findEquipmentByGumiId(id));
-    });
+    equipment_ids.forEach(id => equipments.push(FfbeUtils.findEquipmentByGumiId(id)));
     return equipments;
   }
 }
