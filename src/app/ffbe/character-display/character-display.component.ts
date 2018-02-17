@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Personnage} from '../model/personnage.model';
 import {Unite} from '../model/unite.model';
+import {Equipment} from '../model/equipment.model';
 
 @Component({
   selector: 'app-character-display',
