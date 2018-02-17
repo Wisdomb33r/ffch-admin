@@ -14,7 +14,6 @@ export class FfbeUtils {
   public static findEquipmentsByGumiIds(equipment_ids: Array<number>) : Array<Equipment> {
     let equipments = new Array<Equipment>();
     equipment_ids.forEach(function(id: number) {
-      console.log(id);
       equipments.push(FfbeUtils.findEquipmentByGumiId(id));
     });
     return equipments;
