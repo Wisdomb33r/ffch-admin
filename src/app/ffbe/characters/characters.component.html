@@ -10,3 +10,6 @@
   <button mat-raised-button color="primary" type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
 </mat-card>
 <app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
+<app-character-skills-display *ngIf="isCharacterSkillsDisplayed()"
+                              [competences]="personnage.unites[personnage.unites.length -1].competences">
+</app-character-skills-display>
