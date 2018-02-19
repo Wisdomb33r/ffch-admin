@@ -3,9 +3,10 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {CharactersService} from './characters.service';
 import {DataMiningClientService} from './data-mining-client.service';
-import {Personnage} from '../model/personnage.model';
 import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
 import {SkillsService} from './skills.service';
+import {Character} from '../model/character.model';
+import {LimitBurstsService} from './limit-bursts.service';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -14,7 +15,13 @@ class DataMiningMock {
 }
 
 class SkillsServiceMock {
-  public searchForSkills(skills) {
+  public searchForSkillByGumiId(id) {
+    return [];
+  }
+}
+
+class LimitBurstServiceMock {
+  public searchForLimitBurstByGumiId(id) {
     return [];
   }
 }
@@ -28,6 +35,7 @@ describe('CharactersService', () => {
         CharactersService,
         {provide: DataMiningClientService, useClass: DataMiningMock},
         {provide: SkillsService, useClass: SkillsServiceMock},
+        {provide: LimitBurstsService, useClass: LimitBurstServiceMock},
       ]
     });
   });
@@ -62,12 +70,10 @@ describe('CharactersService', () => {
     // GIVEN
     service.loadCharactersFromDataMining();
     // WHEN
-    const personnage: Personnage = service.searchForCharacterByName('Hunter Rain');
+    const character: Character = service.searchForCharacterByName('Hunter Rain');
     // THEN
-    expect(personnage).toBeTruthy();
-    expect(personnage.gumi_id).toEqual(100000115);
-    expect(personnage.min_rank).toEqual(5);
-    expect(personnage.max_rank).toEqual(6);
+    expect(character).toBeTruthy();
+    expect(character.gumi_id).toEqual(100000115);
   }));
 
   it('should find null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
