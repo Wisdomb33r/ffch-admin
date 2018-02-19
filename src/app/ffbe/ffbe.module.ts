@@ -18,6 +18,7 @@ import {
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
 import {UnitDisplayComponent} from './unit-display/unit-display.component';
+import {CharacterSkillsDisplayComponent} from './character-skills-display/character-skills-display.component';
 
 @NgModule({
   imports: [
@@ -33,8 +34,18 @@ import {UnitDisplayComponent} from './unit-display/unit-display.component';
     MatExpansionModule,
     MatTableModule,
   ],
-  declarations: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],
-  exports: [CharactersComponent, CharacterDisplayComponent, UnitDisplayComponent],
+  declarations: [
+    CharactersComponent,
+    CharacterDisplayComponent,
+    UnitDisplayComponent,
+    CharacterSkillsDisplayComponent,
+  ],
+  exports: [
+    CharactersComponent,
+    CharacterDisplayComponent,
+    UnitDisplayComponent,
+    CharacterSkillsDisplayComponent,
+  ],
   providers: [
     DataMiningClientService,
     CharactersService,

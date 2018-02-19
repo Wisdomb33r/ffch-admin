@@ -38,6 +38,13 @@ export class CharactersComponent implements OnInit {
     return this.personnage != null;
   }
 
+  public isCharacterSkillsDisplayed(): boolean {
+    return this.personnage != null
+      && Array.isArray(this.personnage.unites)
+      && this.personnage.unites.length > 0
+      && Array.isArray(this.personnage.unites[this.personnage.unites.length - 1].competences);
+  }
+
   public isDataMiningLoading(): boolean {
     return !this.charactersService.isLoaded()
       || !this.limitBurstsService.isLoaded()
