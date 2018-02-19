@@ -1,8 +1,10 @@
-import { CharacterEntryStats } from '../model/character-entry-stats.model';
+import {CharacterEntryStats} from '../model/character-entry-stats.model';
+import {LimitBurst} from './limit-burst.model';
 
 export class CharacterEntry {
-  gumi_id: number;
-  rarity: number;
-  stats: CharacterEntryStats;
-  limitburst_id: number;
+  public gumi_id: number;
+  public rarity: number;
+  public stats: CharacterEntryStats;
+  public limitburst_id: number;
+  public lb: LimitBurst;
 }

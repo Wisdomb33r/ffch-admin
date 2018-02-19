@@ -1,13 +1,14 @@
 import {CharacterSkill} from './character-skill.model';
 
 export class Character {
-  rarity_min: number;
-  rarity_max: number;
-  name: string;
-  names: Array<string>;
-  game_id: number;
-  job: string;
-  equip: Array<number>;
-  entries: any;
-  skills: Array<CharacterSkill>;
+  public gumi_id: number;
+  public rarity_min: number;
+  public rarity_max: number;
+  public name: string;
+  public names: Array<string>;
+  public game_id: number;
+  public job: string;
+  public equip: Array<number>;
+  public entries: any;
+  public skills: Array<CharacterSkill>;
 }

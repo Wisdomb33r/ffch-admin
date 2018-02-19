@@ -4,9 +4,9 @@ import {Competence} from '../model/competence.model';
 
 export class SkillMapper {
 
-  public static toCompetence(skill: Skill, gumi_id: number): Competence {
+  public static toCompetence(skill: Skill): Competence {
     return new Competence(
-      gumi_id,
+      skill.gumi_id,
       1, // TODO algorithm to map the Skill to a Competence categorie according to the FFCH identifiers
       skill.strings.name[FFBE_FRENCH_TABLE_INDEX],
       skill.strings.name[FFBE_ENGLISH_TABLE_INDEX],

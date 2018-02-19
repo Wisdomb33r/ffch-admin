@@ -1,8 +1,6 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
-import {Competence} from '../model/competence.model';
-import {SkillMapper} from '../mappers/skill-mapper';
-import {CharacterSkill} from '../model/character-skill.model';
+import {Skill} from '../model/skill.model';
 
 @Injectable()
 export class SkillsService {
@@ -20,28 +18,17 @@ export class SkillsService {
     }
   }
 
-  public searchForSkillByGumiId(id: number): Competence {
+  public searchForSkillByGumiId(id: number): Skill {
     if (this.skillsFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
-        return SkillMapper.toCompetence(this.skillsFromDataMining[property], +property);
+        const skill: Skill = this.skillsFromDataMining[property];
+        skill.gumi_id = +property;
+        return skill;
       }
     }
     return null;
-  }
-
-  public searchForSkills(skills: Array<CharacterSkill>): Array<Competence> {
-    const competences = [];
-    if (this.skillsFromDataMining != null) {
-      skills.forEach(skill => {
-        const competence: Competence = this.searchForSkillByGumiId(skill.id);
-        if (competence) {
-          competences.push(competence);
-        }
-      });
-    }
-    return competences;
   }
 
   public isLoaded(): boolean {

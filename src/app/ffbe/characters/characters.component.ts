@@ -4,7 +4,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {Personnage} from '../model/personnage.model';
 import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
-import {UniteMapper} from '../mappers/unite.mapper';
+import {Character} from '../model/character.model';
+import {CharacterMapper} from '../mappers/character-mapper';
 
 @Component({
   selector: 'app-characters',
@@ -26,12 +27,12 @@ export class CharactersComponent implements OnInit {
   }
 
   public searchCharacterInDataMining() {
-    this.personnage = this.charactersService.searchForCharacterByName(this.name.value);
-    if (this.personnage) {
-      this.personnage.unites.forEach(unite => {
-        const limit = this.limitBurstsService.searchForLimitBurstByGumiId(unite.limite_gumi_id);
-        UniteMapper.updateLimite(unite, limit);
-      });
+    const character: Character = this.charactersService.searchForCharacterByName(this.name.value);
+    if (character) {
+      this.personnage = CharacterMapper.toPersonnage(character);
+    }
+    else {
+      this.personnage = null;
     }
   }
 
