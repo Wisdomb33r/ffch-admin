@@ -27,12 +27,10 @@ export class CharactersComponent implements OnInit {
   }
 
   public searchCharacterInDataMining() {
+    this.personnage = null;
     const character: Character = this.charactersService.searchForCharacterByName(this.name.value);
     if (character) {
       this.personnage = CharacterMapper.toPersonnage(character);
-    }
-    else {
-      this.personnage = null;
     }
   }
 
