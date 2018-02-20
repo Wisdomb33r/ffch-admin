@@ -10,7 +10,7 @@ import {FfchClientService} from '../services/ffch-client.service';
 export class CharacterSkillsDisplayComponent implements OnInit {
 
   @Input() competences: Array<Competence>;
-  public skillsColumnsToDisplay = ['gumi_id', 'nom', 'description', 'ffch'];
+  public skillsColumnsToDisplay = ['gumi_id', 'nom', 'description', 'effet', 'ffch'];
   public skillsErrors: Array<string> = [];
 
   constructor(private ffchClientService: FfchClientService) {
@@ -20,10 +20,6 @@ export class CharacterSkillsDisplayComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.refreshAfterChanges();
-  }
-
-  private refreshAfterChanges() {
     this.skillsErrors = [];
     if (Array.isArray(this.competences)) {
       this.competences.forEach(competence => {
@@ -32,5 +28,9 @@ export class CharacterSkillsDisplayComponent implements OnInit {
             error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + " : " + error));
       });
     }
+  }
+
+  public isSkillsErrorsDisplayed(): boolean {
+    return Array.isArray(this.skillsErrors) && this.skillsErrors.length > 0;
   }
 }

@@ -8,5 +8,6 @@ export class Skill {
   public mp_cost: number;
   public attack_count: Array<number>;
   public attack_frames: Array<Array<number>>;
+  public effects: Array<string>;
   public strings: SkillStrings;
 }

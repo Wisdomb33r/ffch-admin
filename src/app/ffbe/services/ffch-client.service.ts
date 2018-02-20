@@ -22,7 +22,6 @@ export class FfchClientService {
   private analyseError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;
-      console.error(message);
       return new ErrorObservable(message);
     }
     else {

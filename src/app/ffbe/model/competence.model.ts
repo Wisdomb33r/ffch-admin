@@ -8,6 +8,8 @@ export class Competence {
               public nom_en: string,
               public description: string,
               public description_en: string,
+              public effet: string,
+              public effet_en: string,
               public pm: number,
               public hits: number,
               public frames: string) {

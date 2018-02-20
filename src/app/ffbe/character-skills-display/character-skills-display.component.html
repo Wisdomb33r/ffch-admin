@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Compétences</mat-card-title>
 
-  <ul class="error">
+  <ul class="error" *ngIf="isSkillsErrorsDisplayed()">
     <li *ngFor="let message of skillsErrors">{{message}}</li>
   </ul>
 
@@ -20,6 +20,11 @@
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
       <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="effet">
+      <mat-header-cell *matHeaderCellDef>Effet</mat-header-cell>
+      <mat-cell *matCellDef="let competence">{{competence.effet_en}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="ffch">
