@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Competence} from '../model/competence.model';
+import {FfchClientService} from '../services/ffch-client.service';
 
 @Component({
   selector: 'app-character-skills-display',
@@ -9,12 +10,27 @@ import {Competence} from '../model/competence.model';
 export class CharacterSkillsDisplayComponent implements OnInit {
 
   @Input() competences: Array<Competence>;
-  skillsColumnsToDisplay = ['gumi_id', 'nom', 'description'];
+  public skillsColumnsToDisplay = ['gumi_id', 'nom', 'description', 'ffch'];
+  public skillsErrors: Array<string> = [];
 
-  constructor() {
+  constructor(private ffchClientService: FfchClientService) {
   }
 
   ngOnInit() {
   }
 
+  ngOnChanges() {
+    this.refreshAfterChanges();
+  }
+
+  private refreshAfterChanges() {
+    this.skillsErrors = [];
+    if (Array.isArray(this.competences)) {
+      this.competences.forEach(competence => {
+        this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
+          .subscribe(c => competence.id = c.id,
+            error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + " : " + error));
+      });
+    }
+  }
 }

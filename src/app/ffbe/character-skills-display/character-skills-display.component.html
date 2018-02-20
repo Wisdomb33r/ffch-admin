@@ -1,6 +1,10 @@
 <mat-card>
   <mat-card-title>Compétences</mat-card-title>
 
+  <ul class="error">
+    <li *ngFor="let message of skillsErrors">{{message}}</li>
+  </ul>
+
   <mat-table [dataSource]="competences">
 
     <ng-container matColumnDef="gumi_id">
@@ -16,6 +20,14 @@
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
       <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ffch">
+      <mat-header-cell *matHeaderCellDef class="right">FFCH</mat-header-cell>
+      <mat-cell *matCellDef="let competence" class="right">
+        <img *ngIf="competence.isPresentInFfchDb()" src="assets/ok.png"/>
+        <img *ngIf="!competence.isPresentInFfchDb()" src="assets/nok.png"/>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>

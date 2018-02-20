@@ -1,4 +1,7 @@
+import {isNullOrUndefined} from 'util';
 export class Competence {
+  public id: number;
+
   constructor(public gumi_id: number,
               public categorie: number,
               public nom: string,
@@ -8,5 +11,9 @@ export class Competence {
               public pm: number,
               public hits: number,
               public frames: string) {
+  }
+
+  public isPresentInFfchDb(): boolean {
+    return !isNullOrUndefined(this.id);
   }
 }
