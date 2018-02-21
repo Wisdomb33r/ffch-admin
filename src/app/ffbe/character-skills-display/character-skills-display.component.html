@@ -5,39 +5,20 @@
     <li *ngFor="let message of skillsErrors">{{message}}</li>
   </ul>
 
-  <mat-table [dataSource]="competences">
+  <form>
+    <mat-card *ngFor="let competence of competences">
+      <mat-card-title>
+        <img *ngIf="competence.isPresentInFfchDb()" src="assets/ok.png" class="ffchstatus">
+        <img *ngIf="!competence.isPresentInFfchDb()" src="assets/nok.png" class="ffchstatus">
+        {{competence.gumi_id}} {{competence.nom}}
+      </mat-card-title>
+      <p>{{competence.description}}</p>
+      <p>{{competence.effet_en}}</p>
 
-    <ng-container matColumnDef="gumi_id">
-      <mat-header-cell *matHeaderCellDef>Gumi id</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.gumi_id}}</mat-cell>
-    </ng-container>
+      <mat-form-field>
+        <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
+      </mat-form-field>
 
-    <ng-container matColumnDef="nom">
-      <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.nom}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="effet">
-      <mat-header-cell *matHeaderCellDef>Effet</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.effet_en}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="ffch">
-      <mat-header-cell *matHeaderCellDef class="right">FFCH</mat-header-cell>
-      <mat-cell *matCellDef="let competence" class="right">
-        <img *ngIf="competence.isPresentInFfchDb()" src="assets/ok.png"/>
-        <img *ngIf="!competence.isPresentInFfchDb()" src="assets/nok.png"/>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: skillsColumnsToDisplay;"></mat-row>
-
-  </mat-table>
-
+    </mat-card>
+  </form>
 </mat-card>
