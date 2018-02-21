@@ -16,12 +16,12 @@ export class SkillMapper {
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
       skill.mp_cost,
       skill.attack_count.length > 0 ? skill.attack_count[0] : null,
-      skill.attack_frames.length > 0 ? skill.attack_frames[0].join(" ") : null
+      skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null
     );
   }
 
   private static determineCategorieCompetence(skill: Skill) {
-    if (skill.type == 'MAGIC') {
+    if (skill.type === 'MAGIC') {
       if (skill.magic_type === 'White') {
         return 1;
       }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
@@ -8,7 +8,7 @@ import {isNullOrUndefined} from 'util';
   templateUrl: './character-skills-display.component.html',
   styleUrls: ['./character-skills-display.component.css']
 })
-export class CharacterSkillsDisplayComponent implements OnInit {
+export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
 
   @Input() competences: Array<Competence>;
   public skillsErrors: Array<string> = [];

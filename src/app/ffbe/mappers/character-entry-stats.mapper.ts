@@ -1,7 +1,11 @@
-import { FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX, FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX, FFBE_CHARACTER_MAX_LEVEL } from '../ffbe.constants';
-import { CharacterEntryStats } from '../model/character-entry-stats.model';
-import { UniteCarac } from '../model/unite-carac.model';
-import { Unite } from '../model/unite.model';
+import {
+  FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX,
+  FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX,
+  FFBE_CHARACTER_MAX_LEVEL
+} from '../ffbe.constants';
+import {CharacterEntryStats} from '../model/character-entry-stats.model';
+import {UniteCarac} from '../model/unite-carac.model';
+import {Unite} from '../model/unite.model';
 
 export class CharacterEntryStatsMapper {
 

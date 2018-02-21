@@ -45,7 +45,7 @@ export class CharactersService {
 
   private loadLimitBurst(entries: any) {
     const entryNames: string[] = Object.getOwnPropertyNames(entries);
-    for (let entryName of entryNames) {
+    for (const entryName of entryNames) {
       const entry: CharacterEntry = entries[entryName];
       entry.lb = this.lbService.searchForLimitBurstByGumiId(entry.limitburst_id);
     }
