@@ -4,6 +4,7 @@ import {Competence} from '../model/competence.model';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import 'rxjs/add/observable/of';
 
 const FFCH_BASE_URL = 'https://www.final-fantasy.ch/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
@@ -23,12 +24,10 @@ export class FfchClientService {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;
       return new ErrorObservable(message);
-    }
-    else {
+    } else {
       if (error.status === 404) {
-        return new Observable<Competence>(null);
-      }
-      else {
+        return Observable.of(undefined);
+      } else {
         const message = 'Code d\'erreur en provenance du backend ' + error.status;
         return new ErrorObservable(message);
       }
