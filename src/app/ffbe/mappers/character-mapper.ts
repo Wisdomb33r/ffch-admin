@@ -14,7 +14,14 @@ export class CharacterMapper {
     const game: Game = FfbeUtils.findGameByGumiId(character.game_id);
     const equipments: Array<Equipment> = FfbeUtils.findEquipmentsByGumiIds(character.equip);
     const perso = new Personnage(
-      game, character.job, character.name, character.names[FFBE_FRENCH_TABLE_INDEX], character.rarity_min, character.rarity_max, character.gumi_id, equipments
+      game,
+      character.job,
+      character.name,
+      character.names[FFBE_FRENCH_TABLE_INDEX],
+      character.rarity_min,
+      character.rarity_max,
+      character.gumi_id,
+      equipments
     );
     perso.unites = CharacterEntryMapper.toUniteArray(character.entries, perso);
     character.skills.forEach(characterSkill => {

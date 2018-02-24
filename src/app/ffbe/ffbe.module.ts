@@ -19,6 +19,7 @@ import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
 import {UnitDisplayComponent} from './unit-display/unit-display.component';
 import {CharacterSkillsDisplayComponent} from './character-skills-display/character-skills-display.component';
+import {FfchClientService} from './services/ffch-client.service';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import {CharacterSkillsDisplayComponent} from './character-skills-display/charac
     CharactersService,
     LimitBurstsService,
     SkillsService,
+    FfchClientService,
   ]
 })
 export class FfbeModule {

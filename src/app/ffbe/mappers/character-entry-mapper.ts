@@ -8,7 +8,7 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
-    let unite = new Unite(
+    const unite = new Unite(
       perso, entry.rarity, entry.limitburst_id, gumi_id
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
@@ -20,7 +20,7 @@ export class CharacterEntryMapper {
     const unites: Array<Unite> = [];
     if (entries) {
       const entryNames: string[] = Object.getOwnPropertyNames(entries);
-      for (let entryName of entryNames) {
+      for (const entryName of entryNames) {
         unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, perso));
       }
     }
@@ -34,7 +34,7 @@ export class CharacterEntryMapper {
       unite.lim_desc = lb.strings.desc[FFBE_FRENCH_TABLE_INDEX];
       unite.lim_desc_en = lb.strings.desc[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
-      unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(" ") : null;
+      unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
       unite.lim_nb_niv = lb.levels;
     }
   }

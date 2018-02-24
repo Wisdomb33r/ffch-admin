@@ -2,9 +2,10 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-const charactersURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/units.json';
-const lbURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/limitbursts.json';
-const skillsURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/skills.json';
+const dataMiningBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/';
+const charactersFile = dataMiningBaseURL + 'units.json';
+const lbFile = dataMiningBaseURL + 'limitbursts.json';
+const skillsFile = dataMiningBaseURL + 'skills.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -13,14 +14,14 @@ export class DataMiningClientService {
   }
 
   public getCharacters$(): Observable<Object> {
-    return this.http.get(charactersURL);
+    return this.http.get(charactersFile);
   }
 
   public getLimitBursts$(): Observable<Object> {
-    return this.http.get(lbURL);
+    return this.http.get(lbFile);
   }
 
   public getSkills$(): Observable<Object> {
-    return this.http.get(skillsURL);
+    return this.http.get(skillsFile);
   }
 }

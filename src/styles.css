@@ -15,3 +15,17 @@ th {
 mat-form-field {
   width: 100%;
 }
+
+ul.error {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+ul.error li {
+  color: red;
+}
+
+.right {
+  text-align: right;
+}
