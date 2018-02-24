@@ -20,6 +20,7 @@
         <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
       </mat-form-field>
 
+      <button mat-raised-button color="accent" (click)="sendCompetenceToFfch(competence)">Envoyer</button>
     </mat-card>
   </form>
 </mat-card>

@@ -15,6 +15,10 @@ export class FfchClientService {
   constructor(private http: HttpClient) {
   }
 
+  public postCompetence(competence: Competence): Observable<any> {
+    return this.http.post(FFCH_COMPETENCE_PATH, competence);
+  }
+
   public getCompetenceByGumiId$(id: number): Observable<Competence> {
     return this.http.get<Competence>(FFCH_COMPETENCE_PATH + '?id=' + id)
       .pipe(catchError(this.analyseError));

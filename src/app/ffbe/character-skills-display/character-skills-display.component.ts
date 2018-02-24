@@ -33,4 +33,8 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
   public isSkillsErrorsDisplayed(): boolean {
     return Array.isArray(this.skillsErrors) && this.skillsErrors.length > 0;
   }
+
+  public sendCompetenceToFfch(competence: Competence) {
+    this.ffchClientService.postCompetence(competence).subscribe();
+  }
 }
