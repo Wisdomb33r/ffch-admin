@@ -1,0 +1,6 @@
+{
+  "/admin": {
+    "target": "http://final-fantasy.localhost:80",
+    "secure": false
+  }
+}

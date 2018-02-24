@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/observable/of';
 
-const FFCH_BASE_URL = 'https://www.final-fantasy.ch/admin/';
+const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 
 @Injectable()
