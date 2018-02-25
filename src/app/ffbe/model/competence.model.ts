@@ -15,9 +15,11 @@ export class Competence {
               public description_en: string,
               public effet: string,
               public effet_en: string,
+              public puissance: number,
               public pm: number,
               public hits: number,
-              public frames: string) {
+              public frames: string,
+              public damages: string) {
   }
 
   public isPresentInFfchDb(): boolean {
