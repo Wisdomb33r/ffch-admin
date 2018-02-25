@@ -13,7 +13,7 @@
         {{competence.gumi_id}} {{competence.nom}}
       </mat-card-title>
       <div *ngIf="!competence.isPresentInFfchDb()">
-        <p>Type {{competence.categorie}}</p>
+        <p>Type {{competence.categorie}} / {{competence.physique}} / {{competence.magique}} / {{competence.hybride}}</p>
         <p>{{competence.description}}</p>
         <p>{{competence.effet_en}}</p>
 
