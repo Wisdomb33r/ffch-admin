@@ -8,6 +8,7 @@ export class SkillMapper {
     return new Competence(
       skill.gumi_id,
       SkillMapper.determineCategorieCompetence(skill),
+      SkillMapper.transformIcon(skill.icon),
       skill.strings.name[FFBE_FRENCH_TABLE_INDEX],
       skill.strings.name[FFBE_ENGLISH_TABLE_INDEX],
       skill.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
@@ -18,6 +19,19 @@ export class SkillMapper {
       skill.attack_count.length > 0 ? skill.attack_count[0] : null,
       skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null
     );
+  }
+
+  private static transformIcon(icon: string): number {
+    if (icon) {
+      const underscoreSplitted = icon.split('_');
+      if (Array.isArray(underscoreSplitted) && underscoreSplitted.length === 2) {
+        const pointSplitted = underscoreSplitted[1].split('.');
+        if (Array.isArray(pointSplitted) && pointSplitted.length === 2) {
+          return +(pointSplitted[0]);
+        }
+      }
+    }
+    return null;
   }
 
   private static determineCategorieCompetence(skill: Skill) {
@@ -46,7 +60,6 @@ export class SkillMapper {
         if (skill.attack_type === 'Hybrid') {
           return 8;
         }
-        return 5;
       }
       return 5;
     }

@@ -36,6 +36,6 @@ describe('FfchClientService', () => {
     service.getCompetenceByGumiId$(1234);
     // THEN
     expect(httpClient.get).toHaveBeenCalled();
-    expect(httpClient.get).toHaveBeenCalledWith('https://www.final-fantasy.ch/admin/skills.php?id=' + 1234);
+    expect(httpClient.get).toHaveBeenCalledWith('/admin/skills.php?id=' + 1234);
   }));
 });

@@ -35,6 +35,7 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendCompetenceToFfch(competence: Competence) {
-    this.ffchClientService.postCompetence(competence).subscribe();
+    this.ffchClientService.postCompetence(competence)
+      .subscribe(c => competence.id = (isNullOrUndefined(c) ? null : c.id));
   }
 }

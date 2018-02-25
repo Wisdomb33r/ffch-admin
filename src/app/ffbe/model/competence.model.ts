@@ -4,6 +4,7 @@ export class Competence {
 
   constructor(public gumi_id: number,
               public categorie: number,
+              public icone: number,
               public nom: string,
               public nom_en: string,
               public description: string,
