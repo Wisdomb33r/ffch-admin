@@ -12,5 +12,6 @@ export class Skill {
   public attack_frames: Array<Array<number>>;
   public attack_type: string;
   public effects: Array<string>;
+  public icon: string;
   public strings: SkillStrings;
 }

@@ -6,13 +6,17 @@ import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/observable/of';
 
-const FFCH_BASE_URL = 'https://www.final-fantasy.ch/admin/';
+const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 
 @Injectable()
 export class FfchClientService {
 
   constructor(private http: HttpClient) {
+  }
+
+  public postCompetence(competence: Competence): Observable<any> {
+    return this.http.post(FFCH_COMPETENCE_PATH, competence);
   }
 
   public getCompetenceByGumiId$(id: number): Observable<Competence> {

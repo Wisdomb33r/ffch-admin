@@ -1,9 +1,14 @@
 import {isNullOrUndefined} from 'util';
+
 export class Competence {
   public id: number;
+  public physique: string;
+  public magique: string;
+  public hybride: string;
 
   constructor(public gumi_id: number,
               public categorie: number,
+              public icone: number,
               public nom: string,
               public nom_en: string,
               public description: string,
