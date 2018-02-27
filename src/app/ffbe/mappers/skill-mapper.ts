@@ -5,7 +5,7 @@ import {Competence} from '../model/competence.model';
 export class SkillMapper {
 
   public static toCompetence(skill: Skill): Competence {
-    const competence: Competence = new Competence(
+    return new Competence(
       skill.gumi_id,
       SkillMapper.determineCategorieCompetence(skill),
       SkillMapper.transformIcon(skill.icon),
@@ -21,11 +21,9 @@ export class SkillMapper {
       skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null,
       skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null
     );
-    SkillMapper.mapCategorieToDamageType(competence);
-    return competence;
   }
 
-  private static mapCategorieToDamageType(competence: Competence) {
+  public static mapCategorieToDamageType(competence: Competence) {
     if (competence.categorie === 2 || competence.categorie === 7) {
       competence.physique = '0';
       competence.magique = '1';

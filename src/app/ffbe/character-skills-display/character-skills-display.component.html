@@ -13,7 +13,23 @@
         {{competence.gumi_id}} {{competence.nom}}
       </mat-card-title>
       <div *ngIf="!competence.isPresentInFfchDb()">
-        <p>Type {{competence.categorie}} / {{competence.physique}} / {{competence.magique}} / {{competence.hybride}}</p>
+
+        <mat-form-field>
+          <mat-select placeholder="Catégorie"
+                      [(ngModel)]="competence.categorie"
+                      [ngModelOptions]="{standalone: true}">
+            <mat-option>----------</mat-option>
+            <mat-option [value]="1">Magie blanche</mat-option>
+            <mat-option [value]="2">Magie noire</mat-option>
+            <mat-option [value]="3">Magie verte</mat-option>
+            <mat-option [value]="4">Passifs</mat-option>
+            <mat-option [value]="5">Sans dégâts</mat-option>
+            <mat-option [value]="6">Dégâts physiques</mat-option>
+            <mat-option [value]="7">Dégâts magiques</mat-option>
+            <mat-option [value]="8">Dégâts hybrides</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <p>{{competence.description}}</p>
         <p>{{competence.effet_en}}</p>
 
