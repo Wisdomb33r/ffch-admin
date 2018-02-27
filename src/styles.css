@@ -1,15 +1,22 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 mat-card {
-  margin-top: 10px;
+  margin-bottom: .5rem;
 }
 
 mat-expansion-panel {
   width: 100%;
 }
 
+table {
+  margin-bottom: .5rem;
+}
+
 th {
   text-align: left;
+  color: rgba(0, 0, 0, .57);
+  font-weight: 500;
+  padding-right: 10px;
 }
 
 mat-form-field {

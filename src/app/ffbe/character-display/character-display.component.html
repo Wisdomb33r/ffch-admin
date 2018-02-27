@@ -2,23 +2,23 @@
   <mat-card-title>{{personnage.nom}} ({{personnage.jeu.name}})</mat-card-title>
   <table>
     <tr>
-      <th>Job :</th>
+      <th>Job</th>
       <td>{{personnage.job}}</td>
     </tr>
     <tr>
-      <th>Rang min :</th>
+      <th>Rang min</th>
       <td>{{personnage.min_rank}}</td>
     </tr>
     <tr>
-      <th>Rang max :</th>
+      <th>Rang max</th>
       <td>{{personnage.max_rank}}</td>
     </tr>
     <tr>
-      <th>Gumi ID :</th>
+      <th>Gumi ID</th>
       <td>{{personnage.gumi_id}}</td>
     </tr>
     <tr>
-      <th>Équipement :</th>
+      <th>Équipement</th>
       <td><img *ngFor="let equipement of personnage.equipements" src="assets/equipments/{{equipement.imageName}}"
                alt="{{equipement.name}}" title="{{equipement.name}}" class="equipment"/>
       </td>

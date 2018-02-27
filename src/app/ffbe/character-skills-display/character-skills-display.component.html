@@ -41,6 +41,25 @@
           <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
         </mat-form-field>
 
+        <table>
+          <tr>
+            <th>PM</th>
+            <td>{{competence.pm}}</td>
+          </tr>
+          <tr>
+            <th>Coups</th>
+            <td>{{competence.hits}}</td>
+          </tr>
+          <tr>
+            <th>Frames</th>
+            <td>{{competence.frames}}</td>
+          </tr>
+          <tr>
+            <th>Damages</th>
+            <td>{{competence.damages}}</td>
+          </tr>
+        </table>
+
         <button mat-raised-button color="accent" (click)="sendCompetenceToFfch(competence)">Envoyer</button>
       </div>
     </mat-card>
