@@ -34,8 +34,9 @@ describe('SkillMapper', () => {
     skill.type = 'ABILITY';
     skill.attack_type = 'Physical';
     skill.attack_count = [100];
-    // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
+    // WHEN
+    SkillMapper.mapCategorieToDamageType(competence);
     // replaces
     expect(competence.categorie).toEqual(6);
     expect(competence.physique).toEqual('1');
@@ -51,8 +52,9 @@ describe('SkillMapper', () => {
     skill.type = 'ABILITY';
     skill.attack_type = 'Magic';
     skill.attack_count = [100];
-    // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
+    // WHEN
+    SkillMapper.mapCategorieToDamageType(competence);
     // replaces
     expect(competence.categorie).toEqual(7);
     expect(competence.physique).toEqual('0');
@@ -67,8 +69,9 @@ describe('SkillMapper', () => {
     skill.active = true;
     skill.type = 'MAGIC';
     skill.magic_type = 'Black';
-    // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
+    // WHEN
+    SkillMapper.mapCategorieToDamageType(competence);
     // replaces
     expect(competence.categorie).toEqual(2);
     expect(competence.physique).toEqual('0');
@@ -84,8 +87,9 @@ describe('SkillMapper', () => {
     skill.type = 'ABILITY';
     skill.attack_type = 'Hybrid';
     skill.attack_count = [100];
-    // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
+    // WHEN
+    SkillMapper.mapCategorieToDamageType(competence);
     // replaces
     expect(competence.categorie).toEqual(8);
     expect(competence.physique).toEqual('0');

@@ -13,6 +13,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
+  MatSelectModule,
   MatTableModule
 } from '@angular/material';
 import {LimitBurstsService} from './services/limit-bursts.service';
@@ -34,6 +35,7 @@ import {FfchClientService} from './services/ffch-client.service';
     MatButtonModule,
     MatExpansionModule,
     MatTableModule,
+    MatSelectModule,
   ],
   declarations: [
     CharactersComponent,

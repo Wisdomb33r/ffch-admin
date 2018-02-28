@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
+import {SkillMapper} from '../mappers/skill-mapper';
 
 @Component({
   selector: 'app-character-skills-display',
@@ -35,6 +36,7 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendCompetenceToFfch(competence: Competence) {
+    SkillMapper.mapCategorieToDamageType(competence);
     this.ffchClientService.postCompetence(competence)
       .subscribe(c => competence.id = (isNullOrUndefined(c) ? null : c.id));
   }
