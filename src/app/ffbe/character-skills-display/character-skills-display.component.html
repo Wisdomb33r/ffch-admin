@@ -60,7 +60,9 @@
           </tr>
         </table>
 
-        <button mat-raised-button color="accent" (click)="sendCompetenceToFfch(competence)">Envoyer</button>
+        <button mat-raised-button color="accent" (click)="sendCompetenceToFfch(competence)"
+                [disabled]="isSkillsErrorsDisplayed()">Envoyer
+        </button>
       </div>
     </mat-card>
   </form>
