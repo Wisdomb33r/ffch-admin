@@ -67,14 +67,21 @@
 
   <mat-table [dataSource]="unite.competences">
 
+    <ng-container matColumnDef="level">
+      <mat-header-cell *matHeaderCellDef>Niveau</mat-header-cell>
+      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.niveau}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="id_nom">
       <mat-header-cell *matHeaderCellDef>Id et nom</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.gumi_id}} {{competence.nom}}</mat-cell>
+      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.competence.gumi_id}}
+        {{uniteCompetence.competence.nom}}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let competence">{{competence.description}}</mat-cell>
+      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.competence.description}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>

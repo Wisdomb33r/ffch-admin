@@ -7,6 +7,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {Competence} from '../model/competence.model';
 import {Equipment} from '../model/equipment.model';
 import {SkillMapper} from './skill-mapper';
+import {UniteCompetence} from '../model/unite-competence.model';
 
 export class CharacterMapper {
 
@@ -28,7 +29,12 @@ export class CharacterMapper {
       const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
       perso.unites
         .filter(unite => unite.stars >= characterSkill.rarity)
-        .forEach(unite => unite.competences.push(competence));
+        .forEach(unite => unite.competences.push(
+          new UniteCompetence(unite,
+            competence,
+            unite.stars > characterSkill.rarity ? 1 : characterSkill.level
+          )
+        ));
     });
     return perso;
   }
