@@ -21,6 +21,7 @@ import {SkillsService} from './services/skills.service';
 import {UnitDisplayComponent} from './unit-display/unit-display.component';
 import {CharacterSkillsDisplayComponent} from './character-skills-display/character-skills-display.component';
 import {FfchClientService} from './services/ffch-client.service';
+import {SkillsComponent} from './skills/skills.component';
 
 @NgModule({
   imports: [
@@ -42,12 +43,14 @@ import {FfchClientService} from './services/ffch-client.service';
     CharacterDisplayComponent,
     UnitDisplayComponent,
     CharacterSkillsDisplayComponent,
+    SkillsComponent,
   ],
   exports: [
     CharactersComponent,
     CharacterDisplayComponent,
     UnitDisplayComponent,
     CharacterSkillsDisplayComponent,
+    SkillsComponent,
   ],
   providers: [
     DataMiningClientService,

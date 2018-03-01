@@ -6,6 +6,7 @@ import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
 import {Character} from '../model/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-characters',
@@ -35,7 +36,7 @@ export class CharactersComponent implements OnInit {
   }
 
   public isCharacterDisplayed(): boolean {
-    return this.personnage != null;
+    return !isNullOrUndefined(this.personnage);
   }
 
   public isCharacterSkillsDisplayed(): boolean {

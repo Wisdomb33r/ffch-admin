@@ -10,9 +10,11 @@ import {CommonModule} from '@angular/common';
 import {MenusComponent} from './menus/menus.component';
 import {MatButtonModule, MatCardModule, MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SkillsComponent} from './ffbe/skills/skills.component';
 
 const appRoutes: Routes = [
   {path: 'ffbe/characters', component: CharactersComponent},
+  {path: 'ffbe/skills', component: SkillsComponent},
 ];
 
 @NgModule({

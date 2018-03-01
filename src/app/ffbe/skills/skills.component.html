@@ -1,0 +1,17 @@
+<mat-card *ngIf="isDataMiningLoading()">
+  <mat-card-title>Chargement en cours...</mat-card-title>
+  <mat-spinner></mat-spinner>
+</mat-card>
+<mat-card *ngIf="!isDataMiningLoading()">
+  <mat-card-title>Importer une compétence</mat-card-title>
+  <mat-form-field>
+    <input matInput [formControl]="englishName" placeholder="Nom anglais">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="frenchName" placeholder="Nom français">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="searchSkillsInDataMining()">Chercher</button>
+</mat-card>
+<app-character-skills-display *ngIf="isSkillsDisplayed()"
+                              [competences]="competences">
+</app-character-skills-display>

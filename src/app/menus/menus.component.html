@@ -2,5 +2,6 @@
   <button mat-raised-button color="accent" [matMenuTriggerFor]="ffbemenu">FFBE</button>
   <mat-menu #ffbemenu="matMenu" yPosition="below" [overlapTrigger]="false">
     <button mat-menu-item (click)="routeToFfbeCharacters()">Personnages</button>
+    <button mat-menu-item (click)="routeToFfbeSkills()">Compétences</button>
   </mat-menu>
 </mat-card>
