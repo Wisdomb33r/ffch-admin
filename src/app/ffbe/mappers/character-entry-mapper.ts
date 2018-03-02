@@ -9,7 +9,7 @@ export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
     const unite = new Unite(
-      perso, entry.rarity, entry.limitburst_id, gumi_id
+      perso, entry.compendium_id, entry.rarity, entry.limitburst_id, gumi_id
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);

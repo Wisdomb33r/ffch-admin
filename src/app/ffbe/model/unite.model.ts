@@ -14,6 +14,7 @@ export class Unite {
   public carac: UniteCarac;
 
   constructor(public perso: Personnage,
+              public numero: number,
               public stars: number,
               public limite_gumi_id: number,
               public gumi_id: number) {
