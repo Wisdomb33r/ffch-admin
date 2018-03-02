@@ -1,6 +1,6 @@
 import {Personnage} from './personnage.model';
-import {Competence} from './competence.model';
 import {UniteCarac} from './unite-carac.model';
+import {UniteCompetence} from './unite-competence.model';
 
 export class Unite {
   public limite: string;
@@ -10,7 +10,7 @@ export class Unite {
   public lim_nb_niv: number;
   public lim_hits: number;
   public lim_frames: string;
-  public competences: Array<Competence> = [];
+  public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
 
   constructor(public perso: Personnage,

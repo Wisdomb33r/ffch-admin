@@ -7,6 +7,7 @@ import {SkillsService} from '../services/skills.service';
 import {Character} from '../model/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
 import {isNullOrUndefined} from 'util';
+import {Competence} from '../model/competence.model';
 
 @Component({
   selector: 'app-characters',
@@ -17,6 +18,7 @@ export class CharactersComponent implements OnInit {
 
   name: FormControl;
   personnage: Personnage;
+  competences: Array<Competence>;
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
@@ -29,9 +31,12 @@ export class CharactersComponent implements OnInit {
 
   public searchCharacterInDataMining() {
     this.personnage = null;
+    this.competences = [];
     const character: Character = this.charactersService.searchForCharacterByName(this.name.value);
     if (character) {
       this.personnage = CharacterMapper.toPersonnage(character);
+      this.personnage.unites[this.personnage.unites.length - 1].competences
+        .forEach(uniteCompetence => this.competences.push(uniteCompetence.competence));
     }
   }
 
@@ -40,10 +45,7 @@ export class CharactersComponent implements OnInit {
   }
 
   public isCharacterSkillsDisplayed(): boolean {
-    return this.personnage != null
-      && Array.isArray(this.personnage.unites)
-      && this.personnage.unites.length > 0
-      && Array.isArray(this.personnage.unites[this.personnage.unites.length - 1].competences);
+    return Array.isArray(this.competences) && this.competences.length > 0;
   }
 
   public isDataMiningLoading(): boolean {
