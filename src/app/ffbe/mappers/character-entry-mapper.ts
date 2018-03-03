@@ -9,7 +9,7 @@ export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
     const unite = new Unite(
-      perso, entry.rarity, entry.limitburst_id, gumi_id
+      perso, entry.compendium_id, entry.rarity, entry.limitburst_id, gumi_id
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
@@ -35,6 +35,7 @@ export class CharacterEntryMapper {
       unite.lim_desc_en = lb.strings.desc[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
       unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
+      unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
       unite.lim_nb_niv = lb.levels;
     }
   }
