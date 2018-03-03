@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Unite} from '../model/unite.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
@@ -8,7 +8,7 @@ import {isNullOrUndefined} from 'util';
   templateUrl: './unit-display.component.html',
   styleUrls: ['./unit-display.component.css']
 })
-export class UnitDisplayComponent implements OnInit {
+export class UnitDisplayComponent implements OnInit, OnChanges {
 
   @Input() unite: Unite;
   public uniteErrors: Array<string> = [];
