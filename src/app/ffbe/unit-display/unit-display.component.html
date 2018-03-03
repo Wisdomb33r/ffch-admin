@@ -1,5 +1,12 @@
 <mat-expansion-panel>
-  <mat-expansion-panel-header>{{unite.stars}}&#9733;</mat-expansion-panel-header>
+  <mat-expansion-panel-header>
+    <img *ngIf="unite.isPresentInFfchDb()" src="assets/ok.png" class="ffchstatus">
+    <img *ngIf="!unite.isPresentInFfchDb()" src="assets/nok.png" class="ffchstatus">
+    {{unite.stars}}&#9733;
+  </mat-expansion-panel-header>
+  <ul class="error" *ngIf="isUniteErrorsDisplayed()">
+    <li *ngFor="let message of uniteErrors">{{message}}</li>
+  </ul>
   <table>
     <tr>
       <th>Numéro</th>
