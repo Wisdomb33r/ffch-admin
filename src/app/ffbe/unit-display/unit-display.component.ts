@@ -31,4 +31,8 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
     return Array.isArray(this.uniteErrors) && this.uniteErrors.length > 0;
   }
 
+  public sendUniteToFfch(unite: Unite) {
+    this.ffchClientService.postUnite(unite)
+      .subscribe(u => unite.id = (isNullOrUndefined(u) ? null : u.id));
+  }
 }

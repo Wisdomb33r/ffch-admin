@@ -23,9 +23,15 @@ export class Unite {
     public stars: number,
     public limite_gumi_id: number,
     public gumi_id: number
-    ) { }
+  ) { }
 
   public isPresentInFfchDb(): boolean {
     return !isNullOrUndefined(this.id);
+  }
+
+  public areAllCompetencesPresentInFfchDb(): boolean {
+    return this.competences.every( function(uniteCompetence, index, competences) {
+      return !isNullOrUndefined(uniteCompetence.competence.id)
+    });
   }
 }
