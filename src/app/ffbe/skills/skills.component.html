@@ -10,6 +10,9 @@
   <mat-form-field>
     <input matInput [formControl]="frenchName" placeholder="Nom français">
   </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="gumiId" placeholder="Identifiant Gumi" type="number">
+  </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchSkillsInDataMining()">Chercher</button>
 </mat-card>
 <app-character-skills-display *ngIf="isSkillsDisplayed()"
