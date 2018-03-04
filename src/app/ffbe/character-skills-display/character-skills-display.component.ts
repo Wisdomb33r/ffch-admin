@@ -25,8 +25,9 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
     if (Array.isArray(this.competences)) {
       this.competences.forEach(competence => {
         this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
-          .subscribe(c => competence.id = (isNullOrUndefined(c) ? null : c.id),
-            error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + ' : ' + error));
+          .subscribe(c => competence.initializeFfchId(c).compareWithFfchCompetence(c),
+            error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + ' : ' + error)
+          );
       });
     }
   }
