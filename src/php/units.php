@@ -221,6 +221,8 @@ function createAndValidateBrexUnitCompArray($uniteCompetences, $brex_unite) {
   foreach ( $uniteCompetences as $uniteCompetence ) {
     $brex_unit_comp_array [] = createAndValidateBrexUnitComp ( $uniteCompetence, $brex_unite );
   }
+  
+  return $brex_unit_comp_array;
 }
 function copyUnitDataAndValidate(&$brex_unit, $unite) {
   if (isset ( $unite->stars ) && ! isset ( $brex_unit->stars ))
