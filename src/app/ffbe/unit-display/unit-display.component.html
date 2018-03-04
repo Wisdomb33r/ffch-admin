@@ -32,6 +32,14 @@
       <td>{{unite.limite_en}}<br/>{{unite.lim_desc_en}}</td>
     </tr>
     <tr>
+      <th>Limite effet min</th>
+      <td>{{unite.lim_effect_min}}</td>
+    </tr>
+    <tr>
+      <th>Limite effet max</th>
+      <td>{{unite.lim_effect_max}}</td>
+    </tr>
+    <tr>
       <th>Limite niveaux</th>
       <td>{{unite.lim_nb_niv}}</td>
     </tr>
@@ -124,6 +132,7 @@
   </mat-table>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
-          [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">Envoyer
+          [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">
+    Envoyer
   </button>
 </mat-expansion-panel>

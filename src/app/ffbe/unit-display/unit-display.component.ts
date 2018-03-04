@@ -24,7 +24,7 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
     this.uniteErrors = [];
     this.ffchClientService.getUniteByNumero$(this.unite.numero)
       .subscribe(u => this.unite.id = (isNullOrUndefined(u) ? null : u.id),
-      error => this.uniteErrors.push('Erreur lors du traitement de l\'unité ' + this.unite.numero + ' : ' + error));
+        error => this.uniteErrors.push('Erreur lors du traitement de l\'unité ' + this.unite.numero + ' : ' + error));
   }
 
   public isUniteErrorsDisplayed(): boolean {

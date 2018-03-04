@@ -7,6 +7,8 @@ export class Unite {
   public id: number;
   public limite: string;
   public limite_en: string;
+  public lim_effect_min: string;
+  public lim_effect_max: string;
   public lim_desc: string;
   public lim_desc_en: string;
   public lim_nb_niv: number;
@@ -30,8 +32,6 @@ export class Unite {
   }
 
   public areAllCompetencesPresentInFfchDb(): boolean {
-    return this.competences.every( function(uniteCompetence, index, competences) {
-      return !isNullOrUndefined(uniteCompetence.competence.id)
-    });
+    return this.competences.every(uniteCompetence => !isNullOrUndefined(uniteCompetence.competence.id));
   }
 }
