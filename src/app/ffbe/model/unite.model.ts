@@ -13,6 +13,8 @@ export class Unite {
   public lim_hits: number;
   public lim_frames: string;
   public lim_damages: string;
+  public lim_cristals_niv_min: number;
+  public lim_cristals_niv_max: number;
   public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
 
