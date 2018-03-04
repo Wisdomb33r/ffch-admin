@@ -36,6 +36,8 @@ export class CharacterEntryMapper {
       unite.limite_en = lb.strings.name[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_desc = lb.strings.desc[FFBE_FRENCH_TABLE_INDEX];
       unite.lim_desc_en = lb.strings.desc[FFBE_ENGLISH_TABLE_INDEX];
+      lb.min_level.effects.length > 0 ? unite.lim_desc_en = unite.lim_desc_en + '<br />' + lb.min_level.effects.join('<br />') : null ;
+      lb.max_level.effects.length > 0 ? unite.lim_desc_en = unite.lim_desc_en + '<br />' + lb.max_level.effects.join('<br />') : null ;
       unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
       unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
       unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
