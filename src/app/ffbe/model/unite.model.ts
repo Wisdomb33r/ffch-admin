@@ -18,12 +18,12 @@ export class Unite {
   public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
 
-  constructor(public perso: Personnage,
-              public numero: number,
-              public stars: number,
-              public limite_gumi_id: number,
-              public gumi_id: number) {
-  }
+  constructor(
+    public numero: number,
+    public stars: number,
+    public limite_gumi_id: number,
+    public gumi_id: number
+    ) { }
 
   public isPresentInFfchDb(): boolean {
     return !isNullOrUndefined(this.id);

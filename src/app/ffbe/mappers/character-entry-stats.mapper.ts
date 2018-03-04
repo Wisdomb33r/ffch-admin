@@ -11,7 +11,6 @@ export class CharacterEntryStatsMapper {
 
   public static toUniteCarac(stats: CharacterEntryStats, unite: Unite): UniteCarac {
     return new UniteCarac(
-      unite,
       FFBE_CHARACTER_MAX_LEVEL[unite.stars],
       FFBE_CHARACTER_MAX_LEVEL[unite.stars],
       stats.HP[FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX],
