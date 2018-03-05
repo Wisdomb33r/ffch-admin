@@ -30,7 +30,7 @@ export class CharacterMapper {
       perso.unites
         .filter(unite => unite.stars >= characterSkill.rarity)
         .forEach(unite => unite.competences.push(
-          new UniteCompetence(unite,
+          new UniteCompetence(
             competence,
             unite.stars > characterSkill.rarity ? 1 : characterSkill.level
           )
