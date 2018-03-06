@@ -31,6 +31,10 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
+  public postUnite(unite: Unite): Observable<any> {
+    return this.http.post(FFCH_UNITE_PATH, unite);
+  }
+
   private analyseError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;

@@ -18,7 +18,26 @@
     </tr>
     <tr>
       <th>Limite</th>
-      <td>{{unite.limite}}<br/>{{unite.lim_desc}}</td>
+      <td>{{unite.limite}}<br/>
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+          <input matInput type="text" name="effet" [(ngModel)]="unite.lim_desc" placeholder="Effet" required>
+        </mat-form-field>
+        <ng-container *ngIf="unite.isPresentInFfchDb()">
+          {{unite.lim_desc}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th>Limite EN</th>
+      <td>{{unite.limite_en}}<br/>{{unite.lim_desc_en}}</td>
+    </tr>
+    <tr>
+      <th>Limite effet min</th>
+      <td>{{unite.lim_effect_min}}</td>
+    </tr>
+    <tr>
+      <th>Limite effet max</th>
+      <td>{{unite.lim_effect_max}}</td>
     </tr>
     <tr>
       <th>Limite niveaux</th>
@@ -35,6 +54,14 @@
     <tr>
       <th>Limite damages</th>
       <td>{{unite.lim_damages}}</td>
+    </tr>
+    <tr>
+      <th>Limite coût niveau min</th>
+      <td>{{unite.lim_cristals_niv_min}}</td>
+    </tr>
+    <tr>
+      <th>Limite coût niveau max</th>
+      <td>{{unite.lim_cristals_niv_max}}</td>
     </tr>
     <tr>
       <th>Niveau</th>
@@ -103,4 +130,9 @@
     <mat-row *matRowDef="let row; columns: skillsColumnsToDisplay;"></mat-row>
 
   </mat-table>
+
+  <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
+          [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">
+    Envoyer
+  </button>
 </mat-expansion-panel>

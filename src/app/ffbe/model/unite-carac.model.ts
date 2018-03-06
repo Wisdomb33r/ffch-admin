@@ -2,7 +2,6 @@ import { Unite } from './unite.model';
 
 export class UniteCarac {
   constructor(
-    public unit: Unite,
     public level: number,
     public level_max: number,
     public pv: number,

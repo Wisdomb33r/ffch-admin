@@ -16,7 +16,8 @@ class Unite {
   public $lim_damages;
   public $lim_cristals_niv_min;
   public $lim_cristals_niv_max;
-
+  public $carac;
+  public $competences;
   function __construct($brex_unit) {
     $this->id = $brex_unit->id;
     $this->perso = $brex_unit->perso->id;
@@ -34,11 +35,9 @@ class Unite {
     $this->lim_cristals_niv_max = $brex_unit->lim_cristals_niv_max;
   }
 }
-
 class UniteCarac {
   // variables of the class
   public $id;
-  public $unit;
   public $level;
   public $level_max;
   public $pv;
@@ -53,10 +52,8 @@ class UniteCarac {
   public $def_pots;
   public $mag_pots;
   public $psy_pots;
-
   function __construct($brex_unit_carac) {
     $this->id = $brex_unit_carac->id;
-    $this->unit = $brex_unit_carac->unit->id;
     $this->level = $brex_unit_carac->level;
     $this->level_max = $brex_unit_carac->level_max;
     $this->pv = $brex_unit_carac->pv;
@@ -73,95 +70,74 @@ class UniteCarac {
     $this->psy_pots = $brex_unit_carac->psy_pots;
   }
 }
-
-class UniteCompetence{
+class UniteCompetence {
   // variables of the class
   public $id;
-  public $unit;
   public $competence;
   public $niveau;
-
   function __construct($brex_unit_comp) {
     $this->id = $brex_unit_comp->id;
-    $this->unit = $brex_unit_comp->unit->id;
     $this->competence = $brex_unit_comp->competence->id;
     $this->niveau = $brex_unit_comp->niveau;
   }
 }
+function dieWithBadRequest($errorMessages) {
+  http_response_code ( 400 );
+  echo json_encode ( is_array ( $errorMessages ) ? $errorMessages : array ($errorMessages 
+  ) );
+  die ();
+}
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-/*  $competence = json_decode ( file_get_contents ( 'php://input' ) );
-  if (isset ( $competence->gumi_id ) && $competence->gumi_id) {
-    $brex_competences = brex_competence::finderParGumiId ( $competence->gumi_id );
-    if (count ( $brex_competences ) > 0) {
-      http_response_code ( 400 );
-      $errors = array ();
-      $errors [] = 'Duplicate key exception : Gumi id ' . $competence->gumi_id . ' already exists';
-      echo json_encode ( $errors );
-    } else {
-      $values = array ();
-      if (isset ( $competence->nom ))
-      $values ['nom'] = $competence->nom;
-      if (isset ( $competence->nom_en ))
-      $values ['nom_en'] = $competence->nom_en;
-      if (isset ( $competence->description ))
-      $values ['description'] = $competence->description;
-      if (isset ( $competence->effet ))
-      $values ['effet'] = $competence->effet;
-      if (isset ( $competence->puissance ))
-      $values ['puissance'] = $competence->puissance;
-      if (isset ( $competence->physique ))
-      $values ['physique'] = $competence->physique;
-      if (isset ( $competence->magique ))
-      $values ['magique'] = $competence->magique;
-      if (isset ( $competence->hybride ))
-      $values ['hybride'] = $competence->hybride;
-      if (isset ( $competence->pm ))
-      $values ['pm'] = $competence->pm;
-      if (isset ( $competence->hits ))
-      $values ['hits'] = $competence->hits;
-      if (isset ( $competence->frames ))
-      $values ['frames'] = $competence->frames;
-      if (isset ( $competence->damages ))
-      $values ['damages'] = $competence->damages;
-      $values ['gumi_id'] = $competence->gumi_id;
-      $brex_competence = new brex_competence ( $values );
-      if (isset ( $competence->categorie ) && ($categorie = brex_compet_categ::findByPrimaryId ( $competence->categorie )))
-      $brex_competence->setrelationcategorie ( $categorie );
-      if (isset ( $competence->icone ) && ($icone = brex_compet_image::findByPrimaryId ( $competence->icone )))
-      $brex_competence->setrelationicone ( $icone );
-      if ($brex_competence->store ()) {
-        $brex_competences = brex_competence::finderParGumiId ( $competence->gumi_id );
-        if (count ( $brex_competences ) > 0) {
-          http_response_code ( 201 );
-          $competence = new Competence ( $brex_competences [0] );
-          echo json_encode ( $competence, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK );
-        } else {
-          http_response_code ( 500 );
-          $errors = array ();
-          $errors [] = 'Unexpected error occured, stored gumi id ' . $competence->gumi_id . ' not found';
-          echo json_encode ( $errors );
-        }
-      } else {
-        http_response_code ( 400 );
-        echo json_encode ( $brex_competence->errors );
-      }
-    }
-  } else {
-    http_response_code ( 400 );
-    $errors = array ();
-    $errors [] = 'Format exception : cannot save without Gumi id';
-    echo json_encode ( $errors );
-  }*/
+  $unite = json_decode ( file_get_contents ( 'php://input' ) );
+  if (! isset ( $unite->numero ) || ! $unite->numero) {
+    dieWithBadRequest ( 'Format exception : cannot save without unit number' );
+  }
+  
+  if (! isset ( $unite->carac ) || ! $unite->carac) {
+    dieWithBadRequest ( 'Format exception : cannot save without unit carac' );
+  }
+  
+  if (! isset ( $unite->competences ) || ! is_array ( $unite->competences ) || count ( $unite->competences ) == 0) {
+    dieWithBadRequest ( 'Format exception : cannot save without unit competences' );
+  }
+  
+  $brex_unites = brex_unit::finderParNumero ( $unite->numero );
+  if (count ( $brex_unites ) > 1) {
+    dieWithBadRequest ( 'Storage exception : several units found with numero: ' . $unite->numero );
+  } else if (count ( $brex_unites ) == 0) {
+    dieWithBadRequest ( 'Storage exception : unit not found' );
+  }
+  
+  $unite_existante = $brex_unites [0];
+  $brex_unite_carac_existantes = brex_unit_carac::findByRelation1N ( array ('unit' => $unite_existante->id 
+  ) );
+  $brex_unite_comps_existantes = brex_unit_comp::findByRelation1N ( array ('unit' => $unite_existante->id 
+  ) );
+  if ((count ( $brex_unite_carac_existantes ) > 0) || (count ( $brex_unite_comps_existantes ) > 0)) {
+    dieWithBadRequest ( 'Storage exception : found existing characteristics or competences for unit' );
+  }
+  
+  $brex_unit_carac = createAndValidateBrexUnitCarac ( $unite->carac, $unite_existante );
+  $brex_unit_comp_array = createAndValidateBrexUnitCompArray ( $unite->competences, $unite_existante );
+  copyUnitDataAndValidate ( $unite_existante, $unite );
+  $unite_existante->store ();
+  $brex_unit_carac->store ();
+  foreach ( $brex_unit_comp_array as $brex_unit_comp ) {
+    $brex_unit_comp->store ();
+  }
+  $unite_resultante = new Unite ( $unite_existante );
+  echo json_encode ( $unite_resultante, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK );
 } else {
   if (isset ( $_GET ['numero'] )) {
     $brex_unites = brex_unit::finderParNumero ( $_GET ['numero'] );
     if (count ( $brex_unites ) > 0) {
       $unite = new Unite ( $brex_unites [0] );
-      $brex_unite_carac = brex_unit_carac::findByRelation1N(array('unit' => $unite->id));
-      $brex_unite_comps = brex_unit_comp::findByRelation1N(array('unit' => $unite->id));
-      if ( (count ( $brex_unite_carac ) > 0) || (count ( $brex_unite_comps ) > 0) )
-      {
+      $brex_unite_carac = brex_unit_carac::findByRelation1N ( array ('unit' => $unite->id 
+      ) );
+      $brex_unite_comps = brex_unit_comp::findByRelation1N ( array ('unit' => $unite->id 
+      ) );
+      if ((count ( $brex_unite_carac ) > 0) || (count ( $brex_unite_comps ) > 0)) {
         echo json_encode ( $unite, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK );
       } else {
         http_response_code ( 404 );
@@ -173,4 +149,108 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     http_response_code ( 400 );
   }
 }
+function createAndValidateBrexUnitCarac($carac, $brex_unite) {
+  $values = array ();
+  if (isset ( $carac->level ))
+    $values ['level'] = $carac->level;
+  if (isset ( $carac->level_max ))
+    $values ['level_max'] = $carac->level_max;
+  if (isset ( $carac->pv ))
+    $values ['pv'] = $carac->pv;
+  if (isset ( $carac->pm ))
+    $values ['pm'] = $carac->pm;
+  if (isset ( $carac->att ))
+    $values ['att'] = $carac->att;
+  if (isset ( $carac->def ))
+    $values ['def'] = $carac->def;
+  if (isset ( $carac->mag ))
+    $values ['mag'] = $carac->mag;
+  if (isset ( $carac->psy ))
+    $values ['psy'] = $carac->psy;
+  if (isset ( $carac->pv_pots ))
+    $values ['pv_pots'] = $carac->pv_pots;
+  if (isset ( $carac->pm_pots ))
+    $values ['pm_pots'] = $carac->pm_pots;
+  if (isset ( $carac->att_pots ))
+    $values ['att_pots'] = $carac->att_pots;
+  if (isset ( $carac->def_pots ))
+    $values ['def_pots'] = $carac->def_pots;
+  if (isset ( $carac->mag_pots ))
+    $values ['mag_pots'] = $carac->mag_pots;
+  if (isset ( $carac->psy_pots ))
+    $values ['psy_pots'] = $carac->psy_pots;
+  
+  $brex_unit_carac = new brex_unit_carac ( $values );
+  $brex_unit_carac->setrelationunit ( $brex_unite );
+  if (! $brex_unit_carac->verifyValues ()) {
+    dieWithBadRequest ( array_merge ( $brex_unit_carac->errors, 'Format exception: Validation of brex_unit_carac failed.' ) );
+  }
+  
+  return $brex_unit_carac;
+}
+function createAndValidateBrexUnitComp($uniteCompetence, $brex_unite) {
+  if (! isset ( $uniteCompetence->competence ) || ! $uniteCompetence->competence) {
+    dieWithBadRequest ( 'Format error: missing competence in uniteCompetence.' );
+  }
+  if (! isset ( $uniteCompetence->competence->id ) || ! $uniteCompetence->competence->id) {
+    dieWithBadRequest ( 'Format error: missing competence id in uniteCompetence with gumi_id = ' . $uniteCompetence->competence->gumi_id );
+  }
+  
+  $values = array ();
+  if (isset ( $uniteCompetence->niveau )) {
+    $values ['niveau'] = $uniteCompetence->niveau;
+  }
+  $brex_unit_comp = new brex_unit_comp ( $values );
+  $brex_unit_comp->setrelationunit ( $brex_unite );
+  
+  if ($brex_competence = brex_competence::findByPrimaryId ( $uniteCompetence->competence->id )) {
+    $brex_unit_comp->setrelationcompetence ( $brex_competence );
+  } else {
+    dieWithBadRequest ( 'Storage error: no competence found with id = ' . $uniteCompetence->competence->id );
+  }
+  
+  if (! $brex_unit_comp->verifyValues ()) {
+    dieWithBadRequest ( array_merge ( $brex_unit_comp->errors, 'Format exception: Validation of brex_unit_comp failed for gumi_id ' . $uniteCompetence->competence->gumi_id ) );
+  }
+  
+  return $brex_unit_comp;
+}
+function createAndValidateBrexUnitCompArray($uniteCompetences, $brex_unite) {
+  $brex_unit_comp_array = array ();
+  
+  foreach ( $uniteCompetences as $uniteCompetence ) {
+    $brex_unit_comp_array [] = createAndValidateBrexUnitComp ( $uniteCompetence, $brex_unite );
+  }
+  
+  return $brex_unit_comp_array;
+}
+function copyUnitDataAndValidate(&$brex_unit, $unite) {
+  if (isset ( $unite->stars ) && ! isset ( $brex_unit->stars ))
+    $brex_unit->stars = $unite->stars;
+  if (isset ( $unite->limite ) && ! isset ( $brex_unit->limite ))
+    $brex_unit->limite = $unite->limite;
+  if (isset ( $unite->limite_en ) && ! isset ( $brex_unit->limite_en ))
+    $brex_unit->limite_en = $unite->limite_en;
+  if (isset ( $unite->lim_desc ) && ! isset ( $brex_unit->lim_desc ))
+    $brex_unit->lim_desc = $unite->lim_desc;
+  if (isset ( $unite->lim_desc_en ) && ! isset ( $brex_unit->lim_desc_en ))
+    $brex_unit->lim_desc_en = $unite->lim_desc_en;
+  if (isset ( $unite->lim_nb_niv ) && ! isset ( $brex_unit->lim_nb_niv ))
+    $brex_unit->lim_nb_niv = $unite->lim_nb_niv;
+  if (isset ( $unite->lim_hits ) && ! isset ( $brex_unit->lim_hits ))
+    $brex_unit->lim_hits = $unite->lim_hits;
+  if (isset ( $unite->lim_frames ) && ! isset ( $brex_unit->lim_frames ))
+    $brex_unit->lim_frames = $unite->lim_frames;
+  if (isset ( $unite->lim_damages ) && ! isset ( $brex_unit->lim_damages ))
+    $brex_unit->lim_damages = $unite->lim_damages;
+  if (isset ( $unite->lim_cristals_niv_min ) && ! isset ( $brex_unit->lim_cristals_niv_min ))
+    $brex_unit->lim_cristals_niv_min = $unite->lim_cristals_niv_min;
+  if (isset ( $unite->lim_cristals_niv_max ) && ! isset ( $brex_unit->lim_cristals_niv_max ))
+    $brex_unit->lim_cristals_niv_max = $unite->lim_cristals_niv_max;
+  
+  if (! $brex_unit->verifyValues ()) {
+    dieWithBadRequest ( array_merge ( $brex_unit->errors, 'Format exception: Validation of brex_unit failed.' ) );
+  }
+}
+
 ?>
