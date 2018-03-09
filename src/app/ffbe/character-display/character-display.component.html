@@ -1,5 +1,7 @@
 <mat-card>
-  <mat-card-title>{{personnage.nom}} ({{personnage.jeu.name}})</mat-card-title>
+  <mat-card-title>{{personnage.nom}}
+    (<img *ngIf="personnage.jeu.isUnknownGame()" src="assets/red/warn.png" alt="Warn" class="gamewarn">{{personnage.jeu.name}})
+  </mat-card-title>
   <table>
     <tr>
       <th>Job</th>

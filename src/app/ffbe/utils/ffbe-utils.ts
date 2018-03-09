@@ -5,7 +5,8 @@ import {isNullOrUndefined} from 'util';
 
 export class FfbeUtils {
   public static findGameByGumiId(game_id: number): Game {
-    return FFBE_GAMES.find(game => game.gumiId === game_id);
+    const gameFound: Game = FFBE_GAMES.find(game => game.gumiId === game_id);
+    return isNullOrUndefined(gameFound) ? new Game(game_id, undefined, 'Jeu inconnu') : gameFound;
   }
 
   public static findEquipmentByGumiId(equipment_id: number): Equipment {
