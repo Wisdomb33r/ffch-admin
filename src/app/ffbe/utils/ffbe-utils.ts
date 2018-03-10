@@ -20,24 +20,22 @@ export class FfbeUtils {
   }
 
   public static checkIfStringsDifferent(s1: string, s2: string) {
-    if (isNullOrUndefined(s1) && !isNullOrUndefined(s2) && s2.length > 0) {
+    if (s1 && s2) {
+      return ('' + s1) !== ('' + s2);
+    }
+    if ((s1 && !s2) || (!s1 && s2)) {
       return true;
     }
-    if (!isNullOrUndefined(s1) && s1.length > 0 && isNullOrUndefined(s2)) {
-      return true;
-    }
-    // Do NOT change this equality check for !==
-    // for some unknown reason the PHP JSON encode can sometimes send string values as real numbers if the string represents a numerica value, even if the database type is string...
-    return s1 != s2;
+    return false;
   }
 
   public static checkIfNumbersDifferent(n1: number, n2: number) {
-    if (isNullOrUndefined(n1) && !isNullOrUndefined(n2) && n2 > 0) {
+    if (n1 && n2) {
+      return +n1 !== +n2;
+    }
+    if ((n1 && !n2) || (!n1 && n2)) {
       return true;
     }
-    if (!isNullOrUndefined(n1) && n1 > 0 && isNullOrUndefined(n2)) {
-      return true;
-    }
-    return n1 !== n2;
+    return false;
   }
 }

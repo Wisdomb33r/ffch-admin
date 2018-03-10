@@ -1,3 +1,13 @@
-img.ffchstatus {
-  margin-bottom: -4px;
+.skill-left {
+  width: 49%;
+  float: left;
+}
+
+.skill-right {
+  width: 49%;
+  float: right;
+}
+
+.skill-clear {
+  clear: both;
 }

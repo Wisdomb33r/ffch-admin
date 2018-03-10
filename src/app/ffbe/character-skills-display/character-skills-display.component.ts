@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
-import {SkillMapper} from '../mappers/skill-mapper';
+import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
 
 @Component({
   selector: 'app-character-skills-display',
@@ -13,6 +13,7 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
 
   @Input() competences: Array<Competence>;
   public skillsErrors: Array<string> = [];
+  public competencesContainers: Array<CompetencesComparingContainer> = [];
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -22,10 +23,14 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.skillsErrors = [];
+    this.competencesContainers = [];
     if (Array.isArray(this.competences)) {
       this.competences.forEach(competence => {
         this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
-          .subscribe(c => competence.initializeFfchId(c).compareWithFfchCompetence(c),
+          .subscribe(c => {
+              competence.id = isNullOrUndefined(c) ? undefined : c.id;
+              this.competencesContainers.push(new CompetencesComparingContainer(competence, c));
+            },
             error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + ' : ' + error)
           );
       });
@@ -36,9 +41,4 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
     return Array.isArray(this.skillsErrors) && this.skillsErrors.length > 0;
   }
 
-  public sendCompetenceToFfch(competence: Competence) {
-    SkillMapper.mapCategorieToDamageType(competence);
-    this.ffchClientService.postCompetence(competence)
-      .subscribe(c => competence.id = (isNullOrUndefined(c) ? null : c.id));
-  }
 }
