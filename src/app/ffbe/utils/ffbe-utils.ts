@@ -18,4 +18,24 @@ export class FfbeUtils {
     equipment_ids.forEach(id => equipments.push(FfbeUtils.findEquipmentByGumiId(id)));
     return equipments;
   }
+
+  public static checkIfStringsDifferent(s1: string, s2: string) {
+    if (s1 && s2) {
+      return ('' + s1) !== ('' + s2);
+    }
+    if ((s1 && !s2) || (!s1 && s2)) {
+      return true;
+    }
+    return false;
+  }
+
+  public static checkIfNumbersDifferent(n1: number, n2: number) {
+    if (n1 && n2) {
+      return +n1 !== +n2;
+    }
+    if ((n1 && !n2) || (!n1 && n2)) {
+      return true;
+    }
+    return false;
+  }
 }

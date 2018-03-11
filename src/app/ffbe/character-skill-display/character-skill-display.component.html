@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-title>
+    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus">
+    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
+    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
+    {{competence.gumi_id}} {{competence.nom}}
+  </mat-card-title>
+  <div *ngIf="!present || different">
+
+    <mat-form-field>
+      <mat-select placeholder="Catégorie"
+                  [(ngModel)]="competence.categorie"
+                  [ngModelOptions]="{standalone: true}">
+        <mat-option>----------</mat-option>
+        <mat-option [value]="1">Magie blanche</mat-option>
+        <mat-option [value]="2">Magie noire</mat-option>
+        <mat-option [value]="3">Magie verte</mat-option>
+        <mat-option [value]="4">Passifs</mat-option>
+        <mat-option [value]="5">Sans dégâts</mat-option>
+        <mat-option [value]="6">Dégâts physiques</mat-option>
+        <mat-option [value]="7">Dégâts magiques</mat-option>
+        <mat-option [value]="8">Dégâts hybrides</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p>{{competence.description}}</p>
+    <p *ngIf="!present">{{competence.effet_en}}</p>
+
+    <mat-form-field *ngIf="!present">
+      <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!present">
+      <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
+    </mat-form-field>
+
+    <table>
+      <tr>
+        <th>PM</th>
+        <td>{{competence.pm}}</td>
+      </tr>
+      <tr>
+        <th>Coups</th>
+        <td>{{competence.hits}}</td>
+      </tr>
+      <tr>
+        <th>Frames</th>
+        <td>{{competence.frames}}</td>
+      </tr>
+      <tr>
+        <th>Damages</th>
+        <td>{{competence.damages}}</td>
+      </tr>
+    </table>
+
+    <button mat-raised-button color="accent" class="skill-clear"
+            (click)="sendToFfch()"
+            *ngIf="!present">
+      Envoyer
+    </button>
+  </div>
+</mat-card>

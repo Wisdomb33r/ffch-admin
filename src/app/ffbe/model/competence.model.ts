@@ -1,5 +1,3 @@
-import {isNullOrUndefined} from 'util';
-
 export class Competence {
   public id: number;
   public physique: string;
@@ -22,7 +20,4 @@ export class Competence {
               public damages: string) {
   }
 
-  public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.id);
-  }
 }

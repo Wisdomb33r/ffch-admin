@@ -6,64 +6,22 @@
   </ul>
 
   <form>
-    <mat-card *ngFor="let competence of competences">
-      <mat-card-title>
-        <img *ngIf="competence.isPresentInFfchDb()" src="assets/ok.png" class="ffchstatus">
-        <img *ngIf="!competence.isPresentInFfchDb()" src="assets/nok.png" class="ffchstatus">
-        {{competence.gumi_id}} {{competence.nom}}
-      </mat-card-title>
-      <div *ngIf="!competence.isPresentInFfchDb()">
-
-        <mat-form-field>
-          <mat-select placeholder="Catégorie"
-                      [(ngModel)]="competence.categorie"
-                      [ngModelOptions]="{standalone: true}">
-            <mat-option>----------</mat-option>
-            <mat-option [value]="1">Magie blanche</mat-option>
-            <mat-option [value]="2">Magie noire</mat-option>
-            <mat-option [value]="3">Magie verte</mat-option>
-            <mat-option [value]="4">Passifs</mat-option>
-            <mat-option [value]="5">Sans dégâts</mat-option>
-            <mat-option [value]="6">Dégâts physiques</mat-option>
-            <mat-option [value]="7">Dégâts magiques</mat-option>
-            <mat-option [value]="8">Dégâts hybrides</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <p>{{competence.description}}</p>
-        <p>{{competence.effet_en}}</p>
-
-        <mat-form-field>
-          <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
-        </mat-form-field>
-
-        <table>
-          <tr>
-            <th>PM</th>
-            <td>{{competence.pm}}</td>
-          </tr>
-          <tr>
-            <th>Coups</th>
-            <td>{{competence.hits}}</td>
-          </tr>
-          <tr>
-            <th>Frames</th>
-            <td>{{competence.frames}}</td>
-          </tr>
-          <tr>
-            <th>Damages</th>
-            <td>{{competence.damages}}</td>
-          </tr>
-        </table>
-
-        <button mat-raised-button color="accent" (click)="sendCompetenceToFfch(competence)"
-                [disabled]="isSkillsErrorsDisplayed()">Envoyer
-        </button>
+    <div *ngFor="let competencesContainer of competencesContainers">
+      <div [ngClass]="competencesContainer.isDifferentFromFfchDb() ? 'skill-left' : ''">
+        <app-character-skill-display
+          [competence]="competencesContainer.competence"
+          [present]="competencesContainer.isPresentInFfchDb()"
+          [different]="competencesContainer.isDifferentFromFfchDb()"
+          [inError]="isSkillsErrorsDisplayed()"></app-character-skill-display>
       </div>
-    </mat-card>
+      <div *ngIf="competencesContainer.isDifferentFromFfchDb()" class="skill-right">
+        <app-character-skill-display
+          [competence]="competencesContainer.dbCompetence"
+          [present]="true"
+          [different]="competencesContainer.isDifferentFromFfchDb()"></app-character-skill-display>
+      </div>
+
+      <div class="skill-clear"></div>
+    </div>
   </form>
 </mat-card>
