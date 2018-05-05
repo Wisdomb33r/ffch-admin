@@ -131,6 +131,8 @@
 
   </mat-table>
 
+  <app-unit-awakening-materials-display></app-unit-awakening-materials-display>
+
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
           [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">
     Envoyer
