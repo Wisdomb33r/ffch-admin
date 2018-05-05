@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
+import {UniteEquipements} from '../model/unite-equipements.model';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
@@ -10,6 +11,7 @@ import 'rxjs/add/observable/of';
 const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
+const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 
 @Injectable()
 export class FfchClientService {
@@ -33,6 +35,15 @@ export class FfchClientService {
 
   public postUnite(unite: Unite): Observable<any> {
     return this.http.post(FFCH_UNITE_PATH, unite);
+  }
+
+  public getUniteEquipementsByUniteNumero$(numero: number): Observable<UniteEquipements> {
+    return this.http.get<UniteEquipements>(FFCH_EQUIPMENTS_PATH + '?numero=' + numero)
+      .pipe(catchError(this.analyseError));
+  }
+
+  public postUniteEquipements(uniteEquipements: UniteEquipements): Observable<any> {
+    return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
   }
 
   private analyseError(error: HttpErrorResponse) {

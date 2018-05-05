@@ -1,2 +1,7 @@
 <img *ngFor="let equipement of personnage.equipements" src="assets/equipments/{{equipement.imageName}}"
          alt="{{equipement.name}}" title="{{equipement.name}}" class="equipment"/>
+<br/>
+<button mat-raised-button color="accent" class="ffchSendButton" (click)="sendEquipmentsToFfch()"
+        *ngIf="!isEquipmentErrorsDisplayed() && !isEquipementPresentInFfchDB()" >
+           Envoyer
+</button>
