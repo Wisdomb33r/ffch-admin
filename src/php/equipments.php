@@ -5,7 +5,6 @@ require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
 require_once "../gestion/genscripts/object_brex_perso.class.php";
 
 class UniteEquipements {
-  public $unite_ffch_id;
   public $unite_numero;
   public $equipements_ffch_ids;
 }
@@ -78,7 +77,6 @@ function createUniteEquipments($brex_unite)
   }
 
   $uniteEquipements = new UniteEquipements();
-  $uniteEquipements->unite_ffch_id = $brex_unite->id;
   $uniteEquipements->unite_numero=$brex_unite->numero;
 
   $uniteEquipements->equipements_ffch_ids = array();
