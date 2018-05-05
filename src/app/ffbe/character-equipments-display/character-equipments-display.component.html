@@ -1,6 +1,15 @@
+<img *ngIf="isEquipementPresentInFfchDB() && isEquipementCorrectInFfchDB()" src="assets/ok.png" class="ffchstatus">
+<img *ngIf="isEquipementPresentInFfchDB() && !isEquipementCorrectInFfchDB()" src="assets/red/warn.png" class="ffchstatus">
+<img *ngIf="!isEquipementPresentInFfchDB()" src="assets/nok.png" class="ffchstatus">
 <img *ngFor="let equipement of personnage.equipements" src="assets/equipments/{{equipement.imageName}}"
          alt="{{equipement.name}}" title="{{equipement.name}}" class="equipment"/>
 <br/>
+<div  *ngIf="isEquipementPresentInFfchDB() && !isEquipementCorrectInFfchDB()" >
+      <img src="assets/red/warn.png" class="ffchstatus">
+      <img *ngFor="let equipement of equipmentsFromFfch" src="assets/equipments/{{equipement.imageName}}"
+        alt="{{equipement.name}}" title="{{equipement.name}}" class="equipment"/>
+<br/>
+</div>
 <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendEquipmentsToFfch()"
         *ngIf="!isEquipmentErrorsDisplayed() && !isEquipementPresentInFfchDB()" >
            Envoyer
