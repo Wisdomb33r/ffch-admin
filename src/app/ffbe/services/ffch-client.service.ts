@@ -29,7 +29,7 @@ export class FfchClientService {
   }
 
   public getUniteByNumero$(numero: number): Observable<Unite> {
-    return this.http.get<Unite>(FFCH_UNITE_PATH + '?numero=' +numero)
+    return this.http.get<Unite>(FFCH_UNITE_PATH + '?numero=' + numero)
       .pipe(catchError(this.analyseError));
   }
 

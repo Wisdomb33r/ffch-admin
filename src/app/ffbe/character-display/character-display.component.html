@@ -19,10 +19,9 @@
       <th>Gumi ID</th>
       <td>{{personnage.gumi_id}}</td>
     </tr>
-    <tr>
-      <th>Équipement</th>
-      <td><app-character-equipments-display [personnage]="personnage"></app-character-equipments-display></td>
-    </tr>
   </table>
+  <h2>Équipement</h2>
+  <app-character-equipments-display [personnage]="personnage"></app-character-equipments-display>
+  <h2>Unités</h2>
   <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
 </mat-card>

@@ -24,7 +24,8 @@ export class FfbeUtils {
   }
 
   public static findEquipmentsByFfchIds(equipment_ffch_ids: Array<number>): Array<Equipment> {
-    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentByFfchId(id)).sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
+    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentByFfchId(id))
+      .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
   }
 
   public static checkIfStringsDifferent(s1: string, s2: string) {

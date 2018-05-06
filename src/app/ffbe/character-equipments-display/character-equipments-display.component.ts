@@ -11,7 +11,7 @@ import {isNullOrUndefined} from 'util';
     templateUrl: 'character-equipments-display.component.html',
     styleUrls: ['character-equipments-display.component.css']
 })
-export class CharacterEquipmentsDisplayComponent implements OnInit {
+export class CharacterEquipmentsDisplayComponent implements OnChanges, OnInit {
 
   @Input() personnage: Personnage;
   public equipmentErrors: Array<string> = [];
@@ -24,6 +24,7 @@ export class CharacterEquipmentsDisplayComponent implements OnInit {
   }
 
   ngOnChanges() {
+    this.equipmentsFromFfch = [];
     this.getEquipmentsFromFfch();
   }
 
@@ -32,15 +33,16 @@ export class CharacterEquipmentsDisplayComponent implements OnInit {
     this.ffchClientService.getUniteEquipementsByUniteNumero$(this.personnage.unites[0].numero)
     .subscribe(uE => this.equipmentsFromFfch = (isNullOrUndefined(uE) ? null : FfbeUtils.findEquipmentsByFfchIds(uE.equipements_ffch_ids)),
       error => this.equipmentErrors.push('Erreur lors du traitement de l\'unité ' + this.personnage.unites[0].numero + ' : ' + error));
-
   }
 
-  public isEquipementPresentInFfchDB() : boolean {
+  public isEquipementPresentInFfchDB(): boolean {
     return !isNullOrUndefined(this.equipmentsFromFfch) && this.equipmentsFromFfch.length > 0;
   }
 
-  public isEquipementCorrectInFfchDB() : boolean {
-    return (this.equipmentsFromFfch.length == this.personnage.equipements.length) && this.personnage.equipements.every(equipement => this.equipmentsFromFfch.some(equipmentFromFfch => equipmentFromFfch.ffchId == equipement.ffchId));
+  public isEquipementCorrectInFfchDB(): boolean {
+    return (this.equipmentsFromFfch.length === this.personnage.equipements.length)
+      && this.personnage.equipements.every(equipement => this.equipmentsFromFfch.some(equipmentFromFfch =>
+      equipmentFromFfch.ffchId === equipement.ffchId));
   }
 
   public isEquipmentErrorsDisplayed(): boolean {
@@ -48,7 +50,8 @@ export class CharacterEquipmentsDisplayComponent implements OnInit {
   }
 
   public sendEquipmentsToFfch() {
-    const uniteEquipements = new UniteEquipements(this.personnage.unites[0].numero, this.personnage.equipements.map(equipement => equipement.ffchId));
+    const uniteEquipements = new UniteEquipements(this.personnage.unites[0].numero,
+      this.personnage.equipements.map(equipement => equipement.ffchId));
     this.ffchClientService.postUniteEquipements(uniteEquipements)
       .subscribe(status => this.getEquipmentsFromFfch(), status => this.equipmentErrors.push('Could not send equipments'));
   }
