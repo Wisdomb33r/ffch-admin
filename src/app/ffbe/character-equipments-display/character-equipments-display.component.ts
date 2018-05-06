@@ -50,6 +50,6 @@ export class CharacterEquipmentsDisplayComponent implements OnInit {
   public sendEquipmentsToFfch() {
     const uniteEquipements = new UniteEquipements(this.personnage.unites[0].numero, this.personnage.equipements.map(equipement => equipement.ffchId));
     this.ffchClientService.postUniteEquipements(uniteEquipements)
-      .subscribe(status => this.getEquipmentsFromFfch(), status => console.log("Could not send equipments"));
+      .subscribe(status => this.getEquipmentsFromFfch(), status => this.equipmentErrors.push('Could not send equipments'));
   }
 }
