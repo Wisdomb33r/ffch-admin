@@ -19,6 +19,15 @@ export class FfbeUtils {
     return equipments;
   }
 
+  public static findEquipmentByFfchId(equipment_ffch_id: number): Equipment {
+    return FFBE_EQUIPMENTS.find(equipment => equipment.ffchId === equipment_ffch_id);
+  }
+
+  public static findEquipmentsByFfchIds(equipment_ffch_ids: Array<number>): Array<Equipment> {
+    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentByFfchId(id))
+      .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
+  }
+
   public static checkIfStringsDifferent(s1: string, s2: string) {
     if (s1 && s2) {
       return ('' + s1) !== ('' + s2);

@@ -4,6 +4,11 @@ mat-card {
   margin-bottom: .5rem;
 }
 
+mat-card.mat-card h2 {
+  font-weight: 400;
+  font-size: 21px;
+}
+
 mat-expansion-panel {
   width: 100%;
 }

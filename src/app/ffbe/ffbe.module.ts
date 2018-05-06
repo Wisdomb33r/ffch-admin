@@ -23,6 +23,7 @@ import {CharacterSkillsDisplayComponent} from './character-skills-display/charac
 import {FfchClientService} from './services/ffch-client.service';
 import {SkillsComponent} from './skills/skills.component';
 import {CharacterSkillDisplayComponent} from './character-skill-display/character-skill-display.component';
+import {CharacterEquipmentsDisplayComponent} from './character-equipments-display/character-equipments-display.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {CharacterSkillDisplayComponent} from './character-skill-display/characte
     CharacterSkillsDisplayComponent,
     SkillsComponent,
     CharacterSkillDisplayComponent,
+    CharacterEquipmentsDisplayComponent,
   ],
   exports: [
     CharactersComponent,
@@ -54,6 +56,7 @@ import {CharacterSkillDisplayComponent} from './character-skill-display/characte
     CharacterSkillsDisplayComponent,
     SkillsComponent,
     CharacterSkillDisplayComponent,
+    CharacterEquipmentsDisplayComponent,
   ],
   providers: [
     DataMiningClientService,
