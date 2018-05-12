@@ -2,5 +2,9 @@
   "/admin": {
     "target": "http://final-fantasy.localhost:80",
     "secure": false
+  },
+  "/gestion": {
+    "target": "http://final-fantasy.localhost:80",
+    "secure": false
   }
 }
