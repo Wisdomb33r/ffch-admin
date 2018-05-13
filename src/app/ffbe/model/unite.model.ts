@@ -1,6 +1,7 @@
 import {Personnage} from './personnage.model';
 import {UniteCarac} from './unite-carac.model';
 import {UniteCompetence} from './unite-competence.model';
+import {UniteMateriauEveil} from './unite-materiau-eveil.model';
 import {isNullOrUndefined} from 'util';
 
 export class Unite {
@@ -19,6 +20,7 @@ export class Unite {
   public lim_cristals_niv_max: number;
   public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
+  public materiauxEveil : Array<UniteMateriauEveil> = [];
 
   constructor(
     public numero: number,

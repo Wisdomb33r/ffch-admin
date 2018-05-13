@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
+import {Objet} from '../model/objet.model';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
@@ -12,6 +13,7 @@ const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
+const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
 
 @Injectable()
 export class FfchClientService {
@@ -44,6 +46,12 @@ export class FfchClientService {
 
   public postUniteEquipements(uniteEquipements: UniteEquipements): Observable<any> {
     return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
+  }
+
+  public getObjetByGumiId$(id: number): Observable<Objet> {
+    console.log('gumi_id = ' + id);
+    return this.http.get<Objet>(FFCH_OBJECTS_PATH + '?gumi_id=' + id)
+      .pipe(catchError(this.analyseError));
   }
 
   private analyseError(error: HttpErrorResponse) {

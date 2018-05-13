@@ -1,0 +1,16 @@
+<div *ngIf="hasMateriauxEveil()">
+<h3>Matériaux d'éveil</h3>
+
+<ul class="error" *ngIf="isMateriauxEveilErrorsDisplayed()">
+  <li *ngFor="let message of materiauxEveilErrors">{{message}}</li>
+</ul>
+
+<div>
+<span *ngFor="let materiauEveil of unite.materiauxEveil">
+  <img *ngIf="this.isImageMateriauEveilPresentInFfchDb(materiauEveil)" src="{{materiauEveil.materiau.icone}}" alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}}" />
+  <img *ngIf="!this.isImageMateriauEveilPresentInFfchDb(materiauEveil) && this.isMateriauEveilPresentInFfchDb(materiauEveil)" src="assets/grey/warn.png" alt="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})" />
+  <img *ngIf="!this.isMateriauEveilPresentInFfchDb(materiauEveil)" src="assets/red/warn.png" alt="{{materiauEveil.gumi_id}}" title="{{materiauEveil.gumi_id}}" />
+  x{{materiauEveil.quantite}}
+</span>
+</div>
+</div>
