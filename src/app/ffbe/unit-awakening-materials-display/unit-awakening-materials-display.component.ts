@@ -33,7 +33,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges
     this.materiauxEveilErrors = [];
     this.unite.materiauxEveil.forEach(materiauEveil => {
       this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
-        .subscribe(o => {materiauEveil.materiau = isNullOrUndefined(o) ? null: new Objet(o); console.log('objet trouvé: ' + o);},
+        .subscribe(o => {materiauEveil.materiau = isNullOrUndefined(o) ? null: (Objet.produce(o)); console.log('objet trouvé: ' + o);},
           error => this.materiauxEveilErrors.push('Erreur lors de la recherche de l\'objet' + materiauEveil.gumi_id + ' : ' + error));
     })
   }
