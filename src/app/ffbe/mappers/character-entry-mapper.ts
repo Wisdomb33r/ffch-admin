@@ -52,13 +52,16 @@ export class CharacterEntryMapper {
   private static convertAwakeningMaterials(unite: Unite, awakening: any) {
     if (awakening && awakening.materials) {
       const materiauxEveil = new Array<UniteMateriauEveil>();
-      console.log(awakening);
       const awakeningMaterialsNames: string[] = Object.getOwnPropertyNames(awakening.materials);
+
       for (const awakeningMaterialName of awakeningMaterialsNames) {
         const materiauEveil = new UniteMateriauEveil(+awakeningMaterialName, awakening.materials[awakeningMaterialName]);
         materiauxEveil.push(materiauEveil);
       }
-      console.log('Materiaux éveil pour unité: ' + unite.stars + ' = ' + materiauxEveil);
+      materiauxEveil.sort( (materiau1, materiau2) => {
+        return (materiau1.quantite != materiau2.quantite) ? (materiau2.quantite - materiau1.quantite) : (+materiau1.gumi_id - +materiau2.gumi_id) ;
+      })
+
       if (materiauxEveil.length > 0) {
         unite.materiauxEveil = materiauxEveil;
       }
