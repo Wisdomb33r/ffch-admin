@@ -4,6 +4,7 @@ import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
 import {Objet} from '../model/objet.model';
+import {UniteMateriauxEveil} from '../model/unite-materiaux-eveil.model';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
@@ -14,6 +15,7 @@ const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
+const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'awakening_materials.php';
 
 @Injectable()
 export class FfchClientService {
@@ -51,6 +53,11 @@ export class FfchClientService {
   public getObjetByGumiId$(id: number): Observable<Objet> {
     console.log('gumi_id = ' + id);
     return this.http.get<Objet>(FFCH_OBJECTS_PATH + '?gumi_id=' + id)
+      .pipe(catchError(this.analyseError));
+  }
+
+  public getUniteMateriauxEveilByUniteNumero$(numero: number): Observable<UniteMateriauxEveil> {
+    return this.http.get<UniteMateriauxEveil>(FFCH_AWAKENING_MATERIALS_PATH + '?numero=' + numero)
       .pipe(catchError(this.analyseError));
   }
 

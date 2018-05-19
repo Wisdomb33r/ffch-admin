@@ -1,16 +1,34 @@
 <div *ngIf="hasMateriauxEveil()">
-<h3>Matériaux d'éveil</h3>
+  <h3>Matériaux d'éveil</h3>
 
-<ul class="error" *ngIf="isMateriauxEveilErrorsDisplayed()">
-  <li *ngFor="let message of materiauxEveilErrors">{{message}}</li>
-</ul>
+  <ul class="error" *ngIf="isMateriauxEveilErrorsDisplayed()">
+    <li *ngFor="let message of materiauxEveilErrors">{{message}}</li>
+  </ul>
 
-<div>
-<span *ngFor="let materiauEveil of unite.materiauxEveil">
-  <img *ngIf="this.isImageMateriauEveilPresentInFfchDb(materiauEveil)" src="{{materiauEveil.materiau.icone}}" alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}}" />
-  <img *ngIf="!this.isImageMateriauEveilPresentInFfchDb(materiauEveil) && this.isMateriauEveilPresentInFfchDb(materiauEveil)" src="assets/grey/warn.png" alt="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})" />
-  <img *ngIf="!this.isMateriauEveilPresentInFfchDb(materiauEveil)" src="assets/red/warn.png" alt="{{materiauEveil.gumi_id}}" title="{{materiauEveil.gumi_id}}" />
-  x{{materiauEveil.quantite}}
-</span>
-</div>
+  <div>
+    <img *ngIf="areMateriauxEveilPresentInFfchDB() && areMateriauxEveilCorrectInFfchDB()" src="assets/ok.png"
+         class="ffchstatus">
+    <img *ngIf="areMateriauxEveilPresentInFfchDB() && !areMateriauxEveilCorrectInFfchDB()" src="assets/red/warn.png"
+         class="ffchstatus">
+    <img *ngIf="!areMateriauxEveilPresentInFfchDB()" src="assets/nok.png" class="ffchstatus">
+    <span *ngFor="let materiauEveil of unite.materiauxEveil">
+    <img *ngIf="this.isImageMateriauEveilPresentInFfchDb(materiauEveil)" src="{{materiauEveil.materiau.icone}}"
+         alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"/>
+    <img
+      *ngIf="!this.isImageMateriauEveilPresentInFfchDb(materiauEveil) && this.isMateriauEveilPresentInFfchDb(materiauEveil)"
+      src="assets/grey/warn.png" alt="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"
+      title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"/>
+    <img *ngIf="!this.isMateriauEveilPresentInFfchDb(materiauEveil)" src="assets/red/warn.png"
+         alt="{{materiauEveil.gumi_id}}" title="{{materiauEveil.gumi_id}}"/>
+    x{{materiauEveil.quantite}}
+  </span>
+  </div>
+  <div *ngIf="areMateriauxEveilPresentInFfchDB() && !areMateriauxEveilCorrectInFfchDB()">
+    <img src="assets/red/warn.png" class="ffchstatus">
+    <span *ngFor="let materiauEveil of materiauxEveilFromFfch">
+    <img src="{{materiauEveil.materiau.icone}}"
+         alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"/>
+    x{{materiauEveil.quantite}}
+    </span>
+  </div>
 </div>
