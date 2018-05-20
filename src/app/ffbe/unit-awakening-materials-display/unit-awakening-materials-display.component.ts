@@ -80,11 +80,10 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges
     return Array.isArray(this.materiauxEveilErrors) && this.materiauxEveilErrors.length > 0;
   }
 
-  /* public sendUniteToFfch(unite: Unite) {
-    this.ffchClientService.postUnite(unite)
-      .subscribe(u => unite.id = (isNullOrUndefined(u) ? null : u.id));
+  public sendUniteMateriauxEveilToFfch() {
+    const uniteMateriauxEveil = new UniteMateriauxEveil(this.unite.numero, this.unite.materiauxEveil);
+    this.ffchClientService.postUniteMateriauxEveil(uniteMateriauxEveil)
+      .subscribe(ume => this.materiauxEveilFromFfch = (isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux)),
+        status => this.materiauxEveilErrors.push('Could not send awakening materials'));
   }
-  */
-
-
 }

@@ -31,4 +31,8 @@
     x{{materiauEveil.quantite}}
     </span>
   </div>
+  <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteMateriauxEveilToFfch()"
+          *ngIf="!isMateriauxEveilErrorsDisplayed() && !areMateriauxEveilPresentInFfchDB() && unite.isPresentInFfchDb()">
+    Envoyer
+  </button>
 </div>

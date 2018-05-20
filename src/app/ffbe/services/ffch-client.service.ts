@@ -61,6 +61,10 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
+  public postUniteMateriauxEveil(uniteMateriauxEveil: UniteMateriauxEveil): Observable<any> {
+    return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteMateriauxEveil);
+  }
+
   private analyseError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;
