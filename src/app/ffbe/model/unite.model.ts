@@ -20,14 +20,15 @@ export class Unite {
   public lim_cristals_niv_max: number;
   public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
-  public materiauxEveil : Array<UniteMateriauEveil> = [];
+  public materiauxEveil: Array<UniteMateriauEveil> = [];
 
   constructor(
     public numero: number,
     public stars: number,
     public limite_gumi_id: number,
     public gumi_id: number
-  ) { }
+  ) {
+  }
 
   public isPresentInFfchDb(): boolean {
     return !isNullOrUndefined(this.id);

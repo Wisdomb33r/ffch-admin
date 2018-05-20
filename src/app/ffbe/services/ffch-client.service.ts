@@ -51,7 +51,6 @@ export class FfchClientService {
   }
 
   public getObjetByGumiId$(id: number): Observable<Objet> {
-    console.log('gumi_id = ' + id);
     return this.http.get<Objet>(FFCH_OBJECTS_PATH + '?gumi_id=' + id)
       .pipe(catchError(this.analyseError));
   }

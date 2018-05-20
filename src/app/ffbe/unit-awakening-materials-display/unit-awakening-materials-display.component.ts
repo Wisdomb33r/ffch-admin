@@ -36,21 +36,20 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges
       this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
         .subscribe(o => {
             materiauEveil.materiau = isNullOrUndefined(o) ? null : (Objet.produce(o));
-            console.log(o);
           },
           error => this.materiauxEveilErrors.push('Erreur lors de la recherche de l\'objet' + materiauEveil.gumi_id + ' : ' + error));
-    })
+    });
   }
 
   protected getAwakeningMaterials() {
     this.materiauxEveilErrors = [];
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(ume => {
-          console.log(ume);
           this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux);
           FfbeUtils.sortArrayMateriauxEveil(this.materiauxEveilFromFfch);
         },
-        error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité ' + this.unite.numero + ' : ' + error));
+        error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
+          + this.unite.numero + ' : ' + error));
   }
 
   public hasMateriauxEveil() {

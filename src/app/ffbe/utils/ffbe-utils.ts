@@ -32,8 +32,9 @@ export class FfbeUtils {
   public static sortArrayMateriauxEveil(materiauxEveil: Array<UniteMateriauEveil>) {
     if (Array.isArray(materiauxEveil) && materiauxEveil.length > 0) {
       materiauxEveil.sort((materiau1, materiau2) => {
-        return (materiau1.quantite != materiau2.quantite) ? (materiau2.quantite - materiau1.quantite) : (+materiau1.gumi_id - +materiau2.gumi_id);
-      })
+        return (materiau1.quantite !== materiau2.quantite) ?
+          (materiau2.quantite - materiau1.quantite) : (+materiau1.gumi_id - +materiau2.gumi_id);
+      });
     }
   }
 

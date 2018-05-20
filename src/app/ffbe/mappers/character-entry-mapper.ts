@@ -52,7 +52,7 @@ export class CharacterEntryMapper {
 
   private static convertAwakeningMaterials(unite: Unite, awakening: any) {
     if (awakening && awakening.materials) {
-      const materiauxEveil:Array<UniteMateriauEveil> = [];
+      const materiauxEveil: Array<UniteMateriauEveil> = [];
       const awakeningMaterialsNames: string[] = Object.getOwnPropertyNames(awakening.materials);
 
       for (const awakeningMaterialName of awakeningMaterialsNames) {
