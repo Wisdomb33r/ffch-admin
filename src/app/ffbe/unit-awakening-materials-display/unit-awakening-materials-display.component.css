@@ -2,8 +2,13 @@ img {
   max-width: 58px;
 }
 
+span.ffchImageArray {
+  vertical-align: middle;
+}
+
 button.ffchSendButton {
-  margin-top: 16px;
+  vertical-align: top;
+  margin-top: 10px
 }
 
 img.ffchstatus {
