@@ -4,14 +4,14 @@ img {
 
 span.ffchImageArray {
   vertical-align: middle;
+  display: inline-block;
+  padding-right: 5px;
 }
 
 button.ffchSendButton {
-  vertical-align: top;
-  margin-top: 10px
+  vertical-align: middle;
 }
 
 img.ffchstatus {
-  margin-bottom: 17px;
-  margin-right: 5px;
+  vertical-align: middle;
 }
