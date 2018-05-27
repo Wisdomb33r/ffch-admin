@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Unite} from '../model/unite.model';
 import {Objet} from '../model/objet.model';
 import {UniteMateriauEveil} from '../model/unite-materiau-eveil.model';
@@ -12,7 +12,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
   templateUrl: 'unit-awakening-materials-display.component.html',
   styleUrls: ['unit-awakening-materials-display.component.css']
 })
-export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges {
+export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
 
   @Input() unite: Unite;
   public materiauxEveilErrors: Array<string> = [];
@@ -21,17 +21,13 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges
   constructor(private ffchClientService: FfchClientService) {
   }
 
-  ngOnInit() {
-    this.getObjets();
-  }
-
   ngOnChanges() {
-    this.materiauxEveilFromFfch = [];
+    this.materiauxEveilErrors = [];
+    this.getObjets();
     this.getAwakeningMaterials();
   }
 
   protected getObjets() {
-    this.materiauxEveilErrors = [];
     this.unite.materiauxEveil.forEach(materiauEveil => {
       this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
         .subscribe(o => {
@@ -42,7 +38,6 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnInit, OnChanges
   }
 
   protected getAwakeningMaterials() {
-    this.materiauxEveilErrors = [];
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(ume => {
           this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux);
