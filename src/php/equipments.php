@@ -63,7 +63,7 @@ function findUnitByNumber($number)
   if (count ( $brex_unites ) > 1) {
     dieWithBadRequest ( 'Storage exception : several units found with numero: ' . $number );
   } else if (count ( $brex_unites ) == 0) {
-    dieWithBadRequest ( 'Storage exception : unit not found' );
+    dieWithNotFound ( 'Storage exception : unit not found' );
   }
   return $brex_unites[0];
 }

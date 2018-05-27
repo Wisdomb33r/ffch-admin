@@ -1,6 +1,7 @@
 import {FFBE_GAMES, FFBE_EQUIPMENTS} from '../ffbe.constants';
 import {Game} from '../model/game.model';
 import {Equipment} from '../model/equipment.model';
+import {UniteMateriauEveil} from '../model/unite-materiau-eveil.model';
 import {isNullOrUndefined} from 'util';
 
 export class FfbeUtils {
@@ -26,6 +27,15 @@ export class FfbeUtils {
   public static findEquipmentsByFfchIds(equipment_ffch_ids: Array<number>): Array<Equipment> {
     return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentByFfchId(id))
       .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
+  }
+
+  public static sortArrayMateriauxEveil(materiauxEveil: Array<UniteMateriauEveil>) {
+    if (Array.isArray(materiauxEveil) && materiauxEveil.length > 0) {
+      materiauxEveil.sort((materiau1, materiau2) => {
+        return (materiau1.quantite !== materiau2.quantite) ?
+          (materiau2.quantite - materiau1.quantite) : (+materiau1.gumi_id - +materiau2.gumi_id);
+      });
+    }
   }
 
   public static checkIfStringsDifferent(s1: string, s2: string) {
