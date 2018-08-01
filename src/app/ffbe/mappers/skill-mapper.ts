@@ -1,6 +1,7 @@
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
+import {isNullOrUndefined} from 'util';
 
 export class SkillMapper {
 
@@ -38,6 +39,22 @@ export class SkillMapper {
       competence.physique = '0';
       competence.magique = '0';
       competence.hybride = '1';
+    }
+  }
+
+  public static mapEnhancedTickedToEnhanced(competence: Competence) {
+    if (competence) {
+      competence.enhanced = competence.enhancedTicked ? '1' : '0';
+    }
+  }
+
+  public static mapEnhancedToEnhancedTicked(competence: Competence) {
+    if (competence) {
+      if (isNullOrUndefined(competence.enhanced))
+      {
+        competence.enhanced = '0';
+      }
+      competence.enhancedTicked = (competence.enhanced == '1');
     }
   }
 

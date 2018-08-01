@@ -25,11 +25,17 @@ export class CharacterSkillDisplayComponent implements OnInit {
 
   public sendToFfch() {
     SkillMapper.mapCategorieToDamageType(this.competence);
+    SkillMapper.mapEnhancedTickedToEnhanced(this.competence);
     this.ffchClientService.postCompetence(this.competence)
       .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
   }
 
   public switchDisplayed() {
     this.displayed = !this.displayed;
+  }
+
+  public shouldDisplayEnhancedTicked()
+  {
+    return !isNullOrUndefined(this.competence.enhanced);
   }
 }

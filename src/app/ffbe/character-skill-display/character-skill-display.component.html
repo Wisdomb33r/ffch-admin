@@ -59,8 +59,8 @@
       </tr>
     </table>
 
-    <p *ngIf="!present">
-      <mat-checkbox>Amélioration</mat-checkbox>
+    <p *ngIf="!present || shouldDisplayEnhancedTicked()">
+      <mat-checkbox [(ngModel)]="competence.enhancedTicked">Amélioration</mat-checkbox>
     </p>
 
     <button mat-raised-button color="accent" class="skill-clear"
