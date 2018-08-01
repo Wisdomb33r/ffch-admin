@@ -34,7 +34,13 @@
       <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
     </mat-form-field>
 
+    <p *ngIf="present">{{competence.effet}}</p>
+
     <table>
+      <tr *ngIf="present">
+        <th>Puissance</th>
+        <td>{{competence.puissance}}</td>
+      </tr>
       <tr>
         <th>PM</th>
         <td>{{competence.pm}}</td>
