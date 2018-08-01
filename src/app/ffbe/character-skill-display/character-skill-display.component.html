@@ -1,11 +1,11 @@
 <mat-card>
-  <mat-card-title>
+  <mat-card-title (click)="switchDisplayed()">
     <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus">
     <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
     <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
     {{competence.gumi_id}} {{competence.nom}}
   </mat-card-title>
-  <div *ngIf="!present || different">
+  <div *ngIf="!present || different || displayed">
 
     <mat-form-field>
       <mat-select placeholder="Catégorie"
@@ -24,7 +24,7 @@
     </mat-form-field>
 
     <p>{{competence.description}}</p>
-    <p *ngIf="!present">{{competence.effet_en}}</p>
+    <p>{{competence.effet_en}}</p>
 
     <mat-form-field *ngIf="!present">
       <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
@@ -34,7 +34,13 @@
       <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
     </mat-form-field>
 
+    <p *ngIf="present">{{competence.effet}}</p>
+
     <table>
+      <tr *ngIf="present">
+        <th>Puissance</th>
+        <td>{{competence.puissance}}</td>
+      </tr>
       <tr>
         <th>PM</th>
         <td>{{competence.pm}}</td>

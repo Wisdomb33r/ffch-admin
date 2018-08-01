@@ -7,14 +7,14 @@
 
   <form>
     <div *ngFor="let competencesContainer of competencesContainers">
-      <div [ngClass]="competencesContainer.isDifferentFromFfchDb() ? 'skill-left' : ''">
+      <div [ngClass]="competencesContainer.isPresentInFfchDb() ? 'skill-left' : ''">
         <app-character-skill-display
           [competence]="competencesContainer.competence"
           [present]="competencesContainer.isPresentInFfchDb()"
           [different]="competencesContainer.isDifferentFromFfchDb()"
           [inError]="isSkillsErrorsDisplayed()"></app-character-skill-display>
       </div>
-      <div *ngIf="competencesContainer.isDifferentFromFfchDb()" class="skill-right">
+      <div *ngIf="competencesContainer.isPresentInFfchDb()" class="skill-right">
         <app-character-skill-display
           [competence]="competencesContainer.dbCompetence"
           [present]="true"
