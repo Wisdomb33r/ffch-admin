@@ -15,7 +15,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
   @Input() present: boolean;
   @Input() different: boolean;
   @Input() inError: boolean;
-  public displayed: boolean = false;
+  public displayed = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
