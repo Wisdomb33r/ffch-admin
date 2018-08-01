@@ -14,7 +14,8 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatTableModule
+  MatTableModule,
+  MatCheckboxModule
 } from '@angular/material';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
@@ -40,6 +41,7 @@ import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials
     MatExpansionModule,
     MatTableModule,
     MatSelectModule,
+    MatCheckboxModule
   ],
   declarations: [
     CharactersComponent,
