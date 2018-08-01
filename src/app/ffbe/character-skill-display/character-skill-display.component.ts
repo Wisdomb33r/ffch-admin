@@ -34,8 +34,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
     this.displayed = !this.displayed;
   }
 
-  public shouldDisplayEnhancedTicked()
-  {
+  public shouldDisplayEnhancedTicked() {
     return !isNullOrUndefined(this.competence.enhanced);
   }
 }
