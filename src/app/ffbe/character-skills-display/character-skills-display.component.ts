@@ -30,7 +30,6 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
         this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
           .subscribe(c => {
               competence.id = isNullOrUndefined(c) ? undefined : c.id;
-              SkillMapper.mapEnhancedToEnhancedTicked(c);
               this.competencesContainers.push(new CompetencesComparingContainer(competence, c));
             },
             error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + ' : ' + error)
