@@ -44,17 +44,13 @@ export class SkillMapper {
 
   public static mapEnhancedTickedToEnhanced(competence: Competence) {
     if (competence) {
-      competence.enhanced = competence.enhancedTicked ? '1' : '0';
+      competence.enhanced = competence.enhancedTicked ? 'true' : 'false';
     }
   }
 
   public static mapEnhancedToEnhancedTicked(competence: Competence) {
     if (competence) {
-      if (isNullOrUndefined(competence.enhanced))
-      {
-        competence.enhanced = '0';
-      }
-      competence.enhancedTicked = (competence.enhanced == '1');
+      competence.enhancedTicked = (competence.enhanced === 'true');
     }
   }
 
