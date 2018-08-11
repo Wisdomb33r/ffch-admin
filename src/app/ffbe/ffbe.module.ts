@@ -26,6 +26,7 @@ import {SkillsComponent} from './skills/skills.component';
 import {CharacterSkillDisplayComponent} from './character-skill-display/character-skill-display.component';
 import {CharacterEquipmentsDisplayComponent} from './character-equipments-display/character-equipments-display.component';
 import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials-display/unit-awakening-materials-display.component';
+import {EnhancementsComponent} from './enhancements/enhancements.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials
     CharacterSkillDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
+    EnhancementsComponent,
   ],
   exports: [
     CharactersComponent,
