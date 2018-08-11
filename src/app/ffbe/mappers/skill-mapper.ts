@@ -1,6 +1,7 @@
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
+import {isNullOrUndefined} from 'util';
 
 export class SkillMapper {
 
@@ -38,6 +39,12 @@ export class SkillMapper {
       competence.physique = '0';
       competence.magique = '0';
       competence.hybride = '1';
+    }
+  }
+
+  public static mapUndefinedEnhanced(competence: Competence) {
+    if (competence && isNullOrUndefined(competence.enhanced)) {
+      competence.enhanced = false;
     }
   }
 

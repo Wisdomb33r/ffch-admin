@@ -3,6 +3,7 @@ export class Competence {
   public physique: string;
   public magique: string;
   public hybride: string;
+  public enhanced: boolean;
 
   constructor(public gumi_id: number,
               public categorie: number,
@@ -19,5 +20,4 @@ export class Competence {
               public frames: string,
               public damages: string) {
   }
-
 }

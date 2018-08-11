@@ -17,6 +17,7 @@ class Competence {
   public $frames;
   public $damages;
   public $gumi_id;
+  public $enhanced;
   function __construct($brex_competence) {
     $this->id = $brex_competence->id;
     $this->categorie = $brex_competence->categorie->id;
@@ -34,6 +35,7 @@ class Competence {
     $this->frames = $brex_competence->frames;
     $this->damages = $brex_competence->damages;
     $this->gumi_id = $brex_competence->gumi_id;
+    $this->enhanced = $brex_competence->enhanced ? true : false;
   }
 }
 
@@ -73,6 +75,8 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
       if (isset ( $competence->damages ))
         $values ['damages'] = $competence->damages;
       $values ['gumi_id'] = $competence->gumi_id;
+      if (isset ( $competence->enhanced ))
+        $values ['enhanced'] = ($competence->enhanced == true) ? '1' : '0';
       $brex_competence = new brex_competence ( $values );
       if (isset ( $competence->categorie ) && ($categorie = brex_compet_categ::findByPrimaryId ( $competence->categorie )))
         $brex_competence->setrelationcategorie ( $categorie );

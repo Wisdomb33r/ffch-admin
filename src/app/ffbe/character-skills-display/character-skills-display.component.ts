@@ -3,6 +3,7 @@ import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
 import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
+import {SkillMapper} from '../mappers/skill-mapper';
 
 @Component({
   selector: 'app-character-skills-display',
