@@ -49,4 +49,11 @@ describe('DataMiningClientService', () => {
     // THEN
     expect(httpClient.get).toHaveBeenCalled();
   }));
+
+  it('should delegate to HttpClient for accessing enhancements', inject([DataMiningClientService], (service: DataMiningClientService) => {
+    // WHEN
+    service.getEnhancements$();
+    // THEN
+    expect(httpClient.get).toHaveBeenCalled();
+  }));
 });
