@@ -29,6 +29,7 @@ import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials
 import {EnhancementsComponent} from './enhancements/enhancements.component';
 import {EnhancementsService} from './services/enhancements.service';
 import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-display.component';
+import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-
     UnitAwakeningMaterialsDisplayComponent,
     EnhancementsComponent,
     EnhancementsDisplayComponent,
+    EnhancementDisplayComponent,
   ],
   exports: [
     CharactersComponent,
