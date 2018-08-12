@@ -27,6 +27,8 @@ import {CharacterSkillDisplayComponent} from './character-skill-display/characte
 import {CharacterEquipmentsDisplayComponent} from './character-equipments-display/character-equipments-display.component';
 import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials-display/unit-awakening-materials-display.component';
 import {EnhancementsComponent} from './enhancements/enhancements.component';
+import {EnhancementsService} from './services/enhancements.service';
+import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-display.component';
 
 @NgModule({
   imports: [
@@ -54,6 +56,7 @@ import {EnhancementsComponent} from './enhancements/enhancements.component';
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
     EnhancementsComponent,
+    EnhancementsDisplayComponent,
   ],
   exports: [
     CharactersComponent,
@@ -71,6 +74,7 @@ import {EnhancementsComponent} from './enhancements/enhancements.component';
     LimitBurstsService,
     SkillsService,
     FfchClientService,
+    EnhancementsService,
   ]
 })
 export class FfbeModule {
