@@ -4,6 +4,7 @@ import {EnhancementsService} from '../services/enhancements.service';
 import {Enhancement} from '../model/enhancement.model';
 import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 import {Amelioration} from '../model/amelioration.model';
+import {CharactersService} from '../services/characters.service';
 import {isNullOrUndefined} from 'util';
 
 @Component({
@@ -19,7 +20,7 @@ export class EnhancementsComponent implements OnInit {
   gumiId: FormControl;
   ameliorations: Array<Amelioration>;
 
-  constructor(private enhancementsService: EnhancementsService) {
+  constructor(private enhancementsService: EnhancementsService, private charactersService: CharactersService) {
     this.characterName = new FormControl('');
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
@@ -31,18 +32,25 @@ export class EnhancementsComponent implements OnInit {
 
   public searchEnhancementsInDataMining() {
     this.ameliorations = [];
+    let enhancements = [];
     if (!isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.characterName.patchValue('');
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
-      /*const enhancement = this.enhancementsService.searchEn(this.gumiId.value);
-      if (!isNullOrUndefined((skill))) {
-        this.competences.push(SkillMapper.toCompetence(skill));
-      }*/
-    } else {
-      const enhancements: Array<Enhancement> = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
-      enhancements.forEach(enhancement => this.ameliorations.push(EnhancementMapper.toAmelioration(enhancement)));
+      enhancements = this.enhancementsService.searchForEnhancementsBySkillGumiId(this.gumiId.value);
+    } else if (!isNullOrUndefined(this.characterName.value) && this.characterName.value.length > 0) {
+      this.englishName.patchValue('');
+      this.frenchName.patchValue('');
+      this.gumiId.patchValue('');
+      const character = this.charactersService.searchForCharacterByName(this.characterName.value);
+      if (!isNullOrUndefined(character)) {
+        enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(character.gumi_id);
+      }
     }
+    else {
+      enhancements = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
+    }
+    enhancements.forEach(enhancement => this.ameliorations.push(EnhancementMapper.toAmelioration(enhancement)));
   }
 
   public areEnhancementsDisplayed(): boolean {
