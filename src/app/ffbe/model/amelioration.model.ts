@@ -1,4 +1,6 @@
 export class Amelioration {
+  public perso_gumi_id: number;
+
   constructor(
     public gumi_id: number,
     public units: Array<number>,

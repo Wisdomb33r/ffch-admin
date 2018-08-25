@@ -1,3 +1,22 @@
-<p>
-  {{amelioration.nom}}
-</p>
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    {{amelioration.skill_id_base}} {{amelioration.nom}} ({{amelioration.level}})
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+    <mat-form-field>
+      <mat-select placeholder="Personnage"
+                  [(ngModel)]="amelioration.perso_gumi_id"
+                  [ngModelOptions]="{standalone: true}"
+                  [disabled]="isSingleCharacter()">
+        <mat-option>----------</mat-option>
+        <mat-option *ngFor="let personnage of personnages" [value]="personnage.gumi_id">
+          {{personnage.gumi_id}} {{personnage.nom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</mat-card>
+
+

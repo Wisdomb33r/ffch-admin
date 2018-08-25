@@ -39,6 +39,21 @@ export class CharactersService {
     return null;
   }
 
+  public searchForCharacterByGumiId(id: number): Character {
+    if (this.charactersFromDataMining != null) {
+      const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
+      const property = propertyNames.find(propertyName => +propertyName === id);
+      if (property) {
+        const character: Character = this.charactersFromDataMining[property];
+        character.gumi_id = +property;
+        this.loadCharacterSkills(character.skills);
+        this.loadLimitBurst(character.entries);
+        return character;
+      }
+    }
+    return null;
+  }
+
   private loadCharacterSkills(skills: Array<CharacterSkill>) {
     skills.forEach(characterSkill => characterSkill.skill = this.skillsService.searchForSkillByGumiId(characterSkill.id));
   }
