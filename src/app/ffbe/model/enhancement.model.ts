@@ -8,4 +8,6 @@ export class Enhancement {
   public cost: any;
   public units: Array<number>;
   public strings: EnhancementStrings;
+  public skill_id_base: number;
+  public level: number;
 }

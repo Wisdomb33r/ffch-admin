@@ -46,8 +46,7 @@ export class EnhancementsComponent implements OnInit {
       if (!isNullOrUndefined(character)) {
         enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(character.gumi_id);
       }
-    }
-    else {
+    } else {
       enhancements = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
     }
     enhancements.forEach(enhancement => this.ameliorations.push(EnhancementMapper.toAmelioration(enhancement)));
