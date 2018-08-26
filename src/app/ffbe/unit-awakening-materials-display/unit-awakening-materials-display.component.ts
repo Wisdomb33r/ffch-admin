@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {Unite} from '../model/unite.model';
 import {Objet} from '../model/objet.model';
-import {UniteMateriauEveil} from '../model/unite-materiau-eveil.model';
+import {Ingredient} from '../model/ingredient.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
 import {UniteMateriauxEveil} from '../model/unite-materiaux-eveil.model';
@@ -16,7 +16,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
 
   @Input() unite: Unite;
   public materiauxEveilErrors: Array<string> = [];
-  public materiauxEveilFromFfch: Array<UniteMateriauEveil> = [];
+  public materiauxEveilFromFfch: Array<Ingredient> = [];
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -41,7 +41,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(ume => {
           this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux);
-          FfbeUtils.sortArrayMateriauxEveil(this.materiauxEveilFromFfch);
+          FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch);
         },
         error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
           + this.unite.numero + ' : ' + error));
@@ -51,11 +51,11 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
     return !isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.length > 0);
   }
 
-  public isMateriauEveilPresentInFfchDb(materiauEveil: UniteMateriauEveil) {
+  public isMateriauEveilPresentInFfchDb(materiauEveil: Ingredient) {
     return !isNullOrUndefined(materiauEveil) && materiauEveil.isPresentInFfchDb();
   }
 
-  public isImageMateriauEveilPresentInFfchDb(materiauEveil: UniteMateriauEveil) {
+  public isImageMateriauEveilPresentInFfchDb(materiauEveil: Ingredient) {
     return !isNullOrUndefined(materiauEveil) && materiauEveil.isImagePresentInFfchDb();
   }
 

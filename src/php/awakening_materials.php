@@ -3,7 +3,7 @@ require_once "../gestion/genscripts/object_brex_perso_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "classes.php";
 
-class UniteMateriauEveil {
+class Ingredient {
   public $gumi_id;
   public $materiau;
   public $quantite;
@@ -117,7 +117,7 @@ function createUniteMateriauEveil($brex_perso_eveil, $numeroAttributMateriau)
   {
     return null;
   }
-  $uniteMateriauEveil = new UniteMateriauEveil();
+  $uniteMateriauEveil = new Ingredient();
   $uniteMateriauEveil->materiau = new Objet($brex_materiau);
   $uniteMateriauEveil->gumi_id = $brex_materiau->gumi_id;
   $uniteMateriauEveil->quantite = $quantiteMateriau;

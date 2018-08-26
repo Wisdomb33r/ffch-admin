@@ -3,7 +3,7 @@ import {Unite} from '../model/unite.model';
 import {Personnage} from '../model/personnage.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
-import {UniteMateriauEveil} from '../model/unite-materiau-eveil.model';
+import {Ingredient} from '../model/ingredient.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
@@ -52,14 +52,14 @@ export class CharacterEntryMapper {
 
   private static convertAwakeningMaterials(unite: Unite, awakening: any) {
     if (awakening && awakening.materials) {
-      const materiauxEveil: Array<UniteMateriauEveil> = [];
+      const materiauxEveil: Array<Ingredient> = [];
       const awakeningMaterialsNames: string[] = Object.getOwnPropertyNames(awakening.materials);
 
       for (const awakeningMaterialName of awakeningMaterialsNames) {
-        const materiauEveil = new UniteMateriauEveil(+awakeningMaterialName, awakening.materials[awakeningMaterialName]);
-        materiauxEveil.push(materiauEveil);
+        const ingredient = new Ingredient(+awakeningMaterialName, awakening.materials[awakeningMaterialName]);
+        materiauxEveil.push(ingredient);
       }
-      FfbeUtils.sortArrayMateriauxEveil(materiauxEveil);
+      FfbeUtils.sortArrayIngredients(materiauxEveil);
 
       if (materiauxEveil.length > 0) {
         unite.materiauxEveil = materiauxEveil;
