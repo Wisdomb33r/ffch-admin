@@ -28,19 +28,21 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   protected getObjets() {
-    this.unite.materiauxEveil.forEach(materiauEveil => {
-      this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
-        .subscribe(o => {
-            materiauEveil.materiau = isNullOrUndefined(o) ? null : (Objet.produce(o));
-          },
-          error => this.materiauxEveilErrors.push('Erreur lors de la recherche de l\'objet' + materiauEveil.gumi_id + ' : ' + error));
-    });
+    if (!isNullOrUndefined(this.unite.materiauxEveil)) {
+      this.unite.materiauxEveil.ingredients.forEach(materiauEveil => {
+        this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
+          .subscribe(o => {
+              materiauEveil.materiau = isNullOrUndefined(o) ? null : (Objet.produce(o));
+            },
+            error => this.materiauxEveilErrors.push('Erreur lors de la recherche de l\'objet' + materiauEveil.gumi_id + ' : ' + error));
+      });
+    }
   }
 
   protected getAwakeningMaterials() {
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(ume => {
-          this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux);
+          this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).formule.ingredients);
           FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch);
         },
         error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
@@ -48,7 +50,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public hasMateriauxEveil() {
-    return !isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.length > 0);
+    return !isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.ingredients.length > 0);
   }
 
   public isMateriauEveilPresentInFfchDb(materiauEveil: Ingredient) {
@@ -64,8 +66,8 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public areMateriauxEveilCorrectInFfchDB(): boolean {
-    return (this.materiauxEveilFromFfch.length === this.unite.materiauxEveil.length)
-      && this.unite.materiauxEveil.every(materiauEveil => this.materiauxEveilFromFfch.some(materiauEveilFromFfch =>
+    return (this.materiauxEveilFromFfch.length === this.unite.materiauxEveil.ingredients.length)
+      && this.unite.materiauxEveil.ingredients.every(materiauEveil => this.materiauxEveilFromFfch.some(materiauEveilFromFfch =>
         (materiauEveilFromFfch.gumi_id === materiauEveil.gumi_id) && (materiauEveilFromFfch.quantite === materiauEveil.quantite))
       );
   }
@@ -77,7 +79,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   public sendUniteMateriauxEveilToFfch() {
     const uniteMateriauxEveil = new UniteMateriauxEveil(this.unite.numero, this.unite.materiauxEveil);
     this.ffchClientService.postUniteMateriauxEveil(uniteMateriauxEveil)
-      .subscribe(ume => this.materiauxEveilFromFfch = (isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).materiaux)),
+      .subscribe(ume => this.materiauxEveilFromFfch = (isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).formule.ingredients)),
         status => this.materiauxEveilErrors.push('Could not send awakening materials'));
   }
 }

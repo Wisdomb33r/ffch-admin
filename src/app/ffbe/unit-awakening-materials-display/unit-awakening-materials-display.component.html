@@ -11,7 +11,7 @@
     <img *ngIf="areMateriauxEveilPresentInFfchDB() && !areMateriauxEveilCorrectInFfchDB()" src="assets/red/warn.png"
          class="ffchstatus">
     <img *ngIf="!areMateriauxEveilPresentInFfchDB()" src="assets/nok.png" class="ffchstatus">
-    <span *ngFor="let materiauEveil of unite.materiauxEveil" class="ffchImageArray">
+    <span *ngFor="let materiauEveil of unite.materiauxEveil.ingredients" class="ffchImageArray">
     <img *ngIf="this.isImageMateriauEveilPresentInFfchDb(materiauEveil)" src="{{materiauEveil.materiau.icone}}"
          alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"/>
     <img

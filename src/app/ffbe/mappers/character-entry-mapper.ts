@@ -4,6 +4,7 @@ import {Personnage} from '../model/personnage.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
 import {Ingredient} from '../model/ingredient.model';
+import {Formule} from '../model/formule.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
@@ -62,7 +63,7 @@ export class CharacterEntryMapper {
       FfbeUtils.sortArrayIngredients(materiauxEveil);
 
       if (materiauxEveil.length > 0) {
-        unite.materiauxEveil = materiauxEveil;
+        unite.materiauxEveil = new Formule(materiauxEveil, 0);
       }
     }
   }

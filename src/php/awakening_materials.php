@@ -9,9 +9,14 @@ class Ingredient {
   public $quantite;
 }
 
+class Formule {
+  public $ingredients;
+  public $gils;
+}
+
 class UniteMateriauxEveil {
   public $unite_numero;
-  public $materiaux;
+  public $formule;
 }
 
 const nbMateriauxMin = 1;
@@ -38,7 +43,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     dieWithBadRequest ( 'Format exception : cannot save without unit number' );
   }
 
-  if (! isset ( $uniteMateriauxEveil->materiaux ) || ! is_array ( $uniteMateriauxEveil->materiaux ) || count ( $uniteMateriauxEveil->materiaux ) == 0) {
+  if (! isset ( $uniteMateriauxEveil->formule ) || ! isset ( $uniteMateriauxEveil->formule->ingredients ) || ! is_array ( $uniteMateriauxEveil->formule->ingredients ) || count ( $uniteMateriauxEveil->formule->ingredients ) == 0) {
     dieWithBadRequest ( 'Format exception : cannot save without awakening materials' );
   }
 
@@ -98,7 +103,7 @@ function createUniteMateriauxEveil($brex_unite, $brex_perso_eveil)
   {
     $materiauEveil = createUniteMateriauEveil($brex_perso_eveil, $i);
     if ($materiauEveil) {
-      $uniteMateriauxEveil->materiaux[] = createUniteMateriauEveil($brex_perso_eveil, $i);
+      $uniteMateriauxEveil->formule->ingredients[] = createUniteMateriauEveil($brex_perso_eveil, $i);
     }
   }
 
@@ -142,8 +147,8 @@ function createAndValidatePersoEveil($brex_unite, $uniteMateriauxEveil)
   $brex_perso_eveil->setrelationunit($brex_unite);
 
   $numeroAttributMateriau = nbMateriauxMin;
-  foreach ($uniteMateriauxEveil->materiaux as $materiauEveil) {
-    updatePersoEveil($brex_perso_eveil, $numeroAttributMateriau, $materiauEveil);
+  foreach ($uniteMateriauxEveil->formule->ingredients as $ingredient) {
+    updatePersoEveil($brex_perso_eveil, $numeroAttributMateriau, $ingredient);
 
     ++$numeroAttributMateriau;
   }
@@ -155,29 +160,29 @@ function createAndValidatePersoEveil($brex_unite, $uniteMateriauxEveil)
   return $brex_perso_eveil;
 }
 
-function updatePersoEveil($brex_perso_eveil, $numeroAttributMateriau, $materiauEveil)
+function updatePersoEveil($brex_perso_eveil, $numeroAttributMateriau, $ingredient)
 {
   if ($numeroAttributMateriau > nbMateriauxMax)
   {
     dieWithBadRequest('Format exception : Too many awakening materials, allowed number: ' . nbMateriauxMax);
   }
 
-  if (! $materiauEveil->quantite || $materiauEveil->quantite == 0)
+  if (! $ingredient->quantite || $ingredient->quantite == 0)
   {
-    dieWithBadRequest('Format exception : Missing quantity for awakening material with gumiId: ' . $materiauEveil->gumi_id);
+    dieWithBadRequest('Format exception : Missing quantity for awakening material with gumiId: ' . $ingredient->gumi_id);
   }
 
-  if ( !$materiauEveil->gumi_id )
+  if ( !$ingredient->gumi_id )
   {
     dieWithBadRequest('Format exception : Missing gumiId for awakening material number: ' . $numeroAttributMateriau);
   }
-  $brex_objet = findObjetByGumiId($materiauEveil->gumi_id);
+  $brex_objet = findObjetByGumiId($ingredient->gumi_id);
 
   $nomMethodeSetRelation = 'setrelationmateriau' . $numeroAttributMateriau;
   $nomAttributNbMateriau = 'nbmateriau' . $numeroAttributMateriau;
 
   $brex_perso_eveil->$nomMethodeSetRelation($brex_objet);
-  $brex_perso_eveil->$nomAttributNbMateriau = $materiauEveil->quantite;
+  $brex_perso_eveil->$nomAttributNbMateriau = $ingredient->quantite;
 }
 
 

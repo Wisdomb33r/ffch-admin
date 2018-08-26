@@ -1,13 +1,13 @@
-import {Ingredient} from './ingredient.model';
+import {Formule} from './formule.model';
 
 export class UniteMateriauxEveil {
 
   constructor(public unite_numero: number,
-              public materiaux: Array<Ingredient>) {
+              public formule: Formule) {
   }
 
   public static produce(ume: UniteMateriauxEveil): UniteMateriauxEveil {
-    const materiaux = ume.materiaux.map(ingredient => Ingredient.produce(ingredient));
-    return new UniteMateriauxEveil(ume.unite_numero, materiaux);
+    const formule = Formule.produce(ume.formule);
+    return new UniteMateriauxEveil(ume.unite_numero, formule);
   }
 }
