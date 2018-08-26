@@ -15,7 +15,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
+    <app-character-skills-display *ngIf="areSkillsDisplayed()"
+                                  [competences]="competences">
+    </app-character-skills-display>
   </div>
 </mat-card>
 
