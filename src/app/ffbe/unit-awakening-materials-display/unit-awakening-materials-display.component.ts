@@ -4,7 +4,7 @@ import {Objet} from '../model/objet.model';
 import {Ingredient} from '../model/ingredient.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
-import {UniteMateriauxEveil} from '../model/unite-materiaux-eveil.model';
+import {UniteEveil} from '../model/unite-eveil.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
@@ -41,8 +41,8 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
 
   protected getAwakeningMaterials() {
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
-      .subscribe(ume => {
-          this.materiauxEveilFromFfch = isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).formule.ingredients);
+      .subscribe(uniteEveil => {
+          this.materiauxEveilFromFfch = isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule.ingredients);
           FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch);
         },
         error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
@@ -77,9 +77,9 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public sendUniteMateriauxEveilToFfch() {
-    const uniteMateriauxEveil = new UniteMateriauxEveil(this.unite.numero, this.unite.materiauxEveil);
+    const uniteMateriauxEveil = new UniteEveil(this.unite.numero, this.unite.materiauxEveil);
     this.ffchClientService.postUniteMateriauxEveil(uniteMateriauxEveil)
-      .subscribe(ume => this.materiauxEveilFromFfch = (isNullOrUndefined(ume) ? null : (UniteMateriauxEveil.produce(ume).formule.ingredients)),
+      .subscribe(uniteEveil => this.materiauxEveilFromFfch = (isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule.ingredients)),
         status => this.materiauxEveilErrors.push('Could not send awakening materials'));
   }
 }
