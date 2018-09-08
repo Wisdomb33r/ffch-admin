@@ -79,7 +79,8 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   public sendUniteMateriauxEveilToFfch() {
     const uniteMateriauxEveil = new UniteEveil(this.unite.numero, this.unite.materiauxEveil);
     this.ffchClientService.postUniteMateriauxEveil(uniteMateriauxEveil)
-      .subscribe(uniteEveil => this.materiauxEveilFromFfch = (isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule.ingredients)),
+      .subscribe(uniteEveil =>
+          this.materiauxEveilFromFfch = (isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule.ingredients)),
         status => this.materiauxEveilErrors.push('Could not send awakening materials'));
   }
 }

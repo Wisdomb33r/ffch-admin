@@ -15,7 +15,7 @@ const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
-const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'awakening_materials.php';
+const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'unit_awakenings.php';
 
 @Injectable()
 export class FfchClientService {
