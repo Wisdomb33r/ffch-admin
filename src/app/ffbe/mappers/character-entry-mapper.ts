@@ -7,6 +7,7 @@ import {Ingredient} from '../model/ingredient.model';
 import {Formule} from '../model/formule.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {AwakeningMaterialsMapper} from './awakening-materials-mapper';
 
 export class CharacterEntryMapper {
 
@@ -53,17 +54,11 @@ export class CharacterEntryMapper {
 
   private static convertAwakeningMaterials(unite: Unite, awakening: any) {
     if (awakening && awakening.materials) {
-      const materiauxEveil: Array<Ingredient> = [];
-      const awakeningMaterialsNames: string[] = Object.getOwnPropertyNames(awakening.materials);
 
-      for (const awakeningMaterialName of awakeningMaterialsNames) {
-        const ingredient = new Ingredient(+awakeningMaterialName, awakening.materials[awakeningMaterialName]);
-        materiauxEveil.push(ingredient);
-      }
-      FfbeUtils.sortArrayIngredients(materiauxEveil);
+      const formule = AwakeningMaterialsMapper.toFormule(awakening);
 
-      if (materiauxEveil.length > 0) {
-        unite.materiauxEveil = new Formule(materiauxEveil, 0);
+      if (formule.ingredients.length > 0) {
+        unite.materiauxEveil = formule;
       }
     }
   }
