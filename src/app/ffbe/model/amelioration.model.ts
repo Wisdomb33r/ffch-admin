@@ -14,7 +14,7 @@ export class Amelioration {
     public skill_id_new: number,
     public skill_id_base: number,
     public formule: Formule,
-    public level: number
+    public niveau: number
   ) {
   }
 }
