@@ -4,7 +4,7 @@ import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
 import {Objet} from '../model/objet.model';
-import {UniteMateriauxEveil} from '../model/unite-materiaux-eveil.model';
+import {UniteEveil} from '../model/unite-eveil.model';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
@@ -15,7 +15,7 @@ const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
-const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'awakening_materials.php';
+const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'unit_awakenings.php';
 
 @Injectable()
 export class FfchClientService {
@@ -55,13 +55,13 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
-  public getUniteMateriauxEveilByUniteNumero$(numero: number): Observable<UniteMateriauxEveil> {
-    return this.http.get<UniteMateriauxEveil>(FFCH_AWAKENING_MATERIALS_PATH + '?numero=' + numero)
+  public getUniteMateriauxEveilByUniteNumero$(numero: number): Observable<UniteEveil> {
+    return this.http.get<UniteEveil>(FFCH_AWAKENING_MATERIALS_PATH + '?numero=' + numero)
       .pipe(catchError(this.analyseError));
   }
 
-  public postUniteMateriauxEveil(uniteMateriauxEveil: UniteMateriauxEveil): Observable<any> {
-    return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteMateriauxEveil);
+  public postUniteMateriauxEveil(uniteEveil: UniteEveil): Observable<any> {
+    return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteEveil);
   }
 
   private analyseError(error: HttpErrorResponse) {
