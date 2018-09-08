@@ -1,7 +1,7 @@
 import {FFBE_GAMES, FFBE_EQUIPMENTS} from '../ffbe.constants';
 import {Game} from '../model/game.model';
 import {Equipment} from '../model/equipment.model';
-import {UniteMateriauEveil} from '../model/unite-materiau-eveil.model';
+import {Ingredient} from '../model/ingredient.model';
 import {isNullOrUndefined} from 'util';
 
 export class FfbeUtils {
@@ -29,11 +29,11 @@ export class FfbeUtils {
       .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
   }
 
-  public static sortArrayMateriauxEveil(materiauxEveil: Array<UniteMateriauEveil>) {
-    if (Array.isArray(materiauxEveil) && materiauxEveil.length > 0) {
-      materiauxEveil.sort((materiau1, materiau2) => {
-        return (materiau1.quantite !== materiau2.quantite) ?
-          (materiau2.quantite - materiau1.quantite) : (+materiau1.gumi_id - +materiau2.gumi_id);
+  public static sortArrayIngredients(ingredients: Array<Ingredient>) {
+    if (Array.isArray(ingredients) && ingredients.length > 0) {
+        ingredients.sort((ingredient1, ingredient2) => {
+        return (ingredient1.quantite !== ingredient2.quantite) ?
+          (ingredient2.quantite - ingredient1.quantite) : (+ingredient1.gumi_id - +ingredient2.gumi_id);
       });
     }
   }
