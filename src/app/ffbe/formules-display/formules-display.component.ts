@@ -50,7 +50,12 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
       && (this.formuleFromFfch.ingredients.length === this.formule.ingredients.length)
       && this.formule.ingredients.every(ingredient => this.formuleFromFfch.ingredients.some(ingredientFromFfch =>
         (ingredientFromFfch.gumi_id === ingredient.gumi_id) && (ingredientFromFfch.quantite === ingredient.quantite))
-      );
+      )
+      && this.isCostCorrectInFfchDb();
+  }
+
+  public isCostCorrectInFfchDb(): boolean {
+    return !this.displayCost || (this.formule.gils === this.formuleFromFfch.gils);
   }
 
   public areIngredientErrorsDisplayed(): boolean {

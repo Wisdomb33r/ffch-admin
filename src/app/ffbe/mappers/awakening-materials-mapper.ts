@@ -8,8 +8,8 @@ export class AwakeningMaterialsMapper {
   public static toFormule(awakening: any) {
 
     let gils: number = 0;
-    if (awakening && awakening.gils && isNumber(awakening.gils)) {
-      gils = awakening.gils;
+    if (awakening && awakening.gil && isNumber(awakening.gil)) {
+      gils = awakening.gil;
     }
 
     const ingredients: Array<Ingredient> = [];

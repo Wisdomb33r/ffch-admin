@@ -7,11 +7,13 @@
 
   <app-formule-display [formule]="formule"
                        [isFormulePresentInFfchDb]="isFormulePresentInFfchDb()"
-                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()">
+                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()"
+                       [displayCost]="displayCost">
   </app-formule-display>
   <app-formule-display *ngIf="isFormulePresentInFfchDb() && !isFormuleCorrectInFfchDb()"
                        [formule]="formuleFromFfch"
                        [isFormulePresentInFfchDb]="isFormulePresentInFfchDb()"
-                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()">
+                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()"
+                       [displayCost]="displayCost">
   </app-formule-display>
 </div>

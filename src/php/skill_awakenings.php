@@ -136,6 +136,7 @@ function createAmelioration($brex_competence_eveil)
   $formule = createFormule($brex_competence_eveil);
 
   if ($formule) {
+    $formule->gils = $brex_competence_eveil->gils;
     $amelioration->formule = $formule;
   }
 

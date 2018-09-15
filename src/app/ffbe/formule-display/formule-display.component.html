@@ -14,5 +14,9 @@
     <img *ngIf="!this.isIngredientPresentInFfchDb(ingredient)" src="assets/red/warn.png"
          alt="{{ingredient.gumi_id}}" title="{{ingredient.gumi_id}}"/>
     x{{ingredient.quantite}}
-    </span>
+  </span>
+  <span *ngIf="displayCost" class="ffchImageArray">
+    <img src="assets/gil.png" alt="gils" title="gils">
+    x{{formule.gils}}
+  </span>
 </p>
