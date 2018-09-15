@@ -30,6 +30,8 @@ import {EnhancementsComponent} from './enhancements/enhancements.component';
 import {EnhancementsService} from './services/enhancements.service';
 import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-display.component';
 import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
+import {FormuleDisplayComponent} from './formule-display/formule-display.component';
+import {FormulesDisplayComponent} from './formules-display/formules-display.component';
 
 @NgModule({
   imports: [
@@ -59,6 +61,8 @@ import {EnhancementDisplayComponent} from './enhancement-display/enhancement-dis
     EnhancementsComponent,
     EnhancementsDisplayComponent,
     EnhancementDisplayComponent,
+    FormuleDisplayComponent,
+    FormulesDisplayComponent,
   ],
   exports: [
     CharactersComponent,

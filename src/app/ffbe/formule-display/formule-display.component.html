@@ -1,0 +1,18 @@
+<p>
+  <img *ngIf="isFormulePresentInFfchDb&& isFormuleCorrectInFfchDb" src="assets/ok.png"
+       class="ffchstatus">
+  <img *ngIf="isFormulePresentInFfchDb && !isFormuleCorrectInFfchDb" src="assets/red/warn.png"
+       class="ffchstatus">
+  <img *ngIf="!isFormulePresentInFfchDb" src="assets/nok.png" class="ffchstatus">
+  <span *ngFor="let ingredient of formule.ingredients" class="ffchImageArray">
+    <img *ngIf="this.isImageIngredientPresentInFfchDb(ingredient)" src="{{ingredient.materiau.icone}}"
+         alt="{{ingredient.materiau.nom}}" title="{{ingredient.materiau.nom}} ({{ingredient.gumi_id}})"/>
+    <img
+      *ngIf="!this.isImageIngredientPresentInFfchDb(ingredient) && this.isIngredientPresentInFfchDb(ingredient)"
+      src="assets/grey/warn.png" alt="{{ingredient.materiau.nom}} ({{ingredient.gumi_id}})"
+      title="{{ingredient.materiau.nom}} ({{ingredient.gumi_id}})"/>
+    <img *ngIf="!this.isIngredientPresentInFfchDb(ingredient)" src="assets/red/warn.png"
+         alt="{{ingredient.gumi_id}}" title="{{ingredient.gumi_id}}"/>
+    x{{ingredient.quantite}}
+    </span>
+</p>

@@ -1,0 +1,17 @@
+<div *ngIf="isFormulePresent()">
+  <h3>Matériaux d'éveil</h3>
+
+  <ul class="error" *ngIf="areIngredientErrorsDisplayed()">
+    <li *ngFor="let message of ingredientsErrors">{{message}}</li>
+  </ul>
+
+  <app-formule-display [formule]="formule"
+                       [isFormulePresentInFfchDb]="isFormulePresentInFfchDb()"
+                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()">
+  </app-formule-display>
+  <app-formule-display *ngIf="isFormulePresentInFfchDb() && !isFormuleCorrectInFfchDb()"
+                       [formule]="formuleFromFfch"
+                       [isFormulePresentInFfchDb]="isFormulePresentInFfchDb()"
+                       [isFormuleCorrectInFfchDb]="isFormuleCorrectInFfchDb()">
+  </app-formule-display>
+</div>

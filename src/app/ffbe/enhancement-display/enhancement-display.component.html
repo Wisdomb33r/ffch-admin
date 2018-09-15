@@ -18,6 +18,8 @@
     <app-character-skills-display *ngIf="areSkillsDisplayed()"
                                   [competences]="competences">
     </app-character-skills-display>
+    <app-formules-display [formule]="amelioration.formule" [formuleFromFfch]="getFormuleFromFfchAmelioration()" [displayCost]="true">
+    </app-formules-display>
   </div>
 </mat-card>
 
