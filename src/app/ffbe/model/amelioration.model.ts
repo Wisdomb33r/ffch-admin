@@ -17,4 +17,23 @@ export class Amelioration {
     public niveau: number
   ) {
   }
+
+  public static produce(amelioration: Amelioration): Amelioration {
+    const formule = Formule.produce(amelioration.formule);
+    const producedAmelioration = new Amelioration(
+      amelioration.gumi_id,
+      amelioration.units,
+      amelioration.nom,
+      amelioration.nom_en,
+      amelioration.description,
+      amelioration.description_en,
+      amelioration.skill_id_old,
+      amelioration.skill_id_new,
+      amelioration.skill_id_base,
+      formule,
+      amelioration.niveau
+    );
+    producedAmelioration.perso_gumi_id = amelioration.perso_gumi_id;
+    return producedAmelioration;
+  }
 }

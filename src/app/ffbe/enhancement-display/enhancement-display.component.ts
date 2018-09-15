@@ -10,6 +10,8 @@ import {Competence} from '../model/competence.model';
 import {SkillsService} from '../services/skills.service';
 import {isNullOrUndefined} from 'util';
 import {SkillMapper} from '../mappers/skill-mapper';
+import {FfbeUtils} from '../utils/ffbe-utils';
+import {Formule} from '../model/formule.model';
 
 @Component({
   selector: 'app-enhancement-display',
@@ -22,9 +24,12 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   public displayed = false;
   public personnages: Array<Personnage>;
   public competences: Array<Competence>;
+  public ameliorationFromFfch: Amelioration;
+  public ameliorationErrors = [];
 
   constructor(private charactersService: CharactersService,
-              private  skillService: SkillsService) {
+              private skillService: SkillsService,
+              private ffchClientService: FfchClientService) {
   }
 
   ngOnInit() {
@@ -33,6 +38,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.getPersonnages();
     this.getCompetences();
+    this.getAmelioration();
   }
 
   public switchDisplayed() {
@@ -43,6 +49,15 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     return this.personnages.length === 1;
   }
 
+  public getFormuleFromFfchAmelioration(): Formule {
+    if (!isNullOrUndefined(this.ameliorationFromFfch)) {
+      return this.ameliorationFromFfch.formule;
+    }
+    else {
+      return undefined;
+    }
+  }
+
   protected getPersonnages() {
     this.personnages = [];
     this.amelioration.units.forEach(unit =>
@@ -50,6 +65,18 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     if (this.personnages.length === 1) {
       this.amelioration.perso_gumi_id = this.personnages[0].gumi_id;
     }
+  }
+
+  protected getAmelioration() {
+    this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
+      .subscribe(amelioration => {
+          this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
+          if (!isNullOrUndefined(this.ameliorationFromFfch) && !isNullOrUndefined(this.ameliorationFromFfch.formule)) {
+            FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
+          }
+        },
+        error => this.ameliorationErrors.push('Erreur lors de la recherche de l\'amélioration de ' + this.amelioration.nom + ' pour le perso '
+          + this.amelioration.perso_gumi_id + ' : ' + error));
   }
 
   protected getCompetences() {

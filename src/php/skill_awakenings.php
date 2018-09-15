@@ -126,7 +126,7 @@ function findCompetenceEveil($brex_perso, $brex_competence, $niveau)
 function createAmelioration($brex_competence_eveil)
 {
   $amelioration = new Amelioration();
-  $amelioration->perso = $brex_competence_eveil->perso->gumi_id;
+  $amelioration->perso_gumi_id = $brex_competence_eveil->perso->gumi_id;
   $amelioration->skill_id_base = $brex_competence_eveil->competence->gumi_id;
   if ($amelioration->skill_id_new) {
     $amelioration->skill_id_new = $brex_competence_eveil->comp_amelio->gumi_id;
