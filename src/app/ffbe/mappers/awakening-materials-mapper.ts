@@ -7,7 +7,7 @@ export class AwakeningMaterialsMapper {
 
   public static toFormule(awakening: any) {
 
-    let gils: number = 0;
+    let gils = 0;
     if (awakening && awakening.gil && isNumber(awakening.gil)) {
       gils = awakening.gil;
     }

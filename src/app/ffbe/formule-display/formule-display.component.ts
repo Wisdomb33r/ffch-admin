@@ -11,7 +11,7 @@ import {Ingredient} from '../model/ingredient.model';
 export class FormuleDisplayComponent implements OnInit {
 
   @Input() formule: Formule;
-  @Input() displayCost: boolean = false;
+  @Input() displayCost = false;
   @Input() isFormuleCorrectInFfchDb;
   @Input() isFormulePresentInFfchDb;
 

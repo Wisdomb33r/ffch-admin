@@ -12,7 +12,7 @@ import {FfchClientService} from '../services/ffch-client.service';
 export class FormulesDisplayComponent implements OnInit, OnChanges {
   @Input() formule: Formule;
   @Input() formuleFromFfch: Formule;
-  @Input() displayCost: boolean = false;
+  @Input() displayCost = false;
   public ingredientsErrors = [];
 
   constructor(private ffchClientService: FfchClientService) {
@@ -42,7 +42,8 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
   }
 
   public isFormulePresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.formuleFromFfch) && !isNullOrUndefined(this.formuleFromFfch.ingredients) && this.formuleFromFfch.ingredients.length > 0;
+    return !isNullOrUndefined(this.formuleFromFfch) &&
+      !isNullOrUndefined(this.formuleFromFfch.ingredients) && this.formuleFromFfch.ingredients.length > 0;
   }
 
   public isFormuleCorrectInFfchDb(): boolean {

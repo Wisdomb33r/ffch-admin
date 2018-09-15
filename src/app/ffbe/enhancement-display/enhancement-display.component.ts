@@ -52,8 +52,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   public getFormuleFromFfchAmelioration(): Formule {
     if (!isNullOrUndefined(this.ameliorationFromFfch)) {
       return this.ameliorationFromFfch.formule;
-    }
-    else {
+    } else {
       return undefined;
     }
   }
@@ -75,8 +74,8 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
             FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
           }
         },
-        error => this.ameliorationErrors.push('Erreur lors de la recherche de l\'amélioration de ' + this.amelioration.nom + ' pour le perso '
-          + this.amelioration.perso_gumi_id + ' : ' + error));
+        error => this.ameliorationErrors.push('Erreur lors de la recherche de l\'amélioration de '
+          + this.amelioration.nom + ' pour le perso ' + this.amelioration.perso_gumi_id + ' : ' + error));
   }
 
   protected getCompetences() {
