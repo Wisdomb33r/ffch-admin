@@ -123,7 +123,7 @@ function findCompetenceEveil($brex_perso, $brex_competence, $niveau)
 
   $brex_competence_eveil = filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau);
 
-  if (! $brex_competence_eveil) {
+  if (!$brex_competence_eveil) {
     dieWithNotFound('Storage exception : competence not found for niveau: ' . $niveau);
   }
 
@@ -159,7 +159,7 @@ function filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau)
   }
 
   $brex_competence_eveil = null;
-  if(count($brex_competences_eveil_filtrees) == 1) {
+  if (count($brex_competences_eveil_filtrees) == 1) {
     $brex_competence_eveil = $brex_competences_eveil_filtrees[array_keys($brex_competences_eveil_filtrees)[0]];
   }
 
@@ -195,11 +195,7 @@ function createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_comp
   $brex_competence_eveil->setrelationcompetence($brex_competence_base);
   $brex_competence_eveil->setrelationcomp_amelio($brex_competence_amelioree);
 
-  $valuesToUpdate = [];
-  if (isset ( $amelioration->released )) {
-    $valuesToUpdate ['released'] = ($amelioration->released == true) ? '1' : '0';
-  }
-  $brex_competence_eveil->updateObject($valuesToUpdate);
+  $brex_competence_eveil->released = ($amelioration->released == true) ? '1' : '0';
 
   updateMateriauxEveil($brex_competence_eveil, $amelioration->formule);
 
