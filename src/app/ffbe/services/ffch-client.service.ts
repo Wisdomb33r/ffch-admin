@@ -67,7 +67,8 @@ export class FfchClientService {
   }
 
   public getAmelioration$(perso_gumi_id: number, competence_gumi_id: number, niveau: number): Observable<Amelioration> {
-    return this.http.get<Amelioration>(FFCH_SKILL_AWAKENINGS_PATH + '?perso_gumi_id=' + perso_gumi_id + '&skill_id_base=' + competence_gumi_id + '&niveau=' + niveau)
+    return this.http.get<Amelioration>(FFCH_SKILL_AWAKENINGS_PATH + '?perso_gumi_id=' + perso_gumi_id +
+      '&skill_id_base=' + competence_gumi_id + '&niveau=' + niveau)
       .pipe(catchError(this.analyseError));
   }
 
