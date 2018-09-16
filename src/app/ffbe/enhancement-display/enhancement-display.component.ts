@@ -50,6 +50,11 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     return !isNullOrUndefined(this.ameliorationFromFfch);
   }
 
+  public isAmeliorationCorrectInFfchDb(): boolean {
+    return isNullOrUndefined(this.ameliorationFromFfch) ||
+      this.amelioration.formule.isEqual(this.ameliorationFromFfch.formule);
+  }
+
   public isSingleCharacter() {
     return this.personnages.length === 1;
   }

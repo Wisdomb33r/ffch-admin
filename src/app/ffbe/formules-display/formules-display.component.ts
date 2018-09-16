@@ -13,6 +13,7 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
   @Input() formule: Formule;
   @Input() formuleFromFfch: Formule;
   @Input() displayCost = false;
+  @Input() displaySuccessfulStatus = true;
   public ingredientsErrors = [];
 
   constructor(private ffchClientService: FfchClientService) {
@@ -48,15 +49,12 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
 
   public isFormuleCorrectInFfchDb(): boolean {
     return this.isFormulePresent() && this.isFormulePresentInFfchDb()
-      && (this.formuleFromFfch.ingredients.length === this.formule.ingredients.length)
-      && this.formule.ingredients.every(ingredient => this.formuleFromFfch.ingredients.some(ingredientFromFfch =>
-        (ingredientFromFfch.gumi_id === ingredient.gumi_id) && (ingredientFromFfch.quantite === ingredient.quantite))
-      )
+      && this.formule.areIngredientsEqual(this.formuleFromFfch)
       && this.isCostCorrectInFfchDb();
   }
 
   public isCostCorrectInFfchDb(): boolean {
-    return !this.displayCost || (this.formule.gils === this.formuleFromFfch.gils);
+    return !this.displayCost || this.formule.areCostsEqual(this.formuleFromFfch);
   }
 
   public areIngredientErrorsDisplayed(): boolean {

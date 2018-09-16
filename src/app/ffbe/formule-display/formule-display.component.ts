@@ -12,6 +12,7 @@ export class FormuleDisplayComponent implements OnInit {
 
   @Input() formule: Formule;
   @Input() displayCost = false;
+  @Input() displaySuccessfulStatus = true;
   @Input() isFormuleCorrectInFfchDb;
   @Input() isFormulePresentInFfchDb;
 

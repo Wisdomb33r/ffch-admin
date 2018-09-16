@@ -1,9 +1,9 @@
 <p>
-  <img *ngIf="isFormulePresentInFfchDb&& isFormuleCorrectInFfchDb" src="assets/ok.png"
+  <img *ngIf="isFormulePresentInFfchDb && isFormuleCorrectInFfchDb && displaySuccessfulStatus" src="assets/ok.png"
        class="ffchstatus">
   <img *ngIf="isFormulePresentInFfchDb && !isFormuleCorrectInFfchDb" src="assets/red/warn.png"
        class="ffchstatus">
-  <img *ngIf="!isFormulePresentInFfchDb" src="assets/nok.png" class="ffchstatus">
+  <img *ngIf="!isFormulePresentInFfchDb && displaySuccessfulStatus" src="assets/nok.png" class="ffchstatus">
   <span *ngFor="let ingredient of formule.ingredients" class="ffchImageArray">
     <img *ngIf="this.isImageIngredientPresentInFfchDb(ingredient)" src="{{ingredient.materiau.icone}}"
          alt="{{ingredient.materiau.nom}}" title="{{ingredient.materiau.nom}} ({{ingredient.gumi_id}})"/>
