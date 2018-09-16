@@ -2,6 +2,7 @@ import {Enhancement} from '../model/enhancement.model';
 import {Amelioration} from '../model/amelioration.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {AwakeningMaterialsMapper} from './awakening-materials-mapper';
+import {isNullOrUndefined} from 'util';
 
 export class EnhancementMapper {
   public static toAmelioration(enhancement: Enhancement): Amelioration {
@@ -22,5 +23,11 @@ export class EnhancementMapper {
       enhancement.level);
 
     return amelioration;
+  }
+
+  public static mapUndefinedReleased(amelioration: Amelioration) {
+    if (amelioration && isNullOrUndefined(amelioration.released)) {
+      amelioration.released = false;
+    }
   }
 }

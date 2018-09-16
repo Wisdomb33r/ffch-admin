@@ -12,6 +12,7 @@ import {isNullOrUndefined} from 'util';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Formule} from '../model/formule.model';
+import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 
 @Component({
   selector: 'app-enhancement-display',
@@ -45,6 +46,10 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.displayed = !this.displayed;
   }
 
+  public isAmeliorationPresentInFfchDb(): boolean {
+    return !isNullOrUndefined(this.ameliorationFromFfch);
+  }
+
   public isSingleCharacter() {
     return this.personnages.length === 1;
   }
@@ -70,6 +75,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
       .subscribe(amelioration => {
           this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
+          this.amelioration.released = isNullOrUndefined(this.ameliorationFromFfch) ? false : this.ameliorationFromFfch.released;
           if (!isNullOrUndefined(this.ameliorationFromFfch) && !isNullOrUndefined(this.ameliorationFromFfch.formule)) {
             FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
           }
@@ -93,5 +99,19 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
 
   public areSkillsDisplayed(): boolean {
     return Array.isArray(this.competences) && this.competences.length > 0;
+  }
+
+  public areAmeliorationErrorsDiplayed(): boolean {
+    return Array.isArray(this.ameliorationErrors) && this.ameliorationErrors.length > 0;
+  }
+
+  public areAllCompetencesPresentInFfchDb(): boolean {
+    return this.competences.every(competence => !isNullOrUndefined(competence.id));
+  }
+
+  public sendAmeliorationToFfch() {
+    EnhancementMapper.mapUndefinedReleased(this.amelioration);
+    this.ffchClientService.postAmelioration$(this.amelioration)
+      .subscribe(status => this.getAmelioration(), status => this.ameliorationErrors.push('Could not send amelioration'));
   }
 }

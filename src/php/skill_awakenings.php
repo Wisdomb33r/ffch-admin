@@ -14,6 +14,7 @@ class Amelioration
   public $skill_id_new;
   public $formule;
   public $niveau;
+  public $released;
 }
 
 function dieWithBadRequest($errorMessages)
@@ -33,30 +34,42 @@ function dieWithNotFound($errorMessages)
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-  /*
-    $uniteEveil = json_decode(file_get_contents('php://input'));
-    if (!isset ($uniteEveil->unite_numero) || !$uniteEveil->unite_numero) {
-      dieWithBadRequest('Format exception : cannot save without unit number');
-    }
 
-    if (!isset ($uniteEveil->formule) || !isset ($uniteEveil->formule->ingredients) || !is_array($uniteEveil->formule->ingredients) || count($uniteEveil->formule->ingredients) == 0) {
-      dieWithBadRequest('Format exception : cannot save without awakening materials');
-    }
+  $amelioration = json_decode(file_get_contents('php://input'));
 
-    $brex_unite = findUnitByNumber($uniteEveil->unite_numero);
-    $brex_persos_eveil = brex_perso_eveil::findByRelation1N(array('unit' => $brex_unite->id));
-    if (count($brex_persos_eveil) > 0) {
-      dieWithBadRequest('Storage exception : found existing awakening materials for unit with numero: ' . $brex_unite->numero);
-    }
+  if (!isset ($amelioration->perso_gumi_id) || !$amelioration->perso_gumi_id) {
+    dieWithBadRequest('Format exception: Cannot save competence eveil without perso');
+  }
 
-    $brex_perso_eveil = createAndValidatePersoEveil($brex_unite, $uniteEveil);
-    $brex_perso_eveil->store();
+  if (!isset ($amelioration->skill_id_base) || !$amelioration->skill_id_base) {
+    dieWithBadRequest('Format exception: Cannot save competence eveil without base competence');
+  }
 
-    $stored_brex_perso_eveil = findPersoEveilByUnit($brex_unite);
-    $stored_unite_materiaux_eveil = createUniteEveil($brex_unite, $brex_perso_eveil);
+  if (!isset ($amelioration->skill_id_new) || !$amelioration->skill_id_new) {
+    dieWithBadRequest('Format exception: Cannot save competence eveil without enhanced competence');
+  }
 
-    echo json_encode($stored_unite_materiaux_eveil, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-  */
+  if (!isset ($amelioration->niveau) || !$amelioration->niveau) {
+    dieWithBadRequest('Format exception: Cannot save competence eveil without niveau');
+  }
+
+  if (!isset ($amelioration->formule) || !isset ($amelioration->formule->ingredients) || !is_array($amelioration->formule->ingredients) || count($amelioration->formule->ingredients) == 0) {
+    dieWithBadRequest('Format exception : cannot save without awakening materials');
+  }
+
+  $brex_perso = findPersoByGumiId($amelioration->perso_gumi_id);
+  $brex_competence_base = findCompetenceByGumiId($amelioration->skill_id_base);
+  $brex_competence_amelioree = findCompetenceByGumiId($amelioration->skill_id_new);
+
+  checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
+
+  $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
+  $brex_competence_eveil->store();
+
+  $stored_brex_competence_eveil = findCompetenceEveil($brex_perso, $brex_competence_base, $amelioration->niveau);
+  $stored_amelioration = createAmelioration($stored_brex_competence_eveil);
+
+  echo json_encode($stored_amelioration, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
   if (!isset ($_GET ['perso_gumi_id'])) {
     dieWithBadRequest('Format exception: Cannot find competence eveil without perso');
@@ -103,11 +116,38 @@ function findCompetenceByGumiId($gumi_id)
 
 function findCompetenceEveil($brex_perso, $brex_competence, $niveau)
 {
-  $brex_competences_eveil = brex_comp_eveil::findByRelation1N(array('perso' => $brex_perso->id, 'competence' => $brex_competence->id));
+  $brex_competences_eveil = findCompetencesEveil($brex_perso, $brex_competence);
   if (count($brex_competences_eveil) == 0) {
-    dieWithNotFound('Storage exception : competence eveil found');
+    dieWithNotFound('Storage exception : competence eveil not found');
   }
 
+  $brex_competence_eveil = filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau);
+
+  if (! $brex_competence_eveil) {
+    dieWithNotFound('Storage exception : competence not found for niveau: ' . $niveau);
+  }
+
+  return $brex_competence_eveil;
+}
+
+function checkThatNoCompetenceEveilExists($brex_perso, $brex_competence, $niveau)
+{
+  $brex_competences_eveil = findCompetencesEveil($brex_perso, $brex_competence);
+
+  $brex_competence_eveil = filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau);
+
+  if ($brex_competence_eveil) {
+    dieWithBadRequest('Storage exception : found existing competence with niveau: ' . $niveau);
+  }
+}
+
+function findCompetencesEveil($brex_perso, $brex_competence)
+{
+  return brex_comp_eveil::findByRelation1N(array('perso' => $brex_perso->id, 'competence' => $brex_competence->id));
+}
+
+function filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau)
+{
   $brex_competences_eveil_filtrees = array_filter($brex_competences_eveil, function ($brex_competence_eveil) use ($niveau) {
     return $brex_competence_eveil->niveau == $niveau;
   });
@@ -116,11 +156,14 @@ function findCompetenceEveil($brex_perso, $brex_competence, $niveau)
 
   if (count($brex_competences_eveil_filtrees) > 1) {
     dieWithBadRequest('Storage exception : several competences found with niveau: ' . $niveau);
-  } else if (count($brex_competences_eveil_filtrees) == 0) {
-    dieWithNotFound('Storage exception : competence not found for niveau: ' . $niveau);
   }
 
-  return $brex_competences_eveil_filtrees[array_keys($brex_competences_eveil_filtrees)[0]];
+  $brex_competence_eveil = null;
+  if(count($brex_competences_eveil_filtrees) == 1) {
+    $brex_competence_eveil = $brex_competences_eveil_filtrees[array_keys($brex_competences_eveil_filtrees)[0]];
+  }
+
+  return $brex_competence_eveil;
 }
 
 function createAmelioration($brex_competence_eveil)
@@ -140,21 +183,35 @@ function createAmelioration($brex_competence_eveil)
     $amelioration->formule = $formule;
   }
 
+  $amelioration->released = $brex_competence_eveil->released ? true : false;
+
   return $amelioration;
 }
 
-function createAndValidatePersoEveil($brex_unite, $uniteEveil)
+function createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree)
 {
-  $brex_perso_eveil = new brex_perso_eveil(array());
-  $brex_perso_eveil->setrelationunit($brex_unite);
+  $brex_competence_eveil = new brex_comp_eveil(array());
+  $brex_competence_eveil->setrelationperso($brex_perso);
+  $brex_competence_eveil->setrelationcompetence($brex_competence_base);
+  $brex_competence_eveil->setrelationcomp_amelio($brex_competence_amelioree);
 
-  updateMateriauxEveil($brex_perso_eveil, $uniteEveil->formule);
+  $valuesToUpdate = [];
+  if (isset ( $amelioration->released )) {
+    $valuesToUpdate ['released'] = ($amelioration->released == true) ? '1' : '0';
+  }
+  $brex_competence_eveil->updateObject($valuesToUpdate);
 
-  if (!$brex_perso_eveil->verifyValues()) {
-    dieWithBadRequest(array_merge($brex_perso_eveil->errors, (array)'Format exception: Validation of brex_perso_eveil failed'));
+  updateMateriauxEveil($brex_competence_eveil, $amelioration->formule);
+
+  $brex_competence_eveil->niveau = $amelioration->niveau;
+  $brex_competence_eveil->gils = $amelioration->formule->gils;
+
+
+  if (!$brex_competence_eveil->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_competence_eveil->errors, (array)'Format exception: Validation of brex_comp_eveil failed'));
   }
 
-  return $brex_perso_eveil;
+  return $brex_competence_eveil;
 }
 
 ?>

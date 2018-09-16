@@ -62,13 +62,17 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
+  public postUniteMateriauxEveil(uniteEveil: UniteEveil): Observable<any> {
+    return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteEveil);
+  }
+
   public getAmelioration$(perso_gumi_id: number, competence_gumi_id: number, niveau: number): Observable<Amelioration> {
     return this.http.get<Amelioration>(FFCH_SKILL_AWAKENINGS_PATH + '?perso_gumi_id=' + perso_gumi_id + '&skill_id_base=' + competence_gumi_id + '&niveau=' + niveau)
       .pipe(catchError(this.analyseError));
   }
 
-  public postUniteMateriauxEveil(uniteEveil: UniteEveil): Observable<any> {
-    return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteEveil);
+  public postAmelioration$(amelioration: Amelioration): Observable<any> {
+    return this.http.post(FFCH_SKILL_AWAKENINGS_PATH, amelioration);
   }
 
   private analyseError(error: HttpErrorResponse) {

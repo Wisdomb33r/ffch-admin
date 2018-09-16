@@ -2,6 +2,7 @@ import {Formule} from './formule.model';
 
 export class Amelioration {
   public perso_gumi_id: number;
+  public released: boolean;
 
   constructor(
     public gumi_id: number,
@@ -34,6 +35,7 @@ export class Amelioration {
       amelioration.niveau
     );
     producedAmelioration.perso_gumi_id = amelioration.perso_gumi_id;
+    producedAmelioration.released = amelioration.released;
     return producedAmelioration;
   }
 }
