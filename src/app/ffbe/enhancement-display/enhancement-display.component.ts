@@ -46,6 +46,10 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.displayed = !this.displayed;
   }
 
+  public isSingleAmeliorationSelected(): boolean {
+    return this.isSingleCharacter() || this.isAnyCharacterSelected();
+  }
+
   public isAmeliorationPresentInFfchDb(): boolean {
     return !isNullOrUndefined(this.ameliorationFromFfch);
   }
@@ -55,8 +59,16 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
       this.amelioration.formule.isEqual(this.ameliorationFromFfch.formule);
   }
 
-  public isSingleCharacter() {
+  public isAmeliorationUpToDateInFfchDb(): boolean {
+    return this.isAmeliorationCorrectInFfchDb() && !isNullOrUndefined(this.ameliorationFromFfch.skill_id_new);
+  }
+
+  public isSingleCharacter(): boolean {
     return this.personnages.length === 1;
+  }
+
+  public isAnyCharacterSelected(): boolean {
+    return !isNullOrUndefined(this.amelioration.perso_gumi_id);
   }
 
   public getFormuleFromFfchAmelioration(): Formule {
@@ -77,6 +89,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   protected getAmelioration() {
+    this.ameliorationFromFfch = null;
     this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
       .subscribe(amelioration => {
           this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));

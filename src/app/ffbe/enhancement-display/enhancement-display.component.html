@@ -1,10 +1,16 @@
 <mat-card>
   <mat-card-title (click)="switchDisplayed()">
-    <img *ngIf="isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()" src="assets/ok.png"
-         class="ffchstatus">
-    <img *ngIf="isAmeliorationPresentInFfchDb() && !isAmeliorationCorrectInFfchDb()" src="assets/red/warn.png"
-         class="ffchstatus">
-    <img *ngIf="!isAmeliorationPresentInFfchDb()" src="assets/nok.png" class="ffchstatus">
+    <img *ngIf="!isSingleAmeliorationSelected()" src="assets/grey/question.png" class="ffchstatus">
+    <img *ngIf="isSingleAmeliorationSelected() && !isAmeliorationPresentInFfchDb()"
+         src="assets/nok.png" class="ffchstatus">
+    <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && !isAmeliorationCorrectInFfchDb()"
+         src="assets/red/warn.png" class="ffchstatus">
+    <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
+        && !isAmeliorationUpToDateInFfchDb()"
+         src="assets/grey/warn.png" class="ffchstatus">
+    <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
+        && isAmeliorationUpToDateInFfchDb()" src="assets/ok.png" class="ffchstatus">
+
     {{amelioration.skill_id_base}} {{amelioration.nom}} ({{amelioration.niveau}})
   </mat-card-title>
 
@@ -13,6 +19,7 @@
       <mat-select placeholder="Personnage"
                   [(ngModel)]="amelioration.perso_gumi_id"
                   [ngModelOptions]="{standalone: true}"
+                  (selectionChange)="getAmelioration()"
                   [disabled]="isSingleCharacter()">
         <mat-option>----------</mat-option>
         <mat-option *ngFor="let personnage of personnages" [value]="personnage.gumi_id">
@@ -35,7 +42,8 @@
     </p>
 
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendAmeliorationToFfch()"
-            [disabled]="areAmeliorationErrorsDiplayed() || isAmeliorationPresentInFfchDb() || !areAllCompetencesPresentInFfchDb()">
+            [disabled]="areAmeliorationErrorsDiplayed() || !isSingleAmeliorationSelected()
+            || isAmeliorationPresentInFfchDb() || !areAllCompetencesPresentInFfchDb()">
       Envoyer
     </button>
   </div>
