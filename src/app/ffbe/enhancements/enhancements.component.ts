@@ -6,6 +6,7 @@ import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 import {Amelioration} from '../model/amelioration.model';
 import {CharactersService} from '../services/characters.service';
 import {isNullOrUndefined} from 'util';
+import {Character} from '../model/character.model';
 
 @Component({
   selector: 'app-enhancements',
@@ -18,6 +19,7 @@ export class EnhancementsComponent implements OnInit {
   englishName: FormControl;
   frenchName: FormControl;
   gumiId: FormControl;
+  character: Character;
   ameliorations: Array<Amelioration>;
 
   constructor(private enhancementsService: EnhancementsService, private charactersService: CharactersService) {
@@ -42,14 +44,20 @@ export class EnhancementsComponent implements OnInit {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       this.gumiId.patchValue('');
-      const character = this.charactersService.searchForCharacterByName(this.characterName.value);
-      if (!isNullOrUndefined(character)) {
-        enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(character.gumi_id);
+      this.character = this.charactersService.searchForCharacterByName(this.characterName.value);
+      if (!isNullOrUndefined(this.character)) {
+        enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(this.character.gumi_id);
       }
     } else {
       enhancements = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
     }
-    enhancements.forEach(enhancement => this.ameliorations.push(EnhancementMapper.toAmelioration(enhancement)));
+    enhancements.forEach(enhancement => {
+      const amelioration = EnhancementMapper.toAmelioration(enhancement);
+      if (!isNullOrUndefined(this.character)) {
+        amelioration.perso_gumi_id = this.character.gumi_id;
+      }
+      this.ameliorations.push(amelioration);
+    });
   }
 
   public areEnhancementsDisplayed(): boolean {
