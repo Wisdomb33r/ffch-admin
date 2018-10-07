@@ -52,7 +52,7 @@ export class CharacterEquipmentsDisplayComponent implements OnChanges, OnInit {
   public sendEquipmentsToFfch() {
     const uniteEquipements = new UniteEquipements(this.personnage.unites[0].numero,
       this.personnage.equipements.map(equipement => equipement.ffchId));
-    this.ffchClientService.postUniteEquipements(uniteEquipements)
+    this.ffchClientService.postUniteEquipements$(uniteEquipements)
       .subscribe(status => this.getEquipmentsFromFfch(), status => this.equipmentErrors.push('Could not send equipments'));
   }
 }

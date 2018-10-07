@@ -1,11 +1,21 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
+import {EnhancementsService} from './enhancements.service';
+import {DataMiningClientService} from './data-mining-client.service';
+import {Observable, of} from 'rxjs/index';
 
-import { EnhancementsService } from './enhancements.service';
+class DataMiningMock {
+  public getEnhancements$(): Observable<Object> {
+    return of(undefined);
+  }
+}
 
 describe('EnhancementsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EnhancementsService]
+      providers: [
+        EnhancementsService,
+        {provide: DataMiningClientService, useClass: DataMiningMock},
+      ]
     });
   });
 

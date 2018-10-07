@@ -5,10 +5,8 @@ import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
 import {Objet} from '../model/objet.model';
 import {UniteEveil} from '../model/unite-eveil.model';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
-import 'rxjs/add/observable/of';
 import {Amelioration} from '../model/amelioration.model';
 
 const FFCH_BASE_URL = '/admin/';
@@ -25,7 +23,7 @@ export class FfchClientService {
   constructor(private http: HttpClient) {
   }
 
-  public postCompetence(competence: Competence): Observable<any> {
+  public postCompetence$(competence: Competence): Observable<any> {
     return this.http.post(FFCH_COMPETENCE_PATH, competence);
   }
 
@@ -39,7 +37,7 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
-  public postUnite(unite: Unite): Observable<any> {
+  public postUnite$(unite: Unite): Observable<any> {
     return this.http.post(FFCH_UNITE_PATH, unite);
   }
 
@@ -48,7 +46,7 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
-  public postUniteEquipements(uniteEquipements: UniteEquipements): Observable<any> {
+  public postUniteEquipements$(uniteEquipements: UniteEquipements): Observable<any> {
     return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
   }
 
@@ -62,7 +60,7 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
-  public postUniteMateriauxEveil(uniteEveil: UniteEveil): Observable<any> {
+  public postUniteMateriauxEveil$(uniteEveil: UniteEveil): Observable<any> {
     return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteEveil);
   }
 
@@ -79,13 +77,13 @@ export class FfchClientService {
   private analyseError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;
-      return new ErrorObservable(message);
+      return throwError(message);
     } else {
       if (error.status === 404) {
-        return Observable.of(undefined);
+        return of(undefined);
       } else {
         const message = 'Code d\'erreur en provenance du backend ' + error.status;
-        return new ErrorObservable(message);
+        return throwError(message);
       }
     }
   }

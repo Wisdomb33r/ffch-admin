@@ -1,6 +1,5 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {Observable, of} from 'rxjs';
 import {CharactersService} from './characters.service';
 import {DataMiningClientService} from './data-mining-client.service';
 import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
@@ -10,7 +9,7 @@ import {LimitBurstsService} from './limit-bursts.service';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
-    return Observable.of(JSON.parse(CHARACTER_TEST_DATA));
+    return of(JSON.parse(CHARACTER_TEST_DATA));
   }
 }
 
@@ -41,8 +40,8 @@ describe('CharactersService', () => {
   });
 
   beforeEach(inject([DataMiningClientService], (service: DataMiningClientService) => {
-    this.dataMiningService = service;
-    spyOn(this.dataMiningService, 'getCharacters$').and.callThrough();
+    dataMiningService = service;
+    spyOn(dataMiningService, 'getCharacters$').and.callThrough();
   }));
 
   it('should be created', inject([CharactersService], (service: CharactersService) => {
@@ -63,7 +62,7 @@ describe('CharactersService', () => {
     service.loadCharactersFromDataMining();
     // THEN
     expect(service.isLoaded()).toBeTruthy();
-    expect(this.dataMiningService.getCharacters$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getCharacters$).toHaveBeenCalledTimes(1);
   }));
 
   it('should find the correct character when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {

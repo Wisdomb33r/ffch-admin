@@ -1,12 +1,9 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
 import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
-import {SkillMapper} from '../mappers/skill-mapper';
-import {Observable} from 'rxjs/Observable';
-import {forkJoin} from 'rxjs/observable/forkJoin';
-import {of} from 'rxjs/observable/of';
+import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 @Component({
@@ -14,19 +11,20 @@ import {catchError} from 'rxjs/operators';
   templateUrl: './character-skills-display.component.html',
   styleUrls: ['./character-skills-display.component.css']
 })
-export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
+export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
 
   @Input() competences: Array<Competence>;
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
+  public subscription: Subscription;
 
   constructor(private ffchClientService: FfchClientService) {
   }
 
-  ngOnInit() {
-  }
-
   ngOnChanges() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     this.skillsErrors = [];
     this.competencesContainers = [];
     if (Array.isArray(this.competences)) {
@@ -39,13 +37,19 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
             return of(error);
           })));
       });
-      forkJoin(observables).subscribe(results => {
+      this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((c, index) => {
             this.competences[index].id = isNullOrUndefined(c) ? undefined : c.id;
             this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c));
           }
         );
       });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 

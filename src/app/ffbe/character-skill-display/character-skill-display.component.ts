@@ -26,7 +26,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
   public sendToFfch() {
     SkillMapper.mapCategorieToDamageType(this.competence);
     SkillMapper.mapUndefinedEnhanced(this.competence);
-    this.ffchClientService.postCompetence(this.competence)
+    this.ffchClientService.postCompetence$(this.competence)
       .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
   }
 

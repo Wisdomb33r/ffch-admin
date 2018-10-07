@@ -1,12 +1,11 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {Observable, of} from 'rxjs';
 import {DataMiningClientService} from './data-mining-client.service';
 import {HttpClient} from '@angular/common/http';
 
 class HttpClientMock {
   public get(url: string): Observable<Object> {
-    return Observable.of(null);
+    return of(null);
   }
 }
 
