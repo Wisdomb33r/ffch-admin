@@ -1,0 +1,13 @@
+img {
+  max-width: 58px;
+}
+
+span.ffchImageArray {
+  vertical-align: middle;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+img.ffchstatus {
+  vertical-align: middle;
+}

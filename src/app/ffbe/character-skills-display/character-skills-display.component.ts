@@ -4,6 +4,10 @@ import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';
 import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
 import {SkillMapper} from '../mappers/skill-mapper';
+import {Observable} from 'rxjs/Observable';
+import {forkJoin} from 'rxjs/observable/forkJoin';
+import {of} from 'rxjs/observable/of';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-character-skills-display',
@@ -26,14 +30,21 @@ export class CharacterSkillsDisplayComponent implements OnInit, OnChanges {
     this.skillsErrors = [];
     this.competencesContainers = [];
     if (Array.isArray(this.competences)) {
+      const observables: Array<Observable<Competence>> = [];
       this.competences.forEach(competence => {
-        this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
-          .subscribe(c => {
-              competence.id = isNullOrUndefined(c) ? undefined : c.id;
-              this.competencesContainers.push(new CompetencesComparingContainer(competence, c));
-            },
-            error => this.skillsErrors.push('Erreur lors du traitement de la compétence ' + competence.nom + ' : ' + error)
-          );
+        observables.push(this.ffchClientService.getCompetenceByGumiId$(competence.gumi_id)
+          .pipe(catchError(error => {
+            this.skillsErrors.push('Erreur lors du traitement de la compétence '
+              + competence.nom + ' (' + competence.gumi_id + ') : ' + error);
+            return of(error);
+          })));
+      });
+      forkJoin(observables).subscribe(results => {
+        results.forEach((c, index) => {
+            this.competences[index].id = isNullOrUndefined(c) ? undefined : c.id;
+            this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c));
+          }
+        );
       });
     }
   }

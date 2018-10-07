@@ -9,6 +9,7 @@ import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/observable/of';
+import {Amelioration} from '../model/amelioration.model';
 
 const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
@@ -16,6 +17,7 @@ const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
 const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'unit_awakenings.php';
+const FFCH_SKILL_AWAKENINGS_PATH = FFCH_BASE_URL + 'skill_awakenings.php';
 
 @Injectable()
 export class FfchClientService {
@@ -62,6 +64,16 @@ export class FfchClientService {
 
   public postUniteMateriauxEveil(uniteEveil: UniteEveil): Observable<any> {
     return this.http.post(FFCH_AWAKENING_MATERIALS_PATH, uniteEveil);
+  }
+
+  public getAmelioration$(perso_gumi_id: number, competence_gumi_id: number, niveau: number): Observable<Amelioration> {
+    return this.http.get<Amelioration>(FFCH_SKILL_AWAKENINGS_PATH + '?perso_gumi_id=' + perso_gumi_id +
+      '&skill_id_base=' + competence_gumi_id + '&niveau=' + niveau)
+      .pipe(catchError(this.analyseError));
+  }
+
+  public postAmelioration$(amelioration: Amelioration): Observable<any> {
+    return this.http.post(FFCH_SKILL_AWAKENINGS_PATH, amelioration);
   }
 
   private analyseError(error: HttpErrorResponse) {

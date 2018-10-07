@@ -5,7 +5,7 @@ export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;
 export const FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX = 1;
 export const FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX = 2;
-export const FFBE_CHARACTER_MAX_LEVEL = [0, 15, 30, 40, 60, 80, 100];
+export const FFBE_CHARACTER_MAX_LEVEL = [0, 15, 30, 40, 60, 80, 100, 120];
 export const FFBE_GAMES = [
   new Game(10001, 1, 'Final Fantasy I'),
   new Game(10002, 2, 'Final Fantasy II'),

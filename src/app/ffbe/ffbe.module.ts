@@ -26,6 +26,12 @@ import {SkillsComponent} from './skills/skills.component';
 import {CharacterSkillDisplayComponent} from './character-skill-display/character-skill-display.component';
 import {CharacterEquipmentsDisplayComponent} from './character-equipments-display/character-equipments-display.component';
 import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials-display/unit-awakening-materials-display.component';
+import {EnhancementsComponent} from './enhancements/enhancements.component';
+import {EnhancementsService} from './services/enhancements.service';
+import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-display.component';
+import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
+import {FormuleDisplayComponent} from './formule-display/formule-display.component';
+import {FormulesDisplayComponent} from './formules-display/formules-display.component';
 
 @NgModule({
   imports: [
@@ -52,6 +58,11 @@ import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials
     CharacterSkillDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
+    EnhancementsComponent,
+    EnhancementsDisplayComponent,
+    EnhancementDisplayComponent,
+    FormuleDisplayComponent,
+    FormulesDisplayComponent,
   ],
   exports: [
     CharactersComponent,
@@ -69,6 +80,7 @@ import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials
     LimitBurstsService,
     SkillsService,
     FfchClientService,
+    EnhancementsService,
   ]
 })
 export class FfbeModule {

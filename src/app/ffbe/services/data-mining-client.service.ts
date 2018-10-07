@@ -6,6 +6,7 @@ const dataMiningBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/mas
 const charactersFile = dataMiningBaseURL + 'units.json';
 const lbFile = dataMiningBaseURL + 'limitbursts.json';
 const skillsFile = dataMiningBaseURL + 'skills.json';
+const enhancementsFile = dataMiningBaseURL + 'enhancements.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -23,5 +24,9 @@ export class DataMiningClientService {
 
   public getSkills$(): Observable<Object> {
     return this.http.get(skillsFile);
+  }
+
+  public getEnhancements$(): Observable<Object> {
+    return this.http.get(enhancementsFile);
   }
 }
