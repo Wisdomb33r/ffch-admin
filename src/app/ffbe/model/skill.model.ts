@@ -1,4 +1,5 @@
 import {SkillStrings} from './skill-strings.model';
+import {SkillCost} from './skill-cost.model';
 
 export class Skill {
   public gumi_id: number;
@@ -6,7 +7,7 @@ export class Skill {
   public type: string;
   public active: boolean;
   public magic_type: string;
-  public mp_cost: number;
+  public cost: SkillCost;
   public attack_count: Array<number>;
   public attack_damage: Array<Array<number>>;
   public attack_frames: Array<Array<number>>;

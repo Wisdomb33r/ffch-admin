@@ -17,7 +17,9 @@ export class SkillMapper {
       null,
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
       null,
-      skill.mp_cost === 0 ? null : skill.mp_cost,
+      skill.cost.MP === 0 ? null : skill.cost.MP,
+      skill.cost.LB === 0 ? null : skill.cost.LB,
+      skill.cost.EP === 0 ? null : skill.cost.EP,
       skill.attack_count.length > 0 && skill.attack_count[0] > 0 ? skill.attack_count[0] : null,
       skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null,
       skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null
