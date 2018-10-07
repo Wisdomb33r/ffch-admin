@@ -32,7 +32,7 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendUniteToFfch(unite: Unite) {
-    this.ffchClientService.postUnite(unite)
+    this.ffchClientService.postUnite$(unite)
       .subscribe(u => unite.id = (isNullOrUndefined(u) ? null : u.id));
   }
 }
