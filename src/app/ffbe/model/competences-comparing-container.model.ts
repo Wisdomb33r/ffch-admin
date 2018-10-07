@@ -15,6 +15,8 @@ export class CompetencesComparingContainer {
     return this.isNomDifferent()
       || this.isDescriptionDifferent()
       || this.isPmDifferent()
+      || this.isEpDifferent()
+      || this.isLbDifferent()
       || this.isHitsDifferent()
       || this.isFramesDifferent()
       || this.isDamagesDifferent()
@@ -42,6 +44,22 @@ export class CompetencesComparingContainer {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.competence.pm, this.dbCompetence.pm);
+    }
+  }
+
+  private isEpDifferent(): boolean {
+    if (isNullOrUndefined(this.dbCompetence)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.competence.ep, this.dbCompetence.ep);
+    }
+  }
+
+  private isLbDifferent(): boolean {
+    if (isNullOrUndefined(this.dbCompetence)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.competence.lb, this.dbCompetence.lb);
     }
   }
 
