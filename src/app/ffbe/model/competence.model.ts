@@ -16,6 +16,8 @@ export class Competence {
               public effet_en: string,
               public puissance: number,
               public pm: number,
+              public lb: number,
+              public ep: number,
               public hits: number,
               public frames: string,
               public damages: string) {
