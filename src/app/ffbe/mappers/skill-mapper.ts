@@ -53,8 +53,8 @@ export class SkillMapper {
   private static transformIcon(icon: string): number {
     if (icon) {
       const underscoreSplitted = icon.split('_');
-      if (Array.isArray(underscoreSplitted) && underscoreSplitted.length === 2) {
-        const pointSplitted = underscoreSplitted[1].split('.');
+      if (Array.isArray(underscoreSplitted) && underscoreSplitted.length >= 2) {
+        const pointSplitted = underscoreSplitted[underscoreSplitted.length-1].split('.');
         if (Array.isArray(pointSplitted) && pointSplitted.length === 2) {
           return +(pointSplitted[0]);
         }
