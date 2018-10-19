@@ -29,9 +29,14 @@ export const FFBE_GAMES = [
   new Game(20005, 25, 'Secret of Mana'),
   new Game(20010, 26, 'NieR:Automata'),
   new Game(90002, 27, 'King\'s Knight'),
-  new Game(90001, 29, 'Collaborations spéciales'), // Ariana Grande
-  new Game(90003, 29, 'Collaborations spéciales'), // TOMB RAIDER
-  new Game(11001, 30, 'Final Fantasy Brave Exvius'),
+  new Game(20006, 28, 'Dragon Quest'),
+  new Game(90004, 29, 'Just Cause'),
+  new Game(20017, 30, 'Star Océan'),
+  new Game(90005, 31, 'Deus Ex'),
+  new Game(20022, 32, 'Valkyrie Profile'),
+  new Game(90001, 99, 'Collaborations spéciales'), // Ariana Grande
+  new Game(90003, 99, 'Collaborations spéciales'), // TOMB RAIDER
+  new Game(11001, 100, 'Final Fantasy Brave Exvius'),
 ];
 export const FFBE_EQUIPMENTS = [
   new Equipment(1, 16, 'Dagues', 'dagues.png'),
