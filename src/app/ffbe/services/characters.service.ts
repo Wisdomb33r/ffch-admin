@@ -5,6 +5,7 @@ import {SkillsService} from './skills.service';
 import {CharacterSkill} from '../model/character-skill.model';
 import {CharacterEntry} from '../model/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
+import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
 
 @Injectable()
 export class CharactersService {
@@ -49,6 +50,21 @@ export class CharactersService {
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
         return character;
+      }
+    }
+    return null;
+  }
+
+  public searchForCharacterByNameOrGumiId(name: string): Character {
+    if (this.charactersFromDataMining != null) {
+      const tentativeGumiId = Number(name);
+      if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId))
+      {
+        return this.searchForCharacterByGumiId(tentativeGumiId);
+      }
+      else
+      {
+        return this.searchForCharacterByName(name);
       }
     }
     return null;

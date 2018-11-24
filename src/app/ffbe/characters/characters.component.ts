@@ -32,7 +32,7 @@ export class CharactersComponent implements OnInit {
   public searchCharacterInDataMining() {
     this.personnage = null;
     this.competences = [];
-    const character: Character = this.charactersService.searchForCharacterByName(this.name.value);
+    const character: Character = this.charactersService.searchForCharacterByNameOrGumiId(this.name.value);
     if (character) {
       this.personnage = CharacterMapper.toPersonnage(character);
       this.personnage.unites[this.personnage.unites.length - 1].competences
