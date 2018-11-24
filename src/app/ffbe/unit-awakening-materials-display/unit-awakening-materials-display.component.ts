@@ -24,20 +24,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
 
   ngOnChanges() {
     this.materiauxEveilErrors = [];
-    this.getObjets();
     this.getAwakeningMaterials();
-  }
-
-  protected getObjets() {
-    if (!isNullOrUndefined(this.unite.materiauxEveil)) {
-      this.unite.materiauxEveil.ingredients.forEach(materiauEveil => {
-        this.ffchClientService.getObjetByGumiId$(materiauEveil.gumi_id)
-          .subscribe(o => {
-              materiauEveil.materiau = isNullOrUndefined(o) ? null : (Objet.produce(o));
-            },
-            error => this.materiauxEveilErrors.push('Erreur lors de la recherche de l\'objet' + materiauEveil.gumi_id + ' : ' + error));
-      });
-    }
   }
 
   protected getAwakeningMaterials() {
@@ -50,7 +37,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
           + this.unite.numero + ' : ' + error));
   }
 
-  public getFormuleFromFfchAmelioration(): Formule {
+  public getFormuleFromFfchUniteEveil(): Formule {
     if (!isNullOrUndefined(this.materiauxEveilFromFfch)) {
       return this.materiauxEveilFromFfch;
     } else {
@@ -62,23 +49,8 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
     return !isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.ingredients.length > 0);
   }
 
-  public isMateriauEveilPresentInFfchDb(materiauEveil: Ingredient) {
-    return !isNullOrUndefined(materiauEveil) && materiauEveil.isPresentInFfchDb();
-  }
-
-  public isImageMateriauEveilPresentInFfchDb(materiauEveil: Ingredient) {
-    return !isNullOrUndefined(materiauEveil) && materiauEveil.isImagePresentInFfchDb();
-  }
-
   public areMateriauxEveilPresentInFfchDB(): boolean {
     return !isNullOrUndefined(this.materiauxEveilFromFfch) && !isNullOrUndefined(this.materiauxEveilFromFfch.ingredients) && this.materiauxEveilFromFfch.ingredients.length > 0;
-  }
-
-  public areMateriauxEveilCorrectInFfchDB(): boolean {
-    return (this.materiauxEveilFromFfch.ingredients.length === this.unite.materiauxEveil.ingredients.length)
-      && this.unite.materiauxEveil.ingredients.every(materiauEveil => this.materiauxEveilFromFfch.ingredients.some(materiauEveilFromFfch =>
-        (materiauEveilFromFfch.gumi_id === materiauEveil.gumi_id) && (materiauEveilFromFfch.quantite === materiauEveil.quantite))
-      );
   }
 
   public isMateriauxEveilErrorsDisplayed(): boolean {
