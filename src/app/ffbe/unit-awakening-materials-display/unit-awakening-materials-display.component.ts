@@ -50,7 +50,9 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public areMateriauxEveilPresentInFfchDB(): boolean {
-    return !isNullOrUndefined(this.materiauxEveilFromFfch) && !isNullOrUndefined(this.materiauxEveilFromFfch.ingredients) && this.materiauxEveilFromFfch.ingredients.length > 0;
+    return !isNullOrUndefined(this.materiauxEveilFromFfch)
+      && !isNullOrUndefined(this.materiauxEveilFromFfch.ingredients)
+      && this.materiauxEveilFromFfch.ingredients.length > 0;
   }
 
   public isMateriauxEveilErrorsDisplayed(): boolean {
