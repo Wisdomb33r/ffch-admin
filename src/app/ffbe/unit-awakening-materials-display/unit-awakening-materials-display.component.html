@@ -1,6 +1,4 @@
 <div *ngIf="hasMateriauxEveil()">
-  <h3>Matériaux d'éveil</h3>
-
   <ul class="error" *ngIf="isMateriauxEveilErrorsDisplayed()">
     <li *ngFor="let message of materiauxEveilErrors">{{message}}</li>
   </ul>
