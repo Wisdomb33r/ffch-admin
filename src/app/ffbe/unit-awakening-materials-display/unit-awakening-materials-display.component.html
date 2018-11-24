@@ -29,10 +29,21 @@
   </div>
   <div *ngIf="areMateriauxEveilPresentInFfchDB() && !areMateriauxEveilCorrectInFfchDB()">
     <img src="assets/red/warn.png" class="ffchstatus">
-    <span *ngFor="let materiauEveil of materiauxEveilFromFfch" class="ffchImageArray">
+    <span *ngFor="let materiauEveil of materiauxEveilFromFfch.ingredients" class="ffchImageArray">
     <img src="{{materiauEveil.materiau.icone}}"
          alt="{{materiauEveil.materiau.nom}}" title="{{materiauEveil.materiau.nom}} ({{materiauEveil.gumi_id}})"/>
     x{{materiauEveil.quantite}}
     </span>
   </div>
+
+  <app-formules-display [formule]="unite.materiauxEveil"
+                        [formuleFromFfch]="getFormuleFromFfchAmelioration()"
+                        [displayCost]="false"
+                        [displaySuccessfulStatus]="true">
+  </app-formules-display>
+  
+  <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteMateriauxEveilToFfch()"
+          *ngIf="!isMateriauxEveilErrorsDisplayed() && !areMateriauxEveilPresentInFfchDB()">
+    Envoyer
+  </button>
 </div>

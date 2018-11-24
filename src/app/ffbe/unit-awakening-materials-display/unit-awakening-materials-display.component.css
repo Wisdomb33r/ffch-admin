@@ -15,3 +15,7 @@ button.ffchSendButton {
 img.ffchstatus {
   vertical-align: middle;
 }
+
+app-formules-display {
+  display: inline-block;
+}
