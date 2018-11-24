@@ -1,17 +1,7 @@
-img {
-  max-width: 58px;
-}
-
-span.ffchImageArray {
-  vertical-align: middle;
-  display: inline-block;
-  padding-right: 5px;
-}
-
 button.ffchSendButton {
   vertical-align: middle;
 }
 
-img.ffchstatus {
-  vertical-align: middle;
+app-formules-display {
+  display: inline-block;
 }
