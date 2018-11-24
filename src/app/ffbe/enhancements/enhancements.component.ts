@@ -44,7 +44,7 @@ export class EnhancementsComponent implements OnInit {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       this.gumiId.patchValue('');
-      this.character = this.charactersService.searchForCharacterByName(this.characterName.value);
+      this.character = this.charactersService.searchForCharacterByNameOrGumiId(this.characterName.value);
       if (!isNullOrUndefined(this.character)) {
         enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(this.character.gumi_id);
       }
