@@ -47,7 +47,7 @@ export class CharacterEntryMapper {
       unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
       unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
       unite.lim_cristals_niv_min = lb.levels.length > 0 && lb.levels[0].length > 0 ? lb.levels[0][0] : null;
-      unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length-1].length > 0 ? lb.levels[lb.levels.length-1][0] : null;
+      unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length - 1].length > 0 ? lb.levels[lb.levels.length - 1][0] : null;
       unite.lim_nb_niv = lb.levels.length;
     }
   }
