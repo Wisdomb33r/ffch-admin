@@ -41,14 +41,14 @@ export class CharacterEntryMapper {
       unite.limite_en = lb.strings.name[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_desc = lb.strings.desc[FFBE_FRENCH_TABLE_INDEX];
       unite.lim_desc_en = lb.strings.desc[FFBE_ENGLISH_TABLE_INDEX];
-      unite.lim_effect_min = lb.min_level.effects.length > 0 ? lb.min_level.effects.join('<br />') : null;
-      unite.lim_effect_max = lb.max_level.effects.length > 0 ? lb.max_level.effects.join('<br />') : null;
+      unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
+      unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
       unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
       unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
       unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
-      unite.lim_cristals_niv_min = lb.min_level.cost;
-      unite.lim_cristals_niv_max = lb.max_level.cost;
-      unite.lim_nb_niv = lb.levels;
+      unite.lim_cristals_niv_min = lb.levels.length > 0 && lb.levels[0].length > 0 ? lb.levels[0][0] : null;
+      unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length-1].length > 0 ? lb.levels[lb.levels.length-1][0] : null;
+      unite.lim_nb_niv = lb.levels.length;
     }
   }
 
