@@ -31,7 +31,9 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(uniteEveil => {
           this.materiauxEveilFromFfch = isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule);
-          FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch.ingredients);
+          if (!isNullOrUndefined(this.materiauxEveilFromFfch)) {
+            FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch.ingredients);
+          }
         },
         error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
           + this.unite.numero + ' : ' + error));
