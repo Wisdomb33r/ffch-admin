@@ -37,4 +37,8 @@ export class CharacterSkillDisplayComponent implements OnInit {
   public shouldDisplayEnhanced() {
     return !isNullOrUndefined(this.competence.enhanced);
   }
+
+  public generateLinkToFfch(): String {
+    return '<a href="ffexvius_skills.php?compid=' + (this.present ? this.competence.id.toString() : '') + '">' + this.competence.nom + '</a>';
+  }
 }
