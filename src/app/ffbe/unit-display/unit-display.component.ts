@@ -37,6 +37,7 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
   }
 
   public generateLimitLinkToFfch(): String {
-    return '<a href="ffexvius_units.php?unitid=' + (this.unite.isPresentInFfchDb() ? this.unite.id.toString() : '') + '\"><em>' + this.unite.limite + '</em></a>';
+    return '<a href="ffexvius_units.php?unitid=' + (this.unite.isPresentInFfchDb() ? this.unite.id.toString() : '')
+      + '\"><em>' + this.unite.limite + '</em></a>';
   }
 }
