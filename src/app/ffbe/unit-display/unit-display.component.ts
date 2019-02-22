@@ -35,4 +35,8 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
     this.ffchClientService.postUnite$(unite)
       .subscribe(u => unite.id = (isNullOrUndefined(u) ? null : u.id));
   }
+
+  public generateLimitLinkToFfch(): String {
+    return '<a href="ffexvius_units.php?unitid=' + (this.unite.isPresentInFfchDb() ? this.unite.id.toString() : '') + '\"><em>' + this.unite.limite + '</em></a>';
+  }
 }
