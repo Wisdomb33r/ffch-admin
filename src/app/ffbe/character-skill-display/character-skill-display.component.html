@@ -65,6 +65,10 @@
         <th>Damages</th>
         <td>{{competence.damages}}</td>
       </tr>
+      <tr>
+        <th>Lien</th>
+        <td>{{generateLinkToFfch()}}</td>
+      </tr>
     </table>
 
     <p *ngIf="!present || shouldDisplayEnhanced()">
