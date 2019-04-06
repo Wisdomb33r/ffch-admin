@@ -1,3 +1,20 @@
-<p>
-  item-recipes works!
-</p>
+<mat-card *ngIf="isDataMiningLoading()">
+  <mat-card-title>Chargement en cours...</mat-card-title>
+  <mat-spinner></mat-spinner>
+</mat-card>
+<mat-card *ngIf="!isDataMiningLoading()">
+  <mat-card-title>Importer une recette</mat-card-title>
+  <mat-form-field>
+    <input matInput [formControl]="englishName" placeholder="Nom anglais">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="frenchName" placeholder="Nom français">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="gumiId" placeholder="Identifiant Gumi" type="number">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="searchItemRecipeInDataMining()">Chercher</button>
+</mat-card>
+<app-character-skills-display *ngIf="isItemRecipeDisplayed()"
+                              [competences]="competences">
+</app-character-skills-display>
