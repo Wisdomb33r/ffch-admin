@@ -12,11 +12,13 @@ import {MatButtonModule, MatCardModule, MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SkillsComponent} from './ffbe/skills/skills.component';
 import {EnhancementsComponent} from './ffbe/enhancements/enhancements.component';
+import {ItemRecipesComponent} from './ffbe/item-recipes/item-recipes.component';
 
 const appRoutes: Routes = [
   {path: 'ffbe/characters', component: CharactersComponent},
   {path: 'ffbe/skills', component: SkillsComponent},
   {path: 'ffbe/enhancements', component: EnhancementsComponent},
+  {path: 'ffbe/recipes', component: ItemRecipesComponent},
 ];
 
 @NgModule({
