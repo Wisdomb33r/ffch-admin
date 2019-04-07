@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
 import {ItemRecipe} from '../model/item-recipe.model';
+import {ItemRecipeMapper} from '../mappers/item-recipe-mapper';
 import {isNullOrUndefined} from 'util';
 
 @Component({
@@ -34,13 +35,14 @@ export class ItemRecipesComponent implements OnInit {
       const itemRecipe = this.itemRecipesService.searchForItemRecipeByGumiId(this.gumiId.value);
       if (!isNullOrUndefined((itemRecipe))) {
         console.log(itemRecipe);
-        //this.competences.push(SkillMapper.toCompetence(skill));
+        this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
       }
     } else {
       const itemRecipes: Array<ItemRecipe> = this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
       console.log(itemRecipes);
-      //itemRecipes.forEach(skill => this.competences.push(SkillMapper.toCompetence(skill)));
+      itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
     }
+    console.log(this.recettes);
   }
 
   public isItemRecipeDisplayed(): boolean {
