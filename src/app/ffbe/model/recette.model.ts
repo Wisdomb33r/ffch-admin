@@ -3,6 +3,7 @@ import {Objet} from './objet.model';
 
 export class Recette {
 
+  public id: number;
   public recette: Objet;
   public resultat: Objet;
 

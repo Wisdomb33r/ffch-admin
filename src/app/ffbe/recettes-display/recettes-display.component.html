@@ -1,6 +1,10 @@
 <mat-card>
   <mat-card-title>Recettes</mat-card-title>
 
-  <app-recette-display *ngFor="let recette of recettes" [recette]="recette"></app-recette-display>
+  <ul class="error" *ngIf="isRecettesErrorsDisplayed()">
+    <li *ngFor="let message of recettesErrors">{{message}}</li>
+  </ul>
+
+  <app-recette-display *ngFor="let recetteContainer of recettesContainers" [recettesContainer]="recetteContainer"></app-recette-display>
 
 </mat-card>
