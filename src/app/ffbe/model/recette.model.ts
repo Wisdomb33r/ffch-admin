@@ -6,8 +6,8 @@ export class Recette {
   public recette: Objet;
   public resultat: Objet;
 
-  constructor(public gumi_id_recette: number,
-              public gumi_id_resultat: number,
+  constructor(public recette_gumi_id: number,
+              public resultat_gumi_id: number,
               public craft_time: number,
               public formule: Formule,
               public nb_resultat: number) {
