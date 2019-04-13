@@ -33,6 +33,8 @@ import {EnhancementDisplayComponent} from './enhancement-display/enhancement-dis
 import {FormuleDisplayComponent} from './formule-display/formule-display.component';
 import {FormulesDisplayComponent} from './formules-display/formules-display.component';
 import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
+import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
+import { RecetteDisplayComponent } from './recette-display/recette-display.component';
 
 @NgModule({
   imports: [
@@ -65,6 +67,8 @@ import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
     FormuleDisplayComponent,
     FormulesDisplayComponent,
     ItemRecipesComponent,
+    RecettesDisplayComponent,
+    RecetteDisplayComponent,
   ],
   exports: [
     CharactersComponent,

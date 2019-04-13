@@ -15,6 +15,6 @@
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchItemRecipeInDataMining()">Chercher</button>
 </mat-card>
-<app-character-skills-display *ngIf="isItemRecipeDisplayed()"
-                              [competences]="competences">
-</app-character-skills-display>
+<app-recettes-display *ngIf="isItemRecipeDisplayed()"
+                              [recettes]="recettes">
+</app-recettes-display>

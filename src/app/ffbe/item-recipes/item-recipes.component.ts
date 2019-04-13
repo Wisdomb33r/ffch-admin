@@ -4,6 +4,7 @@ import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
 import {ItemRecipe} from '../model/item-recipe.model';
 import {ItemRecipeMapper} from '../mappers/item-recipe-mapper';
+import {RecettesDisplayComponent} from '../recettes-display/recettes-display.component';
 import {isNullOrUndefined} from 'util';
 
 @Component({
