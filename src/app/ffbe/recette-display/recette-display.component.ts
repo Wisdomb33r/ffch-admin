@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Recette} from '../model/recette.model';
+import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
 
 @Component({
   selector: 'app-recette-display',
@@ -8,11 +9,12 @@ import {Recette} from '../model/recette.model';
 })
 export class RecetteDisplayComponent implements OnInit {
 
-  @Input() recette: Recette;
+  @Input() recettesContainer: RecettesComparingContainer;
 
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }
