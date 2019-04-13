@@ -39,7 +39,8 @@ export class ItemRecipesComponent implements OnInit {
         this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
       }
     } else {
-      const itemRecipes: Array<ItemRecipe> = this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
+      const itemRecipes: Array<ItemRecipe> =
+        this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
       console.log(itemRecipes);
       itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
     }

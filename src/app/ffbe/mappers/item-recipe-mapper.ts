@@ -9,9 +9,8 @@ export class ItemRecipeMapper {
 
   public static toRecette(itemRecipe: ItemRecipe) {
 
-    let gumiIdResultat=0;
-    if(itemRecipe && itemRecipe.item)
-    {
+    let gumiIdResultat = 0;
+    if (itemRecipe && itemRecipe.item) {
       gumiIdResultat = this.extractGumiId(itemRecipe.item);
     }
 
