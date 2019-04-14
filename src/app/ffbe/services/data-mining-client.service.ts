@@ -9,6 +9,7 @@ const skillsFile = dataMiningBaseURL + 'skills.json';
 const enhancementsFile = dataMiningBaseURL + 'enhancements.json';
 const recipeFile = dataMiningBaseURL + 'recipes.json';
 const itemFile = dataMiningBaseURL + 'items.json';
+const equipmentFile = dataMiningBaseURL + 'equipment.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -38,5 +39,9 @@ export class DataMiningClientService {
 
   public getItems$(): Observable<Object> {
     return this.http.get(itemFile);
+  }
+
+  public getEquipments$(): Observable<Object> {
+    return this.http.get(equipmentFile);
   }
 }
