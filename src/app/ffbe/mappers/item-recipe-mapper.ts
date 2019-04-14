@@ -11,7 +11,7 @@ export class ItemRecipeMapper {
 
     let gumiIdResultat = 0;
     if (itemRecipe && itemRecipe.item) {
-      gumiIdResultat = this.extractGumiId(itemRecipe.item);
+      gumiIdResultat = FfbeUtils.extractGumiId(itemRecipe.item);
     }
 
     let time = 0;
@@ -31,27 +31,13 @@ export class ItemRecipeMapper {
       const materialsNames: string[] = Object.getOwnPropertyNames(itemRecipe.mats);
 
       for (const materialName of materialsNames) {
-        const ingredient = new Ingredient(this.extractGumiId(materialName), itemRecipe.mats[materialName]);
+        const ingredient = new Ingredient(FfbeUtils.extractGumiId(materialName), itemRecipe.mats[materialName]);
         ingredients.push(ingredient);
       }
       FfbeUtils.sortArrayIngredients(ingredients);
     }
 
     return new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
-  }
-
-  public static extractGumiId(rawGumiId: string): number {
-    let gumiId: number;
-
-    const splitGumiId = rawGumiId.split(':');
-
-    if (splitGumiId.length === 0) {
-      gumiId = 0;
-    } else {
-      gumiId = +splitGumiId[splitGumiId.length - 1];
-    }
-
-    return gumiId;
   }
 
 }

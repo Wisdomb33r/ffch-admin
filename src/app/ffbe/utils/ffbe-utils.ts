@@ -57,4 +57,18 @@ export class FfbeUtils {
     }
     return false;
   }
+
+  public static extractGumiId(rawGumiId: string): number {
+    let gumiId: number;
+
+    const splitGumiId = rawGumiId.split(':');
+
+    if (splitGumiId.length === 0) {
+      gumiId = 0;
+    } else {
+      gumiId = +splitGumiId[splitGumiId.length - 1];
+    }
+
+    return gumiId;
+  }
 }
