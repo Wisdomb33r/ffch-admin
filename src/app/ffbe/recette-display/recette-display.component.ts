@@ -31,12 +31,22 @@ export class RecetteDisplayComponent implements OnInit {
   }
 
   public nomRecetteAffichable() : string {
-    return isNullOrUndefined(this.objetRecette) ? this.recettesContainer.recette.recette_gumi_id.toString() : this.objetRecette.nom;
+    if (!isNullOrUndefined(this.objetRecette)) {
+      return this.objetRecette.nom;
+    } else if (!isNullOrUndefined(this.recettesContainer.recette.nom_item)) {
+      return '(Recette de) ' + this.recettesContainer.recette.nom_item;
+    }
+    return this.recettesContainer.recette.recette_gumi_id.toString();
   }
 
 
   public nomResultatAffichable() : string {
-    return isNullOrUndefined(this.objetResultat) ? this.recettesContainer.recette.resultat_gumi_id.toString() : this.objetResultat.nom;
+    if (!isNullOrUndefined(this.objetResultat)) {
+      return this.objetResultat.nom;
+    } else if (!isNullOrUndefined(this.recettesContainer.recette.nom_item)) {
+      return this.recettesContainer.recette.nom_item;
+    }
+    return this.recettesContainer.recette.resultat_gumi_id.toString()
   }
 
   public isImageObjetPresentInFfchDb(objet: Objet) {

@@ -7,6 +7,8 @@ export class Recette {
   public id: number;
   public recette: Objet;
   public resultat: Objet;
+  public nom_item: string;
+  public nom_item_en: string;
 
   constructor(public recette_gumi_id: number,
               public resultat_gumi_id: number,

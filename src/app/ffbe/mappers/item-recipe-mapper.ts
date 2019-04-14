@@ -4,6 +4,7 @@ import {Formule} from '../model/formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Ingredient} from '../model/ingredient.model';
 import {isNumber} from 'util';
+import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 export class ItemRecipeMapper {
 
@@ -25,6 +26,9 @@ export class ItemRecipeMapper {
     }
 
     let gils = 0;
+    if (itemRecipe && itemRecipe.dmItem && itemRecipe.dmItem.price_sell) {
+      gils = 2 * itemRecipe.dmItem.price_sell;
+    }
 
     const ingredients: Array<Ingredient> = [];
     if (itemRecipe && itemRecipe.mats) {
@@ -37,7 +41,16 @@ export class ItemRecipeMapper {
       FfbeUtils.sortArrayIngredients(ingredients);
     }
 
-    return new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
+    let recette = new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
+
+    if (itemRecipe && itemRecipe.dmItem && itemRecipe.dmItem.strings && itemRecipe.dmItem.strings.names) {
+      recette.nom_item = itemRecipe.dmItem.strings.names[FFBE_FRENCH_TABLE_INDEX];
+      recette.nom_item_en = itemRecipe.dmItem.strings.names[FFBE_ENGLISH_TABLE_INDEX];
+
+    }
+
+    return recette;
+
   }
 
 }
