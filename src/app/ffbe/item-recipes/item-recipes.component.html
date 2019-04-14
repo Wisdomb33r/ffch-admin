@@ -5,13 +5,16 @@
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer une recette</mat-card-title>
   <mat-form-field>
-    <input matInput [formControl]="englishName" placeholder="Nom anglais">
+    <input matInput [formControl]="englishName" placeholder="Nom anglais du résultat">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [formControl]="frenchName" placeholder="Nom français">
+    <input matInput [formControl]="frenchName" placeholder="Nom français du résultat">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [formControl]="gumiId" placeholder="Identifiant Gumi" type="number">
+    <input matInput [formControl]="resultGumiId" placeholder="Identifiant Gumi du résultat" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="recipeGumiId" placeholder="Identifiant Gumi de la recette" type="number">
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchItemRecipeInDataMining()">Chercher</button>
 </mat-card>

@@ -53,7 +53,7 @@ export class ItemRecipesService {
     return itemRecipes;
   }
 
-  public searchForItemRecipeByItemGumiId(id: number): ItemRecipe {
+  public searchForItemRecipeByItemGumiId(id: number): Array<ItemRecipe> {
     if (this.itemRecipesFromDataMining != null) {
       const itemRecipes: Array<ItemRecipe> = [];
       const item = this.itemsService.searchForItemByGumiId(id);
@@ -61,7 +61,7 @@ export class ItemRecipesService {
       let matchingProperties: Array<string> = [];
       matchingProperties = propertyNames.filter(
         propertyName =>
-          this.itemRecipesFromDataMining[propertyName].item.contains(id.toString())
+          this.itemRecipesFromDataMining[propertyName].item.includes(id.toString())
       );
       if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
         matchingProperties.forEach(property => {
@@ -71,6 +71,7 @@ export class ItemRecipesService {
           itemRecipes.push(itemRecipe);
         });
       }
+      return itemRecipes;
     }
     return null;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
@@ -16,13 +16,15 @@ export class ItemRecipesComponent implements OnInit {
 
   englishName: FormControl;
   frenchName: FormControl;
-  gumiId: FormControl;
+  resultGumiId: FormControl;
+  recipeGumiId: FormControl;
   recettes: Array<Recette>;
 
   constructor(private itemRecipesService: ItemRecipesService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
-    this.gumiId = new FormControl('');
+    this.resultGumiId = new FormControl('');
+    this.recipeGumiId = new FormControl('');
   }
 
   ngOnInit() {
@@ -30,14 +32,22 @@ export class ItemRecipesComponent implements OnInit {
 
   public searchItemRecipeInDataMining() {
     this.recettes = [];
-    if (!isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
+    if (!isNullOrUndefined(this.recipeGumiId.value) && this.recipeGumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
-      const itemRecipe = this.itemRecipesService.searchForItemRecipeByRecipeGumiId(this.gumiId.value);
+      this.resultGumiId.patchValue('')
+      const itemRecipe = this.itemRecipesService.searchForItemRecipeByRecipeGumiId(this.recipeGumiId.value);
       if (!isNullOrUndefined((itemRecipe))) {
         console.log(itemRecipe);
         this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
       }
+    } else if (!isNullOrUndefined(this.resultGumiId.value) && this.resultGumiId.value > 0) {
+      this.englishName.patchValue('');
+      this.frenchName.patchValue('');
+      const itemRecipes: Array<ItemRecipe> =
+        this.itemRecipesService.searchForItemRecipeByItemGumiId(this.resultGumiId.value);
+      console.log(itemRecipes);
+      itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
     } else {
       const itemRecipes: Array<ItemRecipe> =
         this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
