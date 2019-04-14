@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title (click)="switchDisplayed()">
-    {{recettesContainer.recette.recette.nom}}
+    {{nomRecetteAffichable()}}
   </mat-card-title>
 
 
@@ -8,16 +8,35 @@
     <table>
       <tr>
         <th>Recette</th>
-        <td>{{recettesContainer.recette.recette.nom}}</td>
+        <td>{{nomRecetteAffichable()}}</td>
       </tr>
       <tr>
         <th>Résultat</th>
-        <td>{{recettesContainer.recette.resultat.nom}}</td>
+        <td>{{nomResultatAffichable()}}</td>
       </tr>
       <tr>
         <th>Nombre d'objets fabriqués</th>
         <td>{{recettesContainer.recette.nb_resultat}}</td>
       </tr>
+
+      <img *ngIf="this.isImageObjetPresentInFfchDb(objetRecette)" src="{{objetRecette.icone}}"
+           alt="{{objetRecette.nom}}" title="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"/>
+      <img
+        *ngIf="!this.isImageObjetPresentInFfchDb(objetRecette) && this.isObjetPresentInFfchDb(objetRecette)"
+        src="assets/grey/warn.png" alt="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"
+        title="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"/>
+      <img *ngIf="!this.isObjetPresentInFfchDb(objetRecette)" src="assets/red/warn.png"
+           alt="{{this.recettesContainer.recette_gumi_id}}" title="{{this.recettesContainer.recette_gumi_id}}"/>
+
+      <img *ngIf="this.isImageObjetPresentInFfchDb(objetResultat)" src="{{objetResultat.icone}}"
+           alt="{{objetResultat.nom}}" title="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"/>
+      <img
+        *ngIf="!this.isImageObjetPresentInFfchDb(objetResultat) && this.isObjetPresentInFfchDb(objetResultat)"
+        src="assets/grey/warn.png" alt="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"
+        title="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"/>
+      <img *ngIf="!this.isObjetPresentInFfchDb(objetResultat)" src="assets/red/warn.png"
+           alt="{{this.recettesContainer.resultat_gumi_id}}" title="{{this.recettesContainer.resultat_gumi_id}}"/>
+
     </table>
 
   </div>
