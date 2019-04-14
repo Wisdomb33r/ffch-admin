@@ -1,4 +1,4 @@
-export class Equipment {
+export class EquipmentCategory {
   constructor(
     public gumiId: number,
     public ffchId: number,

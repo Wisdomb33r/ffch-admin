@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Personnage} from '../model/personnage.model';
-import {Equipment} from '../model/equipment.model';
+import {EquipmentCategory} from '../model/equipment-category.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
@@ -15,7 +15,7 @@ export class CharacterEquipmentsDisplayComponent implements OnChanges, OnInit {
 
   @Input() personnage: Personnage;
   public equipmentErrors: Array<string> = [];
-  public equipmentsFromFfch: Array<Equipment> = [];
+  public equipmentsFromFfch: Array<EquipmentCategory> = [];
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -31,7 +31,7 @@ export class CharacterEquipmentsDisplayComponent implements OnChanges, OnInit {
   public getEquipmentsFromFfch() {
     this.equipmentErrors = [];
     this.ffchClientService.getUniteEquipementsByUniteNumero$(this.personnage.unites[0].numero)
-    .subscribe(uE => this.equipmentsFromFfch = (isNullOrUndefined(uE) ? null : FfbeUtils.findEquipmentsByFfchIds(uE.equipements_ffch_ids)),
+      .subscribe(uE => this.equipmentsFromFfch = (isNullOrUndefined(uE) ? null : FfbeUtils.findEquipmentCategoriesByFfchIds(uE.equipements_ffch_ids)),
       error => this.equipmentErrors.push('Erreur lors du traitement de l\'unité ' + this.personnage.unites[0].numero + ' : ' + error));
   }
 
