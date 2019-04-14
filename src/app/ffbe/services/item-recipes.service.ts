@@ -2,6 +2,8 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {ItemRecipe} from '../model/item-recipe.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {ItemsService} from './items.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ export class ItemRecipesService {
 
   private itemRecipesFromDataMining = null;
 
-  constructor(private dataMiningClientService: DataMiningClientService) {
+  constructor(private dataMiningClientService: DataMiningClientService,
+              private itemsService: ItemsService) {
     this.loadItemRecipesFromDataMining();
   }
 
@@ -50,13 +53,37 @@ export class ItemRecipesService {
     return itemRecipes;
   }
 
-  public searchForItemRecipeByGumiId(id: number): ItemRecipe {
+  public searchForItemRecipeByItemGumiId(id: number): ItemRecipe {
+    if (this.itemRecipesFromDataMining != null) {
+      const itemRecipes: Array<ItemRecipe> = [];
+      const item = this.itemsService.searchForItemByGumiId(id);
+      const propertyNames: string[] = Object.getOwnPropertyNames(this.itemRecipesFromDataMining);
+      let matchingProperties: Array<string> = [];
+      matchingProperties = propertyNames.filter(
+        propertyName =>
+          this.itemRecipesFromDataMining[propertyName].item.contains(id.toString())
+      );
+      if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
+        matchingProperties.forEach(property => {
+          const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
+          itemRecipe.gumi_id = +property;
+          itemRecipe.dmItem = item;
+          itemRecipes.push(itemRecipe);
+        });
+      }
+    }
+    return null;
+  }
+
+  public searchForItemRecipeByRecipeGumiId(id: number): ItemRecipe {
     if (this.itemRecipesFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.itemRecipesFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
         const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
         itemRecipe.gumi_id = +property;
+        const itemGumiId = FfbeUtils.extractGumiId(itemRecipe.item);
+        itemRecipe.dmItem = this.itemsService.searchForItemByGumiId(itemGumiId);
         return itemRecipe;
       }
     }

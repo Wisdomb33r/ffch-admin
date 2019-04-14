@@ -33,7 +33,7 @@ export class ItemRecipesComponent implements OnInit {
     if (!isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
-      const itemRecipe = this.itemRecipesService.searchForItemRecipeByGumiId(this.gumiId.value);
+      const itemRecipe = this.itemRecipesService.searchForItemRecipeByRecipeGumiId(this.gumiId.value);
       if (!isNullOrUndefined((itemRecipe))) {
         console.log(itemRecipe);
         this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
