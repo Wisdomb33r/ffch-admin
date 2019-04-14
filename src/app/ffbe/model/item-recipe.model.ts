@@ -1,3 +1,5 @@
+import {Item} from './item.model';
+
 export class ItemRecipe {
   gumi_id: number;
   name: string;
@@ -6,4 +8,5 @@ export class ItemRecipe {
   mats: any;
   count: number;
   source: string;
+  dmItem: Item;
 }
