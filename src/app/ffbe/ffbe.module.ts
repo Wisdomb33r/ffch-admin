@@ -35,6 +35,8 @@ import {FormulesDisplayComponent} from './formules-display/formules-display.comp
 import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
 import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
 import { RecetteDisplayComponent } from './recette-display/recette-display.component';
+import {ItemsService} from './services/items.service';
+import {ItemRecipesService} from './services/item-recipes.service';
 
 @NgModule({
   imports: [
@@ -87,6 +89,8 @@ import { RecetteDisplayComponent } from './recette-display/recette-display.compo
     SkillsService,
     FfchClientService,
     EnhancementsService,
+    ItemsService,
+    ItemRecipesService
   ]
 })
 export class FfbeModule {
