@@ -1,3 +1,25 @@
-<p>
-  {{recettesContainer.recette.recette.nom}}
-</p>
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    {{recettesContainer.recette.recette.nom}}
+  </mat-card-title>
+
+
+  <div *ngIf="displayed">
+    <table>
+      <tr>
+        <th>Recette</th>
+        <td>{{recettesContainer.recette.recette.nom}}</td>
+      </tr>
+      <tr>
+        <th>Résultat</th>
+        <td>{{recettesContainer.recette.resultat.nom}}</td>
+      </tr>
+      <tr>
+        <th>Nombre d'objets fabriqués</th>
+        <td>{{recettesContainer.recette.nb_resultat}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+</mat-card>

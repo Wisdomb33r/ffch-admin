@@ -10,11 +10,15 @@ import {RecettesComparingContainer} from '../model/recettes-comparing-container.
 export class RecetteDisplayComponent implements OnInit {
 
   @Input() recettesContainer: RecettesComparingContainer;
+  public displayed = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  public switchDisplayed() {
+    this.displayed = !this.displayed;
+  }
 
 }
