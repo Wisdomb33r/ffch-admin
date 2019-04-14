@@ -4,7 +4,7 @@ import {Equipment} from '../model/equipment.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 @Injectable()
-export class ItemsService {
+export class EquipmentsService {
 
   private equipmentsFromDataMining = null;
 
