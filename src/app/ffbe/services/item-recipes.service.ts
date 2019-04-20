@@ -1,10 +1,8 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {ItemRecipe} from '../model/item-recipe.model';
-import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemsService} from './items.service';
 import {CraftableItemsService} from './craftable-items.service';
-import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -30,28 +28,27 @@ export class ItemRecipesService {
     const itemRecipes: Array<ItemRecipe> = [];
     const propertyNames: string[] = Object.getOwnPropertyNames(this.itemRecipesFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (english && french) {
-      matchingProperties = propertyNames.filter(
-        propertyName =>
-          this.itemRecipesFromDataMining[propertyName].name === english
-         // && this.skillsFromDataMining[propertyName].strings.name[FFBE_FRENCH_TABLE_INDEX] === french
-      );
-    } else if (english) {
-      matchingProperties = propertyNames.filter(
-        propertyName => this.itemRecipesFromDataMining[propertyName].name === english
-      );
-    } else if (french) {
-      matchingProperties = propertyNames.filter(
-        propertyName => this.itemRecipesFromDataMining[propertyName].strings.name[FFBE_FRENCH_TABLE_INDEX] === french
-      );
-    }
-    if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
-      matchingProperties.forEach(property => {
-        const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
-        itemRecipe.gumi_id = +property;
-        itemRecipes.push(itemRecipe);
+    const craftableItems = this.craftableItemsService.searchForCraftableItemsByNames(english, french);
+
+    if (Array.isArray(craftableItems) && craftableItems.length > 0) {
+      craftableItems.forEach(craftableItem => {
+        const extendedGumiId = craftableItem.getExtendedGumiId();
+
+        matchingProperties = propertyNames.filter(
+          propertyName =>
+            this.itemRecipesFromDataMining[propertyName].item === extendedGumiId
+        );
+        if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
+          matchingProperties.forEach(property => {
+            const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
+            itemRecipe.gumi_id = +property;
+            itemRecipe.craftableItem = craftableItem;
+            itemRecipes.push(itemRecipe);
+          });
+        }
       });
     }
+
     return itemRecipes;
   }
 

@@ -25,6 +25,20 @@ export class CraftableItemCategoryFactory {
     return craftableItemCategory;
   }
 
+  static toString(craftableItemCategory: CraftableItemCategory): string {
+    let prefix = '-1';
+
+    if (craftableItemCategory === 'CraftableItemCategory.Item') {
+      prefix = '20';
+    } else if (craftableItemCategory === 'CraftableItemCategory.Equipment') {
+      prefix = '21';
+    } else if (craftableItemCategory === 'CraftableItemCategory.Materia') {
+      prefix = '22';
+    }
+
+    return prefix;
+  }
+
 }
 
 export class CraftableItem {
@@ -52,6 +66,15 @@ export class CraftableItem {
         return null;
       }
     }
+  }
+
+  public getExtendedGumiId(): string {
+
+    const gumiId = this.getGumiId();
+    const prefix = CraftableItemCategoryFactory.toString(this.category);
+
+    return prefix + ':' + gumiId;
+
   }
 
   public getNom(): string {
