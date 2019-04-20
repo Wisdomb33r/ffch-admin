@@ -58,7 +58,6 @@ export class ItemRecipesService {
   public searchForItemRecipeByItemGumiId(id: number): Array<ItemRecipe> {
     if (this.itemRecipesFromDataMining != null) {
       const itemRecipes: Array<ItemRecipe> = [];
-      const item = this.itemsService.searchForItemByGumiId(id);
       const propertyNames: string[] = Object.getOwnPropertyNames(this.itemRecipesFromDataMining);
       let matchingProperties: Array<string> = [];
       matchingProperties = propertyNames.filter(
@@ -69,7 +68,7 @@ export class ItemRecipesService {
         matchingProperties.forEach(property => {
           const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
           itemRecipe.gumi_id = +property;
-          itemRecipe.dmItem = item;
+          itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByExtendedGumiId(itemRecipe.item);
           itemRecipes.push(itemRecipe);
         });
       }
