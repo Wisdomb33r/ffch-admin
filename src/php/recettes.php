@@ -22,8 +22,7 @@ class Recette
     $this->id = $brex_craft->id;
     $this->craft_time = $brex_craft->craft_time;
     $this->nb_resultat = $brex_craft->nb_resultat;
-    if (is_null($this->nb_resultat))
-    {
+    if (is_null($this->nb_resultat)) {
       $this->nb_resultat = 1;
     }
   }
@@ -46,43 +45,43 @@ function dieWithNotFound($errorMessages)
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-/*
-  $amelioration = json_decode(file_get_contents('php://input'));
+  /*
+    $amelioration = json_decode(file_get_contents('php://input'));
 
-  if (!isset ($amelioration->perso_gumi_id) || !$amelioration->perso_gumi_id) {
-    dieWithBadRequest('Format exception: Cannot save competence eveil without perso');
-  }
+    if (!isset ($amelioration->perso_gumi_id) || !$amelioration->perso_gumi_id) {
+      dieWithBadRequest('Format exception: Cannot save competence eveil without perso');
+    }
 
-  if (!isset ($amelioration->skill_id_base) || !$amelioration->skill_id_base) {
-    dieWithBadRequest('Format exception: Cannot save competence eveil without base competence');
-  }
+    if (!isset ($amelioration->skill_id_base) || !$amelioration->skill_id_base) {
+      dieWithBadRequest('Format exception: Cannot save competence eveil without base competence');
+    }
 
-  if (!isset ($amelioration->skill_id_new) || !$amelioration->skill_id_new) {
-    dieWithBadRequest('Format exception: Cannot save competence eveil without enhanced competence');
-  }
+    if (!isset ($amelioration->skill_id_new) || !$amelioration->skill_id_new) {
+      dieWithBadRequest('Format exception: Cannot save competence eveil without enhanced competence');
+    }
 
-  if (!isset ($amelioration->niveau) || !$amelioration->niveau) {
-    dieWithBadRequest('Format exception: Cannot save competence eveil without niveau');
-  }
+    if (!isset ($amelioration->niveau) || !$amelioration->niveau) {
+      dieWithBadRequest('Format exception: Cannot save competence eveil without niveau');
+    }
 
-  if (!isset ($amelioration->formule) || !isset ($amelioration->formule->ingredients) || !is_array($amelioration->formule->ingredients) || count($amelioration->formule->ingredients) == 0) {
-    dieWithBadRequest('Format exception : cannot save without awakening materials');
-  }
+    if (!isset ($amelioration->formule) || !isset ($amelioration->formule->ingredients) || !is_array($amelioration->formule->ingredients) || count($amelioration->formule->ingredients) == 0) {
+      dieWithBadRequest('Format exception : cannot save without awakening materials');
+    }
 
-  $brex_perso = findPersoByGumiId($amelioration->perso_gumi_id);
-  $brex_competence_base = findCompetenceByGumiId($amelioration->skill_id_base);
-  $brex_competence_amelioree = findCompetenceByGumiId($amelioration->skill_id_new);
+    $brex_perso = findPersoByGumiId($amelioration->perso_gumi_id);
+    $brex_competence_base = findCompetenceByGumiId($amelioration->skill_id_base);
+    $brex_competence_amelioree = findCompetenceByGumiId($amelioration->skill_id_new);
 
-  checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
+    checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
 
-  $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
-  $brex_competence_eveil->store();
+    $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
+    $brex_competence_eveil->store();
 
-  $stored_brex_competence_eveil = findCompetenceEveil($brex_perso, $brex_competence_base, $amelioration->niveau);
-  $stored_amelioration = createAmelioration($stored_brex_competence_eveil);
+    $stored_brex_competence_eveil = findCompetenceEveil($brex_perso, $brex_competence_base, $amelioration->niveau);
+    $stored_amelioration = createAmelioration($stored_brex_competence_eveil);
 
-  echo json_encode($stored_amelioration, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-*/
+    echo json_encode($stored_amelioration, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+  */
 } else {
 
   if (!isset ($_GET ['recette_gumi_id'])) {
@@ -157,20 +156,20 @@ function createRecette($brex_craft, $brex_craft_compos, $brex_recette, $brex_res
 
   $recette->formule = createFormuleFromCraft($brex_craft, $brex_craft_compos);
 
-/*  if ($brex_competence_eveil->comp_amelio && $brex_competence_eveil->comp_amelio->gumi_id) {
-    $amelioration->skill_id_new = $brex_competence_eveil->comp_amelio->gumi_id;
-  }
-  $amelioration->niveau = $brex_competence_eveil->niveau;
+  /*  if ($brex_competence_eveil->comp_amelio && $brex_competence_eveil->comp_amelio->gumi_id) {
+      $amelioration->skill_id_new = $brex_competence_eveil->comp_amelio->gumi_id;
+    }
+    $amelioration->niveau = $brex_competence_eveil->niveau;
 
-  $formule = createFormule($brex_competence_eveil);
+    $formule = createFormule($brex_competence_eveil);
 
-  if ($formule) {
-    $formule->gils = $brex_competence_eveil->gils;
-    $amelioration->formule = $formule;
-  }
+    if ($formule) {
+      $formule->gils = $brex_competence_eveil->gils;
+      $amelioration->formule = $formule;
+    }
 
-  $amelioration->released = $brex_competence_eveil->released ? true : false;
-*/
+    $amelioration->released = $brex_competence_eveil->released ? true : false;
+  */
   return $recette;
 }
 
