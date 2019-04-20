@@ -3,6 +3,7 @@ import {Recette} from '../model/recette.model';
 import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
 import {Objet} from '../model/objet.model';
 import {isNullOrUndefined} from "util";
+import {Formule} from '../model/formule.model';
 
 @Component({
   selector: 'app-recette-display',
@@ -55,6 +56,14 @@ export class RecetteDisplayComponent implements OnInit {
 
   public isObjetPresentInFfchDb(objet: Objet) {
     return !isNullOrUndefined(objet) && objet.isPresentInFfchDb();
+  }
+
+  public getFormuleFromFfchRecette(): Formule {
+    if (!isNullOrUndefined(this.recettesContainer.dbRecette) && !isNullOrUndefined(this.recettesContainer.dbRecette.formule)) {
+      return this.recettesContainer.dbRecette.formule;
+    } else {
+      return undefined;
+    }
   }
 
 }

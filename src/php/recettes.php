@@ -97,8 +97,9 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_objet_resultat = findObjetByGumiId($_GET ['resultat_gumi_id']);
 
   $brex_craft = findCraft($brex_objet_recette, $brex_objet_resultat);
+  $brex_craft_compo = findCompos($brex_craft);
 
-  $recette = createRecette($brex_craft, $brex_objet_recette, $brex_objet_resultat);
+  $recette = createRecette($brex_craft, $brex_craft_compo, $brex_objet_recette, $brex_objet_resultat);
 
   echo json_encode($recette, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
@@ -115,13 +116,46 @@ function findCraft($brex_objet_recette, $brex_objet_resultat)
   return $brex_craft[0];
 }
 
-function createRecette($brex_craft, $brex_recette, $brex_resultat)
+function findCompos($brex_craft)
+{
+  return brex_craft_compo::findByRelation1N(array('craft' => $brex_craft->id));
+}
+
+function createFormuleFromCraft($brex_craft, $brex_craft_compos)
+{
+  $formule = new Formule();
+
+  foreach ($brex_craft_compos as $compo) {
+    $ingredient = createIngredientFromCraftCompo($compo);
+    if ($ingredient) {
+      $formule->ingredients[] = $ingredient;
+    }
+  }
+
+  $formule->gils = $brex_craft->price;
+
+  return $formule;
+}
+
+function createIngredientFromCraftCompo($brex_craft_compo)
+{
+  $ingredient = new Ingredient();
+  $ingredient->materiau = new Objet($brex_craft_compo->composant);
+  $ingredient->gumi_id = $brex_craft_compo->composant->gumi_id;
+  $ingredient->quantite = $brex_craft_compo->nombre;
+
+  return $ingredient;
+}
+
+function createRecette($brex_craft, $brex_craft_compos, $brex_recette, $brex_resultat)
 {
   $recette = new Recette($brex_craft);
   $recette->recette_gumi_id = $brex_recette->gumi_id;
   $recette->resultat_gumi_id = $brex_resultat->gumi_id;
   $recette->recette = new Objet($brex_recette);
   $recette->resultat = new Objet($brex_resultat);
+
+  $recette->formule = createFormuleFromCraft($brex_craft, $brex_craft_compos);
 
 /*  if ($brex_competence_eveil->comp_amelio && $brex_competence_eveil->comp_amelio->gumi_id) {
     $amelioration->skill_id_new = $brex_competence_eveil->comp_amelio->gumi_id;

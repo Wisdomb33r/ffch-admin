@@ -53,6 +53,11 @@
       </tr>
     </table>
 
+    <app-formules-display [formule]="this.recettesContainer.recette.formule"
+                          [formuleFromFfch]="getFormuleFromFfchRecette()"
+                          [displayCost]="true"
+                          [displaySuccessfulStatus]="false">
+    </app-formules-display>
   </div>
 
 </mat-card>
