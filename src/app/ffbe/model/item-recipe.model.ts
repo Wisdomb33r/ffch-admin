@@ -9,6 +9,5 @@ export class ItemRecipe {
   mats: any;
   count: number;
   source: string;
-  dmItem: Item;
   craftableItem: CraftableItem;
 }

@@ -1,7 +1,6 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {ItemRecipe} from '../model/item-recipe.model';
-import {ItemsService} from './items.service';
 import {CraftableItemsService} from './craftable-items.service';
 
 @Injectable({
@@ -12,8 +11,7 @@ export class ItemRecipesService {
   private itemRecipesFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService,
-              private craftableItemsService: CraftableItemsService,
-              private itemsService: ItemsService) {
+              private craftableItemsService: CraftableItemsService) {
     this.loadItemRecipesFromDataMining();
   }
 
