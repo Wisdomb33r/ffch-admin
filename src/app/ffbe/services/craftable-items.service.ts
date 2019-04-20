@@ -43,11 +43,10 @@ export class CraftableItemsService {
     return craftableItems;
   }
 
-  public searchForCraftableItemByGumiId(rawGumiId: string): CraftableItem {
-    console.log('rawGumiId: ' + rawGumiId);
-    if (!isNullOrUndefined(rawGumiId.toString())) {
-      const craftableItemCategory = CraftableItemsService.extractCraftableItemCategory(rawGumiId);
-      const gumiId = FfbeUtils.extractGumiId(rawGumiId);
+  public searchForCraftableItemByExtendedGumiId(extendedGumiId: string): CraftableItem {
+    if (!isNullOrUndefined(extendedGumiId)) {
+      const craftableItemCategory = CraftableItemsService.extractCraftableItemCategory(extendedGumiId);
+      const gumiId = FfbeUtils.extractGumiId(extendedGumiId);
 
       let craftableItem: CraftableItem;
 

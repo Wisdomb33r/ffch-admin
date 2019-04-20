@@ -85,7 +85,7 @@ export class ItemRecipesService {
       if (property) {
         const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
         itemRecipe.gumi_id = +property;
-        itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByGumiId(itemRecipe.item);
+        itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByExtendedGumiId(itemRecipe.item);
         return itemRecipe;
       }
     }
