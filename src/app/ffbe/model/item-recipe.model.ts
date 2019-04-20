@@ -1,3 +1,4 @@
+import {CraftableItem} from './craftable-item.model';
 import {Item} from './item.model';
 
 export class ItemRecipe {
@@ -9,4 +10,5 @@ export class ItemRecipe {
   count: number;
   source: string;
   dmItem: Item;
+  craftableItem: CraftableItem;
 }

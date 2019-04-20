@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {ItemRecipe} from '../model/item-recipe.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemsService} from './items.service';
+import {CraftableItemsService} from './craftable-items.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable({
@@ -13,6 +14,7 @@ export class ItemRecipesService {
   private itemRecipesFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService,
+              private craftableItemsService: CraftableItemsService,
               private itemsService: ItemsService) {
     this.loadItemRecipesFromDataMining();
   }
@@ -83,8 +85,7 @@ export class ItemRecipesService {
       if (property) {
         const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
         itemRecipe.gumi_id = +property;
-        const itemGumiId = FfbeUtils.extractGumiId(itemRecipe.item);
-        itemRecipe.dmItem = this.itemsService.searchForItemByGumiId(itemGumiId);
+        itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByGumiId(itemRecipe.item);
         return itemRecipe;
       }
     }

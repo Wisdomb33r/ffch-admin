@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {CraftableItem, CraftableItemCategory} from '../model/craftable-item.model';
+import {CraftableItem, CraftableItemCategory, CraftableItemCategoryFactory} from '../model/craftable-item.model';
 import {ItemsService} from './items.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
-import {isNotNullOrUndefined} from 'codelyzer/util/is-not-null-or-undefined';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {isNullOrUndefined} from 'util';
 
 @Injectable()
 export class CraftableItemsService {
@@ -22,54 +22,55 @@ export class CraftableItemsService {
     const items = this.itemService.searchForItemsByNames(english, french);
     if (Array.isArray(items) && items.length > 0) {
       items.forEach(item => {
-        craftableItems.push(new CraftableItem(CraftableItemCategory.Item, item, null, null));
+        craftableItems.push(new CraftableItem('CraftableItemCategory.Item', item, null, null));
       });
     }
 
     const equipments = this.equipmentService.searchForEquipmentsByNames(english, french);
     if (Array.isArray(equipments) && equipments.length > 0) {
       equipments.forEach(equipment => {
-        craftableItems.push(new CraftableItem(CraftableItemCategory.Equipment, null, equipment, null));
+        craftableItems.push(new CraftableItem('CraftableItemCategory.Equipment', null, equipment, null));
       });
     }
 
     const materias = this.materiaService.searchForMateriasByNames(english, french);
     if (Array.isArray(materias) && materias.length > 0) {
       materias.forEach(materia => {
-        craftableItems.push(new CraftableItem(CraftableItemCategory.Materia, null, null, materia));
+        craftableItems.push(new CraftableItem('CraftableItemCategory.Materia', null, null, materia));
       });
     }
 
     return craftableItems;
   }
 
-  public searchForCraftableItemByGumiId(id: number): CraftableItem {
-    if (!isNotNullOrUndefined(id)) {
-      const craftableItemCategory = CraftableItemsService.extractCraftableItemCategory(id);
-      const gumiId = FfbeUtils.extractGumiId(id);
+  public searchForCraftableItemByGumiId(rawGumiId: string): CraftableItem {
+    console.log('rawGumiId: ' + rawGumiId);
+    if (!isNullOrUndefined(rawGumiId.toString())) {
+      const craftableItemCategory = CraftableItemsService.extractCraftableItemCategory(rawGumiId);
+      const gumiId = FfbeUtils.extractGumiId(rawGumiId);
 
       let craftableItem: CraftableItem;
 
       switch (craftableItemCategory) {
-        case CraftableItemCategory.Item: {
+        case 'CraftableItemCategory.Item': {
           const item = this.itemService.searchForItemByGumiId(gumiId);
           craftableItem = new CraftableItem(craftableItemCategory, item, null, null);
           break;
         }
 
-        case CraftableItemCategory.Equipment: {
+        case 'CraftableItemCategory.Equipment': {
           const equipment = this.equipmentService.searchForEquipmentByGumiId(gumiId);
           craftableItem = new CraftableItem(craftableItemCategory, null, equipment, null);
           break;
         }
 
-        case CraftableItemCategory.Materia: {
+        case 'CraftableItemCategory.Materia': {
           const materia = this.materiaService.searchForMateriaByGumiId(gumiId);
           craftableItem = new CraftableItem(craftableItemCategory, null, null, materia);
           break;
         }
 
-        case CraftableItemCategory.Unknown: {
+        case 'CraftableItemCategory.Unknown': {
           craftableItem = new CraftableItem(craftableItemCategory, null, null, null);
           break;
         }
@@ -81,13 +82,14 @@ export class CraftableItemsService {
   }
 
   public static extractCraftableItemCategory(rawGumiId: string): CraftableItemCategory {
+
     let craftableItemCategory: CraftableItemCategory;
     const splitGumiId = rawGumiId.split(':');
 
     if (splitGumiId.length === 0) {
-      craftableItemCategory = CraftableItemCategory.Unknown;
+      craftableItemCategory = 'CraftableItemCategory.Unknown';
     } else {
-      craftableItemCategory = CraftableItemCategory[splitGumiId[0]];
+      craftableItemCategory = CraftableItemCategoryFactory.fromString(splitGumiId[0]);
     }
 
     return craftableItemCategory;
