@@ -69,7 +69,12 @@
     </tr>
     <tr>
       <th>Lien vers limite</th>
-      <td>{{generateLimitLinkToFfch()}}</td>
+      <td>
+        <button mat-raised-button ngxClipboard [cbContent]="generateLimitLinkToFfch()" color="accent"
+                class="copy-button">Copier
+        </button>
+        {{generateLimitLinkToFfch()}}
+      </td>
     </tr>
   </table>
 

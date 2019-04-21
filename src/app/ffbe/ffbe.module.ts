@@ -40,6 +40,7 @@ import {ItemRecipesService} from './services/item-recipes.service';
 import {CraftableItemsService} from './services/craftable-items.service';
 import {EquipmentsService} from './services/equipments.service';
 import {MateriasService} from './services/materias.service';
+import {ClipboardModule} from 'ngx-clipboard';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import {MateriasService} from './services/materias.service';
     MatExpansionModule,
     MatTableModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ClipboardModule,
   ],
   declarations: [
     CharactersComponent,

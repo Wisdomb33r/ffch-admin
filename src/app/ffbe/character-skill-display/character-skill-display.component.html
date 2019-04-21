@@ -67,7 +67,12 @@
       </tr>
       <tr>
         <th>Lien</th>
-        <td>{{generateLinkToFfch()}}</td>
+        <td>
+          <button mat-raised-button ngxClipboard [cbContent]="generateLinkToFfch()" color="accent" class="copy-button">
+            Copier
+          </button>
+          {{generateLinkToFfch()}}
+        </td>
       </tr>
     </table>
 

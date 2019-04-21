@@ -5,3 +5,8 @@ img.ffchstatus {
 button.ffchSendButton {
   margin-top: 16px;
 }
+
+button.copy-button {
+  display: inline-block;
+  margin-right: 5px;
+}
