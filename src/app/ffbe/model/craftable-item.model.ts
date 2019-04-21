@@ -9,7 +9,7 @@ export type ItemCategory =
   'ItemCategory.Materia' |
   'ItemCategory.Unknown';
 
-export class CraftableItemCategoryFactory {
+export class ItemCategoryFactory {
 
   static fromString(itemCategoryId: string): ItemCategory {
     let itemCategory: ItemCategory = 'ItemCategory.Unknown';
@@ -75,7 +75,7 @@ export class CraftableItem {
   public getExtendedGumiId(): string {
 
     const gumiId = this.getGumiId();
-    const prefix = CraftableItemCategoryFactory.toString(this.category);
+    const prefix = ItemCategoryFactory.toString(this.category);
 
     return prefix + ':' + gumiId;
 

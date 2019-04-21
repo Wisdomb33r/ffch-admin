@@ -34,7 +34,7 @@ export class ItemRecipesService {
 
         matchingProperties = propertyNames.filter(
           propertyName =>
-            this.itemRecipesFromDataMining[propertyName].consumable === extendedGumiId
+            this.itemRecipesFromDataMining[propertyName].item === extendedGumiId
         );
         if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
           matchingProperties.forEach(property => {
@@ -57,7 +57,7 @@ export class ItemRecipesService {
       let matchingProperties: Array<string> = [];
       matchingProperties = propertyNames.filter(
         propertyName =>
-          this.itemRecipesFromDataMining[propertyName].consumable.includes(id.toString())
+          this.itemRecipesFromDataMining[propertyName].item.includes(id.toString())
       );
       if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
         matchingProperties.forEach(property => {

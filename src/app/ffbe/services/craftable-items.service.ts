@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CraftableItem, ItemCategory, CraftableItemCategoryFactory} from '../model/craftable-item.model';
+import {CraftableItem, ItemCategory, ItemCategoryFactory} from '../model/craftable-item.model';
 import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
@@ -89,7 +89,7 @@ export class CraftableItemsService {
     if (splitGumiId.length === 0) {
       itemCategory = 'ItemCategory.Unknown';
     } else {
-      itemCategory = CraftableItemCategoryFactory.fromString(splitGumiId[0]);
+      itemCategory = ItemCategoryFactory.fromString(splitGumiId[0]);
     }
 
     return itemCategory;
