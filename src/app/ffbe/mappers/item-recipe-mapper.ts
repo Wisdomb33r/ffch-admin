@@ -40,7 +40,7 @@ export class ItemRecipeMapper {
       FfbeUtils.sortArrayIngredients(ingredients);
     }
 
-    let recette = new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
+    const recette = new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
 
     if (itemRecipe && itemRecipe.craftableItem) {
       recette.nom_item = itemRecipe.craftableItem.getNom();

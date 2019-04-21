@@ -55,15 +55,19 @@ export class CraftableItem {
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
         return this.item.gumi_id;
+        break;
       }
       case 'CraftableItemCategory.Equipment': {
         return this.equipment.gumi_id;
+        break;
       }
       case 'CraftableItemCategory.Materia': {
         return this.materia.gumi_id;
+        break;
       }
       case 'CraftableItemCategory.Unknown': {
         return null;
+        break;
       }
     }
   }
@@ -86,16 +90,19 @@ export class CraftableItem {
         if (this.item && this.item.strings && this.item.strings.names) {
           nom = this.item.strings.names[FFBE_FRENCH_TABLE_INDEX];
         }
+        break;
       }
       case 'CraftableItemCategory.Equipment': {
         if (this.equipment && this.equipment.strings && this.equipment.strings.name) {
           nom = this.equipment.strings.name[FFBE_FRENCH_TABLE_INDEX];
         }
+        break;
       }
       case 'CraftableItemCategory.Materia': {
         if (this.materia && this.materia.strings && this.materia.strings.names) {
           nom = this.materia.strings.names[FFBE_FRENCH_TABLE_INDEX];
         }
+        break;
       }
     }
 
@@ -111,16 +118,19 @@ export class CraftableItem {
         if (this.item && this.item.strings && this.item.strings.names) {
           nom = this.item.strings.names[FFBE_ENGLISH_TABLE_INDEX];
         }
+        break;
       }
       case 'CraftableItemCategory.Equipment': {
         if (this.equipment && this.equipment.strings && this.equipment.strings.name) {
           nom = this.equipment.strings.name[FFBE_ENGLISH_TABLE_INDEX];
         }
+        break;
       }
       case 'CraftableItemCategory.Materia': {
         if (this.materia && this.materia.strings && this.materia.strings.names) {
           nom = this.materia.strings.names[FFBE_ENGLISH_TABLE_INDEX];
         }
+        break;
       }
     }
 
@@ -132,15 +142,19 @@ export class CraftableItem {
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
         return this.item.price_sell;
+        break;
       }
       case 'CraftableItemCategory.Equipment': {
         return this.equipment.price_sell;
+        break;
       }
       case 'CraftableItemCategory.Materia': {
         return this.materia.price_sell;
+        break;
       }
       case 'CraftableItemCategory.Unknown': {
         return null;
+        break;
       }
     }
   }

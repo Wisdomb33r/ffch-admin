@@ -21,7 +21,7 @@ export class Recette {
     const objetRecette = isNullOrUndefined(recette.recette) ? null : Objet.produce(recette.recette);
     const objetResultat = isNullOrUndefined(recette.resultat) ? null :  Objet.produce(recette.resultat);
     const formule = isNullOrUndefined(recette.formule) ? null : Formule.produce(recette.formule);
-    let newRecette = new Recette(recette.recette_gumi_id, recette.resultat_gumi_id, recette.craft_time,
+    const newRecette = new Recette(recette.recette_gumi_id, recette.resultat_gumi_id, recette.craft_time,
       formule, recette.nb_resultat);
     newRecette.recette = objetRecette;
     newRecette.resultat = objetResultat;

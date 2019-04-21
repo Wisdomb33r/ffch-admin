@@ -11,7 +11,7 @@ import {FfchClientService} from '../services/ffch-client.service';
   templateUrl: './recette-display.component.html',
   styleUrls: ['./recette-display.component.css']
 })
-export class RecetteDisplayComponent implements OnInit {
+export class RecetteDisplayComponent implements OnInit, OnChanges {
 
   @Input() recettesContainer: RecettesComparingContainer;
   public displayed = false;
@@ -51,7 +51,7 @@ export class RecetteDisplayComponent implements OnInit {
     } else if (!isNullOrUndefined(this.recettesContainer.recette.nom_item)) {
       return this.recettesContainer.recette.nom_item;
     }
-    return this.recettesContainer.recette.resultat_gumi_id.toString()
+    return this.recettesContainer.recette.resultat_gumi_id.toString();
   }
 
   public isImageObjetPresentInFfchDb(objet: Objet) {
@@ -81,7 +81,7 @@ export class RecetteDisplayComponent implements OnInit {
       return false;
     }
     return this.recettesContainer.recette.formule.areIngredientsEqual(this.recettesContainer.dbRecette.formule) &&
-      this.recettesContainer.recette.formule.areCostsEqual(this.recettesContainer.dbRecette.formule)
+      this.recettesContainer.recette.formule.areCostsEqual(this.recettesContainer.dbRecette.formule);
   }
 
   public areRecetteErrorsDiplayed(): boolean {

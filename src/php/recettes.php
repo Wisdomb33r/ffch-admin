@@ -50,23 +50,23 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   if (!isset ($recette->recette_gumi_id) || !$recette->recette_gumi_id) {
     dieWithBadRequest('Format exception: Cannot save recette without recette Gumi ID');
-    }
+  }
 
   if (!isset ($recette->resultat_gumi_id) || !$recette->resultat_gumi_id) {
     dieWithBadRequest('Format exception: Cannot save recette without resultat Gumi ID');
-    }
+  }
 
   if (!isset ($recette->nb_resultat) || !$recette->nb_resultat) {
     dieWithBadRequest('Format exception: Cannot save recette without number of crafted items');
-    }
+  }
 
   if (!isset ($recette->formule) || !isset ($recette->formule->ingredients) || !is_array($recette->formule->ingredients) || count($recette->formule->ingredients) == 0) {
     dieWithBadRequest('Format exception : cannot save recette without materials');
-    }
+  }
 
   if (!isset ($recette->formule) || !isset ($recette->formule->gils)) {
     dieWithBadRequest('Format exception : cannot save recette without price');
-    }
+  }
 
   $brex_objet_recette = findObjetByGumiId($recette->recette_gumi_id);
   $brex_objet_resultat = findObjetByGumiId($recette->resultat_gumi_id);
