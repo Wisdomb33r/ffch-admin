@@ -1,5 +1,4 @@
 import {CraftableItem} from './craftable-item.model';
-import {Item} from './item.model';
 
 export class ItemRecipe {
   gumi_id: number;

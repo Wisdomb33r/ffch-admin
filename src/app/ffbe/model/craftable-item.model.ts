@@ -1,4 +1,4 @@
-import {Item} from './item.model';
+import {Consumable} from './consumable.model';
 import {Equipment} from './equipment.model';
 import {Materia} from './materia.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
@@ -44,7 +44,7 @@ export class CraftableItemCategoryFactory {
 export class CraftableItem {
   public constructor(
     public category: CraftableItemCategory,
-    public item: Item,
+    public consumable: Consumable,
     public equipment: Equipment,
     public materia: Materia,
   ) {
@@ -54,7 +54,7 @@ export class CraftableItem {
 
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
-        return this.item.gumi_id;
+        return this.consumable.gumi_id;
         break;
       }
       case 'CraftableItemCategory.Equipment': {
@@ -87,8 +87,8 @@ export class CraftableItem {
 
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
-        if (this.item && this.item.strings && this.item.strings.names) {
-          nom = this.item.strings.names[FFBE_FRENCH_TABLE_INDEX];
+        if (this.consumable && this.consumable.strings && this.consumable.strings.names) {
+          nom = this.consumable.strings.names[FFBE_FRENCH_TABLE_INDEX];
         }
         break;
       }
@@ -115,8 +115,8 @@ export class CraftableItem {
 
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
-        if (this.item && this.item.strings && this.item.strings.names) {
-          nom = this.item.strings.names[FFBE_ENGLISH_TABLE_INDEX];
+        if (this.consumable && this.consumable.strings && this.consumable.strings.names) {
+          nom = this.consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX];
         }
         break;
       }
@@ -141,7 +141,7 @@ export class CraftableItem {
 
     switch (this.category) {
       case 'CraftableItemCategory.Item': {
-        return this.item.price_sell;
+        return this.consumable.price_sell;
         break;
       }
       case 'CraftableItemCategory.Equipment': {

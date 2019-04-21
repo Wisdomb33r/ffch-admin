@@ -35,7 +35,7 @@ import {FormulesDisplayComponent} from './formules-display/formules-display.comp
 import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
 import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
 import { RecetteDisplayComponent } from './recette-display/recette-display.component';
-import {ItemsService} from './services/items.service';
+import {ConsumablesService} from './services/consumables.service';
 import {ItemRecipesService} from './services/item-recipes.service';
 import {CraftableItemsService} from './services/craftable-items.service';
 import {EquipmentsService} from './services/equipments.service';
@@ -94,7 +94,7 @@ import {ItemsComponent} from './items/items.component';
     SkillsService,
     FfchClientService,
     EnhancementsService,
-    ItemsService,
+    ConsumablesService,
     ItemRecipesService,
     CraftableItemsService,
     EquipmentsService,

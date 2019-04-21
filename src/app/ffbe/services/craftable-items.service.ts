@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CraftableItem, CraftableItemCategory, CraftableItemCategoryFactory} from '../model/craftable-item.model';
-import {ItemsService} from './items.service';
+import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
@@ -11,7 +11,7 @@ export class CraftableItemsService {
 
   private itemsFromDataMining = null;
 
-  constructor(private itemService: ItemsService,
+  constructor(private itemService: ConsumablesService,
               private equipmentService: EquipmentsService,
               private materiaService: MateriasService) {
   }
@@ -19,10 +19,11 @@ export class CraftableItemsService {
   public searchForCraftableItemsByNames(english: string, french: string): Array<CraftableItem> {
     const craftableItems: Array<CraftableItem> = [];
 
-    const items = this.itemService.searchForItemsByNames(english, french);
-    if (Array.isArray(items) && items.length > 0) {
-      items.forEach(item => {
-        craftableItems.push(new CraftableItem('CraftableItemCategory.Item', item, null, null));
+
+    const consumables = this.itemService.searchForConsumablesByNames(english, french);
+    if (Array.isArray(consumables) && consumables.length > 0) {
+      consumables.forEach(consumable => {
+        craftableItems.push(new CraftableItem('CraftableItemCategory.Item', consumable, null, null));
       });
     }
 
@@ -52,8 +53,8 @@ export class CraftableItemsService {
 
       switch (craftableItemCategory) {
         case 'CraftableItemCategory.Item': {
-          const item = this.itemService.searchForItemByGumiId(gumiId);
-          craftableItem = new CraftableItem(craftableItemCategory, item, null, null);
+          const consumable = this.itemService.searchForConsumableByGumiId(gumiId);
+          craftableItem = new CraftableItem(craftableItemCategory, consumable, null, null);
           break;
         }
 

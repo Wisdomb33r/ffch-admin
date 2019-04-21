@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ItemsService} from '../services/items.service';
+import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
   selector: 'app-items',
@@ -13,7 +13,7 @@ export class ItemsComponent implements OnInit {
   frenchName: FormControl;
   gumiId: FormControl;
 
-  constructor(private itemsService: ItemsService) {
+  constructor(private itemsService: ConsumablesService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
