@@ -66,4 +66,18 @@ export class RecetteDisplayComponent implements OnInit {
     }
   }
 
+  public isRecettePresentInFfchDb(): boolean {
+    return (!isNullOrUndefined(this.recettesContainer.dbRecette));
+  }
+
+  public isRecetteCorrectInFfchDb(): boolean {
+    if (!this.isRecettePresentInFfchDb() || isNullOrUndefined(this.recettesContainer) ||
+      isNullOrUndefined(this.recettesContainer.recette) || isNullOrUndefined(this.recettesContainer.recette.formule) ||
+      isNullOrUndefined(this.recettesContainer.dbRecette) || isNullOrUndefined(this.recettesContainer.dbRecette.formule)) {
+      return false;
+    }
+    return this.recettesContainer.recette.formule.areIngredientsEqual(this.recettesContainer.dbRecette.formule) &&
+      this.recettesContainer.recette.formule.areCostsEqual(this.recettesContainer.dbRecette.formule)
+  }
+
 }
