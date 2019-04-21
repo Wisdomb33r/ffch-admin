@@ -32,6 +32,7 @@ import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-
 import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
 import {FormuleDisplayComponent} from './formule-display/formule-display.component';
 import {FormulesDisplayComponent} from './formules-display/formules-display.component';
+import {ClipboardModule} from 'ngx-clipboard';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import {FormulesDisplayComponent} from './formules-display/formules-display.comp
     MatExpansionModule,
     MatTableModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ClipboardModule,
   ],
   declarations: [
     CharactersComponent,
