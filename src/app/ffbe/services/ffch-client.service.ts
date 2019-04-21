@@ -82,6 +82,10 @@ export class FfchClientService {
       .pipe(catchError(this.analyseError));
   }
 
+  public postRecette$(recette: Recette): Observable<any> {
+    return this.http.post(FFCH_RECETTES_PATH, recette);
+  }
+
   private analyseError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       const message = 'An unexpected error occured : ' + error.error.message;

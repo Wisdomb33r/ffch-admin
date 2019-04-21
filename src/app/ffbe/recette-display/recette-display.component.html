@@ -64,6 +64,11 @@
                           [displaySuccessfulStatus]="false"
                           [titreFormule]="'Materiaux'">
     </app-formules-display>
+
+    <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendRecetteToFfchDb()"
+            *ngIf="!areRecetteErrorsDiplayed() && !isRecettePresentInFfchDb()">
+      Envoyer
+    </button>
   </div>
 
 </mat-card>

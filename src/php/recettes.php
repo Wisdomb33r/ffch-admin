@@ -45,43 +45,48 @@ function dieWithNotFound($errorMessages)
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-  /*
-    $amelioration = json_decode(file_get_contents('php://input'));
 
-    if (!isset ($amelioration->perso_gumi_id) || !$amelioration->perso_gumi_id) {
-      dieWithBadRequest('Format exception: Cannot save competence eveil without perso');
+  $recette = json_decode(file_get_contents('php://input'));
+
+  if (!isset ($recette->recette_gumi_id) || !$recette->recette_gumi_id) {
+    dieWithBadRequest('Format exception: Cannot save recette without recette Gumi ID');
     }
 
-    if (!isset ($amelioration->skill_id_base) || !$amelioration->skill_id_base) {
-      dieWithBadRequest('Format exception: Cannot save competence eveil without base competence');
+  if (!isset ($recette->resultat_gumi_id) || !$recette->resultat_gumi_id) {
+    dieWithBadRequest('Format exception: Cannot save recette without resultat Gumi ID');
     }
 
-    if (!isset ($amelioration->skill_id_new) || !$amelioration->skill_id_new) {
-      dieWithBadRequest('Format exception: Cannot save competence eveil without enhanced competence');
+  if (!isset ($recette->nb_resultat) || !$recette->nb_resultat) {
+    dieWithBadRequest('Format exception: Cannot save recette without number of crafted items');
     }
 
-    if (!isset ($amelioration->niveau) || !$amelioration->niveau) {
-      dieWithBadRequest('Format exception: Cannot save competence eveil without niveau');
+  if (!isset ($recette->formule) || !isset ($recette->formule->ingredients) || !is_array($recette->formule->ingredients) || count($recette->formule->ingredients) == 0) {
+    dieWithBadRequest('Format exception : cannot save recette without materials');
     }
 
-    if (!isset ($amelioration->formule) || !isset ($amelioration->formule->ingredients) || !is_array($amelioration->formule->ingredients) || count($amelioration->formule->ingredients) == 0) {
-      dieWithBadRequest('Format exception : cannot save without awakening materials');
+  if (!isset ($recette->formule) || !isset ($recette->formule->gils)) {
+    dieWithBadRequest('Format exception : cannot save recette without price');
     }
 
-    $brex_perso = findPersoByGumiId($amelioration->perso_gumi_id);
-    $brex_competence_base = findCompetenceByGumiId($amelioration->skill_id_base);
-    $brex_competence_amelioree = findCompetenceByGumiId($amelioration->skill_id_new);
+  $brex_objet_recette = findObjetByGumiId($recette->recette_gumi_id);
+  $brex_objet_resultat = findObjetByGumiId($recette->resultat_gumi_id);
 
-    checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
+  checkThatNoCraftExists($brex_objet_recette, $brex_objet_resultat);
+  checkThatAllIngredientsExist($recette->formule);
 
-    $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
-    $brex_competence_eveil->store();
+  $brex_craft = createAndValidateCraft($brex_objet_recette, $brex_objet_resultat, $recette->nb_resultat, $recette->formule->gils);
+  $brex_craft->store();
 
-    $stored_brex_competence_eveil = findCompetenceEveil($brex_perso, $brex_competence_base, $amelioration->niveau);
-    $stored_amelioration = createAmelioration($stored_brex_competence_eveil);
+  $brex_craft_compos = createAndValidateCraftCompos($brex_craft, $recette->formule);
+  storeCraftCompos($brex_craft_compos);
 
-    echo json_encode($stored_amelioration, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-  */
+  $stored_brex_craft = findCraft($brex_objet_recette, $brex_objet_resultat);
+  $stored_brex_craft_compos = findCompos($stored_brex_craft);
+
+  $stored_recette = createRecette($stored_brex_craft, $stored_brex_craft_compos, $brex_objet_recette, $brex_objet_resultat, $recette->recette_gumi_id);
+
+  echo json_encode($stored_recette, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+
 } else {
 
   if (!isset ($_GET ['recette_gumi_id'])) {
@@ -96,9 +101,9 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_objet_resultat = findObjetByGumiId($_GET ['resultat_gumi_id']);
 
   $brex_craft = findCraft($brex_objet_recette, $brex_objet_resultat);
-  $brex_craft_compo = findCompos($brex_craft);
+  $brex_craft_compos = findCompos($brex_craft);
 
-  $recette = createRecette($brex_craft, $brex_craft_compo, $brex_objet_recette, $brex_objet_resultat, $_GET ['recette_gumi_id']);
+  $recette = createRecette($brex_craft, $brex_craft_compos, $brex_objet_recette, $brex_objet_resultat, $_GET ['recette_gumi_id']);
 
   echo json_encode($recette, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
@@ -180,6 +185,78 @@ function createRecette($brex_craft, $brex_craft_compos, $brex_recette, $brex_res
   $recette->formule = createFormuleFromCraft($brex_craft, $brex_craft_compos);
 
   return $recette;
+}
+
+function checkThatNoCraftExists($brex_objet_recette, $brex_objet_resultat)
+{
+  $brex_crafts = brex_craft::findByRelation1N(array('recette' => $brex_objet_recette->id, 'resultat' => $brex_objet_resultat->id));
+
+  if (count($brex_crafts) > 0) {
+    dieWithBadRequest('Storage exception : found existing craft with recette gumi ID: ' . $brex_objet_recette->gumi_id . ' and resultat gumi ID' . $brex_objet_resultat->gumi_id);
+  }
+
+}
+
+function checkThatAllIngredientsExist($formule)
+{
+  foreach ($formule->ingredients as $ingredient) {
+    if (is_null($ingredient->gumi_id)) {
+      dieWithBadRequest('Storage exception : cannot use ingredient with missing gumi ID');
+    }
+    findObjetByGumiId($ingredient->gumi_id);
+  }
+}
+
+function createAndValidateCraft($brex_objet_recette, $brex_objet_resultat, $nb_resultat, $gils)
+{
+  $brex_craft = new brex_craft(array());
+  $brex_craft->setrelationrecette($brex_objet_recette);
+  $brex_craft->setrelationresultat($brex_objet_resultat);
+
+  $brex_craft->nb_resultat = $nb_resultat;
+  $brex_craft->price = $gils;
+  $brex_craft->craft_time = 0;
+
+  if (!$brex_craft->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_craft->errors, (array)'Format exception: Validation of brex_craft failed'));
+  }
+
+  return $brex_craft;
+}
+
+function createAndValidateCraftCompos($brex_craft, $formule)
+{
+  $brex_craft_compos = array();
+
+  foreach ($formule->ingredients as $ingredient) {
+    $brex_craft_compos[] = createAndValidateCraftCompo($brex_craft, $ingredient);
+  }
+
+  return $brex_craft_compos;
+}
+
+function createAndValidateCraftCompo($brex_craft, $ingredient)
+{
+  $brex_craft_compo = new brex_craft_compo(array());
+  $materiau = findObjetByGumiId($ingredient->gumi_id);
+
+  $brex_craft_compo->setrelationcraft($brex_craft);
+  $brex_craft_compo->setrelationcomposant($materiau);
+
+  $brex_craft_compo->nombre = $ingredient->quantite;
+
+  if (!$brex_craft_compo->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_craft->errors, (array)'Format exception: Validation of brex_craft_compo failed'));
+  }
+
+  return $brex_craft_compo;
+}
+
+function storeCraftCompos($brex_craft_compos)
+{
+  foreach ($brex_craft_compos as $brex_craft_compo) {
+    $brex_craft_compo->store();
+  }
 }
 
 ?>

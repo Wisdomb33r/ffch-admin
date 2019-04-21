@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Recette} from '../model/recette.model';
 import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
 import {Objet} from '../model/objet.model';
-import {isNullOrUndefined} from "util";
+import {isNullOrUndefined} from 'util';
 import {Formule} from '../model/formule.model';
+import {FfchClientService} from '../services/ffch-client.service';
 
 @Component({
   selector: 'app-recette-display',
@@ -14,15 +15,18 @@ export class RecetteDisplayComponent implements OnInit {
 
   @Input() recettesContainer: RecettesComparingContainer;
   public displayed = false;
-  public objetRecette : Objet;
-  public objetResultat : Objet;
+  public objetRecette: Objet;
+  public objetResultat: Objet;
+  public recetteErrors: Array<string> = [];
 
-  constructor() { }
+  constructor(private ffchClientService: FfchClientService) {
+  }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
+    this.recetteErrors = [];
     this.objetRecette = this.recettesContainer.recette.recette;
     this.objetResultat = this.recettesContainer.recette.resultat;
   }
@@ -31,7 +35,7 @@ export class RecetteDisplayComponent implements OnInit {
     this.displayed = !this.displayed;
   }
 
-  public nomRecetteAffichable() : string {
+  public nomRecetteAffichable(): string {
     if (!isNullOrUndefined(this.objetRecette)) {
       return this.objetRecette.nom;
     } else if (!isNullOrUndefined(this.recettesContainer.recette.nom_item)) {
@@ -41,7 +45,7 @@ export class RecetteDisplayComponent implements OnInit {
   }
 
 
-  public nomResultatAffichable() : string {
+  public nomResultatAffichable(): string {
     if (!isNullOrUndefined(this.objetResultat)) {
       return this.objetResultat.nom;
     } else if (!isNullOrUndefined(this.recettesContainer.recette.nom_item)) {
@@ -78,6 +82,17 @@ export class RecetteDisplayComponent implements OnInit {
     }
     return this.recettesContainer.recette.formule.areIngredientsEqual(this.recettesContainer.dbRecette.formule) &&
       this.recettesContainer.recette.formule.areCostsEqual(this.recettesContainer.dbRecette.formule)
+  }
+
+  public areRecetteErrorsDiplayed(): boolean {
+    return Array.isArray(this.recetteErrors) && this.recetteErrors.length > 0;
+  }
+
+  public sendRecetteToFfchDb() {
+    this.ffchClientService.postRecette$(this.recettesContainer.recette)
+      .subscribe(recette =>
+          this.recettesContainer.dbRecette = (isNullOrUndefined(recette) ? null : (Recette.produce(recette))),
+        status => this.recetteErrors.push('Could not send recette'));
   }
 
 }
