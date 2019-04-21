@@ -1,8 +1,8 @@
+import {EquipmentStrings} from './equipment-strings.model';
+
 export class Equipment {
-  constructor(
-    public gumiId: number,
-    public ffchId: number,
-    public name: string,
-    public imageName: string
-  ) {}
+  gumi_id: number;
+  name: string;
+  price_sell: number;
+  strings: EquipmentStrings;
 }

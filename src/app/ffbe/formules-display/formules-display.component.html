@@ -1,5 +1,5 @@
 <div *ngIf="isFormulePresent()">
-  <h3>Matériaux d'éveil</h3>
+  <h3>{{titreFormule}}</h3>
 
   <ul class="error" *ngIf="areIngredientErrorsDisplayed()">
     <li *ngFor="let message of ingredientsErrors">{{message}}</li>

@@ -1,6 +1,6 @@
 import {Game} from '../model/game.model';
 import {Unite} from '../model/unite.model';
-import {Equipment} from '../model/equipment.model';
+import {EquipmentCategory} from './equipment-category.model';
 
 export class Personnage {
   constructor(
@@ -11,7 +11,7 @@ export class Personnage {
     public min_rank: number,
     public max_rank: number,
     public gumi_id: number,
-    public equipements: Array<Equipment>
+    public equipements: Array<EquipmentCategory>
   ) {}
 
   public unites: Array<Unite>;

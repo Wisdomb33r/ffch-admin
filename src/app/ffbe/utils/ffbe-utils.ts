@@ -1,6 +1,6 @@
 import {FFBE_GAMES, FFBE_EQUIPMENTS} from '../ffbe.constants';
 import {Game} from '../model/game.model';
-import {Equipment} from '../model/equipment.model';
+import {EquipmentCategory} from '../model/equipment-category.model';
 import {Ingredient} from '../model/ingredient.model';
 import {isNullOrUndefined} from 'util';
 
@@ -10,22 +10,22 @@ export class FfbeUtils {
     return isNullOrUndefined(gameFound) ? new Game(game_id, undefined, 'Jeu inconnu') : gameFound;
   }
 
-  public static findEquipmentByGumiId(equipment_id: number): Equipment {
+  public static findEquipmentCategoryByGumiId(equipment_id: number): EquipmentCategory {
     return FFBE_EQUIPMENTS.find(equipment => equipment.gumiId === equipment_id);
   }
 
-  public static findEquipmentsByGumiIds(equipment_ids: Array<number>): Array<Equipment> {
-    const equipments = new Array<Equipment>();
-    equipment_ids.forEach(id => equipments.push(FfbeUtils.findEquipmentByGumiId(id)));
+  public static findEquipmentCategoriesByGumiIds(equipment_ids: Array<number>): Array<EquipmentCategory> {
+    const equipments = new Array<EquipmentCategory>();
+    equipment_ids.forEach(id => equipments.push(FfbeUtils.findEquipmentCategoryByGumiId(id)));
     return equipments;
   }
 
-  public static findEquipmentByFfchId(equipment_ffch_id: number): Equipment {
+  public static findEquipmentCategoryByFfchId(equipment_ffch_id: number): EquipmentCategory {
     return FFBE_EQUIPMENTS.find(equipment => equipment.ffchId === equipment_ffch_id);
   }
 
-  public static findEquipmentsByFfchIds(equipment_ffch_ids: Array<number>): Array<Equipment> {
-    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentByFfchId(id))
+  public static findEquipmentCategoriesByFfchIds(equipment_ffch_ids: Array<number>): Array<EquipmentCategory> {
+    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentCategoryByFfchId(id))
       .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
   }
 
@@ -56,5 +56,19 @@ export class FfbeUtils {
       return true;
     }
     return false;
+  }
+
+  public static extractGumiId(rawGumiId: string): number {
+    let gumiId: number;
+
+    const splitGumiId = rawGumiId.split(':');
+
+    if (splitGumiId.length === 0) {
+      gumiId = 0;
+    } else {
+      gumiId = +splitGumiId[splitGumiId.length - 1];
+    }
+
+    return gumiId;
   }
 }

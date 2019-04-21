@@ -8,6 +8,7 @@ import {UniteEveil} from '../model/unite-eveil.model';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Amelioration} from '../model/amelioration.model';
+import {Recette} from '../model/recette.model';
 
 const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
@@ -16,6 +17,7 @@ const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
 const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'unit_awakenings.php';
 const FFCH_SKILL_AWAKENINGS_PATH = FFCH_BASE_URL + 'skill_awakenings.php';
+const FFCH_RECETTES_PATH = FFCH_BASE_URL + 'recettes.php';
 
 @Injectable()
 export class FfchClientService {
@@ -72,6 +74,16 @@ export class FfchClientService {
 
   public postAmelioration$(amelioration: Amelioration): Observable<any> {
     return this.http.post(FFCH_SKILL_AWAKENINGS_PATH, amelioration);
+  }
+
+  public getRecette$(recette_gumi_id: number, resultat_gumi_id: number): Observable<Recette> {
+    return this.http.get<Recette>(FFCH_RECETTES_PATH + '?recette_gumi_id=' + recette_gumi_id +
+      '&resultat_gumi_id=' + resultat_gumi_id)
+      .pipe(catchError(this.analyseError));
+  }
+
+  public postRecette$(recette: Recette): Observable<any> {
+    return this.http.post(FFCH_RECETTES_PATH, recette);
   }
 
   private analyseError(error: HttpErrorResponse) {

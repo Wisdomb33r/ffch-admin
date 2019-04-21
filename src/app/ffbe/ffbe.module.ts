@@ -32,6 +32,14 @@ import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-
 import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
 import {FormuleDisplayComponent} from './formule-display/formule-display.component';
 import {FormulesDisplayComponent} from './formules-display/formules-display.component';
+import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
+import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
+import { RecetteDisplayComponent } from './recette-display/recette-display.component';
+import {ItemsService} from './services/items.service';
+import {ItemRecipesService} from './services/item-recipes.service';
+import {CraftableItemsService} from './services/craftable-items.service';
+import {EquipmentsService} from './services/equipments.service';
+import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
 
 @NgModule({
@@ -65,6 +73,9 @@ import {ClipboardModule} from 'ngx-clipboard';
     EnhancementDisplayComponent,
     FormuleDisplayComponent,
     FormulesDisplayComponent,
+    ItemRecipesComponent,
+    RecettesDisplayComponent,
+    RecetteDisplayComponent,
   ],
   exports: [
     CharactersComponent,
@@ -83,6 +94,11 @@ import {ClipboardModule} from 'ngx-clipboard';
     SkillsService,
     FfchClientService,
     EnhancementsService,
+    ItemsService,
+    ItemRecipesService,
+    CraftableItemsService,
+    EquipmentsService,
+    MateriasService,
   ]
 })
 export class FfbeModule {
