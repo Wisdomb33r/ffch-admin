@@ -3,36 +3,36 @@ import {Equipment} from './equipment.model';
 import {Materia} from './materia.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
-export type CraftableItemCategory =
-  'CraftableItemCategory.Item' |
-  'CraftableItemCategory.Equipment' |
-  'CraftableItemCategory.Materia' |
-  'CraftableItemCategory.Unknown';
+export type ItemCategory =
+  'ItemCategory.Consumable' |
+  'ItemCategory.Equipment' |
+  'ItemCategory.Materia' |
+  'ItemCategory.Unknown';
 
 export class CraftableItemCategoryFactory {
 
-  static fromString(craftableItemCategoryId: string): CraftableItemCategory {
-    let craftableItemCategory: CraftableItemCategory = 'CraftableItemCategory.Unknown';
+  static fromString(itemCategoryId: string): ItemCategory {
+    let itemCategory: ItemCategory = 'ItemCategory.Unknown';
 
-    if (craftableItemCategoryId === '20') {
-      craftableItemCategory = 'CraftableItemCategory.Item';
-    } else if (craftableItemCategoryId === '21') {
-      craftableItemCategory = 'CraftableItemCategory.Equipment';
-    } else if (craftableItemCategoryId === '22') {
-      craftableItemCategory = 'CraftableItemCategory.Materia';
+    if (itemCategoryId === '20') {
+      itemCategory = 'ItemCategory.Consumable';
+    } else if (itemCategoryId === '21') {
+      itemCategory = 'ItemCategory.Equipment';
+    } else if (itemCategoryId === '22') {
+      itemCategory = 'ItemCategory.Materia';
     }
 
-    return craftableItemCategory;
+    return itemCategory;
   }
 
-  static toString(craftableItemCategory: CraftableItemCategory): string {
+  static toString(itemCategory: ItemCategory): string {
     let prefix = '-1';
 
-    if (craftableItemCategory === 'CraftableItemCategory.Item') {
+    if (itemCategory === 'ItemCategory.Consumable') {
       prefix = '20';
-    } else if (craftableItemCategory === 'CraftableItemCategory.Equipment') {
+    } else if (itemCategory === 'ItemCategory.Equipment') {
       prefix = '21';
-    } else if (craftableItemCategory === 'CraftableItemCategory.Materia') {
+    } else if (itemCategory === 'ItemCategory.Materia') {
       prefix = '22';
     }
 
@@ -43,7 +43,7 @@ export class CraftableItemCategoryFactory {
 
 export class CraftableItem {
   public constructor(
-    public category: CraftableItemCategory,
+    public category: ItemCategory,
     public consumable: Consumable,
     public equipment: Equipment,
     public materia: Materia,
@@ -53,19 +53,19 @@ export class CraftableItem {
   public getGumiId(): number {
 
     switch (this.category) {
-      case 'CraftableItemCategory.Item': {
+      case 'ItemCategory.Consumable': {
         return this.consumable.gumi_id;
         break;
       }
-      case 'CraftableItemCategory.Equipment': {
+      case 'ItemCategory.Equipment': {
         return this.equipment.gumi_id;
         break;
       }
-      case 'CraftableItemCategory.Materia': {
+      case 'ItemCategory.Materia': {
         return this.materia.gumi_id;
         break;
       }
-      case 'CraftableItemCategory.Unknown': {
+      case 'ItemCategory.Unknown': {
         return null;
         break;
       }
@@ -86,19 +86,19 @@ export class CraftableItem {
     let nom = null;
 
     switch (this.category) {
-      case 'CraftableItemCategory.Item': {
+      case 'ItemCategory.Consumable': {
         if (this.consumable && this.consumable.strings && this.consumable.strings.names) {
           nom = this.consumable.strings.names[FFBE_FRENCH_TABLE_INDEX];
         }
         break;
       }
-      case 'CraftableItemCategory.Equipment': {
+      case 'ItemCategory.Equipment': {
         if (this.equipment && this.equipment.strings && this.equipment.strings.name) {
           nom = this.equipment.strings.name[FFBE_FRENCH_TABLE_INDEX];
         }
         break;
       }
-      case 'CraftableItemCategory.Materia': {
+      case 'ItemCategory.Materia': {
         if (this.materia && this.materia.strings && this.materia.strings.names) {
           nom = this.materia.strings.names[FFBE_FRENCH_TABLE_INDEX];
         }
@@ -114,19 +114,19 @@ export class CraftableItem {
     let nom = null;
 
     switch (this.category) {
-      case 'CraftableItemCategory.Item': {
+      case 'ItemCategory.Consumable': {
         if (this.consumable && this.consumable.strings && this.consumable.strings.names) {
           nom = this.consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX];
         }
         break;
       }
-      case 'CraftableItemCategory.Equipment': {
+      case 'ItemCategory.Equipment': {
         if (this.equipment && this.equipment.strings && this.equipment.strings.name) {
           nom = this.equipment.strings.name[FFBE_ENGLISH_TABLE_INDEX];
         }
         break;
       }
-      case 'CraftableItemCategory.Materia': {
+      case 'ItemCategory.Materia': {
         if (this.materia && this.materia.strings && this.materia.strings.names) {
           nom = this.materia.strings.names[FFBE_ENGLISH_TABLE_INDEX];
         }
@@ -140,19 +140,19 @@ export class CraftableItem {
   public getPriceSell(): number {
 
     switch (this.category) {
-      case 'CraftableItemCategory.Item': {
+      case 'ItemCategory.Consumable': {
         return this.consumable.price_sell;
         break;
       }
-      case 'CraftableItemCategory.Equipment': {
+      case 'ItemCategory.Equipment': {
         return this.equipment.price_sell;
         break;
       }
-      case 'CraftableItemCategory.Materia': {
+      case 'ItemCategory.Materia': {
         return this.materia.price_sell;
         break;
       }
-      case 'CraftableItemCategory.Unknown': {
+      case 'ItemCategory.Unknown': {
         return null;
         break;
       }
