@@ -25,4 +25,8 @@ export class MenusComponent implements OnInit {
   public routeToFfbeEnhancements() {
     this.router.navigate(['ffbe', 'enhancements']);
   }
+
+  public routeToFfbeRecipes() {
+    this.router.navigate(['ffbe', 'recipes']);
+  }
 }
