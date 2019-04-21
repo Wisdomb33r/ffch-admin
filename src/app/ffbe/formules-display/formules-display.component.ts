@@ -14,6 +14,7 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
   @Input() formuleFromFfch: Formule;
   @Input() displayCost = false;
   @Input() displaySuccessfulStatus = true;
+  @Input() titreFormule = 'Materiaux d\'éveil';
   public ingredientsErrors = [];
 
   constructor(private ffchClientService: FfchClientService) {
