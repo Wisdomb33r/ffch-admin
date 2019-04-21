@@ -1,45 +1,8 @@
 import {Consumable} from './consumable.model';
 import {Equipment} from './equipment.model';
 import {Materia} from './materia.model';
+import {ItemCategory, ItemCategoryFactory} from './item-category.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-
-export type ItemCategory =
-  'ItemCategory.Consumable' |
-  'ItemCategory.Equipment' |
-  'ItemCategory.Materia' |
-  'ItemCategory.Unknown';
-
-export class ItemCategoryFactory {
-
-  static fromString(itemCategoryId: string): ItemCategory {
-    let itemCategory: ItemCategory = 'ItemCategory.Unknown';
-
-    if (itemCategoryId === '20') {
-      itemCategory = 'ItemCategory.Consumable';
-    } else if (itemCategoryId === '21') {
-      itemCategory = 'ItemCategory.Equipment';
-    } else if (itemCategoryId === '22') {
-      itemCategory = 'ItemCategory.Materia';
-    }
-
-    return itemCategory;
-  }
-
-  static toString(itemCategory: ItemCategory): string {
-    let prefix = '-1';
-
-    if (itemCategory === 'ItemCategory.Consumable') {
-      prefix = '20';
-    } else if (itemCategory === 'ItemCategory.Equipment') {
-      prefix = '21';
-    } else if (itemCategory === 'ItemCategory.Materia') {
-      prefix = '22';
-    }
-
-    return prefix;
-  }
-
-}
 
 export class CraftableItem {
   public constructor(

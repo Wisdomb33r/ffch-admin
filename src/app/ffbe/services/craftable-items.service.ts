@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {CraftableItem, ItemCategory, ItemCategoryFactory} from '../model/craftable-item.model';
+import {CraftableItem} from '../model/craftable-item.model';
 import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {isNullOrUndefined} from 'util';
+import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
 export class CraftableItemsService {
