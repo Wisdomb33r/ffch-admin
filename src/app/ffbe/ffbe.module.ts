@@ -43,6 +43,7 @@ import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
 import {ItemsComponent} from './items/items.component';
 import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
+import {ObjetDisplayComponent} from './objet-display/objet-display.component';
 
 @NgModule({
   imports: [
@@ -80,6 +81,7 @@ import {ObjetsDisplayComponent} from './objets-display/objets-display.component'
     RecetteDisplayComponent,
     ItemsComponent,
     ObjetsDisplayComponent,
+    ObjetDisplayComponent,
   ],
   exports: [
     CharactersComponent,

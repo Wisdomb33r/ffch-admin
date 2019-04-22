@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus">
+    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
+    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
+    {{objet.gumi_id}} {{objet.nom}}
+  </mat-card-title>
+
+  <div *ngIf="!present || different || displayed">
+  </div>
+</mat-card>
