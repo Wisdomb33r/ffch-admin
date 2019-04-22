@@ -2,6 +2,9 @@ import {isNullOrUndefined} from 'util';
 
 export class Objet {
 
+  public extended_gumi_id: string;
+  public prix_vente: number;
+
   constructor(
     public id: number,
     public nom: string,
