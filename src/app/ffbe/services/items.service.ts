@@ -12,7 +12,7 @@ export class ItemsService {
 
   private itemsFromDataMining = null;
 
-  constructor(private itemService: ConsumablesService,
+  constructor(private consumablesService: ConsumablesService,
               private equipmentService: EquipmentsService,
               private materiaService: MateriasService) {
   }
@@ -21,7 +21,7 @@ export class ItemsService {
     const items: Array<Item> = [];
 
 
-    const consumables = this.itemService.searchForConsumablesByNames(english, french);
+    const consumables = this.consumablesService.searchForConsumablesByNames(english, french);
     if (Array.isArray(consumables) && consumables.length > 0) {
       consumables.forEach(consumable => {
         items.push(new Item('ItemCategory.Consumable', consumable, null, null));
@@ -54,7 +54,7 @@ export class ItemsService {
 
       switch (itemCategory) {
         case 'ItemCategory.Consumable': {
-          const consumable = this.itemService.searchForConsumableByGumiId(gumiId);
+          const consumable = this.consumablesService.searchForConsumableByGumiId(gumiId);
           item = new Item(itemCategory, consumable, null, null);
           break;
         }
