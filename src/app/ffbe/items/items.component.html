@@ -15,3 +15,7 @@
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchItemsInDataMining()">Chercher</button>
 </mat-card>
+<app-objets-display *ngIf="areObjetsDisplayed()"
+                    [objets]="objets">
+</app-objets-display>
+

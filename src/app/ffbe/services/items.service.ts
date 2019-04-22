@@ -80,6 +80,25 @@ export class ItemsService {
     return null;
   }
 
+  public searchForItemsByGumiId(gumiId: string): Array<Item> {
+    if (!isNullOrUndefined(gumiId)) {
+
+      const items: Array<Item> = [];
+
+      const consumable = this.consumablesService.searchForConsumableByGumiId(+gumiId);
+      items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+
+      const equipment = this.equipmentService.searchForEquipmentByGumiId(+gumiId);
+      items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+
+      const materia = this.materiaService.searchForMateriaByGumiId(+gumiId);
+      items.push(new Item('ItemCategory.Materia', null, null, materia));
+
+      return items;
+    }
+    return null;
+  }
+
   public static extractItemCategory(rawGumiId: string): ItemCategory {
 
     let itemCategory: ItemCategory;
