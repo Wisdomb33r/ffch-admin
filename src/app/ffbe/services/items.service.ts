@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CraftableItem} from '../model/craftable-item.model';
+import {Item} from '../model/item.model';
 import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
@@ -8,7 +8,7 @@ import {isNullOrUndefined} from 'util';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
-export class CraftableItemsService {
+export class ItemsService {
 
   private itemsFromDataMining = null;
 
@@ -17,67 +17,67 @@ export class CraftableItemsService {
               private materiaService: MateriasService) {
   }
 
-  public searchForCraftableItemsByNames(english: string, french: string): Array<CraftableItem> {
-    const craftableItems: Array<CraftableItem> = [];
+  public searchForItemsByNames(english: string, french: string): Array<Item> {
+    const items: Array<Item> = [];
 
 
     const consumables = this.itemService.searchForConsumablesByNames(english, french);
     if (Array.isArray(consumables) && consumables.length > 0) {
       consumables.forEach(consumable => {
-        craftableItems.push(new CraftableItem('ItemCategory.Consumable', consumable, null, null));
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
       });
     }
 
     const equipments = this.equipmentService.searchForEquipmentsByNames(english, french);
     if (Array.isArray(equipments) && equipments.length > 0) {
       equipments.forEach(equipment => {
-        craftableItems.push(new CraftableItem('ItemCategory.Equipment', null, equipment, null));
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
       });
     }
 
     const materias = this.materiaService.searchForMateriasByNames(english, french);
     if (Array.isArray(materias) && materias.length > 0) {
       materias.forEach(materia => {
-        craftableItems.push(new CraftableItem('ItemCategory.Materia', null, null, materia));
+        items.push(new Item('ItemCategory.Materia', null, null, materia));
       });
     }
 
-    return craftableItems;
+    return items;
   }
 
-  public searchForCraftableItemByExtendedGumiId(extendedGumiId: string): CraftableItem {
+  public searchForItemByExtendedGumiId(extendedGumiId: string): Item {
     if (!isNullOrUndefined(extendedGumiId)) {
-      const itemCategory = CraftableItemsService.extractItemCategory(extendedGumiId);
+      const itemCategory = ItemsService.extractItemCategory(extendedGumiId);
       const gumiId = FfbeUtils.extractGumiId(extendedGumiId);
 
-      let craftableItem: CraftableItem;
+      let item: Item;
 
       switch (itemCategory) {
         case 'ItemCategory.Consumable': {
           const consumable = this.itemService.searchForConsumableByGumiId(gumiId);
-          craftableItem = new CraftableItem(itemCategory, consumable, null, null);
+          item = new Item(itemCategory, consumable, null, null);
           break;
         }
 
         case 'ItemCategory.Equipment': {
           const equipment = this.equipmentService.searchForEquipmentByGumiId(gumiId);
-          craftableItem = new CraftableItem(itemCategory, null, equipment, null);
+          item = new Item(itemCategory, null, equipment, null);
           break;
         }
 
         case 'ItemCategory.Materia': {
           const materia = this.materiaService.searchForMateriaByGumiId(gumiId);
-          craftableItem = new CraftableItem(itemCategory, null, null, materia);
+          item = new Item(itemCategory, null, null, materia);
           break;
         }
 
         case 'ItemCategory.Unknown': {
-          craftableItem = new CraftableItem(itemCategory, null, null, null);
+          item = new Item(itemCategory, null, null, null);
           break;
         }
 
       }
-      return craftableItem;
+      return item;
     }
     return null;
   }

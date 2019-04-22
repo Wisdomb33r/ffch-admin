@@ -4,7 +4,7 @@ import {Materia} from './materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
-export class CraftableItem {
+export class Item {
   public constructor(
     public category: ItemCategory,
     public consumable: Consumable,

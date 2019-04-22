@@ -25,8 +25,8 @@ export class ItemRecipeMapper {
     }
 
     let gils = 0;
-    if (itemRecipe && itemRecipe.craftableItem) {
-      gils = 2 * itemRecipe.craftableItem.getPriceSell();
+    if (itemRecipe && itemRecipe.dmItem) {
+      gils = 2 * itemRecipe.dmItem.getPriceSell();
     }
 
     const ingredients: Array<Ingredient> = [];
@@ -42,9 +42,9 @@ export class ItemRecipeMapper {
 
     const recette = new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
 
-    if (itemRecipe && itemRecipe.craftableItem) {
-      recette.nom_item = itemRecipe.craftableItem.getNom();
-      recette.nom_item_en = itemRecipe.craftableItem.getNomEn();
+    if (itemRecipe && itemRecipe.dmItem) {
+      recette.nom_item = itemRecipe.dmItem.getNom();
+      recette.nom_item_en = itemRecipe.dmItem.getNomEn();
     }
 
     return recette;

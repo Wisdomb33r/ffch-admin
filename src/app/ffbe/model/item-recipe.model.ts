@@ -1,4 +1,4 @@
-import {CraftableItem} from './craftable-item.model';
+import {Item} from './item.model';
 
 export class ItemRecipe {
   gumi_id: number;
@@ -8,5 +8,5 @@ export class ItemRecipe {
   mats: any;
   count: number;
   source: string;
-  craftableItem: CraftableItem;
+  dmItem: Item;
 }

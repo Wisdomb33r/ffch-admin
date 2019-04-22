@@ -1,7 +1,7 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {ItemRecipe} from '../model/item-recipe.model';
-import {CraftableItemsService} from './craftable-items.service';
+import {ItemsService} from './items.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ItemRecipesService {
   private itemRecipesFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService,
-              private craftableItemsService: CraftableItemsService) {
+              private itemsService: ItemsService) {
     this.loadItemRecipesFromDataMining();
   }
 
@@ -26,11 +26,11 @@ export class ItemRecipesService {
     const itemRecipes: Array<ItemRecipe> = [];
     const propertyNames: string[] = Object.getOwnPropertyNames(this.itemRecipesFromDataMining);
     let matchingProperties: Array<string> = [];
-    const craftableItems = this.craftableItemsService.searchForCraftableItemsByNames(english, french);
+    const items = this.itemsService.searchForItemsByNames(english, french);
 
-    if (Array.isArray(craftableItems) && craftableItems.length > 0) {
-      craftableItems.forEach(craftableItem => {
-        const extendedGumiId = craftableItem.getExtendedGumiId();
+    if (Array.isArray(items) && items.length > 0) {
+      items.forEach(item => {
+        const extendedGumiId = item.getExtendedGumiId();
 
         matchingProperties = propertyNames.filter(
           propertyName =>
@@ -40,7 +40,7 @@ export class ItemRecipesService {
           matchingProperties.forEach(property => {
             const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
             itemRecipe.gumi_id = +property;
-            itemRecipe.craftableItem = craftableItem;
+            itemRecipe.dmItem = item;
             itemRecipes.push(itemRecipe);
           });
         }
@@ -63,7 +63,7 @@ export class ItemRecipesService {
         matchingProperties.forEach(property => {
           const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
           itemRecipe.gumi_id = +property;
-          itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByExtendedGumiId(itemRecipe.item);
+          itemRecipe.dmItem = this.itemsService.searchForItemByExtendedGumiId(itemRecipe.item);
           itemRecipes.push(itemRecipe);
         });
       }
@@ -79,7 +79,7 @@ export class ItemRecipesService {
       if (property) {
         const itemRecipe: ItemRecipe = this.itemRecipesFromDataMining[property];
         itemRecipe.gumi_id = +property;
-        itemRecipe.craftableItem = this.craftableItemsService.searchForCraftableItemByExtendedGumiId(itemRecipe.item);
+        itemRecipe.dmItem = this.itemsService.searchForItemByExtendedGumiId(itemRecipe.item);
         return itemRecipe;
       }
     }
