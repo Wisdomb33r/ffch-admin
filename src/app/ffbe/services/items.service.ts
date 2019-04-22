@@ -10,8 +10,6 @@ import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 @Injectable()
 export class ItemsService {
 
-  private itemsFromDataMining = null;
-
   constructor(private consumablesService: ConsumablesService,
               private equipmentService: EquipmentsService,
               private materiaService: MateriasService) {
@@ -97,7 +95,7 @@ export class ItemsService {
   }
 
   public isLoaded(): boolean {
-    return this.itemsFromDataMining != null;
+    return this.consumablesService.isLoaded() && this.equipmentService.isLoaded() && this.consumablesService.isLoaded();
   }
 }
 
