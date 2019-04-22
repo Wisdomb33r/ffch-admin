@@ -4,14 +4,22 @@ import {Formule} from '../model/formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Ingredient} from '../model/ingredient.model';
 import {isNumber} from 'util';
+import {Objet} from '../model/objet.model';
+import {ItemMapper} from './item-mapper';
 
 export class ItemRecipeMapper {
 
   public static toRecette(itemRecipe: ItemRecipe) {
 
+    let resultat: Objet = null;
+
+    if (itemRecipe && itemRecipe.dmItem) {
+      resultat = ItemMapper.toObjet(itemRecipe.dmItem);
+    }
+
     let gumiIdResultat = 0;
-    if (itemRecipe && itemRecipe.item) {
-      gumiIdResultat = FfbeUtils.extractGumiId(itemRecipe.item);
+    if (resultat) {
+      gumiIdResultat = resultat.gumi_id;
     }
 
     let time = 0;
@@ -25,8 +33,8 @@ export class ItemRecipeMapper {
     }
 
     let gils = 0;
-    if (itemRecipe && itemRecipe.dmItem) {
-      gils = 2 * itemRecipe.dmItem.getPriceSell();
+    if (resultat) {
+      gils = 2 * resultat.prix_vente;
     }
 
     const ingredients: Array<Ingredient> = [];
@@ -42,9 +50,9 @@ export class ItemRecipeMapper {
 
     const recette = new Recette(itemRecipe.gumi_id, gumiIdResultat, time, new Formule(ingredients, gils), count);
 
-    if (itemRecipe && itemRecipe.dmItem) {
-      recette.nom_item = itemRecipe.dmItem.getNom();
-      recette.nom_item_en = itemRecipe.dmItem.getNomEn();
+    if (resultat) {
+      recette.nom_item = resultat.nom;
+      recette.nom_item_en = resultat.nom_en;
     }
 
     return recette;
