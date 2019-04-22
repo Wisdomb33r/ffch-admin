@@ -57,7 +57,8 @@ import {ItemsComponent} from './items/items.component';
     MatExpansionModule,
     MatTableModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ClipboardModule,
   ],
   declarations: [
     CharactersComponent,
@@ -76,6 +77,7 @@ import {ItemsComponent} from './items/items.component';
     ItemRecipesComponent,
     RecettesDisplayComponent,
     RecetteDisplayComponent,
+    ItemsComponent,
   ],
   exports: [
     CharactersComponent,
