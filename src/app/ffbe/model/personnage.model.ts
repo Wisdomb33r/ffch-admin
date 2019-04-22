@@ -1,6 +1,6 @@
 import {Game} from '../model/game.model';
 import {Unite} from '../model/unite.model';
-import {EquipmentCategory} from './equipment-category.model';
+import {EquipmentCategory} from './equipment/equipment-category.model';
 
 export class Personnage {
   constructor(

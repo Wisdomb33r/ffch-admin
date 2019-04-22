@@ -1,5 +1,5 @@
 import {Consumable} from './consumable.model';
-import {Equipment} from './equipment.model';
+import {Equipment} from './equipment/equipment.model';
 import {Materia} from './materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';

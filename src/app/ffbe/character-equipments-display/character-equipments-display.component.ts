@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Personnage} from '../model/personnage.model';
-import {EquipmentCategory} from '../model/equipment-category.model';
+import {EquipmentCategory} from '../model/equipment/equipment-category.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {FfbeUtils} from '../utils/ffbe-utils';

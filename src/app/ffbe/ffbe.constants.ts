@@ -1,5 +1,5 @@
 import {Game} from './model/game.model';
-import {EquipmentCategory} from './model/equipment-category.model';
+import {EquipmentCategory} from './model/equipment/equipment-category.model';
 
 export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;

@@ -1,6 +1,6 @@
 import {FFBE_GAMES, FFBE_EQUIPMENTS} from '../ffbe.constants';
 import {Game} from '../model/game.model';
-import {EquipmentCategory} from '../model/equipment-category.model';
+import {EquipmentCategory} from '../model/equipment/equipment-category.model';
 import {Ingredient} from '../model/ingredient.model';
 import {isNullOrUndefined} from 'util';
 

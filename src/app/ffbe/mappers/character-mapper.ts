@@ -5,7 +5,7 @@ import {Personnage} from '../model/personnage.model';
 import {CharacterEntryMapper} from './character-entry-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Competence} from '../model/competence.model';
-import {EquipmentCategory} from '../model/equipment-category.model';
+import {EquipmentCategory} from '../model/equipment/equipment-category.model';
 import {SkillMapper} from './skill-mapper';
 import {UniteCompetence} from '../model/unite-competence.model';
 
