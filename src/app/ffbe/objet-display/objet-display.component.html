@@ -8,6 +8,8 @@
 
   <div *ngIf="!present || different || displayed">
 
+    <p>{{objet.description}}</p>
+
     <div [ngClass]="'objet-carac-left'">
       <app-objet-carac-display [titre]="'Stats'"
                                [carac]="objet.carac"

@@ -28,6 +28,8 @@ class Objet
   public $id;
   public $nom;
   public $nom_en;
+  public $description;
+  public $description_en;
   public $icone;
   public $gumi_id;
 
@@ -36,6 +38,8 @@ class Objet
     $this->id = $brex_objet->id;
     $this->nom = $brex_objet->nom;
     $this->nom_en = $brex_objet->nom_en;
+    $this->description = $brex_objet->description;
+    $this->description_en = $brex_objet->description_en;
     $this->carac = new ObjetCarac($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
     $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
 

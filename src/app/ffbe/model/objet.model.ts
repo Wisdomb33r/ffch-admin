@@ -3,6 +3,9 @@ import {ObjetCarac} from './objet-carac';
 
 export class Objet {
 
+  public description: string;
+  public description_en: string;
+
   public extended_gumi_id: string;
   public prix_vente: number;
 
