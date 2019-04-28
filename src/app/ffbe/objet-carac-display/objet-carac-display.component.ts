@@ -12,6 +12,8 @@ export class ObjetCaracDisplayComponent implements OnInit {
   @Input() carac: ObjetCarac;
   @Input() titre: string;
   @Input() estPourcent: boolean;
+  @Input() estModifiable: boolean;
+  public displayed = false;
 
   constructor() {
   }
@@ -31,6 +33,10 @@ export class ObjetCaracDisplayComponent implements OnInit {
 
   public suffixe(): string {
     return this.estPourcent ? ' %' : '';
+  }
+
+  public switchDisplayed() {
+    this.displayed = !this.displayed;
   }
 
 }
