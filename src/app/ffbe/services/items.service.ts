@@ -86,14 +86,19 @@ export class ItemsService {
       const items: Array<Item> = [];
 
       const consumable = this.consumablesService.searchForConsumableByGumiId(+gumiId);
-      items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+      if (!isNullOrUndefined(consumable)) {
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+      }
 
       const equipment = this.equipmentService.searchForEquipmentByGumiId(+gumiId);
-      items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+      if (!isNullOrUndefined(equipment)) {
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+      }
 
       const materia = this.materiaService.searchForMateriaByGumiId(+gumiId);
-      items.push(new Item('ItemCategory.Materia', null, null, materia));
-
+      if (!isNullOrUndefined(materia)) {
+        items.push(new Item('ItemCategory.Materia', null, null, materia));
+      }
       return items;
     }
     return null;
