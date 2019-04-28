@@ -2,6 +2,27 @@
 
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 
+class ObjetCarac
+{
+  public $pv;
+  public $pm;
+  public $att;
+  public $def;
+  public $mag;
+  public $psy;
+
+  function __construct($pv, $pm, $att, $def, $mag, $psy)
+  {
+    $this->pv = $pv;
+    $this->pm = $pm;
+    $this->att = $att;
+    $this->def = $def;
+    $this->mag = $mag;
+    $this->psy = $psy;
+
+  }
+}
+
 class Objet
 {
   public $id;
@@ -15,6 +36,9 @@ class Objet
     $this->id = $brex_objet->id;
     $this->nom = $brex_objet->nom;
     $this->nom_en = $brex_objet->nom_en;
+    $this->carac = new ObjetCarac($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
+    $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
+
     if (strlen($brex_objet->img) > 0) {
       $this->icone = $brex_objet->getImageimgPath();
     }

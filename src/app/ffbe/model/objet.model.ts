@@ -1,9 +1,13 @@
 import {isNullOrUndefined} from 'util';
+import {ObjetCarac} from './objet-carac';
 
 export class Objet {
 
   public extended_gumi_id: string;
   public prix_vente: number;
+
+  public carac: ObjetCarac;
+  public caracp: ObjetCarac;
 
   constructor(
     public id: number,

@@ -3,6 +3,8 @@ import {Objet} from '../model/objet.model';
 import {ConsumableMapper} from './consumable-mapper';
 import {EquipmentMapper} from './equipment-mapper';
 import {MateriaMapper} from './materia-mapper';
+import {isNullOrUndefined} from 'util';
+import {ObjetCarac} from '../model/objet-carac';
 
 export class ItemMapper {
 
@@ -24,6 +26,14 @@ export class ItemMapper {
         objet = MateriaMapper.toObjet(item.materia);
         break;
       }
+    }
+
+    if (isNullOrUndefined(objet.carac)) {
+      objet.carac = ObjetCarac.newEmptyObjetCarac();
+    }
+
+    if (isNullOrUndefined(objet.caracp)) {
+      objet.caracp = ObjetCarac.newEmptyObjetCarac();
     }
 
     return objet;
