@@ -26,23 +26,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   $brex_objet = createAndValidateObjet($objet);
 
-  if ($brex_objet->store()) {
-    $brex_objets = brex_objet::finderParGumiId($objet->gumi_id);
-    if (count($brex_objets) > 0) {
-      http_response_code(201);
-      $stored_brex_objet = new Objet(($brex_objets [0]));
-      echo json_encode($stored_brex_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
-    } else {
-      http_response_code(500);
-      $errors = array();
-      $errors [] = 'Unexpected error occured, stored gumi id ' . $brex_objet->gumi_id . ' not found';
-      echo json_encode($errors);
-    }
-  } else {
-    http_response_code(400);
-    echo json_encode($brex_objet->errors);
-  }
+  storeObjet($brex_objet);
 
+  $stored_brex_objet = findObjetByGumiId($objet->gumi_id);
+  $stored_objet = new Objet($stored_brex_objet);
+  echo json_encode($stored_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
   if (!isset ($_GET ['gumi_id'])) {
     dieWithBadRequest('Format exception: Cannot find object without gumiId');
@@ -94,6 +82,14 @@ function createAndValidateObjet($objet)
   $brex_objet->verifyValues();
 
   return $brex_objet;
+}
+
+function storeObjet($brex_objet)
+{
+  if (!$brex_objet->store()) {
+    http_response_code(400);
+    echo json_encode($brex_objet->errors);
+  }
 }
 
 ?>
