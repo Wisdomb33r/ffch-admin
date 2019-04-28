@@ -1,0 +1,13 @@
+.objet-carac-left {
+  width: 49%;
+  float: left;
+}
+
+.objet-carac-right {
+  width: 49%;
+  float: right;
+}
+
+.objet-carac-clear {
+  clear: both;
+}
