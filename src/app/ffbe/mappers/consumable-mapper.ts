@@ -10,7 +10,9 @@ export class ConsumableMapper {
       consumable.strings.names[FFBE_FRENCH_TABLE_INDEX],
       consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,
-      consumable.gumi_id
+      consumable.gumi_id,
+      consumable.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
+      consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX]
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Consumable') + ':' + consumable.gumi_id;

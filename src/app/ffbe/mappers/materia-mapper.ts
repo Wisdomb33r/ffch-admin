@@ -10,7 +10,9 @@ export class MateriaMapper {
       materia.strings.names[FFBE_FRENCH_TABLE_INDEX],
       materia.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,
-      materia.gumi_id
+      materia.gumi_id,
+      materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
+      materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX]
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Materia') + ':' + materia.gumi_id;
