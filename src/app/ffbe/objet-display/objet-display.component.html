@@ -7,44 +7,6 @@
   </mat-card-title>
 
   <div *ngIf="!present || different || displayed">
-    <table>
-      <tr>
-        <th>Stats</th>
-        <th>Points</th>
-        <th>%</th>
-      </tr>
-      <tr>
-        <td>PV</td>
-        <td>{{objet.carac.pv}}</td>
-        <td>{{objet.caracp.pv}}</td>
-      </tr>
-      <tr>
-        <td>PM</td>
-        <td>{{objet.carac.pm}}</td>
-        <td>{{objet.caracp.pm}}</td>
-      </tr>
-      <tr>
-        <td>ATT</td>
-        <td>{{objet.carac.att}}</td>
-        <td>{{objet.caracp.psy}}</td>
-      </tr>
-      <tr>
-        <td>DÉF</td>
-        <td>{{objet.carac.def}}</td>
-        <td>{{objet.caracp.psy}}</td>
-      </tr>
-      <tr>
-        <td>MAGIE</td>
-        <td>{{objet.carac.mag}}</td>
-        <td>{{objet.caracp.psy}}</td>
-      </tr>
-      <tr>
-        <td>PSY</td>
-        <td>{{objet.carac.psy}}</td>
-        <td>{{objet.caracp.psy}}</td>
-      </tr>
-    </table>
-
 
     <div [ngClass]="'objet-carac-left'">
       <app-objet-carac-display [titre]="'Stats'"
