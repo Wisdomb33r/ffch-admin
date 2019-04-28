@@ -26,6 +26,11 @@
     </div>
     <div [ngClass]="'objet-carac-clear'"></div>
 
+    <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendObjetToFfchDb()"
+            *ngIf="!areObjetErrorsDiplayed() && !present">
+      Envoyer
+    </button>
+
   </div>
 
 </mat-card>
