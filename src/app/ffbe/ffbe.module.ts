@@ -44,6 +44,7 @@ import {ClipboardModule} from 'ngx-clipboard';
 import {ItemsComponent} from './items/items.component';
 import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
 import {ObjetDisplayComponent} from './objet-display/objet-display.component';
+import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-display.component';
 
 @NgModule({
   imports: [
@@ -82,6 +83,7 @@ import {ObjetDisplayComponent} from './objet-display/objet-display.component';
     ItemsComponent,
     ObjetsDisplayComponent,
     ObjetDisplayComponent,
+    ObjetCaracDisplayComponent,
   ],
   exports: [
     CharactersComponent,
