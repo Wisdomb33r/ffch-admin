@@ -70,9 +70,11 @@ function createAndValidateObjet($objet)
   $values = array();
   $values ['nom'] = $objet->nom;
   $values ['nom_en'] = $objet->nom_en;
+  $values ['gumi_id'] = $objet->gumi_id;
   $values ['description'] = $objet->description;
   $values ['description_en'] = $objet->description_en;
-  $values ['gumi_id'] = $objet->gumi_id;
+  $values ['effet'] = $objet->effet;
+  $values ['effet_en'] = $objet->effet_en;
 
   $brex_objet = new brex_objet($values);
 

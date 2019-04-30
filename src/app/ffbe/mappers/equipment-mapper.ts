@@ -12,7 +12,9 @@ export class EquipmentMapper {
       null,
       equipment.gumi_id,
       equipment.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX]
+      equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      null,
+      equipment.effects.length > 0 ? equipment.effects.join('<br />') : null
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Equipment') + ':' + equipment.gumi_id;

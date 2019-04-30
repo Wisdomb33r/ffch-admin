@@ -9,6 +9,13 @@
   <div *ngIf="!present || different || displayed">
 
     <p>{{objet.description}}</p>
+    <p>{{objet.effet_en}}</p>
+
+    <mat-form-field *ngIf="!present">
+      <input matInput type="text" name="effet" [(ngModel)]="objet.effet" placeholder="Effet">
+    </mat-form-field>
+
+    <p *ngIf="present">{{objet.effet}}</p>
 
     <div [ngClass]="'objet-carac-left'">
       <app-objet-carac-display [titre]="'Stats'"

@@ -12,7 +12,9 @@ export class MateriaMapper {
       null,
       materia.gumi_id,
       materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX]
+      materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      null,
+      materia.effects.length > 0 ? materia.effects.join('<br />') : null
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Materia') + ':' + materia.gumi_id;
