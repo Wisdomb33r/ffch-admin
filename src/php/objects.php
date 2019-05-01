@@ -78,7 +78,7 @@ function createAndValidateObjet($objet)
 
   $brex_objet = new brex_objet($values);
 
-  $brex_objet_categ = brex_objet_categ::findByPrimaryId(79);
+  $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
   $brex_objet->setrelationcategorie($brex_objet_categ);
 
   $brex_objet->verifyValues();
