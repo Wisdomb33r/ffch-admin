@@ -38,6 +38,21 @@
         <th>Stars</th>
         <td>{{objet.stars}}</td>
       </tr>
+      <tr *ngIf="present">
+        <th>Image</th>
+        <td>
+          <span class="ffchImageArray">
+            <img *ngIf="objet.isImagePresentInFfchDb()" src="{{objet.icone}}"
+                 alt="{{objet.nom}}" title="{{objet.nom}} ({{objet.gumi_id}})"/>
+            <img
+              *ngIf="!objet.isImagePresentInFfchDb()"
+              src="assets/grey/warn.png" alt="{{objet.nom}} ({{objet.gumi_id}})"
+              title="{{objet.nom}} ({{objet.gumi_id}})"/>
+            <img *ngIf="!objet.isPresentInFfchDb()" src="assets/red/warn.png"
+                 alt="{{objet.gumi_id}}" title="{{objet.gumi_id}}"/>
+          </span>
+        </td>
+      </tr>
     </table>
 
     <div [ngClass]="'objet-carac-left'">

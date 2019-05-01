@@ -11,3 +11,13 @@
 .objet-carac-clear {
   clear: both;
 }
+
+span.ffchImageArray {
+  vertical-align: middle;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+img {
+  max-width: 58px;
+}

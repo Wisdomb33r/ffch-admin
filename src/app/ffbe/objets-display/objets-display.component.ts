@@ -40,7 +40,7 @@ export class ObjetsDisplayComponent implements OnChanges, OnDestroy {
       this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((o, index) => {
             this.objets[index].id = isNullOrUndefined(o) ? undefined : o.id;
-            this.objetsContainer.push(new ObjetsComparingContainer(this.objets[index], o));
+          this.objetsContainer.push(new ObjetsComparingContainer(this.objets[index], isNullOrUndefined(o) ? null : Objet.produce(o)));
           }
         );
       });
