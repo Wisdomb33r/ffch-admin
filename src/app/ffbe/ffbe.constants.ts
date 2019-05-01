@@ -1,5 +1,5 @@
 import {Game} from './model/game.model';
-import {EquipmentCategory} from './model/equipment/equipment-category.model';
+import {CategorieObjet} from './model/objet/categorie-objet.model';
 
 export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;
@@ -39,30 +39,30 @@ export const FFBE_GAMES = [
   new Game(90003, 99, 'Collaborations spéciales'), // TOMB RAIDER
   new Game(11001, 100, 'Final Fantasy Brave Exvius'),
 ];
-export const FFBE_EQUIPMENTS = [
-  new EquipmentCategory(1, 16, 'Dagues', 'dagues.png'),
-  new EquipmentCategory(2, 1, 'Épées courtes', 'epees-courtes.png'),
-  new EquipmentCategory(3, 27, 'Épées longues', 'epees-longues.png'),
-  new EquipmentCategory(4, 28, 'Katanas', 'katanas.png'),
-  new EquipmentCategory(5, 17, 'Bâtons', 'batons.png'),
-  new EquipmentCategory(6, 2, 'Sceptres', 'sceptres.png'),
-  new EquipmentCategory(7, 6, 'Arcs', 'arcs.png'),
-  new EquipmentCategory(8, 29, 'Haches', 'haches.png'),
-  new EquipmentCategory(9, 13, 'Marteaux', 'marteaux.png'),
-  new EquipmentCategory(10, 32, 'Lances', 'lances.png'),
-  new EquipmentCategory(11, 33, 'Harpes', 'harpes.png'),
-  new EquipmentCategory(12, 34, 'Fouets', 'fouets.png'),
-  new EquipmentCategory(13, 24, 'Armes de jet', 'armes-de-jet.png'),
-  new EquipmentCategory(14, 15, 'Pistolets', 'pistolets.png'),
-  new EquipmentCategory(15, 26, 'Masses', 'masses.png'),
-  new EquipmentCategory(16, 18, 'Griffes', 'griffes.png'),
-  new EquipmentCategory(30, 9, 'Boucliers légers', 'boucliers-legers.png'),
-  new EquipmentCategory(31, 10, 'Boucliers lourds', 'boucliers-lourds.png'),
-  new EquipmentCategory(40, 12, 'Chapeaux', 'chapeaux.png'),
-  new EquipmentCategory(41, 11, 'Casques', 'casques.png'),
-  new EquipmentCategory(50, 35, 'Vêtements', 'vetements.png'),
-  new EquipmentCategory(51, 8, 'Armures légères', 'armures-legeres.png'),
-  new EquipmentCategory(52, 7, 'Armures lourdes', 'armures-lourdes.png'),
-  new EquipmentCategory(53, 14, 'Robes', 'robes.png'),
-  new EquipmentCategory(60, 25, 'Accessoires', 'accessoires.png'),
+export const FFBE_CATEGORIES_OBJETS = [
+  new CategorieObjet(1, 16, 'Dagues', 'dagues.png'),
+  new CategorieObjet(2, 1, 'Épées courtes', 'epees-courtes.png'),
+  new CategorieObjet(3, 27, 'Épées longues', 'epees-longues.png'),
+  new CategorieObjet(4, 28, 'Katanas', 'katanas.png'),
+  new CategorieObjet(5, 17, 'Bâtons', 'batons.png'),
+  new CategorieObjet(6, 2, 'Sceptres', 'sceptres.png'),
+  new CategorieObjet(7, 6, 'Arcs', 'arcs.png'),
+  new CategorieObjet(8, 29, 'Haches', 'haches.png'),
+  new CategorieObjet(9, 13, 'Marteaux', 'marteaux.png'),
+  new CategorieObjet(10, 32, 'Lances', 'lances.png'),
+  new CategorieObjet(11, 33, 'Harpes', 'harpes.png'),
+  new CategorieObjet(12, 34, 'Fouets', 'fouets.png'),
+  new CategorieObjet(13, 24, 'Armes de jet', 'armes-de-jet.png'),
+  new CategorieObjet(14, 15, 'Pistolets', 'pistolets.png'),
+  new CategorieObjet(15, 26, 'Masses', 'masses.png'),
+  new CategorieObjet(16, 18, 'Griffes', 'griffes.png'),
+  new CategorieObjet(30, 9, 'Boucliers légers', 'boucliers-legers.png'),
+  new CategorieObjet(31, 10, 'Boucliers lourds', 'boucliers-lourds.png'),
+  new CategorieObjet(40, 12, 'Chapeaux', 'chapeaux.png'),
+  new CategorieObjet(41, 11, 'Casques', 'casques.png'),
+  new CategorieObjet(50, 35, 'Vêtements', 'vetements.png'),
+  new CategorieObjet(51, 8, 'Armures légères', 'armures-legeres.png'),
+  new CategorieObjet(52, 7, 'Armures lourdes', 'armures-lourdes.png'),
+  new CategorieObjet(53, 14, 'Robes', 'robes.png'),
+  new CategorieObjet(60, 25, 'Accessoires', 'accessoires.png'),
 ];

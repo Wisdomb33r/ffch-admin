@@ -1,6 +1,6 @@
-import {FFBE_GAMES, FFBE_EQUIPMENTS} from '../ffbe.constants';
+import {FFBE_GAMES, FFBE_CATEGORIES_OBJETS} from '../ffbe.constants';
 import {Game} from '../model/game.model';
-import {EquipmentCategory} from '../model/equipment/equipment-category.model';
+import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {Ingredient} from '../model/ingredient.model';
 import {isNullOrUndefined} from 'util';
 
@@ -10,23 +10,23 @@ export class FfbeUtils {
     return isNullOrUndefined(gameFound) ? new Game(game_id, undefined, 'Jeu inconnu') : gameFound;
   }
 
-  public static findEquipmentCategoryByGumiId(equipment_id: number): EquipmentCategory {
-    return FFBE_EQUIPMENTS.find(equipment => equipment.gumiId === equipment_id);
+  public static findObjetCategorieByGumiId(categorie_id: number): CategorieObjet {
+    return FFBE_CATEGORIES_OBJETS.find(categorie => categorie.gumiId === categorie_id);
   }
 
-  public static findEquipmentCategoriesByGumiIds(equipment_ids: Array<number>): Array<EquipmentCategory> {
-    const equipments = new Array<EquipmentCategory>();
-    equipment_ids.forEach(id => equipments.push(FfbeUtils.findEquipmentCategoryByGumiId(id)));
-    return equipments;
+  public static findObjetCategoriesByGumiIds(categories_ids: Array<number>): Array<CategorieObjet> {
+    const categories = new Array<CategorieObjet>();
+    categories_ids.forEach(id => categories.push(FfbeUtils.findObjetCategorieByGumiId(id)));
+    return categories;
   }
 
-  public static findEquipmentCategoryByFfchId(equipment_ffch_id: number): EquipmentCategory {
-    return FFBE_EQUIPMENTS.find(equipment => equipment.ffchId === equipment_ffch_id);
+  public static findObjetCategorieByFfchId(categorie_ffch_id: number): CategorieObjet {
+    return FFBE_CATEGORIES_OBJETS.find(categorie => categorie.ffchId === categorie_ffch_id);
   }
 
-  public static findEquipmentCategoriesByFfchIds(equipment_ffch_ids: Array<number>): Array<EquipmentCategory> {
-    return equipment_ffch_ids.map(id => FfbeUtils.findEquipmentCategoryByFfchId(id))
-      .sort((equipment1, equipment2) => equipment1.gumiId - equipment2.gumiId);
+  public static findObjetCategoriesByFfchIds(categories_ffch_ids: Array<number>): Array<CategorieObjet> {
+    return categories_ffch_ids.map(id => FfbeUtils.findObjetCategorieByFfchId(id))
+      .sort((categorie1, categorie2) => categorie1.gumiId - categorie2.gumiId);
   }
 
   public static sortArrayIngredients(ingredients: Array<Ingredient>) {
