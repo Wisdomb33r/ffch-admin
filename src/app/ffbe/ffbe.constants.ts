@@ -65,5 +65,14 @@ export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(52, 7, 'Armures lourdes', 'armures-lourdes.png'),
   new CategorieObjet(53, 14, 'Robes', 'robes.png'),
   new CategorieObjet(60, 25, 'Accessoires', 'accessoires.png'),
-  new CategorieObjet(null, 57, 'Aptitudes', null)
+  new CategorieObjet(null, 57, 'Aptitudes', null),
+
+  new CategorieObjet(null, 5, 'Outils', null),
+  new CategorieObjet(null, 61, 'Outils d\'événements', null),
+  new CategorieObjet(null, 60, 'Clés', null),
+  new CategorieObjet(null, 4, 'Matériaux', null),
+  new CategorieObjet(null, 79, 'Prismes d\'éveil', null),
+  new CategorieObjet(null, 59, 'Matériaux d\'événements', null),
+  new CategorieObjet(null, 36, 'Cristaux', null),
+  new CategorieObjet(null, 58, 'Divers', null)
 ];
