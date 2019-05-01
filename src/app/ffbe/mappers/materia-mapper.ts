@@ -4,6 +4,7 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {ObjetCarac} from '../model/objet/objet-carac';
 
 export class MateriaMapper {
 
@@ -19,8 +20,8 @@ export class MateriaMapper {
       materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
-      null,
-      null,
+      ObjetCarac.newEmptyObjetCarac(),
+      ObjetCarac.newEmptyObjetCarac(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
