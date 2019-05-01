@@ -2,13 +2,16 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Equipment} from '../model/equipment/equipment.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {Skill} from '../model/skill.model';
+import {SkillsService} from './skills.service';
 
 @Injectable()
 export class EquipmentsService {
 
   private equipmentsFromDataMining = null;
 
-  constructor(private dataMiningClientService: DataMiningClientService) {
+  constructor(private dataMiningClientService: DataMiningClientService,
+              private skillsService: SkillsService) {
     this.loadEquipmentsFromDataMining();
   }
 
@@ -42,6 +45,7 @@ export class EquipmentsService {
       matchingProperties.forEach(property => {
         const equipment: Equipment = this.equipmentsFromDataMining[property];
         equipment.gumi_id = +property;
+        this.searchForEquipmentSkills(equipment);
         equipments.push(equipment);
       });
     }
@@ -55,10 +59,19 @@ export class EquipmentsService {
       if (property) {
         const equipment: Equipment = this.equipmentsFromDataMining[property];
         equipment.gumi_id = +property;
+        this.searchForEquipmentSkills(equipment);
         return equipment;
       }
     }
     return null;
+  }
+
+  public searchForEquipmentSkills(equipment: Equipment) {
+    if (Array.isArray(equipment.skills) && equipment.skills.length > 0) {
+      const skills: Array<Skill> = [];
+      equipment.skills.forEach(id => skills.push(this.skillsService.searchForSkillByGumiId(id)));
+      equipment.dmSkills = skills;
+    }
   }
 
   public isLoaded(): boolean {

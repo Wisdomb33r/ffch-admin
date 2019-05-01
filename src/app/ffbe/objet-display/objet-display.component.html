@@ -33,11 +33,14 @@
     </div>
     <div [ngClass]="'objet-carac-clear'"></div>
 
+    <app-character-skills-display *ngIf="areObjetCompetencesDisplayed()"
+                                  [competences]="objet.competences">
+    </app-character-skills-display>
+
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendObjetToFfchDb()"
             *ngIf="!areObjetErrorsDiplayed() && !present">
       Envoyer
     </button>
 
   </div>
-
 </mat-card>

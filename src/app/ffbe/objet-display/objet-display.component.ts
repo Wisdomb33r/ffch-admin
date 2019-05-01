@@ -31,6 +31,10 @@ export class ObjetDisplayComponent implements OnInit {
     return Array.isArray(this.objetErrors) && this.objetErrors.length > 0;
   }
 
+  public areObjetCompetencesDisplayed(): boolean {
+    return Array.isArray(this.objet.competences) && this.objet.competences.length > 0;
+  }
+
   public sendObjetToFfchDb() {
     this.ffchClientService.postObjet$(this.objet)
       .subscribe(objet =>
