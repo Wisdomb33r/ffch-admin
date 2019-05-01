@@ -34,7 +34,8 @@
     <div [ngClass]="'objet-carac-clear'"></div>
 
     <app-character-skills-display *ngIf="areObjetCompetencesDisplayed()"
-                                  [competences]="objet.competences">
+                                  [competences]="objet.competences"
+                                  [shouldStayOpen]="false">
     </app-character-skills-display>
 
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendObjetToFfchDb()"
