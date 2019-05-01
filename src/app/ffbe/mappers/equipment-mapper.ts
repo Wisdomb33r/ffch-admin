@@ -26,10 +26,10 @@ export class EquipmentMapper {
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ObjetCarac.newEmptyObjetCarac(),
+      EquipmentMapper.mapEquipmentElements(equipment.stats),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
-    objet.elements = EquipmentMapper.mapEquipmentElements(equipment.stats);
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Equipment') + ':' + equipment.gumi_id;
     objet.prix_vente = equipment.price_sell;
 

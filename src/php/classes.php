@@ -38,6 +38,30 @@ class ObjetCarac
   }
 }
 
+class ObjetElement
+{
+  public $feu;
+  public $glace;
+  public $foudre;
+  public $eau;
+  public $air;
+  public $terre;
+  public $lumiere;
+  public $tenebres;
+
+  function __construct($feu, $glace, $foudre, $eau, $air, $terre, $lumiere, $tenebres)
+  {
+    $this->feu = $feu;
+    $this->glace = $glace;
+    $this->foudre = $foudre;
+    $this->eau = $eau;
+    $this->air = $air;
+    $this->terre = $terre;
+    $this->lumiere = $lumiere;
+    $this->tenebres = $tenebres;
+  }
+}
+
 class Objet
 {
   public $id;
@@ -53,6 +77,7 @@ class Objet
   public $effet_en;
   public $carac;
   public $caracp;
+  public $elements;
   public $competences;
 
   function __construct($brex_objet)
@@ -68,6 +93,7 @@ class Objet
     $this->effet_en = $brex_objet->effet_en;
     $this->carac = new ObjetCarac($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
     $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
+    $this->elements = new ObjetElement($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
 
     if (strlen($brex_objet->img) > 0) {
       $this->icone = $brex_objet->getImageimgPath();

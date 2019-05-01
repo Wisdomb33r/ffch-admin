@@ -23,12 +23,12 @@ export class ConsumableMapper {
       (Array.isArray(consumable.effects) && consumable.effects.length > 0) ? consumable.effects.join('<br />') : null,
       ObjetCarac.newEmptyObjetCarac(),
       ObjetCarac.newEmptyObjetCarac(),
+      ObjetElements.newEmptyObjetElements(),
       null
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Consumable') + ':' + consumable.gumi_id;
     objet.prix_vente = consumable.price_sell;
-    objet.elements = ObjetElements.newEmptyObjetElements();
 
     return objet;
   }

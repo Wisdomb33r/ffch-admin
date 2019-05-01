@@ -10,8 +10,6 @@ export class Objet {
   public extended_gumi_id: string;
   public prix_vente: number;
 
-  public elements: ObjetElements;
-
   constructor(
     public id: number,
     public categorie: CategorieObjet,
@@ -26,6 +24,7 @@ export class Objet {
     public effet_en: string,
     public carac: ObjetCarac,
     public caracp: ObjetCarac,
+    public elements: ObjetElements,
     public competences: Array<Competence>
   ) {
   }
@@ -46,6 +45,7 @@ export class Objet {
       o.effet_en,
       ObjetCarac.produce(o.carac),
       ObjetCarac.produce(o.caracp),
+      ObjetElements.produce(o.elements),
       o.competences);
   }
 

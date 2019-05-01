@@ -23,6 +23,7 @@ export class MateriaMapper {
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       ObjetCarac.newEmptyObjetCarac(),
       ObjetCarac.newEmptyObjetCarac(),
+      ObjetElements.newEmptyObjetElements(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -32,7 +33,6 @@ export class MateriaMapper {
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Materia') + ':' + materia.gumi_id;
     objet.prix_vente = materia.price_sell;
-    objet.elements = ObjetElements.newEmptyObjetElements();
 
     return objet;
   }
