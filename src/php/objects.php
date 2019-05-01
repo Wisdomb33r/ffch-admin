@@ -1,7 +1,9 @@
 <?php
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
+require_once "../gestion/genscripts/object_brex_obj_comp.class.php";
 require_once "classes.php";
+require_once "skill_class.php";
 
 function dieWithBadRequest($errorMessages)
 {
@@ -38,6 +40,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   $brex_objet = findObjetByGumiId($_GET ['gumi_id']);
   $objet = new Objet($brex_objet);
+  updateObjetWithCompetences($objet);
   echo json_encode($objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
 
@@ -63,6 +66,18 @@ function verifyObjet($objet)
     dieWithBadRequest('Format exception: Cannot save objet without Gumi ID');
   }
 
+}
+
+function updateObjetWithCompetences($objet)
+{
+  $objet->competences = [];
+  $brex_obj_comps = brex_obj_comp::findByRelation1N(array('objet' => $objet->id));
+
+  if (is_array($brex_obj_comps)) {
+    foreach ($brex_obj_comps as $brex_obj_comp) {
+      $objet->competences[] = new Competence($brex_obj_comp->competence);
+    }
+  }
 }
 
 function createAndValidateObjet($objet)

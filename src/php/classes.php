@@ -50,6 +50,7 @@ class Objet
   public $description_en;
   public $effet;
   public $effet_en;
+  public $competences;
 
   function __construct($brex_objet)
   {
