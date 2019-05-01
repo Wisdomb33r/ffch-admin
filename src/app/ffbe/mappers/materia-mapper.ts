@@ -3,12 +3,13 @@ import {Objet} from '../model/objet/objet.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class MateriaMapper {
 
   public static toObjet(materia: Materia): Objet {
     const objet = new Objet(null,
-      null,
+      FfbeUtils.findObjetCategorieByFfchId(57),
       materia.strings.names[FFBE_FRENCH_TABLE_INDEX],
       materia.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,

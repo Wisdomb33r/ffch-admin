@@ -65,4 +65,5 @@ export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(52, 7, 'Armures lourdes', 'armures-lourdes.png'),
   new CategorieObjet(53, 14, 'Robes', 'robes.png'),
   new CategorieObjet(60, 25, 'Accessoires', 'accessoires.png'),
+  new CategorieObjet(null, 57, 'Aptitudes', null)
 ];

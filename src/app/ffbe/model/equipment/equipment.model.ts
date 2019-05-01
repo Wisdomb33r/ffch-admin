@@ -4,6 +4,7 @@ import {Skill} from '../skill.model';
 export class Equipment {
   gumi_id: number;
   name: string;
+  type_id: number;
   skills: Array<number>;
   dmSkills: Array<Skill>;
   effects: Array<string>;
