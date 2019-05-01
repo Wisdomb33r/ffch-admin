@@ -1,8 +1,8 @@
 import {isNullOrUndefined} from 'util';
 import {ObjetCarac} from './objet-carac';
-import {Competence} from './competence.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {CategorieObjet} from './objet/categorie-objet.model';
+import {Competence} from '../competence.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {CategorieObjet} from './categorie-objet.model';
 
 export class Objet {
 

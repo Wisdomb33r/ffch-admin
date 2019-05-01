@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetCarac} from '../model/objet-carac';
+import {ObjetCarac} from '../model/objet/objet-carac';
 import {isNullOrUndefined} from 'util';
 
 @Component({

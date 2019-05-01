@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Recette} from '../model/recette.model';
 import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {isNullOrUndefined} from 'util';
 import {Formule} from '../model/formule.model';
 import {FfchClientService} from '../services/ffch-client.service';

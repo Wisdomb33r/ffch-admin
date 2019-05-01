@@ -1,4 +1,4 @@
-import {Objet} from './objet.model';
+import {Objet} from './objet/objet.model';
 import {isNullOrUndefined} from 'util';
 
 export class Ingredient {

@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {UniteEveil} from '../model/unite-eveil.model';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';

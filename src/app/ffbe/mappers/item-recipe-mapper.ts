@@ -4,7 +4,7 @@ import {Formule} from '../model/formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Ingredient} from '../model/ingredient.model';
 import {isNumber} from 'util';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {ItemMapper} from './item-mapper';
 
 export class ItemRecipeMapper {

@@ -4,7 +4,7 @@ import {isNullOrUndefined} from 'util';
 import {Item} from '../model/item.model';
 import {ItemsService} from '../services/items.service';
 import {ItemMapper} from '../mappers/item-mapper';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 
 @Component({
   selector: 'app-items',

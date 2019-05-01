@@ -1,5 +1,5 @@
 import {Equipment} from '../model/equipment/equipment.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';

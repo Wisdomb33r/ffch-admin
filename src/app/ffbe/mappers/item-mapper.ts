@@ -1,10 +1,10 @@
 import {Item} from '../model/item.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {ConsumableMapper} from './consumable-mapper';
 import {EquipmentMapper} from './equipment-mapper';
 import {MateriaMapper} from './materia-mapper';
 import {isNullOrUndefined} from 'util';
-import {ObjetCarac} from '../model/objet-carac';
+import {ObjetCarac} from '../model/objet/objet-carac';
 
 export class ItemMapper {
 
