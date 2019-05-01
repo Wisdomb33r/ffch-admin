@@ -86,6 +86,7 @@ function createAndValidateObjet($objet)
   $values ['nom'] = $objet->nom;
   $values ['nom_en'] = $objet->nom_en;
   $values ['stars'] = $objet->stars;
+  $values ['icone'] = null;
   $values ['gumi_id'] = $objet->gumi_id;
   $values ['description'] = $objet->description;
   $values ['description_en'] = $objet->description_en;
