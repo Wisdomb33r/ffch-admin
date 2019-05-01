@@ -1,6 +1,8 @@
 import {isNullOrUndefined} from 'util';
 import {ObjetCarac} from './objet-carac';
 import {Competence} from './competence.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
+import {CategorieObjet} from './objet/categorie-objet.model';
 
 export class Objet {
 
@@ -12,6 +14,7 @@ export class Objet {
 
   constructor(
     public id: number,
+    public categorie: CategorieObjet,
     public nom: string,
     public nom_en: string,
     public icone: string,
@@ -25,7 +28,8 @@ export class Objet {
   }
 
   public static produce(o: Objet): Objet {
-    return new Objet(o.id, o.nom, o.nom_en, o.icone, o.gumi_id, o.description, o.description_en, o.effet, o.effet_en, o.competences);
+    const categorie = FfbeUtils.findObjetCategorieByFfchId(o.categorie.ffchId);
+    return new Objet(o.id, categorie, o.nom, o.nom_en, o.icone, o.gumi_id, o.description, o.description_en, o.effet, o.effet_en, o.competences);
   }
 
   public isPresentInFfchDb(): boolean {

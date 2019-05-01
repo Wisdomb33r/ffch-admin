@@ -8,6 +8,7 @@ export class MateriaMapper {
 
   public static toObjet(materia: Materia): Objet {
     const objet = new Objet(null,
+      null,
       materia.strings.names[FFBE_FRENCH_TABLE_INDEX],
       materia.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,

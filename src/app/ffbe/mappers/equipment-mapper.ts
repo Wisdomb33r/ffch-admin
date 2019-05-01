@@ -8,6 +8,7 @@ export class EquipmentMapper {
 
   public static toObjet(equipment: Equipment) {
     const objet = new Objet(null,
+      null,
       equipment.strings.name[FFBE_FRENCH_TABLE_INDEX],
       equipment.strings.name[FFBE_ENGLISH_TABLE_INDEX],
       null,

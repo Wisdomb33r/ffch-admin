@@ -1,6 +1,21 @@
 <?php
 
 require_once "../gestion/genscripts/object_brex_objet.class.php";
+require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
+
+class ObjetCategorie
+{
+  public $gumiId;
+  public $ffchId;
+  public $name;
+
+  function __construct($brex_objet_categ)
+  {
+    $this->gumiId = $brex_objet_categ->gumi_id;
+    $this->ffchId = $brex_objet_categ->id;
+    $this->name = $brex_objet_categ->nom;
+  }
+}
 
 class ObjetCarac
 {
@@ -26,6 +41,7 @@ class ObjetCarac
 class Objet
 {
   public $id;
+  public $categorie;
   public $nom;
   public $nom_en;
   public $icone;
@@ -38,6 +54,7 @@ class Objet
   function __construct($brex_objet)
   {
     $this->id = $brex_objet->id;
+    $this->categorie = new ObjetCategorie($brex_objet->categorie);
     $this->nom = $brex_objet->nom;
     $this->nom_en = $brex_objet->nom_en;
     $this->description = $brex_objet->description;

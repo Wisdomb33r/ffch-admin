@@ -7,6 +7,7 @@ export class ConsumableMapper {
 
   public static toObjet(consumable: Consumable): Objet {
     const objet = new Objet(null,
+      null,
       consumable.strings.names[FFBE_FRENCH_TABLE_INDEX],
       consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,

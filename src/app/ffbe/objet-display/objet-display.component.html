@@ -7,6 +7,18 @@
   </mat-card-title>
 
   <div *ngIf="!present || different || displayed">
+    <mat-form-field>
+      <mat-select placeholder="Catégorie"
+                  [(ngModel)]="categorieFfchId"
+                  [ngModelOptions]="{standalone: true}"
+                  (selectionChange)="updateCategorie()"
+      >
+        <mat-option>----------</mat-option>
+        <mat-option *ngFor="let categorie of categories" [value]="categorie.ffchId">
+          {{categorie.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <p>{{objet.description}}</p>
     <p>{{objet.effet_en}}</p>
