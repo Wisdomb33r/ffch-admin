@@ -92,6 +92,20 @@ function createAndValidateObjet($objet)
   $values ['effet'] = $objet->effet;
   $values ['effet_en'] = $objet->effet_en;
 
+  $values ['pv'] = $objet->carac->pv;
+  $values ['pm'] = $objet->carac->pm;
+  $values ['att'] = $objet->carac->att;
+  $values ['def'] = $objet->carac->def;
+  $values ['mag'] = $objet->carac->mag;
+  $values ['psy'] = $objet->carac->psy;
+
+  $values ['pvp'] = $objet->caracp->pv;
+  $values ['pmp'] = $objet->caracp->pm;
+  $values ['attp'] = $objet->caracp->att;
+  $values ['defp'] = $objet->caracp->def;
+  $values ['magp'] = $objet->caracp->mag;
+  $values ['psyp'] = $objet->caracp->psy;
+
   $brex_objet = new brex_objet($values);
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);

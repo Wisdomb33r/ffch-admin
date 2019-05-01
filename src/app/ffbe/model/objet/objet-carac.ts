@@ -13,4 +13,8 @@ export class ObjetCarac {
     return new ObjetCarac(null, null, null, null, null, null);
   }
 
+  public static produce(oc: ObjetCarac): ObjetCarac {
+    return new ObjetCarac(oc.pv, oc.pm, oc.att, oc.def, oc.mag, oc.psy);
+  }
+
 }

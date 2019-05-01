@@ -19,6 +19,8 @@ export class ConsumableMapper {
       consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(consumable.effects) && consumable.effects.length > 0) ? consumable.effects.join('<br />') : null,
+      null,
+      null,
       null
     );
 

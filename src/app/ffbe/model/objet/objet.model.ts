@@ -9,9 +9,6 @@ export class Objet {
   public extended_gumi_id: string;
   public prix_vente: number;
 
-  public carac: ObjetCarac;
-  public caracp: ObjetCarac;
-
   constructor(
     public id: number,
     public categorie: CategorieObjet,
@@ -24,13 +21,29 @@ export class Objet {
     public description_en: string,
     public effet: string,
     public effet_en: string,
+    public carac: ObjetCarac,
+    public caracp: ObjetCarac,
     public competences: Array<Competence>
   ) {
   }
 
   public static produce(o: Objet): Objet {
     const categorie = FfbeUtils.findObjetCategorieByFfchId(o.categorie.ffchId);
-    return new Objet(o.id, categorie, o.nom, o.nom_en, o.stars, o.icone, o.gumi_id, o.description, o.description_en, o.effet, o.effet_en, o.competences);
+    return new Objet(
+      o.id,
+      categorie,
+      o.nom,
+      o.nom_en,
+      o.stars,
+      o.icone,
+      o.gumi_id,
+      o.description,
+      o.description_en,
+      o.effet,
+      o.effet_en,
+      ObjetCarac.produce(o.carac),
+      ObjetCarac.produce(o.caracp),
+      o.competences);
   }
 
   public isPresentInFfchDb(): boolean {
