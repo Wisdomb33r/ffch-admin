@@ -13,6 +13,7 @@ export class ConsumableMapper {
       consumable.strings.names[FFBE_FRENCH_TABLE_INDEX],
       consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,
+      null,
       consumable.gumi_id,
       consumable.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
       consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],

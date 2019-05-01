@@ -44,6 +44,7 @@ class Objet
   public $categorie;
   public $nom;
   public $nom_en;
+  public $stars;
   public $icone;
   public $gumi_id;
   public $description;
@@ -58,6 +59,7 @@ class Objet
     $this->categorie = new ObjetCategorie($brex_objet->categorie);
     $this->nom = $brex_objet->nom;
     $this->nom_en = $brex_objet->nom_en;
+    $this->stars = $brex_objet->stars;
     $this->description = $brex_objet->description;
     $this->description_en = $brex_objet->description_en;
     $this->effet = $brex_objet->effet;

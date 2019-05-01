@@ -17,6 +17,7 @@ export class Objet {
     public categorie: CategorieObjet,
     public nom: string,
     public nom_en: string,
+    public stars: number,
     public icone: string,
     public gumi_id: number,
     public description: string,
@@ -29,7 +30,7 @@ export class Objet {
 
   public static produce(o: Objet): Objet {
     const categorie = FfbeUtils.findObjetCategorieByFfchId(o.categorie.ffchId);
-    return new Objet(o.id, categorie, o.nom, o.nom_en, o.icone, o.gumi_id, o.description, o.description_en, o.effet, o.effet_en, o.competences);
+    return new Objet(o.id, categorie, o.nom, o.nom_en, o.stars, o.icone, o.gumi_id, o.description, o.description_en, o.effet, o.effet_en, o.competences);
   }
 
   public isPresentInFfchDb(): boolean {

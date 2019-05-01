@@ -13,6 +13,7 @@ export class MateriaMapper {
       materia.strings.names[FFBE_FRENCH_TABLE_INDEX],
       materia.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,
+      null,
       materia.gumi_id,
       materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
       materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
@@ -20,6 +21,10 @@ export class MateriaMapper {
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
+
+    if (Array.isArray(materia.dmSkills) && materia.dmSkills.length >= 1) {
+      objet.stars = materia.dmSkills[0].rarity;
+    }
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Materia') + ':' + materia.gumi_id;
     objet.prix_vente = materia.price_sell;

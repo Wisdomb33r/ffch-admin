@@ -27,7 +27,18 @@
       <input matInput type="text" name="effet" [(ngModel)]="objet.effet" placeholder="Effet">
     </mat-form-field>
 
+    <mat-form-field *ngIf="!present">
+      <input matInput type="text" name="stars" [(ngModel)]="objet.stars" placeholder="Stars">
+    </mat-form-field>
+
     <p *ngIf="present">{{objet.effet}}</p>
+
+    <table>
+      <tr *ngIf="present">
+        <th>Stars</th>
+        <td>{{objet.stars}}</td>
+      </tr>
+    </table>
 
     <div [ngClass]="'objet-carac-left'">
       <app-objet-carac-display [titre]="'Stats'"
