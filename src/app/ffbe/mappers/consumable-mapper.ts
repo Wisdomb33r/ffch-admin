@@ -1,5 +1,6 @@
 import {Consumable} from '../model/consumable.model';
 import {Objet} from '../model/objet/objet.model';
+import {ObjetCarac} from '../model/objet/objet-carac';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
@@ -19,8 +20,8 @@ export class ConsumableMapper {
       consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(consumable.effects) && consumable.effects.length > 0) ? consumable.effects.join('<br />') : null,
-      null,
-      null,
+      ObjetCarac.newEmptyObjetCarac(),
+      ObjetCarac.newEmptyObjetCarac(),
       null
     );
 
