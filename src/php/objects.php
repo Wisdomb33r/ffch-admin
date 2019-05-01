@@ -107,6 +107,15 @@ function createAndValidateObjet($objet)
   $values ['magp'] = $objet->caracp->mag;
   $values ['psyp'] = $objet->caracp->psy;
 
+  $values ['res_feu'] = $objet->elements->feu;
+  $values ['res_glace'] = $objet->elements->glace;
+  $values ['res_foudre'] = $objet->elements->foudre;
+  $values ['res_eau'] = $objet->elements->eau;
+  $values ['res_air'] = $objet->elements->air;
+  $values ['res_terre'] = $objet->elements->terre;
+  $values ['res_lumiere'] = $objet->elements->lumiere;
+  $values ['res_tenebres'] = $objet->elements->tenebres;
+
   $brex_objet = new brex_objet($values);
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
