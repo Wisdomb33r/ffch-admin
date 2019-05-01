@@ -1,6 +1,7 @@
 import {Consumable} from '../model/consumable.model';
 import {Objet} from '../model/objet/objet.model';
 import {ObjetCarac} from '../model/objet/objet-carac';
+import {ObjetElements} from '../model/objet/objet-elements';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
@@ -27,6 +28,7 @@ export class ConsumableMapper {
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Consumable') + ':' + consumable.gumi_id;
     objet.prix_vente = consumable.price_sell;
+    objet.elements = ObjetElements.newEmptyObjetElements();
 
     return objet;
   }

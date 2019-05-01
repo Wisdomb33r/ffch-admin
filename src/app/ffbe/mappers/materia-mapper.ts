@@ -5,6 +5,7 @@ import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ObjetCarac} from '../model/objet/objet-carac';
+import {ObjetElements} from '../model/objet/objet-elements';
 
 export class MateriaMapper {
 
@@ -31,6 +32,7 @@ export class MateriaMapper {
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Materia') + ':' + materia.gumi_id;
     objet.prix_vente = materia.price_sell;
+    objet.elements = ObjetElements.newEmptyObjetElements();
 
     return objet;
   }

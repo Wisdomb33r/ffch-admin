@@ -6,6 +6,9 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
 import {ObjetCarac} from '../model/objet/objet-carac';
+import {ObjetElements} from '../model/objet/objet-elements';
+import {isNullOrUndefined} from 'util';
+import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 
 export class EquipmentMapper {
 
@@ -26,6 +29,7 @@ export class EquipmentMapper {
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
+    objet.elements = EquipmentMapper.mapEquipmentElements(equipment.stats);
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Equipment') + ':' + equipment.gumi_id;
     objet.prix_vente = equipment.price_sell;
 
@@ -34,5 +38,47 @@ export class EquipmentMapper {
 
   private static mapEquipmentStats(stats: EquipmentStats): ObjetCarac {
     return new ObjetCarac(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
+  }
+
+  private static mapEquipmentElements(stats: EquipmentStats): ObjetElements {
+    let elements = ObjetElements.newEmptyObjetElements();
+
+    if (!isNullOrUndefined(stats.element_resist)) {
+      elements = EquipmentMapper.mapEquipmentElementResistances(stats.element_resist);
+    }
+
+    if (!isNullOrUndefined(stats.element_inflict)) {
+      EquipmentMapper.updateElementsWithInflicts(elements, stats.element_inflict);
+    }
+
+    return elements;
+  }
+
+  private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
+    return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
+  }
+
+  private static updateElementsWithInflicts(elements: ObjetElements, inflicts: Array<string>) {
+    if (Array.isArray(inflicts) && inflicts.length > 0) {
+      inflicts.forEach(element => {
+        if (element === 'Fire') {
+          elements.feu = 100;
+        } else if (element === 'Ice') {
+          elements.glace = 100;
+        } else if (element === 'Lightning') {
+          elements.foudre = 100;
+        } else if (element === 'Water') {
+          elements.eau = 100;
+        } else if (element === 'Wind') {
+          elements.air = 100;
+        } else if (element === 'Earth') {
+          elements.terre = 100;
+        } else if (element === 'Light') {
+          elements.lumiere = 100;
+        } else if (element === 'Dark') {
+          elements.tenebres = 100;
+        }
+      })
+    }
   }
 }

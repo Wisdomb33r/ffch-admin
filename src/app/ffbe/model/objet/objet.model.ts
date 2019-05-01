@@ -3,11 +3,14 @@ import {ObjetCarac} from './objet-carac';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
+import {ObjetElements} from './objet-elements';
 
 export class Objet {
 
   public extended_gumi_id: string;
   public prix_vente: number;
+
+  public elements: ObjetElements;
 
   constructor(
     public id: number,
