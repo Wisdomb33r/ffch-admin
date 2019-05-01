@@ -71,6 +71,8 @@
     </div>
     <div [ngClass]="'objet-carac-clear'"></div>
 
+    <app-objet-elements-display [objetElements]="objet.elements"></app-objet-elements-display>
+
     <app-character-skills-display *ngIf="areObjetCompetencesDisplayed()"
                                   [competences]="objet.competences"
                                   [shouldStayOpen]="false">

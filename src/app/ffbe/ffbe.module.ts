@@ -45,6 +45,7 @@ import {ItemsComponent} from './items/items.component';
 import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
 import {ObjetDisplayComponent} from './objet-display/objet-display.component';
 import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-display.component';
+import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elements-display.component';
 
 @NgModule({
   imports: [
@@ -84,6 +85,7 @@ import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-disp
     ObjetsDisplayComponent,
     ObjetDisplayComponent,
     ObjetCaracDisplayComponent,
+    ObjetElementsDisplayComponent,
   ],
   exports: [
     CharactersComponent,

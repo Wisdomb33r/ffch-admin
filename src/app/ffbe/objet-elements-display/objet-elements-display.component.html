@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    Elements
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+    <table>
+      <tr>
+        <th>Feu</th>
+        <td>{{objetElements.feu}}</td>
+      </tr>
+      <tr>
+        <th>Glace</th>
+        <td>{{objetElements.glace}}</td>
+      </tr>
+      <tr>
+        <th>Foudre</th>
+        <td>{{objetElements.foudre}}</td>
+      </tr>
+      <tr>
+        <th>Eau</th>
+        <td>{{objetElements.eau}}</td>
+      </tr>
+      <tr>
+        <th>Air</th>
+        <td>{{objetElements.air}}</td>
+      </tr>
+      <tr>
+        <th>Terre</th>
+        <td>{{objetElements.terre}}</td>
+      </tr>
+      <tr>
+        <th>Lumière</th>
+        <td>{{objetElements.lumiere}}</td>
+      </tr>
+      <tr>
+        <th>Tenèbres</th>
+        <td>{{objetElements.tenebres}}</td>
+      </tr>
+    </table>
+  </div>
+
+</mat-card>
