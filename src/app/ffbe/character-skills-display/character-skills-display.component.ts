@@ -17,6 +17,7 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
   public subscription: Subscription;
+  public modificationPanelDisplayed = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -40,7 +41,7 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
       this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((c, index) => {
             this.competences[index].id = isNullOrUndefined(c) ? undefined : c.id;
-            this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c));
+          this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c, Competence.produce(this.competences[index])));
           }
         );
       });
@@ -55,6 +56,10 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
 
   public isSkillsErrorsDisplayed(): boolean {
     return Array.isArray(this.skillsErrors) && this.skillsErrors.length > 0;
+  }
+
+  public switchModificationPanelDisplayed() {
+    this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
   }
 
 }
