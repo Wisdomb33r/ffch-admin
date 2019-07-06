@@ -48,6 +48,6 @@ export class Competence {
     copy.hybride = competence.hybride;
     copy.enhanced = competence.enhanced;
 
-    return competence;
+    return copy;
   }
 }

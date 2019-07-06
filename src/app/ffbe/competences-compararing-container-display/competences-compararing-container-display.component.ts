@@ -9,11 +9,16 @@ import {CompetencesComparingContainer} from '../model/competences-comparing-cont
 export class CompetencesCompararingContainerDisplayComponent implements OnInit {
 
   @Input() competencesContainer: CompetencesComparingContainer;
+  public modificationPanelDisplayed = false;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  public switchModificationPanelDisplayed() {
+    this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
   }
 
 }
