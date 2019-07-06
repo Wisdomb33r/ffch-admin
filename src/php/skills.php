@@ -68,6 +68,27 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     $errors [] = 'Format exception : cannot save without Gumi id';
     echo json_encode($errors);
   }
+} else if ($_SERVER ['REQUEST_METHOD'] == 'PUT') {
+  $competence = json_decode(file_get_contents('php://input'));
+  if (isset ($competence->gumi_id) && $competence->gumi_id) {
+    $brex_competences = brex_competence::finderParGumiId($competence->gumi_id);
+    if (count($brex_competences) == 0) {
+      dieWithBadRequest('Missing target exception : Gumi id ' . $competence->gumi_id . ' does not exists');
+    } else if (count($brex_competences) > 1) {
+      dieWithBadRequest('Duplicate key exception : Gumi id ' . $competence->gumi_id . ' found several times in DB');
+    } else {
+      $brex_competence = $brex_competences[0];
+      $values = createPropertyArray($competence);
+      $brex_competence->updateObject($values);
+      updateRelations($brex_competence, $competence);
+      storeAndRespond($brex_competence, $competence, 200);
+    }
+  } else {
+    http_response_code(400);
+    $errors = array();
+    $errors [] = 'Format exception : cannot save without Gumi id';
+    echo json_encode($errors);
+  }
 } else {
   if (isset ($_GET ['id'])) {
     $brex_competences = brex_competence::finderParGumiId($_GET ['id']);
@@ -80,6 +101,22 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   } else {
     http_response_code(400);
   }
+}
+
+function dieWithBadRequest($errorMessages)
+{
+  http_response_code(400);
+  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
+  ));
+  die ();
+}
+
+function dieWithNotFound($errorMessages)
+{
+  http_response_code(404);
+  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
+  ));
+  die ();
 }
 
 function createPropertyArray($competence)
