@@ -14,7 +14,6 @@ export class CharacterSkillDisplayComponent implements OnInit {
   @Input() competence: Competence;
   @Input() present: boolean;
   @Input() different: boolean;
-  @Input() inError: boolean;
   @Input() editable: boolean;
   public displayed = false;
 
