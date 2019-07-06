@@ -25,18 +25,8 @@
       <div class="skill-clear"></div>
 
       <div *ngIf="competencesContainer.isPresentInFfchDb() && competencesContainer.isDifferentFromFfchDb()">
-        <mat-card>
-          <mat-card-title (click)="switchModificationPanelDisplayed()">
-            Modifier {{competencesContainer.competence.nom}}</mat-card-title>
-
-          <div *ngIf="modificationPanelDisplayed">
-            <app-character-skill-display
-              [competence]="competencesContainer.modifiedCompetence"
-              [present]="competencesContainer.isPresentInFfchDb()"
-              [different]="competencesContainer.isDifferentFromFfchDb()"
-              [editable]="true"></app-character-skill-display>
-          </div>
-        </mat-card>
+        <app-character-skill-modification-display
+          [competence]="competencesContainer.modifiedCompetence"></app-character-skill-modification-display>
       </div>
     </div>
   </form>

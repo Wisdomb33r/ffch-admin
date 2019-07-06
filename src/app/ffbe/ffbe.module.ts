@@ -41,6 +41,7 @@ import {CraftableItemsService} from './services/craftable-items.service';
 import {EquipmentsService} from './services/equipments.service';
 import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
+import {CharacterSkillModificationDisplayComponent} from './character-skill-modification-display/character-skill-modification-display.component';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import {ClipboardModule} from 'ngx-clipboard';
     CharacterSkillsDisplayComponent,
     SkillsComponent,
     CharacterSkillDisplayComponent,
+    CharacterSkillModificationDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
     EnhancementsComponent,
@@ -84,6 +86,7 @@ import {ClipboardModule} from 'ngx-clipboard';
     CharacterSkillsDisplayComponent,
     SkillsComponent,
     CharacterSkillDisplayComponent,
+    CharacterSkillModificationDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
   ],

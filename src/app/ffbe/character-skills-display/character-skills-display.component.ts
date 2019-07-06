@@ -17,7 +17,6 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
   public subscription: Subscription;
-  public modificationPanelDisplayed = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -56,10 +55,6 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
 
   public isSkillsErrorsDisplayed(): boolean {
     return Array.isArray(this.skillsErrors) && this.skillsErrors.length > 0;
-  }
-
-  public switchModificationPanelDisplayed() {
-    this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
   }
 
 }
