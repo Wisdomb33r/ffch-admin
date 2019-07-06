@@ -15,6 +15,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
   @Input() present: boolean;
   @Input() different: boolean;
   @Input() inError: boolean;
+  @Input() editable: boolean;
   public displayed = false;
 
   constructor(private ffchClientService: FfchClientService) {
@@ -26,8 +27,13 @@ export class CharacterSkillDisplayComponent implements OnInit {
   public sendToFfch() {
     SkillMapper.mapCategorieToDamageType(this.competence);
     SkillMapper.mapUndefinedEnhanced(this.competence);
-    this.ffchClientService.postCompetence$(this.competence)
-      .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+    if (!this.present) {
+      this.ffchClientService.postCompetence$(this.competence)
+        .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+    } else {
+      this.ffchClientService.putCompetence$(this.competence)
+        .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+    }
   }
 
   public switchDisplayed() {
