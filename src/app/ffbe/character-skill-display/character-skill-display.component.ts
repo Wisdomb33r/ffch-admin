@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {isNullOrUndefined} from 'util';
@@ -16,6 +16,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
   @Input() different: boolean;
   @Input() editable: boolean;
   public displayed = false;
+  @Output() skillModifiedEvent: EventEmitter<Competence> = new EventEmitter();
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -31,7 +32,10 @@ export class CharacterSkillDisplayComponent implements OnInit {
         .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
     } else {
       this.ffchClientService.putCompetence$(this.competence)
-        .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+        .subscribe(c => {
+          this.competence.id = (isNullOrUndefined(c) ? null : c.id);
+          this.skillModifiedEvent.emit(c);
+        });
     }
   }
 

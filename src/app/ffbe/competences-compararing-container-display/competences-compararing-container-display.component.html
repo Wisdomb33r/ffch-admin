@@ -24,7 +24,7 @@
         [competence]="competencesContainer.modifiedCompetence"
         [present]="competencesContainer.isPresentInFfchDb()"
         [different]="competencesContainer.isDifferentFromFfchDb()"
-        [editable]="true"></app-character-skill-display>
+        [editable]="true" (skillModifiedEvent)="skillModified($event)"></app-character-skill-display>
     </div>
   </mat-card>
 </div>

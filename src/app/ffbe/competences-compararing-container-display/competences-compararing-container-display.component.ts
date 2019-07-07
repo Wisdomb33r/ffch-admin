@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
+import {Competence} from '../model/competence.model';
 
 @Component({
   selector: 'app-competences-compararing-container-display',
@@ -21,4 +22,8 @@ export class CompetencesCompararingContainerDisplayComponent implements OnInit {
     this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
   }
 
+  public skillModified(c: Competence) {
+    this.switchModificationPanelDisplayed();
+    this.competencesContainer.dbCompetence = c;
+  }
 }
