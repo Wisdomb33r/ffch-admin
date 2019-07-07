@@ -3,11 +3,11 @@ import {CompetencesComparingContainer} from '../model/competences-comparing-cont
 import {Competence} from '../model/competence.model';
 
 @Component({
-  selector: 'app-competences-compararing-container-display',
-  templateUrl: './competences-compararing-container-display.component.html',
-  styleUrls: ['./competences-compararing-container-display.component.css']
+  selector: 'app-competences-comparing-container-display',
+  templateUrl: './competences-comparing-container-display.component.html',
+  styleUrls: ['./competences-comparing-container-display.component.css']
 })
-export class CompetencesCompararingContainerDisplayComponent implements OnInit {
+export class CompetencesComparingContainerDisplayComponent implements OnInit {
 
   @Input() competencesContainer: CompetencesComparingContainer;
   public modificationPanelDisplayed = false;
