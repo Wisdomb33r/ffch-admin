@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {isNullOrUndefined} from 'util';
@@ -14,8 +14,9 @@ export class CharacterSkillDisplayComponent implements OnInit {
   @Input() competence: Competence;
   @Input() present: boolean;
   @Input() different: boolean;
-  @Input() inError: boolean;
+  @Input() editable: boolean;
   public displayed = false;
+  @Output() skillModifiedEvent: EventEmitter<Competence> = new EventEmitter();
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -26,8 +27,16 @@ export class CharacterSkillDisplayComponent implements OnInit {
   public sendToFfch() {
     SkillMapper.mapCategorieToDamageType(this.competence);
     SkillMapper.mapUndefinedEnhanced(this.competence);
-    this.ffchClientService.postCompetence$(this.competence)
-      .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+    if (!this.present) {
+      this.ffchClientService.postCompetence$(this.competence)
+        .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+    } else {
+      this.ffchClientService.putCompetence$(this.competence)
+        .subscribe(c => {
+          this.competence.id = (isNullOrUndefined(c) ? null : c.id);
+          this.skillModifiedEvent.emit(c);
+        });
+    }
   }
 
   public switchDisplayed() {

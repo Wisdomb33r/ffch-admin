@@ -29,6 +29,10 @@ export class FfchClientService {
     return this.http.post(FFCH_COMPETENCE_PATH, competence);
   }
 
+  public putCompetence$(competence: Competence): Observable<any> {
+    return this.http.put(FFCH_COMPETENCE_PATH + (competence.gumi_id ? '?id=' + competence.gumi_id : ''), competence);
+  }
+
   public getCompetenceByGumiId$(id: number): Observable<Competence> {
     return this.http.get<Competence>(FFCH_COMPETENCE_PATH + '?id=' + id)
       .pipe(catchError(this.analyseError));

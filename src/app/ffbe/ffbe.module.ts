@@ -41,6 +41,7 @@ import {CraftableItemsService} from './services/craftable-items.service';
 import {EquipmentsService} from './services/equipments.service';
 import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
+import {CompetencesComparingContainerDisplayComponent} from './competences-comparing-container-display/competences-comparing-container-display.component';
 
 @NgModule({
   imports: [
@@ -76,6 +77,7 @@ import {ClipboardModule} from 'ngx-clipboard';
     ItemRecipesComponent,
     RecettesDisplayComponent,
     RecetteDisplayComponent,
+    CompetencesComparingContainerDisplayComponent,
   ],
   exports: [
     CharactersComponent,

@@ -26,18 +26,18 @@
     <p>{{competence.description}}</p>
     <p>{{competence.effet_en}}</p>
 
-    <mat-form-field *ngIf="!present">
+    <mat-form-field *ngIf="!present || editable">
       <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
     </mat-form-field>
 
-    <mat-form-field *ngIf="!present">
+    <mat-form-field *ngIf="!present || editable">
       <input matInput type="number" name="puissance" [(ngModel)]="competence.puissance" placeholder="Puissance">
     </mat-form-field>
 
-    <p *ngIf="present">{{competence.effet}}</p>
+    <p *ngIf="present && !editable">{{competence.effet}}</p>
 
     <table>
-      <tr *ngIf="present">
+      <tr *ngIf="present && !editable">
         <th>Puissance</th>
         <td>{{competence.puissance}}</td>
       </tr>
@@ -76,13 +76,13 @@
       </tr>
     </table>
 
-    <p *ngIf="!present || shouldDisplayEnhanced()">
+    <p *ngIf="!present || editable || shouldDisplayEnhanced()">
       <mat-checkbox [(ngModel)]="competence.enhanced" [disabled]="shouldDisplayEnhanced()">Amélioration</mat-checkbox>
     </p>
 
     <button mat-raised-button color="accent" class="skill-clear"
             (click)="sendToFfch()"
-            *ngIf="!present">
+            *ngIf="!present || editable">
       Envoyer
     </button>
   </div>
