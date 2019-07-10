@@ -42,7 +42,7 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
       this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((c, index) => {
             this.competences[index].id = isNullOrUndefined(c) ? undefined : c.id;
-            this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c));
+          this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c, Competence.produce(this.competences[index])));
           }
         );
       });

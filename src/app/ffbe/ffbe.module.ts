@@ -41,6 +41,7 @@ import {ItemsService} from './services/items.service';
 import {EquipmentsService} from './services/equipments.service';
 import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
+import {CompetencesComparingContainerDisplayComponent} from './competences-comparing-container-display/competences-comparing-container-display.component';
 import {ItemsComponent} from './items/items.component';
 import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
 import {ObjetDisplayComponent} from './objet-display/objet-display.component';
@@ -81,6 +82,7 @@ import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elem
     ItemRecipesComponent,
     RecettesDisplayComponent,
     RecetteDisplayComponent,
+    CompetencesComparingContainerDisplayComponent,
     ItemsComponent,
     ObjetsDisplayComponent,
     ObjetDisplayComponent,

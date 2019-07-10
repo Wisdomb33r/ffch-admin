@@ -4,7 +4,8 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class CompetencesComparingContainer {
   public constructor(public competence: Competence,
-                     public dbCompetence: Competence) {
+                     public dbCompetence: Competence,
+                     public modifiedCompetence: Competence) {
   }
 
   public isPresentInFfchDb(): boolean {
