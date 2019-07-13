@@ -9,6 +9,8 @@ export class Objet {
 
   public extended_gumi_id: string;
   public prix_vente: number;
+  public resistancesElementaires: ObjetElements;
+  public elementsArme: ObjetElements;
 
   constructor(
     public id: number,

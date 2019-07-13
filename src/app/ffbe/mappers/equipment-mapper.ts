@@ -13,6 +13,9 @@ import {EquipmentElementResist} from '../model/equipment/equipment-element-resis
 export class EquipmentMapper {
 
   public static toObjet(equipment: Equipment) {
+    const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist);
+    const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
+
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
       equipment.strings.name[FFBE_FRENCH_TABLE_INDEX],
@@ -26,12 +29,14 @@ export class EquipmentMapper {
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ObjetCarac.newEmptyObjetCarac(),
-      EquipmentMapper.mapEquipmentElements(equipment.stats),
+      EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
     objet.extended_gumi_id = ItemCategoryFactory.toString('ItemCategory.Equipment') + ':' + equipment.gumi_id;
     objet.prix_vente = equipment.price_sell;
+    objet.resistancesElementaires = resistancesElementaires;
+    objet.elementsArme = elementsArme;
 
     return objet;
   }
@@ -40,25 +45,16 @@ export class EquipmentMapper {
     return new ObjetCarac(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
-  private static mapEquipmentElements(stats: EquipmentStats): ObjetElements {
-    let elements = ObjetElements.newEmptyObjetElements();
-
-    if (!isNullOrUndefined(stats.element_resist)) {
-      elements = EquipmentMapper.mapEquipmentElementResistances(stats.element_resist);
-    }
-
-    if (!isNullOrUndefined(stats.element_inflict)) {
-      EquipmentMapper.updateElementsWithInflicts(elements, stats.element_inflict);
-    }
-
-    return elements;
-  }
-
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
+    if (isNullOrUndefined(res)) {
+      return ObjetElements.newEmptyObjetElements();
+    }
     return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
   }
 
-  private static updateElementsWithInflicts(elements: ObjetElements, inflicts: Array<string>) {
+  private static mapEquipmentElementInflicts(inflicts: Array<string>) {
+    const elements = ObjetElements.newEmptyObjetElements();
+
     if (Array.isArray(inflicts) && inflicts.length > 0) {
       inflicts.forEach(element => {
         if (element === 'Fire') {
@@ -80,5 +76,37 @@ export class EquipmentMapper {
         }
       })
     }
+
+    return elements;
   }
+
+  private static mapEquipmentElements(resistances: ObjetElements, inflicts: ObjetElements) {
+
+    const elements = ObjetElements.newEmptyObjetElements();
+
+    elements.feu = EquipmentMapper.computeElementValue(resistances.feu, inflicts.feu);
+    elements.glace = EquipmentMapper.computeElementValue(resistances.glace, inflicts.glace);
+    elements.foudre = EquipmentMapper.computeElementValue(resistances.foudre, inflicts.foudre);
+    elements.eau = EquipmentMapper.computeElementValue(resistances.eau, inflicts.eau);
+    elements.air = EquipmentMapper.computeElementValue(resistances.air, inflicts.air);
+    elements.terre = EquipmentMapper.computeElementValue(resistances.terre, inflicts.terre);
+    elements.lumiere = EquipmentMapper.computeElementValue(resistances.lumiere, inflicts.lumiere);
+    elements.tenebres = EquipmentMapper.computeElementValue(resistances.tenebres, inflicts.tenebres);
+
+    return elements;
+  }
+
+  private static computeElementValue(resistance: number, inflict: number): number {
+    let value = resistance;
+
+    if (inflict === 100) {
+      if (isNullOrUndefined(resistance) || resistance === 0) {
+        value = inflict;
+      } else {
+        value = resistance + 1000;
+      }
+    }
+    return value;
+  }
+
 }
