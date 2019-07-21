@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Objet} from '../model/objet/objet.model';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-objet-elements-triplet-display',
@@ -20,6 +21,10 @@ export class ObjetElementsTripletDisplayComponent implements OnInit {
 
   public switchDisplayed() {
     this.displayed = !this.displayed;
+  }
+
+  public shouldDiplayElementsDetails(): boolean {
+    return !isNullOrUndefined(this.objet.resistancesElementaires) && !isNullOrUndefined(this.objet.elementsArme);
   }
 
 }

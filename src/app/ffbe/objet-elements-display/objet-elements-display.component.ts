@@ -9,17 +9,12 @@ import {ObjetElements} from '../model/objet/objet-elements';
 export class ObjetElementsDisplayComponent implements OnInit {
 
   @Input() objetElements: ObjetElements;
-
-  public displayed = false;
+  @Input() titre: string;
 
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  public switchDisplayed() {
-    this.displayed = !this.displayed;
   }
 
 }
