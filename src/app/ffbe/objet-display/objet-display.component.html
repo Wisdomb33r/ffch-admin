@@ -71,7 +71,7 @@
     </div>
     <div [ngClass]="'objet-carac-clear'"></div>
 
-    <app-objet-elements-triplet-display [objetElements]="objet.elements"></app-objet-elements-triplet-display>
+    <app-objet-elements-triplet-display [objet]="objet"></app-objet-elements-triplet-display>
 
     <app-character-skills-display *ngIf="areObjetCompetencesDisplayed()"
                                   [competences]="objet.competences"

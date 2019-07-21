@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {Objet} from '../model/objet/objet.model';
 
 @Component({
   selector: 'app-objet-elements-triplet-display',
@@ -8,11 +8,18 @@ import {ObjetElements} from '../model/objet/objet-elements';
 })
 export class ObjetElementsTripletDisplayComponent implements OnInit {
 
-  @Input() objetElements: ObjetElements;
+  @Input() objet: Objet;
+
+  public displayed = false;
 
   constructor() {
   }
 
   ngOnInit() {
   }
+
+  public switchDisplayed() {
+    this.displayed = !this.displayed;
+  }
+
 }

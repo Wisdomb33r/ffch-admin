@@ -1,3 +1,19 @@
-<p>
-  objet-elements-triplet-display works!
-</p>
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    Elements
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+    <div>
+      <app-objet-elements-display [objetElements]="objet.resistancesElementaires"></app-objet-elements-display>
+    </div>
+
+    <div>
+      <app-objet-elements-display [objetElements]="objet.elementsArme"></app-objet-elements-display>
+    </div>
+
+    <div>
+      <app-objet-elements-display [objetElements]="objet.elements"></app-objet-elements-display>
+    </div>
+  </div>
+</mat-card>
