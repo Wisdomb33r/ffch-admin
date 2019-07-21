@@ -1,0 +1,19 @@
+.objet-elements-left {
+  width: 33%;
+  float: left;
+}
+
+.objet-elements-middle {
+  width: 33%;
+  float: left;
+  margin-left: 0.5%;
+}
+
+.objet-elements-right {
+  width: 33%;
+  float: right;
+}
+
+.objet-elements-clear {
+  clear: both;
+}
