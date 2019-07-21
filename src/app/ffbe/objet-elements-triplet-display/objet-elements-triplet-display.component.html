@@ -8,20 +8,24 @@
     <div *ngIf="shouldDiplayElementsDetails()">
       <div [ngClass]="'objet-elements-left'">
         <app-objet-elements-display [objetElements]="objet.resistancesElementaires"
-                                    [titre]="'Résistances'">
+                                    [titre]="'Résistances'"
+                                    [estModifiable]="false">
         </app-objet-elements-display>
       </div>
 
       <div [ngClass]="'objet-elements-middle'">
         <app-objet-elements-display [objetElements]="objet.elementsArme"
-                                    [titre]="'Inflictions'">
+                                    [titre]="'Inflictions'"
+                                    [estModifiable]="false">
         </app-objet-elements-display>
       </div>
     </div>
 
     <div [ngClass]="shouldDiplayElementsDetails() ? 'objet-elements-right' : ''">
       <app-objet-elements-display [objetElements]="objet.elements"
-                                  [titre]="'Total'">
+                                  [titre]="'Total'"
+                                  [titre]="'Inflictions'"
+                                  [estModifiable]="!objet.isPresentInFfchDb()">
       </app-objet-elements-display>
     </div>
   </div>

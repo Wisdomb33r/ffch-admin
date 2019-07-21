@@ -10,6 +10,7 @@ export class ObjetElementsDisplayComponent implements OnInit {
 
   @Input() objetElements: ObjetElements;
   @Input() titre: string;
+  @Input() estModifiable: boolean;
 
   constructor() {
   }
