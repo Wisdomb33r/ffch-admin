@@ -47,6 +47,7 @@ import {ObjetsDisplayComponent} from './objets-display/objets-display.component'
 import {ObjetDisplayComponent} from './objet-display/objet-display.component';
 import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-display.component';
 import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elements-display.component';
+import {ObjetElementsTripletDisplayComponent} from './objet-elements-triplet-display/objet-elements-triplet-display.component';
 
 @NgModule({
   imports: [
@@ -88,6 +89,7 @@ import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elem
     ObjetDisplayComponent,
     ObjetCaracDisplayComponent,
     ObjetElementsDisplayComponent,
+    ObjetElementsTripletDisplayComponent,
   ],
   exports: [
     CharactersComponent,
