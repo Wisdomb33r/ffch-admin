@@ -15,6 +15,20 @@ export class ItemsService {
               private materiaService: MateriasService) {
   }
 
+  public static extractItemCategory(rawGumiId: string): ItemCategory {
+
+    let itemCategory: ItemCategory;
+    const splitGumiId = rawGumiId.split(':');
+
+    if (splitGumiId.length === 0) {
+      itemCategory = 'ItemCategory.Unknown';
+    } else {
+      itemCategory = ItemCategoryFactory.fromString(splitGumiId[0]);
+    }
+
+    return itemCategory;
+  }
+
   public searchForItemsByNames(english: string, french: string): Array<Item> {
     const items: Array<Item> = [];
 
@@ -102,20 +116,6 @@ export class ItemsService {
       return items;
     }
     return null;
-  }
-
-  public static extractItemCategory(rawGumiId: string): ItemCategory {
-
-    let itemCategory: ItemCategory;
-    const splitGumiId = rawGumiId.split(':');
-
-    if (splitGumiId.length === 0) {
-      itemCategory = 'ItemCategory.Unknown';
-    } else {
-      itemCategory = ItemCategoryFactory.fromString(splitGumiId[0]);
-    }
-
-    return itemCategory;
   }
 
   public isLoaded(): boolean {

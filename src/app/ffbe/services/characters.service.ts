@@ -58,12 +58,9 @@ export class CharactersService {
   public searchForCharacterByNameOrGumiId(name: string): Character {
     if (this.charactersFromDataMining != null) {
       const tentativeGumiId = Number(name);
-      if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId))
-      {
+      if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId)) {
         return this.searchForCharacterByGumiId(tentativeGumiId);
-      }
-      else
-      {
+      } else {
         return this.searchForCharacterByName(name);
       }
     }

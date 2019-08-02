@@ -79,7 +79,7 @@ export class EquipmentMapper {
         } else if (element === 'Dark') {
           elements.tenebres = 1000;
         }
-      })
+      });
     }
 
     return elements;

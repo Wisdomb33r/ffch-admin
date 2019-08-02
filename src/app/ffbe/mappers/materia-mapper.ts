@@ -36,5 +36,5 @@ export class MateriaMapper {
 
     return objet;
   }
-  
+
 }
