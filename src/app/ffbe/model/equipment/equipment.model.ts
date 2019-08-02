@@ -7,6 +7,8 @@ export class Equipment {
   name: string;
   rarity: number;
   type_id: number;
+  is_twohanded: boolean;
+  dmg_variance: Array<number>;
   skills: Array<number>;
   dmSkills: Array<Skill>;
   effects: Array<string>;

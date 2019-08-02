@@ -116,6 +116,9 @@ function createAndValidateObjet($objet)
   $values ['res_lumiere'] = $objet->elements->lumiere;
   $values ['res_tenebres'] = $objet->elements->tenebres;
 
+  $values ['variance_min'] = $objet->variance_min;
+  $values ['variance_max'] = $objet->variance_max;
+
   $brex_objet = new brex_objet($values);
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);

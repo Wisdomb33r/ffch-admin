@@ -11,6 +11,8 @@ export class Objet {
   public prix_vente: number;
   public resistancesElementaires: ObjetElements;
   public elementsArme: ObjetElements;
+  public variance_min: number;
+  public variance_max: number;
 
   constructor(
     public id: number,
@@ -33,7 +35,7 @@ export class Objet {
 
   public static produce(o: Objet): Objet {
     const categorie = FfbeUtils.findObjetCategorieByFfchId(o.categorie.ffchId);
-    return new Objet(
+    const objet = new Objet(
       o.id,
       categorie,
       o.nom,
@@ -49,6 +51,9 @@ export class Objet {
       ObjetCarac.produce(o.caracp),
       ObjetElements.produce(o.elements),
       o.competences);
+    objet.variance_min = o.variance_min;
+    objet.variance_max = o.variance_max;
+    return objet;
   }
 
   public isPresentInFfchDb(): boolean {
@@ -57,5 +62,9 @@ export class Objet {
 
   public isImagePresentInFfchDb(): boolean {
     return !isNullOrUndefined(this.icone);
+  }
+
+  public isTwoHanded(): boolean {
+    return !isNullOrUndefined(this.variance_min) && !isNullOrUndefined(this.variance_max);
   }
 }

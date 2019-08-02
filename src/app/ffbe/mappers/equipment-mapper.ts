@@ -38,6 +38,11 @@ export class EquipmentMapper {
     objet.resistancesElementaires = resistancesElementaires;
     objet.elementsArme = elementsArme;
 
+    if (equipment.is_twohanded && equipment.dmg_variance.length >= 2) {
+      objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
+      objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
+    }
+
     return objet;
   }
 
