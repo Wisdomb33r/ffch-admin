@@ -63,21 +63,21 @@ export class EquipmentMapper {
     if (Array.isArray(inflicts) && inflicts.length > 0) {
       inflicts.forEach(element => {
         if (element === 'Fire') {
-          elements.feu = 100;
+          elements.feu = 1000;
         } else if (element === 'Ice') {
-          elements.glace = 100;
+          elements.glace = 1000;
         } else if (element === 'Lightning') {
-          elements.foudre = 100;
+          elements.foudre = 1000;
         } else if (element === 'Water') {
-          elements.eau = 100;
+          elements.eau = 1000;
         } else if (element === 'Wind') {
-          elements.air = 100;
+          elements.air = 1000;
         } else if (element === 'Earth') {
-          elements.terre = 100;
+          elements.terre = 1000;
         } else if (element === 'Light') {
-          elements.lumiere = 100;
+          elements.lumiere = 1000;
         } else if (element === 'Dark') {
-          elements.tenebres = 100;
+          elements.tenebres = 1000;
         }
       })
     }
@@ -104,7 +104,7 @@ export class EquipmentMapper {
   private static computeElementValue(resistance: number, inflict: number): number {
     let value = resistance;
 
-    if (inflict === 100) {
+    if (inflict === 1000) {
       if (isNullOrUndefined(resistance) || resistance === 0) {
         value = inflict;
       } else {
