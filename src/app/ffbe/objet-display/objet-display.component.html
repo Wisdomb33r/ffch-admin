@@ -38,6 +38,14 @@
         <th>Stars</th>
         <td>{{objet.stars}}</td>
       </tr>
+      <tr *ngIf="objet.isTwoHanded()">
+        <th>
+          Variance
+        </th>
+        <td>
+          {{objet.variance_min}}% - {{objet.variance_max}}%
+        </td>
+      </tr>
       <tr *ngIf="present">
         <th>Image</th>
         <td>
@@ -51,14 +59,6 @@
             <img *ngIf="!objet.isPresentInFfchDb()" src="assets/red/warn.png"
                  alt="{{objet.gumi_id}}" title="{{objet.gumi_id}}"/>
           </span>
-        </td>
-      </tr>
-      <tr *ngIf="objet.isTwoHanded()">
-        <th>
-          Variance
-        </th>
-        <td>
-          {{objet.variance_min}}% - {{objet.variance_max}}%
         </td>
       </tr>
     </table>
