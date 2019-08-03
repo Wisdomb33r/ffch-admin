@@ -6,6 +6,7 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 
 export class ConsumableMapper {
 
@@ -24,6 +25,7 @@ export class ConsumableMapper {
       ObjetCarac.newEmptyObjetCarac(),
       ObjetCarac.newEmptyObjetCarac(),
       ObjetElements.newEmptyObjetElements(),
+      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       null
     );
 

@@ -4,6 +4,7 @@ import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
 import {ObjetElements} from './objet-elements';
+import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
 
 export class Objet {
 
@@ -11,6 +12,7 @@ export class Objet {
   public prix_vente: number;
   public resistancesElementaires: ObjetElements;
   public elementsArme: ObjetElements;
+  public alterationsArme;
   public variance_min: number;
   public variance_max: number;
 
@@ -29,6 +31,7 @@ export class Objet {
     public carac: ObjetCarac,
     public caracp: ObjetCarac,
     public elements: ObjetElements,
+    public resistancesAlterations: ObjetAlterationsEtat,
     public competences: Array<Competence>
   ) {
   }
@@ -50,6 +53,7 @@ export class Objet {
       ObjetCarac.produce(o.carac),
       ObjetCarac.produce(o.caracp),
       ObjetElements.produce(o.elements),
+      ObjetAlterationsEtat.produce(o.resistancesAlterations),
       o.competences);
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;

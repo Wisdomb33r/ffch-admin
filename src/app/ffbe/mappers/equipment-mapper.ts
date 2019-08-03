@@ -9,6 +9,7 @@ import {ObjetCarac} from '../model/objet/objet-carac';
 import {ObjetElements} from '../model/objet/objet-elements';
 import {isNullOrUndefined} from 'util';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
+import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 
 export class EquipmentMapper {
 
@@ -30,6 +31,7 @@ export class EquipmentMapper {
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ObjetCarac.newEmptyObjetCarac(),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
+      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 

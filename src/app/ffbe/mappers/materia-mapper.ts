@@ -6,6 +6,7 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ObjetCarac} from '../model/objet/objet-carac';
 import {ObjetElements} from '../model/objet/objet-elements';
+import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 
 export class MateriaMapper {
 
@@ -24,6 +25,7 @@ export class MateriaMapper {
       ObjetCarac.newEmptyObjetCarac(),
       ObjetCarac.newEmptyObjetCarac(),
       ObjetElements.newEmptyObjetElements(),
+      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
