@@ -1,3 +1,5 @@
+import {isNullOrUndefined} from 'util';
+
 export class ObjetAlterationsEtat {
   public constructor(
     public poison: number,
@@ -15,8 +17,11 @@ export class ObjetAlterationsEtat {
     return new ObjetAlterationsEtat(null, null, null, null, null, null, null, null);
   }
 
-  public static produce(oe: ObjetAlterationsEtat): ObjetAlterationsEtat {
-    return new ObjetAlterationsEtat(oe.poison, oe.cecite, oe.sommeil, oe.silence, oe.paralysie, oe.confusion, oe.maladie, oe.petrification);
+  public static produce(oae: ObjetAlterationsEtat): ObjetAlterationsEtat {
+    if (isNullOrUndefined(oae)) {
+      return this.newEmptyObjetAlterationsEtat();
+    }
+    return new ObjetAlterationsEtat(oae.poison, oae.cecite, oae.sommeil, oae.silence, oae.paralysie, oae.confusion, oae.maladie, oae.petrification);
   }
 
 }

@@ -10,6 +10,7 @@ import {ObjetElements} from '../model/objet/objet-elements';
 import {isNullOrUndefined} from 'util';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
 
 export class EquipmentMapper {
 
@@ -31,7 +32,7 @@ export class EquipmentMapper {
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ObjetCarac.newEmptyObjetCarac(),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
-      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
+      EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -44,6 +45,8 @@ export class EquipmentMapper {
       objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
       objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
     }
+
+    objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict);
 
     return objet;
   }
@@ -114,6 +117,13 @@ export class EquipmentMapper {
       }
     }
     return value;
+  }
+
+  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ObjetAlterationsEtat {
+    if (isNullOrUndefined(e)) {
+      return ObjetAlterationsEtat.newEmptyObjetAlterationsEtat();
+    }
+    return new ObjetAlterationsEtat(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
   }
 
 }
