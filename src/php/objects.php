@@ -116,6 +116,15 @@ function createAndValidateObjet($objet)
   $values ['res_lumiere'] = $objet->elements->lumiere;
   $values ['res_tenebres'] = $objet->elements->tenebres;
 
+  $values ['res_poison'] = $objet->resistancesAlterations->poison;
+  $values ['res_cecite'] = $objet->resistancesAlterations->cecite;
+  $values ['res_sommeil'] = $objet->resistancesAlterations->sommeil;
+  $values ['res_mutisme'] = $objet->resistancesAlterations->silence;
+  $values ['res_paralysie'] = $objet->resistancesAlterations->paralysie;
+  $values ['res_confusion'] = $objet->resistancesAlterations->confusion;
+  $values ['res_maladie'] = $objet->resistancesAlterations->maladie;
+  $values ['res_petrification'] = $objet->resistancesAlterations->petrification;
+
   $values ['variance_min'] = $objet->variance_min;
   $values ['variance_max'] = $objet->variance_max;
 

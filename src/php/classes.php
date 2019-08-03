@@ -62,6 +62,30 @@ class ObjetElement
   }
 }
 
+class ObjetAlterationsEtat
+{
+  public $poison;
+  public $cecite;
+  public $sommeil;
+  public $silence;
+  public $paralysie;
+  public $confusion;
+  public $maladie;
+  public $petrification;
+
+  function __construct($poison, $cecite, $sommeil, $silence, $paralysie, $confusion, $maladie, $petrification)
+  {
+    $this->poison = $poison;
+    $this->cecite = $cecite;
+    $this->sommeil = $sommeil;
+    $this->silence = $silence;
+    $this->paralysie = $paralysie;
+    $this->confusion = $confusion;
+    $this->maladie = $maladie;
+    $this->petrification = $petrification;
+  }
+}
+
 class Objet
 {
   public $id;
@@ -78,6 +102,7 @@ class Objet
   public $carac;
   public $caracp;
   public $elements;
+  public $resistancesAlterations;
   public $variance_min;
   public $variance_max;
   public $competences;
@@ -95,9 +120,10 @@ class Objet
     $this->effet_en = $brex_objet->effet_en;
     $this->carac = new ObjetCarac($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
     $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
+    $this->elements = new ObjetElement($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
+    $this->resistancesAlterations = new ObjetAlterationsEtat($brex_objet->res_poison, $brex_objet->res_cecite, $brex_objet->res_sommeil, $brex_objet->res_mutisme, $brex_objet->res_paralysie, $brex_objet->res_confusion, $brex_objet->res_maladie, $brex_objet->res_petrification);
     $this->variance_min = $brex_objet->variance_min;
     $this->variance_max = $brex_objet->variance_max;
-    $this->elements = new ObjetElement($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
 
     if (strlen($brex_objet->img) > 0) {
       $this->icone = $brex_objet->getImageimgPath();
