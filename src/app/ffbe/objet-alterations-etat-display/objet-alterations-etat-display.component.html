@@ -1,3 +1,91 @@
-<p>
-  objet-alterations-etat-display works!
-</p>
+<mat-card>
+  <mat-card-title>
+    {{titre}}
+  </mat-card-title>
+
+  <div>
+    <table>
+      <tr>
+        <th>Poison</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.poison}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Poison" [(ngModel)]="objetAlterationsEtat.poison"
+                   placeholder="{{'Poison'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Cécité</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.cecite}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Cécité" [(ngModel)]="objetAlterationsEtat.cecite"
+                   placeholder="{{'Cécité'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Sommeil</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.sommeil}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Sommeil" [(ngModel)]="objetAlterationsEtat.sommeil"
+                   placeholder="{{'Sommeil'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Silence</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.silence}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Silence" [(ngModel)]="objetAlterationsEtat.silence"
+                   placeholder="{{'Silence'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Air</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.paralysie}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Paralysie" [(ngModel)]="objetAlterationsEtat.paralysie"
+                   placeholder="{{'Paralysie'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Confusion</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.confusion}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Confusion" [(ngModel)]="objetAlterationsEtat.confusion"
+                   placeholder="{{'Confusion'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Maladie</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.maladie}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Maladie" [(ngModel)]="objetAlterationsEtat.maladie"
+                   placeholder="{{'Maladie'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Pétrification</th>
+        <td *ngIf="!estModifiable">{{objetAlterationsEtat.petrification}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Pétrification" [(ngModel)]="objetAlterationsEtat.petrification"
+                   placeholder="{{'Pétrification'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</mat-card>
