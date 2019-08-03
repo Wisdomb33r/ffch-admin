@@ -1,3 +1,9 @@
-<p>
-  objet-alterations-etat-duo-display works!
-</p>
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    Altérations d'état
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+
+  </div>
+</mat-card>
