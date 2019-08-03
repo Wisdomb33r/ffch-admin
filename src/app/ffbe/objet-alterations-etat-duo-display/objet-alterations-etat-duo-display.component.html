@@ -5,5 +5,14 @@
 
   <div *ngIf="displayed">
 
+    <div [ngClass]="shouldDiplayInflicts() ? 'objet-alterations-etat-left' : ''">
+      <app-objet-alterations-etat-display></app-objet-alterations-etat-display>
+    </div>
+
+    <div *ngIf="shouldDiplayInflicts()" [ngClass]="'objet-alterations-etat-right'">
+      <app-objet-alterations-etat-display></app-objet-alterations-etat-display>
+    </div>
+    <div [ngClass]="'objet-alterations-etat-clear'"></div>
+
   </div>
 </mat-card>
