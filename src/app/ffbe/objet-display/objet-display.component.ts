@@ -55,6 +55,10 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
     this.objet.categorie = FfbeUtils.findObjetCategorieByFfchId(this.categorieFfchId);
   }
 
+  public hasLienTRM(): boolean {
+    return !isNullOrUndefined(this.objet.lienTMR);
+  }
+
   public sendObjetToFfchDb() {
     this.ffchClientService.postObjet$(this.objet)
       .subscribe(objet =>

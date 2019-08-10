@@ -46,6 +46,10 @@
           {{objet.variance_min}}% - {{objet.variance_max}}%
         </td>
       </tr>
+      <tr *ngIf="hasLienTRM()">
+        <th>{{objet.lienTMR.isSTRM ? 'STMR' : 'TMR'}}</th>
+        <td>{{objet.lienTMR.nom_perso}}</td>
+      </tr>
       <tr *ngIf="present">
         <th>Image</th>
         <td>
