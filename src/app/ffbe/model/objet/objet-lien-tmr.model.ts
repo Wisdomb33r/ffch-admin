@@ -13,7 +13,12 @@ export class ObjetLienTMR {
     if (!isNotNullOrUndefined(lien)) {
       return null;
     }
-    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, lien.isSTMR);
+
+    let isSTMR = false;
+    if (lien.isSTMR) {
+      isSTMR = true;
+    }
+    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, isSTMR);
   }
 
 }

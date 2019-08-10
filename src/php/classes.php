@@ -86,6 +86,20 @@ class ObjetAlterationsEtat
   }
 }
 
+class ObjetLienTMR
+{
+  public $perso_gumi_id;
+  public $nom_perso;
+  public $isSTMR;
+
+  function __construct($perso_gumi_id, $nom_perso, $isSTMR)
+  {
+    $this->perso_gumi_id = $perso_gumi_id;
+    $this->nom_perso = $nom_perso;
+    $this->isSTMR = $isSTMR;
+  }
+}
+
 class Objet
 {
   public $id;
@@ -106,6 +120,7 @@ class Objet
   public $variance_min;
   public $variance_max;
   public $competences;
+  public $lienTMR;
 
   function __construct($brex_objet)
   {

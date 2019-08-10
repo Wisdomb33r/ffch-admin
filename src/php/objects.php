@@ -2,6 +2,7 @@
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
 require_once "../gestion/genscripts/object_brex_obj_comp.class.php";
+require_once "../gestion/genscripts/object_brex_perso_trust.class.php";
 require_once "classes.php";
 require_once "skill_class.php";
 
@@ -32,6 +33,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   $stored_brex_objet = findObjetByGumiId($objet->gumi_id);
   $stored_objet = new Objet($stored_brex_objet);
+
+  $brex_perso_trust = createAndValidateObjetLienTMR($objet, $stored_brex_objet);
+  storeLienTMR($brex_perso_trust);
+  updateObjetWithLienTMR($stored_objet);
+
   echo json_encode($stored_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
   if (!isset ($_GET ['gumi_id'])) {
@@ -41,6 +47,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_objet = findObjetByGumiId($_GET ['gumi_id']);
   $objet = new Objet($brex_objet);
   updateObjetWithCompetences($objet);
+  updateObjetWithLienTMR($objet);
   echo json_encode($objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
 
@@ -78,6 +85,19 @@ function updateObjetWithCompetences($objet)
       $objet->competences[] = new Competence($brex_obj_comp->competence);
     }
   }
+}
+
+function updateObjetWithLienTMR($objet)
+{
+  $brex_perso_trusts = brex_perso_trust::findByRelation1N(array('reward' => $objet->id));
+
+  if (is_array($brex_perso_trusts)) {
+    foreach ($brex_perso_trusts as $brex_perso_trust) {
+      $brex_perso = brex_perso::findByPrimaryId($brex_perso_trust->relation1Nperso);
+      $objet->lienTMR = new ObjetLienTMR($brex_perso->gumi_id, $brex_perso->nom, $brex_perso_trust->super);
+    }
+  }
+
 }
 
 function createAndValidateObjet($objet)
@@ -143,6 +163,47 @@ function storeObjet($brex_objet)
   if (!$brex_objet->store()) {
     http_response_code(400);
     echo json_encode($brex_objet->errors);
+  }
+}
+
+function createAndValidateObjetLienTMR($objet, $brex_objet)
+{
+  if (is_null($objet->lienTMR)) {
+    return null;
+  }
+
+  $brex_persos = brex_perso::finderParGumiId($objet->lienTMR->perso_gumi_id);
+
+  if (is_null($brex_persos) || count($brex_persos) != 1) {
+    return null;
+  }
+
+  $brex_perso = $brex_persos[0];
+
+  $values = array();
+  $values['super'] = $objet->lienTMR->isSTMR ? '1' : '0';
+  $values['creation_datedate'] = date('Y-m-d');
+  $values['creation_datehour'] = date('H');
+  $values['creation_datemins'] = date('i');
+
+  $brex_perso_trust = new brex_perso_trust($values);
+  $brex_perso_trust->setrelationperso($brex_perso);
+  $brex_perso_trust->setrelationreward($brex_objet);
+
+  $brex_perso_trust->verifyValues();
+
+  return $brex_perso_trust;
+}
+
+function storeLienTMR($brex_perso_trust)
+{
+  if (is_null($brex_perso_trust)) {
+    return;
+  }
+
+  if (!$brex_perso_trust->store()) {
+    http_response_code(400);
+    echo json_encode($brex_perso_trust->errors);
   }
 }
 

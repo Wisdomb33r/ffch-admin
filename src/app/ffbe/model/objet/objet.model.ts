@@ -60,6 +60,7 @@ export class Objet {
       o.competences);
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
+    objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
     return objet;
   }
 
