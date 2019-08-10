@@ -34,4 +34,18 @@ export class ItemCategoryFactory {
     return prefix;
   }
 
+  public static getName(itemCategory: ItemCategory): string {
+    let name = 'UNKNOWN';
+
+    if (itemCategory === 'ItemCategory.Consumable') {
+      name = 'ITEM';
+    } else if (itemCategory === 'ItemCategory.Equipment') {
+      name = 'EQUIP';
+    } else if (itemCategory === 'ItemCategory.Materia') {
+      name = 'MATERIA';
+    }
+
+    return name;
+  }
+
 }

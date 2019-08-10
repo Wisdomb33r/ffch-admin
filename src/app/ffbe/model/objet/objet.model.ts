@@ -5,6 +5,7 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
 import {ObjetElements} from './objet-elements';
 import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
+import {ObjetLienTMR} from './objet-lien-tmr.model';
 
 export class Objet {
 
@@ -15,6 +16,8 @@ export class Objet {
   public alterationsArme;
   public variance_min: number;
   public variance_max: number;
+
+  public lienTMR: ObjetLienTMR;
 
   constructor(
     public id: number,
