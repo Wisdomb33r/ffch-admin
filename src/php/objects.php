@@ -125,8 +125,8 @@ function createAndValidateObjet($objet)
   $values ['res_maladie'] = $objet->resistancesAlterations->maladie;
   $values ['res_petrification'] = $objet->resistancesAlterations->petrification;
 
-  $values ['variance_min'] = $objet->variance_min;
-  $values ['variance_max'] = $objet->variance_max;
+  if (property_exists($objet, 'variance_min')) $values ['variance_min'] = $objet->variance_min;
+  if (property_exists($objet, 'variance_max')) $values ['variance_max'] = $objet->variance_max;
 
   $brex_objet = new brex_objet($values);
 
