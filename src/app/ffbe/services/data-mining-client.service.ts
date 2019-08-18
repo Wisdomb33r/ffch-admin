@@ -10,6 +10,7 @@ const skillsAbilityFile = dataMiningBaseURL + 'skills_ability.json';
 const skillsMagicFile = dataMiningBaseURL + 'skills_magic.json';
 const skillsPassiveFile = dataMiningBaseURL + 'skills_passive.json';
 const enhancementsFile = dataMiningBaseURL + 'enhancements.json';
+const latentSkillsFile = dataMiningBaseURL + 'unit_latent_skills.json';
 const recipeFile = dataMiningBaseURL + 'recipes.json';
 const consumableFile = dataMiningBaseURL + 'items.json';
 const equipmentFile = dataMiningBaseURL + 'equipment.json';
@@ -95,6 +96,10 @@ export class DataMiningClientService {
 
   public getEnhancements$(): Observable<Object> {
     return this.http.get(enhancementsFile);
+  }
+
+  public getLatentSkills(): Observable<Object> {
+    return this.http.get(latentSkillsFile);
   }
 
   public getItemRecipes$(): Observable<Object> {

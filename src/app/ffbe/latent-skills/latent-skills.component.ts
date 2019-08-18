@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {LatentSkillsService} from '../services/latent-skills.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-latent-skills',
@@ -7,10 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LatentSkillsComponent implements OnInit {
 
-  constructor() {
+  characterName: FormControl;
+
+  constructor(private latentSkillsService: LatentSkillsService) {
   }
 
   ngOnInit() {
   }
 
+  public isDataMiningLoading(): boolean {
+    return !this.latentSkillsService.isLoaded();
+  }
+
+  public searchLatentSkillsInDataMining() {
+  }
 }

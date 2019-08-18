@@ -1,3 +1,11 @@
-<p>
-  latent-skills works!
-</p>
+<mat-card *ngIf="isDataMiningLoading()">
+  <mat-card-title>Chargement en cours...</mat-card-title>
+  <mat-spinner></mat-spinner>
+</mat-card>
+<mat-card *ngIf="!isDataMiningLoading()">
+  <mat-card-title>Importer une amélioration de compétence</mat-card-title>
+  <mat-form-field>
+    <input matInput [formControl]="characterName" placeholder="Personnage">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="searchLatentSkillsInDataMining()">Chercher</button>
+</mat-card>
