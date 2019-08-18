@@ -32,9 +32,9 @@ import {EnhancementsDisplayComponent} from './enhancements-display/enhancements-
 import {EnhancementDisplayComponent} from './enhancement-display/enhancement-display.component';
 import {FormuleDisplayComponent} from './formule-display/formule-display.component';
 import {FormulesDisplayComponent} from './formules-display/formules-display.component';
-import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
-import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
-import { RecetteDisplayComponent } from './recette-display/recette-display.component';
+import {ItemRecipesComponent} from './item-recipes/item-recipes.component';
+import {RecettesDisplayComponent} from './recettes-display/recettes-display.component';
+import {RecetteDisplayComponent} from './recette-display/recette-display.component';
 import {ConsumablesService} from './services/consumables.service';
 import {ItemRecipesService} from './services/item-recipes.service';
 import {ItemsService} from './services/items.service';
@@ -50,6 +50,7 @@ import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elem
 import {ObjetElementsTripletDisplayComponent} from './objet-elements-triplet-display/objet-elements-triplet-display.component';
 import {ObjetAlterationsEtatDuoDisplayComponent} from './objet-alterations-etat-duo-display/objet-alterations-etat-duo-display.component';
 import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-display/objet-alterations-etat-display.component';
+import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
 
 @NgModule({
   imports: [
@@ -94,6 +95,7 @@ import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-dis
     ObjetElementsTripletDisplayComponent,
     ObjetAlterationsEtatDuoDisplayComponent,
     ObjetAlterationsEtatDisplayComponent,
+    LatentSkillsComponent,
   ],
   exports: [
     CharactersComponent,
