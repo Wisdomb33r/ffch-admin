@@ -5,12 +5,17 @@ import {Observable} from 'rxjs';
 const dataMiningBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe/master/';
 const charactersFile = dataMiningBaseURL + 'units.json';
 const lbFile = dataMiningBaseURL + 'limitbursts.json';
-const skillsFile = dataMiningBaseURL + 'skills.json';
+const skillsAbilityFile = dataMiningBaseURL + 'skills_ability.json';
+const skillsMagicFile = dataMiningBaseURL + 'skills_magic.json';
+const skillsPassiveFile = dataMiningBaseURL + 'skills_passive.json';
 const enhancementsFile = dataMiningBaseURL + 'enhancements.json';
 const recipeFile = dataMiningBaseURL + 'recipes.json';
 const consumableFile = dataMiningBaseURL + 'items.json';
 const equipmentFile = dataMiningBaseURL + 'equipment.json';
 const materiaFile = dataMiningBaseURL + 'materia.json';
+const dataMiningStringsBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe-gl-strings/master/';
+const skillsNamesFile = dataMiningStringsBaseURL + 'MST_ABILITY_NAME.json';
+const skillsDescriptionsFile = dataMiningStringsBaseURL + 'MST_ABILITY_SHORTDESCRIPTION.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -26,8 +31,24 @@ export class DataMiningClientService {
     return this.http.get(lbFile);
   }
 
-  public getSkills$(): Observable<Object> {
-    return this.http.get(skillsFile);
+  public getSkillsAbility$(): Observable<Object> {
+    return this.http.get(skillsAbilityFile);
+  }
+
+  public getSkillsMagic$(): Observable<Object> {
+    return this.http.get(skillsMagicFile);
+  }
+
+  public getSkillsPassive$(): Observable<Object> {
+    return this.http.get(skillsPassiveFile);
+  }
+
+  public getSkillsNames$(): Observable<Object> {
+    return this.http.get(skillsNamesFile);
+  }
+
+  public getSkillsDescriptions$(): Observable<Object> {
+    return this.http.get(skillsDescriptionsFile);
   }
 
   public getEnhancements$(): Observable<Object> {
