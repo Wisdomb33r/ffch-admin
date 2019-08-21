@@ -1,68 +1,125 @@
-import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Item} from '../model/item.model';
-import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {ConsumablesService} from './consumables.service';
+import {EquipmentsService} from './equipments.service';
+import {MateriasService} from './materias.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
+import {isNullOrUndefined} from 'util';
+import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
 export class ItemsService {
 
-  private itemsFromDataMining = null;
-
-  constructor(private dataMiningClientService: DataMiningClientService) {
-    this.loadItemsFromDataMining();
+  constructor(private consumablesService: ConsumablesService,
+              private equipmentService: EquipmentsService,
+              private materiaService: MateriasService) {
   }
 
-  public loadItemsFromDataMining() {
-    if (this.itemsFromDataMining == null) {
-      this.dataMiningClientService.getItems$()
-        .subscribe(data => this.itemsFromDataMining = data);
+  public static extractItemCategory(rawGumiId: string): ItemCategory {
+
+    let itemCategory: ItemCategory;
+    const splitGumiId = rawGumiId.split(':');
+
+    if (splitGumiId.length === 0) {
+      itemCategory = 'ItemCategory.Unknown';
+    } else {
+      itemCategory = ItemCategoryFactory.fromString(splitGumiId[0]);
     }
+
+    return itemCategory;
   }
 
   public searchForItemsByNames(english: string, french: string): Array<Item> {
     const items: Array<Item> = [];
-    const propertyNames: string[] = Object.getOwnPropertyNames(this.itemsFromDataMining);
-    let matchingProperties: Array<string> = [];
-    if (english && french) {
-      matchingProperties = propertyNames.filter(
-        propertyName =>
-          this.itemsFromDataMining[propertyName].name === english
-          && this.itemsFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
-      );
-    } else if (english) {
-      matchingProperties = propertyNames.filter(
-        propertyName => this.itemsFromDataMining[propertyName].name === english
-      );
-    } else if (french) {
-      matchingProperties = propertyNames.filter(
-        propertyName => this.itemsFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
-      );
-    }
-    if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
-      matchingProperties.forEach(property => {
-        const item: Item = this.itemsFromDataMining[property];
-        item.gumi_id = +property;
-        items.push(item);
+
+
+    const consumables = this.consumablesService.searchForConsumablesByNames(english, french);
+    if (Array.isArray(consumables) && consumables.length > 0) {
+      consumables.forEach(consumable => {
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
       });
     }
+
+    const equipments = this.equipmentService.searchForEquipmentsByNames(english, french);
+    if (Array.isArray(equipments) && equipments.length > 0) {
+      equipments.forEach(equipment => {
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+      });
+    }
+
+    const materias = this.materiaService.searchForMateriasByNames(english, french);
+    if (Array.isArray(materias) && materias.length > 0) {
+      materias.forEach(materia => {
+        items.push(new Item('ItemCategory.Materia', null, null, materia));
+      });
+    }
+
     return items;
   }
 
-  public searchForItemByGumiId(id: number): Item {
-    if (this.itemsFromDataMining != null) {
-      const propertyNames: string[] = Object.getOwnPropertyNames(this.itemsFromDataMining);
-      const property = propertyNames.find(propertyName => +propertyName === id);
-      if (property) {
-        const item: Item = this.itemsFromDataMining[property];
-        item.gumi_id = +property;
-        return item;
+  public searchForItemByExtendedGumiId(extendedGumiId: string): Item {
+    if (!isNullOrUndefined(extendedGumiId)) {
+      const itemCategory = ItemsService.extractItemCategory(extendedGumiId);
+      const gumiId = FfbeUtils.extractGumiId(extendedGumiId);
+
+      let item: Item;
+
+      switch (itemCategory) {
+        case 'ItemCategory.Consumable': {
+          const consumable = this.consumablesService.searchForConsumableByGumiId(gumiId);
+          item = new Item(itemCategory, consumable, null, null);
+          break;
+        }
+
+        case 'ItemCategory.Equipment': {
+          const equipment = this.equipmentService.searchForEquipmentByGumiId(gumiId);
+          item = new Item(itemCategory, null, equipment, null);
+          break;
+        }
+
+        case 'ItemCategory.Materia': {
+          const materia = this.materiaService.searchForMateriaByGumiId(gumiId);
+          item = new Item(itemCategory, null, null, materia);
+          break;
+        }
+
+        case 'ItemCategory.Unknown': {
+          item = new Item(itemCategory, null, null, null);
+          break;
+        }
+
       }
+      return item;
+    }
+    return null;
+  }
+
+  public searchForItemsByGumiId(gumiId: string): Array<Item> {
+    if (!isNullOrUndefined(gumiId)) {
+
+      const items: Array<Item> = [];
+
+      const consumable = this.consumablesService.searchForConsumableByGumiId(+gumiId);
+      if (!isNullOrUndefined(consumable)) {
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+      }
+
+      const equipment = this.equipmentService.searchForEquipmentByGumiId(+gumiId);
+      if (!isNullOrUndefined(equipment)) {
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+      }
+
+      const materia = this.materiaService.searchForMateriaByGumiId(+gumiId);
+      if (!isNullOrUndefined(materia)) {
+        items.push(new Item('ItemCategory.Materia', null, null, materia));
+      }
+      return items;
     }
     return null;
   }
 
   public isLoaded(): boolean {
-    return this.itemsFromDataMining != null;
+    return this.consumablesService.isLoaded() && this.equipmentService.isLoaded() && this.consumablesService.isLoaded();
   }
 }
 

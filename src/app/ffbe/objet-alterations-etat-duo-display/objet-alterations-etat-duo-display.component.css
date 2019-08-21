@@ -1,0 +1,13 @@
+.objet-alterations-etat-left {
+  width: 49%;
+  float: left;
+}
+
+.objet-alterations-etat-right {
+  width: 49%;
+  float: right;
+}
+
+.objet-alterations-etat-clear {
+  clear: both;
+}

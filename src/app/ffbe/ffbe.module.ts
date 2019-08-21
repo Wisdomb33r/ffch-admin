@@ -35,13 +35,21 @@ import {FormulesDisplayComponent} from './formules-display/formules-display.comp
 import { ItemRecipesComponent } from './item-recipes/item-recipes.component';
 import { RecettesDisplayComponent } from './recettes-display/recettes-display.component';
 import { RecetteDisplayComponent } from './recette-display/recette-display.component';
-import {ItemsService} from './services/items.service';
+import {ConsumablesService} from './services/consumables.service';
 import {ItemRecipesService} from './services/item-recipes.service';
-import {CraftableItemsService} from './services/craftable-items.service';
+import {ItemsService} from './services/items.service';
 import {EquipmentsService} from './services/equipments.service';
 import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
 import {CompetencesComparingContainerDisplayComponent} from './competences-comparing-container-display/competences-comparing-container-display.component';
+import {ItemsComponent} from './items/items.component';
+import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
+import {ObjetDisplayComponent} from './objet-display/objet-display.component';
+import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-display.component';
+import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elements-display.component';
+import {ObjetElementsTripletDisplayComponent} from './objet-elements-triplet-display/objet-elements-triplet-display.component';
+import {ObjetAlterationsEtatDuoDisplayComponent} from './objet-alterations-etat-duo-display/objet-alterations-etat-duo-display.component';
+import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-display/objet-alterations-etat-display.component';
 
 @NgModule({
   imports: [
@@ -78,6 +86,14 @@ import {CompetencesComparingContainerDisplayComponent} from './competences-compa
     RecettesDisplayComponent,
     RecetteDisplayComponent,
     CompetencesComparingContainerDisplayComponent,
+    ItemsComponent,
+    ObjetsDisplayComponent,
+    ObjetDisplayComponent,
+    ObjetCaracDisplayComponent,
+    ObjetElementsDisplayComponent,
+    ObjetElementsTripletDisplayComponent,
+    ObjetAlterationsEtatDuoDisplayComponent,
+    ObjetAlterationsEtatDisplayComponent,
   ],
   exports: [
     CharactersComponent,
@@ -96,9 +112,9 @@ import {CompetencesComparingContainerDisplayComponent} from './competences-compa
     SkillsService,
     FfchClientService,
     EnhancementsService,
-    ItemsService,
+    ConsumablesService,
     ItemRecipesService,
-    CraftableItemsService,
+    ItemsService,
     EquipmentsService,
     MateriasService,
   ]

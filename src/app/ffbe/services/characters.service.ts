@@ -6,6 +6,8 @@ import {CharacterSkill} from '../model/character-skill.model';
 import {CharacterEntry} from '../model/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
+import {ItemCategory} from '../model/item-category.model';
+import {ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
 export class CharactersService {
@@ -58,13 +60,35 @@ export class CharactersService {
   public searchForCharacterByNameOrGumiId(name: string): Character {
     if (this.charactersFromDataMining != null) {
       const tentativeGumiId = Number(name);
-      if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId))
-      {
+      if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId)) {
         return this.searchForCharacterByGumiId(tentativeGumiId);
-      }
-      else
-      {
+      } else {
         return this.searchForCharacterByName(name);
+      }
+    }
+    return null;
+  }
+
+  public searchForCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
+    if (this.charactersFromDataMining != null) {
+      const categoryName = ItemCategoryFactory.getName(rewardType);
+      const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
+      const property = propertyNames.find(propertyName => (
+        (Array.isArray(this.charactersFromDataMining[propertyName].TMR) &&
+          this.charactersFromDataMining[propertyName].TMR.length === 2 &&
+          this.charactersFromDataMining[propertyName].TMR[0] === categoryName &&
+          this.charactersFromDataMining[propertyName].TMR[1] === rewardGumiId) ||
+        (Array.isArray(this.charactersFromDataMining[propertyName].sTMR) &&
+          this.charactersFromDataMining[propertyName].sTMR.length === 2 &&
+          this.charactersFromDataMining[propertyName].sTMR[0] === categoryName &&
+          this.charactersFromDataMining[propertyName].sTMR[1] === rewardGumiId)
+      ));
+      if (property) {
+        const character: Character = this.charactersFromDataMining[property];
+        character.gumi_id = +property;
+        this.loadCharacterSkills(character.skills);
+        this.loadLimitBurst(character.entries);
+        return character;
       }
     }
     return null;

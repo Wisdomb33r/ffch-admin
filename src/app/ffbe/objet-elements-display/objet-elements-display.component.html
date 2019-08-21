@@ -1,0 +1,85 @@
+<mat-card>
+  <mat-card-title>
+    {{titre}}
+  </mat-card-title>
+
+  <div>
+    <table>
+      <tr>
+        <th>Feu</th>
+        <td *ngIf="!estModifiable">{{objetElements.feu}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Feu" [(ngModel)]="objetElements.feu" placeholder="{{'Feu'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Glace</th>
+        <td *ngIf="!estModifiable">{{objetElements.glace}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Glace" [(ngModel)]="objetElements.glace" placeholder="{{'Glace'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Foudre</th>
+        <td *ngIf="!estModifiable">{{objetElements.foudre}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Foudre" [(ngModel)]="objetElements.foudre" placeholder="{{'Foudre'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Eau</th>
+        <td *ngIf="!estModifiable">{{objetElements.eau}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Eau" [(ngModel)]="objetElements.eau" placeholder="{{'Eau'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Air</th>
+        <td *ngIf="!estModifiable">{{objetElements.air}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Air" [(ngModel)]="objetElements.air" placeholder="{{'Air'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Terre</th>
+        <td *ngIf="!estModifiable">{{objetElements.terre}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Terre" [(ngModel)]="objetElements.terre" placeholder="{{'Terre'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Lumière</th>
+        <td *ngIf="!estModifiable">{{objetElements.lumiere}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Lumière" [(ngModel)]="objetElements.lumiere"
+                   placeholder="{{'Lumière'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>Tenèbres</th>
+        <td *ngIf="!estModifiable">{{objetElements.tenebres}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="Tenèbres" [(ngModel)]="objetElements.tenebres"
+                   placeholder="{{'Tenèbres'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</mat-card>

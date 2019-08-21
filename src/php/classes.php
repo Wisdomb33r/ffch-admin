@@ -1,20 +1,145 @@
 <?php
 
 require_once "../gestion/genscripts/object_brex_objet.class.php";
+require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
+
+class ObjetCategorie
+{
+  public $gumiId;
+  public $ffchId;
+  public $name;
+
+  function __construct($brex_objet_categ)
+  {
+    $this->gumiId = $brex_objet_categ->gumi_id;
+    $this->ffchId = $brex_objet_categ->id;
+    $this->name = $brex_objet_categ->nom;
+  }
+}
+
+class ObjetCarac
+{
+  public $pv;
+  public $pm;
+  public $att;
+  public $def;
+  public $mag;
+  public $psy;
+
+  function __construct($pv, $pm, $att, $def, $mag, $psy)
+  {
+    $this->pv = $pv;
+    $this->pm = $pm;
+    $this->att = $att;
+    $this->def = $def;
+    $this->mag = $mag;
+    $this->psy = $psy;
+
+  }
+}
+
+class ObjetElement
+{
+  public $feu;
+  public $glace;
+  public $foudre;
+  public $eau;
+  public $air;
+  public $terre;
+  public $lumiere;
+  public $tenebres;
+
+  function __construct($feu, $glace, $foudre, $eau, $air, $terre, $lumiere, $tenebres)
+  {
+    $this->feu = $feu;
+    $this->glace = $glace;
+    $this->foudre = $foudre;
+    $this->eau = $eau;
+    $this->air = $air;
+    $this->terre = $terre;
+    $this->lumiere = $lumiere;
+    $this->tenebres = $tenebres;
+  }
+}
+
+class ObjetAlterationsEtat
+{
+  public $poison;
+  public $cecite;
+  public $sommeil;
+  public $silence;
+  public $paralysie;
+  public $confusion;
+  public $maladie;
+  public $petrification;
+
+  function __construct($poison, $cecite, $sommeil, $silence, $paralysie, $confusion, $maladie, $petrification)
+  {
+    $this->poison = $poison;
+    $this->cecite = $cecite;
+    $this->sommeil = $sommeil;
+    $this->silence = $silence;
+    $this->paralysie = $paralysie;
+    $this->confusion = $confusion;
+    $this->maladie = $maladie;
+    $this->petrification = $petrification;
+  }
+}
+
+class ObjetLienTMR
+{
+  public $perso_gumi_id;
+  public $nom_perso;
+  public $isSTMR;
+
+  function __construct($perso_gumi_id, $nom_perso, $isSTMR)
+  {
+    $this->perso_gumi_id = $perso_gumi_id;
+    $this->nom_perso = $nom_perso;
+    $this->isSTMR = $isSTMR;
+  }
+}
 
 class Objet
 {
   public $id;
+  public $categorie;
   public $nom;
   public $nom_en;
+  public $stars;
   public $icone;
   public $gumi_id;
+  public $description;
+  public $description_en;
+  public $effet;
+  public $effet_en;
+  public $carac;
+  public $caracp;
+  public $elements;
+  public $resistancesAlterations;
+  public $variance_min;
+  public $variance_max;
+  public $competences;
+  public $lienTMR;
 
   function __construct($brex_objet)
   {
     $this->id = $brex_objet->id;
+    $this->categorie = new ObjetCategorie($brex_objet->categorie);
     $this->nom = $brex_objet->nom;
     $this->nom_en = $brex_objet->nom_en;
+    $this->stars = $brex_objet->stars;
+    $this->description = $brex_objet->description;
+    $this->description_en = $brex_objet->description_en;
+    $this->effet = $brex_objet->effet;
+    $this->effet_en = $brex_objet->effet_en;
+    $this->carac = new ObjetCarac($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
+    $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
+    $this->elements = new ObjetElement($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
+    $this->resistancesAlterations = new ObjetAlterationsEtat($brex_objet->res_poison, $brex_objet->res_cecite, $brex_objet->res_sommeil, $brex_objet->res_mutisme, $brex_objet->res_paralysie, $brex_objet->res_confusion, $brex_objet->res_maladie, $brex_objet->res_petrification);
+    $this->variance_min = $brex_objet->variance_min;
+    $this->variance_max = $brex_objet->variance_max;
+
     if (strlen($brex_objet->img) > 0) {
       $this->icone = $brex_objet->getImageimgPath();
     }

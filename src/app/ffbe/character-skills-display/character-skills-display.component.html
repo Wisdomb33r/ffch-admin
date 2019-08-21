@@ -1,5 +1,7 @@
 <mat-card>
-  <mat-card-title>Compétences</mat-card-title>
+  <mat-card-title (click)="switchDisplayed()">Compétences</mat-card-title>
+
+  <div *ngIf="shouldStayOpen || displayed">
 
   <ul class="error" *ngIf="isSkillsErrorsDisplayed()">
     <li *ngFor="let message of skillsErrors">{{message}}</li>
@@ -13,4 +15,5 @@
 
     </div>
   </form>
+  </div>
 </mat-card>

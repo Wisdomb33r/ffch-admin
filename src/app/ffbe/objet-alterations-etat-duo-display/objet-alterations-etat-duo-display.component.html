@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    Altérations d'état
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+
+    <div [ngClass]="shouldDiplayInflicts() ? 'objet-alterations-etat-left' : ''">
+      <app-objet-alterations-etat-display [objetAlterationsEtat]="objet.resistancesAlterations"
+                                          [titre]="'Résistances'"
+                                          [estModifiable]="!objet.isPresentInFfchDb()">
+      </app-objet-alterations-etat-display>
+    </div>
+
+    <div *ngIf="shouldDiplayInflicts()" [ngClass]="'objet-alterations-etat-right'">
+      <app-objet-alterations-etat-display [objetAlterationsEtat]="objet.alterationsArme"
+                                          [titre]="'Inflictions'"
+                                          [estModifiable]="false">
+      </app-objet-alterations-etat-display>
+    </div>
+    <div [ngClass]="'objet-alterations-etat-clear'"></div>
+
+  </div>
+</mat-card>

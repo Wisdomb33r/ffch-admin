@@ -1,0 +1,101 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus">
+    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
+    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
+    {{objet.gumi_id}} {{objet.nom}}
+  </mat-card-title>
+
+  <div *ngIf="!present || different || displayed">
+    <mat-form-field>
+      <mat-select placeholder="Catégorie"
+                  [(ngModel)]="categorieFfchId"
+                  [ngModelOptions]="{standalone: true}"
+                  (selectionChange)="updateCategorie()"
+      >
+        <mat-option>----------</mat-option>
+        <mat-option *ngFor="let categorie of categories" [value]="categorie.ffchId">
+          {{categorie.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p>{{objet.description}}</p>
+    <p>{{objet.effet_en}}</p>
+
+    <mat-form-field *ngIf="!present">
+      <input matInput type="text" name="effet" [(ngModel)]="objet.effet" placeholder="Effet">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!present">
+      <input matInput type="text" name="stars" [(ngModel)]="objet.stars" placeholder="Stars">
+    </mat-form-field>
+
+    <p *ngIf="present">{{objet.effet}}</p>
+
+    <table>
+      <tr *ngIf="present">
+        <th>Stars</th>
+        <td>{{objet.stars}}</td>
+      </tr>
+      <tr *ngIf="objet.isTwoHanded()">
+        <th>
+          Variance
+        </th>
+        <td>
+          {{objet.variance_min}}% - {{objet.variance_max}}%
+        </td>
+      </tr>
+      <tr *ngIf="hasLienTRM()">
+        <th>{{objet.lienTMR.isSTMR ? 'STMR' : 'TMR'}}</th>
+        <td>{{objet.lienTMR.nom_perso}}</td>
+      </tr>
+      <tr *ngIf="present">
+        <th>Image</th>
+        <td>
+          <span class="ffchImageArray">
+            <img *ngIf="objet.isImagePresentInFfchDb()" src="{{objet.icone}}"
+                 alt="{{objet.nom}}" title="{{objet.nom}} ({{objet.gumi_id}})"/>
+            <img
+              *ngIf="!objet.isImagePresentInFfchDb()"
+              src="assets/grey/warn.png" alt="{{objet.nom}} ({{objet.gumi_id}})"
+              title="{{objet.nom}} ({{objet.gumi_id}})"/>
+            <img *ngIf="!objet.isPresentInFfchDb()" src="assets/red/warn.png"
+                 alt="{{objet.gumi_id}}" title="{{objet.gumi_id}}"/>
+          </span>
+        </td>
+      </tr>
+    </table>
+
+    <div [ngClass]="'objet-carac-left'">
+      <app-objet-carac-display [titre]="'Stats'"
+                               [carac]="objet.carac"
+                               [estPourcent]="false"
+                               [estModifiable]="false">
+      </app-objet-carac-display>
+    </div>
+    <div [ngClass]="'objet-carac-right'">
+      <app-objet-carac-display [titre]="'Stats %'"
+                               [carac]="objet.caracp"
+                               [estPourcent]="true"
+                               [estModifiable]="!present">
+      </app-objet-carac-display>
+    </div>
+    <div [ngClass]="'objet-carac-clear'"></div>
+
+    <app-objet-elements-triplet-display [objet]="objet"></app-objet-elements-triplet-display>
+
+    <app-objet-alterations-etat-duo-display [objet]="objet"></app-objet-alterations-etat-duo-display>
+
+    <app-character-skills-display *ngIf="areObjetCompetencesDisplayed()"
+                                  [competences]="objet.competences"
+                                  [shouldStayOpen]="false">
+    </app-character-skills-display>
+
+    <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendObjetToFfchDb()"
+            *ngIf="!areObjetErrorsDiplayed() && !present">
+      Envoyer
+    </button>
+
+  </div>
+</mat-card>

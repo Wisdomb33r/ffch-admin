@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {Recette} from '../model/recette.model';
 import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';

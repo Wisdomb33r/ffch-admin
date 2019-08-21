@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {Unite} from '../model/unite.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {Ingredient} from '../model/ingredient.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {isNullOrUndefined} from 'util';

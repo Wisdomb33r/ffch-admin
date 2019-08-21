@@ -1,0 +1,13 @@
+.objet-left {
+  width: 49%;
+  float: left;
+}
+
+.objet-right {
+  width: 49%;
+  float: right;
+}
+
+.objet-clear {
+  clear: both;
+}

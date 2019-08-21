@@ -14,9 +14,11 @@ import {catchError} from 'rxjs/operators';
 export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
 
   @Input() competences: Array<Competence>;
+  @Input() shouldStayOpen: boolean = true;
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
   public subscription: Subscription;
+  public displayed = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -51,6 +53,10 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  public switchDisplayed() {
+    this.displayed = !this.displayed;
   }
 
   public isSkillsErrorsDisplayed(): boolean {

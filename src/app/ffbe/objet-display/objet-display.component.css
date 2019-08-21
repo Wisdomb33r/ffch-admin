@@ -1,0 +1,23 @@
+.objet-carac-left {
+  width: 49%;
+  float: left;
+}
+
+.objet-carac-right {
+  width: 49%;
+  float: right;
+}
+
+.objet-carac-clear {
+  clear: both;
+}
+
+span.ffchImageArray {
+  vertical-align: middle;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+img {
+  max-width: 58px;
+}

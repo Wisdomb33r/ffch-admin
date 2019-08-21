@@ -5,6 +5,7 @@ export class Skill {
   public gumi_id: number;
   public name: string;
   public type: string;
+  public rarity: number;
   public active: boolean;
   public magic_type: string;
   public cost: SkillCost;

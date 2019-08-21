@@ -8,6 +8,8 @@ export class Character {
   public names: Array<string>;
   public game_id: number;
   public job: string;
+  public TMR: Array<string | number>;
+  public sTMR: Array<string | number>;
   public equip: Array<number>;
   public entries: any;
   public skills: Array<CharacterSkill>;

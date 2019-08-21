@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    {{titre}}
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+    <table>
+      <tr>
+        <th>PV</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.pv)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="PV" [(ngModel)]="carac.pv" placeholder="{{'PV'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>PM</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.pm)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="PM" [(ngModel)]="carac.pm" placeholder="{{'PM'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>ATT</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.att)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="ATT" [(ngModel)]="carac.att" placeholder="{{'ATT'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>DÉF</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.def)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="DÉF" [(ngModel)]="carac.def" placeholder="{{'DÉF'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>MAGIE</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.mag)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="MAGIE" [(ngModel)]="carac.mag" placeholder="{{'MAGIE'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>PSY</th>
+        <td *ngIf="!estModifiable">{{caracFormatee(carac.psy)}}</td>
+        <td *ngIf="estModifiable">
+          <mat-form-field>
+            <input matInput type="number" name="PSY" [(ngModel)]="carac.psy" placeholder="{{'PSY'}}">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+</mat-card>

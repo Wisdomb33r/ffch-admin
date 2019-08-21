@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Formule} from '../model/formule.model';
-import {Objet} from '../model/objet.model';
+import {Objet} from '../model/objet/objet.model';
 import {isNullOrUndefined} from 'util';
 import {FfchClientService} from '../services/ffch-client.service';
 

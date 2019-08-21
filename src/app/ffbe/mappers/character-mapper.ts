@@ -5,7 +5,7 @@ import {Personnage} from '../model/personnage.model';
 import {CharacterEntryMapper} from './character-entry-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Competence} from '../model/competence.model';
-import {EquipmentCategory} from '../model/equipment-category.model';
+import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {SkillMapper} from './skill-mapper';
 import {UniteCompetence} from '../model/unite-competence.model';
 
@@ -13,7 +13,7 @@ export class CharacterMapper {
 
   public static toPersonnage(character: Character): Personnage {
     const game: Game = FfbeUtils.findGameByGumiId(character.game_id);
-    const equipments: Array<EquipmentCategory> = FfbeUtils.findEquipmentCategoriesByGumiIds(character.equip);
+    const equipments: Array<CategorieObjet> = FfbeUtils.findObjetCategoriesByGumiIds(character.equip);
     const perso = new Personnage(
       game,
       character.job,

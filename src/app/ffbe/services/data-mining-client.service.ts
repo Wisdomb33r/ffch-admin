@@ -8,7 +8,7 @@ const lbFile = dataMiningBaseURL + 'limitbursts.json';
 const skillsFile = dataMiningBaseURL + 'skills.json';
 const enhancementsFile = dataMiningBaseURL + 'enhancements.json';
 const recipeFile = dataMiningBaseURL + 'recipes.json';
-const itemFile = dataMiningBaseURL + 'items.json';
+const consumableFile = dataMiningBaseURL + 'items.json';
 const equipmentFile = dataMiningBaseURL + 'equipment.json';
 const materiaFile = dataMiningBaseURL + 'materia.json';
 
@@ -38,8 +38,8 @@ export class DataMiningClientService {
     return this.http.get(recipeFile);
   }
 
-  public getItems$(): Observable<Object> {
-    return this.http.get(itemFile);
+  public getConsumables$(): Observable<Object> {
+    return this.http.get(consumableFile);
   }
 
   public getEquipments$(): Observable<Object> {

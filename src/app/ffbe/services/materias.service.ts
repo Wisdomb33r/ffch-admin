@@ -2,6 +2,8 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Materia} from '../model/materia.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {SkillsService} from './skills.service';
+import {Skill} from '../model/skill.model';
 
 
 @Injectable()
@@ -9,7 +11,8 @@ export class MateriasService {
 
   private materiasFromDataMining = null;
 
-  constructor(private dataMiningClientService: DataMiningClientService) {
+  constructor(private dataMiningClientService: DataMiningClientService,
+              private skillsService: SkillsService) {
     this.loadMateriasFromDataMining();
   }
 
@@ -43,6 +46,7 @@ export class MateriasService {
       matchingProperties.forEach(property => {
         const materia: Materia = this.materiasFromDataMining[property];
         materia.gumi_id = +property;
+        this.searchForMateriaSkills(materia);
         materias.push(materia);
       });
     }
@@ -56,10 +60,19 @@ export class MateriasService {
       if (property) {
         const materia: Materia = this.materiasFromDataMining[property];
         materia.gumi_id = +property;
+        this.searchForMateriaSkills(materia);
         return materia;
       }
     }
     return null;
+  }
+
+  public searchForMateriaSkills(materia: Materia) {
+    if (Array.isArray(materia.skills) && materia.skills.length > 0) {
+      const skills: Array<Skill> = [];
+      materia.skills.forEach(id => skills.push(this.skillsService.searchForSkillByGumiId(id)));
+      materia.dmSkills = skills;
+    }
   }
 
   public isLoaded(): boolean {
