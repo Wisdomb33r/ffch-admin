@@ -72,6 +72,8 @@ export class SkillsService {
       if (property) {
         const skill: Skill = this.skillsFromDataMining[property];
         skill.gumi_id = +property;
+        skill.names = this.skillsNamesFromDataMining[property];
+        skill.descriptions = this.skillsDescriptionsFromDataMining[property];
         return skill;
       }
     }
