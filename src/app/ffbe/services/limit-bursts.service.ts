@@ -44,7 +44,7 @@ export class LimitBurstsService {
   }
 
   public isLoaded(): boolean {
-    return this.limitBurstsFromDataMining != null;
+    return this.limitBurstsFromDataMining != null && this.limitBurstsNamesFromDataMining != null && this.limitBurstsDescriptionsFromDataMining != null;
   }
 }
 
