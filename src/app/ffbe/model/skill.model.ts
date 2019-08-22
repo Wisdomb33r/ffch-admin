@@ -1,4 +1,3 @@
-import {SkillStrings} from './skill-strings.model';
 import {SkillCost} from './skill-cost.model';
 
 export class Skill {
@@ -15,5 +14,6 @@ export class Skill {
   public attack_type: string;
   public effects: Array<string>;
   public icon: string;
-  public strings: SkillStrings;
+  public names: Array<string>;
+  public descriptions: Array<string>;
 }

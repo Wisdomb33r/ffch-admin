@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {Skill} from '../model/skill.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {forkJoin} from 'rxjs';
-import {SkillStrings} from '../model/skill-strings.model';
 
 @Injectable()
 export class SkillsService {
@@ -23,12 +22,14 @@ export class SkillsService {
       observables.push(this.dataMiningClientService.getSkillsMagic$());
       observables.push(this.dataMiningClientService.getSkillsPassive$());
       observables.push(this.dataMiningClientService.getSkillsNames$());
+      observables.push(this.dataMiningClientService.getSkillsMagicNames$());
       observables.push(this.dataMiningClientService.getSkillsDescriptions$());
+      observables.push(this.dataMiningClientService.getSkillsMagicDescriptions$());
       forkJoin(observables)
         .subscribe(data => {
           this.skillsFromDataMining = {...data[0], ...data[1], ...data[2]};
-          this.skillsNamesFromDataMining = data[1];
-          this.skillsDescriptionsFromDataMining = data[2];
+          this.skillsNamesFromDataMining = {...data[3], ...data[4]};
+          this.skillsDescriptionsFromDataMining = {...data[5], ...data[6]};
         });
     }
   }
@@ -56,9 +57,8 @@ export class SkillsService {
       matchingProperties.forEach(property => {
         const skill: Skill = this.skillsFromDataMining[property];
         skill.gumi_id = +property;
-        skill.strings = new SkillStrings();
-        skill.strings.name = this.skillsNamesFromDataMining[property];
-        skill.strings.desc_short = this.skillsDescriptionsFromDataMining[property];
+        skill.names = this.skillsNamesFromDataMining[property];
+        skill.descriptions = this.skillsDescriptionsFromDataMining[property];
         skills.push(skill);
       });
     }
