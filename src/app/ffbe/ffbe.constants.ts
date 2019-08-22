@@ -35,8 +35,8 @@ export const FFBE_GAMES = [
   new Game(20017, 30, 'Star Océan'),
   new Game(90005, 31, 'Deus Ex'),
   new Game(20022, 32, 'Valkyrie Profile'),
-  new Game(20022, 33, 'Kingdom Hearts'),
-  new Game(20022, 34, 'Xenogears'),
+  new Game(20028, 33, 'Kingdom Hearts'),
+  new Game(20024, 34, 'Xenogears'),
   new Game(20025, 35, 'Octopath Traveler'),
   new Game(90001, 99, 'Collaborations spéciales'), // Ariana Grande
   new Game(90003, 99, 'Collaborations spéciales'), // TOMB RAIDER
