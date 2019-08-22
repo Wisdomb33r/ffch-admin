@@ -1,5 +1,3 @@
-import {LimitBurstStrings} from './limit-burst-strings.model';
-
 export class LimitBurst {
   constructor(public name: string,
               public attack_count: Array<number>,
@@ -8,6 +6,7 @@ export class LimitBurst {
               public min_level: Array<string>,
               public max_level: Array<string>,
               public levels: Array<any>,
-              public strings: LimitBurstStrings) {
+              public names: Array<string>,
+              public descriptions: Array<string>) {
   }
 }

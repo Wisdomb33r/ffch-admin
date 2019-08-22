@@ -57,8 +57,8 @@ describe('LimitBurstsService', () => {
     const limite: LimitBurst = service.searchForLimitBurstByGumiId(100000103);
     // THEN
     expect(limite).toBeTruthy();
-    expect(limite.strings.name[FFBE_FRENCH_TABLE_INDEX]).toEqual('Entaille pourpre');
-    expect(limite.strings.desc[FFBE_FRENCH_TABLE_INDEX]).toEqual('Dégâts de feu sur un ennemi');
+    expect(limite.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Entaille pourpre');
+    expect(limite.descriptions[FFBE_FRENCH_TABLE_INDEX]).toEqual('Dégâts de feu sur un ennemi');
     expect(limite.attack_frames[0]).toEqual([3, 59]);
   }));
 
