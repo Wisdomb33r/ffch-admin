@@ -1,12 +1,15 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Skill} from '../model/skill.model';
-import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {forkJoin} from 'rxjs';
 
 @Injectable()
 export class SkillsService {
 
   private skillsFromDataMining = null;
+  private skillsNamesFromDataMining = null;
+  private skillsDescriptionsFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadSkillsFromDataMining();
@@ -14,34 +17,48 @@ export class SkillsService {
 
   public loadSkillsFromDataMining() {
     if (this.skillsFromDataMining == null) {
-      this.dataMiningClientService.getSkills$()
-        .subscribe(data => this.skillsFromDataMining = data);
+      const observables = [];
+      observables.push(this.dataMiningClientService.getSkillsAbility$());
+      observables.push(this.dataMiningClientService.getSkillsMagic$());
+      observables.push(this.dataMiningClientService.getSkillsPassive$());
+      observables.push(this.dataMiningClientService.getSkillsNames$());
+      observables.push(this.dataMiningClientService.getSkillsMagicNames$());
+      observables.push(this.dataMiningClientService.getSkillsDescriptions$());
+      observables.push(this.dataMiningClientService.getSkillsMagicDescriptions$());
+      forkJoin(observables)
+        .subscribe(data => {
+          this.skillsFromDataMining = {...data[0], ...data[1], ...data[2]};
+          this.skillsNamesFromDataMining = {...data[3], ...data[4]};
+          this.skillsDescriptionsFromDataMining = {...data[5], ...data[6]};
+        });
     }
   }
 
   public searchForSkillsByNames(english: string, french: string): Array<Skill> {
     const skills: Array<Skill> = [];
-    const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsFromDataMining);
+    const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsNamesFromDataMining);
     let matchingProperties: Array<string> = [];
     if (english && french) {
       matchingProperties = propertyNames.filter(
         propertyName =>
-          this.skillsFromDataMining[propertyName].name === english
-          && this.skillsFromDataMining[propertyName].strings.name[FFBE_FRENCH_TABLE_INDEX] === french
+          this.skillsNamesFromDataMining[propertyName][FFBE_ENGLISH_TABLE_INDEX] === english
+          && this.skillsNamesFromDataMining[propertyName][FFBE_FRENCH_TABLE_INDEX] === french
       );
     } else if (english) {
       matchingProperties = propertyNames.filter(
-        propertyName => this.skillsFromDataMining[propertyName].name === english
+        propertyName => this.skillsNamesFromDataMining[propertyName][FFBE_ENGLISH_TABLE_INDEX] === english
       );
     } else if (french) {
       matchingProperties = propertyNames.filter(
-        propertyName => this.skillsFromDataMining[propertyName].strings.name[FFBE_FRENCH_TABLE_INDEX] === french
+        propertyName => this.skillsNamesFromDataMining[propertyName][FFBE_FRENCH_TABLE_INDEX] === french
       );
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
         const skill: Skill = this.skillsFromDataMining[property];
         skill.gumi_id = +property;
+        skill.names = this.skillsNamesFromDataMining[property];
+        skill.descriptions = this.skillsDescriptionsFromDataMining[property];
         skills.push(skill);
       });
     }
@@ -55,6 +72,8 @@ export class SkillsService {
       if (property) {
         const skill: Skill = this.skillsFromDataMining[property];
         skill.gumi_id = +property;
+        skill.names = this.skillsNamesFromDataMining[property];
+        skill.descriptions = this.skillsDescriptionsFromDataMining[property];
         return skill;
       }
     }
@@ -62,7 +81,7 @@ export class SkillsService {
   }
 
   public isLoaded(): boolean {
-    return this.skillsFromDataMining != null;
+    return this.skillsFromDataMining && this.skillsNamesFromDataMining && this.skillsDescriptionsFromDataMining;
   }
 }
 

@@ -10,19 +10,19 @@ export class SkillMapper {
       skill.gumi_id,
       SkillMapper.determineCategorieCompetence(skill),
       SkillMapper.transformIcon(skill.icon),
-      skill.strings.name[FFBE_FRENCH_TABLE_INDEX],
-      skill.strings.name[FFBE_ENGLISH_TABLE_INDEX],
-      skill.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      skill.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      skill.names[FFBE_FRENCH_TABLE_INDEX],
+      skill.names[FFBE_ENGLISH_TABLE_INDEX],
+      skill.descriptions[FFBE_FRENCH_TABLE_INDEX],
+      skill.descriptions[FFBE_ENGLISH_TABLE_INDEX],
       null,
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
       null,
-      skill.cost.MP === 0 ? null : skill.cost.MP,
-      skill.cost.LB === 0 ? null : skill.cost.LB,
-      skill.cost.EP === 0 ? null : skill.cost.EP,
-      skill.attack_count.length > 0 && skill.attack_count[0] > 0 ? skill.attack_count[0] : null,
-      skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null,
-      skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null
+      !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
+      !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,
+      !skill.cost || skill.cost.EP === 0 ? null : skill.cost.EP,
+      skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ? skill.attack_count[0] : null,
+      skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null,
+      skill.attack_damage && skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null
     );
   }
 
