@@ -12,6 +12,7 @@ export class LatentSkillsComponent implements OnInit {
   characterName: FormControl;
 
   constructor(private latentSkillsService: LatentSkillsService) {
+    this.characterName = new FormControl('');
   }
 
   ngOnInit() {

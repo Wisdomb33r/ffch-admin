@@ -51,6 +51,7 @@ import {ObjetElementsTripletDisplayComponent} from './objet-elements-triplet-dis
 import {ObjetAlterationsEtatDuoDisplayComponent} from './objet-alterations-etat-duo-display/objet-alterations-etat-duo-display.component';
 import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-display/objet-alterations-etat-display.component';
 import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
+import {LatentSkillsService} from './services/latent-skills.service';
 
 @NgModule({
   imports: [
@@ -119,6 +120,7 @@ import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
     ItemsService,
     EquipmentsService,
     MateriasService,
+    LatentSkillsService,
   ]
 })
 export class FfbeModule {
