@@ -5,6 +5,7 @@ import {CharactersService} from '../services/characters.service';
 import {Character} from '../model/character.model';
 import {Amelioration} from '../model/amelioration.model';
 import {isNullOrUndefined} from 'util';
+import {LatentSkillMapper} from '../mappers/latent-skill-mapper';
 
 @Component({
   selector: 'app-latent-skills',
@@ -38,5 +39,14 @@ export class LatentSkillsComponent implements OnInit {
       }
     }
     console.log(latentSkills);
+    latentSkills.filter(latentSkill => latentSkill.level === 1 || latentSkill.level === 2)
+      .forEach(enhancement => {
+        const amelioration = LatentSkillMapper.toAmelioration(enhancement);
+        if (!isNullOrUndefined(this.character)) {
+          amelioration.perso_gumi_id = this.character.gumi_id;
+        }
+        this.ameliorations.push(amelioration);
+      });
+    console.log(this.ameliorations);
   }
 }

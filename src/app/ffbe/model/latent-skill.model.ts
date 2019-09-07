@@ -5,5 +5,6 @@ export class LatentSkill {
   public skill_id: number;
   public next_id: number;
   public skill_id_base: number;
+  public skill_id_next: number;
   public level: number;
 }
