@@ -2,13 +2,25 @@ import {inject, TestBed} from '@angular/core/testing';
 import {Observable, of} from 'rxjs';
 import {LimitBurstsService} from './limit-bursts.service';
 import {DataMiningClientService} from './data-mining-client.service';
-import {LIMIT_BURST_TEST_DATA} from '../model/limit-burst.model.spec';
+import {
+  LIMIT_BURST_DESCRIPTIONS_TEST_DATA,
+  LIMIT_BURST_NAMES_TEST_DATA,
+  LIMIT_BURST_TEST_DATA
+} from '../model/limit-burst.model.spec';
 import {LimitBurst} from '../model/limit-burst.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 class DataMiningMock {
   public getLimitBursts$(): Observable<Object> {
     return of(JSON.parse(LIMIT_BURST_TEST_DATA));
+  }
+
+  public getLimitBurstsNames$(): Observable<Object> {
+    return of(JSON.parse(LIMIT_BURST_NAMES_TEST_DATA));
+  }
+
+  public getLimitBurstsDescriptions$(): Observable<Object> {
+    return of(JSON.parse(LIMIT_BURST_DESCRIPTIONS_TEST_DATA));
   }
 }
 
@@ -27,6 +39,8 @@ describe('LimitBurstsService', () => {
   beforeEach(inject([DataMiningClientService], (service: DataMiningClientService) => {
     dataMiningService = service;
     spyOn(dataMiningService, 'getLimitBursts$').and.callThrough();
+    spyOn(dataMiningService, 'getLimitBurstsNames$').and.callThrough();
+    spyOn(dataMiningService, 'getLimitBurstsDescriptions$').and.callThrough();
   }));
 
   it('should be created', inject([LimitBurstsService], (service: LimitBurstsService) => {
@@ -50,7 +64,7 @@ describe('LimitBurstsService', () => {
     expect(dataMiningService.getLimitBursts$).toHaveBeenCalledTimes(1);
   }));
 
-  it('should find the correct limit burst when searched if present in data mining', inject([LimitBurstsService], (service: LimitBurstsService) => {
+  it('should find the correct limit burst when searched if present', inject([LimitBurstsService], (service: LimitBurstsService) => {
     // GIVEN
     service.loadLimitBurstsFromDataMining();
     // WHEN

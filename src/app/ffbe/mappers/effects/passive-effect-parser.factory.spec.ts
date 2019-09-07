@@ -19,4 +19,13 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('+30% MAG, +20% PV/ATT, +10% PM/DEF/PSY');
   });
 
+  it('should parse EVO MAG increase', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 21, [20]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // replaces
+    expect(s).toEqual('+20% INV');
+  });
+
 });

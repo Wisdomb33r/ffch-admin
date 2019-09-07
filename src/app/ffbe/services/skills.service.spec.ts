@@ -1,13 +1,45 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {Observable, of} from 'rxjs';
 import {DataMiningClientService} from './data-mining-client.service';
-import {SKILL_TEST_DATA} from '../model/skill.model.spec';
 import {SkillsService} from './skills.service';
 import {Skill} from '../model/skill.model';
+import {
+  ABILITY_SKILLS_NAMES_TEST_DATA,
+  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  ABILITY_SKILLS_TEST_DATA,
+  MAGIC_SKILLS_NAMES_TEST_DATA,
+  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  MAGIC_SKILLS_TEST_DATA,
+  PASSIVE_SKILLS_TEST_DATA
+} from '../model/skill.model.spec';
 
 class DataMiningMock {
-  public getSkills$(): Observable<Object> {
-    return of(JSON.parse(SKILL_TEST_DATA));
+  public getSkillsMagic$(): Observable<Object> {
+    return of(JSON.parse(MAGIC_SKILLS_TEST_DATA));
+  }
+
+  public getSkillsAbility$(): Observable<Object> {
+    return of(JSON.parse(ABILITY_SKILLS_TEST_DATA));
+  }
+
+  public getSkillsPassive$(): Observable<Object> {
+    return of(JSON.parse(PASSIVE_SKILLS_TEST_DATA));
+  }
+
+  public getSkillsNames$(): Observable<Object> {
+    return of(JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA));
+  }
+
+  public getSkillsMagicNames$(): Observable<Object> {
+    return of(JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA));
+  }
+
+  public getSkillsDescriptions$(): Observable<Object> {
+    return of(JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA));
+  }
+
+  public getSkillsMagicDescriptions$(): Observable<Object> {
+    return of(JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA));
   }
 }
 
@@ -25,7 +57,13 @@ describe('SkillsService', () => {
 
   beforeEach(inject([DataMiningClientService], (service: DataMiningClientService) => {
     dataMiningService = service;
-    spyOn(dataMiningService, 'getSkills$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsMagic$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsAbility$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsPassive$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsNames$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsMagicNames$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsDescriptions$').and.callThrough();
+    spyOn(dataMiningService, 'getSkillsMagicDescriptions$').and.callThrough();
   }));
 
   it('should be created', inject([SkillsService], (service: SkillsService) => {
@@ -46,7 +84,13 @@ describe('SkillsService', () => {
     service.loadSkillsFromDataMining();
     // THEN
     expect(service.isLoaded()).toBeTruthy();
-    expect(dataMiningService.getSkills$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsMagic$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsAbility$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsPassive$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsNames$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsMagicNames$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsDescriptions$).toHaveBeenCalledTimes(1);
+    expect(dataMiningService.getSkillsMagicDescriptions$).toHaveBeenCalledTimes(1);
   }));
 
   it('should find the correct skill when searched if present in data mining', inject([SkillsService], (service: SkillsService) => {
