@@ -13,6 +13,7 @@ export class Skill {
   public attack_frames: Array<Array<number>>;
   public attack_type: string;
   public effects: Array<string>;
+  public effects_raw: Array<any>;
   public icon: string;
   public names: Array<string>;
   public descriptions: Array<string>;
