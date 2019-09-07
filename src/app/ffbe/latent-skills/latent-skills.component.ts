@@ -38,7 +38,6 @@ export class LatentSkillsComponent implements OnInit {
         latentSkills = this.latentSkillsService.searchForLatentSkillsByCharacterGumiId(this.character.gumi_id);
       }
     }
-    console.log(latentSkills);
     latentSkills.filter(latentSkill => latentSkill.level === 1 || latentSkill.level === 2)
       .forEach(enhancement => {
         const amelioration = LatentSkillMapper.toAmelioration(enhancement);
@@ -47,7 +46,6 @@ export class LatentSkillsComponent implements OnInit {
         }
         this.ameliorations.push(amelioration);
       });
-    console.log(this.ameliorations);
   }
 
   public areLatentSkillsDisplayed(): boolean {
