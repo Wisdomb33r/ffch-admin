@@ -49,4 +49,8 @@ export class LatentSkillsComponent implements OnInit {
       });
     console.log(this.ameliorations);
   }
+
+  public areLatentSkillsDisplayed(): boolean {
+    return Array.isArray(this.ameliorations) && this.ameliorations.length > 0;
+  }
 }

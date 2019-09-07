@@ -11,7 +11,7 @@
     <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
         && isAmeliorationUpToDateInFfchDb()" src="assets/ok.png" class="ffchstatus">
 
-    {{amelioration.skill_id_base}} {{amelioration.nom}} ({{amelioration.niveau}})
+    {{amelioration.skill_id_base}} {{getNomAmelioration()}} ({{amelioration.niveau}})
   </mat-card-title>
 
   <div *ngIf="displayed">

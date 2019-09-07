@@ -10,3 +10,6 @@
   <button mat-raised-button color="primary" type="submit" (click)="searchForLatentSkillsInDataMining()">Chercher
   </button>
 </mat-card>
+<app-enhancements-display *ngIf="areLatentSkillsDisplayed()"
+                          [ameliorations]="ameliorations">
+</app-enhancements-display>
