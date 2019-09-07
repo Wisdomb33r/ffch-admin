@@ -91,7 +91,6 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
       .subscribe(amelioration => {
           this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
-          this.amelioration.released = isNullOrUndefined(this.ameliorationFromFfch) ? false : this.ameliorationFromFfch.released;
           if (!isNullOrUndefined(this.ameliorationFromFfch) && !isNullOrUndefined(this.ameliorationFromFfch.formule)) {
             FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
           }
@@ -126,7 +125,6 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendAmeliorationToFfch() {
-    EnhancementMapper.mapUndefinedReleased(this.amelioration);
     this.ffchClientService.postAmelioration$(this.amelioration)
       .subscribe(status => this.getAmelioration(), status => this.ameliorationErrors.push('Could not send amelioration'));
   }

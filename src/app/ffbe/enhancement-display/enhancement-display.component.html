@@ -36,11 +36,6 @@
                           [displaySuccessfulStatus]="false">
     </app-formules-display>
 
-    <p>
-      <mat-checkbox [(ngModel)]="amelioration.released" [disabled]="isAmeliorationPresentInFfchDb()">Disponible
-      </mat-checkbox>
-    </p>
-
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendAmeliorationToFfch()"
             [disabled]="areAmeliorationErrorsDiplayed() || !isSingleAmeliorationSelected()
             || isAmeliorationPresentInFfchDb() || !areAllCompetencesPresentInFfchDb()">

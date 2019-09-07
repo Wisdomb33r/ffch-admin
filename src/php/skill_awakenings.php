@@ -195,7 +195,7 @@ function createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_comp
   $brex_competence_eveil->setrelationcompetence($brex_competence_base);
   $brex_competence_eveil->setrelationcomp_amelio($brex_competence_amelioree);
 
-  $brex_competence_eveil->released = ($amelioration->released == true) ? '1' : '0';
+  $brex_competence_eveil->released = '1';
 
   updateMateriauxEveil($brex_competence_eveil, $amelioration->formule);
 
