@@ -2,7 +2,7 @@ import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 
 export class PassiveStatsIncreaseParser extends EffectParser {
-  parse(effect: Array<any>, skill: Skill): string {
+  public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 6) {
       return 'Effet PassiveStatsIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
@@ -17,28 +17,10 @@ export class PassiveStatsIncreaseParser extends EffectParser {
     increases.sort((a, b) => {
       return a.value === b.value ? 0 : (a.value > b.value ? -1 : 1);
     });
-    let text = '';
-    let currentValue: number;
-    let accumulatedStats = '';
-    increases.forEach(stat => {
-      if (currentValue === stat.value) {
-        accumulatedStats += '/' + stat.name;
-      } else {
-        if (currentValue && accumulatedStats) {
-          text += (text.length ? ', ' : '') + '+' + currentValue + '% ' + accumulatedStats;
-          currentValue = undefined;
-          accumulatedStats = '';
-        }
-        if (stat.value > 0) {
-          currentValue = stat.value;
-          accumulatedStats = stat.name;
-        }
-      }
-    });
-    if (currentValue > 0) {
-      text += (text.length ? ', ' : '') + '+' + currentValue + '% ' + accumulatedStats;
-    }
-    // TODO crit
-    return text;
+    return this.wordEffectJoiningIdenticalValues(increases);
+  }
+
+  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
+    return '+' + currentValue + '% ' + accumulatedStats.join('/');
   }
 }
