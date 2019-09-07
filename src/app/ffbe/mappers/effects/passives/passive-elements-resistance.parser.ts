@@ -4,7 +4,7 @@ import {Skill} from '../../../model/skill.model';
 export class PassiveElementsResistanceParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
-      return 'Effet PassiveAilmentsResistanceParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet PassiveElementsResistanceParser inconnu: Mauvaise liste de paramètres';
     }
     const increases = [
       {name: 'Feu', value: effect[3][0]},

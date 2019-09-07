@@ -55,6 +55,24 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('+20% de résistance à tous les éléments');
   });
 
+  it('should parse stats increase on HP threshold', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 4, [2, 40, 9999, 30, 0, -1]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // replaces
+    expect(s).toEqual('+40% DÉF quand les PV passent sous 30% (max 9999 fois)');
+  });
+
+  it('should parse stats increase for number of tunrs on HP threshold', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 4, [2, 40, 9999, 30, 0, 3]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // replaces
+    expect(s).toEqual('+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)');
+  });
+
   it('should parse equipment category unlock', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 5, [11]]');

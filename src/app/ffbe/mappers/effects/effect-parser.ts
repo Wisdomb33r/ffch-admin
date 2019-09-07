@@ -34,4 +34,23 @@ export abstract class EffectParser {
     }
     return text;
   }
+
+  protected getStatNameFromId(stat: number): string {
+    switch (stat) {
+      case 1:
+        return 'ATT';
+      case 2:
+        return 'DÉF';
+      case 3:
+        return 'MAG';
+      case 4:
+        return 'PSY';
+      case 5:
+        return 'PV';
+      case 6:
+        return 'PM';
+      default:
+        return 'UNKNOWN STAT';
+    }
+  }
 }

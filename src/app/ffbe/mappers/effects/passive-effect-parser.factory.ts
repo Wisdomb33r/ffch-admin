@@ -5,6 +5,7 @@ import {PassiveEsperDamageIncreaseParser} from './passives/passive-esper-damage-
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
 import {PassiveAilmentsResistanceParser} from './passives/passive-ailments-resistance.parser';
 import {PassiveElementsResistanceParser} from './passives/passive-elements-resistance.parser';
+import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -13,6 +14,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-2', parser: new PassiveAilmentsResistanceParser()},
   {key: '0-3-3', parser: new PassiveElementsResistanceParser()},
   {key: '1-3-3', parser: new PassiveElementsResistanceParser()},
+  {key: '0-3-4', parser: new PassiveStatsIncreaseHpThresholdParser()},
+  {key: '1-3-4', parser: new PassiveStatsIncreaseHpThresholdParser()},
   {key: '0-3-5', parser: new PassiveEquipmentCategoryUnlockParser()},
   {key: '1-3-5', parser: new PassiveEquipmentCategoryUnlockParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
