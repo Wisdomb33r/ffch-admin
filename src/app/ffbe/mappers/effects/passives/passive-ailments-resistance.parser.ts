@@ -16,7 +16,6 @@ export class PassiveAilmentsResistanceParser extends EffectParser {
       {name: 'Maladie', value: effect[3][6]},
       {name: 'Pétrification', value: effect[3][7]},
     ];
-    // TODO crit
     return this.wordEffectJoiningIdenticalValues(increases);
   }
 

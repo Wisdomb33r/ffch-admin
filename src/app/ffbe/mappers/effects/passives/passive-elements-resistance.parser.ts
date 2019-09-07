@@ -16,7 +16,6 @@ export class PassiveElementsResistanceParser extends EffectParser {
       {name: 'Lumière', value: effect[3][6]},
       {name: 'Ténèbres', value: effect[3][7]},
     ];
-    // TODO crit
     return this.wordEffectJoiningIdenticalValues(increases);
   }
 

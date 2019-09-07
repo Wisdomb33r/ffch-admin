@@ -14,9 +14,7 @@ export class PassiveStatsIncreaseParser extends EffectParser {
       {name: 'MAG', value: effect[3][2]},
       {name: 'PSY', value: effect[3][3]},
     ];
-    increases.sort((a, b) => {
-      return a.value === b.value ? 0 : (a.value > b.value ? -1 : 1);
-    });
+    // TODO critical strikes
     return this.wordEffectJoiningIdenticalValues(increases);
   }
 
