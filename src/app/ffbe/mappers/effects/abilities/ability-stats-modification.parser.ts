@@ -8,7 +8,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     }
     const increases = [
       {name: 'ATT', value: effect[3][0]},
-      {name: 'DEF', value: effect[3][1]},
+      {name: 'DÉF', value: effect[3][1]},
       {name: 'MAG', value: effect[3][2]},
       {name: 'PSY', value: effect[3][3]},
     ];

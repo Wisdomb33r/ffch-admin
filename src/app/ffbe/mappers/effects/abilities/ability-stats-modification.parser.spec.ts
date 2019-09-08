@@ -8,7 +8,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DEF/PSY au lanceur pour 5 tours');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour 5 tours');
   });
 
   it('should parse stats increase with whole-fight duration for caster', () => {
@@ -17,7 +17,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DEF/PSY au lanceur pour ce combat');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour ce combat');
   });
 
   it('should parse non-dispellable stats increase for caster', () => {
@@ -35,7 +35,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DEF/PSY à tous les alliés pour 5 tours');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY à tous les alliés pour 5 tours');
   });
 
   it('should parse stats increase for the rest of the party', () => {
@@ -44,7 +44,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DEF/PSY à tous les alliés sauf le lanceur pour 5 tours');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY à tous les alliés sauf le lanceur pour 5 tours');
   });
 
 });
