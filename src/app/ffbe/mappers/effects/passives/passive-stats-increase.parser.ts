@@ -10,7 +10,7 @@ export class PassiveStatsIncreaseParser extends EffectParser {
       {name: 'PV', value: effect[3][4]},
       {name: 'PM', value: effect[3][5]},
       {name: 'ATT', value: effect[3][0]},
-      {name: 'DEF', value: effect[3][1]},
+      {name: 'DÉF', value: effect[3][1]},
       {name: 'MAG', value: effect[3][2]},
       {name: 'PSY', value: effect[3][3]},
     ];

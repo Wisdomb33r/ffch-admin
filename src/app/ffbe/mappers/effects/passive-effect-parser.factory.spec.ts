@@ -16,7 +16,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // replaces
-    expect(s).toEqual('+30% MAG, +20% PV/ATT, +10% PM/DEF/PSY');
+    expect(s).toEqual('+30% MAG, +20% PV/ATT, +10% PM/DÉF/PSY');
   });
 
   it('should parse passive ailment increase', () => {
@@ -79,7 +79,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // replaces
-    expect(s).toEqual('Permet d\'équiper les Harpes');
+    expect(s).toEqual('Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>');
   });
 
   it('should parse equipment category unlock for unknown', () => {
@@ -89,6 +89,15 @@ describe('PassiveEffectParser', () => {
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // replaces
     expect(s).toEqual('Permet d\'équiper les UNKNOWN');
+  });
+
+  it('should parse stats increase when wearing equipment category', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // replaces
+    expect(s).toEqual('+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité est équipée de <a href="ffexvius_objects.php?categid=33">Harpes</a>');
   });
 
   it('should parse EVO MAG increase', () => {

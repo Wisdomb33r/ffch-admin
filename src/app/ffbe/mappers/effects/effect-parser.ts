@@ -1,4 +1,6 @@
 import {Skill} from '../../model/skill.model';
+import {FFBE_CATEGORIES_OBJETS} from '../../ffbe.constants';
+import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 
 export abstract class EffectParser {
   public abstract parse(effect: Array<any>, skill: Skill): string;
@@ -52,5 +54,15 @@ export abstract class EffectParser {
       default:
         return 'UNKNOWN STAT';
     }
+  }
+
+  protected getEquipmentCategoryWithLink(equipmentId: number): string {
+    const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
+    return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';
+  }
+
+  protected isEquipmentCategoryStartingWithVowel(equipmentId: number): boolean {
+    return equipmentId === 2 || equipmentId === 3 || equipmentId === 7 || equipmentId === 13 || equipmentId === 51
+      || equipmentId === 52 || equipmentId === 60;
   }
 }
