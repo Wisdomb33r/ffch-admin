@@ -13,7 +13,14 @@ export class AbilityStatsIncreaseCasterParser extends EffectParser {
       {name: 'PSY', value: effect[3][3]},
     ];
     // TODO critical strikes
-    return this.wordEffectJoiningIdenticalValues(increases) + ' au lanceur pour ' + effect[3][4] + ' tours';
+
+    const statModifier = this.wordEffectJoiningIdenticalValues(increases);
+
+    const target = ' au lanceur';
+
+    const turns = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tours' : ' pour ce combat';
+
+    return statModifier + target + turns;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
