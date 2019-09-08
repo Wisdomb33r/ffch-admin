@@ -12,6 +12,15 @@ describe('PassiveEffectParser', () => {
 
   it('should parse passive stats increase', () => {
     // GIVEN
+    const effect = JSON.parse('[1, 2, 8, [1, 100, 40, 60, 50]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('50% de chance de protéger un allié féminin des attaques avec mitigation de 40%-60%');
+  });
+
+  it('should parse passive stats increase', () => {
+    // GIVEN
     const effect = JSON.parse('[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
@@ -25,7 +34,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+60% de résistance à Sommeil, +50% de résistance à Poison, Silence, Paralysie, Confusion, +40% de résistance à Cécité, Maladie, +20% de résistance à Pétrification');
+    expect(s).toEqual('+60% de rés. à Sommeil, +50% de rés. à Poison, Silence, Paralysie, Confusion, +40% de rés. à Cécité, Maladie, +20% de rés. à Pétrification');
   });
 
   it('should parse passive ailment increase for all identical values', () => {
@@ -34,7 +43,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+20% de résistance à toutes les altérations');
+    expect(s).toEqual('+20% de rés. à toutes les altérations');
   });
 
   it('should parse passive element increase', () => {
@@ -43,7 +52,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+60% de résistance Foudre, +50% de résistance Feu, Eau, Vent, Terre, +40% de résistance Glace, Lumière, +20% de résistance Ténèbres');
+    expect(s).toEqual('+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres');
   });
 
   it('should parse passive element increase for all identical values', () => {
@@ -52,7 +61,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+20% de résistance à tous les éléments');
+    expect(s).toEqual('+20% de rés. à tous les éléments');
   });
 
   it('should parse stats increase on HP threshold', () => {
@@ -109,4 +118,21 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('+20% INV');
   });
 
+  it('should parse MP recovery each turn', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 32, [7]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+7% de PM soignés chaque tour');
+  });
+
+  it('should parse esper orb at battle start', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 32, [3, 3]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+3 sphères de chimère');
+  });
 });

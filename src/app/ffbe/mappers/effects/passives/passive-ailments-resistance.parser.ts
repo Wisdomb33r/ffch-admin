@@ -21,8 +21,8 @@ export class PassiveAilmentsResistanceParser extends EffectParser {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% de résistance à toutes les altérations';
+      return '+' + currentValue + '% de rés. à toutes les altérations';
     }
-    return '+' + currentValue + '% de résistance à ' + accumulatedStats.join(', ');
+    return '+' + currentValue + '% de rés. à ' + accumulatedStats.join(', ');
   }
 }

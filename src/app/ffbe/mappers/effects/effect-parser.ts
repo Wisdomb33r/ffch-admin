@@ -51,6 +51,30 @@ export abstract class EffectParser {
         return 'PV';
       case 6:
         return 'PM';
+      case 20:
+        return 'PV par tour';
+      case 22:
+        return 'PM par tour';
+      case 23:
+        return 'rés. au feu';
+      case 24:
+        return 'rés. à la glace';
+      case 25:
+        return 'rés. à la foudre';
+      case 26:
+        return 'rés. à l\'eau';
+      case 27:
+        return 'rés. au vent';
+      case 28:
+        return 'rés. à la terre';
+      case 29:
+        return 'rés. à la lumière';
+      case 30:
+        return 'rés. aux ténèbres';
+      case 56:
+        return 'esquives d\'attaques physiques';
+      case 58:
+        return 'mitigation magique';
       default:
         return 'UNKNOWN STAT';
     }

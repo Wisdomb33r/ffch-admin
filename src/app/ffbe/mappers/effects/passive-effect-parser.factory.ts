@@ -7,8 +7,11 @@ import {PassiveAilmentsResistanceParser} from './passives/passive-ailments-resis
 import {PassiveElementsResistanceParser} from './passives/passive-elements-resistance.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveStatsIncreaseWearingEquipmentCategoryParser} from './passives/passive-stats-increase-wearing-equipment-category.parser';
+import {PassiveAllyCoverParser} from './passives/passive-ally-cover.parser';
+import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
+  {key: '1-2-8', parser: new PassiveAllyCoverParser()},
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
   {key: '1-3-1', parser: new PassiveStatsIncreaseParser()},
   {key: '0-3-2', parser: new PassiveAilmentsResistanceParser()},
@@ -23,6 +26,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '1-3-21', parser: new PassiveEsperDamageIncreaseParser()},
+  {key: '0-3-32', parser: new PassiveMpRecoveryParser()},
+  {key: '1-3-32', parser: new PassiveMpRecoveryParser()},
 ];
 
 export class PassiveEffectParserFactory {
