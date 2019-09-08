@@ -4,6 +4,9 @@ import {AbilityStatsModificationParser} from './ability-stats-modification.parse
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-3', parser: new AbilityStatsModificationParser()},
+  {key: '1-3-3', parser: new AbilityStatsModificationParser()},
+  {key: '2-2-3', parser: new AbilityStatsModificationParser()},
+  {key: '2-5-3', parser: new AbilityStatsModificationParser()},
 ];
 
 export class AbilityEffectParserFactory {
