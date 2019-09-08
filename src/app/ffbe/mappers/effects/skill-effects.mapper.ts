@@ -25,13 +25,13 @@ export class SkillEffectsMapper {
   }
 
   public static mapPassiveSkillEffects(skill: Skill): string {
-    let concatenatedEffect = '';
+    const effects = [];
     skill.effects_raw.forEach((effect: Array<any>) => {
       if (effect.length !== 4) {
-        concatenatedEffect += 'Effet inconnu : mauvaise structure' + HTML_LINE_RETURN;
+        effects.push('Effet inconnu : mauvaise structure');
       }
-      concatenatedEffect += PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
+      effects.push(PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
     });
-    return concatenatedEffect;
+    return effects.join(HTML_LINE_RETURN);
   }
 }

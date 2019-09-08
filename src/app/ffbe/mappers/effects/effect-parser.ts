@@ -56,13 +56,19 @@ export abstract class EffectParser {
     }
   }
 
-  protected getEquipmentCategoryWithLink(equipmentId: number): string {
+  protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
     return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';
   }
 
-  protected isEquipmentCategoryStartingWithVowel(equipmentId: number): boolean {
-    return equipmentId === 2 || equipmentId === 3 || equipmentId === 7 || equipmentId === 13 || equipmentId === 51
-      || equipmentId === 52 || equipmentId === 60;
+  protected getEquipmentCategoryTypeWithLink(equipmentId: number): string {
+    const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
+    return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.type + '</a>' : 'UNKNOWN';
+  }
+
+  protected isEquipmentCategoryFeminine(equipmentId: number): boolean {
+    return equipmentId === 1 || equipmentId === 2 || equipmentId === 3 || equipmentId === 8 || equipmentId === 10
+      || equipmentId === 11 || equipmentId === 13 || equipmentId === 15 || equipmentId === 16 || equipmentId === 51
+      || equipmentId === 52 || equipmentId === 53;
   }
 }

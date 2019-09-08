@@ -6,8 +6,8 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[9999, 9999, 9999, [0]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
-    expect(s).toEqual('Effet inconnu');
+    // THEN
+    expect(s).toEqual('Effet UNKNOWN');
   });
 
   it('should parse passive stats increase', () => {
@@ -15,7 +15,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+30% MAG, +20% PV/ATT, +10% PM/DÉF/PSY');
   });
 
@@ -24,7 +24,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+60% de résistance à Sommeil, +50% de résistance à Poison, Silence, Paralysie, Confusion, +40% de résistance à Cécité, Maladie, +20% de résistance à Pétrification');
   });
 
@@ -33,7 +33,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+20% de résistance à toutes les altérations');
   });
 
@@ -42,7 +42,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 3, [50, 40, 60, 50, 50, 50, 40, 20]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+60% de résistance Foudre, +50% de résistance Feu, Eau, Vent, Terre, +40% de résistance Glace, Lumière, +20% de résistance Ténèbres');
   });
 
@@ -51,7 +51,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+20% de résistance à tous les éléments');
   });
 
@@ -60,7 +60,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 4, [2, 40, 9999, 30, 0, -1]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+40% DÉF quand les PV passent sous 30% (max 9999 fois)');
   });
 
@@ -69,7 +69,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 4, [2, 40, 9999, 30, 0, 3]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)');
   });
 
@@ -78,7 +78,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 5, [11]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>');
   });
 
@@ -87,7 +87,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 5, [666]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('Permet d\'équiper les UNKNOWN');
   });
 
@@ -96,8 +96,8 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
-    expect(s).toEqual('+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité est équipée de <a href="ffexvius_objects.php?categid=33">Harpes</a>');
+    // THEN
+    expect(s).toEqual('+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité est équipée d\'une <a href="ffexvius_objects.php?categid=33">harpe</a>');
   });
 
   it('should parse EVO MAG increase', () => {
@@ -105,7 +105,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 21, [20]]');
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // replaces
+    // THEN
     expect(s).toEqual('+20% INV');
   });
 

@@ -2,6 +2,7 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
 import {isNullOrUndefined} from 'util';
+import {SkillEffectsMapper} from './effects/skill-effects.mapper';
 
 export class SkillMapper {
 
@@ -16,6 +17,7 @@ export class SkillMapper {
       skill.descriptions[FFBE_ENGLISH_TABLE_INDEX],
       null,
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
+      SkillEffectsMapper.mapSkillEffects(skill),
       null,
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
       !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,

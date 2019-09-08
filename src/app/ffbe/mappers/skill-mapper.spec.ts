@@ -19,7 +19,7 @@ describe('SkillMapper', () => {
     skill.icon = 'ability_79.png';
     // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
-    // replaces
+    // THEN
     expect(competence.icone).toEqual(79);
   });
 
@@ -34,7 +34,7 @@ describe('SkillMapper', () => {
     skill.icon = 'ability_9876.png';
     // WHEN
     const competence: Competence = SkillMapper.toCompetence(skill);
-    // replaces
+    // THEN
     expect(competence.icone).toEqual(9876);
   });
 
@@ -53,7 +53,7 @@ describe('SkillMapper', () => {
     const competence: Competence = SkillMapper.toCompetence(skill);
     // WHEN
     SkillMapper.mapCategorieToDamageType(competence);
-    // replaces
+    // THEN
     expect(competence.categorie).toEqual(6);
     expect(competence.physique).toEqual('1');
     expect(competence.hybride).toEqual('0');
@@ -75,7 +75,7 @@ describe('SkillMapper', () => {
     const competence: Competence = SkillMapper.toCompetence(skill);
     // WHEN
     SkillMapper.mapCategorieToDamageType(competence);
-    // replaces
+    // THEN
     expect(competence.categorie).toEqual(7);
     expect(competence.physique).toEqual('0');
     expect(competence.hybride).toEqual('0');
@@ -96,7 +96,7 @@ describe('SkillMapper', () => {
     const competence: Competence = SkillMapper.toCompetence(skill);
     // WHEN
     SkillMapper.mapCategorieToDamageType(competence);
-    // replaces
+    // THEN
     expect(competence.categorie).toEqual(2);
     expect(competence.physique).toEqual('0');
     expect(competence.hybride).toEqual('0');
@@ -118,7 +118,7 @@ describe('SkillMapper', () => {
     const competence: Competence = SkillMapper.toCompetence(skill);
     // WHEN
     SkillMapper.mapCategorieToDamageType(competence);
-    // replaces
+    // THEN
     expect(competence.categorie).toEqual(8);
     expect(competence.physique).toEqual('0');
     expect(competence.hybride).toEqual('1');

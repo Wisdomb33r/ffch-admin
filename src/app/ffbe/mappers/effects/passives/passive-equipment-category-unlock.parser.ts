@@ -7,6 +7,6 @@ export class PassiveEquipmentCategoryUnlockParser extends EffectParser {
       return 'Effet EquipmentCategoryUnlockParser inconnu: Mauvaise liste de paramètres';
     }
 
-    return 'Permet d\'équiper les ' + this.getEquipmentCategoryWithLink(effect[3][0]);
+    return 'Permet d\'équiper les ' + this.getEquipmentCategoryNameWithLink(effect[3][0]);
   }
 }

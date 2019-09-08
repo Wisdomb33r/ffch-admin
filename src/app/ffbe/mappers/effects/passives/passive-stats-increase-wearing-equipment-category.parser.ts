@@ -16,8 +16,8 @@ export class PassiveStatsIncreaseWearingEquipmentCategoryParser extends EffectPa
     ];
     // TODO critical strikes
     return this.wordEffectJoiningIdenticalValues(increases)
-      + ' si l\'unité est équipée ' + (this.isEquipmentCategoryStartingWithVowel(effect[3][0]) ? 'd\'' : 'de ')
-      + this.getEquipmentCategoryWithLink(effect[3][0]);
+      + ' si l\'unité est équipée d\'' + (this.isEquipmentCategoryFeminine(effect[3][0]) ? 'une ' : 'un ')
+      + this.getEquipmentCategoryTypeWithLink(effect[3][0]);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
