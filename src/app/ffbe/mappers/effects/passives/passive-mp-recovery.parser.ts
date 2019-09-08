@@ -7,6 +7,7 @@ export class PassiveMpRecoveryParser extends EffectParser {
       return 'Effet PassivePmRecoveryParser inconnu: Mauvaise liste de paramètres';
     }
 
+    // WTF is this ? Esper orb withing PM recovery ?
     if (effect[3].length > 1) {
       if (effect[3][0] === 3 && effect[3][1] === 3) {
         return '+3 sphères de chimère';

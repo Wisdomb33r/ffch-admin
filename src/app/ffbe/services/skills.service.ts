@@ -6,13 +6,19 @@ import {forkJoin} from 'rxjs';
 
 @Injectable()
 export class SkillsService {
+  private static INSTANCE: SkillsService;
 
   private skillsFromDataMining = null;
   private skillsNamesFromDataMining = null;
   private skillsDescriptionsFromDataMining = null;
 
+  public static getInstance(): SkillsService {
+    return SkillsService.INSTANCE;
+  }
+
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadSkillsFromDataMining();
+    SkillsService.INSTANCE = this;
   }
 
   public loadSkillsFromDataMining() {
