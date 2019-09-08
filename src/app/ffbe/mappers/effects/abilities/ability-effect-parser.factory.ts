@@ -1,9 +1,9 @@
 import {EffectParser} from '../effect-parser';
 import {UnknownEffectParser} from '../unknown-effect-parser';
-import {AbilityStatsIncreaseCasterParser} from './ability-stats-increase-caster.parser';
+import {AbilityStatsModificationParser} from './ability-stats-modification.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
-  {key: '0-3-3', parser: new AbilityStatsIncreaseCasterParser()},
+  {key: '0-3-3', parser: new AbilityStatsModificationParser()},
 ];
 
 export class AbilityEffectParserFactory {
