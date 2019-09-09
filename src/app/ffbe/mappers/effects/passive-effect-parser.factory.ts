@@ -13,6 +13,9 @@ import {PassiveBattleStartSkillActivationParser} from './passives/passive-battle
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
 import {PassiveEquipmentStatsDualwieldIncreaseParser} from './passives/passive-equipment-stats-dualwield-increase.parser';
+import {PassivePhysicalEvasionParser} from './passives/passive-physical-evasion.parser';
+import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
+import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -32,6 +35,12 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-13', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '1-3-21', parser: new PassiveEsperDamageIncreaseParser()},
+  {key: '0-3-22', parser: new PassivePhysicalEvasionParser()},
+  {key: '1-3-22', parser: new PassivePhysicalEvasionParser()},
+  {key: '0-3-24', parser: new PassiveTargetChanceChangesParser()},
+  {key: '1-3-24', parser: new PassiveTargetChanceChangesParser()},
+  {key: '0-3-25', parser: new PassiveTargetChanceChangesParser()},
+  {key: '1-3-25', parser: new PassiveTargetChanceChangesParser()},
   {key: '0-3-32', parser: new PassiveMpRecoveryParser()},
   {key: '1-3-32', parser: new PassiveMpRecoveryParser()},
   {key: '0-3-33', parser: new PassiveLbPerTurnParser()},
@@ -41,6 +50,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '2-1-35', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '0-3-56', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '1-3-56', parser: new PassiveBattleStartSkillActivationParser()},
+  {key: '0-3-68', parser: new PassiveLbDamageIncreaseParser()},
+  {key: '1-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
   {key: '1-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
   {key: '--69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()}, // wtf is this ? bugged config
