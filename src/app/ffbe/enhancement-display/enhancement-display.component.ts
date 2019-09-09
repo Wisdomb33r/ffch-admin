@@ -2,8 +2,6 @@ import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Amelioration} from '../model/amelioration.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {CharactersService} from '../services/characters.service';
-import {forEach} from '@angular/router/src/utils/collection';
-import {Character} from '../model/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
 import {Personnage} from '../model/personnage.model';
 import {Competence} from '../model/competence.model';
@@ -93,7 +91,6 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
       .subscribe(amelioration => {
           this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
-          this.amelioration.released = isNullOrUndefined(this.ameliorationFromFfch) ? false : this.ameliorationFromFfch.released;
           if (!isNullOrUndefined(this.ameliorationFromFfch) && !isNullOrUndefined(this.ameliorationFromFfch.formule)) {
             FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
           }
@@ -128,8 +125,17 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendAmeliorationToFfch() {
-    EnhancementMapper.mapUndefinedReleased(this.amelioration);
     this.ffchClientService.postAmelioration$(this.amelioration)
       .subscribe(status => this.getAmelioration(), status => this.ameliorationErrors.push('Could not send amelioration'));
+  }
+
+  public getNomAmelioration(): string {
+    let nom = null;
+    if (!isNullOrUndefined(this.amelioration.nom)) {
+      nom = this.amelioration.nom;
+    } else if (Array.isArray(this.competences) && this.competences.length > 0 && !isNullOrUndefined(this.competences[0].nom)) {
+      nom = this.competences[0].nom;
+    }
+    return nom;
   }
 }

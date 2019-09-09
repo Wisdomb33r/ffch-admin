@@ -3,9 +3,10 @@ require_once "../gestion/genscripts/object_brex_comp_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "../gestion/genscripts/object_brex_perso.class.php";
 require_once "../gestion/genscripts/object_brex_competence.class.php";
+require_once "../gestion/genscripts/object_brex_unit.class.php";
+require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 
 require_once "classes.php";
-
 
 class Amelioration
 {
@@ -62,6 +63,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_competence_amelioree = findCompetenceByGumiId($amelioration->skill_id_new);
 
   checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
+
+  $brex_unit_comp_array = createAndValidateMissingBrexUnitCompArray($brex_perso, $brex_competence_base);
+  foreach ($brex_unit_comp_array as $brex_unit_comp) {
+    $brex_unit_comp->store();
+  }
 
   $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
   $brex_competence_eveil->store();
@@ -166,6 +172,45 @@ function filtreCompetencesEveilParNiveau($brex_competences_eveil, $niveau)
   return $brex_competence_eveil;
 }
 
+function createAndValidateMissingBrexUnitCompArray($brex_perso, $brex_competence_base)
+{
+  $brex_unit_comp_array = array();
+
+  $brex_units = brex_unit::finderParPersoOrdreNumero($brex_perso->id);
+
+  foreach ($brex_units as $brex_unit) {
+    $existing_brex_unit_comps = findUniteCompetence($brex_unit, $brex_competence_base);
+
+    if (count($existing_brex_unit_comps) == 0) {
+      $brex_unit_comp_array [] = createAndValidateMissingBrexUnitComp($brex_unit, $brex_competence_base);
+    }
+  }
+
+  return $brex_unit_comp_array;
+}
+
+function findUniteCompetence($brex_unit, $brex_competence)
+{
+  return brex_unit_comp::findByRelation1N(array('unit' => $brex_unit->id, 'competence' => $brex_competence->id));
+}
+
+function createAndValidateMissingBrexUnitComp($brex_unit, $brex_competence)
+{
+  $values = array();
+  $values ['niveau'] = 0;
+
+  $brex_unit_comp = new brex_unit_comp ($values);
+
+  $brex_unit_comp->setrelationunit($brex_unit);
+  $brex_unit_comp->setrelationcompetence($brex_competence);
+
+  if (!$brex_unit_comp->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_unit_comp->errors, 'Format exception: Validation of brex_unit_comp failed for competence ' . $brex_competence->gumi_id));
+  }
+
+  return $brex_unit_comp;
+}
+
 function createAmelioration($brex_competence_eveil)
 {
   $amelioration = new Amelioration();
@@ -195,7 +240,7 @@ function createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_comp
   $brex_competence_eveil->setrelationcompetence($brex_competence_base);
   $brex_competence_eveil->setrelationcomp_amelio($brex_competence_amelioree);
 
-  $brex_competence_eveil->released = ($amelioration->released == true) ? '1' : '0';
+  $brex_competence_eveil->released = '1';
 
   updateMateriauxEveil($brex_competence_eveil, $amelioration->formule);
 

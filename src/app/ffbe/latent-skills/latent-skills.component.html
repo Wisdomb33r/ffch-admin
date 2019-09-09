@@ -1,0 +1,15 @@
+<mat-card *ngIf="isDataMiningLoading()">
+  <mat-card-title>Chargement en cours...</mat-card-title>
+  <mat-spinner></mat-spinner>
+</mat-card>
+<mat-card *ngIf="!isDataMiningLoading()">
+  <mat-card-title>Importer une compétence latente</mat-card-title>
+  <mat-form-field>
+    <input matInput [formControl]="characterName" placeholder="Personnage">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="searchForLatentSkillsInDataMining()">Chercher
+  </button>
+</mat-card>
+<app-enhancements-display *ngIf="areLatentSkillsDisplayed()"
+                          [ameliorations]="ameliorations">
+</app-enhancements-display>
