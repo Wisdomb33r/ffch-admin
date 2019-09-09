@@ -12,6 +12,7 @@ import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveBattleStartSkillActivationParser} from './passives/passive-battle-start-skill-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
+import {PassiveEquipmentStatsDualwieldIncreaseParser} from './passives/passive-equipment-stats-dualwield-increase.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -40,6 +41,9 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '2-1-35', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '0-3-56', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '1-3-56', parser: new PassiveBattleStartSkillActivationParser()},
+  {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
+  {key: '1-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
+  {key: '--69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()}, // wtf is this ? bugged config
   {key: '0-3-70', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
 ];
 

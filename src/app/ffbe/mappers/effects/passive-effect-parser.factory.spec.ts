@@ -53,6 +53,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {effect: '[0, 3, 70, [25,  0,  2]]', parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'},
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
