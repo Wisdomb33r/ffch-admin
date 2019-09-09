@@ -44,11 +44,16 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques avec mitigation de 40%-60%'
     },
+    {
+      effect: '[1, 3, 13, [25,  25,  0]]',
+      parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)<br />+25% précision si l\'unité porte une seule arme à une main (DH)'
+    },
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 70, [25,  0,  2]]', parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'},
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
 

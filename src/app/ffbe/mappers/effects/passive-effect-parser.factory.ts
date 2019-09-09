@@ -11,6 +11,7 @@ import {PassiveAllyCoverParser} from './passives/passive-ally-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveBattleStartSkillActivationParser} from './passives/passive-battle-start-skill-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
+import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -26,6 +27,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
   {key: '1-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
   {key: '1-2-8', parser: new PassiveAllyCoverParser()},
+  {key: '0-3-13', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
+  {key: '1-3-13', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '1-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '0-3-32', parser: new PassiveMpRecoveryParser()},
@@ -37,6 +40,7 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '2-1-35', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '0-3-56', parser: new PassiveBattleStartSkillActivationParser()},
   {key: '1-3-56', parser: new PassiveBattleStartSkillActivationParser()},
+  {key: '0-3-70', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
 ];
 
 export class PassiveEffectParserFactory {
