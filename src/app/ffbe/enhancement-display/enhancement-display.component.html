@@ -11,7 +11,7 @@
     <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
         && isAmeliorationUpToDateInFfchDb()" src="assets/ok.png" class="ffchstatus">
 
-    {{amelioration.skill_id_base}} {{amelioration.nom}} ({{amelioration.niveau}})
+    {{amelioration.skill_id_base}} {{getNomAmelioration()}} ({{amelioration.niveau}})
   </mat-card-title>
 
   <div *ngIf="displayed">
@@ -35,11 +35,6 @@
                           [displayCost]="true"
                           [displaySuccessfulStatus]="false">
     </app-formules-display>
-
-    <p>
-      <mat-checkbox [(ngModel)]="amelioration.released" [disabled]="isAmeliorationPresentInFfchDb()">Disponible
-      </mat-checkbox>
-    </p>
 
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendAmeliorationToFfch()"
             [disabled]="areAmeliorationErrorsDiplayed() || !isSingleAmeliorationSelected()
