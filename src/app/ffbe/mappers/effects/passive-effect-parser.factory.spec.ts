@@ -1,4 +1,23 @@
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
+import {SkillsService} from '../../services/skills.service';
+import {
+  ABILITY_SKILLS_NAMES_TEST_DATA,
+  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  PASSIVE_SKILLS_TEST_DATA
+} from '../../model/skill.model.spec';
+import {Skill} from '../../model/skill.model';
+
+class SkillsServiceMock {
+  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
+
+  public static getInstance() {
+    return SkillsServiceMock.INSTANCE;
+  }
+
+  public searchForSkillByGumiId(gumiId: number): Skill {
+    return null;
+  }
+}
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [
@@ -44,4 +63,22 @@ describe('PassiveEffectParser', () => {
     });
   });
 
+  it('should parse battle start activation effect', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100020'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['100020'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['100020'];
+
+    const effect = JSON.parse('[0, 3, 35, [100020]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(skill);
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Bonus activé en début de combat ou après résurrection: +20% PV');
+  });
 });
