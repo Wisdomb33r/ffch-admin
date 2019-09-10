@@ -35,11 +35,13 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 3) {
       target = ' au lanceur';
-    } else if (effectId1 === 2 && effectId2 === 2 && effectId3 === 3) {
+    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 3) {
+      target = ' à un allié';
+    } else if (effectId1 === 2 && effectId2 === 2 && (effectId3 === 3 || effectId3 === 24)) {
       target = ' à tous les alliés';
     } else if (effectId1 === 2 && effectId2 === 5 && effectId3 === 3) {
       target = ' à tous les alliés sauf le lanceur';
-    } else if (effectId1 === 1 && effectId2 === 1 && effectId3 === 24) {
+    } else if (effectId1 === 1 && effectId2 === 1 && (effectId3 === 3 || effectId3 === 24)) {
       target = ' à un adversaire';
     } else if (effectId1 === 2 && effectId2 === 1 && effectId3 === 24) {
       target = ' à tous les adversaires';
