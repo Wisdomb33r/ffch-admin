@@ -7,6 +7,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-3', parser: new AbilityStatsModificationParser()},
   {key: '2-2-3', parser: new AbilityStatsModificationParser()},
   {key: '2-5-3', parser: new AbilityStatsModificationParser()},
+  {key: '1-1-24', parser: new AbilityStatsModificationParser()},
+  {key: '2-1-24', parser: new AbilityStatsModificationParser()},
 ];
 
 export class AbilityEffectParserFactory {

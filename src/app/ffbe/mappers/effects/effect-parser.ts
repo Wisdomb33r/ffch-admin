@@ -10,8 +10,11 @@ export abstract class EffectParser {
   }
 
   protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>): string {
+    const decreasingSort = values.some(element => {
+      return element.value > 0;
+    });
     values.sort((a, b) => {
-      return a.value === b.value ? 0 : (a.value > b.value ? -1 : 1);
+      return a.value === b.value ? 0 : (decreasingSort ? (a.value > b.value ? -1 : 1) : (a.value > b.value ? 1 : -1));
     });
     let text = '';
     let currentValue: number;
@@ -25,13 +28,13 @@ export abstract class EffectParser {
           currentValue = undefined;
           accumulatedStats = [];
         }
-        if (stat.value > 0) {
+        if (stat.value !== undefined && stat.value !== 0) {
           currentValue = stat.value;
           accumulatedStats = [stat.name];
         }
       }
     });
-    if (currentValue > 0) {
+    if (currentValue !== undefined && currentValue !== 0) {
       text += (text.length ? ', ' : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
     }
     return text;
