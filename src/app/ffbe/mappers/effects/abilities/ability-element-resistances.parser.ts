@@ -36,18 +36,16 @@ export class AbilityElementResistancesParser extends EffectParser {
   protected getTarget(effectId1: number, effectId2: number, effectId3: number): String {
     let target = ' à UNKNOWN';
 
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 3) {
-      target = ' au lanceur';
-    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 3) {
-      target = ' à un allié';
+    if (effectId1 === 0 && effectId2 === 3 && effectId3 === 33) {
+      target = ' du lanceur';
+    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 33) {
+      target = ' d\'un allié';
     } else if (effectId1 === 2 && effectId2 === 2 && effectId3 === 33) {
       target = ' de tous les alliés';
-    } else if (effectId1 === 2 && effectId2 === 5 && effectId3 === 3) {
-      target = ' à tous les alliés sauf le lanceur';
-    } else if (effectId1 === 1 && effectId2 === 1 && (effectId3 === 3 || effectId3 === 24)) {
-      target = ' à un adversaire';
-    } else if (effectId1 === 2 && effectId2 === 1 && effectId3 === 24) {
-      target = ' à tous les adversaires';
+    } else if (effectId1 === 1 && effectId2 === 1 && effectId3 === 33) {
+      target = ' de l\'adversaire';
+    } else if (effectId1 === 2 && effectId2 === 1 && effectId3 === 33) {
+      target = ' de tous les adversaires';
     }
 
     return target;
@@ -55,6 +53,9 @@ export class AbilityElementResistancesParser extends EffectParser {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const sign = currentValue >= 0 ? '+' : '';
+    if (accumulatedStats.length === 8) {
+      return '+' + currentValue + '% à la résistance à tous les éléments';
+    }
     return sign + currentValue + '% à la résistance ' + accumulatedStats.join('/');
   }
 }
