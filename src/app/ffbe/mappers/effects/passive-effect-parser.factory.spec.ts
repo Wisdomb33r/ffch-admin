@@ -6,6 +6,7 @@ import {
   PASSIVE_SKILLS_TEST_DATA
 } from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
+import {HTML_LINE_RETURN} from './skill-effects.mapper';
 
 class SkillsServiceMock {
   private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
@@ -33,7 +34,10 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. à tous les éléments'},
     {effect: '[0, 3, 4, [2, 40, 9999, 30, 0, -1]]', parsed: '+40% DÉF quand les PV passent sous 30% (max 9999 fois)'},
-    {effect: '[0, 3, 4, [2, 40, 9999, 30, 0, 3]]', parsed: '+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)'},
+    {
+      effect: '[0, 3, 4, [2, 40, 9999, 30, 0, 3]]',
+      parsed: '+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)'
+    },
     {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
@@ -46,19 +50,36 @@ describe('PassiveEffectParser', () => {
     },
     {
       effect: '[1, 3, 13, [25,  25,  0]]',
-      parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)<br />+25% précision si l\'unité porte une seule arme à une main (DH)'
+      parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
+        + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
+    {
+      effect: '[0, 3, 14, [4, 5, 6]]',
+      parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
+    },
+    {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance de se faire cibler'},
     {effect: '[0, 3, 25, [20]]', parsed: '-20% de chance de se faire cibler'},
+    {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
+    {
+      effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
+      parsed: '+30% de rés. aux baisses de DÉF/PSY, +20% de rés. aux baisses de ATT/MAG'
+        + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
+    },
+    {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
-    {effect: '[0, 3, 70, [25,  0,  2]]', parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'},
+    {
+      effect: '[0, 3, 70, [25,  0,  2]]',
+      parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
+    },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
 
