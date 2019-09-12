@@ -6,6 +6,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5) {
       return 'Effet AbilityStatsIncreaseCasterParser inconnu: Mauvaise liste de paramètres';
     }
+
     const increases = [
       {name: 'ATT', value: effect[3][0]},
       {name: 'DÉF', value: effect[3][1]},
@@ -13,8 +14,13 @@ export class AbilityStatsModificationParser extends EffectParser {
       {name: 'PSY', value: effect[3][3]},
     ];
     // TODO critical strikes
-    // TODO all values equal to 0
     // TODO What if effect[3][5] !== 1 ?
+
+    if (increases.every(element => {
+      return (element.value === 0);
+    })) {
+      return '';
+    }
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 

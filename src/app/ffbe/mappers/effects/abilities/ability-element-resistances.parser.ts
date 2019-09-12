@@ -16,8 +16,13 @@ export class AbilityElementResistancesParser extends EffectParser {
       {name: 'Lumière', value: effect[3][6]},
       {name: 'Ténèbres', value: effect[3][7]},
     ];
-    // TODO all values equal to 0
     // TODO What if effect[3][8] !== 1 ?
+
+    if (increases.every(element => {
+      return (element.value === 0);
+    })) {
+      return '';
+    }
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 

@@ -66,6 +66,15 @@ describe('AbilityEffectParser', () => {
     expect(s).toEqual('-30% MAG, -20% ATT à un adversaire pour 5 tours');
   });
 
+  it('should parse null stats breaks for one enemy', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 3, [0,  0,  0,  0,  0,  0]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('');
+  });
+
   it('should parse stats breaks for all enemies', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 24, [-20, 0, -30, 0, 5]]');

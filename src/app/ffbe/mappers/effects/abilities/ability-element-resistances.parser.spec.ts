@@ -47,6 +47,15 @@ describe('AbilityEffectParser', () => {
     expect(s).toEqual('+30% à la résistance Foudre/Lumière, +20% à la résistance Vent de l\'adversaire pour 5 tours');
   });
 
+  it('should parse no stats breaks for one enemy', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 33, [0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('');
+  });
+
   it('should parse element resistance debuffs for all enemies', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 33, [20, 0, 30, 0, 20, 0, 30, 0, 1, 4]]');
