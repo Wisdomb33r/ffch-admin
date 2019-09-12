@@ -178,6 +178,26 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[1, 1, 25, [20,  80,  100]], [1, 1, 10, [10,  30,  100]]],
         "requirements": null,
         "unit_restriction": null
+        },
+    "202340": {
+        "name": "Rapid Fire",
+        "icon": "ability_61.png",
+        "compendium_id": 281,
+        "rarity": 6,
+        "cost": {"MP": 16},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[]],
+        "move_type": 1,
+        "motion_type": 1,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": ["1-6 physical attacks (1x each, 3.5x avg, ATK) to one random enemy"],
+        "effects_raw": [[3, 1, 42, [0,  0,  1,  6,  100,  0]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -258,6 +278,14 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Transpercer",
         "Lanze",
         "Alma de dragón"
+    ],
+    "202340": [
+        "Rapid Fire",
+        "連續射擊",
+        "속사포",
+        "Tir rapide",
+        "Schnellfeuer",
+        "Tiro rápido"
     ]
   }`;
 
@@ -338,5 +366,13 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Aspire les PV et PM d'un ennemi",
         "Stiehlt MP und LP, ein Ziel",
         "Absorbe VIT y PM de un enemigo"
+    ],
+    "202340": [
+        "Randomly damage single enemies one to six times",
+        "隨機攻擊敵人1~6次",
+        "적에게 무작위로 1~6회 피해",
+        "Dégâts sur un ennemi au hasard, de 1 à 6 fois",
+        "Verursacht 1-6 Mal Schaden bei zufällig gewählten Gegnern.",
+        "Daño al azar de una a 6 veces a todos los enemigos"
     ]
   }`;

@@ -3,6 +3,7 @@ import {SkillsService} from '../../services/skills.service';
 import {
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  ABILITY_SKILLS_TEST_DATA,
   PASSIVE_SKILLS_TEST_DATA
 } from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
@@ -48,6 +49,11 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques avec mitigation de 40%-60%'
     },
+    {effect: '[0, 3, 11, [1, 50, 50]]', parsed: '+50% de dégâts physiques et magiques contre les bêtes'},
+    {
+      effect: '[0, 3, 11, [5, 50, 100]]',
+      parsed: '+50% de dégâts physiques contre les humains' + HTML_LINE_RETURN + '+100% de dégâts magiques contre les humains'
+    },
     {
       effect: '[1, 3, 13, [25,  25,  0]]',
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
@@ -58,6 +64,7 @@ describe('PassiveEffectParser', () => {
       parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
+    {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance de se faire cibler'},
@@ -111,5 +118,50 @@ describe('PassiveEffectParser', () => {
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('Bonus activé en début de combat ou après résurrection: +20% PV');
+  });
+
+  it('should parse skill modifier increase', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const skill1: Skill = skills['200200'];
+    skill1.gumi_id = 200200;
+    skill1.names = names['200200'];
+    skill1.descriptions = descriptions['200200'];
+    const skill2: Skill = skills['200270'];
+    skill2.gumi_id = 200270;
+    skill2.names = names['200270'];
+    skill2.descriptions = descriptions['200270'];
+
+    const effect = JSON.parse('[0, 3, 73, [[200200, 200270], 0, 0, 100]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+200% de puissance à <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a>'
+      + HTML_LINE_RETURN + '+100% de puissance à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
+  });
+
+  it('should parse skill modifier increase for physical combos', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const skill1: Skill = skills['202340'];
+    skill1.gumi_id = 202340;
+    skill1.names = names['202340'];
+    skill1.descriptions = descriptions['202340'];
+
+    const effect = JSON.parse('[0, 3, 73, [[202340], 0, 0, 100]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+350% de puissance à <a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
   });
 });

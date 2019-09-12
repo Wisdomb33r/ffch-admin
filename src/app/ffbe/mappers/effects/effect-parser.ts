@@ -1,5 +1,5 @@
 import {Skill} from '../../model/skill.model';
-import {FFBE_CATEGORIES_OBJETS} from '../../ffbe.constants';
+import {FFBE_CATEGORIES_OBJETS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 
 export abstract class EffectParser {
@@ -9,7 +9,7 @@ export abstract class EffectParser {
     return '';
   }
 
-  protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>): string {
+  protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>, groupSeparator: string = ', '): string {
     const decreasingSort = values.some(element => {
       return element.value > 0;
     });
@@ -24,7 +24,7 @@ export abstract class EffectParser {
         accumulatedStats.push(stat.name);
       } else {
         if (currentValue && accumulatedStats) {
-          text += (text.length ? ', ' : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
+          text += (text.length ? groupSeparator : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
           currentValue = undefined;
           accumulatedStats = [];
         }
@@ -35,7 +35,7 @@ export abstract class EffectParser {
       }
     });
     if (currentValue !== undefined && currentValue !== 0) {
-      text += (text.length ? ', ' : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
+      text += (text.length ? groupSeparator : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
     }
     return text;
   }
@@ -97,5 +97,12 @@ export abstract class EffectParser {
     return equipmentId === 1 || equipmentId === 2 || equipmentId === 3 || equipmentId === 8 || equipmentId === 10
       || equipmentId === 11 || equipmentId === 13 || equipmentId === 15 || equipmentId === 16 || equipmentId === 51
       || equipmentId === 52 || equipmentId === 53;
+  }
+
+  protected getSkillNameWithGumiIdentifierLink(skill: Skill): string {
+    if (!skill || !skill.names || !skill.names[FFBE_FRENCH_TABLE_INDEX]) {
+      return 'UNKNOWN skill';
+    }
+    return '<a href="ffexvius_skills.php?gumiid=' + skill.gumi_id + '">' + skill.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
   }
 }

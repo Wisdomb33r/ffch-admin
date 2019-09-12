@@ -20,6 +20,9 @@ import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveGroupEsperSummonParser} from './passives/passive-group-esper-summon.parser';
+import {PassiveKillerDamageIncreaseParser} from './passives/passive-killer-damage-increase.parser';
+import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
+import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -35,10 +38,15 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
   {key: '1-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
   {key: '1-2-8', parser: new PassiveAllyCoverParser()},
+  {key: '1-1-11', parser: new PassiveKillerDamageIncreaseParser()},
+  {key: '0-3-11', parser: new PassiveKillerDamageIncreaseParser()},
+  {key: '1-3-11', parser: new PassiveKillerDamageIncreaseParser()},
   {key: '0-3-13', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
   {key: '1-3-13', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
   {key: '0-3-14', parser: new PassiveDualWieldWeaponCategoryUnlockParser()},
   {key: '1-3-14', parser: new PassiveDualWieldWeaponCategoryUnlockParser()},
+  {key: '0-3-17', parser: new PassiveJumpDamageIncreaseParser()},
+  {key: '1-3-17', parser: new PassiveJumpDamageIncreaseParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '1-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '0-3-22', parser: new PassivePhysicalEvasionParser()},
@@ -67,6 +75,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
   {key: '--69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()}, // wtf is this ? bugged config
   {key: '0-3-70', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
+  {key: '0-3-73', parser: new PassiveSkillModifierIncreaseParser()},
+  {key: '1-3-73', parser: new PassiveSkillModifierIncreaseParser()},
 ];
 
 export class PassiveEffectParserFactory {

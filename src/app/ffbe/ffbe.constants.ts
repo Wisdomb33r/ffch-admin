@@ -1,5 +1,6 @@
 import {Game} from './model/game.model';
 import {CategorieObjet} from './model/objet/categorie-objet.model';
+import {MonsterType} from './model/monster-type.model';
 
 export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;
@@ -78,4 +79,18 @@ export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(null, 59, 'Matériaux d\'événements', 'matériaux d\'événement', null),
   new CategorieObjet(null, 36, 'Cristaux', 'cristal', null),
   new CategorieObjet(null, 58, 'Divers', 'divers', null)
+];
+export const FFBE_MONSTER_TYPES = [
+  new MonsterType(1, 'bête', 'bêtes'),
+  new MonsterType(2, 'oiseau', 'oiseaux'),
+  new MonsterType(3, 'aquatique', 'aquatiques'),
+  new MonsterType(4, 'démon', 'démons'),
+  new MonsterType(5, 'humain', 'humains'),
+  new MonsterType(6, 'machine', 'machines'),
+  new MonsterType(7, 'dragon', 'dragons'),
+  new MonsterType(8, 'esprit', 'esprits'),
+  new MonsterType(9, 'insecte', 'insectes'),
+  new MonsterType(10, 'pierre', 'pierres'),
+  new MonsterType(11, 'plante', 'plantes'),
+  new MonsterType(12, 'mort-vivant', 'morts-vivants'),
 ];
