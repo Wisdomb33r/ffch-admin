@@ -3,6 +3,7 @@ import {UnknownEffectParser} from '../unknown-effect-parser';
 import {AbilityStatsModificationParser} from './ability-stats-modification.parser';
 import {AbilityElementResistancesParser} from './ability-element-resistances.parser';
 import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.parser';
+import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-3', parser: new AbilityStatsModificationParser()},
@@ -20,6 +21,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-6', parser: new AbilityAilmentsInflictionParser()},
   {key: '1-1-6', parser: new AbilityAilmentsInflictionParser()},
   {key: '2-1-6', parser: new AbilityAilmentsInflictionParser()},
+  {key: '0-3-7', parser: new AbilityAilmentsResistanceParser()},
+  {key: '2-2-7', parser: new AbilityAilmentsResistanceParser()},
 ];
 
 export class AbilityEffectParserFactory {
