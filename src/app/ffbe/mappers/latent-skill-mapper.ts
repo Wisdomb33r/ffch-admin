@@ -16,8 +16,8 @@ export class LatentSkillMapper {
       null,
       null,
       null,
+      latentSkill.skill_id_parent,
       latentSkill.skill_id,
-      latentSkill.skill_id_next,
       latentSkill.skill_id_base,
       formule,
       latentSkill.level);
