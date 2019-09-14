@@ -1,6 +1,7 @@
 import {Skill} from '../../model/skill.model';
 import {FFBE_CATEGORIES_OBJETS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
+import {Esper} from '../../model/esper.model';
 
 export abstract class EffectParser {
   public abstract parse(effect: Array<any>, skill: Skill): string;
@@ -104,5 +105,12 @@ export abstract class EffectParser {
       return 'UNKNOWN skill';
     }
     return '<a href="ffexvius_skills.php?gumiid=' + skill.gumi_id + '">' + skill.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+  }
+
+  protected getEsperLink(esper: Esper): string {
+    if (!esper) {
+      return 'UNKNOWN esper';
+    }
+    return '<a href="ffexvius_espers.php?esperid=' + esper.ffchId + '">' + esper.name + '</a>';
   }
 }

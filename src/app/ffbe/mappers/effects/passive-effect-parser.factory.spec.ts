@@ -81,6 +81,18 @@ describe('PassiveEffectParser', () => {
         + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
     },
     {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère'
+    },
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 5]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
+    },
+    {
+      effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
+      parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
+    },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {

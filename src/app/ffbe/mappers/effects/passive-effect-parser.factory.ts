@@ -26,6 +26,7 @@ import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modif
 import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
+import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -72,6 +73,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-56', parser: new PassiveSkillBattleStartActivationParser()},
   {key: '1-3-56', parser: new PassiveSkillBattleStartActivationParser()},
   {key: '0-3-61', parser: new PassiveEsperGroupSummonParser()},
+  {key: '0-3-63', parser: new PassiveEsperStatsIncreaseParser()},
+  {key: '1-3-63', parser: new PassiveEsperStatsIncreaseParser()},
   {key: '0-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '1-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},

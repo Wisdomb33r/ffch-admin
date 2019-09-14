@@ -1,6 +1,7 @@
 import {Game} from './model/game.model';
 import {CategorieObjet} from './model/objet/categorie-objet.model';
 import {MonsterType} from './model/monster-type.model';
+import {Esper} from './model/esper.model';
 
 export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;
@@ -93,4 +94,25 @@ export const FFBE_MONSTER_TYPES = [
   new MonsterType(10, 'pierre', 'pierres'),
   new MonsterType(11, 'plante', 'plantes'),
   new MonsterType(12, 'mort-vivant', 'morts-vivants'),
+];
+export const FFBE_ESPERS = [
+  new Esper(1, 1, 'Sirène'),
+  new Esper(2, 2, 'Ifrit'),
+  new Esper(3, 3, 'Shiva'),
+  new Esper(4, 7, 'Carbuncle'),
+  new Esper(5, 6, 'Diabolos'),
+  new Esper(6, 4, 'Golem'),
+  new Esper(7, 5, 'Ramuh'),
+  new Esper(8, 9, 'Titan'),
+  new Esper(9, 11, 'Tétra-Sylphides'),
+  new Esper(10, 8, 'Odin'),
+  new Esper(11, 10, 'Lakshmi'),
+  new Esper(12, 14, 'Léviathan'),
+  new Esper(13, 16, 'Alexandre'),
+  new Esper(14, 15, 'Phénix'),
+  new Esper(15, 12, 'Bahamut'),
+  new Esper(16, 13, 'Fenrir'),
+  new Esper(17, 17, 'Anima'),
+  new Esper(18, 18, 'Asura'),
+  new Esper(19, 19, 'Kokuryu'),
 ];
