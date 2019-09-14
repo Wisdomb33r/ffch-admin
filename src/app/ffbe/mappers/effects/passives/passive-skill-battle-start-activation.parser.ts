@@ -9,7 +9,7 @@ export class PassiveSkillBattleStartActivationParser extends EffectParser {
       return 'Effet PassiveSkillBattleStartActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const baseText = 'Bonus activé en début de combat ou après résurrection: ';
+    const baseText = 'Effet activé en début de combat ou après résurrection: ';
     const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(effect[3][0]);
     if (!activatedSkill) {
       return baseText + 'UNKNOWN skill';

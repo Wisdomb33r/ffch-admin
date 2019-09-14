@@ -65,6 +65,7 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
+    {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance de se faire cibler'},
@@ -74,6 +75,8 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
+    {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {
       effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
@@ -92,6 +95,10 @@ describe('PassiveEffectParser', () => {
     {
       effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
       parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
+    },
+    {
+      effect: '[0, 3, 64, [50, 5]]',
+      parsed: '+50% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
     },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
@@ -138,7 +145,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Bonus activé en début de combat ou après résurrection: +20% PV');
+    expect(s).toEqual('Effet activé en début de combat ou après résurrection: +20% PV');
   });
 
   it('should parse skill modifier increase', () => {

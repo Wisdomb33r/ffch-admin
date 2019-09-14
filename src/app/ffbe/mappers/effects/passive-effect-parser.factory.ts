@@ -13,7 +13,7 @@ import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
 import {PassiveEquipmentStatsDualwieldIncreaseParser} from './passives/passive-equipment-stats-dualwield-increase.parser';
-import {PassivePhysicalEvasionParser} from './passives/passive-physical-evasion.parser';
+import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase.parser';
@@ -27,6 +27,11 @@ import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/pas
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
+import {PassiveCounterAttackParser} from './passives/passive-counter-attack.parser';
+import {PassiveCounterAttackWithSkillParser} from './passives/passive-counter-attack-with-skill.parser';
+import {PassiveEsperSummonDamageIncreaseParser} from './passives/passive-esper-summon-damage-increase.parser';
+import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
+import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -51,10 +56,12 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-14', parser: new PassiveDualWieldWeaponCategoryUnlockParser()},
   {key: '0-3-17', parser: new PassiveJumpDamageIncreaseParser()},
   {key: '1-3-17', parser: new PassiveJumpDamageIncreaseParser()},
+  {key: '0-3-20', parser: new PassiveCounterAttackParser()},
+  {key: '1-3-20', parser: new PassiveCounterAttackParser()},
   {key: '0-3-21', parser: new PassiveEsperDamageIncreaseParser()},
   {key: '1-3-21', parser: new PassiveEsperDamageIncreaseParser()},
-  {key: '0-3-22', parser: new PassivePhysicalEvasionParser()},
-  {key: '1-3-22', parser: new PassivePhysicalEvasionParser()},
+  {key: '0-3-22', parser: new PassiveEvasionPhysicalParser()},
+  {key: '1-3-22', parser: new PassiveEvasionPhysicalParser()},
   {key: '0-3-24', parser: new PassiveTargetChanceChangesParser()},
   {key: '1-3-24', parser: new PassiveTargetChanceChangesParser()},
   {key: '0-3-25', parser: new PassiveTargetChanceChangesParser()},
@@ -68,6 +75,16 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-35', parser: new PassiveSkillBattleStartActivationParser()},
   {key: '1-3-35', parser: new PassiveSkillBattleStartActivationParser()},
   {key: '2-1-35', parser: new PassiveSkillBattleStartActivationParser()},
+  {key: '0-3-48', parser: new PassiveMpDecreaseForSongsParser()},
+  {key: '1-3-48', parser: new PassiveMpDecreaseForSongsParser()},
+  {key: '0-3-49', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '1-3-49', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '1-1-49', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '2-2-49', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '0-3-50', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '1-3-50', parser: new PassiveCounterAttackWithSkillParser()},
+  {key: '0-3-54', parser: new PassiveEvasionMagicalParser()},
+  {key: '1-3-54', parser: new PassiveEvasionMagicalParser()},
   {key: '0-3-55', parser: new PassiveDebuffsResistanceParser()},
   {key: '1-3-55', parser: new PassiveDebuffsResistanceParser()},
   {key: '0-3-56', parser: new PassiveSkillBattleStartActivationParser()},
@@ -75,6 +92,7 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-61', parser: new PassiveEsperGroupSummonParser()},
   {key: '0-3-63', parser: new PassiveEsperStatsIncreaseParser()},
   {key: '1-3-63', parser: new PassiveEsperStatsIncreaseParser()},
+  {key: '0-3-64', parser: new PassiveEsperSummonDamageIncreaseParser()},
   {key: '0-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '1-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
