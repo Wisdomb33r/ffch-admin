@@ -87,6 +87,15 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 70, [25,  0,  2]]',
       parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
     },
+    {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
+    {
+      effect: '[0, 3, 75, [4, 5, 50, 50]]',
+      parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité est équipée d\'un <a href="ffexvius_objects.php?categid=28">katana</a>'
+    },
+    {
+      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
+      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
+    },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
 

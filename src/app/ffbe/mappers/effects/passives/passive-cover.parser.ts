@@ -1,10 +1,10 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 
-export class PassiveAllyCoverParser extends EffectParser {
+export class PassiveCoverParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5) {
-      return 'Effet PassiveAllyCoverParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet PassiveCoverParser inconnu: Mauvaise liste de paramètres';
     }
 
     let mitigation = '';

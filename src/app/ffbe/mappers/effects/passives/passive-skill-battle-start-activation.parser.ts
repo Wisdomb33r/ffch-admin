@@ -3,10 +3,10 @@ import {Skill} from '../../../model/skill.model';
 import {SkillMapper} from '../../skill-mapper';
 import {SkillsService} from '../../../services/skills.service';
 
-export class PassiveBattleStartSkillActivationParser extends EffectParser {
+export class PassiveSkillBattleStartActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 1) {
-      return 'Effet PassiveBattleStartSkillActivationParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet PassiveSkillBattleStartActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
     const baseText = 'Bonus activé en début de combat ou après résurrection: ';

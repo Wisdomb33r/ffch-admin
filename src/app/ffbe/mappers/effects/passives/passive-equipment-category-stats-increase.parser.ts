@@ -1,11 +1,12 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 
-export class PassiveStatsIncreaseWearingEquipmentCategoryParser extends EffectParser {
+export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 6) {
-      return 'Effet PassiveStatsIncreaseWearingEquipmentCategoryParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet PassiveEquipmentCategoryStatsIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
+    const equipmentGumiId = effect[3][0];
     const increases = [
       {name: 'PV', value: effect[3][5]},
       {name: 'PM', value: effect[3][6]},
@@ -16,8 +17,8 @@ export class PassiveStatsIncreaseWearingEquipmentCategoryParser extends EffectPa
     ];
     // TODO critical strikes
     return this.wordEffectJoiningIdenticalValues(increases)
-      + ' si l\'unité est équipée d\'' + (this.isEquipmentCategoryFeminine(effect[3][0]) ? 'une ' : 'un ')
-      + this.getEquipmentCategoryTypeWithLink(effect[3][0]);
+      + ' si l\'unité est équipée d\'' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+      + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

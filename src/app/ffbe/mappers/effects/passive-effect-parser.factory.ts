@@ -6,10 +6,10 @@ import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment
 import {PassiveAilmentsResistanceParser} from './passives/passive-ailments-resistance.parser';
 import {PassiveElementsResistanceParser} from './passives/passive-elements-resistance.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
-import {PassiveStatsIncreaseWearingEquipmentCategoryParser} from './passives/passive-stats-increase-wearing-equipment-category.parser';
-import {PassiveAllyCoverParser} from './passives/passive-ally-cover.parser';
+import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
+import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveBattleStartSkillActivationParser} from './passives/passive-battle-start-skill-activation.parser';
+import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-battle-start-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
 import {PassiveEquipmentStatsDualwieldIncreaseParser} from './passives/passive-equipment-stats-dualwield-increase.parser';
@@ -19,10 +19,13 @@ import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance
 import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase.parser';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
-import {PassiveGroupEsperSummonParser} from './passives/passive-group-esper-summon.parser';
+import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveKillerDamageIncreaseParser} from './passives/passive-killer-damage-increase.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
+import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
+import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
+import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -35,9 +38,9 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-4', parser: new PassiveStatsIncreaseHpThresholdParser()},
   {key: '0-3-5', parser: new PassiveEquipmentCategoryUnlockParser()},
   {key: '1-3-5', parser: new PassiveEquipmentCategoryUnlockParser()},
-  {key: '0-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
-  {key: '1-3-6', parser: new PassiveStatsIncreaseWearingEquipmentCategoryParser()},
-  {key: '1-2-8', parser: new PassiveAllyCoverParser()},
+  {key: '0-3-6', parser: new PassiveEquipmentCategoryStatsIncreaseParser()},
+  {key: '1-3-6', parser: new PassiveEquipmentCategoryStatsIncreaseParser()},
+  {key: '1-2-8', parser: new PassiveCoverParser()},
   {key: '1-1-11', parser: new PassiveKillerDamageIncreaseParser()},
   {key: '0-3-11', parser: new PassiveKillerDamageIncreaseParser()},
   {key: '1-3-11', parser: new PassiveKillerDamageIncreaseParser()},
@@ -61,22 +64,26 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '1-3-32', parser: new PassiveMpRecoveryParser()},
   {key: '0-3-33', parser: new PassiveLbPerTurnParser()},
   {key: '1-3-33', parser: new PassiveLbPerTurnParser()},
-  {key: '0-3-35', parser: new PassiveBattleStartSkillActivationParser()},
-  {key: '1-3-35', parser: new PassiveBattleStartSkillActivationParser()},
-  {key: '2-1-35', parser: new PassiveBattleStartSkillActivationParser()},
+  {key: '0-3-35', parser: new PassiveSkillBattleStartActivationParser()},
+  {key: '1-3-35', parser: new PassiveSkillBattleStartActivationParser()},
+  {key: '2-1-35', parser: new PassiveSkillBattleStartActivationParser()},
   {key: '0-3-55', parser: new PassiveDebuffsResistanceParser()},
   {key: '1-3-55', parser: new PassiveDebuffsResistanceParser()},
-  {key: '0-3-56', parser: new PassiveBattleStartSkillActivationParser()},
-  {key: '1-3-56', parser: new PassiveBattleStartSkillActivationParser()},
-  {key: '0-3-61', parser: new PassiveGroupEsperSummonParser()},
+  {key: '0-3-56', parser: new PassiveSkillBattleStartActivationParser()},
+  {key: '1-3-56', parser: new PassiveSkillBattleStartActivationParser()},
+  {key: '0-3-61', parser: new PassiveEsperGroupSummonParser()},
   {key: '0-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '1-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
   {key: '1-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
   {key: '--69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()}, // wtf is this ? bugged config
   {key: '0-3-70', parser: new PassiveEquipmentStatsDoublehandIncreaseParser()},
+  {key: '0-3-72', parser: new PassiveLbUpgradeParser()},
   {key: '0-3-73', parser: new PassiveSkillModifierIncreaseParser()},
   {key: '1-3-73', parser: new PassiveSkillModifierIncreaseParser()},
+  {key: '0-3-75', parser: new PassiveEquipmentCategoryKillerDamageIncreaseParser()},
+  {key: '0-3-80', parser: new PassiveLbUpgradeHpThresholdParser()},
+  {key: '0-3-136', parser: new PassiveSkillModifierIncreaseParser()},
 ];
 
 export class PassiveEffectParserFactory {

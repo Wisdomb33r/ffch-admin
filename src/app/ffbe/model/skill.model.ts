@@ -52,8 +52,18 @@ export class Skill {
   private isEffectWithDamage(effect: Array<any>) {
     const effectId = effect[2];
     return effect.length >= 4 && (
-      effectId === 1 || effectId === 10 || effectId === 13 || effectId === 15 || effectId === 21 || effectId === 25 || effectId === 42
-      || effectId === 52 || effectId === 72 || effectId === 81
+      effectId === 1 // physical damages
+      || effectId === 10 // physical / magic damages with MP drain
+      || effectId === 13 // physical damages with 1 turn delay
+      || effectId === 15 // magic damages
+      || effectId === 21 // physical damages with ignore DEF
+      || effectId === 25 // physical / magic damages with HP drain
+      || effectId === 40 // hybrid damages
+      || effectId === 42 // physical combos with multiple consecutive attacks
+      || effectId === 43 // physical damages with critical strike and chance to miss
+      || effectId === 52 // physical damages with 1 turn jump delay
+      || effectId === 72 // magic damages with consecutive damage increase
+      || effectId === 81 // physical damages with HP sacrifice
     );
   }
 
@@ -61,13 +71,16 @@ export class Skill {
     const effectId = effect[2];
     switch (effectId) {
       case 21:
-        // ignore stat
+        // physical damages with ignore DEF
         return 100 / (100 - effect[3][3]);
       case 42:
         // physical combos with multiple consecutive attacks
         return (effect[3][2] + effect[3][3]) / 2.0;
+      case 43:
+        // physical damages with critical strike and chance to miss
+        return 1.5;
       default:
-        return 1;
+        return 1.0;
     }
   }
 }
