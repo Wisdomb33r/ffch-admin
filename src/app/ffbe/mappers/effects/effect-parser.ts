@@ -10,7 +10,8 @@ export abstract class EffectParser {
     return '';
   }
 
-  protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>, groupSeparator: string = ', '): string {
+  protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>,
+                                             groupSeparator: string = ', ', keepZeros: boolean = false): string {
     const decreasingSort = values.some(element => {
       return element.value > 0;
     });
@@ -29,13 +30,13 @@ export abstract class EffectParser {
           currentValue = undefined;
           accumulatedStats = [];
         }
-        if (stat.value !== undefined && stat.value !== 0) {
+        if (stat.value !== undefined && (stat.value !== 0 || keepZeros)) {
           currentValue = stat.value;
           accumulatedStats = [stat.name];
         }
       }
     });
-    if (currentValue !== undefined && currentValue !== 0) {
+    if (currentValue !== undefined && (currentValue !== 0 || keepZeros)) {
       text += (text.length ? groupSeparator : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
     }
     return text;

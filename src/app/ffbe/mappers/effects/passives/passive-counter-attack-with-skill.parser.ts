@@ -17,7 +17,7 @@ export class PassiveCounterAttackWithSkillParser extends EffectParser {
 
     const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(activatedSkillId);
 
-    return counterChance + '% de chance de contre-attaquer les dégâts ' + damageTypeText + 'par : '
+    return counterChance + '% de chance de contre-attaquer les dégâts ' + damageTypeText + ' par : '
       + (!activatedSkill ? 'UNKNOWN skill' : SkillMapper.toCompetence(activatedSkill).effet_fr)
       + ' (max ' + maxActivationNumber + ' par tour)';
   }

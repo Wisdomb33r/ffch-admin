@@ -14,17 +14,20 @@ export class PassiveSkillModifierIncreaseParser extends EffectParser {
 
     const modifiedSkillsIncreases: Array<{ name: string, value: number }> = [];
     modifiedSkills.forEach(skillId => {
-      const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(effect[3][0]);
+      const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
       modifiedSkillsIncreases.push({
         name: this.getSkillNameWithGumiIdentifierLink(activatedSkill),
-        value: activatedSkill.calculateTotalModIncrease(skillModifierIncrease),
+        value: !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(skillModifierIncrease),
       });
     });
 
-    return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN);
+    return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN, true);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
+    if (currentValue === 0) {
+      return '+UNKNOWN puissance à ' + accumulatedStats.join(', ');
+    }
     return '+' + currentValue + '% de puissance à ' + accumulatedStats.join(', ');
   }
 }
