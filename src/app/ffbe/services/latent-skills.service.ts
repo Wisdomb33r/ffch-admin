@@ -56,10 +56,10 @@ export class LatentSkillsService {
       latentSkillGumiIdChain.push(parentSkillGumiId);
     }
     latentSkill.skill_id_base = this.latentSkillsFromDataMining[latentSkillGumiIdChain[latentSkillGumiIdChain.length - 1]].skill_id;
-    if (!isNullOrUndefined(latentSkill.next_id)) {
-      latentSkill.skill_id_next = this.latentSkillsFromDataMining[latentSkill.next_id].skill_id;
+    if (latentSkillGumiIdChain.length >= 2) {
+      latentSkill.skill_id_parent = this.latentSkillsFromDataMining[latentSkillGumiIdChain[1]].skill_id;
     }
-    latentSkill.level = latentSkillGumiIdChain.length;
+    latentSkill.level = latentSkillGumiIdChain.length - 1;
   }
 
   protected searchForParentLatentSkillByGumiId(skillGumiId: number): number {
