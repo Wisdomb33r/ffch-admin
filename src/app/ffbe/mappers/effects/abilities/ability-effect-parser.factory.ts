@@ -25,6 +25,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-7', parser: new AbilityAilmentsResistanceParser()},
   {key: '2-2-7', parser: new AbilityAilmentsResistanceParser()},
   {key: '0-3-136', parser: new AbilitySkillModifierIncreaseParser()},
+  {key: '1-3-136', parser: new AbilitySkillModifierIncreaseParser()},
+  {key: '1-2-136', parser: new AbilitySkillModifierIncreaseParser()},
 ];
 
 export class AbilityEffectParserFactory {
