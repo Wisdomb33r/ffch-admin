@@ -2,6 +2,7 @@ import {Skill} from '../../model/skill.model';
 import {FFBE_CATEGORIES_OBJETS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
+import {Equipment} from '../../model/equipment/equipment.model';
 
 export abstract class EffectParser {
   public abstract parse(effect: Array<any>, skill: Skill): string;
@@ -106,6 +107,20 @@ export abstract class EffectParser {
       return 'UNKNOWN skill';
     }
     return '<a href="ffexvius_skills.php?gumiid=' + skill.gumi_id + '">' + skill.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+  }
+
+  protected getSkillsNamesWithGumiIdentifierLinks(skills: Array<Skill>, separator: string = ', '): string {
+    if (!skills || skills.length === 0) {
+      return 'UNKNOWN skill list';
+    }
+    return skills.map((skill: Skill) => this.getSkillNameWithGumiIdentifierLink(skill)).join(separator);
+  }
+
+  protected getEquipmentNameWithGumiIdentifierLink(equipment: Equipment): string {
+    if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+      return 'UNKNOWN equipment';
+    }
+    return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">' + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
   }
 
   protected getEsperLink(esper: Esper): string {

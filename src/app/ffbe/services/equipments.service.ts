@@ -7,12 +7,18 @@ import {SkillsService} from './skills.service';
 
 @Injectable()
 export class EquipmentsService {
+  private static INSTANCE: EquipmentsService;
 
   private equipmentsFromDataMining = null;
+
+  public static getInstance(): EquipmentsService {
+    return EquipmentsService.INSTANCE;
+  }
 
   constructor(private dataMiningClientService: DataMiningClientService,
               private skillsService: SkillsService) {
     this.loadEquipmentsFromDataMining();
+    EquipmentsService.INSTANCE = this;
   }
 
   public loadEquipmentsFromDataMining() {

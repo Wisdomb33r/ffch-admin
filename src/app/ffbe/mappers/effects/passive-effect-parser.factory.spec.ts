@@ -8,6 +8,9 @@ import {
 } from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
 import {HTML_LINE_RETURN} from './skill-effects.mapper';
+import {Equipment} from '../../model/equipment/equipment.model';
+import {EquipmentsService} from '../../services/equipments.service';
+import {EQUIPMENTS_TEST_DATA} from '../../model/equipment/equipment.model.spec';
 
 class SkillsServiceMock {
   private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
@@ -17,6 +20,18 @@ class SkillsServiceMock {
   }
 
   public searchForSkillByGumiId(gumiId: number): Skill {
+    return null;
+  }
+}
+
+class EquipmentsServiceMock {
+  private static INSTANCE: EquipmentsServiceMock = new EquipmentsServiceMock();
+
+  public static getInstance() {
+    return EquipmentsServiceMock.INSTANCE;
+  }
+
+  public searchForEquipmentByGumiId(gumiId: number): Equipment {
     return null;
   }
 }
@@ -148,6 +163,30 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('Effet activé en début de combat ou après résurrection: +20% PV');
   });
 
+  it('should parse multi-skill effect', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const skill1: Skill = skills['200200'];
+    skill1.gumi_id = 200200;
+    skill1.names = names['200200'];
+    skill1.descriptions = descriptions['200200'];
+    const skill2: Skill = skills['200270'];
+    skill2.gumi_id = 200270;
+    skill2.names = names['200270'];
+    skill2.descriptions = descriptions['200270'];
+
+    const effect = JSON.parse('[0, 3, 53, [3, 123456, -1, [200200, 200270], 1]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
+  });
+
   it('should parse skill modifier increase', () => {
     // GIVEN
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
@@ -183,7 +222,7 @@ describe('PassiveEffectParser', () => {
     skill1.names = names['202340'];
     skill1.descriptions = descriptions['202340'];
 
-    const effect = JSON.parse('[0, 3, 73, [[202340], 0, 0, 100]]');
+    const effect = JSON.parse('[0, 3, 73, [202340, 0, 0, 100]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
@@ -191,5 +230,21 @@ describe('PassiveEffectParser', () => {
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('+350% de puissance à <a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
+  });
+
+  it('should parse equipment stats increase', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000400'];
+    equipment.gumi_id = 301000400;
+
+    const effect = JSON.parse('[0, 3, 74, [301000400, 20, 20, 10, 10, 30, 30, 50]]');
+    const equipmentsServiceMock = new EquipmentsServiceMock() as EquipmentsService;
+    EquipmentsService['INSTANCE'] = equipmentsServiceMock;
+    spyOn(equipmentsServiceMock, 'searchForEquipmentByGumiId').and.returnValues(equipment);
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+30% PV/PM, +20% ATT/DÉF, +10% MAG/PSY si l\'unité est équipée de <a href="ffexvius_objects.php?gumiid=301000400">Dague</a>');
   });
 });
