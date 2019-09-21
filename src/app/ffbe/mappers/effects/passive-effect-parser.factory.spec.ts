@@ -70,6 +70,10 @@ describe('PassiveEffectParser', () => {
       parsed: '+50% de dégâts physiques contre les humains' + HTML_LINE_RETURN + '+100% de dégâts magiques contre les humains'
     },
     {
+      effect: '[0, 3, 12, [50, 200, 4]]',
+      parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'
+    },
+    {
       effect: '[1, 3, 13, [25,  25,  0]]',
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
@@ -80,6 +84,7 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
+    {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
@@ -90,7 +95,12 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
+    {
+      effect: '[0, 3, 51, [20, 80, 10, 3]]',
+      parsed: '80% de chance d\'éviter la mort avec 10% PV lors d\'une attaque fatale si les PV étaient supérieurs à 20% (max 3 fois)'
+    },
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {
@@ -131,6 +141,10 @@ describe('PassiveEffectParser', () => {
       parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
     },
     {
+      effect: '[0, 3, 81, ["n\'importe quoi"]]',
+      parsed: 'Augmente le coefficient multiplicateur maximal de la chaîne de combo à 600% lorsque l\'unité porte deux armes'
+    },
+    {
       effect: '[0, 3, 10003, [10, 10, 20, 20, 10, 20]]',
       parsed: '+20% ATT/MAG/PSY de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+10% PV/PM/DÉF de l\'équipement si l\'unité porte une seule arme à une main (DH)'
@@ -139,6 +153,10 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 3, 10003, [0, 0, 100, 0, 50, 0, 1]]',
       parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
         + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
+    },
+    {
+      effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
+      parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément glace'
     },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];

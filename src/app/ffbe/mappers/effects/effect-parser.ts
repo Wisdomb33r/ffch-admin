@@ -86,6 +86,29 @@ export abstract class EffectParser {
     }
   }
 
+  protected getElementFromId(elementId: number): string {
+    switch (elementId) {
+      case 1:
+        return 'feu';
+      case 2:
+        return 'glace';
+      case 3:
+        return 'foudre';
+      case 4:
+        return 'eau';
+      case 5:
+        return 'vent';
+      case 6:
+        return 'terre';
+      case 7:
+        return 'lumière';
+      case 8:
+        return 'ténèbres';
+      default:
+        return 'UNKNOWN element';
+    }
+  }
+
   protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
     return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';

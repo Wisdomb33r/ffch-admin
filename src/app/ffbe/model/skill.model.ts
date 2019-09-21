@@ -62,7 +62,7 @@ export class Skill {
       || effectId === 42 // physical combos with multiple consecutive attacks
       || effectId === 43 // physical damages with critical strike and chance to miss
       || effectId === 52 // physical damages with 1 turn jump delay
-      || effectId === 70 // magic damages with ignore reflection
+      || effectId === 70 // magic damages with ignore SPR
       || effectId === 72 // magic damages with consecutive damage increase
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 103 // magic damages scaling on SPR
@@ -73,10 +73,8 @@ export class Skill {
     const effectId = effect[2];
     switch (effectId) {
       case 21:
-        // physical damages with ignore DEF
-        return 100 / (100 - effect[3][3]);
       case 70:
-        // magical damages with ignore SPR
+        // physical and magical damages with ignore DEF/SPR
         return 100 / (100 - effect[3][3]);
       case 42:
         // physical combos with multiple consecutive attacks
