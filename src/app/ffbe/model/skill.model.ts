@@ -49,7 +49,7 @@ export class Skill {
     return 0;
   }
 
-  private isEffectWithDamage(effect: Array<any>) {
+  public isEffectWithDamage(effect: Array<any>) {
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages

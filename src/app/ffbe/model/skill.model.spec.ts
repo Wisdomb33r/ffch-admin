@@ -240,7 +240,55 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[2, 1, 70, [0,  0,  1800,  50]]],
         "requirements": null,
         "unit_restriction": null
-    }
+    },
+    "509624": {
+        "name": "Brave Blade (FFV)",
+        "icon": "ability_54.png",
+        "compendium_id": 10707,
+        "rarity": 9,
+        "cost": {"MP": 99},
+        "attack_count": [4, 3, 1],
+        "attack_damage": [[25,  25,  25,  25], [30,  30,  40], [100]],
+        "attack_frames": [[70,  76,  82,  88], [94,  100,  106], [112]],
+        "effect_frames": [[40,  40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Physical damage (0.25x * 2 = 0.5x, ATK) to one enemy (ignore cover)",
+            "Physical damage (0.5x * 2 = 1x, ATK) to one enemy (ignore cover)",
+            "Physical damage (5x * 2 = 10x, ATK) to one enemy (ignore cover)"
+        ],
+        "effects_raw": [[1, 1, 21, [0,  0,  25,  -50]], [1, 1, 21, [0,  0,  50,  -50]], [1, 1, 21, [0,  0,  500,  -50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912882": {
+        "name": "Siphon Lance",
+        "icon": "ability_6.png",
+        "compendium_id": 86444,
+        "rarity": 5,
+        "cost": {"MP": 10},
+        "attack_count": [7, 7, 1],
+        "attack_damage": [[12,  12,  12,  12,  13,  19,  20], [12,  12,  12,  12,  13,  19,  20], [100]],
+        "attack_frames": [[40,  50,  60,  70,  80,  90,  100], [35,  45,  55,  65,  75,  85,  95], [0]],
+        "effect_frames": [[39,  48,  57,  66,  75,  84,  93], [35,  44,  53,  62,  71,  80,  89]],
+        "move_type": 4,
+        "motion_type": 5,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Physical damage (3x, ATK) to one enemy",
+            "Physical damage (0.8x, ATK) as HP drain (50%) to one enemy",
+            "Restore 160 MP to caster"
+        ],
+        "effects_raw": [[1, 1, 1, [0,  0,  0,  0,  0,  0,  300]], [1, 1, 25, [50,  80,  100]], [0, 3, 17, [160]]],
+        "requirements": null,
+        "unit_restriction": null
+    }    
   }`;
 
 export const MAGIC_SKILLS_NAMES_TEST_DATA =
@@ -344,6 +392,22 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Météore X",
         "Doppelmeteo",
         "Meteo dual"
+    ],
+    "509624": [
+        "Brave Blade (FFV)",
+        "勇者利劍(FFV)",
+        "브레이브 블레이드(FFV)",
+        "Lame des braves (FFV)",
+        "Mutklinge (FFV)",
+        "Hoja valiente (FFV)"
+    ],
+    "912882": [
+        "Siphon Lance",
+        "攝魔長槍",
+        "흡수의 창",
+        "Lance siphon",
+        "Soglanze",
+        "Lanza sifón"
     ]
   }`;
 
@@ -448,5 +512,21 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Dégâts sur un ennemi au hasard, de 1 à 6 fois",
         "Verursacht 1-6 Mal Schaden bei zufällig gewählten Gegnern.",
         "Daño al azar de una a 6 veces a todos los enemigos"
+    ],
+    "509624": [
+        "Deal partial unmitigated damage to one enemy three times",
+        "對1名敵人發動3次發動無視部分防禦的攻擊",
+        "적 1명에게 3회 일부 방어 무시 피해",
+        "Inflige des dégâts en partie fixes à un ennemi à 3 reprises",
+        "Fügt einem Gegner dreimal teilweise direkten Schaden zu.",
+        "Daño que ignora parcialmente la DEF de un enemigo 3 veces"
+    ],
+    "912882": [
+        "Damage and drain HP from one enemy and restore own MP",
+        "攻擊1名敵人+吸收HP+恢復自身的MP",
+        "적 1명에게 피해+HP 흡수+자신의 MP 회복",
+        "Inflige des dégâts et aspire les PV d'un ennemi et restaure les PM du lanceur",
+        "Fügt einem Gegner Schaden zu, stiehlt dessen LP und regeneriert MP des Benutzers.",
+        "Daña a un enemigo, absorbe su VIT, y recupera PM propios"
     ]
   }`;
