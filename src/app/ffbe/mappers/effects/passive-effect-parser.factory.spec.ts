@@ -130,6 +130,16 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
       parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
     },
+    {
+      effect: '[0, 3, 10003, [10, 10, 20, 20, 10, 20]]',
+      parsed: '+20% ATT/MAG/PSY de l\'équipement si l\'unité porte une seule arme à une main (DH)'
+        + HTML_LINE_RETURN + '+10% PV/PM/DÉF de l\'équipement si l\'unité porte une seule arme à une main (DH)'
+    },
+    {
+      effect: '[1, 3, 10003, [0, 0, 100, 0, 50, 0, 1]]',
+      parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
+        + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
+    },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
 
@@ -185,6 +195,25 @@ describe('PassiveEffectParser', () => {
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
+  });
+
+  it('should parse turn start activation effect', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100020'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['100020'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['100020'];
+
+    const effect = JSON.parse('[0, 3, 66, [100020, 50]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(skill);
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Effet activé en début de tour (50% de chance): +20% PV');
   });
 
   it('should parse skill modifier increase', () => {

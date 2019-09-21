@@ -34,6 +34,8 @@ import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-fo
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveEquipmentStatsIncreaseParser} from './passives/passive-equipment-stats-increase.parser';
+import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
+import {PassiveEquipmentStatsDoublehandGlexIncreaseParser} from './passives/passive-equipment-stats-doublehand-glex-increase.parser';
 
 const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-1', parser: new PassiveStatsIncreaseParser()},
@@ -96,6 +98,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-63', parser: new PassiveEsperStatsIncreaseParser()},
   {key: '1-3-63', parser: new PassiveEsperStatsIncreaseParser()},
   {key: '0-3-64', parser: new PassiveEsperSummonDamageIncreaseParser()},
+  {key: '0-3-66', parser: new PassiveSkillTurnStartActivationParser()},
+  {key: '1-3-66', parser: new PassiveSkillTurnStartActivationParser()},
   {key: '0-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '1-3-68', parser: new PassiveLbDamageIncreaseParser()},
   {key: '0-3-69', parser: new PassiveEquipmentStatsDualwieldIncreaseParser()},
@@ -110,6 +114,8 @@ const PARSERS: Array<{ key: string, parser: EffectParser }> = [
   {key: '0-3-80', parser: new PassiveLbUpgradeHpThresholdParser()},
   {key: '0-3-98', parser: new PassiveSkillMultipleActivationParser()},
   {key: '0-3-136', parser: new PassiveSkillModifierIncreaseParser()},
+  {key: '0-3-10003', parser: new PassiveEquipmentStatsDoublehandGlexIncreaseParser()},
+  {key: '1-3-10003', parser: new PassiveEquipmentStatsDoublehandGlexIncreaseParser()},
 ];
 
 export class PassiveEffectParserFactory {
