@@ -61,7 +61,7 @@ export class SkillsService {
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
-        const skill: Skill = this.skillsFromDataMining[property];
+        const skill: Skill = Skill.produce(this.skillsFromDataMining[property]);
         skill.gumi_id = +property;
         skill.names = this.skillsNamesFromDataMining[property];
         skill.descriptions = this.skillsDescriptionsFromDataMining[property];

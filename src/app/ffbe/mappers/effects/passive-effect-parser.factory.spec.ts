@@ -185,7 +185,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 35, [100020]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(skill);
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
@@ -228,7 +228,7 @@ describe('PassiveEffectParser', () => {
     const effect = JSON.parse('[0, 3, 66, [100020, 50]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(skill);
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
