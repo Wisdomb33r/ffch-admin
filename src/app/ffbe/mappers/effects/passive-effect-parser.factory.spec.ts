@@ -96,6 +96,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',
