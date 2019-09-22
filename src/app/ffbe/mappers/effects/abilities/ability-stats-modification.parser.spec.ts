@@ -1,6 +1,6 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
-describe('AbilityEffectParser', () => {
+describe('AbilityStatsModificationParser', () => {
 
   it('should parse stats increase for caster', () => {
     // GIVEN
@@ -45,7 +45,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY à tous les alliés pour 5 tours');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY aux alliés pour 5 tours');
   });
 
   it('should parse stats increase for the rest of the party', () => {
@@ -54,7 +54,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY à tous les alliés sauf le lanceur pour 5 tours');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY aux alliés sauf le lanceur pour 5 tours');
   });
 
   it('should parse stats breaks for one enemy', () => {
@@ -81,6 +81,6 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('-30% MAG, -20% ATT à tous les adversaires pour 5 tours');
+    expect(s).toEqual('-30% MAG, -20% ATT aux adversaires pour 5 tours');
   });
 });

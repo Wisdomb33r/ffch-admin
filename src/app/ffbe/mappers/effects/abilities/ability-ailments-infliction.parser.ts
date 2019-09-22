@@ -4,7 +4,7 @@ import {Skill} from '../../../model/skill.model';
 export class AbilityAilmentsInflictionParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
-      return 'Effet AbilityStatsIncreaseCasterParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet AbilityAilmentsInflictionParser inconnu: Mauvaise liste de paramètres';
     }
     const increases = [
       {name: 'Poison', value: effect[3][0]},
@@ -41,9 +41,9 @@ export class AbilityAilmentsInflictionParser extends EffectParser {
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    let alterations = accumulatedStats.join('/') + ' (' + currentValue + '%)';
+    let alterations = accumulatedStats.join(', ') + ' (' + currentValue + '%)';
     if (accumulatedStats.length === 8) {
-      alterations =  'toutes les altérations d\'état (' + currentValue + '% pour chacune)';
+      alterations =  'toutes les altérations (' + currentValue + '% pour chacune)';
     }
     return alterations;
   }

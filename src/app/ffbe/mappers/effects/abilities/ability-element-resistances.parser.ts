@@ -42,15 +42,15 @@ export class AbilityElementResistancesParser extends EffectParser {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 0 && effectId2 === 3 && effectId3 === 33) {
-      target = ' du lanceur';
+      target = ' au lanceur';
     } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 33) {
-      target = ' d\'un allié';
+      target = ' à un allié';
     } else if (effectId1 === 2 && effectId2 === 2 && effectId3 === 33) {
-      target = ' de tous les alliés';
+      target = ' aux alliés';
     } else if (effectId1 === 1 && effectId2 === 1 && effectId3 === 33) {
-      target = ' de l\'adversaire';
+      target = ' à un adversaire';
     } else if (effectId1 === 2 && effectId2 === 1 && effectId3 === 33) {
-      target = ' de tous les adversaires';
+      target = ' aux adversaires';
     }
 
     return target;
@@ -59,8 +59,8 @@ export class AbilityElementResistancesParser extends EffectParser {
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const sign = currentValue >= 0 ? '+' : '';
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% à la résistance à tous les éléments';
+      return '+' + currentValue + '% de rés. aux éléments';
     }
-    return sign + currentValue + '% à la résistance ' + accumulatedStats.join('/');
+    return sign + currentValue + '% de rés. ' + accumulatedStats.join(', ');
   }
 }

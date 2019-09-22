@@ -61,7 +61,10 @@ export class DataMiningClientService {
     return this.http.get(skillsMagicFile).pipe(
       tap(abilities => {
         const propertyNames: string[] = Object.getOwnPropertyNames(abilities);
-        propertyNames.forEach(propertyName => abilities[propertyName]['type'] = 'MAGIC');
+        propertyNames.forEach(propertyName => {
+          abilities[propertyName]['type'] = 'MAGIC';
+          abilities[propertyName]['active'] = true;
+        });
       })
     );
   }

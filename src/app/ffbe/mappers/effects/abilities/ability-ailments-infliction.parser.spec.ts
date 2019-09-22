@@ -1,6 +1,6 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
-describe('AbilityEffectParser', () => {
+describe('AbilityAilmentsInflictionParser', () => {
 
   it('should parse infliction of status ailments for caster', () => {
     // GIVEN
@@ -8,7 +8,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Inflige Cécité/Sommeil/Silence/Paralysie/Confusion/Pétrification (100%) au lanceur');
+    expect(s).toEqual('Inflige Cécité, Sommeil, Silence, Paralysie, Confusion, Pétrification (100%) au lanceur');
   });
 
   it('should parse infliction of status ailments for one enemy', () => {
@@ -17,7 +17,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Inflige Poison/Maladie (40%) à un adversaire');
+    expect(s).toEqual('Inflige Poison, Maladie (40%) à un adversaire');
   });
 
   it('should parse infliction of status ailments for all enemies', () => {
@@ -26,7 +26,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Inflige Sommeil (70%), Poison/Maladie (15%) à tous les adversaires');
+    expect(s).toEqual('Inflige Sommeil (70%), Poison, Maladie (15%) à tous les adversaires');
   });
 
   it('should parse infliction of all status ailments for all enemies', () => {
@@ -35,7 +35,7 @@ describe('AbilityEffectParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Inflige toutes les altérations d\'état (40% pour chacune) à tous les adversaires');
+    expect(s).toEqual('Inflige toutes les altérations (40% pour chacune) à tous les adversaires');
   });
 
 });

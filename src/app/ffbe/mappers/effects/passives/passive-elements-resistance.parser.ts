@@ -21,7 +21,7 @@ export class PassiveElementsResistanceParser extends EffectParser {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% de rés. à tous les éléments';
+      return '+' + currentValue + '% de rés. aux éléments';
     }
     return '+' + currentValue + '% de rés. ' + accumulatedStats.join(', ');
   }

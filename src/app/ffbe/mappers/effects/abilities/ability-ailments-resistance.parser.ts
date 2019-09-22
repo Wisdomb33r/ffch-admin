@@ -32,9 +32,9 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 0 && effectId2 === 3 && effectId3 === 7) {
-      target = ' du lanceur';
+      target = ' au lanceur';
     } else if (effectId1 === 2 && effectId2 === 2 && effectId3 === 7) {
-      target = ' des alliés';
+      target = ' aux alliés';
     }
 
     return target;
@@ -43,8 +43,8 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const sign = currentValue >= 0 ? '+' : '';
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% aux résistances aux altérations d\'état';
+      return '+' + currentValue + '% de rés. aux altérations';
     }
-    return sign + currentValue + '% à la résistance ' + accumulatedStats.join('/');
+    return sign + currentValue + '% de rés. ' + accumulatedStats.join(', ');
   }
 }
