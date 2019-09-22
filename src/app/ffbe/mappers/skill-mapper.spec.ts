@@ -2,12 +2,12 @@ import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
 import {SkillMapper} from './skill-mapper';
 import {
-  MAGIC_SKILLS_NAMES_TEST_DATA,
-  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  MAGIC_SKILLS_TEST_DATA,
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA
+  ABILITY_SKILLS_TEST_DATA,
+  MAGIC_SKILLS_NAMES_TEST_DATA,
+  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  MAGIC_SKILLS_TEST_DATA
 } from '../model/skill.model.spec';
 
 describe('SkillMapper', () => {
@@ -180,9 +180,9 @@ describe('SkillMapper', () => {
     // WHEN
     const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
     // THEN
-    expect(competence.hits).toBeNull();
-    expect(competence.frames).toBeNull();
-    expect(competence.damages).toBeNull();
+    expect(competence.hits).toEqual(1);
+    expect(competence.frames).toEqual('130');
+    expect(competence.damages).toEqual('100');
   });
 
 });
