@@ -46,7 +46,7 @@ export const FFBE_GAMES = [
 ];
 export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(1, 16, 'Dagues', 'dague', 'dagues.png'),
-  new CategorieObjet(2, 1, 'Épées courtes', 'épée courte', 'epees-courtes.png'),
+  new CategorieObjet(2, 1, 'Épées', 'épée', 'epees-courtes.png'),
   new CategorieObjet(3, 27, 'Épées longues', 'épée longue', 'epees-longues.png'),
   new CategorieObjet(4, 28, 'Katanas', 'katana', 'katanas.png'),
   new CategorieObjet(5, 17, 'Bâtons', 'bâton', 'batons.png'),
