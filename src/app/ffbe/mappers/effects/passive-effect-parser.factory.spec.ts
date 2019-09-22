@@ -95,8 +95,15 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 43, [20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
+    {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
+    {
+      effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
+        + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
+    },
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',

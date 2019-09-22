@@ -43,6 +43,10 @@ import {PassiveCounterAttackParser} from './passives/passive-counter-attack.pars
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
+import {PassiveItemsDropRateParser} from './passives/passive-items-drop-rate.parser';
+import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
+import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
+import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
 
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -91,12 +95,20 @@ export class PassiveEffectParserFactory {
         return new PassiveLbPerTurnParser();
       case 35:
         return new PassiveSkillBattleStartActivationParser();
+      case 37:
+        return new PassiveGilsRateParser();
       case 41:
         return new PassiveCounterAttackParser();
       case 42:
         return new PassiveElementsAbsorbParser();
+      case 43:
+        return new PassiveCombatRateDecreaseParser();
       case 44:
         return new PassiveNormalAttacksMultipleStrikesParser();
+      case 45:
+        return new PassiveExperienceRateParser();
+      case 47:
+        return new PassiveItemsDropRateParser();
       case 48:
         return new PassiveMpDecreaseForSongsParser();
       case 49:
