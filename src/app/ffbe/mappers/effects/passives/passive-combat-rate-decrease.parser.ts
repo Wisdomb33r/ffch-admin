@@ -8,6 +8,6 @@ export class PassiveCombatRateDecreaseParser extends EffectParser {
     }
 
     const combatRate = effect[3][0];
-    return '-' + (combatRate > 0 ? combatRate : 'UNKNOWN') + '% de chance de combat en exploration';
+    return (combatRate < 0 ? combatRate : 'UNKNOWN') + '% de chance de combat en exploration';
   }
 }
