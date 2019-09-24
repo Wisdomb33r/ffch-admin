@@ -6,18 +6,23 @@ import {CharacterSkill} from '../model/character-skill.model';
 import {CharacterEntry} from '../model/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
-import {ItemCategory} from '../model/item-category.model';
-import {ItemCategoryFactory} from '../model/item-category.model';
+import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
 export class CharactersService {
+  private static INSTANCE: CharactersService;
 
   private charactersFromDataMining = null;
+
+  public static getInstance(): CharactersService {
+    return CharactersService.INSTANCE;
+  }
 
   constructor(private dataMiningClientService: DataMiningClientService,
               private skillsService: SkillsService,
               private lbService: LimitBurstsService) {
     this.loadCharactersFromDataMining();
+    CharactersService.INSTANCE = this;
   }
 
   public loadCharactersFromDataMining() {

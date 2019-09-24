@@ -20,7 +20,7 @@ export class PassiveEquipmentStatsIncreaseParser extends EffectParser {
     // TODO critical strikes
     const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(equipmentGumiId);
     return this.wordEffectJoiningIdenticalValues(increases)
-      + ' si l\'unité est équipée de ' + this.getEquipmentNameWithGumiIdentifierLink(equipment);
+      + ' si l\'unité porte ' + this.getEquipmentNameWithGumiIdentifierLink(equipment);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

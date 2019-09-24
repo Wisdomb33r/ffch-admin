@@ -47,6 +47,12 @@ import {PassiveItemsDropRateParser} from './passives/passive-items-drop-rate.par
 import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
 import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
+import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
+import {PassiveEquipmentCategoryElementsResistanceParser} from './passives/passive-equipment-category-elements-resistance.parser';
+import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items-healing-potency-increase.parser';
+import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
+import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
+import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.parser';
 
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -65,6 +71,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentCategoryStatsIncreaseParser();
       case 8:
         return new PassiveCoverParser();
+      case 9:
+        return new PassiveItemsHealingPotencyIncreaseParser();
       case 11:
         return new PassiveKillerDamageIncreaseParser();
       case 12:
@@ -73,6 +81,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentStatsDoublehandIncreaseParser();
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockParser();
+      case 16:
+        return new PassiveItemsStealRateParser();
       case 17:
         return new PassiveJumpDamageIncreaseParser();
       case 19:
@@ -87,6 +97,8 @@ export class PassiveEffectParserFactory {
         return new PassiveTargetChanceChangesParser();
       case 25:
         return new PassiveTargetChanceChangesParser();
+      case 29:
+        return new PassiveExplorationStepRegenParser();
       case 31:
         return new PassiveLbSpeedIncreaseParser();
       case 32:
@@ -107,6 +119,8 @@ export class PassiveEffectParserFactory {
         return new PassiveNormalAttacksMultipleStrikesParser();
       case 45:
         return new PassiveExperienceRateParser();
+      case 46:
+        return new PassiveGilsWhileStealingParser();
       case 47:
         return new PassiveItemsDropRateParser();
       case 48:
@@ -125,6 +139,8 @@ export class PassiveEffectParserFactory {
         return new PassiveDebuffsResistanceParser();
       case 56:
         return new PassiveSkillBattleStartActivationParser();
+      case 59:
+        return new PassiveCoverParser();
       case 61:
         return new PassiveEsperGroupSummonParser();
       case 63:
@@ -147,6 +163,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentStatsIncreaseParser();
       case 75:
         return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
+      case 76:
+        return new PassiveEquipmentCategoryElementsResistanceParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 81:
@@ -155,6 +173,8 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillMultipleActivationParser();
       case 136:
         return new PassiveSkillModifierIncreaseParser();
+      case 10002:
+        return new PassiveSkillAliveAllyActivationParser();
       case 10003:
         return new PassiveEquipmentStatsDoublehandGlexIncreaseParser();
       case 10004:

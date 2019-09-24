@@ -14,6 +14,7 @@ export const CHARACTER_TEST_DATA =
         ],
         "game_id": 11001,
         "game": "FFBE",
+        "roles": ["Physical Tank"],
         "job_id": 1,
         "job": "Knight",
         "sex_id": 1,
@@ -30,12 +31,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 10,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [378, 1144, 120],
-                    "MP": [15, 45, 20],
-                    "ATK": [14, 41, 8],
-                    "DEF": [13, 40, 8],
-                    "MAG": [13, 39, 8],
-                    "SPR": [12, 37, 8]
+                    "HP": [378, 1144, 120, 60],
+                    "MP": [15, 45, 20, 10],
+                    "ATK": [14, 41, 8, 4],
+                    "DEF": [13, 40, 8, 4],
+                    "MAG": [13, 39, 8, 4],
+                    "SPR": [12, 37, 8, 4]
                 },
                 "limitburst_id": 100000102,
                 "attack_count": 2,
@@ -102,12 +103,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 10,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [509, 1542, 180],
-                    "MP": [20, 60, 30],
-                    "ATK": [18, 55, 12],
-                    "DEF": [18, 55, 12],
-                    "MAG": [17, 53, 12],
-                    "SPR": [16, 49, 12]
+                    "HP": [509, 1542, 180, 90],
+                    "MP": [20, 60, 30, 15],
+                    "ATK": [18, 55, 12, 6],
+                    "DEF": [18, 55, 12, 6],
+                    "MAG": [17, 53, 12, 6],
+                    "SPR": [16, 49, 12, 6]
                 },
                 "limitburst_id": 100000103,
                 "attack_count": 2,
@@ -182,12 +183,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 10,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [657, 1990, 240],
-                    "MP": [26, 78, 40],
-                    "ATK": [23, 71, 16],
-                    "DEF": [23, 70, 16],
-                    "MAG": [23, 69, 16],
-                    "SPR": [21, 64, 16]
+                    "HP": [657, 1990, 240, 120],
+                    "MP": [26, 78, 40, 20],
+                    "ATK": [23, 71, 16, 8],
+                    "DEF": [23, 70, 16, 8],
+                    "MAG": [23, 69, 16, 8],
+                    "SPR": [21, 64, 16, 8]
                 },
                 "limitburst_id": 100000104,
                 "attack_count": 2,
@@ -262,12 +263,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 10,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [821, 2488, 300],
-                    "MP": [32, 97, 50],
-                    "ATK": [29, 89, 20],
-                    "DEF": [29, 88, 20],
-                    "MAG": [28, 86, 20],
-                    "SPR": [26, 80, 20]
+                    "HP": [821, 2488, 300, 150],
+                    "MP": [32, 97, 50, 25],
+                    "ATK": [29, 89, 20, 10],
+                    "DEF": [29, 88, 20, 10],
+                    "MAG": [28, 86, 20, 10],
+                    "SPR": [26, 80, 20, 10]
                 },
                 "limitburst_id": 100000105,
                 "attack_count": 2,
@@ -342,12 +343,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 10,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [1067, 3234, 450],
-                    "MP": [42, 126, 75],
-                    "ATK": [38, 115, 30],
-                    "DEF": [38, 114, 30],
-                    "MAG": [37, 111, 30],
-                    "SPR": [34, 104, 30]
+                    "HP": [1067, 3234, 450, 225],
+                    "MP": [42, 126, 75, 37],
+                    "ATK": [38, 115, 30, 15],
+                    "DEF": [38, 114, 30, 15],
+                    "MAG": [37, 111, 30, 15],
+                    "SPR": [34, 104, 30, 15]
                 },
                 "limitburst_id": 100000106,
                 "attack_count": 2,
@@ -367,7 +368,7 @@ export const CHARACTER_TEST_DATA =
                 "strings": {
                     "description": [
                         "A knight of the Kingdom of Grandshelt. Though usually preoccupied chasing girls, on his journey chasing after the Sworn Six of Paladia who attacked his homeland a gentler, more courageous side of him came through. At a young age he came in contact with the earth crystal, but little did he know that would become the catalyst that sealed his fate.",
-                        "格蘭謝爾特王國的騎士。<br>平時一副喜歡女性愛裝糊塗的樣子，<br>當祖國被帕拉迪亞六盟傑襲擊後，<br>他便踏上了追趕犯人的旅途，<br>在旅途中展現了他勇敢且樂於助人的一面。<br>年幼時，他曾觸碰過土之水晶，<br>在他不知情的情況下<br>已經決定好了他將來的命運。",
+                        "格蘭謝爾特王國的騎士。平時一副喜歡女性愛裝糊塗的樣子，當祖國被帕拉迪亞六盟傑襲擊後，他便踏上了追趕犯人的旅途，在旅途中展現了他勇敢且樂於助人的一面。年幼時，他曾觸碰過土之水晶，在他不知情的情況下已經決定好了他將來的命運。",
                         "그랑셸트 왕국의 기사. 평소 여자를 밝히며 능글맞은 그가, 조국을 습격한 파라디아의 여섯 호걸 연맹을 쫓는 과정에서 용맹하고 약자를 위하는 모습을 보인다. 어릴 적 땅의 크리스탈을 만진 경험이 그의 운명을 바꾸는 계기가 되었다.",
                         "Un chevalier du royaume de Grandshelt. Bien qu'il soit d'habitude occupé à courir après les filles, son voyage à la poursuite des Six Jurés de Paladia, qui avait attaqué son pays, révéla son côté gentil et courageux. Il entra en contact très jeune avec le Cristal de la terre, sans savoir que cela allait devenir le catalyseur qui scellerait sa destinée.",
                         "Ein Ritter des Königreichs Grandshelt. Seine Tage als etwas pflichtvergessener, erfolgloser Schürzenjäger endeten abrupt, als die Geschworenen Sechs von Paladia sein Heimatland überfielen. Auf der folgenden Reise, diesen Übeltätern das Handwerk zu legen, zeigte sich seine tapfere, ritterliche Seite. Als kleines Kind hatte er einmal den Kristall der Erde berührt; ein Ereignis, das schwerwiegende Folgen für sein ganzes Leben haben sollte.",
@@ -376,7 +377,7 @@ export const CHARACTER_TEST_DATA =
                     "summon": [null, null, null, null, null, null],
                     "evolution": [
                         "What is this...?<br>I feel filled with some unknown power.",
-                        "怎麼回事……<br>未知的力量充滿全身……",
+                        "怎麼回事……未知的力量充滿全身……",
                         "뭐지, 이건…<br>정체 모를 힘으로 심신이 채워져 간다.",
                         "Qu'est-ce que c'est... ?<br>J'ai l'impression d'être envahi par un pouvoir inconnu.",
                         "Was ist das für ein Gefühl ...?<br>Eine unbekannte Kraft erfüllt mich!",
@@ -392,7 +393,7 @@ export const CHARACTER_TEST_DATA =
                     ],
                     "fusion": [
                         "Alright, this'll do for now.<br>However, there are no limits to my power.",
-                        "對，這樣就好。<br>我還遠未達到極限。",
+                        "對，這樣就好。我還遠未達到極限。",
                         "좋아, 이걸로 충분해.<br>내게 한계 같은 건 없으니까.",
                         "Très bien, ça fera l'affaire pour le moment.<br>J'ai l'impression que mon pouvoir n'a aucune limite.",
                         "So weit, so gut.<br>Aber ich habe meine Grenzen noch lange nicht erreicht.",
@@ -437,6 +438,7 @@ export const CHARACTER_TEST_DATA =
         ],
         "game_id": 20007,
         "game": null,
+        "roles": ["Physical Attacker"],
         "job_id": 112,
         "job": "Hunter",
         "sex_id": 1,
@@ -456,12 +458,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 30,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [927, 2810, 300],
-                    "MP": [36, 110, 50],
-                    "ATK": [39, 117, 20],
-                    "DEF": [36, 109, 20],
-                    "MAG": [27, 83, 20],
-                    "SPR": [30, 90, 20]
+                    "HP": [927, 2810, 300, 150],
+                    "MP": [36, 110, 50, 25],
+                    "ATK": [39, 117, 20, 10],
+                    "DEF": [36, 109, 20, 10],
+                    "MAG": [27, 83, 20, 10],
+                    "SPR": [30, 90, 20, 10]
                 },
                 "limitburst_id": 100000115,
                 "attack_count": 2,
@@ -529,12 +531,12 @@ export const CHARACTER_TEST_DATA =
                 "exp_pattern": 30,
                 "stat_pattern": 1,
                 "stats": {
-                    "HP": [1205, 3652, 450],
-                    "MP": [50, 150, 75],
-                    "ATK": [50, 152, 30],
-                    "DEF": [40, 120, 30],
-                    "MAG": [36, 110, 30],
-                    "SPR": [38, 116, 30]
+                    "HP": [1205, 3652, 450, 225],
+                    "MP": [50, 150, 75, 37],
+                    "ATK": [50, 152, 30, 15],
+                    "DEF": [40, 120, 30, 15],
+                    "MAG": [36, 110, 30, 15],
+                    "SPR": [38, 116, 30, 15]
                 },
                 "limitburst_id": 100000116,
                 "attack_count": 2,

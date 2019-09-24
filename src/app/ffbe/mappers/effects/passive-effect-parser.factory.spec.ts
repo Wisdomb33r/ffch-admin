@@ -11,6 +11,9 @@ import {HTML_LINE_RETURN} from './skill-effects.mapper';
 import {Equipment} from '../../model/equipment/equipment.model';
 import {EquipmentsService} from '../../services/equipments.service';
 import {EQUIPMENTS_TEST_DATA} from '../../model/equipment/equipment.model.spec';
+import {CHARACTER_TEST_DATA} from '../../model/character.model.spec';
+import {Character} from '../../model/character.model';
+import {CharactersService} from '../../services/characters.service';
 
 class SkillsServiceMock {
   private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
@@ -32,6 +35,18 @@ class EquipmentsServiceMock {
   }
 
   public searchForEquipmentByGumiId(gumiId: number): Equipment {
+    return null;
+  }
+}
+
+class CharactersServiceMock {
+  private static INSTANCE: CharactersServiceMock = new CharactersServiceMock();
+
+  public static getInstance() {
+    return CharactersServiceMock.INSTANCE;
+  }
+
+  public searchForCharacterByGumiId(id: number): Character {
     return null;
   }
 }
@@ -58,12 +73,13 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
       effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
-      parsed: '+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité est équipée d\'une <a href="ffexvius_objects.php?categid=33">harpe</a>'
+      parsed: '+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
     },
     {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
-      parsed: '50% de chance de protéger un allié féminin des attaques avec mitigation de 40%-60%'
+      parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },
+    {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {effect: '[0, 3, 11, [1, 50, 50]]', parsed: '+50% de dégâts physiques et magiques contre les bêtes'},
     {
       effect: '[0, 3, 11, [5, 50, 100]]',
@@ -83,6 +99,7 @@ describe('PassiveEffectParser', () => {
       parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
+    {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
@@ -90,6 +107,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance de se faire cibler'},
     {effect: '[0, 3, 25, [20]]', parsed: '-20% de chance de se faire cibler'},
+    {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
@@ -100,6 +118,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
+    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler des gils en plus des objets'},
     {
       effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
         + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
@@ -115,6 +134,10 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
       parsed: '+30% de rés. aux baisses de DÉF/PSY, +20% de rés. aux baisses de ATT/MAG'
         + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
+    },
+    {
+      effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
+      parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
     {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
     {
@@ -142,7 +165,11 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
       effect: '[0, 3, 75, [4, 5, 50, 50]]',
-      parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité est équipée d\'un <a href="ffexvius_objects.php?categid=28">katana</a>'
+      parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
+    },
+    {
+      effect: '[0, 3, 76, [4, 0, 0, 0, 10, 10, 0, 20, 20]]',
+      parsed: '+20% de rés. Lumière, Ténèbres, +10% de rés. Eau, Vent si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
     },
     {
       effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
@@ -217,8 +244,10 @@ describe('PassiveEffectParser', () => {
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.effects_raw = [effect];
     // WHEN
-    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
     expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
   });
@@ -300,6 +329,33 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% PV/PM, +20% ATT/DÉF, +10% MAG/PSY si l\'unité est équipée de <a href="ffexvius_objects.php?gumiid=301000400">Dague</a>');
+    expect(s).toEqual('+30% PV/PM, +20% ATT/DÉF, +10% MAG/PSY si l\'unité porte <a href="ffexvius_objects.php?gumiid=301000400">Dague</a>');
+  });
+
+  it('should parse turn start activation effect when ally alive', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100020'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['100020'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['100020'];
+
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100000102'];
+
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(character);
+
+    const effect = JSON.parse('[0, 3, 10002, [100000102, 3, 100020, 0]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Effet activé en début de tour si Rain est en vie: +20% PV');
   });
 });

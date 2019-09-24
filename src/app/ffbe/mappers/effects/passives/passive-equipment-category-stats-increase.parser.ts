@@ -17,7 +17,7 @@ export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
     ];
     // TODO critical strikes
     return this.wordEffectJoiningIdenticalValues(increases)
-      + ' si l\'unité est équipée d\'' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+      + ' si l\'unité porte ' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
       + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }
 
