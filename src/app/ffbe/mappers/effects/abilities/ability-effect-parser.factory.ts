@@ -5,6 +5,7 @@ import {AbilityElementResistancesParser} from './ability-element-resistances.par
 import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
+import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -19,6 +20,8 @@ export class AbilityEffectParserFactory {
         return new AbilityStatsModificationParser();
       case 33:
         return new AbilityElementResistancesParser();
+      case 53:
+        return new AbilitySkillMultipleActivationParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
       default:
