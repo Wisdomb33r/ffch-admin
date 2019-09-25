@@ -6,20 +6,29 @@ import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.par
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
+import {AbilityDamagesPhysicalParser} from './ability-damages-physical.parser';
+import {AbilityDamagesMagicParser} from './ability-damages-magic.parser';
+import {AbilityDamagesHybridParser} from './ability-damages-hybrid.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
+      case 1:
+        return new AbilityDamagesPhysicalParser();
       case 3:
         return new AbilityStatsModificationParser();
       case 6:
         return new AbilityAilmentsInflictionParser();
       case 7:
         return new AbilityAilmentsResistanceParser();
+      case 15:
+        return new AbilityDamagesMagicParser();
       case 24:
         return new AbilityStatsModificationParser();
       case 33:
         return new AbilityElementResistancesParser();
+      case 40:
+        return new AbilityDamagesHybridParser();
       case 53:
         return new AbilitySkillMultipleActivationParser();
       case 136:

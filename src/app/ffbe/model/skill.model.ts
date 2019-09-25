@@ -12,6 +12,7 @@ export class Skill {
   public attack_damage: Array<Array<number>>;
   public attack_frames: Array<Array<number>>;
   public attack_type: string;
+  public element_inflict: Array<string>;
   public effects: Array<string>;
   public effects_raw: Array<any>;
   public icon: string;
@@ -31,6 +32,7 @@ export class Skill {
     skill.attack_damage = s.attack_damage;
     skill.attack_frames = s.attack_frames;
     skill.attack_type = s.attack_type;
+    skill.element_inflict = s.element_inflict;
     skill.effects = s.effects;
     skill.effects_raw = s.effects_raw;
     skill.icon = s.icon;

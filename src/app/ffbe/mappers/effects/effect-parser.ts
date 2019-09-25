@@ -109,6 +109,47 @@ export abstract class EffectParser {
     }
   }
 
+  protected getElementFromEnglishName(element: string): string {
+    switch (element) {
+      case 'Fire':
+        return 'feu';
+      case 'Ice':
+        return 'glace';
+      case 'Lightning':
+        return 'foudre';
+      case 'Water':
+        return 'eau';
+      case 'Wind':
+        return 'vent';
+      case 'Earth':
+        return 'terre';
+      case 'Light':
+        return 'lumière';
+      case 'Dark':
+        return 'ténèbres';
+      default:
+        return 'UNKNOWN element';
+    }
+  }
+
+  protected getElementsFromElementInflict(skill: Skill): string {
+    if (skill.element_inflict && skill.element_inflict.length) {
+      return skill.element_inflict.map((element: string) => this.getElementFromEnglishName(element)).join(', ');
+    }
+    return undefined;
+  }
+
+  protected getTargetForDamagingSkill(effectId1: number, effectId2: number) {
+    if (effectId1 === 1 && effectId2 === 1) {
+      return 'à un adversaire';
+    }
+    if (effectId1 === 2 && effectId2 === 1) {
+      return 'aux adversaires';
+    }
+
+    return 'UNKNOWN target';
+  }
+
   protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
     return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';
