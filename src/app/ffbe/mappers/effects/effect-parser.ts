@@ -150,6 +150,48 @@ export abstract class EffectParser {
     return 'UNKNOWN target';
   }
 
+  protected getAttackAndDamageWordingForPhysicalDamages(attack_type: string): string {
+    let attackTypeText = 'Dégâts physiques ';
+    if (attack_type !== 'Physical') {
+      switch (attack_type) {
+        case 'Magic':
+          attackTypeText = 'Attaque magique à dégâts physiques ';
+          break;
+        case 'Hybrid':
+          attackTypeText = 'Attaque hybride à dégâts physiques ';
+          break;
+        case 'None':
+          attackTypeText = 'Attaque fixe à dégâts physiques ';
+          break;
+        default:
+          attackTypeText = 'Attaque UNKNOWN à dégâts physiques ';
+          break;
+      }
+    }
+    return attackTypeText;
+  }
+
+  protected getAttackAndDamageWordingForMagicalDamages(attack_type: string): string {
+    let attackTypeText = 'Dégâts magiques ';
+    if (attack_type !== 'Magic') {
+      switch (attack_type) {
+        case 'Physical':
+          attackTypeText = 'Attaque physique à dégâts magiques ';
+          break;
+        case 'Hybrid':
+          attackTypeText = 'Attaque hybride à dégâts magiques ';
+          break;
+        case 'None':
+          attackTypeText = 'Attaque fixe à dégâts magiques ';
+          break;
+        default:
+          attackTypeText = 'Attaque UNKNOWN à dégâts magiques ';
+          break;
+      }
+    }
+    return attackTypeText;
+  }
+
   protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
     return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';

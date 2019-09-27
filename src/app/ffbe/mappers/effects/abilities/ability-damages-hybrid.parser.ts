@@ -30,7 +30,7 @@ export class AbilityDamagesHybridParser extends EffectParser {
     const atkPower = effect[3][8];
     const magPower = effect[3][9];
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + (atkPower + magPower) + '% ' + target
+    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(atkPower + magPower) + '% ' + target
       + (accuracy > 0 ? ' (+' + accuracy + '% précision)' : '') + (atkPower !== magPower ? '(WARNING dégâts hybrides asymétriques)' : '');
   }
 }

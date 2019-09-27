@@ -9,25 +9,9 @@ export class AbilityDamagesPhysicalParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
-    let attackType = 'Dégâts physiques ';
-    if (skill.attack_type !== 'Physical') {
-      switch (skill.attack_type) {
-        case 'Magic':
-          attackType = 'Attaque magique à dégâts physiques ';
-          break;
-        case 'Hybrid':
-          attackType = 'Attaque hybride à dégâts physiques ';
-          break;
-        case 'None':
-          attackType = 'Attaque fixe à dégâts physiques ';
-          break;
-        default:
-          attackType = 'Attaque UNKNOWN à dégâts physiques ';
-          break;
-      }
-    }
+    const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
     const puissance = effect[3][5] + effect[3][6];
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + puissance + '% ' + target;
+    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(puissance) + '% ' + target;
   }
 }
