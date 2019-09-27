@@ -11,6 +11,8 @@ import {AbilityDamagesMagicParser} from './ability-damages-magic.parser';
 import {AbilityDamagesHybridParser} from './ability-damages-hybrid.parser';
 import {AbilityDamagesPhysicalIgnoreDefParser} from './ability-damages-physical-ignore-def.parser';
 import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore-spr.parser';
+import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
+import {AbilityDamagesPmDrainParser} from './ability-damages-pm-drain.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -23,6 +25,8 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsInflictionParser();
       case 7:
         return new AbilityAilmentsResistanceParser();
+      case 10:
+        return new AbilityDamagesPmDrainParser();
       case 15:
         return new AbilityDamagesMagicParser();
       case 21:
@@ -37,6 +41,8 @@ export class AbilityEffectParserFactory {
         return new AbilitySkillMultipleActivationParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
+      case 81:
+        return new AbilityDamagesPhysicalHpSacrificeParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
       default:
