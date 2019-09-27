@@ -13,6 +13,7 @@ import {AbilityDamagesPhysicalIgnoreDefParser} from './ability-damages-physical-
 import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore-spr.parser';
 import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesPmDrainParser} from './ability-damages-pm-drain.parser';
+import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -27,6 +28,8 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsResistanceParser();
       case 10:
         return new AbilityDamagesPmDrainParser();
+      case 13:
+        return new AbilityDamagesPhysicalTurnDelayParser();
       case 15:
         return new AbilityDamagesMagicParser();
       case 21:
