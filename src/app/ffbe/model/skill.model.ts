@@ -68,6 +68,7 @@ export class Skill {
       || effectId === 72 // magic damages with consecutive damage increase
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 103 // magic damages scaling on SPR
+      || effectId === 126 // physical damages with consecutive damage increase
     );
   }
 
