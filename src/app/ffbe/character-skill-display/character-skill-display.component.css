@@ -6,3 +6,9 @@ button.copy-button {
   display: inline-block;
   margin-right: 5px;
 }
+
+.copy-to-effect {
+  cursor: pointer;
+  margin-right: 5px;
+  vertical-align: middle;
+}

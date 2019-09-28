@@ -82,6 +82,7 @@
     </p>
 
     <p *ngIf="competence.effet_fr">
+      <img class="copy-to-effect" src="assets/grey/arrow_up.png" (click)="copyToEffect()" alt="Copier"/>
       <span style="color: red;font-weight: bold">PARSING FR EXPERIMENTAL</span>
       {{competence.effet_fr}}
     </p>
