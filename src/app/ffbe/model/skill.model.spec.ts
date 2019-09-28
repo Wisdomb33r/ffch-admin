@@ -288,7 +288,74 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[1, 1, 1, [0,  0,  0,  0,  0,  0,  300]], [1, 1, 25, [50,  80,  100]], [0, 3, 17, [160]]],
         "requirements": null,
         "unit_restriction": null
-    }    
+    },
+    "229425": {
+        "name": "Get Serious",
+        "icon": "ability_105.png",
+        "compendium_id": 4620,
+        "rarity": 9,
+        "cost": {"MP": 100},
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[100]],
+        "effect_frames": [[40,  70,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Unlock Get Serious (509014) on turn 1 [8 turns CD]"
+        ],
+        "effects_raw": [[0, 3, 130, [509014, 1, [7,  7], 0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "509014": {
+        "name": "Get Serious",
+        "icon": "ability_105.png",
+        "compendium_id": 4620,
+        "rarity": 9,
+        "cost": {"MP": 100},
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[100]],
+        "effect_frames": [[40,  70,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK by 250% for 6 turns to caster",
+            "Remove ATK, DEF, MAG and SPR debuff from caster",
+            "Increase break resistance to ATK, DEF, MAG and SPR by 100% for 6 turns to caster",
+            "Gain 3 uses of Baaad Breath (509010), Bad Breath (229418), Brutal Whip (229426), First-Aid Malboro (229413), Get Serious (229425), Ground Whip (229420), Malboro Support (229428), Malboro Tentacle (229414), Smash (229412), Toxic Whip (229427) and Wild Whip (229419) for 4 turns"
+        ],
+        "effects_raw": [[0, 3, 3, [250,  0,  0,  0,  6,  1,  0]], [0, 3, 111, [1,  1,  1,  1,  0,  0]], [0, 3, 89, [100,  100,  100,  100,  0,  0,  6,  1]], [0, 3, 98, [3, 912380, -1, [229412,  229413,  229414,  229418,  229419,  229420,  229425,  229426,  229427,  229428,  509010], 5, 1, 1, 0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912380": {
+        "name": "Triple Whip",
+        "icon": "ability_8.png",
+        "compendium_id": 86060,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[]],
+        "move_type": 4,
+        "motion_type": 3,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Gain 3 uses of Baaad Breath (509010), Bad Breath (229418), Brutal Whip (229426), First-Aid Malboro (229413), Get Serious (229425), Ground Whip (229420), Malboro Support (229428), Malboro Tentacle (229414), Smash (229412), Toxic Whip (229427) and Wild Whip (229419) for one turn"],
+        "effects_raw": [[0, 3, 53, [3, 229421, -1, [229412,  229413,  229414,  229418,  229419,  229420,  229425,  229426,  229427,  229428,  509010], 1]]],
+        "requirements": null,
+        "unit_restriction": null
+    }
   }`;
 
 export const MAGIC_SKILLS_NAMES_TEST_DATA =
@@ -408,6 +475,30 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Lance siphon",
         "Soglanze",
         "Lanza sifón"
+    ],
+    "229425": [
+        "Get Serious",
+        "認真",
+        "진심",
+        "Fini de jouer",
+        "Ernst machen",
+        "Pongámonos serios"
+    ],
+    "509014": [
+        "Get Serious",
+        "認真",
+        "진심",
+        "Fini de jouer",
+        "Ernst machen",
+        "Látigo venenoso"
+    ],
+    "912380": [
+        "Triple Whip",
+        "T鞭打",
+        "T채찍",
+        "Fouet triple",
+        "Dreifachpeitsche",
+        "Látigo triple"
     ]
   }`;
 
@@ -528,5 +619,29 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Inflige des dégâts et aspire les PV d'un ennemi et restaure les PM du lanceur",
         "Fügt einem Gegner Schaden zu, stiehlt dessen LP und regeneriert MP des Benutzers.",
         "Daña a un enemigo, absorbe su VIT, y recupera PM propios"
+    ],
+    "229425": [
+        "(One use every 8 turns) Boost ATK, and remove and boost resistance to ATK, DEF, MAG, and SPR reductions for self and enable triple whip for four turns",
+        "【每8回合可使用1次】提高自身攻擊+解除降低攻擊防禦魔力精神的效果+提高降低攻擊防禦魔力精神的耐性+4回合內可使用「T鞭打」",
+        "[8턴에 1회 사용 가능] 자신의 공격력 상승+공격력, 방어력, 마력, 정신력 감소 효과 해제 및 감소 저항력 상승+4턴 동안 'T채찍' 사용 가능",
+        "(Une fois tous les 8 tours) Augmente l'ATT, dissipe les réductions de l'ATT, la DEF, la MAGIE et la PSY, augmente la résistance du lanceur à ces réductions, et permet d'utiliser Fouet triple pendant 4 tours",
+        "(Einmal in 8 Runden) Erhöht ANG, entfernt und erhöht dann Resistenz gegen ANG-, ABW-, MAG- und PSY-Verringerungen für Benutzer + ermöglicht 4 Runden lang Dreifachpeitsche.",
+        "(Un uso cada 8 turnos) Aumenta el ATQ, elimina las reducciones de ATQ, DEF, MAG y ESP, aumenta la resistencia propia a los mismos, y aprende Látigo triple durante 4 turnos"
+    ],
+    "509014": [
+        "(One use every 8 turns) Boost ATK, and remove and boost resistance to ATK, DEF, MAG, and SPR reductions for self and enable triple whip for four turns",
+        "【每8回合可使用1次】提高自身攻擊+解除降低攻擊防禦魔力精神的效果+提高降低攻擊防禦魔力精神的耐性+4回合內可使用「T鞭打」",
+        "[8턴에 1회 사용 가능] 자신의 공격력 상승+공격력, 방어력, 마력, 정신력 감소 효과 해제 및 감소 저항력 상승+4턴 동안 'T채찍' 사용 가능",
+        "(Une fois tous les 8 tours) Augmente l'ATT du lanceur, dissipe les réductions de son ATT, sa DEF, sa MAGIE et sa PSY, augmente sa résistance ces réductions, et permet d'utiliser Fouet triple pendant 4 tours",
+        "(Einmal in 8 Runden) Erhöht ANG, entfernt und erhöht dann Resistenz gegen ANG-, ABW-, MAG- und PSY-Verringerungen für Benutzer + ermöglicht 4 Runen lang Dreifachpeitsche.",
+        "(Un uso cada 8 turnos) Aumenta el ATQ, elimina las reducciones de ATQ, DEF, MAG y ESP, aumenta la resistencia propia a los mismos, y aprende Látigo triple durante 4 turnos"
+    ],
+    "912380": [
+        "Enable specific abilities to be used three times in one turn (Activate one time each regardless of equipment conditions)",
+        "1回合內可以使用3次特定能力（無視裝備狀態，只會各發動1次）",
+        "1턴 동안 특정 어빌리티 3회 사용 가능(장비 상태와 관계 없이 1회씩 발동)",
+        "Permet d'utiliser des aptitudes spécifiques trois fois en un tour (s'active une seule fois, quel que soit l'équipement)",
+        "Ermöglicht gewissen Fertigkeiten dreimalige Anwendung in einer Runde (Aktiviere je ein Mal, unabhängig von Ausrüstungssituation).",
+        "Aprende determinadas habilidades que se pueden usar 3 veces en un mismo turno (se activa una vez cada una sin importar las condiciones del equipo)"
     ]
   }`;

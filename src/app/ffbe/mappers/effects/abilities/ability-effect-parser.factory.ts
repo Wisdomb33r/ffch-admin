@@ -54,6 +54,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
+      case 98:
+        return new AbilitySkillMultipleActivationParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
       default:
