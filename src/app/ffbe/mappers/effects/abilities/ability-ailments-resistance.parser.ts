@@ -33,6 +33,8 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
 
     if (effectId1 === 0 && effectId2 === 3 && effectId3 === 7) {
       target = ' au lanceur';
+    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 7) {
+      target = ' à un allié';
     } else if (effectId1 === 2 && effectId2 === 2 && effectId3 === 7) {
       target = ' aux alliés';
     }
