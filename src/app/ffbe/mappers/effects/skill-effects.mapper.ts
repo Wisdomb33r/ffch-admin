@@ -29,7 +29,7 @@ export class SkillEffectsMapper {
       }
       effects.push(AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
     });
-    return effects.join(HTML_LINE_RETURN);
+    return effects.filter(effect => effect && effect.length > 0).join(HTML_LINE_RETURN);
   }
 
   public static mapPassiveSkillEffects(skill: Skill): string {
@@ -40,6 +40,6 @@ export class SkillEffectsMapper {
       }
       effects.push(PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
     });
-    return effects.join(HTML_LINE_RETURN);
+    return effects.filter(effect => effect && effect.length > 0).join(HTML_LINE_RETURN);
   }
 }

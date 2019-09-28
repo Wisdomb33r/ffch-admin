@@ -16,9 +16,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     // TODO critical strikes
     // TODO What if effect[3][5] !== 1 ?
 
-    if (increases.every(element => {
-      return (element.value === 0);
-    })) {
+    if (increases.every(element => element.value === 0)) {
       return '';
     }
 

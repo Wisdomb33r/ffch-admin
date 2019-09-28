@@ -31,6 +31,8 @@ export class SkillMapper {
       attackDamages = Array.isArray(frames) && frames.length > 0 ? frames.map(frame => 0).join(' ') : null;
     }
 
+    const parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+
     return new Competence(
       skill.gumi_id,
       SkillMapper.determineCategorieCompetence(skill),
@@ -41,7 +43,7 @@ export class SkillMapper {
       skill.descriptions[FFBE_ENGLISH_TABLE_INDEX],
       null,
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
-      SkillEffectsMapper.mapSkillEffects(skill),
+      parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
       null,
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
       !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,

@@ -2,6 +2,7 @@ import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {SkillMapper} from '../../skill-mapper';
 import {SkillsService} from '../../../services/skills.service';
+import {HTML_LINE_RETURN} from '../skill-effects.mapper';
 
 export class PassiveSkillBattleStartActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -14,6 +15,9 @@ export class PassiveSkillBattleStartActivationParser extends EffectParser {
     if (!activatedSkill) {
       return baseText + 'UNKNOWN skill';
     }
-    return baseText + SkillMapper.toCompetence(activatedSkill).effet_fr;
+    return SkillMapper.toCompetence(activatedSkill).effet_fr
+      .split(HTML_LINE_RETURN)
+      .map(effet => baseText + effet)
+      .join(HTML_LINE_RETURN);
   }
 }

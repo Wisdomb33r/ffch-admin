@@ -5,6 +5,7 @@ import {SkillsService} from '../../../services/skills.service';
 import {Character} from '../../../model/character.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../../../ffbe.constants';
 import {CharactersService} from '../../../services/characters.service';
+import {HTML_LINE_RETURN} from '../skill-effects.mapper';
 
 export class PassiveSkillAliveAllyActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -23,6 +24,9 @@ export class PassiveSkillAliveAllyActivationParser extends EffectParser {
     if (!activatedSkill) {
       return baseText + 'UNKNOWN skill';
     }
-    return baseText + SkillMapper.toCompetence(activatedSkill).effet_fr;
+    return SkillMapper.toCompetence(activatedSkill).effet_fr
+      .split(HTML_LINE_RETURN)
+      .map(effet => baseText + effet)
+      .join(HTML_LINE_RETURN);
   }
 }
