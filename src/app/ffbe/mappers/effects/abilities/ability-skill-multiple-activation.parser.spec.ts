@@ -80,10 +80,10 @@ describe('AbilitySkillMultipleActivationParser', () => {
     const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
 
-    const multiSkillActivator: Skill = skills['509014'];
-    multiSkillActivator.gumi_id = 509014;
-    multiSkillActivator.names = names['509014'];
-    multiSkillActivator.descriptions = descriptions['509014'];
+    const multiSkillActivator: Skill = skills['510754'];
+    multiSkillActivator.gumi_id = 510754;
+    multiSkillActivator.names = names['510754'];
+    multiSkillActivator.descriptions = descriptions['510754'];
     const multiSkillActivated: Skill = skills['912380'];
     multiSkillActivated.gumi_id = 912380;
     multiSkillActivated.names = names['912380'];
@@ -98,6 +98,32 @@ describe('AbilitySkillMultipleActivationParser', () => {
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(912380);
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
+  });
+
+  it('should parse multi-skill activation effect valid for one turn', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const multiSkillActivator: Skill = skills['510754'];
+    multiSkillActivator.gumi_id = 510754;
+    multiSkillActivator.names = names['510754'];
+    multiSkillActivator.descriptions = descriptions['510754'];
+    const multiSkillActivated: Skill = skills['912380'];
+    multiSkillActivated.gumi_id = 912380;
+    multiSkillActivated.names = names['912380'];
+    multiSkillActivated.descriptions = descriptions['912380'];
+    const effect = JSON.parse('[0, 3, 98, [3, 912380, -1, [200200, 200270], 1, 1, 1, 0, 1, -1]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(multiSkillActivated));
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, multiSkillActivator);
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(912380);
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 1 tour');
   });
 
   it('should parse multi-skill effect', () => {

@@ -15,7 +15,7 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
     }
 
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5
-      || effect[3][2] !== -1) {
+      || (effect[3][2] !== -1 && effect[3][2] !== 1)) {
       return 'Effet AbilitySkillMultipleActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
@@ -23,16 +23,18 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
     const multiSkillAbilityActivatedId: number = effect[3][1];
     const modifiedSkillsIds: Array<number> = !Array.isArray(effect[3][3]) ? [effect[3][3]] : effect[3][3];
 
-    if (this.isSkillFreeToCast(skill.cost)) {
+    if (this.isSkillFreeToCast(skill.cost) && skill.effects_raw.length === 1) {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       return 'Permet l\'utilisation de ' + this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills) + ' ' + nbTimes + 'x par tour';
     } else {
-      if (effect[3][4] < 2) {
+      const rawNumTurns: number = effect[3][4];
+      if (rawNumTurns < 1) {
         return 'Effet AbilitySkillMultipleActivationParser inconnu: Nombre de tours incorrect (' + effect[3][4] + ')';
       }
-      const nbTurns: number = effect[3][4] - 1;
+      const numTurns: number = rawNumTurns > 1 ? rawNumTurns - 1 : rawNumTurns;
+      const pluralForm = numTurns > 1 ? 's' : '';
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(multiSkillAbilityActivatedId);
-      return 'Donne accès à ' + this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated) + ' pour ' + nbTurns + ' tours';
+      return 'Donne accès à ' + this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated) + ' pour ' + numTurns + ' tour' + pluralForm;
     }
   }
 

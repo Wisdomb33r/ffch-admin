@@ -355,6 +355,30 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 53, [3, 229421, -1, [229412,  229413,  229414,  229418,  229419,  229420,  229425,  229426,  229427,  229428,  509010], 1]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "510754": {
+        "name": "Saviour of Erdrea",
+        "icon": "ability_77.png",
+        "compendium_id": 7355,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Gain 3 uses of Dragon Slash (DQ XI S) (233100), Falcon Slash (233106), Flame Slash (DQ XI S) (233102), Flame Smash (233104), Flamesplitter (233110), Gigagash (233111), Gigaslash (233109), Gigasmash (233103), Miracle Slash (233101), Quadraslash (510750), The Luminary Awakens (233108), Unbridled Blade (233105) and Yggdragon's Blessing (233112) for one turn",
+            "Use Saviour of Erdrea (510755) after a 2 turn delay on caster",
+            "Use Saviour of Erdrea (510756) after a 5 turn delay on caster"
+        ],
+        "effects_raw": [[0, 3, 98, [3, 912380, -1, [233100,  233101,  233102,  233103,  233104,  233105,  233106,  233108,  233109,  233110,  233111,  233112,  510750], 1, 1, 1, 0, 1, -1]], [0, 3, 132, [510755,  0,  2,  100,  0,  510755]], [0, 3, 132, [510756,  0,  5,  100,  0,  510756]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -499,6 +523,14 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Fouet triple",
         "Dreifachpeitsche",
         "Látigo triple"
+    ],
+    "510754": [
+        "Saviour of Erdrea",
+        "羅德賽塔西亞的救世主",
+        "로토제타시아의 구세주",
+        "Sauveur d'Elréa",
+        "Retter von Erdria",
+        "Salvador de Erdrea"
     ]
   }`;
 
@@ -643,5 +675,13 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Permet d'utiliser des aptitudes spécifiques trois fois en un tour (s'active une seule fois, quel que soit l'équipement)",
         "Ermöglicht gewissen Fertigkeiten dreimalige Anwendung in einer Runde (Aktiviere je ein Mal, unabhängig von Ausrüstungssituation).",
         "Aprende determinadas habilidades que se pueden usar 3 veces en un mismo turno (se activa una vez cada una sin importar las condiciones del equipo)"
+    ],
+    "510754": [
+        "Enable threepeat performance for one turn at the beginning of battle or after being revived, and gradually boost damage of certain abilities after two turns",
+        "戰鬥開始時和從無法戰鬥狀態中復活的1回合內可使用「3回行動」+2回合後持續提高特定能力的傷害",
+        "전투 시작 시 및 전투불능 상태에서 회복했을 때 1턴 동안 '3회 행동' 사용 가능+2턴 후 특정 어빌리티의 피해량 서서히 상승",
+        "Permet d'utiliser Performance triple pendant un tour au début du combat ou après avoir été ranimé, et augmente progressivement les dégâts de certaines aptitudes après 2 tours",
+        "Ermöglicht bei Kampfbeginn oder nach Wiederbelebung Dreifachvorstellung für eine Runde und erhöht nach zwei Runden allmählich den Schaden bestimmter Fertigkeiten.",
+        "Aprende Ración triple durante un turno al inicio del combate o tras ser revivido, y aumenta poco a poco el daño de determinadas habilidades tras 2 turnos"
     ]
   }`;
