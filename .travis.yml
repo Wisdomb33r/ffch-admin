@@ -1,0 +1,23 @@
+language: node_js
+sudo: required
+dist: trusty
+addons:
+  chrome:
+    stable
+  sonarcloud:
+    organization: "wisdomb33r"
+    token:
+      secure: ${SONAR_TOKEN}
+
+node_js:
+  - "node"
+
+before_script:
+  - npm -v
+  - node -v
+  - "sudo chown root /opt/google/chrome/chrome-sandbox"
+  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+
+script:
+  - npm run test-cc
+  - sonar-scanner

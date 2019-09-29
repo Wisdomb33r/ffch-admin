@@ -47,8 +47,12 @@ export class CharacterSkillDisplayComponent implements OnInit {
     return !isNullOrUndefined(this.competence.enhanced);
   }
 
-  public generateLinkToFfch(): String {
+  public generateLinkToFfch(): string {
     return '<a href="ffexvius_skills.php?compid=' + (this.present ? this.competence.id.toString() : '') + '">'
       + this.competence.nom + '</a>';
+  }
+
+  public copyToEffect() {
+    this.competence.effet = this.competence.effet_fr;
   }
 }

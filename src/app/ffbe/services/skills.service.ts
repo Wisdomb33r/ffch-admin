@@ -6,13 +6,19 @@ import {forkJoin} from 'rxjs';
 
 @Injectable()
 export class SkillsService {
+  private static INSTANCE: SkillsService;
 
   private skillsFromDataMining = null;
   private skillsNamesFromDataMining = null;
   private skillsDescriptionsFromDataMining = null;
 
+  public static getInstance(): SkillsService {
+    return SkillsService.INSTANCE;
+  }
+
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadSkillsFromDataMining();
+    SkillsService.INSTANCE = this;
   }
 
   public loadSkillsFromDataMining() {
@@ -55,7 +61,7 @@ export class SkillsService {
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
-        const skill: Skill = this.skillsFromDataMining[property];
+        const skill: Skill = Skill.produce(this.skillsFromDataMining[property]);
         skill.gumi_id = +property;
         skill.names = this.skillsNamesFromDataMining[property];
         skill.descriptions = this.skillsDescriptionsFromDataMining[property];
@@ -70,7 +76,7 @@ export class SkillsService {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
-        const skill: Skill = this.skillsFromDataMining[property];
+        const skill: Skill = Skill.produce(this.skillsFromDataMining[property]);
         skill.gumi_id = +property;
         skill.names = this.skillsNamesFromDataMining[property];
         skill.descriptions = this.skillsDescriptionsFromDataMining[property];

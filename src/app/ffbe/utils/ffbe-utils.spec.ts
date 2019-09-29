@@ -7,7 +7,7 @@ describe('FfbeUtils', () => {
     const s2 = '';
     // WHEN
     const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
-    // replaces
+    // THEN
     expect(result).toBeFalsy();
   });
 
@@ -17,7 +17,7 @@ describe('FfbeUtils', () => {
     const s2 = '';
     // WHEN
     const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
-    // replaces
+    // THEN
     expect(result).toBeFalsy();
   });
 
@@ -27,7 +27,7 @@ describe('FfbeUtils', () => {
     const s2 = 'strong';
     // WHEN
     const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
-    // replaces
+    // THEN
     expect(result).toBeTruthy();
   });
 
@@ -37,7 +37,7 @@ describe('FfbeUtils', () => {
     const s2 = '';
     // WHEN
     const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
-    // replaces
+    // THEN
     expect(result).toBeTruthy();
   });
 
@@ -47,7 +47,7 @@ describe('FfbeUtils', () => {
     const s2 = 'string';
     // WHEN
     const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
-    // replaces
+    // THEN
     expect(result).toBeFalsy();
   });
 });

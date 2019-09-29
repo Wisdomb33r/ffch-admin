@@ -1,12 +1,13 @@
 {
   "name": "ffch-admin",
-  "version": "4.0.0",
+  "version": "6.0.0-alpha2",
   "license": "GPL-3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --prod --base-href /admin/",
-    "test": "ng test",
+    "test": "ng test --browsers Chrome",
+    "test-cc": "ng test --watch=false --browsers ChromeHeadless --code-coverage --source-map",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
