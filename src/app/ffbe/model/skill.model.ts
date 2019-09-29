@@ -19,6 +19,9 @@ export class Skill {
   public names: Array<string>;
   public descriptions: Array<string>;
 
+  // transcient fields
+  public isActivatedByPassiveSkill = false;
+
   public static produce(s: Skill): Skill {
     const skill: Skill = new Skill();
     skill.gumi_id = s.gumi_id;

@@ -15,6 +15,7 @@ export class PassiveSkillBattleStartActivationParser extends EffectParser {
     if (!activatedSkill) {
       return baseText + 'UNKNOWN skill';
     }
+    activatedSkill.isActivatedByPassiveSkill = true;
     return SkillMapper.toCompetence(activatedSkill).effet_fr
       .split(HTML_LINE_RETURN)
       .map(effet => baseText + effet)

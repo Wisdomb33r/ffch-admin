@@ -22,6 +22,7 @@ export class PassiveCounterAttackWithSkillParser extends EffectParser {
       return prefixText + 'UNKNOWN skill' + suffixText;
     }
 
+    activatedSkill.isActivatedByPassiveSkill = true;
     return SkillMapper.toCompetence(activatedSkill).effet_fr
       .split(HTML_LINE_RETURN)
       .map(effet => prefixText + effet + suffixText)

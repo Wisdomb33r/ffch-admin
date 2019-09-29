@@ -12,7 +12,7 @@ export class PassiveSkillMultipleActivationParser extends EffectParser {
     const doubleSkillAbilityActivatedId: number = effect[3][1];
     const modifiedSkillsIds: Array<number> = !Array.isArray(effect[3][3]) ? [effect[3][3]] : effect[3][3];
 
-    if (skill.effects_raw.length === 1) {
+    if (skill.effects_raw.length === 1 && !skill.isActivatedByPassiveSkill) {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       return 'Permet l\'utilisation de ' + this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills) + ' ' + nbTimes + 'x par tour';
     } else {
