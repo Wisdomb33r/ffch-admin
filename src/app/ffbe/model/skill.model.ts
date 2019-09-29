@@ -79,8 +79,10 @@ export class Skill {
     const effectId = effect[2];
     switch (effectId) {
       case 21:
+        // physical damages with ignore DEF
+        return 100 / (100 + effect[3][3]);
       case 70:
-        // physical and magical damages with ignore DEF/SPR
+        // magical damages with ignore SPR
         return 100 / (100 - effect[3][3]);
       case 42:
         // physical combos with multiple consecutive attacks

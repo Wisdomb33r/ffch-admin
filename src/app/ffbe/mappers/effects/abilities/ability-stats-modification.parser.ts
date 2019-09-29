@@ -34,7 +34,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     return statModifier + target + turns + dispellable;
   }
 
-  protected getTarget(effectId1: number, effectId2: number, effectId3: number): String {
+  protected getTarget(effectId1: number, effectId2: number, effectId3: number): string {
     let target = ' à UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 3) {
