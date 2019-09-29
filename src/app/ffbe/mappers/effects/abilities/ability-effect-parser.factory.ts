@@ -26,6 +26,8 @@ import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 
+import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
+
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
@@ -75,6 +77,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
+      case 100:
+        return new AbilitySkillActivationParser();
       case 102:
         return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
