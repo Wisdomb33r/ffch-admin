@@ -7,6 +7,8 @@ import {SkillEffectsMapper} from './effects/skill-effects.mapper';
 export class SkillMapper {
 
   public static toCompetence(skill: Skill): Competence {
+    const parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+
     let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
       skill.attack_count[0] : null;
     let attackFrames: string = skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null;
@@ -30,8 +32,6 @@ export class SkillMapper {
       attackFrames = Array.isArray(frames) && frames.length > 0 ? frames.join(' ') : null;
       attackDamages = Array.isArray(frames) && frames.length > 0 ? frames.map(frame => 0).join(' ') : null;
     }
-
-    const parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
 
     return new Competence(
       skill.gumi_id,

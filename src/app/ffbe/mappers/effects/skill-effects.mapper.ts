@@ -24,9 +24,6 @@ export class SkillEffectsMapper {
   public static mapAbilitySkillEffects(skill: Skill): string {
     const effects = [];
     skill.effects_raw.forEach((effect: Array<any>) => {
-      if (effect.length !== 4) {
-        effects.push('Effet inconnu : mauvaise structure');
-      }
       effects.push(AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
     });
     return effects.filter(effect => effect && effect.length > 0).join(HTML_LINE_RETURN);
@@ -35,9 +32,6 @@ export class SkillEffectsMapper {
   public static mapPassiveSkillEffects(skill: Skill): string {
     const effects = [];
     skill.effects_raw.forEach((effect: Array<any>) => {
-      if (effect.length !== 4) {
-        effects.push('Effet inconnu : mauvaise structure');
-      }
       effects.push(PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
     });
     return effects.filter(effect => effect && effect.length > 0).join(HTML_LINE_RETURN);
