@@ -8,7 +8,7 @@ export class AbilityCooldownParser extends EffectParser {
     if (effect.length < 4 || effect[0] !== 0 || effect[1] !== 3 ||
       !Array.isArray(effect[3]) || effect[3].length < 3 || effect[3].length > 4 ||
       !Array.isArray(effect[3][2]) || effect[3][2].length !== 2) {
-      return parameterError + ' (1)';
+      return parameterError;
     }
 
     const content = effect[3];
@@ -18,32 +18,15 @@ export class AbilityCooldownParser extends EffectParser {
     const innerArray = content[2];
     const suffix = content.length > 3 ? content[3] : undefined;
 
-    let available = 0;
-    let cooldown = 0;
-
-    if (content.length === 3) {
-      if (prefix !== 1) {
-        return parameterError + ' (2)';
-      }
-      if (innerArray[0] === innerArray[1]) {
-        available = prefix;
-        cooldown = prefix + innerArray[0];
-      } else if (innerArray[1] === 0) {
-        available = prefix + innerArray[0];
-        cooldown = available;
-      } else {
-        return parameterError + ' (3)';
-      }
-    } else if (content.length === 4) {
-      if (prefix === 0 && suffix === 0) {
-        if (innerArray[0] === 4 && innerArray[1] === 4) {
-          available = innerArray[0] + 1;
-          cooldown = available;
-        } else {
-          return parameterError + ' (4)';
-        }
-      }
+    if (prefix !== 0 && prefix !== 1) {
+      return parameterError + '(prefix = ' + prefix + ')';
+    } else if (suffix !== undefined && suffix !== 0 && suffix !== 1) {
+      return parameterError + '(suffix = ' + suffix + ')';
     }
+
+    const cooldown = innerArray[0] + 1;
+
+    const available = cooldown - innerArray[1];
 
     return '(Une fois tous les ' + cooldown + ' tours)' + HTML_LINE_RETURN
       + activatedSkillId + HTML_LINE_RETURN + 'Disponible dès le tour ' + available;
