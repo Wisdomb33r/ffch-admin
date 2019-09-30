@@ -139,6 +139,21 @@ export abstract class EffectParser {
     return undefined;
   }
 
+  protected getMagicTypeFromId(id: number): string {
+    switch (id) {
+      case 0:
+        return '';
+      case 1:
+        return 'noire';
+      case 2:
+        return 'blanche';
+      case 3:
+        return 'verte';
+      default:
+        return 'UNKNOWN magic type';
+    }
+  }
+
   protected getTargetForDamagingSkill(effectId1: number, effectId2: number) {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
