@@ -20,6 +20,7 @@ import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesPhysicalConsecutiveIncreaseParser} from './ability-damages-physical-consecutive-increase.parser';
 import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
+import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -64,6 +65,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
+      case 103:
+        return new AbilityDamagesMagicSprScalingParser();
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseParser();
       case 130:
