@@ -9,9 +9,11 @@ export class AbilitySkillActivationParser extends EffectParser {
     }
 
     const content = effect[3];
+    const isTargetSelf = this.isTargetSelf(effect);
+    const target = this.getTarget(effect);
 
     const numUses = this.getNumUses(content);
-    const numTurns = this.getNumTurns(content);
+    const numTurns = this.getNumTurns(content, isTargetSelf);
     const activatedSkillsIds: Array<number> = !Array.isArray(effect[3][1]) ? [effect[3][1]] : effect[3][1];
 
     const activatedSkills = activatedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
@@ -31,7 +33,7 @@ export class AbilitySkillActivationParser extends EffectParser {
       }
     }
 
-    return 'Donne accès à ' + links + duration;
+    return 'Donne accès à ' + links + target + duration;
   }
 
   private hasTurnLimit(content: Array<any>): boolean {
@@ -42,14 +44,30 @@ export class AbilitySkillActivationParser extends EffectParser {
     return content[2] < 990;
   }
 
-  private getNumTurns(content: Array<any>): string {
-    const numTurns = content[3] - 1;
+  private isTargetSelf(effect: Array<any>): boolean {
+    return (effect[0] === 0 && effect[1] === 3);
+  }
+
+  private getNumTurns(content: Array<any>, isTargetSelf: boolean): string {
+    const numTurns = isTargetSelf ? content[3] - 1 : content[3];
     return +numTurns + ' ' + (numTurns > 1 ? 'tours' : 'tour');
   }
 
   private getNumUses(content: Array<any>): string {
     const numTimes = content[2];
     return +numTimes + ' ' + (numTimes > 1 ? 'utilisations' : 'utilisation');
+  }
+
+  private getTarget(effect: Array<any>): string {
+    let target = '';
+
+    if (effect[0] === 1 && effect[1] === 2) {
+      target = ' à un allié';
+    } else if (effect[0] === 2 && effect[1] === 2) {
+      target = ' aux alliés';
+    }
+
+    return target;
   }
 
 }

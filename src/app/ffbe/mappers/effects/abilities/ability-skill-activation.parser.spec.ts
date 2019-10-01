@@ -189,4 +189,48 @@ describe('AbilitySkillActivationParser', () => {
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
   });
 
+  it('should parse skill activation for one ally', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const skill: Skill = skills['200200'];
+    skill.gumi_id = 200200;
+    skill.names = names['200200'];
+    skill.descriptions = descriptions['200200'];
+    const effect = JSON.parse('[1, 2, 100, [2,  200200,  999,  3,  1,  912309]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(200200);
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> à un allié pour 3 tours');
+  });
+
+  it('should parse skill activation for all allies', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const skill: Skill = skills['200200'];
+    skill.gumi_id = 200200;
+    skill.names = names['200200'];
+    skill.descriptions = descriptions['200200'];
+    const effect = JSON.parse('[2, 2, 100, [2,  200200,  1,  4,  1,  85700]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(200200);
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> aux alliés pour 1 utilisation sur 4 tours');
+  });
 });
+
