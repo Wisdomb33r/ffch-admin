@@ -54,7 +54,7 @@ export class Skill {
     return 0;
   }
 
-  public isEffectWithDamage(effect: Array<any>) {
+  public isEffectWithDamage(effect: Array<any>): boolean {
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages
@@ -76,6 +76,14 @@ export class Skill {
     );
   }
 
+  public isEffectWithHealing(effect: Array<any>): boolean {
+    const effectId = effect[2];
+    return effect.length >= 4 && (
+      effectId === 2 // HP healing
+      || effectId === 8 // HP healing split over turns
+    );
+  }
+
   private calculateModIncreaseForEffect(effect): number {
     const effectId = effect[2];
     switch (effectId) {
@@ -88,9 +96,6 @@ export class Skill {
       case 42:
         // physical combos with multiple consecutive attacks
         return (effect[3][2] + effect[3][3]) / 2.0;
-      case 43:
-        // physical damages with critical strike and chance to miss
-        return 1.5;
       default:
         return 1.0;
     }

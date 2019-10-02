@@ -21,18 +21,26 @@ import {AbilityDamagesPhysicalConsecutiveIncreaseParser} from './ability-damages
 import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
 import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
+import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
+import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
+import {AbilityHealingParser} from './ability-healing.parser';
+import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
       case 1:
         return new AbilityDamagesPhysicalParser();
+      case 2:
+        return new AbilityHealingParser();
       case 3:
         return new AbilityStatsModificationParser();
       case 6:
         return new AbilityAilmentsInflictionParser();
       case 7:
         return new AbilityAilmentsResistanceParser();
+      case 8:
+        return new AbilityHealingTurnSplitParser();
       case 10:
         return new AbilityDamagesDrainParser();
       case 13:
@@ -49,6 +57,8 @@ export class AbilityEffectParserFactory {
         return new AbilityElementResistancesParser();
       case 40:
         return new AbilityDamagesHybridParser();
+      case 41:
+        return new AbilityDamagesFixedParser();
       case 42:
         return new AbilityDamagesPhysicalComboParser();
       case 43:
@@ -65,6 +75,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
+      case 102:
+        return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
         return new AbilityDamagesMagicSprScalingParser();
       case 126:

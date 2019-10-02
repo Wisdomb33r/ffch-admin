@@ -154,15 +154,48 @@ export abstract class EffectParser {
     }
   }
 
-  protected getTargetForDamagingSkill(effectId1: number, effectId2: number) {
+  protected getTargetForDamagingSkill(effectId1: number, effectId2: number): string {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
+    }
+    if (effectId1 === 1 && effectId2 === 3) {
+      return 'au lanceur';
     }
     if (effectId1 === 2 && effectId2 === 1) {
       return 'aux adversaires';
     }
 
     return 'UNKNOWN target';
+  }
+
+  protected getTargetForHealingSkill(effectId1: number, effectId2: number): string {
+    if (effectId1 === 1 && effectId2 === 1) {
+      return 'à un adversaire';
+    }
+    if (effectId1 === 2 && effectId2 === 1) {
+      return 'aux adversaires';
+    }
+    if (effectId1 === 1 && effectId2 === 2) {
+      return 'à un allié';
+    }
+    if (effectId1 === 1 && effectId2 === 6) {
+      return 'à un allié sauf le lanceur';
+    }
+    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
+      return 'au lanceur';
+    }
+    if (effectId1 === 2 && (effectId2 === 2 || effectId2 === 6)) {
+      return 'aux alliés';
+    }
+    if (effectId1 === 2 && effectId2 === 5) {
+      return 'aux alliés sauf le lanceur';
+    }
+
+    return 'UNKNOWN target';
+  }
+
+  protected getHealingText(mod: number): string {
+    return mod > 0 ? '+ ' + mod / 200 + 'x la PSY + ' + (mod / 1000) + 'x la MAG du lanceur ' : '';
   }
 
   protected getAttackAndDamageWordingForPhysicalDamages(attack_type: string): string {
@@ -201,6 +234,27 @@ export abstract class EffectParser {
           break;
         default:
           attackTypeText = 'Attaque UNKNOWN à dégâts magiques ';
+          break;
+      }
+    }
+    return attackTypeText;
+  }
+
+  protected getAttackAndDamageWordingForFixedDamages(attack_type: string): string {
+    let attackTypeText = 'Dégâts fixes ';
+    if (attack_type !== 'None') {
+      switch (attack_type) {
+        case 'Physical':
+          attackTypeText = 'Attaque physique à dégâts fixes ';
+          break;
+        case 'Hybrid':
+          attackTypeText = 'Attaque hybride à dégâts fixes ';
+          break;
+        case 'Magic':
+          attackTypeText = 'Attaque magique à dégâts fixes ';
+          break;
+        default:
+          attackTypeText = 'Attaque UNKNOWN à dégâts fixes ';
           break;
       }
     }
