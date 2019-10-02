@@ -5,7 +5,7 @@ import {SkillsService} from '../../../services/skills.service';
 export class AbilitySkillActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 4) {
-      return 'Effet AbilitySkillMultipleActivationParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet AbilitySkillActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
     const content = effect[3];
