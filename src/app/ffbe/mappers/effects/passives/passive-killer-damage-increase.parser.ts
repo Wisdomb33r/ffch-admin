@@ -9,24 +9,31 @@ export class PassiveKillerDamageIncreaseParser extends EffectParser {
       return 'Effet PassiveKillerDamageIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const monsterTypeGumiId = effect[3][0];
-    const physicalDamageIncrease = effect[3][1];
-    const magicalDamageIncrease = effect[3][2];
+    const monsterTypeGumiIds = Array.isArray(effect[3][0]) ? effect[3][0] : [effect[3][0]];
+    const physicalDamageIncreases = Array.isArray(effect[3][1]) ? effect[3][1] : [effect[3][1]];
+    const magicalDamageIncreases = Array.isArray(effect[3][2]) ? effect[3][2] : [effect[3][2]];
 
-    let text = '';
-    const monsterType = FFBE_MONSTER_TYPES.find(type => type.gumiId === monsterTypeGumiId);
-    const monsterTypeText = 'contre les ' + (monsterType ? monsterType.pluralName : 'UNKNOWN');
-    if (physicalDamageIncrease > 0) {
-      text += '+' + physicalDamageIncrease + '% de dégâts physiques ';
-      if (magicalDamageIncrease > 0 && physicalDamageIncrease === magicalDamageIncrease) {
-        text += 'et magiques ';
+    const texts: Array<string> = [];
+    monsterTypeGumiIds.forEach((monsterTypeGumiId, index) => {
+      let text = '';
+      const monsterType = FFBE_MONSTER_TYPES.find(type => type.gumiId === monsterTypeGumiId);
+      const monsterTypeText = 'contre les ' + (monsterType ? monsterType.pluralName : 'UNKNOWN');
+      const physicalDamageIncrease = physicalDamageIncreases.length > index ? physicalDamageIncreases[index] : 0;
+      const magicalDamageIncrease = magicalDamageIncreases.length > index ? magicalDamageIncreases[index] : 0;
+
+      if (physicalDamageIncrease > 0) {
+        text += '+' + physicalDamageIncrease + '% de dégâts physiques ';
+        if (magicalDamageIncrease > 0 && physicalDamageIncrease === magicalDamageIncrease) {
+          text += 'et magiques ';
+        }
+        text += monsterTypeText;
       }
-      text += monsterTypeText;
-    }
-    if (magicalDamageIncrease > 0 && physicalDamageIncrease !== magicalDamageIncrease) {
-      text += (text.length ? HTML_LINE_RETURN : '') + '+' + magicalDamageIncrease + '% de dégâts magiques ' + monsterTypeText;
-    }
+      if (magicalDamageIncrease > 0 && physicalDamageIncrease !== magicalDamageIncrease) {
+        text += (text.length ? HTML_LINE_RETURN : '') + '+' + magicalDamageIncrease + '% de dégâts magiques ' + monsterTypeText;
+      }
+      texts.push(text);
+    });
 
-    return text;
+    return texts.join(HTML_LINE_RETURN);
   }
 }
