@@ -12,6 +12,7 @@ export class AbilityHealingParser extends EffectParser {
     const mod = effect[3][3];
     const modText = mod > 0 ? '+ ' + mod / 200 + 'x la PSY + ' + (mod / 1000) + 'x la MAG du lanceur ' : '';
     const target = this.getTargetForHealingSkill(effect[0], effect[1]);
-    return 'Soigne ' + base + ' PV ' + modText + target;
+    const regenType = effect[2] === 30 ? ' PM ' : ' PV ';
+    return 'Soigne ' + base + regenType + modText + target;
   }
 }

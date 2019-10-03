@@ -25,6 +25,8 @@ import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
+import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
+import {AbilityHealingFixedParser} from './ability-healing-fixed.parser';
 import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
 import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
@@ -50,12 +52,16 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalTurnDelayParser();
       case 15:
         return new AbilityDamagesMagicParser();
+      case 17:
+        return new AbilityHealingFixedParser();
       case 21:
         return new AbilityDamagesPhysicalIgnoreDefParser();
       case 24:
         return new AbilityStatsModificationParser();
       case 25:
         return new AbilityDamagesDrainParser();
+      case 30:
+        return new AbilityHealingTurnSplitParser();
       case 33:
         return new AbilityElementResistancesParser();
       case 40:
@@ -70,8 +76,14 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 53:
         return new AbilitySkillMultipleActivationParser();
+      case 56:
+        return new AbilityHealingTurnSplitParser();
+      case 57:
+        return new AbilityHealingTurnSplitParser();
       case 63:
         return new AbilityLbSpeedIncreaseParser();
+      case 64:
+        return new AbilityHealingPercentParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
       case 72:

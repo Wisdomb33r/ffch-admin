@@ -81,6 +81,9 @@ export class Skill {
     return effect.length >= 4 && (
       effectId === 2 // HP healing
       || effectId === 8 // HP healing split over turns
+      || effectId === 30 // MP healing split over turns
+      || effectId === 56 // HP healing split over turns while singing
+      || effectId === 64 // HP% and MP% healing
     );
   }
 
