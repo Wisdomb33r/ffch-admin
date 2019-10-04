@@ -30,6 +30,7 @@ import {AbilityHealingFixedParser} from './ability-healing-fixed.parser';
 import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
 import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
+import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -90,6 +91,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
+      case 95:
+        return  new AbilityElementImbueParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
       case 100:
