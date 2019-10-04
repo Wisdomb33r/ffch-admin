@@ -34,6 +34,7 @@ import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
 import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
 import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
+import {AbilityMitigationsParser} from './ability-mitigations.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -60,6 +61,10 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingFixedParser();
       case 17:
         return new AbilityHealingFixedParser();
+      case 18:
+        return new AbilityMitigationsParser();
+      case 19:
+        return new AbilityMitigationsParser();
       case 21:
         return new AbilityDamagesPhysicalIgnoreDefParser();
       case 24:
@@ -110,6 +115,8 @@ export class AbilityEffectParserFactory {
         return new AbilitySkillSwitchParser();
       case 100:
         return new AbilitySkillActivationParser();
+      case 101:
+        return new AbilityMitigationsParser();
       case 102:
         return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
