@@ -31,6 +31,7 @@ import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
 import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
+import {AbilityDispelsParser} from './ability-dispels.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -53,6 +54,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalTurnDelayParser();
       case 15:
         return new AbilityDamagesMagicParser();
+      case 16:
+        return new AbilityHealingFixedParser();
       case 17:
         return new AbilityHealingFixedParser();
       case 21:
@@ -61,6 +64,8 @@ export class AbilityEffectParserFactory {
         return new AbilityStatsModificationParser();
       case 25:
         return new AbilityDamagesDrainParser();
+      case 26:
+        return new AbilityHealingPercentParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
       case 33:
@@ -81,10 +86,14 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingTurnSplitParser();
       case 57:
         return new AbilityHealingTurnSplitParser();
+      case 59:
+        return new AbilityDispelsParser();
       case 63:
         return new AbilityLbSpeedIncreaseParser();
       case 64:
         return new AbilityHealingPercentParser();
+      case 65:
+        return new AbilityHealingFixedParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
       case 72:
@@ -92,7 +101,7 @@ export class AbilityEffectParserFactory {
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 95:
-        return  new AbilityElementImbueParser();
+        return new AbilityElementImbueParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
       case 100:

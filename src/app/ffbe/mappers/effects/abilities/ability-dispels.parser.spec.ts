@@ -1,32 +1,30 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
-describe('AbilityHealingFixedParser', () => {
-
-  it('should parse healing fixed', () => {
+describe('AbilityDispelsParser', () => {
+  it('should parse all dispels', () => {
     // GIVEN
-    const effect = JSON.parse('[2, 6, 16, [70]]');
+    const effect = JSON.parse('[0, 3, 59, ["none"]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Soigne 70 PV aux alliés');
+    expect(s).toEqual('Dissipe les bonus et malus du lanceur');
   });
 
-  it('should parse healing fixed', () => {
+  it('should parse buffs dispels', () => {
     // GIVEN
-    const effect = JSON.parse('[2, 6, 17, [70]]');
+    const effect = JSON.parse('[1, 1, 59, [1]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Soigne 70 PM aux alliés');
+    expect(s).toEqual('Dissipe les bonus d\'un adversaire');
   });
 
-  it('should parse healing fixed', () => {
+  it('should parse debuffs dispels', () => {
     // GIVEN
-    const effect = JSON.parse('[2, 6, 65, [700, 70]]');
+    const effect = JSON.parse('[2, 2, 59, [2]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Soigne 700 PV et 70 PM aux alliés');
+    expect(s).toEqual('Dissipe les malus des alliés');
   });
-
 });
