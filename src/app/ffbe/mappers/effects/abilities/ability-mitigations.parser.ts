@@ -44,7 +44,7 @@ export class AbilityMitigationsParser extends EffectParser {
     } else if (effectId1 === 1 && effectId2 === 5) {
       target = ' à un allié sauf le lanceur';
     } else if (effectId1 === 3 && effectId2 === 2) {
-      target = ' à allié au hasard';
+      target = ' à un allié au hasard';
     } else if (effectId1 === 2 && effectId2 === 2) {
       target = ' aux alliés';
     } else if (effectId1 === 2 && effectId2 === 5) {
