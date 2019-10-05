@@ -18,8 +18,11 @@ export class AbilityLbCrystalsParser extends EffectParser {
   }
 
   private getTarget(effect: Array<any>): string {
-    let target = '';
-    if (effect[0] === 1 && effect[1] === 2) {
+    let target = ' à UNKNOWN';
+
+    if (effect[0] === 0 && effect[1] === 3) {
+      target = ' au lanceur';
+    } else if (effect[0] === 1 && effect[1] === 2) {
       target = ' à un allié';
     }
     else if (effect[0] === 2 && effect[1] === 2) {

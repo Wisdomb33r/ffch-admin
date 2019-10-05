@@ -8,7 +8,7 @@ describe('AbilityLbCrystalsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+1 cristal de limite');
+    expect(s).toEqual('+1 cristal de limite au lanceur');
   });
 
   it('should parse fixed LB cryst gain for caster', () => {
@@ -17,7 +17,7 @@ describe('AbilityLbCrystalsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+7 cristaux de limite');
+    expect(s).toEqual('+7 cristaux de limite au lanceur');
   });
 
   it('should parse interval of LB cryst gain for caster', () => {
@@ -26,7 +26,7 @@ describe('AbilityLbCrystalsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+8 à 12 cristaux de limite');
+    expect(s).toEqual('+8 à 12 cristaux de limite au lanceur');
   });
 
   it('should parse interval of LB cryst gain for one ally', () => {
