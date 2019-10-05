@@ -27,6 +27,12 @@ describe('AbilitySkillSwitchParser', () => {
     const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
 
+    const switchSkill: Skill = skills['912380'];
+    switchSkill.gumi_id = 912380;
+    switchSkill.names = names['912380'];
+    switchSkill.descriptions = descriptions['912380'];
+    switchSkill.active = true;
+
     const skill: Skill = skills['200200'];
     skill.gumi_id = 200200;
     skill.names = names['200200'];
@@ -49,7 +55,7 @@ describe('AbilitySkillSwitchParser', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill),
       Skill.produce(activatedSkill), Skill.produce(activatorSkill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -58,6 +64,15 @@ describe('AbilitySkillSwitchParser', () => {
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
       'Se transforme en <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> si utilisé après ' +
       '<a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>');
+    expect(Array.isArray(switchSkill.attack_count) && switchSkill.attack_count.length === 1 && switchSkill.attack_count[0] === 3).toBeTruthy();
+    expect(Array.isArray(switchSkill.attack_frames) && switchSkill.attack_frames.length === 1 && switchSkill.attack_frames[0].length === 3).toBeTruthy();
+    expect(switchSkill.attack_frames[0][0] === 2).toBeTruthy();
+    expect(switchSkill.attack_frames[0][1] === 5).toBeTruthy();
+    expect(switchSkill.attack_frames[0][2] === 8).toBeTruthy();
+    expect(Array.isArray(switchSkill.attack_damage) && switchSkill.attack_damage.length === 1 && switchSkill.attack_damage[0].length === 3).toBeTruthy();
+    expect(switchSkill.attack_damage[0][0] === 33).toBeTruthy();
+    expect(switchSkill.attack_damage[0][1] === 33).toBeTruthy();
+    expect(switchSkill.attack_damage[0][2] === 34).toBeTruthy();
   });
 
   it('should parse skill switch after several skills', () => {
@@ -65,6 +80,12 @@ describe('AbilitySkillSwitchParser', () => {
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
     const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const switchSkill: Skill = skills['912380'];
+    switchSkill.gumi_id = 912380;
+    switchSkill.names = names['912380'];
+    switchSkill.descriptions = descriptions['912380'];
+    switchSkill.active = true;
 
     const skill: Skill = skills['200200'];
     skill.gumi_id = 200200;
@@ -98,7 +119,7 @@ describe('AbilitySkillSwitchParser', () => {
       Skill.produce(activatedSkill), Skill.produce(activatorSkill1), Skill.produce(activatorSkill2),
       Skill.produce(activatorSkill3));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(5);
     expect(mySpy).toHaveBeenCalledWith(200200);

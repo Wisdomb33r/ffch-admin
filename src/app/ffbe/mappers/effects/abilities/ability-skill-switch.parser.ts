@@ -23,7 +23,23 @@ export class AbilitySkillSwitchParser extends EffectParser {
     const activatorSkills = activatorSkillId.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     const activatorSkillsLinks = this.getSkillsNamesWithGumiIdentifierLinks(activatorSkills);
 
+    this.fillSkillWithTransitiveActivatedSkillInformation(skill, baseSkill);
+
     return baseSkillEffect + HTML_LINE_RETURN + HTML_LINE_RETURN +
       'Se transforme en ' + activatedSkillLink + ' si utilisé après ' + activatorSkillsLinks;
+  }
+
+  private fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
+    skill.attack_count = activatedSKill.attack_count;
+    skill.attack_frames = activatedSKill.attack_frames;
+    skill.attack_damage = activatedSKill.attack_damage;
+    skill.attack_type = activatedSKill.attack_type;
+    skill.type = activatedSKill.type;
+    skill.rarity = activatedSKill.rarity;
+    skill.active = activatedSKill.active;
+    skill.magic_type = activatedSKill.magic_type;
+    skill.cost = activatedSKill.cost;
+    skill.element_inflict = activatedSKill.element_inflict;
+    skill.effects_raw = activatedSKill.effects_raw;
   }
 }
