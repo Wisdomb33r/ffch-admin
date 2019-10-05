@@ -83,16 +83,32 @@ function createPropertyArray($competence)
     $values ['nom_en'] = $competence->nom_en;
   if (isset ($competence->description))
     $values ['description'] = $competence->description;
+  else
+    $values ['description'] = '';
   if (isset ($competence->effet))
     $values ['effet'] = $competence->effet;
   if (isset ($competence->puissance))
     $values ['puissance'] = $competence->puissance;
-  if (isset ($competence->physique))
-    $values ['physique'] = $competence->physique;
-  if (isset ($competence->magique))
-    $values ['magique'] = $competence->magique;
-  if (isset ($competence->hybride))
-    $values ['hybride'] = $competence->hybride;
+  if (isset ($competence->physique) && $competence->physique)
+    $values ['physique'] = '1';
+  else 
+    $values ['physique'] = '0';
+  if (isset ($competence->magique) && $competence->magique)
+    $values ['magique'] = '1';
+  else 
+    $values ['magique'] = '0';
+  if (isset ($competence->hybride) && $competence->hybride)
+    $values ['hybride'] = '1';
+  else 
+    $values ['hybride'] = '0';
+  if (isset ($competence->fixe) && $competence->fixe)
+    $values ['fixe'] = '1';
+  else
+    $values ['fixe'] = '0';
+  if (isset ($competence->esper) && $competence->esper)
+    $values ['esper'] = '1';
+  else
+    $values ['esper'] = '0';
   if (isset ($competence->pm))
     $values ['pm'] = $competence->pm;
   if (isset ($competence->lb))

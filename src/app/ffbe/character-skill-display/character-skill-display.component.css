@@ -12,3 +12,7 @@ button.copy-button {
   margin-right: 5px;
   vertical-align: middle;
 }
+
+.damage-type {
+  margin-left: 10px;
+}

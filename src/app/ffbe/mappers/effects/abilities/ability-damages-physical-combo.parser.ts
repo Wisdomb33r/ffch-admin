@@ -9,6 +9,7 @@ export class AbilityDamagesPhysicalComboParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const minAttacks = effect[3][2];
     const maxAttacks = effect[3][3];
     const power = effect[3][4];

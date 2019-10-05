@@ -21,6 +21,11 @@ export class Skill {
 
   // transcient fields
   public isActivatedByPassiveSkill = false;
+  public physique = false;
+  public magique = false;
+  public hybride = false;
+  public fixe = false;
+  public esper = false;
 
   public static produce(s: Skill): Skill {
     const skill: Skill = new Skill();
@@ -54,6 +59,13 @@ export class Skill {
     return 0;
   }
 
+  public containsEffectWithDamages(): boolean {
+    if (this.effects_raw && this.effects_raw.length) {
+      return this.effects_raw.filter(effect => this.isEffectWithDamage(effect)).length > 0;
+    }
+    return false;
+  }
+
   public isEffectWithDamage(effect: Array<any>): boolean {
     const effectId = effect[2];
     return effect.length >= 4 && (
@@ -64,6 +76,7 @@ export class Skill {
       || effectId === 21 // physical damages with ignore DEF
       || effectId === 25 // physical / magic damages with HP drain
       || effectId === 40 // hybrid damages
+      || effectId === 41 // fixed damages
       || effectId === 42 // physical combos with multiple consecutive attacks
       || effectId === 43 // physical damages with critical strike and chance to miss
       || effectId === 52 // physical damages with 1 turn jump delay
@@ -72,6 +85,7 @@ export class Skill {
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 102 // physical damages scaling on DEF
       || effectId === 103 // magic damages scaling on SPR
+      || effectId === 124 // evoker damages
       || effectId === 126 // physical damages with consecutive damage increase
       || effectId === 139 // physical / magic DOT's
     );

@@ -14,7 +14,8 @@ export class CompetencesComparingContainer {
 
   public isDifferentFromFfchDb(): boolean {
     return this.isNomDifferent()
-      || this.isDescriptionDifferent()
+      || this.isCategorieDifferente()
+      || this.isEffetDifferent()
       || this.isPmDifferent()
       || this.isEpDifferent()
       || this.isLbDifferent()
@@ -22,6 +23,14 @@ export class CompetencesComparingContainer {
       || this.isFramesDifferent()
       || this.isDamagesDifferent()
       ;
+  }
+
+  private isCategorieDifferente(): boolean {
+    if (isNullOrUndefined(this.dbCompetence)) {
+      return false;
+    } else {
+      return +this.competence.categorie !== +this.dbCompetence.categorie;
+    }
   }
 
   private isNomDifferent(): boolean {
@@ -32,11 +41,11 @@ export class CompetencesComparingContainer {
     }
   }
 
-  private isDescriptionDifferent(): boolean {
+  private isEffetDifferent(): boolean {
     if (isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
-      return this.competence.description !== this.dbCompetence.description;
+      return this.competence.effet_fr !== this.dbCompetence.effet;
     }
   }
 

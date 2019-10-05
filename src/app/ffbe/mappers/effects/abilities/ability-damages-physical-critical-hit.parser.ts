@@ -9,6 +9,7 @@ export class AbilityDamagesPhysicalCriticalHitParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const power = effect[3][2];
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
     const missChange = effect[3][3];

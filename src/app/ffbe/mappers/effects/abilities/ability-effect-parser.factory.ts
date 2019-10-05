@@ -37,6 +37,7 @@ import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
+import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -125,6 +126,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
         return new AbilityDamagesMagicSprScalingParser();
+      case 124:
+        return new AbilityDamagesEvokerParser();
       case 125:
         return new AbilityLbCrystalsParser();
       case 126:

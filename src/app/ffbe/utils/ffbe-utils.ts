@@ -1,4 +1,4 @@
-import {FFBE_GAMES, FFBE_CATEGORIES_OBJETS} from '../ffbe.constants';
+import {FFBE_CATEGORIES_OBJETS, FFBE_GAMES} from '../ffbe.constants';
 import {Game} from '../model/game.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {Ingredient} from '../model/ingredient.model';
@@ -31,7 +31,7 @@ export class FfbeUtils {
 
   public static sortArrayIngredients(ingredients: Array<Ingredient>) {
     if (Array.isArray(ingredients) && ingredients.length > 0) {
-        ingredients.sort((ingredient1, ingredient2) => {
+      ingredients.sort((ingredient1, ingredient2) => {
         return (ingredient1.quantite !== ingredient2.quantite) ?
           (ingredient2.quantite - ingredient1.quantite) : (+ingredient1.gumi_id - +ingredient2.gumi_id);
       });
@@ -39,7 +39,7 @@ export class FfbeUtils {
   }
 
   public static checkIfStringsDifferent(s1: string, s2: string) {
-    if (s1 && s2) {
+    if (('' + s1) && ('' + s2)) {
       return ('' + s1) !== ('' + s2);
     }
     if ((s1 && !s2) || (!s1 && s2)) {

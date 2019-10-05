@@ -10,6 +10,7 @@ export class AbilityDamagesPhysicalConsecutiveIncreaseParser extends EffectParse
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const power = effect[3][3] + effect[3][4];
     const increment = effect[3][5];
     const nbIncrements = effect[3][6] - 1;

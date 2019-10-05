@@ -12,8 +12,10 @@ export class AbilityDamagesDotsParser extends EffectParser {
     const damageType = effect[3][0];
     let attackType = 'UNKNOWN ';
     if (damageType === 1) {
+      skill.physique = true;
       attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
     } else if (damageType === 3) {
+      skill.magique = true;
       attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
     }
     const power = effect[3][1];

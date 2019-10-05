@@ -26,6 +26,7 @@ export class AbilityDamagesHybridParser extends EffectParser {
           break;
       }
     }
+    skill.hybride = true;
     const accuracy = effect[3][7];
     const atkPower = effect[3][8];
     const magPower = effect[3][9];
