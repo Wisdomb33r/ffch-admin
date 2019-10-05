@@ -10,10 +10,14 @@ export class AbilityHealingTurnSplitParser extends EffectParser {
     const base = effect[3][2];
     const mod = effect[3][0];
     const turns = effect[3][3];
+    const turnsText = turns === -1 ? ' chaque tour' : ' sur ' + turns + ' tours';
     const modText = this.getHealingText(mod);
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    let target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    if (turns === -1) {
+      target = 'au lanceur';
+    }
     const regenType = effect[2] === 30 || effect[2] === 57 ? ' PM ' : ' PV ';
     const isSong = effect[2] === 56 || effect[2] === 57;
-    return 'Soigne ' + base + regenType + modText + target + ' sur ' + turns + ' tours' + (isSong ? ' en chantant' : '');
+    return 'Soigne ' + base + regenType + modText + target + turnsText + (isSong ? ' en chantant' : '');
   }
 }

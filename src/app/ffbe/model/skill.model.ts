@@ -73,6 +73,7 @@ export class Skill {
       || effectId === 102 // physical damages scaling on DEF
       || effectId === 103 // magic damages scaling on SPR
       || effectId === 126 // physical damages with consecutive damage increase
+      || effectId === 139 // physical / magic DOT's
     );
   }
 

@@ -1,4 +1,5 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
+import {MagicEffectParserFactory} from '../magic-effect-parser.factory';
 
 describe('AbilityHealingTurnSplitParser', () => {
 
@@ -9,6 +10,15 @@ describe('AbilityHealingTurnSplitParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('Soigne 1000 PV au lanceur sur 5 tours');
+  });
+
+  it('should parse HP healing every turn', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 8, [0, 1, 1000, -1]]');
+    // WHEN
+    const s = MagicEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Soigne 1000 PV au lanceur chaque tour');
   });
 
   it('should parse HP healing split over turns with mod', () => {

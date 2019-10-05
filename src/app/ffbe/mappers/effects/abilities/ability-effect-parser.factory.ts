@@ -33,6 +33,7 @@ import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
 import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
+import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -121,6 +122,8 @@ export class AbilityEffectParserFactory {
         return new AbilityCooldownParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
+      case 139:
+        return new AbilityDamagesDotsParser();
       default:
         return new UnknownEffectParser();
     }
