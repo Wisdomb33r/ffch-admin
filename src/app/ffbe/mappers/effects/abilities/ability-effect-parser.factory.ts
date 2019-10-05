@@ -36,6 +36,7 @@ import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
 import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
+import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -108,6 +109,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
+      case 88:
+        return new AbilityStopInflictionParser();
       case 95:
         return new AbilityElementImbueParser();
       case 98:
