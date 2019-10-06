@@ -53,7 +53,7 @@ class CharactersServiceMock {
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [
-    {effect: '[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]', parsed: '+30% MAG, +20% PV/ATT, +10% PM/DÉF/PSY'},
+    {effect: '[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]', parsed: '+30% MAG, +20% PV/ATT et +10% PM/DÉF/PSY'},
     {
       effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
       parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
