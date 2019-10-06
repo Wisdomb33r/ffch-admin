@@ -38,6 +38,8 @@ import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
+import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
+import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -54,6 +56,8 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsResistanceParser();
       case 8:
         return new AbilityHealingTurnSplitParser();
+      case 9:
+        return new AbilityDamagesPercentParser();
       case 10:
         return new AbilityDamagesDrainParser();
       case 13:
@@ -112,6 +116,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 88:
         return new AbilityStopInflictionParser();
+      case 89:
+        return new AbilityDebuffsResistanceParser();
       case 95:
         return new AbilityElementImbueParser();
       case 98:

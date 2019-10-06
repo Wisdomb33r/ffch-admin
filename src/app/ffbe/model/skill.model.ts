@@ -70,6 +70,7 @@ export class Skill {
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages
+      || effectId === 9 // HP % damages
       || effectId === 10 // physical / magic damages with MP drain
       || effectId === 13 // physical damages with 1 turn delay
       || effectId === 15 // magic damages
@@ -119,6 +120,9 @@ export class Skill {
       case 42:
         // physical combos with multiple consecutive attacks
         return (effect[3][2] + effect[3][3]) / 2.0;
+      case 9:
+        // HP % damages
+        return 0.0;
       default:
         return 1.0;
     }

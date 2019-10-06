@@ -6,6 +6,7 @@ import {
 } from '../../../model/skill.model.spec';
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
+import {HTML_LINE_RETURN} from '../skill-effects.mapper';
 
 class SkillsServiceMock {
   private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
@@ -55,9 +56,11 @@ describe('AbilityCooldownParser', () => {
     expect(mySpy).toHaveBeenCalledWith(509014);
     expect(mySpy).toHaveBeenCalledWith(912380);
 
-    expect(s).toEqual('Disponible tous les 8 tours dès le tour 1:<br />' +
-      '+250% ATT au lanceur pour 6 tours<br />Effet UNKNOWN<br />Effet UNKNOWN<br />' +
-      'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
+    expect(s).toEqual('Disponible tous les 8 tours dès le tour 1:' + HTML_LINE_RETURN
+      + '+250% ATT au lanceur pour 6 tours' + HTML_LINE_RETURN
+      + 'Effet UNKNOWN' + HTML_LINE_RETURN
+      + '+100% de rés. aux baisses de ATT/DÉF/MAG/PSY au lanceur pour 6 tours' + HTML_LINE_RETURN
+      + 'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
   });
 
   it('should parse cooldown skills available on turn N, same as cooldown N', () => {
