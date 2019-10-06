@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalConsecutiveIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts physiques de feu, terre, lumière de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
+    expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
   });
 
 });

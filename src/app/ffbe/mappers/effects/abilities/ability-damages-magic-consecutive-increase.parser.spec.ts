@@ -19,12 +19,12 @@ describe('AbilityDamagesMagicConsecutiveIncreaseParser', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 72, [0, 0, 400, 400, 400, 6]]');
     const fakeSkill: Skill = new Skill();
-    fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
+    fakeSkill.element_inflict = ['Earth'];
     fakeSkill.attack_type = 'None';
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts magiques de feu, terre, lumière de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
+    expect(s).toEqual('Attaque fixe à dégâts magiques de Terre de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
   });
 
 });

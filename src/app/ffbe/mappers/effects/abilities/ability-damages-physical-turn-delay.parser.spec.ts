@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalTurnDelayParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts physiques de feu, terre, lumière de puissance 300% avec délai de 2 tours aux adversaires');
+    expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 300% avec délai de 2 tours aux adversaires');
   });
 
 });

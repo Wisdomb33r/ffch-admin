@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalCriticalHitParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque magique à dégâts physiques critiques de glace, foudre, vent de puissance 500% à un adversaire (-25% précision)');
+    expect(s).toEqual('Attaque magique à dégâts physiques critiques de Glace, Foudre, Vent de puissance 500% à un adversaire (-25% précision)');
   });
 
 });

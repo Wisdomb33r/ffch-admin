@@ -23,6 +23,6 @@ export class AbilityDamagesDotsParser extends EffectParser {
     const stackId = effect[3][6] ? effect[3][6] : 0;
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + Math.round(power) + '% chaque tour pour ' + turns + ' tours ' + target + ' (ID #' + stackId + ')';
+      + 'de puissance ' + Math.round(power) + '% chaque tour ' + target + ' pour ' + turns + ' tours (ID #' + stackId + ')';
   }
 }

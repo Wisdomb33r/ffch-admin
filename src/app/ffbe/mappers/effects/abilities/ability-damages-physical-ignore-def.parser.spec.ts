@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalIgnoreDefParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts physiques de feu, terre, lumière de puissance 500% (ignore 50% DÉF, 1000% total) aux adversaires (ignore les couvertures)');
+    expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 500% (ignore 50% DÉF, 1000% total) aux adversaires (ignore les couvertures)');
   });
 
 });

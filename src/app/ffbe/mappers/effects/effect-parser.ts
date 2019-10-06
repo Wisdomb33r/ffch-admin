@@ -112,21 +112,21 @@ export abstract class EffectParser {
   protected getElementFromEnglishName(element: string): string {
     switch (element) {
       case 'Fire':
-        return 'feu';
+        return 'Feu';
       case 'Ice':
-        return 'glace';
+        return 'Glace';
       case 'Lightning':
-        return 'foudre';
+        return 'Foudre';
       case 'Water':
-        return 'eau';
+        return 'Eau';
       case 'Wind':
-        return 'vent';
+        return 'Vent';
       case 'Earth':
-        return 'terre';
+        return 'Terre';
       case 'Light':
-        return 'lumière';
+        return 'Lumière';
       case 'Dark':
-        return 'ténèbres';
+        return 'Ténèbres';
       default:
         return 'UNKNOWN element';
     }

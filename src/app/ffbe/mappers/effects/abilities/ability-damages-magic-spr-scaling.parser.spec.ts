@@ -24,7 +24,7 @@ describe('AbilityDamagesMagicSprScalingParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque physique à dégâts magiques de glace, foudre, vent calculé sur la PSY de puissance 500% aux adversaires');
+    expect(s).toEqual('Attaque physique à dégâts magiques de Glace, Foudre, Vent calculé sur la PSY de puissance 500% aux adversaires');
   });
 
 });

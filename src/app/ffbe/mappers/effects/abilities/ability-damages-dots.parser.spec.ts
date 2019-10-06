@@ -12,7 +12,7 @@ describe('AbilityDamagesDotsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts physiques neutres de puissance 100% chaque tour pour 3 tours à un adversaire (ID #1)');
+    expect(s).toEqual('Dégâts physiques neutres de puissance 100% chaque tour à un adversaire pour 3 tours (ID #1)');
   });
 
   it('should parse magic elemental dot', () => {
@@ -24,7 +24,7 @@ describe('AbilityDamagesDotsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts magiques de feu, terre, lumière de puissance 200% chaque tour pour 3 tours aux adversaires (ID #123)');
+    expect(s).toEqual('Dégâts magiques de Feu, Terre, Lumière de puissance 200% chaque tour aux adversaires pour 3 tours (ID #123)');
   });
 
 });

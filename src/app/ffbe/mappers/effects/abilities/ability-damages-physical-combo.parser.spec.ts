@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalComboParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Éxécution 2 fois: Attaque fixe à dégâts physiques de feu, terre, lumière de puissance 500% (+400% par utilisation successive, 4x, max 2100%) aux adversaires');
+    expect(s).toEqual('Éxécution 2 fois: Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 500% (+400% par utilisation successive, 4x, max 2100%) aux adversaires');
   });
 
 });

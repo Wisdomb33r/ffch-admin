@@ -24,7 +24,7 @@ describe('AbilityDamagesFixedParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque magique à dégâts fixes de glace, foudre, vent de 98765 PV aux adversaires');
+    expect(s).toEqual('Attaque magique à dégâts fixes de Glace, Foudre, Vent de 98765 PV aux adversaires');
   });
 
 });
