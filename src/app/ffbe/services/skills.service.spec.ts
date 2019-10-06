@@ -13,6 +13,18 @@ import {
   PASSIVE_SKILLS_TEST_DATA
 } from '../model/skill.model.spec';
 
+export class SkillsServiceMock {
+  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
+
+  public static getInstance() {
+    return SkillsServiceMock.INSTANCE;
+  }
+
+  public searchForSkillByGumiId(gumiId: number): Skill {
+    return null;
+  }
+}
+
 class DataMiningMock {
   public getSkillsMagic$(): Observable<Object> {
     return of(JSON.parse(MAGIC_SKILLS_TEST_DATA));

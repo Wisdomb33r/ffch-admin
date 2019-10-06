@@ -6,18 +6,7 @@ import {
 } from '../../../model/skill.model.spec';
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
-
-class SkillsServiceMock {
-  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
-
-  public static getInstance() {
-    return SkillsServiceMock.INSTANCE;
-  }
-
-  public searchForSkillByGumiId(gumiId: number): Skill {
-    return null;
-  }
-}
+import {SkillsServiceMock} from '../../../services/skills.service.spec';
 
 describe('AbilitySkillMultipleActivationParser', () => {
 

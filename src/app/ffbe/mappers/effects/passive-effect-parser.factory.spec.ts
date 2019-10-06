@@ -14,18 +14,7 @@ import {EQUIPMENTS_TEST_DATA} from '../../model/equipment/equipment.model.spec';
 import {CHARACTER_TEST_DATA} from '../../model/character.model.spec';
 import {Character} from '../../model/character.model';
 import {CharactersService} from '../../services/characters.service';
-
-class SkillsServiceMock {
-  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
-
-  public static getInstance() {
-    return SkillsServiceMock.INSTANCE;
-  }
-
-  public searchForSkillByGumiId(gumiId: number): Skill {
-    return null;
-  }
-}
+import {SkillsServiceMock} from '../../services/skills.service.spec';
 
 class EquipmentsServiceMock {
   private static INSTANCE: EquipmentsServiceMock = new EquipmentsServiceMock();
