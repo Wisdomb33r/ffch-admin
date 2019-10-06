@@ -1,5 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
+import {FfbeUtils} from '../../../utils/ffbe-utils';
 
 export class PassiveAilmentsResistanceParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -23,6 +24,6 @@ export class PassiveAilmentsResistanceParser extends EffectParser {
     if (accumulatedStats.length === 8) {
       return '+' + currentValue + '% de rés. aux altérations';
     }
-    return '+' + currentValue + '% de rés. ' + accumulatedStats.join(', ');
+    return '+' + currentValue + '% de rés. ' + FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ');
   }
 }

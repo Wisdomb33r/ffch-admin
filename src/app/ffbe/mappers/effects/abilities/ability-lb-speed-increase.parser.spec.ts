@@ -8,7 +8,7 @@ describe('AbilityLbSpeedIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+100% à la vitesse de la jauge de limite pour 3 tours');
+    expect(s).toEqual('+100% à la vitesse de la jauge de limite du lanceur pour 3 tours');
   });
 
   it('should parse LB speed increase for caster', () => {
@@ -17,7 +17,7 @@ describe('AbilityLbSpeedIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+300% à la vitesse de la jauge de limite pour 1 tour');
+    expect(s).toEqual('+300% à la vitesse de la jauge de limite du lanceur pour 1 tour');
   });
 
   it('should parse LB speed increase for one ally', () => {

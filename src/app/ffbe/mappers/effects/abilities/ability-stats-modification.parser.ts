@@ -24,7 +24,7 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     const target = this.getTarget(effect[0], effect[1], effect[2]);
 
-    const turns = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tours' : ' pour ce combat';
+    const turns = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tour' + (effect[3][4] > 1 ? 's' : '') : ' pour ce combat';
 
     let dispellable = '';
     if (effect[3].length >= 7 && effect[3][6] === 1) {

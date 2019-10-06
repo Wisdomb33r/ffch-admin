@@ -17,13 +17,13 @@ export class AbilityLbSpeedIncreaseParser extends EffectParser {
 
   private getTarget(effect: Array<any>): string {
     let target = '';
-    if (effect[0] === 1 && effect[1] === 2) {
+    if ((effect[0] === 0 || effect[0] === 1) && effect[1] === 3) {
+      target = ' du lanceur';
+    } else if (effect[0] === 1 && effect[1] === 2) {
       target = ' d\'un allié';
-    }
-    else if (effect[0] === 2 && effect[1] === 2) {
+    } else if (effect[0] === 2 && effect[1] === 2) {
       target = ' des alliés';
-    }
-    else if (effect[0] === 2 && effect[1] === 5) {
+    } else if (effect[0] === 2 && effect[1] === 5) {
       target = ' des alliés sauf le lanceur';
     }
 

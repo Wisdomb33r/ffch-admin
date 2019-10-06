@@ -38,6 +38,15 @@ export class FfbeUtils {
     }
   }
 
+  public static replaceLastOccurenceInString(s: string, toReplace: string, replaceBy: string): string {
+    if (!s || s.indexOf(toReplace) < 0) {
+      return s;
+    }
+    const stringPieces = s.split(toReplace);
+    const lastPiece = stringPieces.pop();
+    return stringPieces.join(toReplace) + replaceBy + lastPiece;
+  }
+
   public static checkIfStringsDifferent(s1: string, s2: string) {
     if (('' + s1) && ('' + s2)) {
       return ('' + s1) !== ('' + s2);

@@ -56,7 +56,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]', parsed: '+30% MAG, +20% PV/ATT, +10% PM/DÉF/PSY'},
     {
       effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie, Confusion, +40% de rés. Cécité, Maladie, +20% de rés. Pétrification'
+      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
     },
     {effect: '[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux altérations'},
     {
@@ -73,7 +73,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
       effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
-      parsed: '+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
+      parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
     },
     {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
