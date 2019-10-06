@@ -110,4 +110,25 @@ describe('AbilityKillerDamageIncreaseParser', () => {
     expect(s).toEqual('+50% de dégâts magiques contre les morts-vivants aux alliés pour 3 tours');
   });
 
+
+  it('should parse physical multi-monster killer for caster', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 92, [[2,  50], [5,  50], [10,  50], -1, -1, -1, -1, -1, 4, 1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+50% de dégâts physiques contre les oiseaux, les humains et les pierres au lanceur pour 4 tours');
+  });
+
+  it('should parse magical multi-monster killer for all allies', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 2, 93, [[1,  75], [6,  50], [10,  75], [12,  100], -1, -1, -1, -1, 3, 1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+100% de dégâts magiques contre les morts-vivants aux alliés pour 3 tours<br />'
+      + '+75% de dégâts magiques contre les bêtes et les pierres aux alliés pour 3 tours<br />'
+      + '+50% de dégâts magiques contre les machines aux alliés pour 3 tours');
+  });
+
 });
