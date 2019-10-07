@@ -14,18 +14,7 @@ import {EQUIPMENTS_TEST_DATA} from '../../model/equipment/equipment.model.spec';
 import {CHARACTER_TEST_DATA} from '../../model/character.model.spec';
 import {Character} from '../../model/character.model';
 import {CharactersService} from '../../services/characters.service';
-
-class SkillsServiceMock {
-  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
-
-  public static getInstance() {
-    return SkillsServiceMock.INSTANCE;
-  }
-
-  public searchForSkillByGumiId(gumiId: number): Skill {
-    return null;
-  }
-}
+import {SkillsServiceMock} from '../../services/skills.service.spec';
 
 class EquipmentsServiceMock {
   private static INSTANCE: EquipmentsServiceMock = new EquipmentsServiceMock();
@@ -53,10 +42,10 @@ class CharactersServiceMock {
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [
-    {effect: '[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]', parsed: '+30% MAG, +20% PV/ATT, +10% PM/DÉF/PSY'},
+    {effect: '[0, 3, 1, [20, 10, 30, 10, 20, 10, 30]]', parsed: '+30% MAG, +20% PV/ATT et +10% PM/DÉF/PSY'},
     {
       effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie, Confusion, +40% de rés. Cécité, Maladie, +20% de rés. Pétrification'
+      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
     },
     {effect: '[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux altérations'},
     {
@@ -73,7 +62,7 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
       effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
-      parsed: '+30% PM/PSY, +20% PV/DÉF, +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
+      parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
     },
     {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
@@ -84,6 +73,10 @@ describe('PassiveEffectParser', () => {
     {
       effect: '[0, 3, 11, [5, 50, 100]]',
       parsed: '+50% de dégâts physiques contre les humains' + HTML_LINE_RETURN + '+100% de dégâts magiques contre les humains'
+    },
+    {
+      effect: '[0, 3, 11, [[4, 5], [25, 50], 0]]',
+      parsed: '+25% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les humains'
     },
     {
       effect: '[0, 3, 12, [50, 200, 4]]',

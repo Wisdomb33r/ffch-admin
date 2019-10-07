@@ -1,12 +1,14 @@
 export class Competence {
   public id: number;
-  public physique: string;
-  public magique: string;
-  public hybride: string;
   public enhanced: boolean;
 
   constructor(public gumi_id: number,
               public categorie: number,
+              public physique: boolean,
+              public magique: boolean,
+              public hybride: boolean,
+              public fixe: boolean,
+              public esper: boolean,
               public icone: number,
               public nom: string,
               public nom_en: string,
@@ -28,6 +30,11 @@ export class Competence {
     const copy = new Competence(
       competence.gumi_id,
       competence.categorie,
+      competence.physique,
+      competence.magique,
+      competence.hybride,
+      competence.fixe,
+      competence.esper,
       competence.icone,
       competence.nom,
       competence.nom_en,
@@ -45,9 +52,6 @@ export class Competence {
       competence.damages);
 
     copy.id = competence.id;
-    copy.physique = competence.physique;
-    copy.magique = competence.magique;
-    copy.hybride = competence.hybride;
     copy.enhanced = competence.enhanced;
 
     return copy;

@@ -10,6 +10,7 @@ export class AbilityDamagesPhysicalHpSacrificeParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const power = effect[3][6];
     const sacrifice = effect[3][7];
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);

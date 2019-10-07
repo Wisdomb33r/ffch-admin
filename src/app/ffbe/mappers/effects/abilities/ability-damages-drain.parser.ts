@@ -11,12 +11,15 @@ export class AbilityDamagesDrainParser extends EffectParser {
     let attackTypeText = 'Dégâts ';
     switch (skill.attack_type) {
       case 'Physical':
+        skill.physique = true;
         attackTypeText += 'physiques ';
         break;
       case 'Magic':
+        skill.magique = true;
         attackTypeText += 'magiques ';
         break;
       case 'Hybrid':
+        skill.hybride = true;
         attackTypeText += 'hybrides ';
         break;
       default:

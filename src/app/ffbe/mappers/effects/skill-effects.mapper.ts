@@ -1,6 +1,7 @@
 import {Skill} from '../../model/skill.model';
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
 import {AbilityEffectParserFactory} from './abilities/ability-effect-parser.factory';
+import {MagicEffectParserFactory} from './magic-effect-parser.factory';
 
 export const HTML_LINE_RETURN = '<br />';
 
@@ -18,7 +19,11 @@ export class SkillEffectsMapper {
   }
 
   public static mapMagicSkillEffects(skill: Skill): string {
-    return 'MAGIC NOT IMPLEMENTED YET';
+    const effects = [];
+    skill.effects_raw.forEach((effect: Array<any>) => {
+      effects.push(MagicEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill));
+    });
+    return effects.filter(effect => effect && effect.length > 0).join(HTML_LINE_RETURN);
   }
 
   public static mapAbilitySkillEffects(skill: Skill): string {

@@ -25,7 +25,6 @@ export class CharacterSkillDisplayComponent implements OnInit {
   }
 
   public sendToFfch() {
-    SkillMapper.mapCategorieToDamageType(this.competence);
     SkillMapper.mapUndefinedEnhanced(this.competence);
     if (!this.present) {
       this.ffchClientService.postCompetence$(this.competence)
@@ -52,7 +51,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
       + this.competence.nom + '</a>';
   }
 
-  public copyToEffect() {
-    this.competence.effet = this.competence.effet_fr;
+  public isSKillFromDamagingCategory(): boolean {
+    return [2, 6, 7, 8, 9].find(idCateg => idCateg === this.competence.categorie) >= 0;
   }
 }

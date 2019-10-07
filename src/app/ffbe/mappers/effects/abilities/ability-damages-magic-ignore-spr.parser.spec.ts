@@ -24,7 +24,7 @@ describe('AbilityDamagesMagicIgnoreSprParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts magiques de feu, terre, lumière de puissance 500% (ignore 50% PSY, 1000% total) aux adversaires (ignore les reflets)');
+    expect(s).toEqual('Attaque fixe à dégâts magiques de Feu, Terre, Lumière de puissance 500% (ignore 50% PSY, 1000% total) aux adversaires (ignore les reflets)');
   });
 
 });

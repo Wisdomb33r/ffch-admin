@@ -6,7 +6,8 @@
   <app-formules-display [formule]="unite.materiauxEveil"
                         [formuleFromFfch]="getFormuleFromFfchUniteEveil()"
                         [displayCost]="false"
-                        [displaySuccessfulStatus]="true">
+                        [displaySuccessfulStatus]="true"
+                        class="formules-display">
   </app-formules-display>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteMateriauxEveilToFfch()"

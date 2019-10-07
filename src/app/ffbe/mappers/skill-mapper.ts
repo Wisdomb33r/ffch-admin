@@ -36,12 +36,17 @@ export class SkillMapper {
     return new Competence(
       skill.gumi_id,
       SkillMapper.determineCategorieCompetence(skill),
+      skill.physique,
+      skill.magique,
+      skill.hybride,
+      skill.fixe,
+      skill.esper,
       SkillMapper.transformIcon(skill.icon),
       skill.names[FFBE_FRENCH_TABLE_INDEX],
       skill.names[FFBE_ENGLISH_TABLE_INDEX],
-      skill.descriptions[FFBE_FRENCH_TABLE_INDEX],
-      skill.descriptions[FFBE_ENGLISH_TABLE_INDEX],
-      null,
+      undefined,
+      undefined,
+      parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
       null,
@@ -52,24 +57,6 @@ export class SkillMapper {
       attackFrames,
       attackDamages
     );
-  }
-
-  public static mapCategorieToDamageType(competence: Competence) {
-    if (competence.categorie === 2 || competence.categorie === 7) {
-      competence.physique = '0';
-      competence.magique = '1';
-      competence.hybride = '0';
-    }
-    if (competence.categorie === 6) {
-      competence.physique = '1';
-      competence.magique = '0';
-      competence.hybride = '0';
-    }
-    if (competence.categorie === 8) {
-      competence.physique = '0';
-      competence.magique = '0';
-      competence.hybride = '1';
-    }
   }
 
   public static mapUndefinedEnhanced(competence: Competence) {
@@ -107,7 +94,7 @@ export class SkillMapper {
       if (!skill.active) {
         return 4;
       }
-      if (Array.isArray(skill.attack_count) && skill.attack_count.length > 0 && skill.attack_count[0] > 0) {
+      if (skill.containsEffectWithDamages()) {
         if (skill.attack_type === 'Physical') {
           return 6;
         }
@@ -116,6 +103,9 @@ export class SkillMapper {
         }
         if (skill.attack_type === 'Hybrid') {
           return 8;
+        }
+        if (skill.attack_type === 'None') {
+          return 9;
         }
       }
       return 5;

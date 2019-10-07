@@ -24,7 +24,7 @@ describe('AbilityDamagesDrainParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts hybrides de feu, terre, lumière sur les PM de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
+    expect(s).toEqual('Dégâts hybrides de Feu, Terre, Lumière sur les PM de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
   });
 
   it('should parse physical neutral damages with HP drain', () => {
@@ -43,12 +43,12 @@ describe('AbilityDamagesDrainParser', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 25, [50, 120, 100]]');
     const fakeSkill: Skill = new Skill();
-    fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
+    fakeSkill.element_inflict = ['Fire', 'Earth'];
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts hybrides de feu, terre, lumière de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
+    expect(s).toEqual('Dégâts hybrides de Feu, Terre de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
   });
 
 });

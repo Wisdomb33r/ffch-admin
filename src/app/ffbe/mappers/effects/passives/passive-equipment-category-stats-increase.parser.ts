@@ -1,5 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
+import {FfbeUtils} from '../../../utils/ffbe-utils';
 
 export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -16,7 +17,7 @@ export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
       {name: 'PSY', value: effect[3][4]},
     ];
     // TODO critical strikes
-    return this.wordEffectJoiningIdenticalValues(increases)
+    return FfbeUtils.replaceLastOccurenceInString(this.wordEffectJoiningIdenticalValues(increases), ', ', ' et ')
       + ' si l\'unité porte ' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
       + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }

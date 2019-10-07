@@ -1,6 +1,16 @@
 import {FfbeUtils} from './ffbe-utils';
 
 describe('FfbeUtils', () => {
+  it('should compare correctly number and string', () => {
+    // GIVEN
+    const s1: any = 0;
+    const s2 = '0';
+    // WHEN
+    const result = FfbeUtils.checkIfStringsDifferent(s1, s2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
   it('should compare correctly null and empty string', () => {
     // GIVEN
     const s1 = null;

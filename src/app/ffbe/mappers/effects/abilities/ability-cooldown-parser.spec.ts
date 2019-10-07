@@ -6,18 +6,8 @@ import {
 } from '../../../model/skill.model.spec';
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
-
-class SkillsServiceMock {
-  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
-
-  public static getInstance() {
-    return SkillsServiceMock.INSTANCE;
-  }
-
-  public searchForSkillByGumiId(gumiId: number): Skill {
-    return null;
-  }
-}
+import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {SkillsServiceMock} from '../../../services/skills.service.spec';
 
 describe('AbilityCooldownParser', () => {
   it('should parse cooldown skills available on turn 1', () => {
@@ -55,9 +45,11 @@ describe('AbilityCooldownParser', () => {
     expect(mySpy).toHaveBeenCalledWith(509014);
     expect(mySpy).toHaveBeenCalledWith(912380);
 
-    expect(s).toEqual('Disponible tous les 8 tours dès le tour 1:<br />' +
-      '+250% ATT au lanceur pour 6 tours<br />Effet UNKNOWN<br />Effet UNKNOWN<br />' +
-      'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
+    expect(s).toEqual('Disponible tous les 8 tours dès le tour 1:' + HTML_LINE_RETURN
+      + '+250% ATT au lanceur pour 6 tours' + HTML_LINE_RETURN
+      + 'Effet UNKNOWN' + HTML_LINE_RETURN
+      + '+100% de rés. aux baisses de ATT/DÉF/MAG/PSY au lanceur pour 6 tours' + HTML_LINE_RETURN
+      + 'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
   });
 
   it('should parse cooldown skills available on turn N, same as cooldown N', () => {
@@ -86,9 +78,11 @@ describe('AbilityCooldownParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, cooldownActivator);
     // THEN
     expect(s).toEqual('Disponible tous les 7 tours dès le tour 7:<br />Dégâts physiques neutres de puissance 110% aux adversaires');
-    expect(cooldownActivator.attack_count === [3]);
-    expect(cooldownActivator.attack_frames === [[2, 5, 8]]);
-    expect(cooldownActivator.attack_damage === [[0, 0, 0]]);
+    expect(Array.isArray(cooldownActivator.attack_count) && cooldownActivator.attack_count.length === 1 && cooldownActivator.attack_count[0] === 3).toBeTruthy();
+    expect(Array.isArray(cooldownActivator.attack_frames) && cooldownActivator.attack_frames.length === 1 && cooldownActivator.attack_frames[0].length === 3).toBeTruthy();
+    expect(cooldownActivator.attack_frames.join('/')).toEqual('2,5,8');
+    expect(Array.isArray(cooldownActivator.attack_damage) && cooldownActivator.attack_damage.length === 1 && cooldownActivator.attack_damage[0].length === 3).toBeTruthy();
+    expect(cooldownActivator.attack_damage.join('/')).toEqual('33,33,34');
   });
 
   it('should parse cooldowns skills available on turn M, less than cooldown N', () => {
@@ -120,8 +114,14 @@ describe('AbilityCooldownParser', () => {
       'Dégâts physiques neutres de puissance 25% (ignore 50% DÉF, 50% total) à un adversaire (ignore les couvertures)<br />' +
       'Dégâts physiques neutres de puissance 50% (ignore 50% DÉF, 100% total) à un adversaire (ignore les couvertures)<br />' +
       'Dégâts physiques neutres de puissance 500% (ignore 50% DÉF, 1000% total) à un adversaire (ignore les couvertures)');
-    expect(cooldownActivator.attack_count === [8]);
-    expect(cooldownActivator.attack_frames === [[70, 76, 82, 88, 94, 100, 106, 112]]);
-    expect(cooldownActivator.attack_damage === [[0, 0, 0, 0, 0, 0, 0, 0]]);
+
+    expect(Array.isArray(cooldownActivator.attack_count) && cooldownActivator.attack_count.length === 3).toBeTruthy();
+    expect(cooldownActivator.attack_count.join('/')).toEqual('4/3/1');
+
+    expect(Array.isArray(cooldownActivator.attack_frames) && cooldownActivator.attack_frames.length === 3).toBeTruthy();
+    expect(cooldownActivator.attack_frames.join('/')).toEqual('70,76,82,88/94,100,106/112');
+
+    expect(Array.isArray(cooldownActivator.attack_damage) && cooldownActivator.attack_damage.length === 3).toBeTruthy();
+    expect(cooldownActivator.attack_damage.join('/')).toEqual('25,25,25,25/30,30,40/100');
   });
 });

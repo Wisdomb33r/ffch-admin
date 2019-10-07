@@ -9,6 +9,7 @@ export class AbilityDamagesMagicIgnoreSprParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
+    skill.magique = true;
     const puissance = effect[3][2];
     const ignoreSpr = effect[3][3];
     const total = puissance * 100 / (100 - ignoreSpr);

@@ -9,6 +9,7 @@ export class AbilityDamagesMagicConsecutiveIncreaseParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
+    skill.magique = true;
     const puissance = effect[3][2] + effect[3][3];
     const increment = effect[3][4];
     const nbIncrements = effect[3][5] - 1;

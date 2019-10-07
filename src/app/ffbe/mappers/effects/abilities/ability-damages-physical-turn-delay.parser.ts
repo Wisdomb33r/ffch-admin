@@ -9,6 +9,7 @@ export class AbilityDamagesPhysicalTurnDelayParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const power = effect[3][5];
     const turnDelay = effect[3][0];
     const target = this.getTargetForDamagingSkill(effect[0], effect[1]);

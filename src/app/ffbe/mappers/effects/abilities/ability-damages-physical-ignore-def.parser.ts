@@ -9,6 +9,7 @@ export class AbilityDamagesPhysicalIgnoreDefParser extends EffectParser {
 
     const elements = this.getElementsFromElementInflict(skill);
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
+    skill.physique = true;
     const puissance = effect[3][2];
     const ignoreDef = effect[3][3];
     const total = puissance * 100 / (100 + ignoreDef);

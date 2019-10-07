@@ -10,18 +10,7 @@ import {
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';
-
-class SkillsServiceMock {
-  private static INSTANCE: SkillsServiceMock = new SkillsServiceMock();
-
-  public static getInstance() {
-    return SkillsServiceMock.INSTANCE;
-  }
-
-  public searchForSkillByGumiId(gumiId: number): Skill {
-    return null;
-  }
-}
+import {SkillsServiceMock} from '../../../services/skills.service.spec';
 
 describe('AbilitySkillModifierIncreaseParser', () => {
 

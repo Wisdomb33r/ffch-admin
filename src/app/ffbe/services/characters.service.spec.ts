@@ -6,16 +6,11 @@ import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
 import {SkillsService} from './skills.service';
 import {Character} from '../model/character.model';
 import {LimitBurstsService} from './limit-bursts.service';
+import {SkillsServiceMock} from './skills.service.spec';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
     return of(JSON.parse(CHARACTER_TEST_DATA));
-  }
-}
-
-class SkillsServiceMock {
-  public searchForSkillByGumiId(id) {
-    return [];
   }
 }
 
