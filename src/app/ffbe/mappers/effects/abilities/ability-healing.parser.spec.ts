@@ -5,7 +5,7 @@ describe('AbilityHealingParser', () => {
 
   it('should parse healing without mod', () => {
     // GIVEN
-    const effect = JSON.parse('[1, 6, 2, [0, 0, 300, 0, 100]]');
+    const effect = JSON.parse('[1, 5, 2, [0, 0, 300, 0, 100]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN

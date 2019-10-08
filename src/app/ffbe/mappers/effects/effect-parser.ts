@@ -178,8 +178,11 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 2) {
       return 'à un allié';
     }
-    if (effectId1 === 1 && effectId2 === 6) {
+    if (effectId1 === 1 && effectId2 === 5) {
       return 'à un allié sauf le lanceur';
+    }
+    if (effectId1 === 1 && effectId2 === 6) {
+      return 'à une cible';
     }
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
       return 'au lanceur';
@@ -303,5 +306,24 @@ export abstract class EffectParser {
       return 'UNKNOWN esper';
     }
     return '<a href="ffexvius_espers.php?esperid=' + esper.ffchId + '">' + esper.name + '</a>';
+  }
+
+  protected fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
+    skill.attack_count = activatedSKill.attack_count;
+    skill.attack_frames = activatedSKill.attack_frames;
+    skill.attack_damage = activatedSKill.attack_damage;
+    skill.attack_type = activatedSKill.attack_type;
+    skill.physique = activatedSKill.physique;
+    skill.magique = activatedSKill.magique;
+    skill.hybride = activatedSKill.hybride;
+    skill.fixe = activatedSKill.fixe;
+    skill.esper = activatedSKill.esper;
+    skill.type = activatedSKill.type;
+    skill.rarity = activatedSKill.rarity;
+    skill.active = activatedSKill.active;
+    skill.magic_type = activatedSKill.magic_type;
+    skill.cost = activatedSKill.cost;
+    skill.element_inflict = activatedSKill.element_inflict;
+    skill.effects_raw = activatedSKill.effects_raw;
   }
 }

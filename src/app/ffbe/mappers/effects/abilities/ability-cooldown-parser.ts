@@ -39,23 +39,4 @@ export class AbilityCooldownParser extends EffectParser {
     this.fillSkillWithTransitiveActivatedSkillInformation(skill, activatedSkill);
     return baseText + transitiveEffectParsed;
   }
-
-  private fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
-    skill.attack_count = activatedSKill.attack_count;
-    skill.attack_frames = activatedSKill.attack_frames;
-    skill.attack_damage = activatedSKill.attack_damage;
-    skill.attack_type = activatedSKill.attack_type;
-    skill.physique = activatedSKill.physique;
-    skill.magique = activatedSKill.magique;
-    skill.hybride = activatedSKill.hybride;
-    skill.fixe = activatedSKill.fixe;
-    skill.esper = activatedSKill.esper;
-    skill.type = activatedSKill.type;
-    skill.rarity = activatedSKill.rarity;
-    skill.active = activatedSKill.active;
-    skill.magic_type = activatedSKill.magic_type;
-    skill.cost = activatedSKill.cost;
-    skill.element_inflict = activatedSKill.element_inflict;
-    skill.effects_raw = activatedSKill.effects_raw;
-  }
 }
