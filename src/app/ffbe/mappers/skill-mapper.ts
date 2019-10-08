@@ -2,12 +2,18 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
 import {isNullOrUndefined} from 'util';
-import {SkillEffectsMapper} from './effects/skill-effects.mapper';
+import {HTML_LINE_RETURN, SkillEffectsMapper} from './effects/skill-effects.mapper';
+import {EquipmentsService} from '../services/equipments.service';
+import {Equipment} from '../model/equipment/equipment.model';
 
 export class SkillMapper {
 
   public static toCompetence(skill: Skill): Competence {
-    const parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+    let parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+    const parsedItemsRequirements: string = SkillMapper.mapRequirements(skill);
+    if (parsedItemsRequirements.length) {
+      parsedSkillEffects += HTML_LINE_RETURN + parsedItemsRequirements;
+    }
 
     let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
       skill.attack_count[0] : null;
@@ -111,5 +117,28 @@ export class SkillMapper {
       return 5;
     }
     return undefined;
+  }
+
+  private static mapRequirements(skill: Skill) {
+    let requirementsText = '';
+    if (skill.requirements && skill.requirements.length) {
+      requirementsText += 'Activé si l\'unité porte ';
+      requirementsText += skill.requirements
+        .map((requirement: Array<string>) => {
+          const reqType = requirement[0];
+          const reqId = requirement[1];
+
+          if (reqType === 'EQUIP') {
+            const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(+reqId);
+            if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+              return 'UNKNOWN equipment';
+            }
+            return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">'
+              + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+          }
+          return 'UNKNOWN requirement';
+        }).join(' ou ');
+    }
+    return requirementsText;
   }
 }

@@ -5,6 +5,7 @@ import {Competence} from '../model/competence.model';
 import {Skill} from '../model/skill.model';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {isNullOrUndefined} from 'util';
+import {EquipmentsService} from '../services/equipments.service';
 
 @Component({
   selector: 'app-skills',
@@ -18,7 +19,8 @@ export class SkillsComponent implements OnInit {
   gumiId: FormControl;
   competences: Array<Competence>;
 
-  constructor(private skillsService: SkillsService) {
+  constructor(private skillsService: SkillsService,
+              private equipmentsService: EquipmentsService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
