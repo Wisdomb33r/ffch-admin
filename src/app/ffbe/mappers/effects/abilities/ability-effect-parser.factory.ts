@@ -102,6 +102,8 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingTurnSplitParser();
       case 57:
         return new AbilityHealingTurnSplitParser();
+      case 58:
+        return new AbilityStatsModificationParser();
       case 59:
         return new AbilityDispelsParser();
       case 60:
