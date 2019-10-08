@@ -5,6 +5,8 @@ import {isNullOrUndefined} from 'util';
 import {HTML_LINE_RETURN, SkillEffectsMapper} from './effects/skill-effects.mapper';
 import {EquipmentsService} from '../services/equipments.service';
 import {Equipment} from '../model/equipment/equipment.model';
+import {MateriasService} from '../services/materias.service';
+import {Materia} from '../model/materia.model';
 
 export class SkillMapper {
 
@@ -125,16 +127,26 @@ export class SkillMapper {
       requirementsText += 'Activé si l\'unité porte ';
       requirementsText += skill.requirements
         .map((requirement: Array<string>) => {
-          const reqType = requirement[0];
-          const reqId = requirement[1];
+          const reqType: string = requirement[0];
+          const reqId: number = +requirement[1];
 
           if (reqType === 'EQUIP') {
-            const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(+reqId);
-            if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
-              return 'UNKNOWN equipment';
+            if ((reqId >= 300000000 && reqId < 500000000) || (reqId >= 1100000000 && reqId < 1200000000)) {
+              const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(reqId);
+              if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+                return 'UNKNOWN equipment';
+              }
+              return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">'
+                + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
             }
-            return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">'
-              + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+            if ((reqId >= 500000000 && reqId < 600000000) || (reqId >= 1500000000 && reqId < 1600000000)) {
+              const materia: Materia = MateriasService.getInstance().searchForMateriaByGumiId(reqId);
+              if (!materia || !materia.strings || !materia.strings.names || !materia.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
+                return 'UNKNOWN equipment';
+              }
+              return '<a href="ffexvius_objects.php?gumiid=' + materia.gumi_id + '">'
+                + materia.strings.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+            }
           }
           return 'UNKNOWN requirement';
         }).join(' ou ');
