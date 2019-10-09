@@ -46,6 +46,7 @@ import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
 import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
 import {AbilityRaiseParser} from './ability-raise.parser';
 import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
+import {AbilityDodgesParser} from './ability-dodges.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -110,6 +111,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 53:
         return new AbilitySkillMultipleActivationParser();
+      case 54:
+        return new AbilityDodgesParser();
       case 56:
         return new AbilityHealingTurnSplitParser();
       case 57:
