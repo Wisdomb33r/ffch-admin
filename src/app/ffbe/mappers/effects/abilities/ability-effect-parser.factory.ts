@@ -44,6 +44,8 @@ import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increas
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
 import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
 import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
+import {AbilityRaiseParser} from './ability-raise.parser';
+import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -54,6 +56,8 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingParser();
       case 3:
         return new AbilityStatsModificationParser();
+      case 4:
+        return new AbilityRaiseParser();
       case 5:
         return new AbilityAilmentsCureParser();
       case 6:
@@ -86,6 +90,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesDrainParser();
       case 26:
         return new AbilityHealingPercentParser();
+      case 27:
+        return new AbilityRaiseAutoParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
       case 31:
