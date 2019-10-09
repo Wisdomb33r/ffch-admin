@@ -47,6 +47,7 @@ import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
 import {AbilityRaiseParser} from './ability-raise.parser';
 import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
 import {AbilityDodgesParser} from './ability-dodges.parser';
+import {AbilityProvocationsParser} from './ability-provocations.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -123,6 +124,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDispelsParser();
       case 60:
         return new AbilityCharmInflictionParser();
+      case 61:
+        return new AbilityProvocationsParser();
       case 63:
         return new AbilityLbSpeedIncreaseParser();
       case 64:
