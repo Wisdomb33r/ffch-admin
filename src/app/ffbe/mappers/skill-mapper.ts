@@ -121,7 +121,7 @@ export class SkillMapper {
     return undefined;
   }
 
-  private static mapRequirements(skill: Skill) {
+  private static mapRequirements(skill: Skill): string {
     let requirementsText = '';
     if (skill.requirements && skill.requirements.length) {
       requirementsText += 'Activé si l\'unité porte ';
