@@ -181,6 +181,9 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
     }
+    if (effectId1 === 3 && effectId2 === 1) {
+      return 'à un adversaire au hasard';
+    }
     if (effectId1 === 1 && effectId2 === 3) {
       return 'au lanceur';
     }
@@ -195,6 +198,9 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
     }
+    if (effectId1 === 3 && effectId2 === 1) {
+      return 'à un adversaire au hasard';
+    }
     if (effectId1 === 2 && effectId2 === 1) {
       return 'aux adversaires';
     }
@@ -204,13 +210,19 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 5) {
       return 'à un allié sauf le lanceur';
     }
+    if (effectId1 === 3 && effectId2 === 2) {
+      return 'à un allié au hasard';
+    }
     if (effectId1 === 1 && effectId2 === 6) {
       return 'à une cible';
+    }
+    if (effectId1 === 2 && effectId2 === 6) {
+      return 'à un groupe';
     }
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
       return 'au lanceur';
     }
-    if (effectId1 === 2 && (effectId2 === 2 || effectId2 === 6)) {
+    if (effectId1 === 2 && effectId2 === 2) {
       return 'aux alliés';
     }
     if (effectId1 === 2 && effectId2 === 5) {
