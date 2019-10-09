@@ -86,6 +86,29 @@ export abstract class EffectParser {
     }
   }
 
+  protected getAilmentFromId(ailementId: number): string {
+    switch (ailementId) {
+      case 1:
+        return 'Poison';
+      case 2:
+        return 'Cécité';
+      case 3:
+        return 'Sommeil';
+      case 4:
+        return 'Silence';
+      case 5:
+        return 'Paralysie';
+      case 6:
+        return 'Confusion';
+      case 7:
+        return 'Maladie';
+      case 8:
+        return 'Pétrification';
+      default:
+        return 'UNKNOWN ailment';
+    }
+  }
+
   protected getElementFromId(elementId: number): string {
     switch (elementId) {
       case 1:
