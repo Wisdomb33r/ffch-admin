@@ -6,6 +6,8 @@ import {Character} from '../model/character.model';
 import {Amelioration} from '../model/amelioration.model';
 import {isNullOrUndefined} from 'util';
 import {LatentSkillMapper} from '../mappers/latent-skill-mapper';
+import {EquipmentsService} from '../services/equipments.service';
+import {MateriasService} from '../services/materias.service';
 
 @Component({
   selector: 'app-latent-skills',
@@ -18,7 +20,11 @@ export class LatentSkillsComponent implements OnInit {
   character: Character;
   ameliorations: Array<Amelioration>;
 
-  constructor(private latentSkillsService: LatentSkillsService, private charactersService: CharactersService) {
+  constructor(private latentSkillsService: LatentSkillsService,
+              private charactersService: CharactersService,
+              // do not remove the injection of EquipmentsService and MateriasService, it serves to load the INSTANCE singletons
+              private equipmentsService: EquipmentsService,
+              private materiasService: MateriasService) {
     this.characterName = new FormControl('');
   }
 
