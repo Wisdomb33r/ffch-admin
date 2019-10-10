@@ -10,7 +10,11 @@ export class AbilityDamagesPhysicalJumpDelayParser extends EffectParser {
     // multi magic spells seems to have the same effect ID than jumps... wtf ?
     if (effect[0] === 0 && effect[1] === 3) {
       if (effect[3].length === 1 && effect[3][0] === 'none') {
-        return 'Permet l\'utilisation des sorts de magie 2x par tour';
+        let magicTypeText = '';
+        if (effect[2] === 44) {
+          magicTypeText = 'noire ';
+        }
+        return 'Permet l\'utilisation des sorts de magie ' + magicTypeText + '2x par tour';
       }
       if (effect[3].length === 3) {
         const magicType = effect[3][0];

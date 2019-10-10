@@ -112,8 +112,11 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalComboParser();
       case 43:
         return new AbilityDamagesPhysicalCriticalHitParser();
+      case 44:
+        // in fact dual cast black magic type, but other multi-cast magic is within jump damage effect
+        return new AbilityDamagesPhysicalJumpDelayParser();
       case 45:
-        // in fact dual cast all magic type, but other multi-cast magic is withing jump damage effect
+        // in fact dual cast all magic type, but other multi-cast magic is within jump damage effect
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 52:
         return new AbilityDamagesPhysicalJumpDelayParser();
