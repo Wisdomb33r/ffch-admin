@@ -3,7 +3,7 @@ import {Skill} from '../../../model/skill.model';
 
 export class AbilityElementResistancesParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 10) {
+    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 10 || effect[3][8] !== 1) {
       return 'Effet AbilityElementResistancesParser inconnu: Mauvaise liste de paramètres';
     }
     const increases = [
@@ -16,18 +16,13 @@ export class AbilityElementResistancesParser extends EffectParser {
       {name: 'Lumière', value: effect[3][6]},
       {name: 'Ténèbres', value: effect[3][7]},
     ];
-    // TODO What if effect[3][8] !== 1 ?
 
-    if (increases.every(element => {
-      return (element.value === 0);
-    })) {
+    if (increases.every(element => element.value === 0)) {
       return '';
     }
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
-
     const target = this.getTarget(effect[0], effect[1], effect[2]);
-
     const turns = (effect[3][9] >= 0) ? ' pour ' + effect[3][9] + ' tours' : ' pour ce combat';
 
     let dispellable = '';

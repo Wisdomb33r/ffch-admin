@@ -217,7 +217,7 @@ export abstract class EffectParser {
       return 'à une cible';
     }
     if (effectId1 === 2 && effectId2 === 6) {
-      return 'à un groupe';
+      return 'au groupe d\'une cible';
     }
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
       return 'au lanceur';

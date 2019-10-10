@@ -8,7 +8,7 @@ describe('AbilityHealingFixedParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Soigne 70 PV à un groupe');
+    expect(s).toEqual('Soigne 70 PV au groupe d\'une cible');
   });
 
   it('should parse healing fixed to target', () => {

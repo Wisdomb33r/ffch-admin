@@ -49,6 +49,7 @@ import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
 import {AbilityDodgesParser} from './ability-dodges.parser';
 import {AbilityProvocationsParser} from './ability-provocations.parser';
 import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
+import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -99,6 +100,8 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingTurnSplitParser();
       case 31:
         return new AbilityLbTransferParser();
+      case 32:
+        return new AbilityEsperOrbsParser();
       case 33:
         return new AbilityElementResistancesParser();
       case 40:
@@ -109,6 +112,9 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalComboParser();
       case 43:
         return new AbilityDamagesPhysicalCriticalHitParser();
+      case 45:
+        // in fact dual cast all magic type, but other multi-cast magic is withing jump damage effect
+        return new AbilityDamagesPhysicalJumpDelayParser();
       case 52:
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 53:
