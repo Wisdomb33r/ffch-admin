@@ -50,6 +50,7 @@ import {AbilityDodgesParser} from './ability-dodges.parser';
 import {AbilityProvocationsParser} from './ability-provocations.parser';
 import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
 import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
+import {AbilityCoversParser} from './ability-covers.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -158,6 +159,8 @@ export class AbilityEffectParserFactory {
         return new AbilityKillerDamageIncreaseParser();
       case 95:
         return new AbilityElementImbueParser();
+      case 96:
+        return new AbilityCoversParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
       case 99:
