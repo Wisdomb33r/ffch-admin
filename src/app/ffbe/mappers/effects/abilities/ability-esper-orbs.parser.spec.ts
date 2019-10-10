@@ -17,7 +17,7 @@ describe('AbilityEsperOrbsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+0-1 sphère de chimère');
+    expect(s).toEqual('+0 à 1 sphère de chimère');
   });
 
   it('should parse multiples esper orbs', () => {
@@ -26,7 +26,7 @@ describe('AbilityEsperOrbsParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+3-5 sphères de chimère');
+    expect(s).toEqual('+3 à 5 sphères de chimère');
   });
 
 });

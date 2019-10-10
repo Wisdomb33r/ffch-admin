@@ -14,7 +14,7 @@ export class AbilityEsperOrbsParser extends EffectParser {
     if (minOrbs === maxOrbs) {
       orbText = minOrbs;
     } else {
-      orbText = minOrbs + '-' + maxOrbs;
+      orbText = minOrbs + ' à ' + maxOrbs;
     }
 
     return '+' + orbText + ' sphère' + (maxOrbs > 1 ? 's' : '') + ' de chimère';
