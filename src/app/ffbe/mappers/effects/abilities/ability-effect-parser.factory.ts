@@ -48,6 +48,7 @@ import {AbilityRaiseParser} from './ability-raise.parser';
 import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
 import {AbilityDodgesParser} from './ability-dodges.parser';
 import {AbilityProvocationsParser} from './ability-provocations.parser';
+import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -160,6 +161,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
         return new AbilityDamagesMagicSprScalingParser();
+      case 111:
+        return new AbilityDebuffsCureParser();
       case 124:
         return new AbilityDamagesEvokerParser();
       case 125:

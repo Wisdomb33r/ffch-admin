@@ -62,21 +62,21 @@ export abstract class EffectParser {
       case 22:
         return 'PM par tour';
       case 23:
-        return 'rés. au feu';
+        return 'rés. Feu';
       case 24:
-        return 'rés. à la glace';
+        return 'rés. Glace';
       case 25:
-        return 'rés. à la foudre';
+        return 'rés. Foudre';
       case 26:
-        return 'rés. à l\'eau';
+        return 'rés. Eau';
       case 27:
-        return 'rés. au vent';
+        return 'rés. Vent';
       case 28:
-        return 'rés. à la terre';
+        return 'rés. Terre';
       case 29:
-        return 'rés. à la lumière';
+        return 'rés. Lumière';
       case 30:
-        return 'rés. aux ténèbres';
+        return 'rés. Ténèbres';
       case 56:
         return 'esquives d\'attaques physiques';
       case 58:
@@ -112,21 +112,21 @@ export abstract class EffectParser {
   protected getElementFromId(elementId: number): string {
     switch (elementId) {
       case 1:
-        return 'feu';
+        return 'Feu';
       case 2:
-        return 'glace';
+        return 'Glace';
       case 3:
-        return 'foudre';
+        return 'Foudre';
       case 4:
-        return 'eau';
+        return 'Eau';
       case 5:
-        return 'vent';
+        return 'Vent';
       case 6:
-        return 'terre';
+        return 'Terre';
       case 7:
-        return 'lumière';
+        return 'Lumière';
       case 8:
-        return 'ténèbres';
+        return 'Ténèbres';
       default:
         return 'UNKNOWN element';
     }
