@@ -4,6 +4,7 @@
     <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
     <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
     {{competence.gumi_id}} {{competence.nom}}
+    <span *ngIf="competence.gumi_id_lie">(active {{competence.gumi_id_lie}})</span>
   </mat-card-title>
   <div *ngIf="!present || different || displayed">
 

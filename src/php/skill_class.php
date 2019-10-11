@@ -22,6 +22,7 @@ class Competence
   public $frames;
   public $damages;
   public $gumi_id;
+  public $gumi_id_lie;
   public $enhanced;
 
   function __construct($brex_competence)
@@ -46,6 +47,7 @@ class Competence
     $this->frames = $brex_competence->frames;
     $this->damages = $brex_competence->damages;
     $this->gumi_id = $brex_competence->gumi_id;
+    $this->gumi_id_lie = $brex_competence->gumi_id_lie;
     $this->enhanced = $brex_competence->enhanced ? true : false;
   }
 }

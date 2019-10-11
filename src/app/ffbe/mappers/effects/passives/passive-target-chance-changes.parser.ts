@@ -7,6 +7,8 @@ export class PassiveTargetChanceChangesParser extends EffectParser {
       return 'Effet PassiveTargetChanceChangesParser inconnu: Mauvaise liste de paramètres';
     }
 
-    return (effect[2] === 24 ? '+' : '') + (effect[2] === 25 ? '-' : '') + effect[3][0] + '% de chance de se faire cibler';
+    const sign = (effect[2] === 24 ? '+' : '-');
+
+    return `${sign}${effect[3][0]}% de chance d'être ciblé`;
   }
 }

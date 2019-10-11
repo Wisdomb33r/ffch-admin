@@ -21,6 +21,7 @@ export class Skill {
   public requirements: Array<Array<string>>;
 
   // transcient fields
+  public gumiIdActivatedSkill;
   public isActivatedByPassiveSkill = false;
   public physique = false;
   public magique = false;

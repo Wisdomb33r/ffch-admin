@@ -344,7 +344,7 @@ export abstract class EffectParser {
   }
 
   protected fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
-    skill.gumi_id = activatedSKill.gumi_id;
+    skill.gumiIdActivatedSkill = activatedSKill.gumi_id;
     skill.attack_count = activatedSKill.attack_count;
     skill.attack_frames = activatedSKill.attack_frames;
     skill.attack_damage = activatedSKill.attack_damage;
