@@ -3,6 +3,7 @@ export class Competence {
   public enhanced: boolean;
 
   constructor(public gumi_id: number,
+              public gumi_id_lie: number,
               public categorie: number,
               public physique: boolean,
               public magique: boolean,
@@ -29,6 +30,7 @@ export class Competence {
   public static produce(competence: Competence): Competence {
     const copy = new Competence(
       competence.gumi_id,
+      competence.gumi_id_lie,
       competence.categorie,
       competence.physique,
       competence.magique,

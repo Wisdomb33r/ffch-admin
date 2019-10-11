@@ -21,6 +21,7 @@ export class SkillMapper {
 
     return new Competence(
       skill.gumi_id,
+      skill.gumiIdActivatedSkill,
       SkillMapper.determineCategorieCompetence(skill),
       skill.physique,
       skill.magique,

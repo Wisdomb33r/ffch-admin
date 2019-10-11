@@ -14,6 +14,7 @@ export class CompetencesComparingContainer {
 
   public isDifferentFromFfchDb(): boolean {
     return this.isNomDifferent()
+      || this.isGumiIdLieDifferent()
       || this.isCategorieDifferente()
       || this.isEffetDifferent()
       || this.isPmDifferent()
@@ -22,7 +23,16 @@ export class CompetencesComparingContainer {
       || this.isHitsDifferent()
       || this.isFramesDifferent()
       || this.isDamagesDifferent()
+      || this.isDamageTypeDifferent()
       ;
+  }
+
+  private isGumiIdLieDifferent(): boolean {
+    if (!this.dbCompetence) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.competence.gumi_id_lie, this.dbCompetence.gumi_id_lie);
+    }
   }
 
   private isCategorieDifferente(): boolean {
@@ -95,5 +105,16 @@ export class CompetencesComparingContainer {
     } else {
       return FfbeUtils.checkIfStringsDifferent(this.competence.damages, this.dbCompetence.damages);
     }
+  }
+
+  private isDamageTypeDifferent(): boolean {
+    if (!this.dbCompetence) {
+      return false;
+    }
+    return this.competence.physique !== this.dbCompetence.physique
+      || this.competence.magique !== this.dbCompetence.magique
+      || this.competence.hybride !== this.dbCompetence.hybride
+      || this.competence.fixe !== this.dbCompetence.fixe
+      || this.competence.esper !== this.dbCompetence.esper
   }
 }
