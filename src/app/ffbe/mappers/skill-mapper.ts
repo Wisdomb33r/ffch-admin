@@ -17,29 +17,7 @@ export class SkillMapper {
       parsedSkillEffects += HTML_LINE_RETURN + parsedItemsRequirements;
     }
 
-    let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
-      skill.attack_count[0] : null;
-    let attackFrames: string = skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null;
-    let attackDamages: string = skill.attack_damage && skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null;
-    let frames = [];
-
-    const effectsWithDamages = skill.effects_raw.filter((effect) => skill.isEffectWithDamage(effect));
-    const multipleEffects = effectsWithDamages && effectsWithDamages.length > 1;
-
-    effectsWithDamages.forEach((value, index) => {
-      if (Array.isArray(skill.attack_frames) && skill.attack_frames.length > index) {
-        frames = frames.concat(skill.attack_frames[index]);
-      }
-    });
-    frames.sort((a, b) => {
-      return a - b;
-    });
-
-    if (multipleEffects) {
-      attackCount = Array.isArray(frames) && frames.length > 0 ? frames.length : null;
-      attackFrames = Array.isArray(frames) && frames.length > 0 ? frames.join(' ') : null;
-      attackDamages = Array.isArray(frames) && frames.length > 0 ? frames.map(frame => 0).join(' ') : null;
-    }
+    const hitsFramesDamagesObject = SkillMapper.mapHitsFramesAndDamages(skill);
 
     return new Competence(
       skill.gumi_id,
@@ -61,10 +39,57 @@ export class SkillMapper {
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
       !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,
       !skill.cost || skill.cost.EP === 0 ? null : skill.cost.EP,
-      attackCount,
-      attackFrames,
-      attackDamages
+      hitsFramesDamagesObject.hits,
+      hitsFramesDamagesObject.frames,
+      hitsFramesDamagesObject.damages,
     );
+  }
+
+  public static mapHitsFramesAndDamages(skill: Skill): { hits: number, frames: string, damages: string } {
+    let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
+      skill.attack_count[0] : null;
+    let attackFrames: string = skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null;
+    let attackDamages: string = skill.attack_damage && skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null;
+    let frames = [];
+    let damages = [];
+
+    let lastDamageEffectIndex: number;
+    const effectsWithDamages = [];
+    skill.effects_raw.forEach((effect, index) => {
+      if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
+        lastDamageEffectIndex = index;
+        effectsWithDamages.push(effect);
+      }
+    });
+
+    if (lastDamageEffectIndex > 0 && skill.attack_frames && skill.attack_frames.length > lastDamageEffectIndex) {
+      skill.effects_raw.forEach((effect, index) => {
+        if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
+          frames = frames.concat(skill.attack_frames[index]);
+          damages = damages.concat(skill.attack_damage[index]);
+        }
+      });
+    } else {
+      effectsWithDamages.forEach((value, index) => {
+        if (Array.isArray(skill.attack_frames) && skill.attack_frames.length > index) {
+          frames = frames.concat(skill.attack_frames[index]);
+          damages = damages.concat(skill.attack_damage[index]);
+        }
+      });
+    }
+    frames.sort((a, b) => a - b);
+
+    if (frames.length > 0) {
+      attackCount = frames.length;
+      attackFrames = frames.join(' ');
+      if (effectsWithDamages.length > 1) {
+        attackDamages = frames.map(frame => 0).join(' ');
+      } else {
+        attackDamages = damages.join(' ');
+      }
+    }
+
+    return {hits: attackCount, frames: attackFrames, damages: attackDamages};
   }
 
   public static mapUndefinedEnhanced(competence: Competence) {
