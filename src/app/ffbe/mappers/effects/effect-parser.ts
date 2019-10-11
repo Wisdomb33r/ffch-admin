@@ -62,21 +62,21 @@ export abstract class EffectParser {
       case 22:
         return 'PM par tour';
       case 23:
-        return 'rés. au feu';
+        return 'rés. Feu';
       case 24:
-        return 'rés. à la glace';
+        return 'rés. Glace';
       case 25:
-        return 'rés. à la foudre';
+        return 'rés. Foudre';
       case 26:
-        return 'rés. à l\'eau';
+        return 'rés. Eau';
       case 27:
-        return 'rés. au vent';
+        return 'rés. Vent';
       case 28:
-        return 'rés. à la terre';
+        return 'rés. Terre';
       case 29:
-        return 'rés. à la lumière';
+        return 'rés. Lumière';
       case 30:
-        return 'rés. aux ténèbres';
+        return 'rés. Ténèbres';
       case 56:
         return 'esquives d\'attaques physiques';
       case 58:
@@ -86,24 +86,47 @@ export abstract class EffectParser {
     }
   }
 
+  protected getAilmentFromId(ailementId: number): string {
+    switch (ailementId) {
+      case 1:
+        return 'Poison';
+      case 2:
+        return 'Cécité';
+      case 3:
+        return 'Sommeil';
+      case 4:
+        return 'Silence';
+      case 5:
+        return 'Paralysie';
+      case 6:
+        return 'Confusion';
+      case 7:
+        return 'Maladie';
+      case 8:
+        return 'Pétrification';
+      default:
+        return 'UNKNOWN ailment';
+    }
+  }
+
   protected getElementFromId(elementId: number): string {
     switch (elementId) {
       case 1:
-        return 'feu';
+        return 'Feu';
       case 2:
-        return 'glace';
+        return 'Glace';
       case 3:
-        return 'foudre';
+        return 'Foudre';
       case 4:
-        return 'eau';
+        return 'Eau';
       case 5:
-        return 'vent';
+        return 'Vent';
       case 6:
-        return 'terre';
+        return 'Terre';
       case 7:
-        return 'lumière';
+        return 'Lumière';
       case 8:
-        return 'ténèbres';
+        return 'Ténèbres';
       default:
         return 'UNKNOWN element';
     }
@@ -158,6 +181,9 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
     }
+    if (effectId1 === 3 && effectId2 === 1) {
+      return 'à un adversaire au hasard';
+    }
     if (effectId1 === 1 && effectId2 === 3) {
       return 'au lanceur';
     }
@@ -172,19 +198,31 @@ export abstract class EffectParser {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
     }
+    if (effectId1 === 3 && effectId2 === 1) {
+      return 'à un adversaire au hasard';
+    }
     if (effectId1 === 2 && effectId2 === 1) {
       return 'aux adversaires';
     }
     if (effectId1 === 1 && effectId2 === 2) {
       return 'à un allié';
     }
-    if (effectId1 === 1 && effectId2 === 6) {
+    if (effectId1 === 1 && effectId2 === 5) {
       return 'à un allié sauf le lanceur';
+    }
+    if (effectId1 === 3 && effectId2 === 2) {
+      return 'à un allié au hasard';
+    }
+    if (effectId1 === 1 && effectId2 === 6) {
+      return 'à une cible';
+    }
+    if (effectId1 === 2 && effectId2 === 6) {
+      return 'au groupe d\'une cible';
     }
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
       return 'au lanceur';
     }
-    if (effectId1 === 2 && (effectId2 === 2 || effectId2 === 6)) {
+    if (effectId1 === 2 && effectId2 === 2) {
       return 'aux alliés';
     }
     if (effectId1 === 2 && effectId2 === 5) {
@@ -303,5 +341,25 @@ export abstract class EffectParser {
       return 'UNKNOWN esper';
     }
     return '<a href="ffexvius_espers.php?esperid=' + esper.ffchId + '">' + esper.name + '</a>';
+  }
+
+  protected fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
+    skill.gumi_id = activatedSKill.gumi_id;
+    skill.attack_count = activatedSKill.attack_count;
+    skill.attack_frames = activatedSKill.attack_frames;
+    skill.attack_damage = activatedSKill.attack_damage;
+    skill.attack_type = activatedSKill.attack_type;
+    skill.physique = activatedSKill.physique;
+    skill.magique = activatedSKill.magique;
+    skill.hybride = activatedSKill.hybride;
+    skill.fixe = activatedSKill.fixe;
+    skill.esper = activatedSKill.esper;
+    skill.type = activatedSKill.type;
+    skill.rarity = activatedSKill.rarity;
+    skill.active = activatedSKill.active;
+    skill.magic_type = activatedSKill.magic_type;
+    skill.cost = activatedSKill.cost;
+    skill.element_inflict = activatedSKill.element_inflict;
+    skill.effects_raw = activatedSKill.effects_raw;
   }
 }

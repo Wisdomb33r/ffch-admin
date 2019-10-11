@@ -2,36 +2,22 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
 import {isNullOrUndefined} from 'util';
-import {SkillEffectsMapper} from './effects/skill-effects.mapper';
+import {HTML_LINE_RETURN, SkillEffectsMapper} from './effects/skill-effects.mapper';
+import {EquipmentsService} from '../services/equipments.service';
+import {Equipment} from '../model/equipment/equipment.model';
+import {MateriasService} from '../services/materias.service';
+import {Materia} from '../model/materia.model';
 
 export class SkillMapper {
 
   public static toCompetence(skill: Skill): Competence {
-    const parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
-
-    let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
-      skill.attack_count[0] : null;
-    let attackFrames: string = skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null;
-    let attackDamages: string = skill.attack_damage && skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null;
-    let frames = [];
-
-    const effectsWithDamages = skill.effects_raw.filter((effect) => skill.isEffectWithDamage(effect));
-    const multipleEffects = effectsWithDamages && effectsWithDamages.length > 1;
-
-    effectsWithDamages.forEach((value, index) => {
-      if (Array.isArray(skill.attack_frames) && skill.attack_frames.length > index) {
-        frames = frames.concat(skill.attack_frames[index]);
-      }
-    });
-    frames.sort((a, b) => {
-      return a - b;
-    });
-
-    if (multipleEffects) {
-      attackCount = Array.isArray(frames) && frames.length > 0 ? frames.length : null;
-      attackFrames = Array.isArray(frames) && frames.length > 0 ? frames.join(' ') : null;
-      attackDamages = Array.isArray(frames) && frames.length > 0 ? frames.map(frame => 0).join(' ') : null;
+    let parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+    const parsedItemsRequirements: string = SkillMapper.mapRequirements(skill);
+    if (parsedItemsRequirements.length) {
+      parsedSkillEffects += HTML_LINE_RETURN + parsedItemsRequirements;
     }
+
+    const hitsFramesDamagesObject = SkillMapper.mapHitsFramesAndDamages(skill);
 
     return new Competence(
       skill.gumi_id,
@@ -53,10 +39,57 @@ export class SkillMapper {
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
       !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,
       !skill.cost || skill.cost.EP === 0 ? null : skill.cost.EP,
-      attackCount,
-      attackFrames,
-      attackDamages
+      hitsFramesDamagesObject.hits,
+      hitsFramesDamagesObject.frames,
+      hitsFramesDamagesObject.damages,
     );
+  }
+
+  public static mapHitsFramesAndDamages(skill: Skill): { hits: number, frames: string, damages: string } {
+    let attackCount: number = skill.attack_count && skill.attack_count.length > 0 && skill.attack_count[0] > 0 ?
+      skill.attack_count[0] : null;
+    let attackFrames: string = skill.attack_frames && skill.attack_frames.length > 0 ? skill.attack_frames[0].join(' ') : null;
+    let attackDamages: string = skill.attack_damage && skill.attack_damage.length > 0 ? skill.attack_damage[0].join(' ') : null;
+    let frames = [];
+    let damages = [];
+
+    let lastDamageEffectIndex: number;
+    const effectsWithDamages = [];
+    skill.effects_raw.forEach((effect, index) => {
+      if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
+        lastDamageEffectIndex = index;
+        effectsWithDamages.push(effect);
+      }
+    });
+
+    if (lastDamageEffectIndex > 0 && skill.attack_frames && skill.attack_frames.length > lastDamageEffectIndex) {
+      skill.effects_raw.forEach((effect, index) => {
+        if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
+          frames = frames.concat(skill.attack_frames[index]);
+          damages = damages.concat(skill.attack_damage[index]);
+        }
+      });
+    } else {
+      effectsWithDamages.forEach((value, index) => {
+        if (Array.isArray(skill.attack_frames) && skill.attack_frames.length > index) {
+          frames = frames.concat(skill.attack_frames[index]);
+          damages = damages.concat(skill.attack_damage[index]);
+        }
+      });
+    }
+    frames.sort((a, b) => a - b);
+
+    if (frames.length > 0) {
+      attackCount = frames.length;
+      attackFrames = frames.join(' ');
+      if (effectsWithDamages.length > 1) {
+        attackDamages = frames.map(frame => 0).join(' ');
+      } else {
+        attackDamages = damages.join(' ');
+      }
+    }
+
+    return {hits: attackCount, frames: attackFrames, damages: attackDamages};
   }
 
   public static mapUndefinedEnhanced(competence: Competence) {
@@ -111,5 +144,38 @@ export class SkillMapper {
       return 5;
     }
     return undefined;
+  }
+
+  private static mapRequirements(skill: Skill): string {
+    let requirementsText = '';
+    if (skill.requirements && skill.requirements.length) {
+      requirementsText += 'Activé si l\'unité porte ';
+      requirementsText += skill.requirements
+        .map((requirement: Array<string>) => {
+          const reqType: string = requirement[0];
+          const reqId: number = +requirement[1];
+
+          if (reqType === 'EQUIP') {
+            if ((reqId >= 300000000 && reqId < 500000000) || (reqId >= 1100000000 && reqId < 1200000000)) {
+              const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(reqId);
+              if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+                return 'UNKNOWN equipment';
+              }
+              return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">'
+                + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+            }
+            if ((reqId >= 500000000 && reqId < 600000000) || (reqId >= 1500000000 && reqId < 1600000000)) {
+              const materia: Materia = MateriasService.getInstance().searchForMateriaByGumiId(reqId);
+              if (!materia || !materia.strings || !materia.strings.names || !materia.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
+                return 'UNKNOWN equipment';
+              }
+              return '<a href="ffexvius_objects.php?gumiid=' + materia.gumi_id + '">'
+                + materia.strings.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+            }
+          }
+          return 'UNKNOWN requirement';
+        }).join(' ou ');
+    }
+    return requirementsText;
   }
 }

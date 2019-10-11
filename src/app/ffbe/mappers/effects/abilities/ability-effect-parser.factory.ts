@@ -41,6 +41,16 @@ import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
 import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increase.parser';
+import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
+import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
+import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
+import {AbilityRaiseParser} from './ability-raise.parser';
+import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
+import {AbilityDodgesParser} from './ability-dodges.parser';
+import {AbilityProvocationsParser} from './ability-provocations.parser';
+import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
+import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
+import {AbilityCoversParser} from './ability-covers.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -51,6 +61,10 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingParser();
       case 3:
         return new AbilityStatsModificationParser();
+      case 4:
+        return new AbilityRaiseParser();
+      case 5:
+        return new AbilityAilmentsCureParser();
       case 6:
         return new AbilityAilmentsInflictionParser();
       case 7:
@@ -81,8 +95,14 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesDrainParser();
       case 26:
         return new AbilityHealingPercentParser();
+      case 27:
+        return new AbilityRaiseAutoParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
+      case 31:
+        return new AbilityLbTransferParser();
+      case 32:
+        return new AbilityEsperOrbsParser();
       case 33:
         return new AbilityElementResistancesParser();
       case 40:
@@ -93,16 +113,30 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalComboParser();
       case 43:
         return new AbilityDamagesPhysicalCriticalHitParser();
+      case 44:
+        // in fact dual cast black magic type, but other multi-cast magic is within jump damage effect
+        return new AbilityDamagesPhysicalJumpDelayParser();
+      case 45:
+        // in fact dual cast all magic type, but other multi-cast magic is within jump damage effect
+        return new AbilityDamagesPhysicalJumpDelayParser();
       case 52:
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 53:
         return new AbilitySkillMultipleActivationParser();
+      case 54:
+        return new AbilityDodgesParser();
       case 56:
         return new AbilityHealingTurnSplitParser();
       case 57:
         return new AbilityHealingTurnSplitParser();
+      case 58:
+        return new AbilityStatsModificationParser();
       case 59:
         return new AbilityDispelsParser();
+      case 60:
+        return new AbilityCharmInflictionParser();
+      case 61:
+        return new AbilityProvocationsParser();
       case 63:
         return new AbilityLbSpeedIncreaseParser();
       case 64:
@@ -125,6 +159,8 @@ export class AbilityEffectParserFactory {
         return new AbilityKillerDamageIncreaseParser();
       case 95:
         return new AbilityElementImbueParser();
+      case 96:
+        return new AbilityCoversParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
       case 99:
@@ -137,6 +173,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalDefScalingParser();
       case 103:
         return new AbilityDamagesMagicSprScalingParser();
+      case 111:
+        return new AbilityDebuffsCureParser();
       case 124:
         return new AbilityDamagesEvokerParser();
       case 125:

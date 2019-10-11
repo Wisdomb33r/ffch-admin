@@ -83,4 +83,23 @@ describe('AbilityStatsModificationParser', () => {
     // THEN
     expect(s).toEqual('-30% MAG, -20% ATT aux adversaires pour 5 tours');
   });
+
+
+  it('should parse stats increase for all allies while singing', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 2, 58, [30,  40,  10,  20,  3,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+40% DÉF, +30% ATT, +20% PSY, +10% MAG aux alliés pour 3 tours en chantant');
+  });
+
+  it('should parse singing-only effect', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 58, [0,  0,  0,  0,  4,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Chante pour 4 tours');
+  });
 });

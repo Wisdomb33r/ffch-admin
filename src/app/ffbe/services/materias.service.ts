@@ -8,12 +8,18 @@ import {Skill} from '../model/skill.model';
 
 @Injectable()
 export class MateriasService {
+  private static INSTANCE: MateriasService;
 
   private materiasFromDataMining = null;
+
+  public static getInstance(): MateriasService {
+    return MateriasService.INSTANCE;
+  }
 
   constructor(private dataMiningClientService: DataMiningClientService,
               private skillsService: SkillsService) {
     this.loadMateriasFromDataMining();
+    MateriasService.INSTANCE = this;
   }
 
   public loadMateriasFromDataMining() {

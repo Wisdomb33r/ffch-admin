@@ -3,6 +3,24 @@ import {Skill} from '../../../model/skill.model';
 
 describe('AbilityDamagesPhysicalJumpDelayParser', () => {
 
+  it('should parse dual cast black magic effect 44', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 44, ["none"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Permet l\'utilisation des sorts de magie noire 2x par tour');
+  });
+
+  it('should parse dual cast all magic effect 45', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 45, ["none"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Permet l\'utilisation des sorts de magie 2x par tour');
+  });
+
   it('should parse dual cast all magic', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 52, [0, 2, 123456]]');

@@ -7,8 +7,17 @@ import {
   ABILITY_SKILLS_TEST_DATA,
   MAGIC_SKILLS_NAMES_TEST_DATA,
   MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  MAGIC_SKILLS_TEST_DATA
+  MAGIC_SKILLS_TEST_DATA,
+  PASSIVE_SKILLS_TEST_DATA
 } from '../model/skill.model.spec';
+import {EQUIPMENTS_TEST_DATA} from '../model/equipment/equipment.model.spec';
+import {Equipment} from '../model/equipment/equipment.model';
+import {EquipmentsServiceMock} from '../services/equipments.service.spec';
+import {EquipmentsService} from '../services/equipments.service';
+import {MATERIAS_TEST_DATA} from '../model/materia.model.spec';
+import {MateriasService} from '../services/materias.service';
+import {MateriasServiceMock} from '../services/materias.service.spec';
+import {Materia} from '../model/materia.model';
 
 describe('SkillMapper', () => {
   it('should transform ability icon string to number', () => {
@@ -96,6 +105,37 @@ describe('SkillMapper', () => {
     expect(competence.hits).toEqual(1);
     expect(competence.frames).toEqual('130');
     expect(competence.damages).toEqual('100');
+  });
+
+  it('should map requirements correctly into a text', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100010'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['100010'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['100010'];
+    skill.requirements = [['EQUIP', '301000400'], ['EQUIP', '504231141']];
+
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000400'];
+    equipment.gumi_id = 301000400;
+    const equipmentsServiceMock = new EquipmentsServiceMock() as EquipmentsService;
+    EquipmentsService['INSTANCE'] = equipmentsServiceMock;
+    spyOn(equipmentsServiceMock, 'searchForEquipmentByGumiId').and.returnValues(equipment);
+
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504100090'];
+    equipment.gumi_id = 504100090;
+    const materiasServiceMock = new MateriasServiceMock() as MateriasService;
+    MateriasService['INSTANCE'] = materiasServiceMock;
+    spyOn(materiasServiceMock, 'searchForMateriaByGumiId').and.returnValues(materia);
+
+    // WHEN
+    const reqText = SkillMapper['mapRequirements'](skill);
+    // THEN
+    expect(reqText).toEqual('Activé si l\'unité porte <a href="ffexvius_objects.php?gumiid=504100090">Dague</a> '
+      + 'ou <a href="ffexvius_objects.php?gumiid=undefined">ATT +30%</a>');
   });
 
 });

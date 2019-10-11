@@ -49,7 +49,7 @@ describe('AbilityElementResistancesParser', () => {
 
   it('should parse no stats breaks for one enemy', () => {
     // GIVEN
-    const effect = JSON.parse('[1, 1, 33, [0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]');
+    const effect = JSON.parse('[1, 1, 33, [0,  0,  0,  0,  0,  0,  0,  0,  1,  0]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN

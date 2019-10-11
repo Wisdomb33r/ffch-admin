@@ -15,18 +15,7 @@ import {CHARACTER_TEST_DATA} from '../../model/character.model.spec';
 import {Character} from '../../model/character.model';
 import {CharactersService} from '../../services/characters.service';
 import {SkillsServiceMock} from '../../services/skills.service.spec';
-
-class EquipmentsServiceMock {
-  private static INSTANCE: EquipmentsServiceMock = new EquipmentsServiceMock();
-
-  public static getInstance() {
-    return EquipmentsServiceMock.INSTANCE;
-  }
-
-  public searchForEquipmentByGumiId(gumiId: number): Equipment {
-    return null;
-  }
-}
+import {EquipmentsServiceMock} from '../../services/equipments.service.spec';
 
 class CharactersServiceMock {
   private static INSTANCE: CharactersServiceMock = new CharactersServiceMock();
@@ -184,7 +173,7 @@ describe('PassiveEffectParser', () => {
     },
     {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
-      parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément glace'
+      parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
     },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];

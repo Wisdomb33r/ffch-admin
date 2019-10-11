@@ -5,6 +5,8 @@ import {Competence} from '../model/competence.model';
 import {Skill} from '../model/skill.model';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {isNullOrUndefined} from 'util';
+import {EquipmentsService} from '../services/equipments.service';
+import {MateriasService} from '../services/materias.service';
 
 @Component({
   selector: 'app-skills',
@@ -18,7 +20,10 @@ export class SkillsComponent implements OnInit {
   gumiId: FormControl;
   competences: Array<Competence>;
 
-  constructor(private skillsService: SkillsService) {
+  constructor(private skillsService: SkillsService,
+              // do not remove the injection of EquipmentsService and MateriasService, it serves to load the INSTANCE singletons
+              private equipmentsService: EquipmentsService,
+              private materiasService: MateriasService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');

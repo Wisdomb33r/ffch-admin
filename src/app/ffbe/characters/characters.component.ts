@@ -8,6 +8,8 @@ import {Character} from '../model/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
 import {isNullOrUndefined} from 'util';
 import {Competence} from '../model/competence.model';
+import {EquipmentsService} from '../services/equipments.service';
+import {MateriasService} from '../services/materias.service';
 
 @Component({
   selector: 'app-characters',
@@ -22,7 +24,10 @@ export class CharactersComponent implements OnInit {
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
-              private skillsService: SkillsService) {
+              private skillsService: SkillsService,
+              // do not remove the injection of EquipmentsService and MateriasService, it serves to load the INSTANCE singletons
+              private equipmentsService: EquipmentsService,
+              private materiasService: MateriasService) {
     this.name = new FormControl('', Validators.required);
   }
 

@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {EnhancementsService} from '../services/enhancements.service';
-import {Enhancement} from '../model/enhancement.model';
 import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 import {Amelioration} from '../model/amelioration.model';
 import {CharactersService} from '../services/characters.service';
 import {isNullOrUndefined} from 'util';
 import {Character} from '../model/character.model';
+import {EquipmentsService} from '../services/equipments.service';
+import {MateriasService} from '../services/materias.service';
 
 @Component({
   selector: 'app-enhancements',
@@ -22,7 +23,11 @@ export class EnhancementsComponent implements OnInit {
   character: Character;
   ameliorations: Array<Amelioration>;
 
-  constructor(private enhancementsService: EnhancementsService, private charactersService: CharactersService) {
+  constructor(private enhancementsService: EnhancementsService,
+              private charactersService: CharactersService,
+              // do not remove the injection of EquipmentsService and MateriasService, it serves to load the INSTANCE singletons
+              private equipmentsService: EquipmentsService,
+              private materiasService: MateriasService) {
     this.characterName = new FormControl('');
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');

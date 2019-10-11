@@ -53,15 +53,17 @@ describe('AbilitySkillSwitchParser', () => {
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
       'Se transforme en <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> si utilisé après ' +
       '<a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>');
-    expect(Array.isArray(switchSkill.attack_count) && switchSkill.attack_count.length === 1 && switchSkill.attack_count[0] === 3).toBeTruthy();
-    expect(Array.isArray(switchSkill.attack_frames) && switchSkill.attack_frames.length === 1 && switchSkill.attack_frames[0].length === 3).toBeTruthy();
-    expect(switchSkill.attack_frames[0][0] === 2).toBeTruthy();
-    expect(switchSkill.attack_frames[0][1] === 5).toBeTruthy();
-    expect(switchSkill.attack_frames[0][2] === 8).toBeTruthy();
-    expect(Array.isArray(switchSkill.attack_damage) && switchSkill.attack_damage.length === 1 && switchSkill.attack_damage[0].length === 3).toBeTruthy();
-    expect(switchSkill.attack_damage[0][0] === 33).toBeTruthy();
-    expect(switchSkill.attack_damage[0][1] === 33).toBeTruthy();
-    expect(switchSkill.attack_damage[0][2] === 34).toBeTruthy();
+    expect(switchSkill.attack_count[0]).toEqual(3);
+    expect(switchSkill.attack_frames[0].length).toEqual(3);
+    expect(switchSkill.attack_frames[0][0]).toEqual(2);
+    expect(switchSkill.attack_frames[0][1]).toEqual(5);
+    expect(switchSkill.attack_frames[0][2]).toEqual(8);
+    expect(switchSkill.attack_damage[0].length).toEqual(3);
+    expect(switchSkill.attack_damage[0][0]).toEqual(33)
+    expect(switchSkill.attack_damage[0][1]).toEqual(33);
+    expect(switchSkill.attack_damage[0][2]).toEqual(34);
+    expect(switchSkill.attack_type).toEqual('Physical');
+    expect(switchSkill.physique).toBeTruthy();
   });
 
   it('should parse skill switch after several skills', () => {

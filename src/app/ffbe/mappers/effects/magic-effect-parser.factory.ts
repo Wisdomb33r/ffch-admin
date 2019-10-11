@@ -8,6 +8,8 @@ import {AbilityDamagesMagicConsecutiveIncreaseParser} from './abilities/ability-
 import {AbilityDamagesDrainParser} from './abilities/ability-damages-drain.parser';
 import {AbilityDamagesMagicIgnoreSprParser} from './abilities/ability-damages-magic-ignore-spr.parser';
 import {AbilityDamagesPercentParser} from './abilities/ability-damages-percent.parser';
+import {AbilityDispelsParser} from './abilities/ability-dispels.parser';
+import {AbilityElementResistancesParser} from './abilities/ability-element-resistances.parser';
 
 export class MagicEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -22,6 +24,12 @@ export class MagicEffectParserFactory {
         return new AbilityDamagesDrainParser();
       case 15:
         return new AbilityDamagesMagicParser();
+      case 25:
+        return new AbilityDamagesDrainParser();
+      case 33:
+        return new AbilityElementResistancesParser();
+      case 59:
+        return new AbilityDispelsParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
       case 72:

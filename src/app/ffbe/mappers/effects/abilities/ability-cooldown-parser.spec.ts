@@ -47,7 +47,7 @@ describe('AbilityCooldownParser', () => {
 
     expect(s).toEqual('Disponible tous les 8 tours dès le tour 1:' + HTML_LINE_RETURN
       + '+250% ATT au lanceur pour 6 tours' + HTML_LINE_RETURN
-      + 'Effet UNKNOWN' + HTML_LINE_RETURN
+      + 'Soigne les baisses de ATT/DÉF/MAG/PSY au lanceur' + HTML_LINE_RETURN
       + '+100% de rés. aux baisses de ATT/DÉF/MAG/PSY au lanceur pour 6 tours' + HTML_LINE_RETURN
       + 'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
   });

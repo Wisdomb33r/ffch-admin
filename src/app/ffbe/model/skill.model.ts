@@ -18,6 +18,7 @@ export class Skill {
   public icon: string;
   public names: Array<string>;
   public descriptions: Array<string>;
+  public requirements: Array<Array<string>>;
 
   // transcient fields
   public isActivatedByPassiveSkill = false;
@@ -46,6 +47,7 @@ export class Skill {
     skill.icon = s.icon;
     skill.names = s.names;
     skill.descriptions = s.descriptions;
+    skill.requirements = s.requirements;
     return skill;
   }
 

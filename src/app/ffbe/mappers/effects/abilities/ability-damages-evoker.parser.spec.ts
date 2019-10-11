@@ -24,7 +24,7 @@ describe('AbilityDamagesEvokerParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque UNKNOWN à dégâts d\'invocateur de Feu, Terre, Lumière de puissance 2000% (0% MAG, 100% PSY) aux adversaires');
+    expect(s).toEqual('Attaque UNKNOWN à dégâts d\'invocateur de Feu, Terre, Lumière de puissance 4000% (0% MAG, 100% PSY) aux adversaires');
   });
 
 });
