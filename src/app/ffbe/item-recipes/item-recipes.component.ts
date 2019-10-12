@@ -4,8 +4,7 @@ import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
 import {ItemRecipe} from '../model/item-recipe.model';
 import {ItemRecipeMapper} from '../mappers/item-recipe-mapper';
-import {RecettesDisplayComponent} from '../recettes-display/recettes-display.component';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-item-recipes',
@@ -32,15 +31,15 @@ export class ItemRecipesComponent implements OnInit {
 
   public searchItemRecipeInDataMining() {
     this.recettes = [];
-    if (!isNullOrUndefined(this.recipeGumiId.value) && this.recipeGumiId.value > 0) {
+    if (!FfbeUtils.isNullOrUndefined(this.recipeGumiId.value) && this.recipeGumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       this.resultGumiId.patchValue('');
       const itemRecipe = this.itemRecipesService.searchForItemRecipeByRecipeGumiId(this.recipeGumiId.value);
-      if (!isNullOrUndefined((itemRecipe))) {
+      if (!FfbeUtils.isNullOrUndefined((itemRecipe))) {
         this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
       }
-    } else if (!isNullOrUndefined(this.resultGumiId.value) && this.resultGumiId.value > 0) {
+    } else if (!FfbeUtils.isNullOrUndefined(this.resultGumiId.value) && this.resultGumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       const itemRecipes: Array<ItemRecipe> =

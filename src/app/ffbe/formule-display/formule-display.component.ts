@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Formule} from '../model/formule.model';
-import {isNullOrUndefined} from 'util';
 import {Ingredient} from '../model/ingredient.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-formule-display',
@@ -23,10 +23,10 @@ export class FormuleDisplayComponent implements OnInit {
   }
 
   public isImageIngredientPresentInFfchDb(ingredient: Ingredient) {
-    return !isNullOrUndefined(ingredient) && ingredient.isImagePresentInFfchDb();
+    return !FfbeUtils.isNullOrUndefined(ingredient) && ingredient.isImagePresentInFfchDb();
   }
 
   public isIngredientPresentInFfchDb(ingredient: Ingredient) {
-    return !isNullOrUndefined(ingredient) && ingredient.isPresentInFfchDb();
+    return !FfbeUtils.isNullOrUndefined(ingredient) && ingredient.isPresentInFfchDb();
   }
 }

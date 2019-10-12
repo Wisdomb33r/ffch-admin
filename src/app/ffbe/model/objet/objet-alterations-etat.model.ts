@@ -1,4 +1,4 @@
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ObjetAlterationsEtat {
   public constructor(
@@ -18,7 +18,7 @@ export class ObjetAlterationsEtat {
   }
 
   public static produce(oae: ObjetAlterationsEtat): ObjetAlterationsEtat {
-    if (isNullOrUndefined(oae)) {
+    if (FfbeUtils.isNullOrUndefined(oae)) {
       return this.newEmptyObjetAlterationsEtat();
     }
     return new ObjetAlterationsEtat(oae.poison, oae.cecite, oae.sommeil, oae.silence, oae.paralysie, oae.confusion, oae.maladie, oae.petrification);

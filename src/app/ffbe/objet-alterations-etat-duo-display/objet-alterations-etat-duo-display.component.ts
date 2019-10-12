@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Objet} from '../model/objet/objet.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objet-alterations-etat-duo-display',
@@ -24,7 +24,7 @@ export class ObjetAlterationsEtatDuoDisplayComponent implements OnInit {
   }
 
   public shouldDiplayInflicts(): boolean {
-    return !isNullOrUndefined(this.objet.alterationsArme);
+    return !FfbeUtils.isNullOrUndefined(this.objet.alterationsArme);
   }
 
 }

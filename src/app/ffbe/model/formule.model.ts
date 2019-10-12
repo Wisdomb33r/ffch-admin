@@ -1,5 +1,5 @@
 import {Ingredient} from './ingredient.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class Formule {
 
@@ -17,7 +17,7 @@ export class Formule {
   }
 
   public areIngredientsEqual(formule: Formule): boolean {
-    return !isNullOrUndefined(formule)
+    return !FfbeUtils.isNullOrUndefined(formule)
       && (this.ingredients.length === formule.ingredients.length)
       && this.ingredients.every(ingredient => formule.ingredients.some(otherIngredient =>
         (otherIngredient.gumi_id === ingredient.gumi_id) && (otherIngredient.quantite === ingredient.quantite))
@@ -25,6 +25,6 @@ export class Formule {
   }
 
   public areCostsEqual(formule: Formule): boolean {
-    return !isNullOrUndefined(formule) && (this.gils === formule.gils);
+    return !FfbeUtils.isNullOrUndefined(formule) && (this.gils === formule.gils);
   }
 }

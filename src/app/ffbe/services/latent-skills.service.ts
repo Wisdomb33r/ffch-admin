@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {DataMiningClientService} from './data-mining-client.service';
 import {LatentSkill} from '../model/latent-skill.model';
-import {isNullOrUndefined} from 'util';
-import {Enhancement} from '../model/enhancement.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable()
 export class LatentSkillsService {
@@ -27,7 +26,7 @@ export class LatentSkillsService {
   public searchForLatentSkillsByCharacterGumiId(characterGumiId: number): Array<LatentSkill> {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.latentSkillsFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (!isNullOrUndefined(characterGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(characterGumiId)) {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.latentSkillsFromDataMining[propertyName].units.some(unit => unit === characterGumiId)
@@ -65,7 +64,7 @@ export class LatentSkillsService {
   protected searchForParentLatentSkillByGumiId(skillGumiId: number): number {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.latentSkillsFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (!isNullOrUndefined(skillGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(skillGumiId)) {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.latentSkillsFromDataMining[propertyName].next_id === skillGumiId

@@ -1,5 +1,4 @@
 import {Recette} from './recette.model';
-import {isNullOrUndefined} from 'util';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class RecettesComparingContainer {
@@ -8,7 +7,7 @@ export class RecettesComparingContainer {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.recette.id);
+    return !FfbeUtils.isNullOrUndefined(this.recette.id);
   }
 
   public isDifferentFromFfchDb(): boolean {
@@ -20,7 +19,7 @@ export class RecettesComparingContainer {
   }
 
   private isRecetteDifferent(): boolean {
-    if (isNullOrUndefined(this.dbRecette)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbRecette)) {
       return false;
     } else {
       return this.recette.recette_gumi_id !== this.dbRecette.recette_gumi_id;
@@ -28,7 +27,7 @@ export class RecettesComparingContainer {
   }
 
   private isResultatDifferent(): boolean {
-    if (isNullOrUndefined(this.dbRecette)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbRecette)) {
       return false;
     } else {
       return this.recette.resultat !== this.dbRecette.resultat;
@@ -36,7 +35,7 @@ export class RecettesComparingContainer {
   }
 
   private isFormuleDifferent(): boolean {
-    if (isNullOrUndefined(this.dbRecette)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbRecette)) {
       return false;
     } else {
       return this.recette.formule.isEqual(this.dbRecette.formule);
@@ -44,7 +43,7 @@ export class RecettesComparingContainer {
   }
 
   private isNombreResultatsDifferent(): boolean {
-    if (isNullOrUndefined(this.dbRecette)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbRecette)) {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.recette.nb_resultat, this.dbRecette.nb_resultat);

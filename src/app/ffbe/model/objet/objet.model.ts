@@ -1,4 +1,3 @@
-import {isNullOrUndefined} from 'util';
 import {ObjetCarac} from './objet-carac';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
@@ -65,14 +64,14 @@ export class Objet {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.id);
+    return !FfbeUtils.isNullOrUndefined(this.id);
   }
 
   public isImagePresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.icone);
+    return !FfbeUtils.isNullOrUndefined(this.icone);
   }
 
   public isTwoHanded(): boolean {
-    return !isNullOrUndefined(this.variance_min) && !isNullOrUndefined(this.variance_max);
+    return !FfbeUtils.isNullOrUndefined(this.variance_min) && !FfbeUtils.isNullOrUndefined(this.variance_max);
   }
 }

@@ -1,4 +1,4 @@
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class Game {
   constructor(public gumiId: number,
@@ -7,6 +7,6 @@ export class Game {
   }
 
   public isUnknownGame(): boolean {
-    return isNullOrUndefined(this.ffchId);
+    return FfbeUtils.isNullOrUndefined(this.ffchId);
   }
 }

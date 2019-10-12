@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Formule} from '../model/formule.model';
 import {Objet} from '../model/objet/objet.model';
-import {isNullOrUndefined} from 'util';
 import {FfchClientService} from '../services/ffch-client.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-formules-display',
@@ -28,11 +28,11 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
   }
 
   protected getObjets() {
-    if (!isNullOrUndefined(this.formule)) {
+    if (!FfbeUtils.isNullOrUndefined(this.formule)) {
       this.formule.ingredients.forEach(ingredient => {
         this.ffchClientService.getObjetByGumiId$(ingredient.gumi_id)
           .subscribe(i => {
-              ingredient.materiau = isNullOrUndefined(i) ? null : (Objet.produce(i));
+              ingredient.materiau = FfbeUtils.isNullOrUndefined(i) ? null : (Objet.produce(i));
             },
             error => this.ingredientsErrors.push('Erreur lors de la recherche de l\'objet' + ingredient.gumi_id + ' : ' + error));
       });
@@ -40,12 +40,14 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
   }
 
   public isFormulePresent(): boolean {
-    return !isNullOrUndefined(this.formule) && !isNullOrUndefined(this.formule.ingredients) && this.formule.ingredients.length > 0;
+    return !FfbeUtils.isNullOrUndefined(this.formule)
+      && !FfbeUtils.isNullOrUndefined(this.formule.ingredients)
+      && this.formule.ingredients.length > 0;
   }
 
   public isFormulePresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.formuleFromFfch) &&
-      !isNullOrUndefined(this.formuleFromFfch.ingredients) && this.formuleFromFfch.ingredients.length > 0;
+    return !FfbeUtils.isNullOrUndefined(this.formuleFromFfch) &&
+      !FfbeUtils.isNullOrUndefined(this.formuleFromFfch.ingredients) && this.formuleFromFfch.ingredients.length > 0;
   }
 
   public isFormuleCorrectInFfchDb(): boolean {

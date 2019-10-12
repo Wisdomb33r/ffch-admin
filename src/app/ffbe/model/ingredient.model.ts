@@ -1,5 +1,5 @@
 import {Objet} from './objet/objet.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class Ingredient {
   public materiau: Objet;
@@ -15,10 +15,10 @@ export class Ingredient {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.materiau) && this.materiau.isPresentInFfchDb();
+    return !FfbeUtils.isNullOrUndefined(this.materiau) && this.materiau.isPresentInFfchDb();
   }
 
   public isImagePresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.materiau) && this.materiau.isImagePresentInFfchDb();
+    return !FfbeUtils.isNullOrUndefined(this.materiau) && this.materiau.isImagePresentInFfchDb();
   }
 }

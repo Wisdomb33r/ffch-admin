@@ -4,7 +4,7 @@ import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {ObjetsComparingContainer} from '../model/objet/objets-comparing-container.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {catchError} from 'rxjs/operators';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objets-display',
@@ -39,8 +39,10 @@ export class ObjetsDisplayComponent implements OnChanges, OnDestroy {
       });
       this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((o, index) => {
-            this.objets[index].id = isNullOrUndefined(o) ? undefined : o.id;
-          this.objetsContainer.push(new ObjetsComparingContainer(this.objets[index], isNullOrUndefined(o) ? null : Objet.produce(o)));
+            this.objets[index].id = FfbeUtils.isNullOrUndefined(o) ? undefined : o.id;
+            this.objetsContainer.push(
+              new ObjetsComparingContainer(this.objets[index], FfbeUtils.isNullOrUndefined(o) ? null : Objet.produce(o))
+            );
           }
         );
       });

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {isNullOrUndefined} from 'util';
 import {Item} from '../model/item.model';
 import {ItemsService} from '../services/items.service';
 import {ItemMapper} from '../mappers/item-mapper';
 import {Objet} from '../model/objet/objet.model';
 import {CharactersService} from '../services/characters.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-items',
@@ -31,7 +31,7 @@ export class ItemsComponent implements OnInit {
   public searchItemsInDataMining() {
     this.objets = [];
     let items: Array<Item> = [];
-    if (!isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
+    if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       items = this.itemsService.searchForItemsByGumiId(this.gumiId.value);

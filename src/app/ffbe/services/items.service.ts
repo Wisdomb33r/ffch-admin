@@ -4,7 +4,6 @@ import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {isNullOrUndefined} from 'util';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 
 @Injectable()
@@ -58,7 +57,7 @@ export class ItemsService {
   }
 
   public searchForItemByExtendedGumiId(extendedGumiId: string): Item {
-    if (!isNullOrUndefined(extendedGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(extendedGumiId)) {
       const itemCategory = ItemsService.extractItemCategory(extendedGumiId);
       const gumiId = FfbeUtils.extractGumiId(extendedGumiId);
 
@@ -95,22 +94,22 @@ export class ItemsService {
   }
 
   public searchForItemsByGumiId(gumiId: string): Array<Item> {
-    if (!isNullOrUndefined(gumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(gumiId)) {
 
       const items: Array<Item> = [];
 
       const consumable = this.consumablesService.searchForConsumableByGumiId(+gumiId);
-      if (!isNullOrUndefined(consumable)) {
+      if (!FfbeUtils.isNullOrUndefined(consumable)) {
         items.push(new Item('ItemCategory.Consumable', consumable, null, null));
       }
 
       const equipment = this.equipmentService.searchForEquipmentByGumiId(+gumiId);
-      if (!isNullOrUndefined(equipment)) {
+      if (!FfbeUtils.isNullOrUndefined(equipment)) {
         items.push(new Item('ItemCategory.Equipment', null, equipment, null));
       }
 
       const materia = this.materiaService.searchForMateriaByGumiId(+gumiId);
-      if (!isNullOrUndefined(materia)) {
+      if (!FfbeUtils.isNullOrUndefined(materia)) {
         items.push(new Item('ItemCategory.Materia', null, null, materia));
       }
       return items;

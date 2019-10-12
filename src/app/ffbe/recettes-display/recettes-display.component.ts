@@ -5,7 +5,7 @@ import {Objet} from '../model/objet/objet.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-recettes-display',
@@ -55,10 +55,10 @@ export class RecettesDisplayComponent implements OnDestroy, OnChanges {
           const indiceRecetteFromFfch = 3 * index;
           const indiceObjetRecette = indiceRecetteFromFfch + 1;
           const indiceObjetResultat = indiceRecetteFromFfch + 2;
-          this.recettes[index].id = isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : results[indiceRecetteFromFfch].id;
-          this.recettes[index].recette = isNullOrUndefined(results[indiceObjetRecette]) ? null : Objet.produce(results[indiceObjetRecette]);
-          this.recettes[index].resultat = isNullOrUndefined(results[indiceObjetResultat]) ? null : Objet.produce(results[indiceObjetResultat]);
-          const dbRecette = isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : Recette.produce(results[indiceRecetteFromFfch]);
+          this.recettes[index].id = FfbeUtils.isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : results[indiceRecetteFromFfch].id;
+          this.recettes[index].recette = FfbeUtils.isNullOrUndefined(results[indiceObjetRecette]) ? null : Objet.produce(results[indiceObjetRecette]);
+          this.recettes[index].resultat = FfbeUtils.isNullOrUndefined(results[indiceObjetResultat]) ? null : Objet.produce(results[indiceObjetResultat]);
+          const dbRecette = FfbeUtils.isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : Recette.produce(results[indiceRecetteFromFfch]);
           this.recettesContainers.push(new RecettesComparingContainer(this.recettes[index], dbRecette));
         });
       });
