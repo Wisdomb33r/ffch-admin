@@ -4,9 +4,9 @@ import {SkillsService} from '../services/skills.service';
 import {Competence} from '../model/competence.model';
 import {Skill} from '../model/skill.model';
 import {SkillMapper} from '../mappers/skill-mapper';
-import {isNullOrUndefined} from 'util';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-skills',
@@ -34,11 +34,11 @@ export class SkillsComponent implements OnInit {
 
   public searchSkillsInDataMining() {
     this.competences = [];
-    if (!isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
+    if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       const skill = this.skillsService.searchForSkillByGumiId(this.gumiId.value);
-      if (!isNullOrUndefined((skill))) {
+      if (!FfbeUtils.isNullOrUndefined((skill))) {
         this.competences.push(SkillMapper.toCompetence(skill));
       }
     } else {

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Objet} from '../model/objet/objet.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objet-elements-triplet-display',
@@ -24,7 +24,7 @@ export class ObjetElementsTripletDisplayComponent implements OnInit {
   }
 
   public shouldDiplayElementsDetails(): boolean {
-    return !isNullOrUndefined(this.objet.resistancesElementaires) && !isNullOrUndefined(this.objet.elementsArme);
+    return !FfbeUtils.isNullOrUndefined(this.objet.resistancesElementaires) && !FfbeUtils.isNullOrUndefined(this.objet.elementsArme);
   }
 
 }

@@ -1,8 +1,8 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
-import {isNullOrUndefined} from 'util';
 import {SkillCost} from '../../../model/skill-cost.model';
+import {FfbeUtils} from '../../../utils/ffbe-utils';
 
 export class AbilitySkillMultipleActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -53,10 +53,10 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
 
   private isSkillFreeToCast(cost: SkillCost): boolean {
     return (
-      isNullOrUndefined(cost) ||
-      ((isNullOrUndefined(cost.MP) || cost.MP === 0) &&
-        (isNullOrUndefined(cost.EP) || cost.EP === 0) &&
-        (isNullOrUndefined(cost.LB) || cost.LB === 0))
+      FfbeUtils.isNullOrUndefined(cost) ||
+      ((FfbeUtils.isNullOrUndefined(cost.MP) || cost.MP === 0) &&
+        (FfbeUtils.isNullOrUndefined(cost.EP) || cost.EP === 0) &&
+        (FfbeUtils.isNullOrUndefined(cost.LB) || cost.LB === 0))
     );
   }
 }

@@ -6,10 +6,10 @@ import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
 import {Character} from '../model/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
-import {isNullOrUndefined} from 'util';
 import {Competence} from '../model/competence.model';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-characters',
@@ -46,7 +46,7 @@ export class CharactersComponent implements OnInit {
   }
 
   public isCharacterDisplayed(): boolean {
-    return !isNullOrUndefined(this.personnage);
+    return !FfbeUtils.isNullOrUndefined(this.personnage);
   }
 
   public isCharacterSkillsDisplayed(): boolean {

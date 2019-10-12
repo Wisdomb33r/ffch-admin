@@ -6,17 +6,15 @@ import {CharactersService} from './services/characters.service';
 import {DataMiningClientService} from './services/data-mining-client.service';
 import {CharacterDisplayComponent} from './character-display/character-display.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatTableModule,
-  MatCheckboxModule
-} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
 import {UnitDisplayComponent} from './unit-display/unit-display.component';

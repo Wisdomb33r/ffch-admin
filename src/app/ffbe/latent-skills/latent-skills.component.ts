@@ -4,10 +4,10 @@ import {FormControl} from '@angular/forms';
 import {CharactersService} from '../services/characters.service';
 import {Character} from '../model/character.model';
 import {Amelioration} from '../model/amelioration.model';
-import {isNullOrUndefined} from 'util';
 import {LatentSkillMapper} from '../mappers/latent-skill-mapper';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-latent-skills',
@@ -38,16 +38,16 @@ export class LatentSkillsComponent implements OnInit {
   public searchForLatentSkillsInDataMining() {
     this.ameliorations = [];
     let latentSkills = [];
-    if (!isNullOrUndefined(this.characterName.value) && this.characterName.value.length > 0) {
+    if (!FfbeUtils.isNullOrUndefined(this.characterName.value) && this.characterName.value.length > 0) {
       this.character = this.charactersService.searchForCharacterByNameOrGumiId(this.characterName.value);
-      if (!isNullOrUndefined(this.character)) {
+      if (!FfbeUtils.isNullOrUndefined(this.character)) {
         latentSkills = this.latentSkillsService.searchForLatentSkillsByCharacterGumiId(this.character.gumi_id);
       }
     }
     latentSkills.filter(latentSkill => latentSkill.level === 1 || latentSkill.level === 2)
       .forEach(enhancement => {
         const amelioration = LatentSkillMapper.toAmelioration(enhancement);
-        if (!isNullOrUndefined(this.character)) {
+        if (!FfbeUtils.isNullOrUndefined(this.character)) {
           amelioration.perso_gumi_id = this.character.gumi_id;
         }
         this.ameliorations.push(amelioration);

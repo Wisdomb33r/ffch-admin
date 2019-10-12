@@ -2,7 +2,7 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Enhancement} from '../model/enhancement.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable()
 export class EnhancementsService {
@@ -44,7 +44,7 @@ export class EnhancementsService {
   public searchForEnhancementsBySkillGumiId(skillGumiId: number): Array<Enhancement> {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (!isNullOrUndefined(skillGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(skillGumiId)) {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.enhancementsFromDataMining[propertyName].skill_id_old === skillGumiId
@@ -55,7 +55,7 @@ export class EnhancementsService {
           matchingProperties = matchingProperties.concat(propertyNames.filter(
             innerPropertyName =>
               this.enhancementsFromDataMining[innerPropertyName].skill_id_old === this.enhancementsFromDataMining[propertyName].skill_id_new
-            ));
+          ));
         });
       }
     }
@@ -65,7 +65,7 @@ export class EnhancementsService {
   public searchForEnhancementsByCharacterGumiId(characterGumiId: number): Array<Enhancement> {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (!isNullOrUndefined(characterGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(characterGumiId)) {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.enhancementsFromDataMining[propertyName].units.some(unit => unit === characterGumiId)
@@ -104,7 +104,7 @@ export class EnhancementsService {
   protected searchForParentSkillByGumiId(skillGumiId: number) {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
-    if (!isNullOrUndefined(skillGumiId)) {
+    if (!FfbeUtils.isNullOrUndefined(skillGumiId)) {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.enhancementsFromDataMining[propertyName].skill_id_new === skillGumiId

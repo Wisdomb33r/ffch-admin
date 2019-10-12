@@ -1,5 +1,5 @@
 import {Objet} from './objet.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ObjetsComparingContainer {
 
@@ -9,7 +9,7 @@ export class ObjetsComparingContainer {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.objet.id);
+    return !FfbeUtils.isNullOrUndefined(this.objet.id);
   }
 
   public isDifferentFromFfchDb(): boolean {
@@ -17,7 +17,7 @@ export class ObjetsComparingContainer {
   }
 
   private isNomDifferent(): boolean {
-    if (isNullOrUndefined(this.dbObjet)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbObjet)) {
       return false;
     } else {
       return this.objet.nom !== this.dbObjet.nom;

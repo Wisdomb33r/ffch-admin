@@ -1,13 +1,12 @@
 import {Equipment} from '../model/equipment/equipment.model';
 import {Objet} from '../model/objet/objet.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
+import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
 import {ObjetCarac} from '../model/objet/objet-carac';
 import {ObjetElements} from '../model/objet/objet-elements';
-import {isNullOrUndefined} from 'util';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
@@ -56,7 +55,7 @@ export class EquipmentMapper {
   }
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
-    if (isNullOrUndefined(res)) {
+    if (FfbeUtils.isNullOrUndefined(res)) {
       return ObjetElements.newEmptyObjetElements();
     }
     return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
@@ -110,7 +109,7 @@ export class EquipmentMapper {
     let value = resistance;
 
     if (inflict === 1000) {
-      if (isNullOrUndefined(resistance) || resistance === 0) {
+      if (FfbeUtils.isNullOrUndefined(resistance) || resistance === 0) {
         value = inflict;
       } else {
         value = resistance + 1000;
@@ -120,7 +119,7 @@ export class EquipmentMapper {
   }
 
   private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ObjetAlterationsEtat {
-    if (isNullOrUndefined(e)) {
+    if (FfbeUtils.isNullOrUndefined(e)) {
       return ObjetAlterationsEtat.newEmptyObjetAlterationsEtat();
     }
     return new ObjetAlterationsEtat(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);

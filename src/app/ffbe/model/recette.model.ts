@@ -1,6 +1,6 @@
 import {Formule} from './formule.model';
 import {Objet} from './objet/objet.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class Recette {
 
@@ -18,9 +18,9 @@ export class Recette {
   }
 
   public static produce(recette: Recette): Recette {
-    const objetRecette = isNullOrUndefined(recette.recette) ? null : Objet.produce(recette.recette);
-    const objetResultat = isNullOrUndefined(recette.resultat) ? null :  Objet.produce(recette.resultat);
-    const formule = isNullOrUndefined(recette.formule) ? null : Formule.produce(recette.formule);
+    const objetRecette = FfbeUtils.isNullOrUndefined(recette.recette) ? null : Objet.produce(recette.recette);
+    const objetResultat = FfbeUtils.isNullOrUndefined(recette.resultat) ? null : Objet.produce(recette.resultat);
+    const formule = FfbeUtils.isNullOrUndefined(recette.formule) ? null : Formule.produce(recette.formule);
     const newRecette = new Recette(recette.recette_gumi_id, recette.resultat_gumi_id, recette.craft_time,
       formule, recette.nb_resultat);
     newRecette.recette = objetRecette;

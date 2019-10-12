@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ObjetCarac} from '../model/objet/objet-carac';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objet-carac-display',
@@ -24,7 +24,7 @@ export class ObjetCaracDisplayComponent implements OnInit {
   public caracFormatee(carac: number): string {
     let caracFormatee = '';
 
-    if (!isNullOrUndefined(carac)) {
+    if (!FfbeUtils.isNullOrUndefined(carac)) {
       caracFormatee = carac.toString() + this.suffixe();
     }
 

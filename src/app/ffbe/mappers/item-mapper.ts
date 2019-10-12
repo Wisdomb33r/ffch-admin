@@ -5,9 +5,9 @@ import {EquipmentMapper} from './equipment-mapper';
 import {MateriaMapper} from './materia-mapper';
 import {Character} from '../model/character.model';
 import {ObjetLienTMR} from '../model/objet/objet-lien-tmr.model';
-import {isNotNullOrUndefined} from 'codelyzer/util/is-not-null-or-undefined';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class ItemMapper {
 
@@ -35,7 +35,7 @@ export class ItemMapper {
   }
 
   public static mapLienTRM(item: Item, character: Character): ObjetLienTMR {
-    if (!isNotNullOrUndefined(item) || !isNotNullOrUndefined(character)) {
+    if (FfbeUtils.isNullOrUndefined(item) || FfbeUtils.isNullOrUndefined(character)) {
       return null;
     }
 

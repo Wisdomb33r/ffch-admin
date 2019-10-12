@@ -1,8 +1,7 @@
-import {Personnage} from './personnage.model';
 import {UniteCarac} from './unite-carac.model';
 import {UniteCompetence} from './unite-competence.model';
 import {Formule} from './formule.model';
-import {isNullOrUndefined} from 'util';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class Unite {
   public id: number;
@@ -31,10 +30,10 @@ export class Unite {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.id);
+    return !FfbeUtils.isNullOrUndefined(this.id);
   }
 
   public areAllCompetencesPresentInFfchDb(): boolean {
-    return this.competences.every(uniteCompetence => !isNullOrUndefined(uniteCompetence.competence.id));
+    return this.competences.every(uniteCompetence => !FfbeUtils.isNullOrUndefined(uniteCompetence.competence.id));
   }
 }

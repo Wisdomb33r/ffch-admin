@@ -2,12 +2,15 @@ import {FFBE_CATEGORIES_OBJETS, FFBE_GAMES} from '../ffbe.constants';
 import {Game} from '../model/game.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {Ingredient} from '../model/ingredient.model';
-import {isNullOrUndefined} from 'util';
 
 export class FfbeUtils {
+  public static isNullOrUndefined(value) {
+    return value === null || value === undefined;
+  }
+
   public static findGameByGumiId(game_id: number): Game {
     const gameFound: Game = FFBE_GAMES.find(game => game.gumiId === game_id);
-    return isNullOrUndefined(gameFound) ? new Game(game_id, undefined, 'Jeu inconnu') : gameFound;
+    return FfbeUtils.isNullOrUndefined(gameFound) ? new Game(game_id, undefined, 'Jeu inconnu') : gameFound;
   }
 
   public static findObjetCategorieByGumiId(categorie_id: number): CategorieObjet {

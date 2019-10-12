@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {SkillMapper} from '../mappers/skill-mapper';
-import {isNullOrUndefined} from 'util';
 import {FfchClientService} from '../services/ffch-client.service';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-character-skill-display',
@@ -28,11 +28,11 @@ export class CharacterSkillDisplayComponent implements OnInit {
     SkillMapper.mapUndefinedEnhanced(this.competence);
     if (!this.present) {
       this.ffchClientService.postCompetence$(this.competence)
-        .subscribe(c => this.competence.id = (isNullOrUndefined(c) ? null : c.id));
+        .subscribe(c => this.competence.id = (FfbeUtils.isNullOrUndefined(c) ? null : c.id));
     } else {
       this.ffchClientService.putCompetence$(this.competence)
         .subscribe(c => {
-          this.competence.id = (isNullOrUndefined(c) ? null : c.id);
+          this.competence.id = (FfbeUtils.isNullOrUndefined(c) ? null : c.id);
           this.skillModifiedEvent.emit(c);
         });
     }
@@ -43,7 +43,7 @@ export class CharacterSkillDisplayComponent implements OnInit {
   }
 
   public shouldDisplayEnhanced() {
-    return !isNullOrUndefined(this.competence.enhanced);
+    return !FfbeUtils.isNullOrUndefined(this.competence.enhanced);
   }
 
   public generateLinkToFfch(): string {

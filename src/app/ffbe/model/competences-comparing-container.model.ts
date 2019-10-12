@@ -1,5 +1,4 @@
 import {Competence} from './competence.model';
-import {isNullOrUndefined} from 'util';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class CompetencesComparingContainer {
@@ -9,7 +8,7 @@ export class CompetencesComparingContainer {
   }
 
   public isPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.competence.id);
+    return !FfbeUtils.isNullOrUndefined(this.competence.id);
   }
 
   public isDifferentFromFfchDb(): boolean {
@@ -36,7 +35,7 @@ export class CompetencesComparingContainer {
   }
 
   private isCategorieDifferente(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return +this.competence.categorie !== +this.dbCompetence.categorie;
@@ -44,7 +43,7 @@ export class CompetencesComparingContainer {
   }
 
   private isNomDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return this.competence.nom !== this.dbCompetence.nom;
@@ -52,7 +51,7 @@ export class CompetencesComparingContainer {
   }
 
   private isEffetDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return this.competence.effet_fr !== this.dbCompetence.effet;
@@ -60,7 +59,7 @@ export class CompetencesComparingContainer {
   }
 
   private isPmDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.competence.pm, this.dbCompetence.pm);
@@ -68,7 +67,7 @@ export class CompetencesComparingContainer {
   }
 
   private isEpDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.competence.ep, this.dbCompetence.ep);
@@ -76,7 +75,7 @@ export class CompetencesComparingContainer {
   }
 
   private isLbDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.competence.lb, this.dbCompetence.lb);
@@ -84,7 +83,7 @@ export class CompetencesComparingContainer {
   }
 
   private isHitsDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.competence.hits, this.dbCompetence.hits);
@@ -92,7 +91,7 @@ export class CompetencesComparingContainer {
   }
 
   private isFramesDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfStringsDifferent(this.competence.frames, this.dbCompetence.frames);
@@ -100,7 +99,7 @@ export class CompetencesComparingContainer {
   }
 
   private isDamagesDifferent(): boolean {
-    if (isNullOrUndefined(this.dbCompetence)) {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
       return false;
     } else {
       return FfbeUtils.checkIfStringsDifferent(this.competence.damages, this.dbCompetence.damages);
@@ -115,6 +114,6 @@ export class CompetencesComparingContainer {
       || this.competence.magique !== this.dbCompetence.magique
       || this.competence.hybride !== this.dbCompetence.hybride
       || this.competence.fixe !== this.dbCompetence.fixe
-      || this.competence.esper !== this.dbCompetence.esper
+      || this.competence.esper !== this.dbCompetence.esper;
   }
 }

@@ -1,10 +1,10 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {Competence} from '../model/competence.model';
 import {FfchClientService} from '../services/ffch-client.service';
-import {isNullOrUndefined} from 'util';
 import {CompetencesComparingContainer} from '../model/competences-comparing-container.model';
 import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-character-skills-display',
@@ -14,7 +14,7 @@ import {catchError} from 'rxjs/operators';
 export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
 
   @Input() competences: Array<Competence>;
-  @Input() shouldStayOpen: boolean = true;
+  @Input() shouldStayOpen = true;
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
   public subscription: Subscription;
@@ -41,8 +41,10 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
       });
       this.subscription = forkJoin(observables).subscribe(results => {
         results.forEach((c, index) => {
-            this.competences[index].id = isNullOrUndefined(c) ? undefined : c.id;
-          this.competencesContainers.push(new CompetencesComparingContainer(this.competences[index], c, Competence.produce(this.competences[index])));
+            this.competences[index].id = FfbeUtils.isNullOrUndefined(c) ? undefined : c.id;
+            this.competencesContainers.push(
+              new CompetencesComparingContainer(this.competences[index], c, Competence.produce(this.competences[index]))
+            );
           }
         );
       });

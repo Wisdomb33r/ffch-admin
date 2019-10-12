@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Amelioration} from '../model/amelioration.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {CharactersService} from '../services/characters.service';
@@ -6,11 +6,9 @@ import {CharacterMapper} from '../mappers/character-mapper';
 import {Personnage} from '../model/personnage.model';
 import {Competence} from '../model/competence.model';
 import {SkillsService} from '../services/skills.service';
-import {isNullOrUndefined} from 'util';
 import {SkillMapper} from '../mappers/skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Formule} from '../model/formule.model';
-import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 
 @Component({
   selector: 'app-enhancement-display',
@@ -49,16 +47,16 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public isAmeliorationPresentInFfchDb(): boolean {
-    return !isNullOrUndefined(this.ameliorationFromFfch);
+    return !FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch);
   }
 
   public isAmeliorationCorrectInFfchDb(): boolean {
-    return isNullOrUndefined(this.ameliorationFromFfch) ||
+    return FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch) ||
       this.amelioration.formule.isEqual(this.ameliorationFromFfch.formule);
   }
 
   public isAmeliorationUpToDateInFfchDb(): boolean {
-    return this.isAmeliorationCorrectInFfchDb() && !isNullOrUndefined(this.ameliorationFromFfch.skill_id_new);
+    return this.isAmeliorationCorrectInFfchDb() && !FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch.skill_id_new);
   }
 
   public isSingleCharacter(): boolean {
@@ -66,11 +64,11 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public isAnyCharacterSelected(): boolean {
-    return !isNullOrUndefined(this.amelioration.perso_gumi_id);
+    return !FfbeUtils.isNullOrUndefined(this.amelioration.perso_gumi_id);
   }
 
   public getFormuleFromFfchAmelioration(): Formule {
-    if (!isNullOrUndefined(this.ameliorationFromFfch)) {
+    if (!FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch)) {
       return this.ameliorationFromFfch.formule;
     } else {
       return undefined;
@@ -90,8 +88,8 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     this.ameliorationFromFfch = null;
     this.ffchClientService.getAmelioration$(this.amelioration.perso_gumi_id, this.amelioration.skill_id_base, this.amelioration.niveau)
       .subscribe(amelioration => {
-          this.ameliorationFromFfch = isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
-          if (!isNullOrUndefined(this.ameliorationFromFfch) && !isNullOrUndefined(this.ameliorationFromFfch.formule)) {
+          this.ameliorationFromFfch = FfbeUtils.isNullOrUndefined(amelioration) ? null : (Amelioration.produce(amelioration));
+          if (!FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch) && !FfbeUtils.isNullOrUndefined(this.ameliorationFromFfch.formule)) {
             FfbeUtils.sortArrayIngredients(this.ameliorationFromFfch.formule.ingredients);
           }
         },
@@ -101,13 +99,13 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
 
   protected getCompetences() {
     this.competences = [];
-    if (!isNullOrUndefined(this.amelioration.skill_id_base)) {
+    if (!FfbeUtils.isNullOrUndefined(this.amelioration.skill_id_base)) {
       this.competences.push(SkillMapper.toCompetence(this.skillService.searchForSkillByGumiId(this.amelioration.skill_id_base)));
     }
-    if (!isNullOrUndefined(this.amelioration.skill_id_old) && (this.amelioration.skill_id_old !== this.amelioration.skill_id_base)) {
+    if (!FfbeUtils.isNullOrUndefined(this.amelioration.skill_id_old) && (this.amelioration.skill_id_old !== this.amelioration.skill_id_base)) {
       this.competences.push(SkillMapper.toCompetence(this.skillService.searchForSkillByGumiId(this.amelioration.skill_id_old)));
     }
-    if (!isNullOrUndefined(this.amelioration.skill_id_new)) {
+    if (!FfbeUtils.isNullOrUndefined(this.amelioration.skill_id_new)) {
       this.competences.push(SkillMapper.toCompetence(this.skillService.searchForSkillByGumiId(this.amelioration.skill_id_new)));
     }
   }
@@ -121,7 +119,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public areAllCompetencesPresentInFfchDb(): boolean {
-    return this.competences.every(competence => !isNullOrUndefined(competence.id));
+    return this.competences.every(competence => !FfbeUtils.isNullOrUndefined(competence.id));
   }
 
   public sendAmeliorationToFfch() {
@@ -131,9 +129,9 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
 
   public getNomAmelioration(): string {
     let nom = null;
-    if (!isNullOrUndefined(this.amelioration.nom)) {
+    if (!FfbeUtils.isNullOrUndefined(this.amelioration.nom)) {
       nom = this.amelioration.nom;
-    } else if (Array.isArray(this.competences) && this.competences.length > 0 && !isNullOrUndefined(this.competences[0].nom)) {
+    } else if (Array.isArray(this.competences) && this.competences.length > 0 && !FfbeUtils.isNullOrUndefined(this.competences[0].nom)) {
       nom = this.competences[0].nom;
     }
     return nom;

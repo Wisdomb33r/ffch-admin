@@ -1,9 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {Unite} from '../model/unite.model';
-import {Objet} from '../model/objet/objet.model';
-import {Ingredient} from '../model/ingredient.model';
 import {FfchClientService} from '../services/ffch-client.service';
-import {isNullOrUndefined} from 'util';
 import {UniteEveil} from '../model/unite-eveil.model';
 import {Formule} from '../model/formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
@@ -30,8 +27,8 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   protected getAwakeningMaterials() {
     this.ffchClientService.getUniteMateriauxEveilByUniteNumero$(this.unite.numero)
       .subscribe(uniteEveil => {
-          this.materiauxEveilFromFfch = isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule);
-          if (!isNullOrUndefined(this.materiauxEveilFromFfch)) {
+          this.materiauxEveilFromFfch = FfbeUtils.isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule);
+          if (!FfbeUtils.isNullOrUndefined(this.materiauxEveilFromFfch)) {
             FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch.ingredients);
           }
         },
@@ -40,7 +37,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public getFormuleFromFfchUniteEveil(): Formule {
-    if (!isNullOrUndefined(this.materiauxEveilFromFfch)) {
+    if (!FfbeUtils.isNullOrUndefined(this.materiauxEveilFromFfch)) {
       return this.materiauxEveilFromFfch;
     } else {
       return undefined;
@@ -48,12 +45,12 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public hasMateriauxEveil() {
-    return !isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.ingredients.length > 0);
+    return !FfbeUtils.isNullOrUndefined(this.unite.materiauxEveil) && (this.unite.materiauxEveil.ingredients.length > 0);
   }
 
   public areMateriauxEveilPresentInFfchDB(): boolean {
-    return !isNullOrUndefined(this.materiauxEveilFromFfch)
-      && !isNullOrUndefined(this.materiauxEveilFromFfch.ingredients)
+    return !FfbeUtils.isNullOrUndefined(this.materiauxEveilFromFfch)
+      && !FfbeUtils.isNullOrUndefined(this.materiauxEveilFromFfch.ingredients)
       && this.materiauxEveilFromFfch.ingredients.length > 0;
   }
 
@@ -65,7 +62,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
     const uniteMateriauxEveil = new UniteEveil(this.unite.numero, this.unite.materiauxEveil);
     this.ffchClientService.postUniteMateriauxEveil$(uniteMateriauxEveil)
       .subscribe(uniteEveil =>
-          this.materiauxEveilFromFfch = (isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule)),
+          this.materiauxEveilFromFfch = (FfbeUtils.isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule)),
         status => this.materiauxEveilErrors.push('Could not send awakening materials'));
   }
 }

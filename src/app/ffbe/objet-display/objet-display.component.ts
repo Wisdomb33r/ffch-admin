@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Objet} from '../model/objet/objet.model';
-import {isNullOrUndefined} from 'util';
 import {FfchClientService} from '../services/ffch-client.service';
 import {FFBE_CATEGORIES_OBJETS} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
@@ -30,7 +29,7 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (!isNullOrUndefined(this.objet.categorie)) {
+    if (!FfbeUtils.isNullOrUndefined(this.objet.categorie)) {
       this.categorieFfchId = this.objet.categorie.ffchId;
     }
   }
@@ -56,13 +55,13 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
   }
 
   public hasLienTRM(): boolean {
-    return !isNullOrUndefined(this.objet.lienTMR);
+    return !FfbeUtils.isNullOrUndefined(this.objet.lienTMR);
   }
 
   public sendObjetToFfchDb() {
     this.ffchClientService.postObjet$(this.objet)
       .subscribe(objet =>
-          this.objet.id = (isNullOrUndefined(objet) ? null : objet.id),
+          this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id),
         status => this.objetErrors.push('Could not send objet'));
   }
 
