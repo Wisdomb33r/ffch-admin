@@ -1,4 +1,4 @@
-import {isNotNullOrUndefined} from 'codelyzer/util/is-not-null-or-undefined';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ObjetLienTMR {
 
@@ -10,7 +10,7 @@ export class ObjetLienTMR {
   }
 
   public static produce(lien: ObjetLienTMR): ObjetLienTMR {
-    if (!isNotNullOrUndefined(lien)) {
+    if (FfbeUtils.isNullOrUndefined(lien)) {
       return null;
     }
 
