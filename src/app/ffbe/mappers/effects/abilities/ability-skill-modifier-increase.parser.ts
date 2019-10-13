@@ -29,7 +29,7 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
     });
 
     this.duration = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tours' : ' pour ce combat';
-    this.target = this.getTarget(effect[0], effect[1], effect[2]);
+    this.target = this.getLocalTarget(effect[0], effect[1], effect[2]);
 
     return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN);
   }
@@ -39,7 +39,7 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
       + this.target + this.duration + ' (ID #' + this.stackId + ')';
   }
 
-  protected getTarget(effectId1: number, effectId2: number, effectId3: number): string {
+  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
     let target = ' pour UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 136) {

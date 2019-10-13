@@ -12,12 +12,12 @@ export class AbilityLbCrystalsParser extends EffectParser {
 
     const gain: string = numMin === numMax ? numMin.toString() : numMin.toString() + ' à ' + numMax.toString();
     const pluralForm = numMax === 1 ? ' cristal de limite' : ' cristaux de limite';
-    const target = this.getTarget(effect);
+    const target = this.getLocalTarget(effect);
 
     return '+' + gain + pluralForm + target;
   }
 
-  private getTarget(effect: Array<any>): string {
+  private getLocalTarget(effect: Array<any>): string {
     let target = ' à UNKNOWN';
 
     if (effect[0] === 0 && effect[1] === 3) {

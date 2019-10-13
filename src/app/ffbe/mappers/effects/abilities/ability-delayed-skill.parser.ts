@@ -16,12 +16,12 @@ export class AbilityDelayedSkillParser extends EffectParser {
     const numTurns = effect[3][2];
     const pluralForm = (effect[3][2] > 1) ? 's' : '';
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     return 'Lance ' + activatedSkillLink + ' avec délai de ' + numTurns + ' tour' + pluralForm + target;
   }
 
-  private getTarget(effectId1: number, effectId2: number): string {
+  private getLocalTarget(effectId1: number, effectId2: number): string {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 0 && effectId2 === 3) {

@@ -28,7 +28,7 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 
-    const target = this.getTarget(effect[0], effect[1], effect[2]);
+    const target = this.getLocalTarget(effect[0], effect[1], effect[2]);
 
     let dispellable = '';
     if (effect[3].length >= 7 && effect[3][6] === 1) {
@@ -40,7 +40,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     return statModifier + target + turns + activity + dispellable;
   }
 
-  protected getTarget(effectId1: number, effectId2: number, effectId3: number): string {
+  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
     let target = ' à UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {

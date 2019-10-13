@@ -21,7 +21,7 @@ export class AbilityElementImbueParser extends EffectParser {
       {name: 'Ténèbres', value: effect[3][7]},
     ];
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     const turns = ' pour ' + effect[3][8] + ' tour';
 
@@ -39,7 +39,7 @@ export class AbilityElementImbueParser extends EffectParser {
   }
 
 
-  private getTarget(effectId1: number, effectId2: number): string {
+  private getLocalTarget(effectId1: number, effectId2: number): string {
     let target = ' de UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {

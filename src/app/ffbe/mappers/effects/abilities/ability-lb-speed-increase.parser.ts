@@ -9,13 +9,13 @@ export class AbilityLbSpeedIncreaseParser extends EffectParser {
 
     const speed: string = effect[3][0].toString();
     const numTurns = effect[3][1];
-    const target = this.getTarget(effect);
+    const target = this.getLocalTarget(effect);
     const pluralForm = numTurns > 1 ? 's' : '';
 
     return '+' + speed + '% à la vitesse de la jauge de limite' + target + ' pour ' + numTurns + ' tour' + pluralForm;
   }
 
-  private getTarget(effect: Array<any>): string {
+  private getLocalTarget(effect: Array<any>): string {
     let target = '';
     if ((effect[0] === 0 || effect[0] === 1) && effect[1] === 3) {
       target = ' du lanceur';

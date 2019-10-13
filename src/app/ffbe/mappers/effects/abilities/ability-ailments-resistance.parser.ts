@@ -21,14 +21,14 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 
-    const target = this.getTarget(effect[0], effect[1], effect[2]);
+    const target = this.getLocalTarget(effect[0], effect[1], effect[2]);
 
     const turns = (effect[3][9] >= 0) ? ' pour ' + effect[3][9] + ' tours' : ' pour ce combat';
 
     return statModifier + target + turns;
   }
 
-  protected getTarget(effectId1: number, effectId2: number, effectId3: number): string {
+  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 0 && effectId2 === 3 && effectId3 === 7) {

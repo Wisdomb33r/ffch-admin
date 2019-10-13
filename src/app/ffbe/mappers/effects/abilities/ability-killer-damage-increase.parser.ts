@@ -17,7 +17,7 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
       return 'Effet AbilityKillerDamageIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
 
-    this.target = this.getTarget(effect[0], effect[1]);
+    this.target = this.getLocalTarget(effect[0], effect[1]);
     this.damageType = this.getDamageType(effect[2]);
 
     this.numTurns = effect[3][8];
@@ -41,7 +41,7 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
     return this.wordEffectJoiningIdenticalValues(increases, HTML_LINE_RETURN);
   }
 
-  private getTarget(effectId1: number, effectId2: number) {
+  private getLocalTarget(effectId1: number, effectId2: number) {
     let target = ' à UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {

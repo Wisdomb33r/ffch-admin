@@ -7,7 +7,7 @@ export class AbilityStopInflictionParser extends EffectParser {
       return 'Effet AbilityStopInflictionParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     const chances = effect[3][0];
     const numTurns = effect[3][1];
@@ -17,7 +17,7 @@ export class AbilityStopInflictionParser extends EffectParser {
     return 'Inflige Stop (' + chances + '%)' + target + ' pour ' + numTurns + ' tour' + pluralForm;
   }
 
-  private getTarget(effectId1: number, effectId2: number) {
+  private getLocalTarget(effectId1: number, effectId2: number) {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 1 && effectId2 === 1) {

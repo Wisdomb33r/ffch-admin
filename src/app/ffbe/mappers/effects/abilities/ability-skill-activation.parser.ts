@@ -10,7 +10,7 @@ export class AbilitySkillActivationParser extends EffectParser {
 
     const content = effect[3];
     const isTargetSelf = this.isTargetSelf(effect);
-    const target = this.getTarget(effect);
+    const target = this.getLocalTarget(effect);
 
     const numUses = this.getNumUses(content);
     const numTurns = this.getNumTurns(content, isTargetSelf);
@@ -58,7 +58,7 @@ export class AbilitySkillActivationParser extends EffectParser {
     return +numTimes + ' ' + (numTimes > 1 ? 'utilisations' : 'utilisation');
   }
 
-  private getTarget(effect: Array<any>): string {
+  private getLocalTarget(effect: Array<any>): string {
     let target = '';
 
     if (effect[0] === 1 && effect[1] === 2) {
