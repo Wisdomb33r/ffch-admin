@@ -12,13 +12,13 @@ export class AbilityProvocationsParser extends EffectParser {
 
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     return '+' + percentsProvocation + '% de chances' + target
       + ' d\'être ciblé pour ' + numTurns + ' tour' + pluralFormTurns;
   }
 
-  private getTarget(effectId1: number, effectId2: number): string {
+  private getLocalTarget(effectId1: number, effectId2: number): string {
     let target = ' pour UNKNOWN';
 
     if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {

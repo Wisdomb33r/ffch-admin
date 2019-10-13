@@ -12,7 +12,7 @@ export class AbilityCoversParser extends EffectParser {
     const numTurns = effect[3][6];
     const turns = ' pour ' + numTurns + ' tour' + (numTurns > 1 ? 's' : '');
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     const chances = effect[3][4];
 
@@ -37,7 +37,7 @@ export class AbilityCoversParser extends EffectParser {
     return damageType;
   }
 
-  private getTarget(effetId1: number, effectId2: number): string {
+  private getLocalTarget(effetId1: number, effectId2: number): string {
     let target = '';
 
     if (effetId1 === 1 && effectId2 === 2) {

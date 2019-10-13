@@ -7,7 +7,7 @@ export class AbilityCharmInflictionParser extends EffectParser {
       return 'Effet AbilityCharmInflictionParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getLocalTarget(effect[0], effect[1]);
 
     const numTurns = effect[3][0];
     const chances = effect[3][1];
@@ -17,7 +17,7 @@ export class AbilityCharmInflictionParser extends EffectParser {
     return 'Inflige Charme (' + chances + '%)' + target + ' pour ' + numTurns + ' tour' + pluralForm;
   }
 
-  private getTarget(effectId1: number, effectId2: number) {
+  private getLocalTarget(effectId1: number, effectId2: number) {
     let target = ' à UNKNOWN';
 
     if (effectId1 === 0 && effectId2 === 3) {
