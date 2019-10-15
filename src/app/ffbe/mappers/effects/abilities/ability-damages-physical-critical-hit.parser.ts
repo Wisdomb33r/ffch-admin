@@ -11,7 +11,7 @@ export class AbilityDamagesPhysicalCriticalHitParser extends EffectParser {
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
     skill.physique = true;
     const power = effect[3][2];
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
     const missChange = effect[3][3];
     return attackType + 'critiques ' + (elements ? 'de ' + elements + ' ' : 'neutres ')
       + 'de puissance ' + Math.round(power) + '% ' + target + (missChange ? ' (-' + missChange + '% précision)' : '');

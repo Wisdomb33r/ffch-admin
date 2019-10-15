@@ -11,7 +11,7 @@ export class AbilityDamagesFixedParser extends EffectParser {
     const attackType = this.getAttackAndDamageWordingForFixedDamages(skill.attack_type);
     skill.fixe = true;
     const power = effect[3][0];
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de ' + Math.round(power) + ' PV ' + target;
   }
 }

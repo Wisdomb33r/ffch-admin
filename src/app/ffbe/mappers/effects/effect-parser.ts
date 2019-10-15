@@ -177,23 +177,6 @@ export abstract class EffectParser {
     }
   }
 
-  protected getTargetForDamagingSkill(effectId1: number, effectId2: number): string {
-    if (effectId1 === 1 && effectId2 === 1) {
-      return 'à un adversaire';
-    }
-    if (effectId1 === 3 && effectId2 === 1) {
-      return 'à un adversaire au hasard';
-    }
-    if (effectId1 === 1 && effectId2 === 3) {
-      return 'au lanceur';
-    }
-    if (effectId1 === 2 && effectId2 === 1) {
-      return 'aux adversaires';
-    }
-
-    return 'UNKNOWN target';
-  }
-
   protected getTargetForHealingSkill(effectId1: number, effectId2: number): string {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';

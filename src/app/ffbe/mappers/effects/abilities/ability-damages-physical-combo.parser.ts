@@ -13,7 +13,7 @@ export class AbilityDamagesPhysicalComboParser extends EffectParser {
     const minAttacks = effect[3][2];
     const maxAttacks = effect[3][3];
     const power = effect[3][4];
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
 
     let accuracy;
     if (effect[3].length >= 6 && effect[3][5] > 0) {
