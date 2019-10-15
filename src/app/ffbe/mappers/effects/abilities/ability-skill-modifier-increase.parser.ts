@@ -31,11 +31,11 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
     this.duration = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tours' : ' pour ce combat';
     this.target = this.getTarget(effect[0], effect[1], effect[2]);
 
-    return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN);
+    return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN, true);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    return '+' + Math.round(currentValue) + '% de puissance à ' + accumulatedStats.join(', ')
+    return '+' + (currentValue > 0 ? Math.round(currentValue) : 'UNKNOWN') + '% de puissance à ' + accumulatedStats.join(', ')
       + this.target + this.duration + ' (ID #' + this.stackId + ')';
   }
 
