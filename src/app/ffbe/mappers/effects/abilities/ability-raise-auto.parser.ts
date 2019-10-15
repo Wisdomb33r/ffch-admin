@@ -9,7 +9,7 @@ export class AbilityRaiseAutoParser extends EffectParser {
 
     const hp = effect[3][0];
     const turns = effect[3][1];
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     const turnsText = ' pour ' + turns + ' tour' + (turns > 1 ? 's' : '');
     return 'Active Auréole (' + hp + '% de PV) ' + target + turnsText;
   }

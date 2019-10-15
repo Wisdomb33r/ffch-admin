@@ -22,7 +22,7 @@ export class AbilityElementResistancesParser extends EffectParser {
     }
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     const turns = (effect[3][9] >= 0) ? ' pour ' + effect[3][9] + ' tours' : ' pour ce combat';
 
     let dispellable = '';

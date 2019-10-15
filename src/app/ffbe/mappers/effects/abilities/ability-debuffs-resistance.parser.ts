@@ -11,7 +11,7 @@ export class AbilityDebuffsResistanceParser extends EffectParser {
     }
 
     const turns = effect[3][6];
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     this.targetAndTurnsText = ' ' + target + (turns > 0 && turns < 9999 ? ' pour ' + turns + ' tours' : ' pour 9999 tours');
     const statsResists = [
       {name: 'ATT', value: effect[3][0]},

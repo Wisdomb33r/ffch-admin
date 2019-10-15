@@ -9,7 +9,7 @@ export class AbilityMitigationsParser extends EffectParser {
 
     const value = effect[3][0];
     const mitigationType = this.getMitigationType(effect[2]);
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     const turns = ' pour ' + effect[3][1] + ' tour';
     const pluralForm = (effect[3][1] > 1) ? 's' : '';
 

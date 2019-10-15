@@ -17,7 +17,7 @@ export class AbilityDamagesEvokerParser extends EffectParser {
     const magPower = effect[3][7];
     const sprPower = effect[3][8];
     const repartition = effect[3][9];
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
       + 'de puissance ' + Math.round(magPower * repartition[0] / 100 + sprPower * repartition[1] / 100) + '% '
       + '(' + repartition[0] + '% MAG, ' + repartition[1] + '% PSY) '

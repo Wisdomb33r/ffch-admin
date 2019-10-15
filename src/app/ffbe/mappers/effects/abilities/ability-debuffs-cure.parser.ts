@@ -20,7 +20,7 @@ export class AbilityDebuffsCureParser extends EffectParser {
     if (effect[3][5] > 0) {
       text += (text.length > 0 ? ', ' : '') + 'Charme';
     }
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return 'Soigne ' + FfbeUtils.replaceLastOccurenceInString(text, ', ', ' et ') + ' ' + target;
   }
 

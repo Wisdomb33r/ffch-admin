@@ -177,7 +177,7 @@ export abstract class EffectParser {
     }
   }
 
-  protected getTargetForHealingSkill(effectId1: number, effectId2: number): string {
+  protected getTarget(effectId1: number, effectId2: number): string {
     if (effectId1 === 1 && effectId2 === 1) {
       return 'à un adversaire';
     }

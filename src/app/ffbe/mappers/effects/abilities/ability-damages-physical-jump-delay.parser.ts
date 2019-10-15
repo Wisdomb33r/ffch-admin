@@ -47,7 +47,7 @@ export class AbilityDamagesPhysicalJumpDelayParser extends EffectParser {
     const power = effect[3][4];
     const turnDelay1 = effect[3][2];
     const turnDelay2 = effect[3][3];
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
       + 'de puissance ' + power + '% avec délai de saut de ' + (turnDelay1 === turnDelay2 ? turnDelay1 : 'UNKNOWN')
       + ' tour' + (turnDelay1 > 1 ? 's' : '') + ' ' + target;

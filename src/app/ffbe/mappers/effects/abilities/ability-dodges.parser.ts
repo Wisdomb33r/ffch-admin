@@ -13,7 +13,7 @@ export class AbilityDodgesParser extends EffectParser {
     const pluralFormDodges = numDodges > 1 ? 's' : '';
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
 
     return '+' + numDodges + ' esquive' + pluralFormDodges + ' physique' + pluralFormDodges + ' '
       + target + ' pour ' + numTurns + ' tour' + pluralFormTurns;

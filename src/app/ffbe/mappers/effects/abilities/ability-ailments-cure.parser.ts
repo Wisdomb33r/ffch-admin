@@ -8,7 +8,7 @@ export class AbilityAilmentsCureParser extends EffectParser {
       return 'Effet AbilityAilmentsCureParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     const cures: Array<string> = [];
     for (let i = 0; i < 8; i++) {
       const ailmentId = effect[3][i];
