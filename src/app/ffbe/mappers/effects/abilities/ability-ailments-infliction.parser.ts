@@ -21,23 +21,9 @@ export class AbilityAilmentsInflictionParser extends EffectParser {
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 
-    const target = this.getLocalTarget(effect[0], effect[1], effect[2]);
+    const target = this.getTarget(effect[0], effect[1]);
 
-    return 'Inflige ' + statModifier + target;
-  }
-
-  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
-    let target = ' à UNKNOWN';
-
-    if (effectId1 === 0  && effectId2 === 3 && effectId3 === 6) {
-      target = ' au lanceur';
-    } else if (effectId1 === 1 && effectId2 === 1 && effectId3 === 6) {
-      target = ' à un adversaire';
-    } else if (effectId1 === 2 && effectId2 === 1 && effectId3 === 6) {
-      target = ' à tous les adversaires';
-    }
-
-    return target;
+    return `Inflige ${statModifier} ${target}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

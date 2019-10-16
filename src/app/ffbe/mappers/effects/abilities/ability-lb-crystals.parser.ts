@@ -11,28 +11,10 @@ export class AbilityLbCrystalsParser extends EffectParser {
     const numMax = effect[3][1] / 100;
 
     const gain: string = numMin === numMax ? numMin.toString() : numMin.toString() + ' à ' + numMax.toString();
-    const pluralForm = numMax === 1 ? ' cristal de limite' : ' cristaux de limite';
-    const target = this.getLocalTarget(effect);
+    const pluralForm = numMax === 1 ? 'cristal de limite' : 'cristaux de limite';
+    const target = this.getTarget(effect[0], effect[1]);
 
-    return '+' + gain + pluralForm + target;
-  }
-
-  private getLocalTarget(effect: Array<any>): string {
-    let target = ' à UNKNOWN';
-
-    if (effect[0] === 0 && effect[1] === 3) {
-      target = ' au lanceur';
-    } else if (effect[0] === 1 && effect[1] === 2) {
-      target = ' à un allié';
-    }
-    else if (effect[0] === 2 && effect[1] === 2) {
-      target = ' aux alliés';
-    }
-    else if (effect[0] === 2 && effect[1] === 5) {
-      target = ' aux alliés sauf le lanceur';
-    }
-
-    return target;
+    return `+${gain} ${pluralForm} ${target}`;
   }
 }
 

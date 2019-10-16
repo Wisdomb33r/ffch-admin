@@ -17,7 +17,7 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
       return 'Effet AbilityKillerDamageIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
 
-    this.target = this.getLocalTarget(effect[0], effect[1]);
+    this.target = this.getTarget(effect[0], effect[1]);
     this.damageType = this.getDamageType(effect[2]);
 
     this.numTurns = effect[3][8];
@@ -25,7 +25,7 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
 
     const rawKillers = effect[3].slice(0, 8);
 
-    let increases = [];
+    const increases = [];
 
     rawKillers.forEach(rawKiller => {
       if (Array.isArray(rawKiller) && rawKiller.length >= 2) {
@@ -39,20 +39,6 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
     });
 
     return this.wordEffectJoiningIdenticalValues(increases, HTML_LINE_RETURN);
-  }
-
-  private getLocalTarget(effectId1: number, effectId2: number) {
-    let target = ' à UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
-      target = ' au lanceur';
-    } else if (effectId1 === 1 && effectId2 === 2) {
-      target = ' à un allié';
-    } else if (effectId1 === 2 && effectId2 === 2) {
-      target = ' aux alliés';
-    }
-
-    return target;
   }
 
   private getDamageType(effectId: number): string {
@@ -71,8 +57,6 @@ export class AbilityKillerDamageIncreaseParser extends EffectParser {
     const monsterArray = accumulatedStats.map(monster => 'les ' + monster);
     const monsters = FfbeUtils.replaceLastOccurenceInString(monsterArray.join(', '), ',', ' et');
 
-    return '+' + currentValue + '% de dégâts ' + this.damageType + ' contre ' + monsters
-      + this.target + ' pour ' + this.numTurns + ' tour' + this.pluralForm;
-
+    return `+${currentValue}% de dégâts ${this.damageType} contre ${monsters} ${this.target} pour ${this.numTurns} tour${this.pluralForm}`;
   }
 }

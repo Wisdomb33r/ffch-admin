@@ -28,7 +28,7 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
 
-    const target = this.getLocalTarget(effect[0], effect[1], effect[2]);
+    const target = this.getTarget(effect[0], effect[1]);
 
     let dispellable = '';
     if (effect[3].length >= 7 && effect[3][6] === 1) {
@@ -37,31 +37,11 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     const activity = effect[2] === 58 ? ' en chantant' : '';
 
-    return statModifier + target + turns + activity + dispellable;
-  }
-
-  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
-    let target = ' à UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
-      target = ' au lanceur';
-    } else if (effectId1 === 1 && effectId2 === 2) {
-      target = ' à un allié';
-    } else if (effectId1 === 2 && effectId2 === 2) {
-      target = ' aux alliés';
-    } else if (effectId1 === 2 && effectId2 === 5) {
-      target = ' aux alliés sauf le lanceur';
-    } else if (effectId1 === 1 && effectId2 === 1) {
-      target = ' à un adversaire';
-    } else if (effectId1 === 2 && effectId2 === 1) {
-      target = ' aux adversaires';
-    }
-
-    return target;
+    return `${statModifier} ${target}${turns}${activity}${dispellable}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const sign = currentValue >= 0 ? '+' : '';
-    return sign + currentValue + '% ' + accumulatedStats.join('/');
+    return `${sign}${currentValue}% ${accumulatedStats.join('/')}`;
   }
 }

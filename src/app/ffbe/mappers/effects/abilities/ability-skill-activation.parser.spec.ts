@@ -28,7 +28,7 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> pour 1 tour');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> au lanceur pour 1 tour');
   });
 
   it('should parse skill activation for caster for N turns and no usage limit', () => {
@@ -50,7 +50,7 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> pour 4 tours');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> au lanceur pour 4 tours');
   });
 
   it('should parse activation of three skills for caster for N turns and no usage limit', () => {
@@ -87,7 +87,7 @@ describe('AbilitySkillActivationParser', () => {
     expect(mySpy).toHaveBeenCalledWith(202340);
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=200270">Transpercer</a>, ' +
-      '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a> pour 3 tours');
+      '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a> au lanceur pour 3 tours');
   });
 
   it('should parse skill activation for caster for 1 use and no turn limit', () => {
@@ -109,7 +109,7 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> pour 1 utilisation');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> au lanceur pour 1 utilisation');
   });
 
   it('should parse skill activation for caster for M uses and no turn limit', () => {
@@ -131,7 +131,7 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> pour 4 utilisations');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> au lanceur pour 4 utilisations');
   });
 
   it('should parse skill activation for caster for M uses over N turns', () => {
@@ -153,7 +153,8 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> pour 3 utilisations sur 5 tours');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> ' +
+      'au lanceur pour 3 utilisations sur 5 tours');
   });
 
   it('should parse skill activation for caster without turn or use limit', () => {
@@ -175,7 +176,7 @@ describe('AbilitySkillActivationParser', () => {
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
-    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> au lanceur');
   });
 
   it('should parse skill activation for one ally', () => {
