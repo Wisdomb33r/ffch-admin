@@ -29,25 +29,13 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
     });
 
     this.duration = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tours' : ' pour ce combat';
-    this.target = this.getLocalTarget(effect[0], effect[1], effect[2]);
+    this.target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
 
     return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    return '+' + Math.round(currentValue) + '% de puissance à ' + accumulatedStats.join(', ')
-      + this.target + this.duration + ' (ID #' + this.stackId + ')';
+    return `+${Math.round(currentValue)}% de puissance à ${accumulatedStats.join(', ')} pour ${this.target}${this.duration} (ID #${this.stackId})`;
   }
 
-  protected getLocalTarget(effectId1: number, effectId2: number, effectId3: number): string {
-    let target = ' pour UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 136) {
-      target = '';
-    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 136) {
-      target = ' pour un allié';
-    }
-
-    return target;
-  }
 }

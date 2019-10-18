@@ -21,9 +21,9 @@ export class AbilityElementImbueParser extends EffectParser {
       {name: 'Ténèbres', value: effect[3][7]},
     ];
 
-    const target = this.getLocalTarget(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
 
-    const turns = ' pour ' + effect[3][8] + ' tour';
+    const turns = ` pour ${effect[3][8]} tour`;
 
     const pluralForm = (effect[3][8] > 1) ? 's' : '';
 
@@ -35,28 +35,7 @@ export class AbilityElementImbueParser extends EffectParser {
       return 'Effet AbilityElementImbueParser inconnu: Plusieurs valeurs différentes';
     }
 
-    return sentence + target + turns + pluralForm;
-  }
-
-
-  private getLocalTarget(effectId1: number, effectId2: number): string {
-    let target = ' de UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
-      target = ' du lanceur';
-    } else if (effectId1 === 1 && effectId2 === 2) {
-      target = ' d\'un allié';
-    } else if (effectId1 === 1 && effectId2 === 5) {
-      target = ' d\'un allié sauf le lanceur';
-    } else if (effectId1 === 3 && effectId2 === 2) {
-      target = ' d\'un allié au hasard';
-    } else if (effectId1 === 2 && effectId2 === 2) {
-      target = ' des alliés';
-    } else if (effectId1 === 2 && effectId2 === 5) {
-      target = ' des alliés sauf le lanceur';
-    }
-
-    return target;
+    return `${sentence} ${target}${turns}${pluralForm}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

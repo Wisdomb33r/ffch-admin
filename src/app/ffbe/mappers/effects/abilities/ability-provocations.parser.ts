@@ -12,21 +12,8 @@ export class AbilityProvocationsParser extends EffectParser {
 
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    const target = this.getLocalTarget(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
 
-    return '+' + percentsProvocation + '% de chances' + target
-      + ' d\'être ciblé pour ' + numTurns + ' tour' + pluralFormTurns;
-  }
-
-  private getLocalTarget(effectId1: number, effectId2: number): string {
-    let target = ' pour UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
-      target = ' pour le lanceur';
-    } else if (effectId1 === 1 && effectId2 === 2) {
-      target = ' pour un allié';
-    }
-
-    return target;
+    return `+${percentsProvocation}% de chances pour ${target} d\'être ciblé pour ${numTurns} tour${pluralFormTurns}`;
   }
 }
