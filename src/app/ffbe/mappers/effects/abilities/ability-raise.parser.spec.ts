@@ -8,7 +8,7 @@ describe('AbilityRaiseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Ranime avec 60% de PV les alliés');
+    expect(s).toEqual('Ranime les alliés avec 60% de PV');
   });
 
   it('should parse raise for one ally', () => {
@@ -17,7 +17,7 @@ describe('AbilityRaiseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Ranime avec 50% de PV un allié');
+    expect(s).toEqual('Ranime un allié avec 50% de PV');
   });
 
   it('should parse raise for all allies', () => {
@@ -26,7 +26,7 @@ describe('AbilityRaiseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Ranime avec 80% de PV un allié ou inflige Mort à une cible mort-vivante');
+    expect(s).toEqual('Ranime un allié avec 80% de PV ou inflige Mort à une cible mort-vivante');
   });
 
 });

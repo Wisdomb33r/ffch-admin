@@ -9,15 +9,16 @@ export class AbilityRaiseParser extends EffectParser {
 
     const hp = effect[3][0];
     let target = 'UNKNOWN target';
+    let undeadSpecial = '';
     if (effect[0] === 2) {
       target = 'les alliés';
     }
     if (effect[0] === 1) {
       target = 'un allié';
       if (effect[1] === 6) {
-        target += ' ou inflige Mort à une cible mort-vivante';
+        undeadSpecial = ' ou inflige Mort à une cible mort-vivante';
       }
     }
-    return 'Ranime avec ' + hp + '% de PV ' + target;
+    return `Ranime ${target} avec ${hp}% de PV${undeadSpecial}`;
   }
 }
