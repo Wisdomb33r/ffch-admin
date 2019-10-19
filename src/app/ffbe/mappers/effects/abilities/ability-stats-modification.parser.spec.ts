@@ -17,7 +17,7 @@ describe('AbilityStatsModificationParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour ce combat');
+    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour 9999 tours');
   });
 
   it('should parse non-dispellable stats increase for caster', () => {

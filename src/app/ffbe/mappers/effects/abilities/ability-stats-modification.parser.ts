@@ -16,7 +16,9 @@ export class AbilityStatsModificationParser extends EffectParser {
     // TODO critical strikes
     // TODO What if effect[3][5] !== 1 ?
 
-    const turns = (effect[3][4] >= 0) ? ' pour ' + effect[3][4] + ' tour' + (effect[3][4] > 1 ? 's' : '') : ' pour ce combat';
+    const numTurns = (effect[3][4] >= 0) ? effect[3][4] : 9999;
+    const pluralForm = (numTurns > 1) ? 's' : '';
+    const turns = ` pour ${numTurns} tour${pluralForm}`;
 
     if (increases.every(element => element.value === 0)) {
       if (effect[2] === 58) {

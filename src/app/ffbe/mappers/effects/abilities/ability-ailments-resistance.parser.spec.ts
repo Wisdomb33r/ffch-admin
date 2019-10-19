@@ -11,6 +11,15 @@ describe('AbilityAilmentsResistanceParser', () => {
     expect(s).toEqual('+100% de rés. aux altérations au lanceur pour 3 tours');
   });
 
+  it('should parse resistance to all status ailments for 1 turn for caster', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 7, [50,  50,  50,  50,  50,  50,  50,  50,  1,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+50% de rés. aux altérations au lanceur pour 1 tour');
+  });
+
   it('should parse resistance to status ailments for caster', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 7, [0,  0,  0,  0,  100,  0,  50,  100,  1,  4]]');

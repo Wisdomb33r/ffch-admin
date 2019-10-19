@@ -23,7 +23,8 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
 
     const target = this.getTarget(effect[0], effect[1]);
 
-    const turns = (effect[3][9] >= 0) ? ` pour ${effect[3][9]} tours` : ' pour ce combat';
+    const pluralForm = (effect[3][9] > 1) ? 's' : '';
+    const turns = ` pour ${effect[3][9]} tour${pluralForm}`;
 
     return `${statModifier} ${target}${turns}`;
   }
