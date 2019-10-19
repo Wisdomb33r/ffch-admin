@@ -8,7 +8,7 @@ describe('AbilityCoversParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('80% de chance de protéger les alliés des dégâts magiques avec mitigation de 50% à 70% des dégâts reçus pour 5 tours');
+    expect(s).toEqual('80% de chance pour le lanceur de protéger les alliés des dégâts magiques avec mitigation de 50% à 70% des dégâts reçus pour 5 tours');
   });
 
   it('should parse physical cover for ally', () => {

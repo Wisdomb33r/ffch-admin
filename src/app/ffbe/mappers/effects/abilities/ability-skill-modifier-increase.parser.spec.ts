@@ -38,8 +38,8 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> pour 5 tours (ID #1214)'
-      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> pour 5 tours (ID #1214)');
+    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> pour le lanceur pour 5 tours (ID #1214)'
+      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> pour le lanceur pour 5 tours (ID #1214)');
   });
 
   it('should parse skill modifier increase for one ally', () => {

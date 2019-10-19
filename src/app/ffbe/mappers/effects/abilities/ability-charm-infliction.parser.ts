@@ -14,22 +14,6 @@ export class AbilityCharmInflictionParser extends EffectParser {
 
     const pluralForm = effect[3][0] > 1 ? 's' : '';
 
-    return 'Inflige Charme (' + chances + '%)' + target + ' pour ' + numTurns + ' tour' + pluralForm;
-  }
-
-  private getTarget(effectId1: number, effectId2: number) {
-    let target = ' à UNKNOWN';
-
-    if (effectId1 === 0 && effectId2 === 3) {
-      target = ' au lanceur';
-    } else if (effectId1 === 2 && effectId2 === 5) {
-      target = ' aux alliés sauf le lanceur';
-    } else if (effectId1 === 1 && effectId2 === 1) {
-      target = ' à un adversaire';
-    } else if (effectId1 === 2 && effectId2 === 1) {
-      target = ' aux adversaires';
-    }
-
-    return target;
+    return `Inflige Charme (${chances}%) ${target} pour ${numTurns} tour${pluralForm}`;
   }
 }

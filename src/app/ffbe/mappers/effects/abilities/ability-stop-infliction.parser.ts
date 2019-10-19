@@ -14,18 +14,7 @@ export class AbilityStopInflictionParser extends EffectParser {
 
     const pluralForm = effect[3][1] > 1 ? 's' : '';
 
-    return 'Inflige Stop (' + chances + '%)' + target + ' pour ' + numTurns + ' tour' + pluralForm;
+    return `Inflige Stop (${chances}%) ${target} pour ${numTurns} tour${pluralForm}`;
   }
 
-  private getTarget(effectId1: number, effectId2: number) {
-    let target = ' à UNKNOWN';
-
-    if (effectId1 === 1 && effectId2 === 1) {
-      target = ' à un adversaire';
-    } else if (effectId1 === 2 && effectId2 === 1) {
-      target = ' aux adversaires';
-    }
-
-    return target;
-  }
 }

@@ -14,7 +14,7 @@ export class AbilityDamagesPhysicalConsecutiveIncreaseParser extends EffectParse
     const power = effect[3][3] + effect[3][4];
     const increment = effect[3][5];
     const nbIncrements = effect[3][6] - 1;
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(power)
       + '% (+' + increment + '% par utilisation successive, ' + nbIncrements + 'x, max '
       + Math.round(power + increment * nbIncrements) + '%) ' + target;

@@ -17,23 +17,8 @@ export class AbilityDispelsParser extends EffectParser {
       typeText += 'les bonus et malus ';
     }
 
-    let target = 'UNKNOWN target';
-    if (effect[0] === 1 && effect[1] === 1) {
-      target = 'd\'un adversaire';
-    }
-    if (effect[0] === 2 && effect[1] === 1) {
-      target = 'des adversaires';
-    }
-    if (effect[0] === 1 && effect[1] === 2) {
-      target = 'd\'un allié';
-    }
-    if (effect[0] === 0 && effect[1] === 3) {
-      target = 'du lanceur';
-    }
-    if (effect[0] === 2 && effect[1] === 2) {
-      target = 'des alliés';
-    }
+    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
 
-    return 'Dissipe ' + typeText + target;
+    return `Dissipe ${typeText}${target}`;
   }
 }

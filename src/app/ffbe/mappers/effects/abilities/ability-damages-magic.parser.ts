@@ -12,7 +12,7 @@ export class AbilityDamagesMagicParser extends EffectParser {
     const attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
     skill.magique = true;
     const puissance = effect[3][5];
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(puissance) + '% ' + target;
   }
 }

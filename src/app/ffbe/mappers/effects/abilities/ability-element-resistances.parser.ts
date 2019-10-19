@@ -22,15 +22,16 @@ export class AbilityElementResistancesParser extends EffectParser {
     }
 
     const statModifier = this.wordEffectJoiningIdenticalValues(increases);
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
-    const turns = (effect[3][9] >= 0) ? ' pour ' + effect[3][9] + ' tours' : ' pour ce combat';
+    const target = this.getTarget(effect[0], effect[1]);
+    const turns = ` pour ${effect[3][9]} tour`;
+    const pluralForm = (effect[3][9] > 1) ? 's' : '';
 
     let dispellable = '';
     if (effect[3].length >= 7 && effect[3][6] === 1) {
       dispellable = ' (bonus non-dissipable)';
     }
 
-    return statModifier + ' ' + target + turns + dispellable;
+    return `${statModifier} ${target}${turns}${pluralForm}${dispellable}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

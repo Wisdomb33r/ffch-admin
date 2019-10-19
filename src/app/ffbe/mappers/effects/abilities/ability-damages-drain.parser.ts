@@ -29,7 +29,7 @@ export class AbilityDamagesDrainParser extends EffectParser {
     const power = effect[3][1];
     const drain = effect[3][0];
     const drainType = effect[2] === 10 ? 'sur les PM ' : '';
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackTypeText + (elements ? 'de ' + elements + ' ' : 'neutres ') + drainType + 'de puissance ' + Math.round(power)
       + '% avec absorption de ' + drain + '% des dégâts infligés ' + target;
   }

@@ -4,6 +4,11 @@ import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
 import {Equipment} from '../../model/equipment/equipment.model';
 
+export type TargetWithPreposition =
+  'TargetWithPreposition.A' |
+  'TargetWithPreposition.De' |
+  'TargetWithPreposition.None';
+
 export abstract class EffectParser {
   public abstract parse(effect: Array<any>, skill: Skill): string;
 
@@ -177,59 +182,153 @@ export abstract class EffectParser {
     }
   }
 
-  protected getTargetForDamagingSkill(effectId1: number, effectId2: number): string {
+  protected getTarget(effectId1: number, effectId2: number, preposition: TargetWithPreposition = 'TargetWithPreposition.A'): string {
+
     if (effectId1 === 1 && effectId2 === 1) {
-      return 'à un adversaire';
+      return this.getTargetEnemyText(preposition);
     }
     if (effectId1 === 3 && effectId2 === 1) {
-      return 'à un adversaire au hasard';
-    }
-    if (effectId1 === 1 && effectId2 === 3) {
-      return 'au lanceur';
+      return this.getTargetRandomEnemyText(preposition);
     }
     if (effectId1 === 2 && effectId2 === 1) {
-      return 'aux adversaires';
+      return this.getTargetEnemiesText(preposition);
+    }
+    if (effectId1 === 1 && effectId2 === 2) {
+      return this.getTargetAllyText(preposition);
+    }
+    if (effectId1 === 1 && effectId2 === 5) {
+      return this.getTargetAllyButCasterText(preposition);
+    }
+    if (effectId1 === 3 && effectId2 === 2) {
+      return this.getTargetRandomAllyText(preposition);
+    }
+    if (effectId1 === 1 && effectId2 === 6) {
+      return this.getTargetAnyTargetText(preposition);
+    }
+    if (effectId1 === 2 && effectId2 === 6) {
+      return this.getTargetAnyGroupText(preposition);
+    }
+    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
+      return this.getTargetCasterText(preposition);
+    }
+    if (effectId1 === 2 && effectId2 === 2) {
+      return this.getTargetAlliesText(preposition);
+    }
+    if (effectId1 === 2 && effectId2 === 5) {
+      return this.getTargetAlliesButCasterText(preposition);
     }
 
     return 'UNKNOWN target';
   }
 
-  protected getTargetForHealingSkill(effectId1: number, effectId2: number): string {
-    if (effectId1 === 1 && effectId2 === 1) {
+  private getTargetEnemyText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à un adversaire';
     }
-    if (effectId1 === 3 && effectId2 === 1) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'un adversaire';
+    }
+    return 'un adversaire';
+  }
+
+  private getTargetRandomEnemyText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à un adversaire au hasard';
     }
-    if (effectId1 === 2 && effectId2 === 1) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'un adversaire au hasard';
+    }
+    return 'un adversaire au hasard';
+  }
+
+  private getTargetEnemiesText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'aux adversaires';
     }
-    if (effectId1 === 1 && effectId2 === 2) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'des adversaires';
+    }
+    return 'les adversaires';
+  }
+
+  private getTargetAllyText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à un allié';
     }
-    if (effectId1 === 1 && effectId2 === 5) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'un allié';
+    }
+    return 'un allié';
+  }
+
+  private getTargetAllyButCasterText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à un allié sauf le lanceur';
     }
-    if (effectId1 === 3 && effectId2 === 2) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'un allié sauf le lanceur';
+    }
+    return 'un allié sauf le lanceur';
+  }
+
+  private getTargetRandomAllyText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à un allié au hasard';
     }
-    if (effectId1 === 1 && effectId2 === 6) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'un allié au hasard';
+    }
+    return 'un allié au hasard';
+  }
+
+  private getTargetAnyTargetText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'à une cible';
     }
-    if (effectId1 === 2 && effectId2 === 6) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'd\'une cible';
+    }
+    return 'une cible';
+  }
+
+  private getTargetAnyGroupText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'au groupe d\'une cible';
     }
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'du groupe d\'une cible';
+    }
+    return 'le groupe d\'une cible';
+  }
+
+  private getTargetCasterText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'au lanceur';
     }
-    if (effectId1 === 2 && effectId2 === 2) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'du lanceur';
+    }
+    return 'le lanceur';
+  }
+
+  private getTargetAlliesText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'aux alliés';
     }
-    if (effectId1 === 2 && effectId2 === 5) {
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'des alliés';
+    }
+    return 'les alliés';
+  }
+
+  private getTargetAlliesButCasterText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
       return 'aux alliés sauf le lanceur';
     }
-
-    return 'UNKNOWN target';
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'des alliés sauf le lanceur';
+    }
+    return 'les alliés sauf le lanceur';
   }
 
   protected getHealingText(mod: number): string {

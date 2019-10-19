@@ -10,9 +10,10 @@ export class AbilityCoversParser extends EffectParser {
     const damageType = this.getDamageType(effect[3][8]);
 
     const numTurns = effect[3][6];
-    const turns = ' pour ' + numTurns + ' tour' + (numTurns > 1 ? 's' : '');
+    const pluralForm = numTurns > 1 ? 's' : '';
+    const turns = ` pour ${numTurns} tour${pluralForm}`;
 
-    const target = this.getTarget(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
 
     const chances = effect[3][4];
 
@@ -21,8 +22,7 @@ export class AbilityCoversParser extends EffectParser {
 
     const mitigation = mitigationMin + (mitigationMax > mitigationMin ? '% à ' + mitigationMax + '%' : '%');
 
-    return chances + '% de chance' + target + ' de protéger les alliés des dégâts ' + damageType
-      + ' avec mitigation de ' + mitigation + ' des dégâts reçus' + turns;
+    return `${chances}% de chance pour ${target} de protéger les alliés des dégâts ${damageType} avec mitigation de ${mitigation} des dégâts reçus${turns}`;
   }
 
   private getDamageType(typeId: number) {
@@ -36,16 +36,5 @@ export class AbilityCoversParser extends EffectParser {
 
     return damageType;
   }
-
-  private getTarget(effetId1: number, effectId2: number): string {
-    let target = '';
-
-    if (effetId1 === 1 && effectId2 === 2) {
-      target = ' pour un allié';
-    }
-
-    return target;
-  }
-
 
 }

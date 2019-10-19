@@ -65,4 +65,13 @@ describe('AbilityElementResistancesParser', () => {
     expect(s).toEqual('+30% de rés. Foudre, Lumière, +20% de rés. Feu, Vent aux adversaires pour 4 tours');
   });
 
+  it('should parse element resistance debuffs for all enemies for 1 turn', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 1, 33, [0,  -80,  0,  0,  0,  0,  0,  0,  1,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('-80% de rés. Glace aux adversaires pour 1 tour');
+  });
+
 });

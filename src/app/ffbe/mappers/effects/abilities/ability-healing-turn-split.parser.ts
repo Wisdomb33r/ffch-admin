@@ -12,7 +12,7 @@ export class AbilityHealingTurnSplitParser extends EffectParser {
     const turns = effect[3][3];
     const turnsText = turns === -1 ? ' chaque tour' : ' sur ' + turns + ' tours';
     const modText = this.getHealingText(mod);
-    let target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    let target = this.getTarget(effect[0], effect[1]);
     if (turns === -1) {
       target = 'au lanceur';
     }

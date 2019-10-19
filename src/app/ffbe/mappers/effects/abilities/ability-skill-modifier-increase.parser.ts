@@ -31,7 +31,7 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
     const pluralForm = effect[3][4] >= 1 ? 's' : '';
     const turns = effect[3][4] >= 0 ? effect[3][4] : 9999;
     this.duration = `pour ${turns} tour${pluralForm}`;
-    this.target = this.getTarget(effect[0], effect[1], effect[2]);
+    this.target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
 
     return this.wordEffectJoiningIdenticalValues(modifiedSkillsIncreases, HTML_LINE_RETURN, true);
   }
@@ -39,18 +39,7 @@ export class AbilitySkillModifierIncreaseParser extends EffectParser {
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const displayedValue = (currentValue > 0 ? Math.round(currentValue) : 'UNKNOWN');
     const skillsText = accumulatedStats.join(', ');
-    return `+${displayedValue}% de puissance à ${skillsText}${this.target} ${this.duration} (ID #${this.stackId})`;
+    return `+${displayedValue}% de puissance à ${skillsText} pour ${this.target} ${this.duration} (ID #${this.stackId})`;
   }
 
-  protected getTarget(effectId1: number, effectId2: number, effectId3: number): string {
-    let target = ' pour UNKNOWN';
-
-    if ((effectId1 === 0 || effectId1 === 1) && effectId2 === 3 && effectId3 === 136) {
-      target = '';
-    } else if (effectId1 === 1 && effectId2 === 2 && effectId3 === 136) {
-      target = ' pour un allié';
-    }
-
-    return target;
-  }
 }

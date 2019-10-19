@@ -7,7 +7,7 @@ export class AbilityHealingFixedParser extends EffectParser {
       return 'Effet AbilityHealingFixedParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTargetForHealingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     if (effect[2] === 16 || effect[2] === 17) {
       const regen = effect[3][0];
       return 'Soigne ' + regen + (effect[2] === 16 ? ' PV ' : ' PM ') + target;

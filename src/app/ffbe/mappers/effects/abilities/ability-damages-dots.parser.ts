@@ -21,7 +21,7 @@ export class AbilityDamagesDotsParser extends EffectParser {
     const power = effect[3][1];
     const turns = effect[3][4];
     const stackId = effect[3][6] ? effect[3][6] : 0;
-    const target = this.getTargetForDamagingSkill(effect[0], effect[1]);
+    const target = this.getTarget(effect[0], effect[1]);
     return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
       + 'de puissance ' + Math.round(power) + '% chaque tour ' + target + ' pour ' + turns + ' tours (ID #' + stackId + ')';
   }
