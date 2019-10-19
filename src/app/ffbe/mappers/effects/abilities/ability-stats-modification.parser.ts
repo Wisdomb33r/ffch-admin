@@ -18,7 +18,7 @@ export class AbilityStatsModificationParser extends EffectParser {
 
     const numTurns = (effect[3][4] >= 0) ? effect[3][4] : 9999;
     const pluralForm = (numTurns > 1) ? 's' : '';
-    const turns = ` pour ${numTurns} tour${pluralForm}`;
+    const turns = (numTurns === 0) ? ' pour ce tour' : ` pour ${numTurns} tour${pluralForm}`;
 
     if (increases.every(element => element.value === 0)) {
       if (effect[2] === 58) {

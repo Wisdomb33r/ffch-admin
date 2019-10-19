@@ -11,13 +11,13 @@ describe('AbilityStatsModificationParser', () => {
     expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour 5 tours');
   });
 
-  it('should parse stats increase with whole-fight duration for caster', () => {
+  it('should parse stats increase with whole-fight duration for caster (skill 911834)', () => {
     // GIVEN
-    const effect = JSON.parse('[0, 3, 3, [20, 10, 30, 10, -1]]');
+    const effect = JSON.parse('[0, 3, 3, [0,  0,  20,  20,  -1,  1]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+30% MAG, +20% ATT, +10% DÉF/PSY au lanceur pour 9999 tours');
+    expect(s).toEqual('+20% MAG/PSY au lanceur pour 9999 tours');
   });
 
   it('should parse non-dispellable stats increase for caster', () => {
@@ -84,7 +84,6 @@ describe('AbilityStatsModificationParser', () => {
     expect(s).toEqual('-30% MAG, -20% ATT aux adversaires pour 5 tours');
   });
 
-
   it('should parse stats increase for all allies while singing', () => {
     // GIVEN
     const effect = JSON.parse('[2, 2, 58, [30,  40,  10,  20,  3,  1]]');
@@ -102,4 +101,14 @@ describe('AbilityStatsModificationParser', () => {
     // THEN
     expect(s).toEqual('Chante pour 4 tours');
   });
+
+  it('should parse stats decrease for this turn for one enemy (skill 227804)', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 24, [0,  -50,  0,  0,  0,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('-50% DÉF à un adversaire pour ce tour');
+  });
+
 });
