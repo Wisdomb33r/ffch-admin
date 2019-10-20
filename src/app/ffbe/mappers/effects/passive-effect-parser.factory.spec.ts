@@ -286,10 +286,12 @@ describe('PassiveEffectParser', () => {
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
     const skill1: Skill = skills['200200'];
     skill1.gumi_id = 200200;
+    skill1.active = true;
     skill1.names = names['200200'];
     skill1.descriptions = descriptions['200200'];
     const skill2: Skill = skills['200270'];
     skill2.gumi_id = 200270;
+    skill2.active = true;
     skill2.names = names['200270'];
     skill2.descriptions = descriptions['200270'];
 
@@ -311,6 +313,7 @@ describe('PassiveEffectParser', () => {
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
     const skill1: Skill = skills['202340'];
     skill1.gumi_id = 202340;
+    skill1.active = true;
     skill1.names = names['202340'];
     skill1.descriptions = descriptions['202340'];
 

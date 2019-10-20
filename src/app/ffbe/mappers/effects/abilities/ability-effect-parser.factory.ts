@@ -37,6 +37,7 @@ import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
+import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
 import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
 import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
@@ -121,15 +122,17 @@ export class AbilityEffectParserFactory {
       case 43:
         return new AbilityDamagesPhysicalCriticalHitParser();
       case 44:
-        // in fact dual cast black magic type, but other multi-cast magic is within jump damage effect
-        return new AbilityDamagesPhysicalJumpDelayParser();
+        return new AbilityMagicMultipleActivationParser();
       case 45:
-        // in fact dual cast all magic type, but other multi-cast magic is within jump damage effect
-        return new AbilityDamagesPhysicalJumpDelayParser();
+        return new AbilityMagicMultipleActivationParser();
       case 47:
         return new AbilityEnemyScanParser();
       case 52:
-        return new AbilityDamagesPhysicalJumpDelayParser();
+        if (effectId1 === 0) {
+          return new AbilityMagicMultipleActivationParser();
+        } else {
+          return new AbilityDamagesPhysicalJumpDelayParser();
+        }
       case 53:
         return new AbilitySkillMultipleActivationParser();
       case 54:
@@ -200,6 +203,8 @@ export class AbilityEffectParserFactory {
         return new AbilityCooldownParser();
       case 132:
         return new AbilityDelayedSkillParser();
+      case 134:
+        return new AbilityDamagesPhysicalJumpDelayParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
       case 139:
