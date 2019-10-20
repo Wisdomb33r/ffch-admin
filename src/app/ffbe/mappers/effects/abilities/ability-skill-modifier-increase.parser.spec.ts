@@ -24,10 +24,12 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     };
     const skill1: Skill = skills['20430'];
     skill1.gumi_id = 20430;
+    skill1.active = true;
     skill1.names = names['20430'];
     skill1.descriptions = descriptions['20430'];
     const skill2: Skill = skills['509024'];
     skill2.gumi_id = 509024;
+    skill2.active = true;
     skill2.names = names['509024'];
     skill2.descriptions = descriptions['509024'];
 
@@ -38,8 +40,8 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> pour le lanceur pour 5 tours (ID #1214)'
-      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> pour le lanceur pour 5 tours (ID #1214)');
+    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> au lanceur pour 5 tours (ID #1214)'
+      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> au lanceur pour 5 tours (ID #1214)');
   });
 
   it('should parse skill modifier increase for one ally', () => {
@@ -52,10 +54,12 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     };
     const skill1: Skill = skills['20430'];
     skill1.gumi_id = 20430;
+    skill1.active = true;
     skill1.names = names['20430'];
     skill1.descriptions = descriptions['20430'];
     const skill2: Skill = skills['509024'];
     skill2.gumi_id = 509024;
+    skill2.active = true;
     skill2.names = names['509024'];
     skill2.descriptions = descriptions['509024'];
 
@@ -66,7 +70,7 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> pour un allié pour 5 tours (ID #1214)'
-      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> pour un allié pour 5 tours (ID #1214)');
+    expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> à un allié pour 5 tours (ID #1214)'
+      + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> à un allié pour 5 tours (ID #1214)');
   });
 });

@@ -172,13 +172,13 @@ export abstract class EffectParser {
       case 0:
         return '';
       case 1:
-        return 'noire';
+        return 'noire ';
       case 2:
-        return 'blanche';
+        return 'blanche ';
       case 3:
-        return 'verte';
+        return 'verte ';
       default:
-        return 'UNKNOWN magic type';
+        return 'UNKNOWN magic type ';
     }
   }
 

@@ -26,6 +26,8 @@ export class MagicEffectParserFactory {
         return new AbilityDamagesMagicParser();
       case 25:
         return new AbilityDamagesDrainParser();
+      case 30:
+        return new AbilityHealingTurnSplitParser();
       case 33:
         return new AbilityElementResistancesParser();
       case 59:

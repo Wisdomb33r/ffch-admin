@@ -70,6 +70,9 @@ export class Skill {
   }
 
   public isEffectWithDamage(effect: Array<any>): boolean {
+    if (!this.active) {
+      return false;
+    }
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages
@@ -91,6 +94,7 @@ export class Skill {
       || effectId === 103 // magic damages scaling on SPR
       || effectId === 124 // evoker damages
       || effectId === 126 // physical damages with consecutive damage increase
+      || effectId === 134 // physical damages with 1 turn timed jump delay
       || effectId === 139 // physical / magic DOT's
     );
   }
