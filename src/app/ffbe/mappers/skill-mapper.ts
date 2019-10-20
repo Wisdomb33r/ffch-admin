@@ -54,24 +54,28 @@ export class SkillMapper {
     let frames = [];
     let damages = [];
 
-    let lastDamageEffectIndex: number;
-    const effectsWithDamages = [];
+    let lastDamageEffectWithFramesIndex: number;
+    const effectsWithFrames = [];
+    let isEffectWithDamages = false;
     skill.effects_raw.forEach((effect, index) => {
-      if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
-        lastDamageEffectIndex = index;
-        effectsWithDamages.push(effect);
+      if (skill.isEffectWithDamage(effect)) {
+        isEffectWithDamages = true;
+        if (effect[2] !== 52 && effect[2] !== 134 && effect[2] !== 139) {
+          lastDamageEffectWithFramesIndex = index;
+          effectsWithFrames.push(effect);
+        }
       }
     });
 
-    if (lastDamageEffectIndex > 0 && skill.attack_frames && skill.attack_frames.length > lastDamageEffectIndex) {
+    if (lastDamageEffectWithFramesIndex > 0 && skill.attack_frames && skill.attack_frames.length > lastDamageEffectWithFramesIndex) {
       skill.effects_raw.forEach((effect, index) => {
-        if (skill.isEffectWithDamage(effect) && effect[2] !== 139) {
+        if (skill.isEffectWithDamage(effect) && effect[2] !== 52 && effect[2] !== 134 && effect[2] !== 139) {
           frames = frames.concat(skill.attack_frames[index]);
           damages = damages.concat(skill.attack_damage[index]);
         }
       });
     } else {
-      effectsWithDamages.forEach((value, index) => {
+      effectsWithFrames.forEach((value, index) => {
         if (Array.isArray(skill.attack_frames) && skill.attack_frames.length > index) {
           frames = frames.concat(skill.attack_frames[index]);
           damages = damages.concat(skill.attack_damage[index]);
@@ -79,11 +83,15 @@ export class SkillMapper {
       });
     }
     frames.sort((a, b) => a - b);
+    if (frames.length === 0 && isEffectWithDamages) {
+      frames.push(0);
+      damages.push(100);
+    }
 
     if (frames.length > 0) {
       attackCount = frames.length;
       attackFrames = frames.join(' ');
-      if (effectsWithDamages.length > 1) {
+      if (effectsWithFrames.length > 1) {
         attackDamages = frames.map(frame => 0).join(' ');
       } else {
         attackDamages = damages.join(' ');

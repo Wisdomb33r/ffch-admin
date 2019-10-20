@@ -12,26 +12,24 @@ export class AbilityMagicMultipleActivationParser extends EffectParser {
       if (effect[2] === 44) {
         magicTypeText = 'noire ';
       }
-      return 'Permet l\'utilisation des sorts de magie ' + magicTypeText + '2x par tour';
+      return `Permet l'utilisation des sorts de magie ${magicTypeText}2x par tour`;
     }
     if (effect[3].length === 3) {
       const magicType = effect[3][0];
       const castNumber = effect[3][1];
-      let magicTypeText = this.getMagicTypeFromId(magicType);
-      if (magicTypeText.length > 0) {
-        magicTypeText += ' ';
-      }
-      return 'Permet l\'utilisation des sorts de magie ' + magicTypeText + castNumber + 'x par tour';
+      const magicTypeText = this.getMagicTypeFromId(magicType);
+      return `Permet l'utilisation des sorts de magie ${magicTypeText}${castNumber}x par tour`;
     }
     if (effect[3].length === 6) {
       const magicType1 = effect[3][0];
+      const magicTypeText1 = this.getMagicTypeFromId(magicType1);
       const magicType2 = effect[3][1];
+      const magicTypeText2 = this.getMagicTypeFromId(magicType2);
       const castNumber1 = effect[3][2];
       const castNumber2 = effect[3][3];
-      return 'Permet l\'utilisation des sorts de magie '
-        + this.getMagicTypeFromId(magicType1) + ' et ' + this.getMagicTypeFromId(magicType2)
-        + ' ' + (castNumber1 === castNumber2 ? castNumber1 : 'UNKNOWN') + 'x par tour';
+      const castNumberText = castNumber1 === castNumber2 ? castNumber1 : 'UNKNOWN';
+      return `Permet l'utilisation des sorts de magie ${magicTypeText1}et ${magicTypeText2}${castNumberText}x par tour`;
     }
-    return 'Effet AbilityDamagesPhysicalJumpDelayParser inconnu: Mauvaise liste de paramètres pour multi-cast magie';
+    return 'Effet AbilityMagicMultipleActivationParser inconnu: Mauvaise liste de paramètres pour multi-cast magie';
   }
 }
