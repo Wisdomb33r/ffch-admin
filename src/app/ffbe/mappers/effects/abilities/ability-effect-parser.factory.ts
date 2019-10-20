@@ -54,6 +54,7 @@ import {AbilityCoversParser} from './ability-covers.parser';
 import {AbilityLbDamageIncreaseParser} from './ability-lb-damage-increase.parser';
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
 import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
+import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -124,6 +125,8 @@ export class AbilityEffectParserFactory {
       case 45:
         // in fact dual cast all magic type, but other multi-cast magic is within jump damage effect
         return new AbilityDamagesPhysicalJumpDelayParser();
+      case 47:
+        return new AbilityEnemyScanParser();
       case 52:
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 53:
