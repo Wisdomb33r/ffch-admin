@@ -52,6 +52,7 @@ import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
 import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
 import {AbilityCoversParser} from './ability-covers.parser';
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
+import {AbilityBarriersParser} from './ability-barriers.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -184,6 +185,8 @@ export class AbilityEffectParserFactory {
         return new AbilityLbCrystalsParser();
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseParser();
+      case 127:
+        return new AbilityBarriersParser();
       case 130:
         return new AbilityCooldownParser();
       case 132:
