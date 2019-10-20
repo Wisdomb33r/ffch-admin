@@ -54,7 +54,9 @@ import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
 import {AbilityCoversParser} from './ability-covers.parser';
 import {AbilityLbDamageIncreaseParser} from './ability-lb-damage-increase.parser';
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
+import {AbilityBarriersParser} from './ability-barriers.parser';
 import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
+import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -123,6 +125,8 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 45:
         return new AbilityMagicMultipleActivationParser();
+      case 47:
+        return new AbilityEnemyScanParser();
       case 52:
         if (effectId1 === 0) {
           return new AbilityMagicMultipleActivationParser();
@@ -193,6 +197,8 @@ export class AbilityEffectParserFactory {
         return new AbilityLbCrystalsParser();
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseParser();
+      case 127:
+        return new AbilityBarriersParser();
       case 130:
         return new AbilityCooldownParser();
       case 132:
