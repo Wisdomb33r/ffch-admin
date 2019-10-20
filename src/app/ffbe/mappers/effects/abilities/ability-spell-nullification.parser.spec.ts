@@ -8,7 +8,7 @@ describe('AbilitySpellNullificationParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Bloque le prochain sort de magie adverse durant un tour');
+    expect(s).toEqual('Bloque le prochain sort de magie durant un tour');
   });
 
 });

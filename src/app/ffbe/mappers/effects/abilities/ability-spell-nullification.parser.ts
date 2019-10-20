@@ -8,6 +8,6 @@ export class AbilitySpellNullificationParser extends EffectParser {
       return 'Effet AbilitySpellNullificationParser inconnu: Mauvaise liste de paramètres';
     }
 
-    return `Bloque le prochain sort de magie adverse durant un tour`;
+    return `Bloque le prochain sort de magie durant un tour`;
   }
 }
