@@ -56,6 +56,7 @@ import {AbilityLbDamageIncreaseParser} from './ability-lb-damage-increase.parser
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
 import {AbilityBarriersParser} from './ability-barriers.parser';
 import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
+import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 
 export class AbilityEffectParserFactory {
@@ -161,6 +162,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
+      case 84:
+        return new AbilitySpellNullificationParser();
       case 88:
         return new AbilityStopInflictionParser();
       case 89:
