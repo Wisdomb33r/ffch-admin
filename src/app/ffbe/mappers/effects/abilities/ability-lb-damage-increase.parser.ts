@@ -7,7 +7,7 @@ export class AbilityLbDamageIncreaseParser extends EffectParser {
       return 'Effet AbilityLbDamageIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const damage: string = effect[3][0].toString();
+    const damage: string = effect[3][0];
     const numTurns = effect[3][1];
     const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
     const pluralForm = numTurns > 1 ? 's' : '';
