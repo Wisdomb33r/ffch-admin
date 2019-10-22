@@ -224,7 +224,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('15% de chance de contre-attaquer les dégâts physiques par: +20% PV (max 2 par tour)');
+    expect(s).toEqual('15% de chance de contrer les dégâts physiques par: +20% PV (max 2 par tour)');
   });
 
   it('should parse counter attack with skill effect without max limit per turn', () => {
@@ -243,7 +243,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('15% de chance de contre-attaquer les dégâts magiques par: +20% PV');
+    expect(s).toEqual('15% de chance de contrer les dégâts magiques par: +20% PV');
   });
 
   it('should parse multi-skill when effect is the only one', () => {

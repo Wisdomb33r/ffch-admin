@@ -5,6 +5,7 @@ import {AbilityElementResistancesParser} from './ability-element-resistances.par
 import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.parser';
 import {AbilityAilmentsRandomInflictionParser} from './ability-ailments-random-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
+import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 import {AbilityDamagesPhysicalParser} from './ability-damages-physical.parser';
@@ -197,6 +198,8 @@ export class AbilityEffectParserFactory {
         return new AbilitySingleAllyCoversParser();
       case 120:
         return new AbilityLbDamageIncreaseParser();
+      case 123:
+        return new AbilityCountersParser();
       case 124:
         return new AbilityDamagesEvokerParser();
       case 125:

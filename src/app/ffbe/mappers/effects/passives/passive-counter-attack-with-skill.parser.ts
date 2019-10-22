@@ -15,7 +15,7 @@ export class PassiveCounterAttackWithSkillParser extends EffectParser {
     const activatedSkillId = effect[3][2];
     const maxActivationNumber = effect[3][3];
     const damageTypeText = effect[2] === 49 ? 'physiques' : 'magiques';
-    const prefixText = `${counterChance}% de chance de contre-attaquer les dégâts ${damageTypeText} par: `;
+    const prefixText = `${counterChance}% de chance de contrer les dégâts ${damageTypeText} par: `;
     let suffixText = '';
     if (maxActivationNumber) {
       suffixText = ` (max ${maxActivationNumber} par tour)`;
