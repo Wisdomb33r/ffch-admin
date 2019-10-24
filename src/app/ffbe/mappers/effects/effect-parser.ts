@@ -321,7 +321,7 @@ export abstract class EffectParser {
     return 'les alliés';
   }
 
-  private getTargetAlliesButCasterText(preposition: TargetWithPreposition): string {
+  protected getTargetAlliesButCasterText(preposition: TargetWithPreposition): string {
     if (preposition === 'TargetWithPreposition.A') {
       return 'aux alliés sauf le lanceur';
     }
