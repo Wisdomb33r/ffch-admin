@@ -58,6 +58,7 @@ import {AbilityBarriersParser} from './ability-barriers.parser';
 import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
 import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
+import {AbilityDamagesHexParser} from './ability-damages-hex.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -212,6 +213,8 @@ export class AbilityEffectParserFactory {
         return new AbilitySkillModifierIncreaseParser();
       case 139:
         return new AbilityDamagesDotsParser();
+      case 1012:
+        return new AbilityDamagesHexParser();
       default:
         return new UnknownEffectParser();
     }
