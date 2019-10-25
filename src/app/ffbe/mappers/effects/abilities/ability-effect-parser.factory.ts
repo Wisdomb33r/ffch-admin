@@ -60,6 +60,7 @@ import {AbilityBarriersParser} from './ability-barriers.parser';
 import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
 import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
+import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parser';
 import {AbilityDamagesHexParser} from './ability-damages-hex.parser';
 
 export class AbilityEffectParserFactory {
@@ -161,6 +162,8 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingPercentParser();
       case 65:
         return new AbilityHealingFixedParser();
+      case 68:
+        return new AbilityBerserkInflictionParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
       case 72:
