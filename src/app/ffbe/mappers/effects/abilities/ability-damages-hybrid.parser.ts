@@ -9,6 +9,7 @@ export class AbilityDamagesHybridParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
+    const elementsText = elements ? `de ${elements} ` : 'neutres ';
     let attackType = 'Dégâts hybrides ';
     if (skill.attack_type !== 'Hybrid') {
       switch (skill.attack_type) {
@@ -28,10 +29,15 @@ export class AbilityDamagesHybridParser extends EffectParser {
     }
     skill.hybride = true;
     const accuracy = effect[3][7];
+    const accuracyText = accuracy > 0 ? ` (+${accuracy}% précision)` : '';
     const atkPower = effect[3][8];
     const magPower = effect[3][9];
+    if (atkPower !== magPower) {
+      return 'Effet AbilityDamagesHybridParser: Dégâts hybrides asymétriques non prévus';
+    }
+    const totalPower = Math.round((atkPower + magPower) / 2);
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(atkPower + magPower) + '% ' + target
-      + (accuracy > 0 ? ' (+' + accuracy + '% précision)' : '') + (atkPower !== magPower ? '(WARNING dégâts hybrides asymétriques)' : '');
+
+    return `${attackType}${elementsText}de puissance ${totalPower}% ${target}${accuracyText}`;
   }
 }
