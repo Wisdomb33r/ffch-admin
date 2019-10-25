@@ -53,6 +53,7 @@ import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
 import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
 import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.parser';
+import {PassiveMpCostDecreaseParser} from './passives/passive-mp-cost-decrease.parser';
 
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -165,6 +166,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
       case 76:
         return new PassiveEquipmentCategoryElementsResistanceParser();
+      case 77:
+        return new PassiveMpCostDecreaseParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 81:
