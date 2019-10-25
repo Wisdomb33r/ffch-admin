@@ -12,7 +12,7 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts hybrides neutres de puissance 600% à un adversaire');
+    expect(s).toEqual('Dégâts hybrides neutres de puissance 300% à un adversaire');
   });
 
   it('should parse fixed attack with hybrid elemental damages', () => {
@@ -24,7 +24,7 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque fixe à dégâts hybrides de Ténèbres de puissance 800% aux adversaires (+50% précision)');
+    expect(s).toEqual('Attaque fixe à dégâts hybrides de Ténèbres de puissance 400% aux adversaires (+50% précision)');
   });
 
   it('should parse physical attack with hybrid elemental damages', () => {
@@ -36,7 +36,7 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque physique à dégâts hybrides de Glace, Foudre, Vent de puissance 500% à un adversaire');
+    expect(s).toEqual('Attaque physique à dégâts hybrides de Glace, Foudre, Vent de puissance 250% à un adversaire');
   });
 
   it('should parse magic attack with hybrid elemental damages', () => {
@@ -48,7 +48,7 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque magique à dégâts hybrides de Eau de puissance 200% aux adversaires');
+    expect(s).toEqual('Attaque magique à dégâts hybrides de Eau de puissance 100% aux adversaires');
   });
 
   it('should parse unknown attack with hybrid elemental damages', () => {
@@ -60,7 +60,19 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque UNKNOWN à dégâts hybrides de Ténèbres de puissance 200% à un adversaire');
+    expect(s).toEqual('Attaque UNKNOWN à dégâts hybrides de Ténèbres de puissance 100% à un adversaire');
+  });
+
+  it('should error for asymetrical hybrid damages', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 40, [0, 0, 0, 0, 0, 0, 0, 0, 100, 200]]');
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.element_inflict = ['Dark'];
+    fakeSkill.attack_type = undefined;
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    // THEN
+    expect(s).toEqual('Effet AbilityDamagesHybridParser: Dégâts hybrides asymétriques non prévus');
   });
 
 });
