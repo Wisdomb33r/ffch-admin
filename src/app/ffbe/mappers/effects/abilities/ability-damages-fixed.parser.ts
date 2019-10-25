@@ -8,10 +8,11 @@ export class AbilityDamagesFixedParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
+    const elementsText = (elements ? `de ${elements}` : 'neutres');
     const attackType = this.getAttackAndDamageWordingForFixedDamages(skill.attack_type);
     skill.fixe = true;
     const power = effect[3][0];
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de ' + Math.round(power) + ' PV ' + target;
+    return `${attackType}${elementsText} de ${Math.round(power)} PV ${target}`;
   }
 }
