@@ -84,8 +84,12 @@ export abstract class EffectParser {
         return 'rés. Ténèbres';
       case 56:
         return 'esquives d\'attaques physiques';
+      case 57:
+        return 'mitigation physique';
       case 58:
         return 'mitigation magique';
+      case 74:
+        return 'dégâts aux morts-vivants';
       default:
         return 'UNKNOWN STAT';
     }

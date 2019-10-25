@@ -42,10 +42,14 @@ describe('PassiveEffectParser', () => {
       parsed: '+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres'
     },
     {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
-    {effect: '[0, 3, 4, [2, 40, 9999, 30, 0, -1]]', parsed: '+40% DÉF quand les PV passent sous 30% (max 9999 fois)'},
+    {effect: '[0, 3, 4, [1, 40, 9999, 30, 0, -1]]', parsed: '+40% ATT quand les PV passent sous 30% (max 9999 fois)'},
     {
       effect: '[0, 3, 4, [2, 40, 9999, 30, 0, 3]]',
       parsed: '+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)'
+    },
+    {
+      effect: '[0, 3, 4, [74,  100,  1,  50,  0,  -1]]',
+      parsed: '+100% dégâts aux morts-vivants quand les PV passent sous 50% (max 1 fois)'
     },
     {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
