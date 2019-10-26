@@ -37,8 +37,8 @@ export class AbilityElementResistancesParser extends EffectParser {
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const sign = currentValue >= 0 ? '+' : '';
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% de rés. aux éléments';
+      return `${sign}${currentValue}% de rés. aux éléments`;
     }
-    return sign + currentValue + '% de rés. ' + accumulatedStats.join(', ');
+    return `${sign}${currentValue}% de rés. ${accumulatedStats.join(', ')}`;
   }
 }

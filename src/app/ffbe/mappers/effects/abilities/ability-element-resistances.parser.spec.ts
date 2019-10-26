@@ -74,4 +74,13 @@ describe('AbilityElementResistancesParser', () => {
     expect(s).toEqual('-80% de rés. Glace aux adversaires pour 1 tour');
   });
 
+  it('should parse resistance debuffs to all elements for all enemies', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 1, 33, [-100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  1,  2]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('-100% de rés. aux éléments aux adversaires pour 2 tours');
+  });
+
 });
