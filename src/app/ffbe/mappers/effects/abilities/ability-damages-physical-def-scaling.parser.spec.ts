@@ -12,7 +12,7 @@ describe('AbilityDamagesPhysicalDefScalingParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts physiques neutres calculé sur la DÉF de puissance 300% à un adversaire');
+    expect(s).toEqual('Dégâts physiques neutres calculés sur la DÉF de puissance 300% à un adversaire');
   });
 
   it('should parse magic attack with physical elemental damages scaling on DEF', () => {
@@ -24,7 +24,7 @@ describe('AbilityDamagesPhysicalDefScalingParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque magique à dégâts physiques de Glace, Foudre, Vent calculé sur la DÉF de puissance 500% aux adversaires');
+    expect(s).toEqual('Attaque magique à dégâts physiques de Glace, Foudre, Vent calculés sur la DÉF de puissance 500% aux adversaires');
   });
 
 });
