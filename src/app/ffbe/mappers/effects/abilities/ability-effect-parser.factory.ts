@@ -62,6 +62,7 @@ import {AbilitySpellNullificationParser} from './ability-spell-nullification.par
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parser';
 import {AbilityDamagesHexParser} from './ability-damages-hex.parser';
+import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -108,6 +109,8 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingPercentParser();
       case 27:
         return new AbilityRaiseAutoParser();
+      case 29:
+        return new AbilityRandomSkillsParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
       case 31:
