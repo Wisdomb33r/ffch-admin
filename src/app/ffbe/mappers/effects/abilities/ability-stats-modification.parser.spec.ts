@@ -111,4 +111,14 @@ describe('AbilityStatsModificationParser', () => {
     expect(s).toEqual('-50% DÉF à un adversaire pour ce tour');
   });
 
+  it('should parse stats decrease for all enemies with positive coefficient and effect ID 24 (skill 912864)', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 1, 24, [0,  60,  0,  60,  1,  1]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('-60% DÉF/PSY aux adversaires pour 1 tour');
+  });
+
+
 });
