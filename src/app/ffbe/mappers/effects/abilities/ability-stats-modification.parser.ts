@@ -16,6 +16,15 @@ export class AbilityStatsModificationParser extends EffectParser {
     // TODO critical strikes
     // TODO What if effect[3][5] !== 1 ?
 
+    // Effect ID 24 are stat decreases, even when coefficients are positive
+    if (effect[2] === 24) {
+      increases.forEach(increase => {
+        if (increase.value > 0) {
+          increase.value = -increase.value
+        }
+      });
+    }
+
     const numTurns = (effect[3][4] >= 0) ? effect[3][4] : 9999;
     const pluralForm = (numTurns > 1) ? 's' : '';
     const turns = (numTurns === 0) ? ' pour ce tour' : ` pour ${numTurns} tour${pluralForm}`;
