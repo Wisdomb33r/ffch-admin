@@ -689,7 +689,7 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
   }`;
 
 describe('Skill', () => {
-  it('should not be considered damaging if having fixed damages to caster', () => {
+  it('should not consider effect as damaging for fixed damages to caster', () => {
     // GIVEN
     const skill: Skill = new Skill();
     skill.active = true;
@@ -700,7 +700,7 @@ describe('Skill', () => {
     expect(result).toBe(false);
   });
 
-  it('should be considered damaging if having fixed damages to enemies', () => {
+  it('should consider effect as damaging for fixed damages to enemies', () => {
     // GIVEN
     const skill: Skill = new Skill();
     skill.active = true;
