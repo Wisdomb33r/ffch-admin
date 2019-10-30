@@ -3,6 +3,7 @@ import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {SkillMapper} from '../../skill-mapper';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {FfbeUtils} from '../../../utils/ffbe-utils';
 
 export class PassiveCounterAttackWithSkillParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -26,9 +27,15 @@ export class PassiveCounterAttackWithSkillParser extends EffectParser {
     }
 
     activatedSkill.isActivatedByPassiveSkill = true;
-    return SkillMapper.toCompetence(activatedSkill).effet_fr
-      .split(HTML_LINE_RETURN)
-      .map(effet => `${prefixText}${effet}${suffixText}`)
-      .join(HTML_LINE_RETURN);
+    const activatedCompetence = SkillMapper.toCompetence(activatedSkill);
+
+    if (!FfbeUtils.isNullOrUndefined(activatedCompetence.hits) && activatedCompetence.hits >= 5) {
+      return `${prefixText}${this.getSkillNameWithGumiIdentifierLink(activatedSkill)}${suffixText}`;
+    } else {
+      return activatedCompetence.effet_fr
+        .split(HTML_LINE_RETURN)
+        .map(effet => `${prefixText}${effet}${suffixText}`)
+        .join(HTML_LINE_RETURN);
+    }
   }
 }
