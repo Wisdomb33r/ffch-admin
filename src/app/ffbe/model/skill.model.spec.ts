@@ -1,3 +1,5 @@
+import {Skill} from './skill.model';
+
 export const MAGIC_SKILLS_TEST_DATA =
   `{
     "10010": {
@@ -685,3 +687,49 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Aprende Ración triple durante un turno al inicio del combate o tras ser revivido, y aumenta poco a poco el daño de determinadas habilidades tras 2 turnos"
     ]
   }`;
+
+describe('Skill', () => {
+  it('should not consider effect as damaging for HP percent damages to caster', () => {
+    // GIVEN
+    const skill: Skill = new Skill();
+    skill.active = true;
+    const effect = JSON.parse('[0, 3, 9, [90, 90, 100]]');
+    // WHEN
+    const result = skill.isEffectWithDamage(effect);
+    // THEN
+    expect(result).toBe(false);
+  });
+
+  it('should consider effect as damaging for HP percent damages to enemies', () => {
+    // GIVEN
+    const skill: Skill = new Skill();
+    skill.active = true;
+    const effect = JSON.parse('[2, 1, 9, [90, 90, 100]]');
+    // WHEN
+    const result = skill.isEffectWithDamage(effect);
+    // THEN
+    expect(result).toBe(true);
+  });
+
+  it('should not consider effect as damaging for fixed damages to caster', () => {
+    // GIVEN
+    const skill: Skill = new Skill();
+    skill.active = true;
+    const effect = JSON.parse('[0, 3, 41, [300, 0]]');
+    // WHEN
+    const result = skill.isEffectWithDamage(effect);
+    // THEN
+    expect(result).toBe(false);
+  });
+
+  it('should consider effect as damaging for fixed damages to enemies', () => {
+    // GIVEN
+    const skill: Skill = new Skill();
+    skill.active = true;
+    const effect = JSON.parse('[2, 1, 41, [300, 0]]');
+    // WHEN
+    const result = skill.isEffectWithDamage(effect);
+    // THEN
+    expect(result).toBe(true);
+  });
+});

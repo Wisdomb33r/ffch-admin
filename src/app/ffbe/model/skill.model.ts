@@ -76,14 +76,14 @@ export class Skill {
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages
-      || effectId === 9 // HP % damages
+      || (effectId === 9 && effect[1] !== 3) // HP % damages, excepting to caster
       || effectId === 10 // physical / magic damages with MP drain
       || effectId === 13 // physical damages with 1 turn delay
       || effectId === 15 // magic damages
       || effectId === 21 // physical damages with ignore DEF
       || effectId === 25 // physical / magic damages with HP drain
       || effectId === 40 // hybrid damages
-      || effectId === 41 // fixed damages
+      || (effectId === 41 && effect[1] !== 3) // fixed damages, excepting to caster
       || effectId === 42 // physical combos with multiple consecutive attacks
       || effectId === 43 // physical damages with critical strike and chance to miss
       || effectId === 52 // physical damages with 1 turn jump delay
