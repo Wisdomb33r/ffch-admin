@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-title (click)="switchDisplayed()">
-    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus">
-    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus">
-    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus">
+    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus" alt="OK">
+    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus" alt="Not OK">
+    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
     {{objet.gumi_id}} {{objet.nom}}
   </mat-card-title>
 
