@@ -1,15 +1,16 @@
 <mat-card>
   <mat-card-title (click)="switchDisplayed()">
-    <img *ngIf="!isSingleAmeliorationSelected()" src="assets/grey/question.png" class="ffchstatus">
+    <img *ngIf="!isSingleAmeliorationSelected()"
+         src="assets/grey/question.png" class="ffchstatus" alt="?">
     <img *ngIf="isSingleAmeliorationSelected() && !isAmeliorationPresentInFfchDb()"
-         src="assets/nok.png" class="ffchstatus">
+         src="assets/nok.png" class="ffchstatus" alt="Not OK">
     <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && !isAmeliorationCorrectInFfchDb()"
-         src="assets/red/warn.png" class="ffchstatus">
+         src="assets/red/warn.png" class="ffchstatus" alt="Warn">
     <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
         && !isAmeliorationUpToDateInFfchDb()"
-         src="assets/grey/warn.png" class="ffchstatus">
+         src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
     <img *ngIf="isSingleAmeliorationSelected() && isAmeliorationPresentInFfchDb() && isAmeliorationCorrectInFfchDb()
-        && isAmeliorationUpToDateInFfchDb()" src="assets/ok.png" class="ffchstatus">
+        && isAmeliorationUpToDateInFfchDb()" src="assets/ok.png" class="ffchstatus" alt="OK">
 
     {{amelioration.skill_id_base}} {{getNomAmelioration()}} ({{amelioration.niveau}})
   </mat-card-title>

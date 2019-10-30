@@ -17,4 +17,4 @@ export class AbilityBerserkInflictionParser extends EffectParser {
 
     return `Inflige Berserk (${boostSign}${atkBoost}% ATT) ${target} pour ${numTurns} tour${pluralForm}`;
   }
-};
+}
