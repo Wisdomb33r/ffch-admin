@@ -417,4 +417,24 @@ describe('PassiveEffectParser', () => {
     // THEN
     expect(s).toEqual('Effet activé en début de tour si Rain est en vie: +20% PV');
   });
+
+  it('should parse turn start activation effect when genre ally alive', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100020'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['100020'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['100020'];
+
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
+
+    const effect = JSON.parse('[0, 3, 10002, [0, 1, 100020, 0]]');
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Effet activé en début de tour si un allié masculin est en vie: +20% PV');
+  });
 });
