@@ -76,7 +76,7 @@ export class Skill {
     const effectId = effect[2];
     return effect.length >= 4 && (
       effectId === 1 // physical damages
-      || effectId === 9 // HP % damages
+      || (effectId === 9 && effect[1] !== 3) // HP % damages
       || effectId === 10 // physical / magic damages with MP drain
       || effectId === 13 // physical damages with 1 turn delay
       || effectId === 15 // magic damages
