@@ -186,6 +186,17 @@ export abstract class EffectParser {
     }
   }
 
+  protected getGenreFromId(id: number): string {
+    switch (id) {
+      case 1:
+        return 'masculin';
+      case 2:
+        return 'féminin';
+      default:
+        return 'UNKNOWN genre';
+    }
+  }
+
   protected getTarget(effectId1: number, effectId2: number, preposition: TargetWithPreposition = 'TargetWithPreposition.A'): string {
 
     if (effectId1 === 1 && effectId2 === 1) {

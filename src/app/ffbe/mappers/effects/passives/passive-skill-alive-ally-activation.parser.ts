@@ -9,17 +9,23 @@ import {HTML_LINE_RETURN} from '../skill-effects.mapper';
 
 export class PassiveSkillAliveAllyActivationParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 3 || effect[3][1] !== 3) {
+    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 3) {
       return 'Effet PassiveSkillAliveAllyActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
     const activationCharacterId = effect[3][0];
+    const activationGenre = effect[3][1];
     const activatedSkillId = effect[3][2];
 
-    const activationCharacter: Character = CharactersService.getInstance().searchForCharacterByGumiId(activationCharacterId);
-    const activationCharacterText = activationCharacter ? activationCharacter.names[FFBE_FRENCH_TABLE_INDEX] : 'UNKNOWN unit';
+    let activationText = '';
+    if (activationCharacterId > 0) {
+      const activationCharacter: Character = CharactersService.getInstance().searchForCharacterByGumiId(activationCharacterId);
+      activationText = activationCharacter ? activationCharacter.names[FFBE_FRENCH_TABLE_INDEX] : 'UNKNOWN unit';
+    } else {
+      activationText = `un allié ${this.getGenreFromId(activationGenre)}`;
+    }
 
-    const baseText = 'Effet activé en début de tour si ' + activationCharacterText + ' est en vie: ';
+    const baseText = `Effet activé en début de tour si ${activationText} est en vie: `;
     const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(activatedSkillId);
     if (!activatedSkill) {
       return baseText + 'UNKNOWN skill';
