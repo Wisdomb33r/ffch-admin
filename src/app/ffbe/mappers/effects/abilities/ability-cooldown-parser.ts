@@ -35,8 +35,11 @@ export class AbilityCooldownParser extends EffectParser {
       return baseText + 'UNKNOWN skill';
     }
 
+    const singleActivationNotice = (suffix === 0 && (skill.attack_type === 'Physical' || skill.attack_type === 'Hybrid')) ?
+      `${HTML_LINE_RETURN}Ne s\'active qu\'<strong>une fois</strong> si l\'unité porte deux armes` : '';
+
     const transitiveEffectParsed = SkillMapper.toCompetence(activatedSkill).effet_fr;
     this.fillSkillWithTransitiveActivatedSkillInformation(skill, activatedSkill);
-    return baseText + transitiveEffectParsed;
+    return baseText + transitiveEffectParsed + singleActivationNotice;
   }
 }

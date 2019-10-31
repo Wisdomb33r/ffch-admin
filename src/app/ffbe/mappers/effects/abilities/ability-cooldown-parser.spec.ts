@@ -20,10 +20,12 @@ describe('AbilityCooldownParser', () => {
     cooldownActivator.gumi_id = 229425;
     cooldownActivator.names = names['229425'];
     cooldownActivator.descriptions = descriptions['229425'];
+    cooldownActivator.attack_type = "Physical";
     const cooldownActivated: Skill = skills['509014'];
     cooldownActivated.gumi_id = 509014;
     cooldownActivated.names = names['509014'];
     cooldownActivated.descriptions = descriptions['509014'];
+    cooldownActivator.attack_type = "Physical";
     cooldownActivated.active = true;
     const multiSkillActivated: Skill = skills['912380'];
     multiSkillActivated.gumi_id = 912380;
@@ -49,7 +51,8 @@ describe('AbilityCooldownParser', () => {
       + '+250% ATT au lanceur pour 6 tours' + HTML_LINE_RETURN
       + 'Soigne les baisses de ATT/DÉF/MAG/PSY au lanceur' + HTML_LINE_RETURN
       + '+100% de rés. aux baisses de ATT/DÉF/MAG/PSY au lanceur pour 6 tours' + HTML_LINE_RETURN
-      + 'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
+      + 'Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours<br />'
+      + 'Ne s\'active qu\'<strong>une fois</strong> si l\'unité porte deux armes');
   });
 
   it('should parse cooldown skills available on turn N, same as cooldown N', () => {
@@ -106,7 +109,7 @@ describe('AbilityCooldownParser', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
       .and.returnValues(Skill.produce(cooldownActivated), Skill.produce(cooldownActivated));
 
-    const effect = JSON.parse('[0, 3, 130, [509624, 1, [5,  2], 0]]');
+    const effect = JSON.parse('[0, 3, 130, [509624, 1, [5,  2], 1]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, cooldownActivator);
     // THEN
@@ -123,5 +126,39 @@ describe('AbilityCooldownParser', () => {
 
     expect(Array.isArray(cooldownActivator.attack_damage) && cooldownActivator.attack_damage.length === 3).toBeTruthy();
     expect(cooldownActivator.attack_damage.join('/')).toEqual('25,25,25,25/30,30,40/100');
+  });
+
+  it('should parse cooldowns skills that trigger only once when dual-wielding', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const cooldownActivator: Skill = skills['229425'];
+    cooldownActivator.gumi_id = 229425;
+    cooldownActivator.names = names['229425'];
+    cooldownActivator.descriptions = descriptions['229425'];
+    cooldownActivator.attack_type = "Hybrid";
+    const cooldownActivated: Skill = skills['509624'];
+    cooldownActivated.gumi_id = 509624;
+    cooldownActivated.names = names['509624'];
+    cooldownActivated.descriptions = descriptions['509624'];
+    cooldownActivator.attack_type = "Hybrid";
+    cooldownActivated.active = true;
+
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
+      .and.returnValues(Skill.produce(cooldownActivated), Skill.produce(cooldownActivated));
+
+    const effect = JSON.parse('[0, 3, 130, [509624, 1, [5,  2], 0]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, cooldownActivator);
+    // THEN
+    expect(s).toEqual('Disponible tous les 6 tours dès le tour 4:<br />' +
+      'Dégâts physiques neutres de puissance 25% (ignore 50% DÉF, 50% total) à un adversaire (ignore les couvertures)<br />' +
+      'Dégâts physiques neutres de puissance 50% (ignore 50% DÉF, 100% total) à un adversaire (ignore les couvertures)<br />' +
+      'Dégâts physiques neutres de puissance 500% (ignore 50% DÉF, 1000% total) à un adversaire (ignore les couvertures)<br />' +
+      'Ne s\'active qu\'<strong>une fois</strong> si l\'unité porte deux armes');
   });
 });
