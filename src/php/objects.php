@@ -145,6 +145,8 @@ function createAndValidateObjet($objet)
   $values ['res_maladie'] = $objet->resistancesAlterations->maladie;
   $values ['res_petrification'] = $objet->resistancesAlterations->petrification;
 
+  if (isset ($objet->two_handed))
+    $values ['two_handed'] = ($objet->two_handed == true) ? '1' : '0';
   if (property_exists($objet, 'variance_min')) $values ['variance_min'] = $objet->variance_min;
   if (property_exists($objet, 'variance_max')) $values ['variance_max'] = $objet->variance_max;
 

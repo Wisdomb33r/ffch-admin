@@ -38,7 +38,15 @@
         <th>Stars</th>
         <td>{{objet.stars}}</td>
       </tr>
-      <tr *ngIf="objet.isTwoHanded()">
+      <tr *ngIf="objet.isWeapon()">
+        <th>
+          Arme
+        </th>
+        <td>
+          {{objet.two_handed ? '2 mains' : '1 main'}}
+        </td>
+      </tr>
+      <tr *ngIf="objet.hasVariance()">
         <th>
           Variance
         </th>

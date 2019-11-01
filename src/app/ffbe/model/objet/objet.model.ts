@@ -13,6 +13,7 @@ export class Objet {
   public resistancesElementaires: ObjetElements;
   public elementsArme: ObjetElements;
   public alterationsArme;
+  public two_handed;
   public variance_min: number;
   public variance_max: number;
 
@@ -57,6 +58,10 @@ export class Objet {
       ObjetElements.produce(o.elements),
       ObjetAlterationsEtat.produce(o.resistancesAlterations),
       o.competences);
+    objet.two_handed = o.two_handed;
+    if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
+      objet.two_handed = false;
+    }
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
     objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
@@ -71,7 +76,11 @@ export class Objet {
     return !FfbeUtils.isNullOrUndefined(this.icone);
   }
 
-  public isTwoHanded(): boolean {
+  public hasVariance(): boolean {
     return !FfbeUtils.isNullOrUndefined(this.variance_min) && !FfbeUtils.isNullOrUndefined(this.variance_max);
+  }
+
+  public isWeapon(): boolean {
+    return (!FfbeUtils.isNullOrUndefined(this.categorie) && this.categorie.gumiId > 0 && this.categorie.gumiId <= 16);
   }
 }
