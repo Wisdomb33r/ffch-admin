@@ -203,6 +203,19 @@ export abstract class EffectParser {
     }
   }
 
+  protected getKeyValueTableForAilements(effectParameters) {
+    return [
+      {name: 'Poison', value: effectParameters[0]},
+      {name: 'Cécité', value: effectParameters[1]},
+      {name: 'Sommeil', value: effectParameters[2]},
+      {name: 'Silence', value: effectParameters[3]},
+      {name: 'Paralysie', value: effectParameters[4]},
+      {name: 'Confusion', value: effectParameters[5]},
+      {name: 'Maladie', value: effectParameters[6]},
+      {name: 'Pétrification', value: effectParameters[7]},
+    ];
+  }
+
   protected getTarget(effectId1: number, effectId2: number, preposition: TargetWithPreposition = 'TargetWithPreposition.A'): string {
 
     if (effectId1 === 1 && effectId2 === 1) {
