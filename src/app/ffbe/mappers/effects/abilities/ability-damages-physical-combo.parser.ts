@@ -28,7 +28,7 @@ export class AbilityDamagesPhysicalComboParser extends EffectParser {
     }
 
     return 'Éxécution ' + (minAttacks === maxAttacks ? minAttacks : 'de ' + minAttacks + ' à ' + maxAttacks) + ' fois: '
-      + attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(power) + '% '
+      + attackType + elements + ' de puissance ' + Math.round(power) + '% '
       + (increment && nbIncrements ? '(+' + increment + '% par utilisation successive, ' + nbIncrements + 'x, max '
         + Math.round(power + increment * nbIncrements) + '%) ' : '')
       + target + (accuracy ? accuracy : '');

@@ -13,6 +13,6 @@ export class AbilityDamagesPhysicalParser extends EffectParser {
     skill.physique = true;
     const puissance = effect[3][5] + effect[3][6];
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(puissance) + '% ' + target;
+    return attackType + elements + ' de puissance ' + Math.round(puissance) + '% ' + target;
   }
 }

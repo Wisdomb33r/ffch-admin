@@ -25,6 +25,7 @@ import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-
 import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
 import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
+import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -34,6 +35,7 @@ import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
+import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
 import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
@@ -64,6 +66,7 @@ import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parse
 import {AbilityDamagesHexParser} from './ability-damages-hex.parser';
 import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 import {AbilityNormalAttackModifierIncreaseParser} from './ability-normal-attack-modifier-increase.parser';
+import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -140,6 +143,10 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 47:
         return new AbilityEnemyScanParser();
+      case 50:
+        return new AbilityThrowItemsParser();
+      case 51:
+        return new AbilityEscapeBattleParser();
       case 52:
         if (effectId1 === 0) {
           return new AbilityMagicMultipleActivationParser();
@@ -204,6 +211,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicSprScalingParser();
       case 111:
         return new AbilityDebuffsCureParser();
+      case 112:
+        return new AbilityDamagesOrDeathParser();
       case 118:
         return new AbilitySingleAllyCoversParser();
       case 120:

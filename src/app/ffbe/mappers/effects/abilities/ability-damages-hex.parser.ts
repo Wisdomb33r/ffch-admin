@@ -8,7 +8,6 @@ export class AbilityDamagesHexParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
-    const elementsText = (elements ? 'de ' + elements : 'neutres');
     const attackType = this.getAttackAndDamageWordingForFixedDamages(skill.attack_type);
     skill.fixe = true;
     const power = Math.round(effect[3][3]);
@@ -17,6 +16,6 @@ export class AbilityDamagesHexParser extends EffectParser {
     const numTurns = effect[3][1];
     const pluralForm = numTurns > 1 ? 's' : '';
 
-    return `${attackType}${elementsText} de ${power} PV par status négatif ${target} pour ${numTurns} tour${pluralForm}`;
+    return `${attackType}${elements} de ${power} PV par status négatif ${target} pour ${numTurns} tour${pluralForm}`;
   }
 }

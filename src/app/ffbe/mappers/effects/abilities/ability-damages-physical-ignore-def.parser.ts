@@ -14,8 +14,8 @@ export class AbilityDamagesPhysicalIgnoreDefParser extends EffectParser {
     const ignoreDef = effect[3][3];
     const total = puissance * 100 / (100 + ignoreDef);
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + puissance + '% (ignore ' + Math.abs(ignoreDef) + '% DÉF, ' + Math.round(total) + '% total) ' + target
+    return attackType + elements
+      + ' de puissance ' + puissance + '% (ignore ' + Math.abs(ignoreDef) + '% DÉF, ' + Math.round(total) + '% total) ' + target
       + ' (ignore les couvertures)';
   }
 }

@@ -48,7 +48,7 @@ describe('AbilityDamagesHybridParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque magique à dégâts hybrides de Eau de puissance 100% aux adversaires');
+    expect(s).toEqual('Attaque magique à dégâts hybrides d\'Eau de puissance 100% aux adversaires');
   });
 
   it('should parse unknown attack with hybrid elemental damages', () => {

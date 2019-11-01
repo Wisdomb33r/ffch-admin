@@ -13,7 +13,7 @@ export class AbilityDamagesPhysicalCriticalHitParser extends EffectParser {
     const power = effect[3][2];
     const target = this.getTarget(effect[0], effect[1]);
     const missChange = effect[3][3];
-    return attackType + 'critiques ' + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + Math.round(power) + '% ' + target + (missChange ? ' (-' + missChange + '% précision)' : '');
+    return attackType + 'critiques ' + elements
+      + ' de puissance ' + Math.round(power) + '% ' + target + (missChange ? ' (-' + missChange + '% précision)' : '');
   }
 }

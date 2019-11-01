@@ -14,8 +14,8 @@ export class AbilityDamagesMagicIgnoreSprParser extends EffectParser {
     const ignoreSpr = effect[3][3];
     const total = puissance * 100 / (100 - ignoreSpr);
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + Math.round(puissance) + '% (ignore ' + Math.abs(ignoreSpr) + '% PSY, ' + Math.round(total) + '% total) ' + target
+    return attackType + elements
+      + ' de puissance ' + Math.round(puissance) + '% (ignore ' + Math.abs(ignoreSpr) + '% PSY, ' + Math.round(total) + '% total) ' + target
       + ' (ignore les reflets)';
   }
 }

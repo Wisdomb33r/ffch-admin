@@ -12,7 +12,7 @@ export class AbilityDamagesMagicSprScalingParser extends EffectParser {
     skill.magique = true;
     const puissance = effect[3][2];
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'calculés sur la PSY de puissance ' + Math.round(puissance) + '% ' + target;
+    return attackType + elements
+      + ' calculés sur la PSY de puissance ' + Math.round(puissance) + '% ' + target;
   }
 }

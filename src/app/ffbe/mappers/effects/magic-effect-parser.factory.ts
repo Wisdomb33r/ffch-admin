@@ -10,12 +10,15 @@ import {AbilityDamagesMagicIgnoreSprParser} from './abilities/ability-damages-ma
 import {AbilityDamagesPercentParser} from './abilities/ability-damages-percent.parser';
 import {AbilityDispelsParser} from './abilities/ability-dispels.parser';
 import {AbilityElementResistancesParser} from './abilities/ability-element-resistances.parser';
+import {AbilityAilmentsInflictionParser} from './abilities/ability-ailments-infliction.parser';
 
 export class MagicEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
       case 2:
         return new AbilityHealingParser();
+      case 6:
+        return new AbilityAilmentsInflictionParser();
       case 8:
         return new AbilityHealingTurnSplitParser();
       case 9:

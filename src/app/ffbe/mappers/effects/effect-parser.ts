@@ -166,9 +166,15 @@ export abstract class EffectParser {
 
   protected getElementsFromElementInflict(skill: Skill): string {
     if (skill.element_inflict && skill.element_inflict.length) {
-      return skill.element_inflict.map((element: string) => this.getElementFromEnglishName(element)).join(', ');
+      let elements = skill.element_inflict.map((element: string) => this.getElementFromEnglishName(element)).join(', ');
+      if (elements.startsWith('Eau')) {
+        elements = `d'${elements}`;
+      } else {
+        elements = `de ${elements}`;
+      }
+      return elements;
     }
-    return undefined;
+    return 'neutres';
   }
 
   protected getMagicTypeFromId(id: number): string {
