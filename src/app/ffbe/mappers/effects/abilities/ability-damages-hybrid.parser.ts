@@ -9,7 +9,6 @@ export class AbilityDamagesHybridParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
-    const elementsText = elements ? `de ${elements} ` : 'neutres ';
     let attackType = 'Dégâts hybrides ';
     if (skill.attack_type !== 'Hybrid') {
       switch (skill.attack_type) {
@@ -38,6 +37,6 @@ export class AbilityDamagesHybridParser extends EffectParser {
     const totalPower = Math.round((atkPower + magPower) / 2);
     const target = this.getTarget(effect[0], effect[1]);
 
-    return `${attackType}${elementsText}de puissance ${totalPower}% ${target}${accuracyText}`;
+    return `${attackType}${elements} de puissance ${totalPower}% ${target}${accuracyText}`;
   }
 }

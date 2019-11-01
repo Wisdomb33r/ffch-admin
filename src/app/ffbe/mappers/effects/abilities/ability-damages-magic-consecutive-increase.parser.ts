@@ -14,7 +14,7 @@ export class AbilityDamagesMagicConsecutiveIncreaseParser extends EffectParser {
     const increment = effect[3][4];
     const nbIncrements = effect[3][5] - 1;
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ') + 'de puissance ' + Math.round(puissance)
+    return attackType + elements + ' de puissance ' + Math.round(puissance)
       + '% (+' + increment + '% par utilisation successive, ' + nbIncrements + 'x, max '
       + Math.round(puissance + increment * nbIncrements) + '%) ' + target;
   }

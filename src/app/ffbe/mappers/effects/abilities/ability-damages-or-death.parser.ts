@@ -13,7 +13,6 @@ export class AbilityDamagesOrDeathParser extends EffectParser {
     const ignoreDef = Math.abs(effect[3][3] ? effect[3][3] : 0);
     const target = this.getTarget(effect[0], effect[1]);
     const elements = this.getElementsFromElementInflict(skill);
-    const elementsText = (elements ? 'de ' + elements + ' ' : 'neutres ');
     skill.physique = true;
 
     let dmgChanceText = '';
@@ -27,6 +26,6 @@ export class AbilityDamagesOrDeathParser extends EffectParser {
       powerText = `(${mod}%, ignore ${ignoreDef}% DÉF, ${totalMod}% total)`;
     }
 
-    return `Inflige Mort (${deathChance}%) ou ${dmgChanceText}des dégâts physiques ${elementsText}${powerText} ${target}`;
+    return `Inflige Mort (${deathChance}%) ou ${dmgChanceText}des dégâts physiques ${elements} ${powerText} ${target}`;
   }
 }

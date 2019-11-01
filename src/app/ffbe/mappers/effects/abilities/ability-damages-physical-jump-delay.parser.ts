@@ -9,7 +9,6 @@ export class AbilityDamagesPhysicalJumpDelayParser extends EffectParser {
     }
 
     const elements = this.getElementsFromElementInflict(skill);
-    const elementsText = (elements ? `de ${elements}` : 'neutres');
     const attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
     skill.physique = true;
     const power = effect[3][4];
@@ -19,6 +18,6 @@ export class AbilityDamagesPhysicalJumpDelayParser extends EffectParser {
     const pluralForm = turnDelay1 > 1 ? 's' : '';
     const target = this.getTarget(effect[0], effect[1]);
     const activation = effect[2] === 134 ? 'manuelle' : 'automatique';
-    return `${attackType}${elementsText} sautés à activation ${activation} de puissance ${power}% avec délai de ${turnDelayText} tour${pluralForm} ${target}`;
+    return `${attackType}${elements} sautés à activation ${activation} de puissance ${power}% avec délai de ${turnDelayText} tour${pluralForm} ${target}`;
   }
 }

@@ -48,7 +48,7 @@ describe('AbilityDamagesPhysicalParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Attaque hybride à dégâts physiques de Eau de puissance 700% aux adversaires');
+    expect(s).toEqual('Attaque hybride à dégâts physiques d\'Eau de puissance 700% aux adversaires');
   });
 
   it('should parse unknown attack with physical elemental damages', () => {

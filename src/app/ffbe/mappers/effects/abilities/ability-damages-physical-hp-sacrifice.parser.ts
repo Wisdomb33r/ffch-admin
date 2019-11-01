@@ -14,7 +14,7 @@ export class AbilityDamagesPhysicalHpSacrificeParser extends EffectParser {
     const power = effect[3][6];
     const sacrifice = effect[3][7];
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + power + '% avec sacrifice de ' + sacrifice + '% des PV du lanceur ' + target;
+    return attackType + elements
+      + ' de puissance ' + power + '% avec sacrifice de ' + sacrifice + '% des PV du lanceur ' + target;
   }
 }

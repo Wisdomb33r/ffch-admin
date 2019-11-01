@@ -18,8 +18,8 @@ export class AbilityDamagesEvokerParser extends EffectParser {
     const sprPower = effect[3][8];
     const repartition = effect[3][9];
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + (elements ? 'de ' + elements + ' ' : 'neutres ')
-      + 'de puissance ' + Math.round(magPower * repartition[0] / 100 + sprPower * repartition[1] / 100) + '% '
+    return attackType + elements
+      + ' de puissance ' + Math.round(magPower * repartition[0] / 100 + sprPower * repartition[1] / 100) + '% '
       + '(' + repartition[0] + '% MAG, ' + repartition[1] + '% PSY) '
       + target;
   }
