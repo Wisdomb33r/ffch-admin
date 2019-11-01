@@ -117,6 +117,7 @@ class Objet
   public $caracp;
   public $elements;
   public $resistancesAlterations;
+  public $two_handed;
   public $variance_min;
   public $variance_max;
   public $competences;
@@ -137,6 +138,9 @@ class Objet
     $this->caracp = new ObjetCarac($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
     $this->elements = new ObjetElement($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
     $this->resistancesAlterations = new ObjetAlterationsEtat($brex_objet->res_poison, $brex_objet->res_cecite, $brex_objet->res_sommeil, $brex_objet->res_mutisme, $brex_objet->res_paralysie, $brex_objet->res_confusion, $brex_objet->res_maladie, $brex_objet->res_petrification);
+    if (!is_null($brex_objet->two_handed)) {
+      $this->two_handed = $brex_objet->two_handed ? true : false;
+    }
     $this->variance_min = $brex_objet->variance_min;
     $this->variance_max = $brex_objet->variance_max;
 
