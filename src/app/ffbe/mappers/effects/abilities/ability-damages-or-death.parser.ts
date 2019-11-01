@@ -20,10 +20,10 @@ export class AbilityDamagesOrDeathParser extends EffectParser {
       dmgChanceText = `${dmgChance}% de chance d'infliger `;
     }
 
-    let powerText = `(${mod}%)`;
+    let powerText = `de puissance ${mod}%`;
     if (ignoreDef > 0) {
       const totalMod = mod * 100 / (100 - ignoreDef);
-      powerText = `(${mod}%, ignore ${ignoreDef}% DÉF, ${totalMod}% total)`;
+      powerText += ` (ignore ${ignoreDef}% DÉF, ${totalMod}% total)`;
     }
 
     return `Inflige Mort (${deathChance}%) ou ${dmgChanceText}des dégâts physiques ${elements} ${powerText} ${target}`;
