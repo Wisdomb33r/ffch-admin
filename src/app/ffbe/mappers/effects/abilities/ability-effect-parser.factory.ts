@@ -25,6 +25,7 @@ import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-
 import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
 import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
+import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -204,6 +205,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesMagicSprScalingParser();
       case 111:
         return new AbilityDebuffsCureParser();
+      case 112:
+        return new AbilityDamagesOrDeathParser();
       case 118:
         return new AbilitySingleAllyCoversParser();
       case 120:

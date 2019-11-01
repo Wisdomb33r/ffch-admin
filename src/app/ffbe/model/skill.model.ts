@@ -91,6 +91,7 @@ export class Skill {
       || effectId === 72 // magic damages with consecutive damage increase
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 102 // physical damages scaling on DEF
+      || effectId === 112 // death physical damages
       || effectId === 103 // magic damages scaling on SPR
       || effectId === 124 // evoker damages
       || effectId === 126 // physical damages with consecutive damage increase
