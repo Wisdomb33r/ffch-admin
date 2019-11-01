@@ -35,6 +35,7 @@ import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
+import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
 import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
@@ -141,6 +142,8 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 47:
         return new AbilityEnemyScanParser();
+      case 51:
+        return new AbilityEscapeBattleParser();
       case 52:
         if (effectId1 === 0) {
           return new AbilityMagicMultipleActivationParser();
