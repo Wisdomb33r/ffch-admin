@@ -14,7 +14,7 @@ export class AbilityMagicMultipleActivationParser extends EffectParser {
       }
       return `Permet l'utilisation des sorts de magie ${magicTypeText}2x par tour`;
     }
-    if (effect[3].length === 3) {
+    if (effect[3].length >= 3 && effect[3].length < 6) {
       const magicType = effect[3][0];
       const castNumber = effect[3][1];
       const magicTypeText = this.getMagicTypeFromId(magicType);
