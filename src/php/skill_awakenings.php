@@ -64,9 +64,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   checkThatNoCompetenceEveilExists($brex_perso, $brex_competence_base, $amelioration->niveau);
 
-  $brex_unit_comp_array = createAndValidateMissingBrexUnitCompArray($brex_perso, $brex_competence_base);
-  foreach ($brex_unit_comp_array as $brex_unit_comp) {
-    $brex_unit_comp->store();
+  if (isLatentAwakening($amelioration)) {
+    $brex_unit_comp_array = createAndValidateMissingBrexUnitCompArray($brex_perso, $brex_competence_base);
+    foreach ($brex_unit_comp_array as $brex_unit_comp) {
+      $brex_unit_comp->store();
+    }
   }
 
   $brex_competence_eveil = createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_competence_base, $brex_competence_amelioree);
@@ -134,6 +136,13 @@ function findCompetenceEveil($brex_perso, $brex_competence, $niveau)
   }
 
   return $brex_competence_eveil;
+}
+
+function isLatentAwakening($amelioration)
+{
+  $premierIngredient = $amelioration->formule->ingredients[0];
+
+  return ($premierIngredient->gumi_id == 1209001000);
 }
 
 function checkThatNoCompetenceEveilExists($brex_perso, $brex_competence, $niveau)
