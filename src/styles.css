@@ -17,11 +17,23 @@ table {
   margin-bottom: .5rem;
 }
 
-th {
+table caption {
+  font-weight: bold;
+}
+
+th, div.header-cell {
   text-align: left;
   color: rgba(0, 0, 0, .57);
   font-weight: 500;
   padding-right: 1rem;
+}
+
+div.line {
+  display: table-row;
+}
+
+div.header-cell, div.cell {
+  display: table-cell;
 }
 
 mat-form-field {

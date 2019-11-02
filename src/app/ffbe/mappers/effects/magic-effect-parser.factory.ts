@@ -11,12 +11,22 @@ import {AbilityDamagesPercentParser} from './abilities/ability-damages-percent.p
 import {AbilityDispelsParser} from './abilities/ability-dispels.parser';
 import {AbilityElementResistancesParser} from './abilities/ability-element-resistances.parser';
 import {AbilityAilmentsInflictionParser} from './abilities/ability-ailments-infliction.parser';
+import {AbilityAilmentsCureParser} from './abilities/ability-ailments-cure.parser';
+import {AbilityRaiseParser} from './abilities/ability-raise.parser';
+import {AbilityStatsModificationParser} from './abilities/ability-stats-modification.parser';
+import {AbilityDebuffsCureParser} from './abilities/ability-debuffs-cure.parser';
 
 export class MagicEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
       case 2:
         return new AbilityHealingParser();
+      case 3:
+        return new AbilityStatsModificationParser();
+      case 4:
+        return new AbilityRaiseParser();
+      case 5:
+        return new AbilityAilmentsCureParser();
       case 6:
         return new AbilityAilmentsInflictionParser();
       case 8:
@@ -41,6 +51,8 @@ export class MagicEffectParserFactory {
         return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 103:
         return new AbilityDamagesMagicSprScalingParser();
+      case 111:
+        return new AbilityDebuffsCureParser();
       default:
         return new UnknownEffectParser();
     }
