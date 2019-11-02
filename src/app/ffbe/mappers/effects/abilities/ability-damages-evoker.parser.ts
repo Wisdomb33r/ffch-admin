@@ -4,8 +4,9 @@ import {Skill} from '../../../model/skill.model';
 export class AbilityDamagesEvokerParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 10 || effect[3][0] !== 0 || effect[3][1] !== 0
-      || effect[3][2] !== 0 || effect[3][3] !== 0 || effect[3][4] !== 0 || effect[3][5] !== 0 || effect[3][6] !== 0) {
-      return 'Effet AbilityDamagesEsperParser inconnu: Mauvaise liste de paramètres';
+      || effect[3][2] !== 0 || (effect[3][3] !== 0 && effect[3][3] !== 1) || effect[3][4] !== 0
+      || effect[3][5] !== 0 || effect[3][6] !== 0) {
+      return 'Effet AbilityDamagesEvokerParser inconnu: Mauvaise liste de paramètres';
     }
 
     const elements = this.getElementsFromElementInflict(skill);
