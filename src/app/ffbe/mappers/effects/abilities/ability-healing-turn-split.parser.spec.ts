@@ -1,5 +1,4 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {MagicEffectParserFactory} from '../magic-effect-parser.factory';
 
 describe('AbilityHealingTurnSplitParser', () => {
 
@@ -16,7 +15,7 @@ describe('AbilityHealingTurnSplitParser', () => {
     // GIVEN
     const effect = JSON.parse('[1, 2, 8, [0, 1, 1000, -1]]');
     // WHEN
-    const s = MagicEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('Soigne 1000 PV au lanceur chaque tour');
   });
