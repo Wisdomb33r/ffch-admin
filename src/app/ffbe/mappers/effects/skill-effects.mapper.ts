@@ -7,11 +7,7 @@ export const HTML_LINE_RETURN = '<br />';
 export class SkillEffectsMapper {
   public static mapSkillEffects(skill: Skill): string {
     if (skill.active) {
-      if (skill.type === 'MAGIC') {
-        return SkillEffectsMapper.mapAbilitySkillEffects(skill);
-      } else {
-        return SkillEffectsMapper.mapAbilitySkillEffects(skill);
-      }
+      return SkillEffectsMapper.mapAbilitySkillEffects(skill);
     } else {
       return SkillEffectsMapper.mapPassiveSkillEffects(skill);
     }
