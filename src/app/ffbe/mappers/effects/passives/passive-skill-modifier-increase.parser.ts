@@ -25,9 +25,8 @@ export class PassiveSkillModifierIncreaseParser extends EffectParser {
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    if (currentValue === 0) {
-      return '+UNKNOWN puissance à ' + accumulatedStats.join(', ');
-    }
-    return '+' + currentValue + '% de puissance à ' + accumulatedStats.join(', ');
+    const displayedValue = (currentValue > 0 ? Math.round(currentValue) : 'UNKNOWN');
+    const skillsText = accumulatedStats.join(', ');
+    return `+${displayedValue}% de puissance à ${skillsText}`;
   }
 }
