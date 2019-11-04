@@ -4,25 +4,33 @@ import {Skill} from '../../../model/skill.model';
 export class AbilityDamagesDotsParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 7
-      || effect[3][2] !== 0 || effect[3][3] !== 1 || effect[3][5] !== 1) {
+      || effect[3][2] !== 0 || effect[3][5] !== 1) {
       return 'Effet AbilityDamagesDotsParser inconnu: Mauvaise liste de paramètres';
     }
 
     const elements = this.getElementsFromElementInflict(skill);
     const damageType = effect[3][0];
     let attackType = 'UNKNOWN ';
+    let scaling = '';
     if (damageType === 1) {
       skill.physique = true;
       attackType = this.getAttackAndDamageWordingForPhysicalDamages(skill.attack_type);
     } else if (damageType === 3) {
       skill.magique = true;
       attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
+    } else if (damageType === 4) {
+      skill.magique = true;
+      attackType = this.getAttackAndDamageWordingForMagicalDamages(skill.attack_type);
+      scaling = ' calculés sur la PSY';
     }
     const power = effect[3][1];
     const turns = effect[3][4];
     const stackId = effect[3][6] ? effect[3][6] : 0;
     const target = this.getTarget(effect[0], effect[1]);
-    return attackType + elements
-      + ' de puissance ' + Math.round(power) + '% chaque tour ' + target + ' pour ' + turns + ' tours (ID #' + stackId + ')';
+
+    const powerText = ` de puissance ${Math.round(power)}%`;
+    const turnsText = ` chaque tour ${target} pour ${turns} tours`;
+    const stackText = ` (ID #${stackId})`;
+    return `${attackType}${elements}${scaling}${powerText}${turnsText}${stackText}`;
   }
 }
