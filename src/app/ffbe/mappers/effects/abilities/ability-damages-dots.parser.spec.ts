@@ -27,4 +27,15 @@ describe('AbilityDamagesDotsParser', () => {
     expect(s).toEqual('Dégâts magiques de Feu, Terre, Lumière de puissance 200% chaque tour aux adversaires pour 3 tours (ID #123)');
   });
 
+  it('should parse magic elemental dot with SPR scaling', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 139, [4, 150, 0, 1, 3, 1, 1]]');
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.element_inflict = ['Dark'];
+    fakeSkill.attack_type = 'Magic';
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    // THEN
+    expect(s).toEqual('Dégâts magiques de Ténèbres calculés sur la PSY de puissance 150% chaque tour à un adversaire pour 3 tours (ID #1)');
+  });
 });
