@@ -197,6 +197,8 @@ export class AbilityEffectParserFactory {
         return new AbilityElementImbueParser();
       case 96:
         return new AbilityCoversParser();
+      case 97:
+        return new AbilityMagicMultipleActivationParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
       case 99:
