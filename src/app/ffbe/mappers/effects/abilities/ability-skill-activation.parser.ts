@@ -37,25 +37,27 @@ export class AbilitySkillActivationParser extends EffectParser {
   }
 
   private hasTurnLimit(content: Array<any>): boolean {
-    return content[3] < 990;
+    return content[3] > 0 && content[3] < 990;
   }
 
   private hasUseLimit(content: Array<any>): boolean {
-    return content[2] < 990;
+    return content[2] > 0 && content[2] < 990;
   }
 
   private isTargetSelf(effect: Array<any>): boolean {
-    return (effect[0] === 0 && effect[1] === 3);
+    return effect[1] === 3;
   }
 
   private getNumTurns(content: Array<any>, isTargetSelf: boolean): string {
     const numTurns = isTargetSelf ? content[3] - 1 : content[3];
-    return +numTurns + ' ' + (numTurns > 1 ? 'tours' : 'tour');
+    const pluralForm = numTurns > 1 ? 's' : '';
+    return `${numTurns} tour${pluralForm}`;
   }
 
   private getNumUses(content: Array<any>): string {
     const numTimes = content[2];
-    return +numTimes + ' ' + (numTimes > 1 ? 'utilisations' : 'utilisation');
+    const pluralForm = numTimes > 1 ? 's' : '';
+    return `${numTimes} utilisation${pluralForm}`;
   }
 
 }
