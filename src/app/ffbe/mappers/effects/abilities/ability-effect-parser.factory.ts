@@ -49,6 +49,7 @@ import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increas
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
 import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
 import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
+import {AbilityItemStealParser} from './ability-item-steal.parser';
 import {AbilityRaiseParser} from './ability-raise.parser';
 import {AbilityRaiseAutoParser} from './ability-raise-auto.parser';
 import {AbilityDodgesParser} from './ability-dodges.parser';
@@ -129,6 +130,8 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsRandomInflictionParser();
       case 35:
         return new AbilityDeathInflictionParser();
+      case 37:
+        return new AbilityItemStealParser();
       case 40:
         return new AbilityDamagesHybridParser();
       case 41:
