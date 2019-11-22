@@ -251,6 +251,9 @@ export abstract class EffectParser {
     if (effectId1 === 2 && effectId2 === 5) {
       return this.getTargetAlliesButCasterText(preposition);
     }
+    if (effectId1 === 2 && effectId2 === 4) {
+      return this.getTargetAlliesAndEnemiesText(preposition);
+    }
 
     return 'UNKNOWN target';
   }
@@ -353,6 +356,16 @@ export abstract class EffectParser {
       return 'des alliés';
     }
     return 'les alliés';
+  }
+
+  private getTargetAlliesAndEnemiesText(preposition: TargetWithPreposition): string {
+    if (preposition === 'TargetWithPreposition.A') {
+      return 'aux alliés et adversaires';
+    }
+    if (preposition === 'TargetWithPreposition.De') {
+      return 'des alliés et adversaires';
+    }
+    return 'les alliés et adversaires';
   }
 
   protected getTargetAlliesButCasterText(preposition: TargetWithPreposition): string {
