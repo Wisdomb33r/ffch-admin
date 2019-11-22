@@ -11,8 +11,7 @@
       <mat-select placeholder="Catégorie"
                   [(ngModel)]="categorieFfchId"
                   [ngModelOptions]="{standalone: true}"
-                  (selectionChange)="updateCategorie()"
-      >
+                  (selectionChange)="updateCategorie()">
         <mat-option>----------</mat-option>
         <mat-option *ngFor="let categorie of categories" [value]="categorie.ffchId">
           {{categorie.name}}
@@ -34,25 +33,18 @@
     <p *ngIf="present">{{objet.effet}}</p>
 
     <table>
+      <caption>Informations de base de l'objet</caption>
       <tr *ngIf="present">
         <th>Stars</th>
         <td>{{objet.stars}}</td>
       </tr>
       <tr *ngIf="objet.isWeapon()">
-        <th>
-          Arme
-        </th>
-        <td>
-          {{objet.two_handed ? '2 mains' : '1 main'}}
-        </td>
+        <th>Arme</th>
+        <td>{{objet.two_handed ? '2 mains' : '1 main'}}</td>
       </tr>
       <tr *ngIf="objet.hasVariance()">
-        <th>
-          Variance
-        </th>
-        <td>
-          {{objet.variance_min}}% - {{objet.variance_max}}%
-        </td>
+        <th>Variance</th>
+        <td>{{objet.variance_min}}% - {{objet.variance_max}}%</td>
       </tr>
       <tr *ngIf="hasLienTRM()">
         <th>{{objet.lienTMR.isSTMR ? 'STMR' : 'TMR'}}</th>

@@ -18,7 +18,7 @@ table {
 }
 
 table caption {
-  font-weight: bold;
+  display: none;
 }
 
 th, div.header-cell {
