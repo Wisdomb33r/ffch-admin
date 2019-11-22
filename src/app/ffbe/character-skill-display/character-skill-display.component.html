@@ -46,6 +46,7 @@
     <p *ngIf="present && !editable && !competence.effet_fr" [innerHTML]="competence.effet"></p>
 
     <table>
+      <caption>Détails de la compétence</caption>
       <tr *ngIf="present && !editable">
         <th>Puissance</th>
         <td>{{competence.puissance}}</td>

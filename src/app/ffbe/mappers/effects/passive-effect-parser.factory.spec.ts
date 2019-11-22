@@ -327,7 +327,7 @@ describe('PassiveEffectParser', () => {
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
     // THEN
-    expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
   });
 
   it('should parse turn start activation effect', () => {

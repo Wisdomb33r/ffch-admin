@@ -11,6 +11,7 @@
 
   <div *ngIf="displayed">
     <table>
+      <caption>Détails de la recette</caption>
       <tr>
         <th>Recette</th>
         <td>{{nomRecetteAffichable()}}</td>
@@ -35,30 +36,32 @@
         <th>Processus</th>
         <td>
           <span class="ffchImageArray">
-            <img *ngIf="this.isImageObjetPresentInFfchDb(objetRecette)" src="{{objetRecette.icone}}"
+            <img *ngIf="isImageObjetPresentInFfchDb(objetRecette)" src="{{objetRecette.icone}}"
                  alt="{{objetRecette.nom}}" title="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"/>
             <img
-              *ngIf="!this.isImageObjetPresentInFfchDb(objetRecette) && this.isObjetPresentInFfchDb(objetRecette)"
+              *ngIf="!isImageObjetPresentInFfchDb(objetRecette) && isObjetPresentInFfchDb(objetRecette)"
               src="assets/grey/warn.png" alt="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"
               title="{{objetRecette.nom}} ({{objetRecette.gumi_id}})"/>
-            <img *ngIf="!this.isObjetPresentInFfchDb(objetRecette)" src="assets/red/warn.png"
-                 alt="{{this.recettesContainer.recette_gumi_id}}" title="{{this.recettesContainer.recette_gumi_id}}"/>
+            <img *ngIf="!isObjetPresentInFfchDb(objetRecette)" src="assets/red/warn.png"
+                 alt="{{recettesContainer.recette?.recette_gumi_id}}"
+                 title="{{recettesContainer.recette?.recette_gumi_id}}"/>
 
-            <img src="assets/grey/arrow_right.png"/>
+            <img src="assets/grey/arrow_right.png" alt="→"/>
 
-            <img *ngIf="this.isImageObjetPresentInFfchDb(objetResultat)" src="{{objetResultat.icone}}"
+            <img *ngIf="isImageObjetPresentInFfchDb(objetResultat)" src="{{objetResultat.icone}}"
                  alt="{{objetResultat.nom}}" title="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"/>
-            <img *ngIf="!this.isImageObjetPresentInFfchDb(objetResultat) && this.isObjetPresentInFfchDb(objetResultat)"
+            <img *ngIf="!isImageObjetPresentInFfchDb(objetResultat) && isObjetPresentInFfchDb(objetResultat)"
                  src="assets/grey/warn.png" alt="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"
                  title="{{objetResultat.nom}} ({{objetResultat.gumi_id}})"/>
-            <img *ngIf="!this.isObjetPresentInFfchDb(objetResultat)" src="assets/red/warn.png"
-                 alt="{{this.recettesContainer.resultat_gumi_id}}" title="{{this.recettesContainer.resultat_gumi_id}}"/>
+            <img *ngIf="!isObjetPresentInFfchDb(objetResultat)" src="assets/red/warn.png"
+                 alt="{{recettesContainer.recette?.resultat_gumi_id}}"
+                 title="{{recettesContainer.recette?.resultat_gumi_id}}"/>
           </span>
         </td>
       </tr>
     </table>
 
-    <app-formules-display [formule]="this.recettesContainer.recette.formule"
+    <app-formules-display [formule]="recettesContainer.recette.formule"
                           [formuleFromFfch]="getFormuleFromFfchRecette()"
                           [displayCost]="true"
                           [displaySuccessfulStatus]="false"
