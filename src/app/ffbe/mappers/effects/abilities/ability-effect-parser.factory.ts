@@ -69,6 +69,7 @@ import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 import {AbilityNormalAttackModifierIncreaseParser} from './ability-normal-attack-modifier-increase.parser';
 import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
+import {AbilityMagicReflectParser} from './ability-magic-reflect.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -189,6 +190,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 84:
         return new AbilitySpellNullificationParser();
+      case 86:
+        return new AbilityMagicReflectParser();
       case 88:
         return new AbilityStopInflictionParser();
       case 89:
