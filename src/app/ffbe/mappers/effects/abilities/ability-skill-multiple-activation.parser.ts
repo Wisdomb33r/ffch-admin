@@ -28,7 +28,7 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
       target = ' à un allié';
     }
 
-    if (!this.isSkillFreeToCast(skill.cost) || skill.isActivatedByPassiveSkill) {
+    if (!this.isSkillFreeToCast(skill.cost) || skill.isActivatedByPassiveSkill || skill.effects_raw.length > 1) {
       const rawNumTurns: number = effect[3][4];
       if (rawNumTurns < 1) {
         return 'Effet AbilitySkillMultipleActivationParser inconnu: Nombre de tours incorrect (' + effect[3][4] + ')';
