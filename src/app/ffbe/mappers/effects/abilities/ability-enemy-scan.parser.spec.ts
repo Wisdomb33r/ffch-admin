@@ -2,7 +2,7 @@ import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
 describe('AbilityEnemyScanParser', () => {
 
-  it('should parse enemy scan', () => {
+  it('should parse enemy scan for one enemy', () => {
     // GIVEN
     const effect = JSON.parse('[1, 1, 47, [134]]');
     // WHEN
@@ -11,7 +11,7 @@ describe('AbilityEnemyScanParser', () => {
     expect(s).toEqual('Permet d\'obtenir des infos sur un adversaire');
   });
 
-  it('should parse enemy scan', () => {
+  it('should parse enemy scan for all allies and enemies', () => {
     // GIVEN
     const effect = JSON.parse('[2, 4, 47, [134]]');
     // WHEN

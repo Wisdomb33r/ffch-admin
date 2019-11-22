@@ -1,7 +1,7 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
 describe('AbilityStopInflictionParser', () => {
-  it('should parse Stop infliction for one enemy', () => {
+  it('should parse Stop infliction for allies allies and enemies', () => {
     // GIVEN
     const effect = JSON.parse('[2, 4, 88, [50,  3]]');
     // WHEN
