@@ -62,6 +62,16 @@ export class Skill {
     return 0;
   }
 
+  public calculateHealingTotalModIncrease(modIncrease: number): number {
+    if (this.effects && this.effects.length) {
+      return this.effects_raw
+        .filter(effect => this.isEffectWithHealing(effect))
+        .map(effect => modIncrease * this.calculateHealingModIncreaseForEffect(effect))
+        .reduce((val1: number, val2: number) => val1 + val2, 0);
+    }
+    return 0;
+  }
+
   public containsEffectWithDamages(): boolean {
     if (this.effects_raw && this.effects_raw.length) {
       return this.effects_raw.filter(effect => this.isEffectWithDamage(effect)).length > 0;
@@ -133,6 +143,20 @@ export class Skill {
         return 0.0;
       default:
         return 1.0;
+    }
+  }
+
+  private calculateHealingModIncreaseForEffect(effect): number {
+    const effectId = effect[2];
+    if (effectId === 2 // HP healing
+      || effectId === 8 // HP healing split over turns
+      || effectId === 30 // MP healing split over turns
+      || effectId === 56 // HP healing split over turns while singing
+      || effectId === 57 // MP healing split over turns while singing
+    ) {
+      return 1.0;
+    } else {
+      return 0.0;
     }
   }
 }

@@ -4,6 +4,9 @@ import {
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
   ABILITY_SKILLS_TEST_DATA,
+  MAGIC_SKILLS_NAMES_TEST_DATA,
+  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
+  MAGIC_SKILLS_TEST_DATA,
   PASSIVE_SKILLS_TEST_DATA
 } from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
@@ -395,6 +398,27 @@ describe('PassiveEffectParser', () => {
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual('+350% de puissance à <a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
+  });
+
+  it('should parse skill modifier increase for healing', () => {
+    // GIVEN
+    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
+    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const skill1: Skill = skills['10020'];
+    skill1.gumi_id = 10020;
+    skill1.active = true;
+    skill1.names = names['10020'];
+    skill1.descriptions = descriptions['10020'];
+
+    const effect = JSON.parse('[0, 3, 73, [10020, 0, 0, 300]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a>');
   });
 
   it('should parse equipment stats increase', () => {
