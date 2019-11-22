@@ -67,6 +67,7 @@ import {AbilityDamagesHexParser} from './ability-damages-hex.parser';
 import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 import {AbilityNormalAttackModifierIncreaseParser} from './ability-normal-attack-modifier-increase.parser';
 import {AbilityThrowItemsParser} from './ability-throw-items.parser';
+import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -233,6 +234,8 @@ export class AbilityEffectParserFactory {
         return new AbilityCooldownParser();
       case 132:
         return new AbilityDelayedSkillParser();
+      case 133:
+        return new AbilityDebuffsStealParser();
       case 134:
         return new AbilityDamagesPhysicalJumpDelayParser();
       case 136:
