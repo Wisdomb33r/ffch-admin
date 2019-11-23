@@ -43,6 +43,7 @@ export class SkillMapper {
       hitsFramesDamagesObject.hits,
       hitsFramesDamagesObject.frames,
       hitsFramesDamagesObject.damages,
+      SkillMapper.mapElementInflict(skill)
     );
   }
 
@@ -186,5 +187,35 @@ export class SkillMapper {
         }).join(' ou ');
     }
     return requirementsText;
+  }
+
+  private static getElementFromEnglishName(element: string): string {
+    switch (element) {
+      case 'Fire':
+        return '1';
+      case 'Ice':
+        return '2';
+      case 'Lightning':
+        return '3';
+      case 'Water':
+        return '4';
+      case 'Wind':
+        return '5';
+      case 'Earth':
+        return '6';
+      case 'Light':
+        return '7';
+      case 'Dark':
+        return '8';
+      default:
+        return '0';
+    }
+  }
+
+  private static mapElementInflict(skill: Skill): string {
+    if (skill.element_inflict && skill.element_inflict.length) {
+      return skill.element_inflict.map((element: string) => this.getElementFromEnglishName(element)).join(',');
+    }
+    return '0';
   }
 }

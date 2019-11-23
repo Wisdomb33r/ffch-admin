@@ -381,6 +381,29 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 98, [3, 912380, -1, [233100,  233101,  233102,  233103,  233104,  233105,  233106,  233108,  233109,  233110,  233111,  233112,  510750], 1, 1, 1, 0, 1, -1]], [0, 3, 132, [510755,  0,  2,  100,  0,  510755]], [0, 3, 132, [510756,  0,  5,  100,  0,  510756]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "912221": {
+        "name": "Tempest Spellblade",
+        "icon": "ability_9.png",
+        "compendium_id": 3373,
+        "rarity": 8,
+        "cost": {"MP": 90},
+        "attack_count": [30],
+        "attack_damage": [[3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4]],
+        "attack_frames": [[42,  46,  50,  54,  58,  62,  66,  70,  74,  78,  82,  86,  90,  94,  98,  102,  106,  110,  114,  118,  122,  126,  130,  134,  138,  142,  146,  150,  154,  158]],
+        "effect_frames": [[40,  40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Hybrid",
+        "element_inflict": [
+            "Lightning",
+            "Wind"
+        ],
+        "effects": ["Hybrid lightning and wind damage (13x, ATK & MAG) to all enemies"],
+        "effects_raw": [[2, 1, 40, [0,  0,  0,  0,  0,  0,  0,  0,  1300,  1300]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -533,6 +556,14 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Sauveur d'Elréa",
         "Retter von Erdria",
         "Salvador de Erdrea"
+    ],
+    "912221": [
+        "Tempest Spellblade",
+        "風雷魔劍舞",
+        "풍뢰의 마검무",
+        "Magilame des tempêtes",
+        "Sturmschwertmagie",
+        "Esgrimago tempestuoso"
     ]
   }`;
 
@@ -685,6 +716,14 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Permet d'utiliser Performance triple pendant un tour au début du combat ou après avoir été ranimé, et augmente progressivement les dégâts de certaines aptitudes après 2 tours",
         "Ermöglicht bei Kampfbeginn oder nach Wiederbelebung Dreifachvorstellung für eine Runde und erhöht nach zwei Runden allmählich den Schaden bestimmter Fertigkeiten.",
         "Aprende Ración triple durante un turno al inicio del combate o tras ser revivido, y aumenta poco a poco el daño de determinadas habilidades tras 2 turnos"
+    ],
+    "912221": [
+        "Deal lightning and wind damage to all enemies",
+        "對全體敵人發動雷風屬性攻擊",
+        "적 전체에 번개와 바람속성 피해",
+        "Inflige des dégâts de foudre et de vent à tous les ennemis",
+        "Fügt allen Gegnern Blitz- und Windschaden zu.",
+        "Daño de rayo y viento a todos los enemigos"
     ]
   }`;
 
