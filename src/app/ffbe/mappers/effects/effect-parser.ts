@@ -3,6 +3,7 @@ import {FFBE_CATEGORIES_OBJETS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.consta
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
 import {Equipment} from '../../model/equipment/equipment.model';
+import {Consumable} from '../../model/consumable.model';
 
 export type TargetWithPreposition =
   'TargetWithPreposition.A' |
@@ -473,6 +474,20 @@ export abstract class EffectParser {
       return 'UNKNOWN skill list';
     }
     return skills.map((skill: Skill) => this.getSkillNameWithGumiIdentifierLink(skill)).join(separator);
+  }
+
+  protected getConsumableNameWithGumiIdentifierLink(consumable: Consumable): string {
+    if (!consumable || !consumable.strings || !consumable.strings.names || !consumable.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
+      return 'UNKNOWN consumable';
+    }
+    return '<a href="ffexvius_objects.php?gumiid=' + consumable.gumi_id + '">' + consumable.strings.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+  }
+
+  protected getConsumablesNamesWithGumiIdentifierLink(consumables: Array<Consumable>, separator: string = ', '): string {
+    if (!consumables || consumables.length === 0) {
+      return 'UNKNOWN consumables list';
+    }
+    return consumables.map((consumable: Consumable) => this.getConsumableNameWithGumiIdentifierLink(consumable)).join(separator);
   }
 
   protected getEquipmentNameWithGumiIdentifierLink(equipment: Equipment): string {

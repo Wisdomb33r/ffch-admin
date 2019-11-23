@@ -8,6 +8,7 @@ import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
+import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
   selector: 'app-skills',
@@ -22,8 +23,9 @@ export class SkillsComponent implements OnInit {
   competences: Array<Competence>;
 
   constructor(private skillsService: SkillsService,
-              // do not remove the injection of Characters, Equipments and Materias services, it serves to load the INSTANCE singletons
+              // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
               private charactersService: CharactersService,
+              private consumableService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
     this.englishName = new FormControl('');
