@@ -1,3 +1,5 @@
+import {FfbeUtils} from '../utils/ffbe-utils';
+
 export class Competence {
   public id: number;
   public enhanced: boolean;
@@ -53,7 +55,7 @@ export class Competence {
       competence.hits,
       competence.frames,
       competence.damages,
-      `${competence.elements}`);
+      FfbeUtils.isNullOrUndefined(competence.elements) || competence.elements === 'null' ? null : `${competence.elements}`);
 
     copy.id = competence.id;
     copy.enhanced = competence.enhanced;

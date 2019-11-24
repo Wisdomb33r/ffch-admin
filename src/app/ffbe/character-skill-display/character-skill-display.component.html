@@ -77,7 +77,12 @@
       </tr>
       <tr>
         <th>Eléments</th>
-        <td>{{competence.elements}}</td>
+        <td>
+          <div *ngIf="shouldDisplayElements()">
+            <img *ngFor="let element of elements" src="assets/elements/{{element.imageName}}"
+                 alt="{{element.nom}}" title="{{element.nom}}" class="element"/>
+          </div>
+        </td>
       </tr>
       <tr>
         <th>Lien</th>
