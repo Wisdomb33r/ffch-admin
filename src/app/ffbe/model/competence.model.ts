@@ -53,7 +53,7 @@ export class Competence {
       competence.hits,
       competence.frames,
       competence.damages,
-      competence.elements);
+      `${competence.elements}`);
 
     copy.id = competence.id;
     copy.enhanced = competence.enhanced;

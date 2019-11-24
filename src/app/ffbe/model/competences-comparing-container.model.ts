@@ -23,6 +23,7 @@ export class CompetencesComparingContainer {
       || this.isFramesDifferent()
       || this.isDamagesDifferent()
       || this.isDamageTypeDifferent()
+      || this.isElementsDifferent()
       ;
   }
 
@@ -115,5 +116,12 @@ export class CompetencesComparingContainer {
       || this.competence.hybride !== this.dbCompetence.hybride
       || this.competence.fixe !== this.dbCompetence.fixe
       || this.competence.esper !== this.dbCompetence.esper;
+  }
+
+  private isElementsDifferent(): boolean {
+    if (!this.dbCompetence) {
+      return false;
+    }
+    return this.competence.elements !== this.dbCompetence.elements;
   }
 }
