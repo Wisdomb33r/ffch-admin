@@ -2,6 +2,7 @@ import {Game} from './model/game.model';
 import {CategorieObjet} from './model/objet/categorie-objet.model';
 import {MonsterType} from './model/monster-type.model';
 import {Esper} from './model/esper.model';
+import {Element} from './model/element.model';
 
 export const FFBE_ENGLISH_TABLE_INDEX = 0;
 export const FFBE_FRENCH_TABLE_INDEX = 3;
@@ -115,4 +116,15 @@ export const FFBE_ESPERS = [
   new Esper(17, 17, 'Anima'),
   new Esper(18, 18, 'Asura'),
   new Esper(19, 19, 'Kokuryu'),
+];
+export const FFBE_ELEMENTS = [
+  new Element(0, 'neutre', 'neutral', 'element-neutre.png'),
+  new Element(1, 'feu', 'fire', 'element-feu.png'),
+  new Element(2, 'glace', 'ice', 'element-glace.png'),
+  new Element(3, 'foudre', 'lightning', 'element-foudre.png'),
+  new Element(4, 'eau', 'water', 'element-eau.png'),
+  new Element(5, 'vent', 'wind', 'element-vent.png'),
+  new Element(6, 'terre', 'earth', 'element-terre.png'),
+  new Element(7, 'lumière', 'light', 'element-lumiere.png'),
+  new Element(8, 'ténèbres', 'dark', 'element-tenebres.png'),
 ];
