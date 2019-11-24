@@ -5,11 +5,16 @@ import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 @Injectable()
 export class ConsumablesService {
-
+  private static INSTANCE: ConsumablesService;
   private consumablesFromDataMining = null;
+
+  public static getInstance(): ConsumablesService {
+    return ConsumablesService.INSTANCE;
+  }
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadConsumablesFromDataMining();
+    ConsumablesService.INSTANCE = this;
   }
 
   public loadConsumablesFromDataMining() {

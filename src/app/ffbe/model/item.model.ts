@@ -17,19 +17,15 @@ export class Item {
     switch (this.category) {
       case 'ItemCategory.Consumable': {
         return this.consumable.gumi_id;
-        break;
       }
       case 'ItemCategory.Equipment': {
         return this.equipment.gumi_id;
-        break;
       }
       case 'ItemCategory.Materia': {
         return this.materia.gumi_id;
-        break;
       }
       case 'ItemCategory.Unknown': {
         return null;
-        break;
       }
     }
   }
