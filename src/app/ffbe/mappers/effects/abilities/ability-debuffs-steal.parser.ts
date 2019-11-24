@@ -17,8 +17,8 @@ export class AbilityDebuffsStealParser extends EffectParser {
     if (effect[3][7] === 1) {
       statsText += ' et de résistances';
     }
-    const target = this.getTarget(effect[0], effect[1]);
-    return `Vole ${statsText} ${target}`;
+    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
+    return `Transfère au lanceur ${statsText} ${target}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
