@@ -14,9 +14,26 @@ export class AbilityCopyEffectsParser extends EffectParser {
     const numTurns = effect[3][1];
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
+    const copiedEffectsIds = (effect[3][3] + '').split(';').map(effectId => +effectId);
+    if (copiedEffectsIds.length === 0) {
+      return 'Effet AbilityCopyEffectsParser inconnu: Mauvaise liste de paramètres';
+    }
+
+    console.log(copiedEffectsIds);
+
+    let copiedEffects = [];
+
+    const statRange = [1, 2, 3, 4];
+    if (this.containsAllElements(statRange, copiedEffectsIds)) {
+      copiedEffects.push(`Bonus d\'ATT/DÉF/MAGIE/PSY`);
+    }
+
+
     return `Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
-      `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY`;
+      `${HTML_LINE_RETURN}${copiedEffects.join(HTML_LINE_RETURN)}`;
   }
+
+
 
   private getTargetOfCopiedEffect(targetId: number): string {
     let target = 'Cible UNKNOWN';
@@ -31,4 +48,10 @@ export class AbilityCopyEffectsParser extends EffectParser {
 
     return target;
   }
+
+  private containsAllElements(expectedElements: Array<number>, underAnalysis: Array<number>): boolean {
+    return expectedElements.every(element => underAnalysis.includes(element));
+  }
+
+
 }
