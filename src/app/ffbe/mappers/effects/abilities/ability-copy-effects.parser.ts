@@ -19,13 +19,26 @@ export class AbilityCopyEffectsParser extends EffectParser {
       return 'Effet AbilityCopyEffectsParser inconnu: Mauvaise liste de paramètres';
     }
 
-    console.log(copiedEffectsIds);
-
     let copiedEffects = [];
 
-    const statRange = [1, 2, 3, 4];
-    if (this.containsAllElements(statRange, copiedEffectsIds)) {
+    const caracsRange = [1, 2, 3, 4];
+    if (this.containsAllElements(caracsRange, copiedEffectsIds)) {
       copiedEffects.push(`Bonus d\'ATT/DÉF/MAGIE/PSY`);
+    }
+
+    const elementalResistancesRange = [23, 24, 25, 26, 27, 28, 29, 30];
+    if (this.containsAllElements(elementalResistancesRange, copiedEffectsIds)) {
+      copiedEffects.push(`Bonus aux rés. élémentaires`);
+    }
+
+    const imbuesRange = [87, 88, 89, 90, 91, 92, 93, 94];
+    if (this.containsAllElements(imbuesRange, copiedEffectsIds)) {
+      copiedEffects.push(`Éléments ajoutés aux attaques physiques et hybrides`);
+    }
+
+    const LBDamagesRange = [221];
+    if (this.containsAllElements(LBDamagesRange, copiedEffectsIds)) {
+      copiedEffects.push(`Bonus aux dégâts de la limite`);
     }
 
 
