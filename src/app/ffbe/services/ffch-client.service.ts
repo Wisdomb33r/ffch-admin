@@ -6,7 +6,7 @@ import {UniteEquipements} from '../model/unite-equipements.model';
 import {Objet} from '../model/objet/objet.model';
 import {UniteEveil} from '../model/unite-eveil.model';
 import {Observable, of, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {Amelioration} from '../model/amelioration.model';
 import {Recette} from '../model/recette.model';
 
@@ -25,17 +25,26 @@ export class FfchClientService {
   constructor(private http: HttpClient) {
   }
 
-  public postCompetence$(competence: Competence): Observable<any> {
-    return this.http.post(FFCH_COMPETENCE_PATH, competence);
+  public postCompetence$(competence: Competence): Observable<Competence> {
+    return this.http.post<Competence>(FFCH_COMPETENCE_PATH, competence)
+      .pipe(
+        map(c => Competence.produce(c))
+      );
   }
 
-  public putCompetence$(competence: Competence): Observable<any> {
-    return this.http.put(FFCH_COMPETENCE_PATH + (competence.gumi_id ? '?id=' + competence.gumi_id : ''), competence);
+  public putCompetence$(competence: Competence): Observable<Competence> {
+    return this.http.put<Competence>(FFCH_COMPETENCE_PATH + (competence.gumi_id ? '?id=' + competence.gumi_id : ''), competence)
+      .pipe(
+        map(c => Competence.produce(c))
+      );
   }
 
   public getCompetenceByGumiId$(id: number): Observable<Competence> {
     return this.http.get<Competence>(FFCH_COMPETENCE_PATH + '?id=' + id)
-      .pipe(catchError(this.analyseError));
+      .pipe(
+        map(c => Competence.produce(c)),
+        catchError(this.analyseError),
+      );
   }
 
   public getUniteByNumero$(numero: number): Observable<Unite> {
