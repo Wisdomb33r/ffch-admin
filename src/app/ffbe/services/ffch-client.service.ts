@@ -33,14 +33,14 @@ export class FfchClientService {
   }
 
   public putCompetence$(competence: Competence): Observable<Competence> {
-    return this.http.put<Competence>(FFCH_COMPETENCE_PATH + (competence.gumi_id ? '?id=' + competence.gumi_id : ''), competence)
+    return this.http.put<Competence>(`${FFCH_COMPETENCE_PATH}?id=${competence.gumi_id}`, competence)
       .pipe(
         map(c => Competence.produce(c))
       );
   }
 
   public getCompetenceByGumiId$(id: number): Observable<Competence> {
-    return this.http.get<Competence>(FFCH_COMPETENCE_PATH + '?id=' + id)
+    return this.http.get<Competence>(`${FFCH_COMPETENCE_PATH}?id=${id}`)
       .pipe(
         map(c => Competence.produce(c)),
         catchError(this.analyseError),
