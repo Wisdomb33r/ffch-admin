@@ -1,8 +1,9 @@
 import {Skill} from '../../model/skill.model';
-import {FFBE_CATEGORIES_OBJETS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
+import {FFBE_CATEGORIES_OBJETS, FFBE_ELEMENTS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
 import {Equipment} from '../../model/equipment/equipment.model';
+import {Element} from '../../model/element.model';
 
 export type TargetWithPreposition =
   'TargetWithPreposition.A' |
@@ -119,49 +120,13 @@ export abstract class EffectParser {
   }
 
   protected getElementFromId(elementId: number): string {
-    switch (elementId) {
-      case 1:
-        return 'Feu';
-      case 2:
-        return 'Glace';
-      case 3:
-        return 'Foudre';
-      case 4:
-        return 'Eau';
-      case 5:
-        return 'Vent';
-      case 6:
-        return 'Terre';
-      case 7:
-        return 'Lumière';
-      case 8:
-        return 'Ténèbres';
-      default:
-        return 'UNKNOWN element';
-    }
+    const element: Element = FFBE_ELEMENTS.find(e => e.id === elementId);
+    return element ? element.nom : 'UNKNOWN element';
   }
 
-  protected getElementFromEnglishName(element: string): string {
-    switch (element) {
-      case 'Fire':
-        return 'Feu';
-      case 'Ice':
-        return 'Glace';
-      case 'Lightning':
-        return 'Foudre';
-      case 'Water':
-        return 'Eau';
-      case 'Wind':
-        return 'Vent';
-      case 'Earth':
-        return 'Terre';
-      case 'Light':
-        return 'Lumière';
-      case 'Dark':
-        return 'Ténèbres';
-      default:
-        return 'UNKNOWN element';
-    }
+  protected getElementFromEnglishName(elementEnglishString: string): string {
+    const element: Element = FFBE_ELEMENTS.find(e => e.name === elementEnglishString);
+    return element ? element.nom : 'UNKNOWN element';
   }
 
   protected getElementsFromElementInflict(skill: Skill): string {

@@ -118,13 +118,13 @@ export const FFBE_ESPERS = [
   new Esper(19, 19, 'Kokuryu'),
 ];
 export const FFBE_ELEMENTS = [
-  new Element(0, 'neutre', 'neutral', 'element-neutre.png'),
-  new Element(1, 'feu', 'fire', 'element-feu.png'),
-  new Element(2, 'glace', 'ice', 'element-glace.png'),
-  new Element(3, 'foudre', 'lightning', 'element-foudre.png'),
-  new Element(4, 'eau', 'water', 'element-eau.png'),
-  new Element(5, 'vent', 'wind', 'element-vent.png'),
-  new Element(6, 'terre', 'earth', 'element-terre.png'),
-  new Element(7, 'lumière', 'light', 'element-lumiere.png'),
-  new Element(8, 'ténèbres', 'dark', 'element-tenebres.png'),
+  new Element(0, 'Neutre', 'Neutral', 'element-neutre.png'),
+  new Element(1, 'Feu', 'Fire', 'element-feu.png'),
+  new Element(2, 'Glace', 'Ice', 'element-glace.png'),
+  new Element(3, 'Foudre', 'Lightning', 'element-foudre.png'),
+  new Element(4, 'Eau', 'Water', 'element-eau.png'),
+  new Element(5, 'Vent', 'Wind', 'element-vent.png'),
+  new Element(6, 'Terre', 'Earth', 'element-terre.png'),
+  new Element(7, 'Lumière', 'Light', 'element-lumiere.png'),
+  new Element(8, 'Ténèbres', 'Dark', 'element-tenebres.png'),
 ];
