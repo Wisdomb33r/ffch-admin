@@ -13,11 +13,11 @@ describe('AbilityCountersParser', () => {
 
   it('should parse counters to allies but caster with SPR scaling and no limit per turn', () => {
     // GIVEN
-    const effect = JSON.parse('[0, 3, 123, [100,  1,  1000,  1,  1,  0]]');
+    const effect = JSON.parse('[0, 3, 123, [100,  4,  1000,  1,  1,  0]]');
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('100% de chance pour les alliés sauf le lanceur de contrer les dégâts physiques par une attaque de puissance 1000% pour 1 tour');
+    expect(s).toEqual('100% de chance pour les alliés sauf le lanceur de contrer les dégâts physiques par une attaque de puissance 1000% calculée sur la PSY pour 1 tour');
   });
 
 });
