@@ -112,7 +112,8 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
-    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler des gils en plus des objets'},
+    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler des gils en plus des objets (100%)'},
+    {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler des gils en plus des objets (50% à 100%)'},
     {
       effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
         + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
