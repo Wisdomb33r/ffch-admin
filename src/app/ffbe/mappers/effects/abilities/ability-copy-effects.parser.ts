@@ -24,15 +24,15 @@ export class AbilityCopyEffectsParser extends EffectParser {
     const caracsRange = [1, 2, 3, 4];
     const otherCaracsRange = [39, 40, 41, 42];
     if (this.containsAllElements(caracsRange, copiedEffectsIds)) {
-      copiedEffects.push(`Bonus d\'ATT/DÉF/MAGIE/PSY`);
+      copiedEffects.push(`Bonus d'ATT/DÉF/MAGIE/PSY`);
       this.removeElements(caracsRange, copiedEffectsIds);
       this.removeElements(otherCaracsRange, copiedEffectsIds);
     }
 
-    const MagicResRange = [9];
-    if (this.containsAllElements(MagicResRange, copiedEffectsIds)) {
+    const magicResRange = [9];
+    if (this.containsAllElements(magicResRange, copiedEffectsIds)) {
       copiedEffects.push(`Rés. aux dégâts magiques`);
-      this.removeElements(MagicResRange, copiedEffectsIds);
+      this.removeElements(magicResRange, copiedEffectsIds);
     }
 
     const ailmentsResistancesRange = [12, 13, 14, 15, 16, 17, 18, 19];
@@ -41,22 +41,22 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(ailmentsResistancesRange, copiedEffectsIds);
     }
 
-    const HPRegenRange = [20];
-    if (this.containsAllElements(HPRegenRange, copiedEffectsIds)) {
+    const healthRegenRange = [20];
+    if (this.containsAllElements(healthRegenRange, copiedEffectsIds)) {
       copiedEffects.push(`Régénération de PV par tour`);
-      this.removeElements(HPRegenRange, copiedEffectsIds);
+      this.removeElements(healthRegenRange, copiedEffectsIds);
     }
 
-    const AutoReviveRange = [21];
-    if (this.containsAllElements(AutoReviveRange, copiedEffectsIds)) {
+    const autoReviveRange = [21];
+    if (this.containsAllElements(autoReviveRange, copiedEffectsIds)) {
       copiedEffects.push(`Auréole`);
-      this.removeElements(AutoReviveRange, copiedEffectsIds);
+      this.removeElements(autoReviveRange, copiedEffectsIds);
     }
 
-    const MPRegenRange = [22];
-    if (this.containsAllElements(MPRegenRange, copiedEffectsIds)) {
+    const manaRegenRange = [22];
+    if (this.containsAllElements(manaRegenRange, copiedEffectsIds)) {
       copiedEffects.push(`Régénération de PM par tour`);
-      this.removeElements(MPRegenRange, copiedEffectsIds);
+      this.removeElements(manaRegenRange, copiedEffectsIds);
     }
 
     const elementalResistancesRange = [23, 24, 25, 26, 27, 28, 29, 30];
@@ -65,10 +65,10 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(elementalResistancesRange, copiedEffectsIds);
     }
 
-    const LBFillRateRange = [47];
-    if (this.containsAllElements(LBFillRateRange, copiedEffectsIds)) {
+    const limitBurstFillRateRange = [47];
+    if (this.containsAllElements(limitBurstFillRateRange, copiedEffectsIds)) {
       copiedEffects.push(`Bonus à la vitesse de la jauge de limite`);
-      this.removeElements(LBFillRateRange, copiedEffectsIds);
+      this.removeElements(limitBurstFillRateRange, copiedEffectsIds);
     }
 
     const physicalDodgeRange = [56];
@@ -91,7 +91,7 @@ export class AbilityCopyEffectsParser extends EffectParser {
 
     const magicReflectsRange = [60];
     if (this.containsAllElements(magicReflectsRange, copiedEffectsIds)) {
-      copiedEffects.push(`Réflexion des magies`);
+      copiedEffects.push(`Renvoi des magies`);
       this.removeElements(magicReflectsRange, copiedEffectsIds);
     }
 
@@ -101,16 +101,16 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(damageBoostRange, copiedEffectsIds);
     }
 
-    const PhysicalKillersRange = [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74];
-    if (this.containsAllElements(PhysicalKillersRange, copiedEffectsIds)) {
+    const physicalKillersRange = [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74];
+    if (this.containsAllElements(physicalKillersRange, copiedEffectsIds)) {
       copiedEffects.push(`Tueurs physiques`);
-      this.removeElements(PhysicalKillersRange, copiedEffectsIds);
+      this.removeElements(physicalKillersRange, copiedEffectsIds);
     }
 
-    const MagicalKillersRange = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86];
-    if (this.containsAllElements(MagicalKillersRange, copiedEffectsIds)) {
+    const magicalKillersRange = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86];
+    if (this.containsAllElements(magicalKillersRange, copiedEffectsIds)) {
       copiedEffects.push(`Tueurs magiques`);
-      this.removeElements(MagicalKillersRange, copiedEffectsIds);
+      this.removeElements(magicalKillersRange, copiedEffectsIds);
     }
 
     const imbuesRange = [87, 88, 89, 90, 91, 92, 93, 94];
@@ -131,10 +131,10 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(berserkResRange, copiedEffectsIds);
     }
 
-    const LBDamagesRange = [221];
-    if (this.containsAllElements(LBDamagesRange, copiedEffectsIds)) {
+    const limitBurstDamagesRange = [221];
+    if (this.containsAllElements(limitBurstDamagesRange, copiedEffectsIds)) {
       copiedEffects.push(`Bonus aux dégâts de la limite`);
-      this.removeElements(LBDamagesRange, copiedEffectsIds);
+      this.removeElements(limitBurstDamagesRange, copiedEffectsIds);
     }
 
     if (copiedEffectsIds.length > 0) {

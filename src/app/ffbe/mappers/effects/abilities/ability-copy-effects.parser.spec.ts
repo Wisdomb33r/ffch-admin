@@ -146,7 +146,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN} • Réflexion des magies`);
+      `${HTML_LINE_RETURN} • Renvoi des magies`);
   });
 
   it('should parse copy of damage boosts (inspired from "Twist of Fate")', () => {
