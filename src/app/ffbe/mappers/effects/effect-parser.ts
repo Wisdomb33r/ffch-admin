@@ -3,6 +3,7 @@ import {FFBE_CATEGORIES_OBJETS, FFBE_ELEMENTS, FFBE_FRENCH_TABLE_INDEX} from '..
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
 import {Equipment} from '../../model/equipment/equipment.model';
+import {Consumable} from '../../model/consumable.model';
 import {Element} from '../../model/element.model';
 
 export type TargetWithPreposition =
@@ -18,7 +19,7 @@ export abstract class EffectParser {
   }
 
   protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>,
-                                             groupSeparator: string = ', ', keepZeros: boolean = false): string {
+                                             groupSeparator = ', ', keepZeros = false): string {
     const decreasingSort = values.some(element => {
       return element.value > 0;
     });
@@ -344,13 +345,13 @@ export abstract class EffectParser {
   }
 
   protected getHealingText(mod: number): string {
-    return mod > 0 ? '+ ' + mod / 200 + 'x la PSY + ' + (mod / 1000) + 'x la MAG du lanceur ' : '';
+    return mod > 0 ? `+ ${mod / 200}x la PSY + ${(mod / 1000)}x la MAG du lanceur ` : '';
   }
 
-  protected getAttackAndDamageWordingForPhysicalDamages(attack_type: string): string {
+  protected getAttackAndDamageWordingForPhysicalDamages(attackType: string): string {
     let attackTypeText = 'Dégâts physiques ';
-    if (attack_type !== 'Physical') {
-      switch (attack_type) {
+    if (attackType !== 'Physical') {
+      switch (attackType) {
         case 'Magic':
           attackTypeText = 'Attaque magique à dégâts physiques ';
           break;
@@ -368,10 +369,10 @@ export abstract class EffectParser {
     return attackTypeText;
   }
 
-  protected getAttackAndDamageWordingForMagicalDamages(attack_type: string): string {
+  protected getAttackAndDamageWordingForMagicalDamages(attackType: string): string {
     let attackTypeText = 'Dégâts magiques ';
-    if (attack_type !== 'Magic') {
-      switch (attack_type) {
+    if (attackType !== 'Magic') {
+      switch (attackType) {
         case 'Physical':
           attackTypeText = 'Attaque physique à dégâts magiques ';
           break;
@@ -389,10 +390,10 @@ export abstract class EffectParser {
     return attackTypeText;
   }
 
-  protected getAttackAndDamageWordingForFixedDamages(attack_type: string): string {
+  protected getAttackAndDamageWordingForFixedDamages(attackType: string): string {
     let attackTypeText = 'Dégâts fixes ';
-    if (attack_type !== 'None') {
-      switch (attack_type) {
+    if (attackType !== 'None') {
+      switch (attackType) {
         case 'Physical':
           attackTypeText = 'Attaque physique à dégâts fixes ';
           break;
@@ -412,12 +413,12 @@ export abstract class EffectParser {
 
   protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
-    return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.name + '</a>' : 'UNKNOWN';
+    return categorie ? `<a href="ffexvius_objects.php?categid=${categorie.ffchId}">${categorie.name}</a>` : 'UNKNOWN';
   }
 
   protected getEquipmentCategoryTypeWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
-    return categorie ? '<a href="ffexvius_objects.php?categid=' + categorie.ffchId + '">' + categorie.type + '</a>' : 'UNKNOWN';
+    return categorie ? `<a href="ffexvius_objects.php?categid=${categorie.ffchId}">${categorie.type}</a>` : 'UNKNOWN';
   }
 
   protected isEquipmentCategoryFeminine(equipmentId: number): boolean {
@@ -430,28 +431,42 @@ export abstract class EffectParser {
     if (!skill || !skill.names || !skill.names[FFBE_FRENCH_TABLE_INDEX]) {
       return 'UNKNOWN skill';
     }
-    return '<a href="ffexvius_skills.php?gumiid=' + skill.gumi_id + '">' + skill.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+    return `<a href="ffexvius_skills.php?gumiid=${skill.gumi_id}">${skill.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
   }
 
-  protected getSkillsNamesWithGumiIdentifierLinks(skills: Array<Skill>, separator: string = ', '): string {
+  protected getSkillsNamesWithGumiIdentifierLinks(skills: Array<Skill>, separator = ', '): string {
     if (!skills || skills.length === 0) {
       return 'UNKNOWN skill list';
     }
     return skills.map((skill: Skill) => this.getSkillNameWithGumiIdentifierLink(skill)).join(separator);
   }
 
+  protected getConsumableNameWithGumiIdentifierLink(consumable: Consumable): string {
+    if (!consumable || !consumable.strings || !consumable.strings.names || !consumable.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
+      return 'UNKNOWN consumable';
+    }
+    return `<a href="ffexvius_objects.php?gumiid=${consumable.gumi_id}">${consumable.strings.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
+  }
+
+  protected getConsumablesNamesWithGumiIdentifierLink(consumables: Array<Consumable>, separator = ', '): string {
+    if (!consumables || consumables.length === 0) {
+      return 'UNKNOWN consumables list';
+    }
+    return consumables.map((consumable: Consumable) => this.getConsumableNameWithGumiIdentifierLink(consumable)).join(separator);
+  }
+
   protected getEquipmentNameWithGumiIdentifierLink(equipment: Equipment): string {
     if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
       return 'UNKNOWN equipment';
     }
-    return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">' + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+    return `<a href="ffexvius_objects.php?gumiid=${equipment.gumi_id}">${equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]}</a>`;
   }
 
   protected getEsperLink(esper: Esper): string {
     if (!esper) {
       return 'UNKNOWN esper';
     }
-    return '<a href="ffexvius_espers.php?esperid=' + esper.ffchId + '">' + esper.name + '</a>';
+    return `<a href="ffexvius_espers.php?esperid=${esper.ffchId}">${esper.name}</a>`;
   }
 
   protected fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {

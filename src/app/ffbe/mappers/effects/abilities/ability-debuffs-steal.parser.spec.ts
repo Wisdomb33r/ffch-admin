@@ -8,7 +8,7 @@ describe('AbilityDebuffsStealParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Vole les baisses de ATT/MAG/PSY et de résistances à un allié');
+    expect(s).toEqual('Transfère au lanceur les baisses de ATT/MAG/PSY et de résistances d\'un allié');
   });
 
   it('should parse steal debuffs for allies except caster', () => {
@@ -17,7 +17,7 @@ describe('AbilityDebuffsStealParser', () => {
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('Vole les baisses de ATT/DÉF aux alliés sauf le lanceur');
+    expect(s).toEqual('Transfère au lanceur les baisses de ATT/DÉF des alliés sauf le lanceur');
   });
 
 });

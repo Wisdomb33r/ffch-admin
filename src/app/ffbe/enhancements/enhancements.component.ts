@@ -8,6 +8,7 @@ import {Character} from '../model/character.model';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
   selector: 'app-enhancements',
@@ -25,7 +26,8 @@ export class EnhancementsComponent implements OnInit {
 
   constructor(private enhancementsService: EnhancementsService,
               private charactersService: CharactersService,
-              // do not remove the injection of EquipmentsService and MateriasService, it serves to load the INSTANCE singletons
+              // do not remove the injection of Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
+              private consumableService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
     this.characterName = new FormControl('');
