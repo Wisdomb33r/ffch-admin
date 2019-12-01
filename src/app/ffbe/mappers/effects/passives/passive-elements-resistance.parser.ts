@@ -6,16 +6,7 @@ export class PassiveElementsResistanceParser extends EffectParser {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
       return 'Effet PassiveElementsResistanceParser inconnu: Mauvaise liste de paramètres';
     }
-    const increases = [
-      {name: 'Feu', value: effect[3][0]},
-      {name: 'Glace', value: effect[3][1]},
-      {name: 'Foudre', value: effect[3][2]},
-      {name: 'Eau', value: effect[3][3]},
-      {name: 'Vent', value: effect[3][4]},
-      {name: 'Terre', value: effect[3][5]},
-      {name: 'Lumière', value: effect[3][6]},
-      {name: 'Ténèbres', value: effect[3][7]},
-    ];
+    const increases: Array<{ name: string, value: number }> = this.getKeyValueTableForElements(effect[3]);
     return this.wordEffectJoiningIdenticalValues(increases);
   }
 

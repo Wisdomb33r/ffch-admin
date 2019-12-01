@@ -76,6 +76,15 @@
         <td>{{competence.damages}}</td>
       </tr>
       <tr>
+        <th>Eléments</th>
+        <td>
+          <div *ngIf="shouldDisplayElements()">
+            <img *ngFor="let element of elements" src="assets/elements/{{element.imageName}}"
+                 alt="{{element.nom}}" title="{{element.nom}}" class="element"/>
+          </div>
+        </td>
+      </tr>
+      <tr>
         <th>Lien</th>
         <td>
           <button mat-raised-button ngxClipboard [cbContent]="generateLinkToFfch()" color="accent" class="copy-button">

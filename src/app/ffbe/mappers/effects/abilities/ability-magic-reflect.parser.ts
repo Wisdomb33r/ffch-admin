@@ -7,13 +7,23 @@ export class AbilityMagicReflectParser extends EffectParser {
       return 'Effet AbilityMagicReflectParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    let target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    if (skill.isActivatedByPassiveSkill && effect[0] === 1 && effect[1] === 2) {
+      target = this.getTarget(0, 3, 'TargetWithPreposition.None');
+    }
     const numReflect = effect[3][1];
     const numTurns = effect[3][2];
 
     const pluralFormReflects = numReflect > 1 ? 's' : '';
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    return `Active le renvoi de ${numReflect} sort${pluralFormReflects} de magie sur ${target} pour ${numTurns} tour${pluralFormTurns}`;
+    let numReflectText = `de ${numReflect} sort${pluralFormReflects} de magie`;
+    if (numReflect < 0) {
+      numReflectText = 'des sorts de magie';
+    }
+
+    const numTurnsText = numTurns > 0 ? ` pour ${numTurns} tour${pluralFormTurns}` : '';
+
+    return `Active le renvoi ${numReflectText} sur ${target}${numTurnsText}`;
   }
 }
