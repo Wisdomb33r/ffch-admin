@@ -92,6 +92,8 @@ export abstract class EffectParser {
         return 'mitigation magique';
       case 74:
         return 'dégâts aux morts-vivants';
+      case 204:
+        return 'mitigation générale';
       default:
         return 'UNKNOWN STAT';
     }
