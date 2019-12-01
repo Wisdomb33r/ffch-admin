@@ -138,4 +138,46 @@ describe('SkillMapper', () => {
       + 'ou <a href="ffexvius_objects.php?gumiid=undefined">ATT +30%</a>');
   });
 
+  it('should map neutral damages correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
+    const skill: Skill = skills['20430'];
+    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['20430'];
+    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['20430'];
+    // WHEN
+    const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
+    // THEN
+    expect(competence.elements).toEqual('0');
+  });
+
+  it('should map elemental damages correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const skill: Skill = skills['509024'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['509024'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['509024'];
+    // WHEN
+    const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
+    // THEN
+    expect(competence.elements).toEqual('7');
+  });
+
+  it('should map dual-element damages correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const skill: Skill = skills['912221'];
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['912221'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['912221'];
+    // WHEN
+    const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
+    // THEN
+    expect(competence.elements).toEqual('3,5');
+  });
+
 });
