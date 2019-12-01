@@ -9,9 +9,11 @@ export class PassiveGilsWhileStealingParser extends EffectParser {
 
     const tauxMin = effect[3][0];
     const tauxMax = effect[3][1];
+    let tauxText = ` ${tauxMin}% à ${tauxMax}%`;
+    if (tauxMin === tauxMax) {
+      tauxText = ` ${tauxMax}%`;
+    }
 
-    const taux = ` (${tauxMin}%${tauxMax !== tauxMin ? ` à ${tauxMax}%` : ''})`;
-
-    return `Permet de voler des gils en plus des objets${taux}`;
+    return `Permet de voler${tauxText} des gils en plus des objets`;
   }
 }
