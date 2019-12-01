@@ -29,6 +29,12 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(otherCaracsRange, copiedEffectsIds);
     }
 
+    const MagicResRange = [9];
+    if (this.containsAllElements(MagicResRange, copiedEffectsIds)) {
+      copiedEffects.push(`Rés. aux dégâts magiques`);
+      this.removeElements(MagicResRange, copiedEffectsIds);
+    }
+
     const ailmentsResistancesRange = [12, 13, 14, 15, 16, 17, 18, 19];
     if (this.containsAllElements(ailmentsResistancesRange, copiedEffectsIds)) {
       copiedEffects.push(`Rés. aux altérations`);
@@ -65,6 +71,24 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(LBFillRateRange, copiedEffectsIds);
     }
 
+    const physicalDodgeRange = [56];
+    if (this.containsAllElements(physicalDodgeRange, copiedEffectsIds)) {
+      copiedEffects.push(`Esquive d\'attaques physiques`);
+      this.removeElements(physicalDodgeRange, copiedEffectsIds);
+    }
+
+    const magicReflectsRange = [60];
+    if (this.containsAllElements(magicReflectsRange, copiedEffectsIds)) {
+      copiedEffects.push(`Réflexion des magies`);
+      this.removeElements(magicReflectsRange, copiedEffectsIds);
+    }
+
+    const damageBoostRange = [62];
+    if (this.containsAllElements(damageBoostRange, copiedEffectsIds)) {
+      copiedEffects.push(`Bonus aux dégâts`);
+      this.removeElements(damageBoostRange, copiedEffectsIds);
+    }
+
     const PhysicalKillersRange = [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74];
     if (this.containsAllElements(PhysicalKillersRange, copiedEffectsIds)) {
       copiedEffects.push(`Tueurs physiques`);
@@ -87,6 +111,12 @@ export class AbilityCopyEffectsParser extends EffectParser {
     if (this.containsAllElements(statsBreaksResistancesRange, copiedEffectsIds)) {
       copiedEffects.push(`Rés. aux baisses de caractéristiques, à Stop et à Charme`);
       this.removeElements(statsBreaksResistancesRange, copiedEffectsIds);
+    }
+
+    const berserkResRange = [101];
+    if (this.containsAllElements(berserkResRange, copiedEffectsIds)) {
+      copiedEffects.push(`Rés. à Berserk`);
+      this.removeElements(berserkResRange, copiedEffectsIds);
     }
 
     const LBDamagesRange = [221];

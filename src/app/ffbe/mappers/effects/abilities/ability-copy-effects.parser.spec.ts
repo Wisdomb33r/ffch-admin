@@ -126,4 +126,54 @@ describe('AbilityCopyEffectsParser', () => {
       `${HTML_LINE_RETURN}Bonus à la vitesse de la jauge de limite`);
   });
 
+  it('should parse copy of magic damage resistance (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "9"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Rés. aux dégâts magiques`);
+  });
+
+  it('should parse copy of physical dodge (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "56"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Esquive d\'attaques physiques`);
+  });
+
+  it('should parse copy of magic reflects (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "60"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Réflexion des magies`);
+  });
+
+  it('should parse copy of damage boosts (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "62"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Bonus aux dégâts`);
+  });
+
+  it('should parse copy of Berserk resistance (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "101"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Rés. à Berserk`);
+  });
+
 });
