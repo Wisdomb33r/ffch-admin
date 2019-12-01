@@ -3,7 +3,7 @@ import {Skill} from '../../../model/skill.model';
 
 export class AbilityCountersParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5 || effect[3][4] !== 1) {
+    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5) {
       return 'Effet AbilityCountersParser inconnu: Mauvaise liste de paramètres';
     }
 
@@ -15,15 +15,18 @@ export class AbilityCountersParser extends EffectParser {
     const pluralForm = duration > 1 ? 's' : '';
     const durationText = `pour ${duration} tour${pluralForm}`;
     let maxActivation = effect[3][5];
-    if (maxActivation === undefined) {
+    if (maxActivation === undefined && effect[2] === 123) {
       maxActivation = 1;
     }
     const maxActivationText = maxActivation > 0 ? ` (max ${maxActivation} par tour)` : '';
-    // TODO eEnigma and wiki parsers both have "allies but target" for all 123 effects, even if there is 0/3 and 2/2 target configurations
-    // IG tests are necessary to check if this effect is always to the rest of the party except caster or if there is subtle differences
-    const target = `pour ${this.getTargetAlliesButCasterText(undefined)}`;
 
-    return `${activationChance}% de chance ${target} de contrer les dégâts physiques par une attaque de puissance ${power}% ${statText}${durationText}${maxActivationText}`;
+    let activationTarget = '';
+    if (effect[2] === 123) {
+      activationTarget = 'encaissés par les autres alliés ';
+    }
+
+    const baseText = `pour le lanceur de contrer les dégâts physiques ${activationTarget}par une attaque`;
+    return `${activationChance}% de chance ${baseText} de puissance ${power}% ${statText}${durationText}${maxActivationText}`;
   }
 
 }
