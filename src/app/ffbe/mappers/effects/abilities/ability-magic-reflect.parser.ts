@@ -7,7 +7,10 @@ export class AbilityMagicReflectParser extends EffectParser {
       return 'Effet AbilityMagicReflectParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    let target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    if (skill.isActivatedByPassiveSkill && effect[0] === 1 && effect[1] === 2) {
+      target = this.getTarget(0, 3, 'TargetWithPreposition.None');
+    }
     const numReflect = effect[3][1];
     const numTurns = effect[3][2];
 
