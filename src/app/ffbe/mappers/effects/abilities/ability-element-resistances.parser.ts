@@ -3,7 +3,7 @@ import {Skill} from '../../../model/skill.model';
 
 export class AbilityElementResistancesParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 10 || effect[3][8] !== 1) {
+    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 10) {
       return 'Effet AbilityElementResistancesParser inconnu: Mauvaise liste de paramètres';
     }
     const increases = [
@@ -26,12 +26,7 @@ export class AbilityElementResistancesParser extends EffectParser {
     const turns = ` pour ${effect[3][9]} tour`;
     const pluralForm = (effect[3][9] > 1) ? 's' : '';
 
-    let dispellable = '';
-    if (effect[3].length >= 7 && effect[3][6] === 1) {
-      dispellable = ' (bonus non-dissipable)';
-    }
-
-    return `${statModifier} ${target}${turns}${pluralForm}${dispellable}`;
+    return `${statModifier} ${target}${turns}${pluralForm}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
