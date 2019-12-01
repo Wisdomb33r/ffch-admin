@@ -14,6 +14,13 @@ export class AbilityMagicReflectParser extends EffectParser {
     const pluralFormReflects = numReflect > 1 ? 's' : '';
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    return `Active le renvoi de ${numReflect} sort${pluralFormReflects} de magie sur ${target} pour ${numTurns} tour${pluralFormTurns}`;
+    let numReflectText = `de ${numReflect} sort${pluralFormReflects} de magie`;
+    if (numReflect < 0) {
+      numReflectText = 'des sorts de magie';
+    }
+
+    const numTurnsText = numTurns > 0 ? ` pour ${numTurns} tour${pluralFormTurns}` : '';
+
+    return `Active le renvoi ${numReflectText} sur ${target}${numTurnsText}`;
   }
 }
