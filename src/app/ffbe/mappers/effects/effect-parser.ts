@@ -64,8 +64,28 @@ export abstract class EffectParser {
         return 'PV';
       case 6:
         return 'PM';
+      case 9:
+        return 'rés. magique';
+      case 12:
+        return 'rés. Poison';
+      case 13:
+        return 'rés. Cécité';
+      case 14:
+        return 'rés. Sommeil';
+      case 15:
+        return 'rés. Silence';
+      case 16:
+        return 'rés. Paralysie';
+      case 17:
+        return 'rés. Confusion';
+      case 18:
+        return 'rés. Maladie';
+      case 19:
+        return 'rés. Pétrification';
       case 20:
         return 'PV par tour';
+      case 21:
+        return 'auréole';
       case 22:
         return 'PM par tour';
       case 23:
@@ -84,16 +104,98 @@ export abstract class EffectParser {
         return 'rés. Lumière';
       case 30:
         return 'rés. Ténèbres';
+      case 47:
+        return 'vitesse de la jauge de limite';
       case 56:
         return 'esquives d\'attaques physiques';
       case 57:
         return 'mitigation physique';
       case 58:
         return 'mitigation magique';
+      case 60:
+        return 'renvoi des magies';
+      case 63:
+        return 'dégâts physiques aux bêtes';
+      case 64:
+        return 'dégâts physiques aux oiseaux';
+      case 65:
+        return 'dégâts physiques aux aquatiques';
+      case 66:
+        return 'dégâts physiques aux démons';
+      case 67:
+        return 'dégâts physiques aux humains';
+      case 68:
+        return 'dégâts physiques aux machines';
+      case 69:
+        return 'dégâts physiques aux dragons';
+      case 70:
+        return 'dégâts physiques aux esprits';
+      case 71:
+        return 'dégâts physiques aux insectes';
+      case 72:
+        return 'dégâts physiques aux pierres';
+      case 73:
+        return 'dégâts physiques aux plantes';
       case 74:
-        return 'dégâts aux morts-vivants';
+        return 'dégâts physiques aux morts-vivants';
+      case 75:
+        return 'dégâts magiques aux bêtes';
+      case 76:
+        return 'dégâts magiques aux oiseaux';
+      case 77:
+        return 'dégâts magiques aux aquatiques';
+      case 78:
+        return 'dégâts magiques aux démons';
+      case 79:
+        return 'dégâts magiques aux humains';
+      case 80:
+        return 'dégâts magiques aux machines';
+      case 81:
+        return 'dégâts magiques aux dragons';
+      case 82:
+        return 'dégâts magiques aux esprits';
+      case 83:
+        return 'dégâts magiques aux insectes';
+      case 84:
+        return 'dégâts magiques aux pierres';
+      case 85:
+        return 'dégâts magiques aux plantes';
+      case 86:
+        return 'dégâts magiques aux morts-vivants';
+      case 87:
+        return 'imprégnation Feu';
+      case 88:
+        return 'imprégnation Glace';
+      case 89:
+        return 'imprégnation Foudre';
+      case 90:
+        return 'imprégnation Eau';
+      case 91:
+        return 'imprégnation Vent';
+      case 92:
+        return 'imprégnation Terre';
+      case 93:
+        return 'imprégnation Lumière';
+      case 94:
+        return 'imprégnation Ténèbres';
+      case 95:
+        return 'rés. aux baisses d\'ATT';
+      case 96:
+        return 'rés. aux baisses de DÉF';
+      case 97:
+        return 'rés. aux baisses de MAGIE';
+      case 98:
+        return 'rés. aux baisses de PSY';
+      case 99:
+        return 'rés. à Stop';
+      case 100:
+        return 'rés. à Charme';
+      case 101:
+        return 'rés. à Berserk';
       case 204:
         return 'mitigation générale';
+      case 221:
+        return 'dégâts de la limite';
       default:
         return 'UNKNOWN STAT';
     }
