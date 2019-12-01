@@ -65,23 +65,23 @@ export abstract class EffectParser {
       case 6:
         return 'PM';
       case 9:
-        return 'res. magique';
+        return 'rés. magique';
       case 12:
-        return 'res. Poison';
+        return 'rés. Poison';
       case 13:
-        return 'res. Cécité';
+        return 'rés. Cécité';
       case 14:
-        return 'res. Sommeil';
+        return 'rés. Sommeil';
       case 15:
-        return 'res. Silence';
+        return 'rés. Silence';
       case 16:
-        return 'res. Paralysie';
+        return 'rés. Paralysie';
       case 17:
-        return 'res. Confusion';
+        return 'rés. Confusion';
       case 18:
-        return 'res. Maladie';
+        return 'rés. Maladie';
       case 19:
-        return 'res. Pétrification';
+        return 'rés. Pétrification';
       case 20:
         return 'PV par tour';
       case 21:

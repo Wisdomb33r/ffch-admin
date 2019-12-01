@@ -14,12 +14,12 @@ export class AbilityCopyEffectsParser extends EffectParser {
     const numTurns = effect[3][1];
     const pluralFormTurns = numTurns > 1 ? 's' : '';
 
-    const copiedEffectsIds = (effect[3][3] + '').split(';').map(effectId => +effectId);
+    const copiedEffectsIds = (`${effect[3][3]}`).split(';').map(effectId => +effectId);
     if (copiedEffectsIds.length === 0) {
       return 'Effet AbilityCopyEffectsParser inconnu: Mauvaise liste de paramètres';
     }
 
-    let copiedEffects = [];
+    const copiedEffects = [];
 
     const caracsRange = [1, 2, 3, 4];
     const otherCaracsRange = [39, 40, 41, 42];
@@ -141,8 +141,9 @@ export class AbilityCopyEffectsParser extends EffectParser {
       return `Effet AbilityCopyEffectsParser inconnu: Eléments inconnus: ${copiedEffectsIds.join(', ')}`;
     }
 
+    const stringJoinSeparator = `${HTML_LINE_RETURN} • `;
     return `Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
-      `${HTML_LINE_RETURN} • ${copiedEffects.join(HTML_LINE_RETURN + ' • ')}`;
+      `${stringJoinSeparator}${copiedEffects.join(stringJoinSeparator)}`;
   }
 
 
