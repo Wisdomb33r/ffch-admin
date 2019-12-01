@@ -1,9 +1,9 @@
-import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {SkillModifierIncreaseParser} from '../skill-modifier-increase.parser';
 
-export class PassiveSkillModifierIncreaseParser extends EffectParser {
+export class PassiveSkillModifierIncreaseParser extends SkillModifierIncreaseParser {
 
   private modifiedSkillsIncreases: Array<{ name: string, value: number, isHeal: boolean }> = [];
 
