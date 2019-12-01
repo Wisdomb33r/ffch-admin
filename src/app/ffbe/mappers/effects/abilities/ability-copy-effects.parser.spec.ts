@@ -11,7 +11,7 @@ describe('AbilityCopyEffectsParser', () => {
       const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
       // THEN
       expect(s).toEqual(`Copie les effets suivants d\'un adversaire au lanceur pour 3 tours:` +
-        `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY`);
+        `${HTML_LINE_RETURN} • Bonus d'ATT/DÉF/MAGIE/PSY`);
     });
 
   it('should parse effect copy from one enemy to the caster for 1 turn (inspired from "Grand Reversal")',
@@ -22,7 +22,7 @@ describe('AbilityCopyEffectsParser', () => {
       const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
       // THEN
       expect(s).toEqual(`Copie les effets suivants d\'un adversaire au lanceur pour 1 tour:` +
-        `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY`);
+        `${HTML_LINE_RETURN} • Bonus d'ATT/DÉF/MAGIE/PSY`);
     });
 
   it('should parse effect copy from the caster to the rest of the party (inspired from "Projected Mirror")',
@@ -33,7 +33,7 @@ describe('AbilityCopyEffectsParser', () => {
       const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
       // THEN
       expect(s).toEqual(`Copie les effets suivants du lanceur aux alliés sauf le lanceur pour 4 tours:` +
-        `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY`);
+        `${HTML_LINE_RETURN} • Bonus d'ATT/DÉF/MAGIE/PSY`);
     });
 
   it('should parse effect copy from one enemy to the party (inspired from "Twist of Fate")', () => {
@@ -43,7 +43,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY`);
+      `${HTML_LINE_RETURN} • Bonus d'ATT/DÉF/MAGIE/PSY`);
   });
 
   it('should parse copy of magic damage resistance (inspired from "Twist of Fate")', () => {
@@ -53,7 +53,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Rés. aux dégâts magiques`);
+      `${HTML_LINE_RETURN} • Rés. aux dégâts magiques`);
   });
 
 
@@ -64,7 +64,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
-      `${HTML_LINE_RETURN}Rés. aux altérations`);
+      `${HTML_LINE_RETURN} • Rés. aux altérations`);
   });
 
 
@@ -75,7 +75,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire au lanceur pour 3 tours:` +
-      `${HTML_LINE_RETURN}Régénération de PV par tour${HTML_LINE_RETURN}Régénération de PM par tour`);
+      `${HTML_LINE_RETURN} • Régénération de PV par tour${HTML_LINE_RETURN} • Régénération de PM par tour`);
   });
 
   it('should parse copy of Auto-Revive (inspired from "Survival Mirror")', () => {
@@ -85,7 +85,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
-      `${HTML_LINE_RETURN}Auréole`);
+      `${HTML_LINE_RETURN} • Auréole`);
   });
 
   it('should parse copy of elemental resistances and imbues effects ("Elemental Mirror")', () => {
@@ -95,8 +95,8 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 5 tours:` +
-      `${HTML_LINE_RETURN}Bonus aux rés. élémentaires${HTML_LINE_RETURN}` +
-      `Éléments ajoutés aux attaques physiques et hybrides`);
+      `${HTML_LINE_RETURN} • Bonus aux rés. élémentaires${HTML_LINE_RETURN}` +
+      ` • Éléments ajoutés aux attaques physiques et hybrides`);
   });
 
   it('should parse copy of LB jauge fill rate (inspired from "Survival Mirror")', () => {
@@ -106,7 +106,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
-      `${HTML_LINE_RETURN}Bonus à la vitesse de la jauge de limite`);
+      `${HTML_LINE_RETURN} • Bonus à la vitesse de la jauge de limite`);
   });
 
   it('should parse copy of physical dodge (inspired from "Twist of Fate")', () => {
@@ -116,7 +116,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Esquive d\'attaques physiques`);
+      `${HTML_LINE_RETURN} • Esquive d\'attaques physiques`);
   });
 
   it('should parse copy of physical mitigation (inspired from "Twist of Fate")', () => {
@@ -126,7 +126,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Mitigation physique`);
+      `${HTML_LINE_RETURN} • Mitigation physique`);
   });
 
   it('should parse copy of physical mitigation (inspired from "Twist of Fate")', () => {
@@ -136,7 +136,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Mitigation magique`);
+      `${HTML_LINE_RETURN} • Mitigation magique`);
   });
 
   it('should parse copy of magic reflects (inspired from "Twist of Fate")', () => {
@@ -146,7 +146,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Réflexion des magies`);
+      `${HTML_LINE_RETURN} • Réflexion des magies`);
   });
 
   it('should parse copy of damage boosts (inspired from "Twist of Fate")', () => {
@@ -156,7 +156,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Bonus aux dégâts`);
+      `${HTML_LINE_RETURN} • Bonus aux dégâts`);
   });
 
   it('should parse copy of physical and magical killers ("Critical Mirror")', () => {
@@ -167,8 +167,8 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 5 tours:` +
-      `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY${HTML_LINE_RETURN}Tueurs physiques` +
-      `${HTML_LINE_RETURN}Tueurs magiques`);
+      `${HTML_LINE_RETURN} • Bonus d'ATT/DÉF/MAGIE/PSY${HTML_LINE_RETURN} • Tueurs physiques` +
+      `${HTML_LINE_RETURN} • Tueurs magiques`);
   });
 
   it('should parse copy of stats breaks, stop and charm (inspired from "Survival Mirror")', () => {
@@ -178,7 +178,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
-      `${HTML_LINE_RETURN}Rés. aux baisses de caractéristiques, à Stop et à Charme`);
+      `${HTML_LINE_RETURN} • Rés. aux baisses de caractéristiques, à Stop et à Charme`);
   });
 
   it('should parse copy of Berserk resistance (inspired from "Twist of Fate")', () => {
@@ -188,7 +188,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
-      `${HTML_LINE_RETURN}Rés. à Berserk`);
+      `${HTML_LINE_RETURN} • Rés. à Berserk`);
   });
 
   it('should parse copy of bonus to LB damages ("Critical Mirror")', () => {
@@ -198,7 +198,7 @@ describe('AbilityCopyEffectsParser', () => {
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
     expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 2 tours:` +
-      `${HTML_LINE_RETURN}Bonus aux dégâts de la limite`);
+      `${HTML_LINE_RETURN} • Bonus aux dégâts de la limite`);
   });
 
 });

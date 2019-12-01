@@ -142,7 +142,7 @@ export class AbilityCopyEffectsParser extends EffectParser {
     }
 
     return `Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
-      `${HTML_LINE_RETURN}${copiedEffects.join(HTML_LINE_RETURN)}`;
+      `${HTML_LINE_RETURN} • ${copiedEffects.join(HTML_LINE_RETURN + ' • ')}`;
   }
 
 
