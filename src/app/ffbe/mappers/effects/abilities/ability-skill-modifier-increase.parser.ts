@@ -1,5 +1,4 @@
 import {Skill} from '../../../model/skill.model';
-import {SkillsService} from '../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';
 import {SkillModifierIncreaseParser} from '../skill-modifier-increase.parser';
 
@@ -29,19 +28,7 @@ export class AbilitySkillModifierIncreaseParser extends SkillModifierIncreasePar
     return `${modIncreaseText}${modIncreasesJoiningText}${healingModIncreaseText}`;
   }
 
-  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    const isHeal: boolean = this.modifiedSkillsIncreases.find(increase => increase.name === accumulatedStats[0]).isHeal;
-    let valueText: string;
-    let percentText = '';
-    if (isHeal) {
-      valueText = `${currentValue / 200}x la PSY + ${currentValue / 1000}x la MAG`;
-    } else {
-      valueText = `${Math.round(currentValue)}`;
-      percentText = '%';
-    }
-    const displayedValue = (currentValue > 0 ? valueText : 'UNKNOWN');
-    const skillsText = accumulatedStats.join(', ');
+  protected wordEffectForSkillModIncrase(displayedValue: string, percentText: string, skillsText: string) {
     return `+${displayedValue}${percentText} de puissance à ${skillsText} ${this.target} ${this.duration} (ID #${this.stackId})`;
   }
-
 }

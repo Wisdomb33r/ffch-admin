@@ -20,4 +20,21 @@ export abstract class SkillModifierIncreaseParser extends EffectParser {
       });
     });
   }
+
+  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
+    const isHeal: boolean = this.modifiedSkillsIncreases.find(increase => increase.name === accumulatedStats[0]).isHeal;
+    let valueText: string;
+    let percentText = '';
+    if (isHeal) {
+      valueText = `${currentValue / 200}x la PSY + ${currentValue / 1000}x la MAG`;
+    } else {
+      valueText = `${Math.round(currentValue)}`;
+      percentText = '%';
+    }
+    const displayedValue = (currentValue > 0 ? valueText : 'UNKNOWN');
+    const skillsText = accumulatedStats.join(', ');
+    return this.wordEffectForSkillModIncrase(displayedValue, percentText, skillsText);
+  }
+
+  protected abstract wordEffectForSkillModIncrase(displayedValue: string, percentText: string, skillsText: string);
 }
