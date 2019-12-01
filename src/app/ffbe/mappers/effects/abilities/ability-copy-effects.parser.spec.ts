@@ -176,4 +176,24 @@ describe('AbilityCopyEffectsParser', () => {
       `${HTML_LINE_RETURN}Rés. à Berserk`);
   });
 
+  it('should parse copy of physical mitigation (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "57"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Mitigation physique`);
+  });
+
+  it('should parse copy of physical mitigation (inspired from "Twist of Fate")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [2, 2, 100, "58"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire aux alliés pour 2 tours:` +
+      `${HTML_LINE_RETURN}Mitigation magique`);
+  });
+
 });

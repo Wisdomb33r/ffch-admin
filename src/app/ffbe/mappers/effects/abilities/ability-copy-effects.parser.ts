@@ -77,6 +77,18 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(physicalDodgeRange, copiedEffectsIds);
     }
 
+    const physicalMitigationRange = [57];
+    if (this.containsAllElements(physicalMitigationRange, copiedEffectsIds)) {
+      copiedEffects.push(`Mitigation physique`);
+      this.removeElements(physicalMitigationRange, copiedEffectsIds);
+    }
+
+    const magicalMitigationRange = [58];
+    if (this.containsAllElements(magicalMitigationRange, copiedEffectsIds)) {
+      copiedEffects.push(`Mitigation magique`);
+      this.removeElements(magicalMitigationRange, copiedEffectsIds);
+    }
+
     const magicReflectsRange = [60];
     if (this.containsAllElements(magicReflectsRange, copiedEffectsIds)) {
       copiedEffects.push(`Réflexion des magies`);
