@@ -169,7 +169,7 @@ export abstract class EffectParser {
     }
   }
 
-  protected getKeyValueTableForAilements(effectParameters) {
+  protected getKeyValueTableForAilements(effectParameters): Array<{ name: string, value: number }> {
     return [
       {name: 'Poison', value: effectParameters[0]},
       {name: 'Cécité', value: effectParameters[1]},
@@ -179,6 +179,19 @@ export abstract class EffectParser {
       {name: 'Confusion', value: effectParameters[5]},
       {name: 'Maladie', value: effectParameters[6]},
       {name: 'Pétrification', value: effectParameters[7]},
+    ];
+  }
+
+  protected getKeyValueTableForElements(effectParameters): Array<{ name: string, value: number }> {
+    return [
+      {name: 'Feu', value: effectParameters[0]},
+      {name: 'Glace', value: effectParameters[1]},
+      {name: 'Foudre', value: effectParameters[2]},
+      {name: 'Eau', value: effectParameters[3]},
+      {name: 'Vent', value: effectParameters[4]},
+      {name: 'Terre', value: effectParameters[5]},
+      {name: 'Lumière', value: effectParameters[6]},
+      {name: 'Ténèbres', value: effectParameters[7]},
     ];
   }
 
