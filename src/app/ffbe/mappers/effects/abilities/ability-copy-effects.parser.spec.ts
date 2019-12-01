@@ -65,5 +65,65 @@ describe('AbilityCopyEffectsParser', () => {
       `${HTML_LINE_RETURN}Bonus aux dégâts de la limite`);
   });
 
+  it('should parse copy of physical and magical killers ("Critical Mirror")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 5, 100, "63;64;65;66;67;68;69;70;71;72;73;74;75;76;77;78;79;80;81;82;83;84;85;86;1;2;3;4;39;40;41;42"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 5 tours:` +
+      `${HTML_LINE_RETURN}Bonus d'ATT/DÉF/MAGIE/PSY${HTML_LINE_RETURN}Tueurs physiques${HTML_LINE_RETURN}Tueurs magiques`);
+  });
+
+
+  it('should parse copy of HP and MP regen', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 1005, [0, 3, 100, "20;22"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un adversaire au lanceur pour 3 tours:` +
+      `${HTML_LINE_RETURN}Régénération de PV par tour${HTML_LINE_RETURN}Régénération de PM par tour`);
+  });
+
+  it('should parse copy of status ailments resistance (inspired from "Survival Mirror")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 3, 100, "12;13;14;15;16;17;18;19"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
+      `${HTML_LINE_RETURN}Rés. aux altérations`);
+  });
+
+  it('should parse copy of stats breaks, stop and charm (inspired from "Survival Mirror")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 3, 100, "95;96;97;98;99;100"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
+      `${HTML_LINE_RETURN}Rés. aux baisses de caractéristiques, à Stop et à Charme`);
+  });
+
+  it('should parse copy of Auto-Revive (inspired from "Survival Mirror")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 3, 100, "21"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
+      `${HTML_LINE_RETURN}Auréole`);
+  });
+
+  it('should parse copy of LB jauge fill rate (inspired from "Survival Mirror")', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 3, 100, "47"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 3 tours:` +
+      `${HTML_LINE_RETURN}Bonus à la vitesse de la jauge de limite`);
+  });
 
 });

@@ -26,14 +26,54 @@ export class AbilityCopyEffectsParser extends EffectParser {
       copiedEffects.push(`Bonus d\'ATT/DÉF/MAGIE/PSY`);
     }
 
+    const ailmentsResistancesRange = [12, 13, 14, 15, 16, 17, 18, 19];
+    if (this.containsAllElements(ailmentsResistancesRange, copiedEffectsIds)) {
+      copiedEffects.push(`Rés. aux altérations`);
+    }
+
+    const HPRegenRange = [20];
+    if (this.containsAllElements(HPRegenRange, copiedEffectsIds)) {
+      copiedEffects.push(`Régénération de PV par tour`);
+    }
+
+    const AutoReviveRange = [21];
+    if (this.containsAllElements(AutoReviveRange, copiedEffectsIds)) {
+      copiedEffects.push(`Auréole`);
+    }
+
+    const MPRegenRange = [22];
+    if (this.containsAllElements(MPRegenRange, copiedEffectsIds)) {
+      copiedEffects.push(`Régénération de PM par tour`);
+    }
+
     const elementalResistancesRange = [23, 24, 25, 26, 27, 28, 29, 30];
     if (this.containsAllElements(elementalResistancesRange, copiedEffectsIds)) {
       copiedEffects.push(`Bonus aux rés. élémentaires`);
     }
 
+    const LBFillRateRange = [47];
+    if (this.containsAllElements(LBFillRateRange, copiedEffectsIds)) {
+      copiedEffects.push(`Bonus à la vitesse de la jauge de limite`);
+    }
+
+    const PhysicalKillersRange = [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74];
+    if (this.containsAllElements(PhysicalKillersRange, copiedEffectsIds)) {
+      copiedEffects.push(`Tueurs physiques`);
+    }
+
+    const MagicalKillersRange = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86];
+    if (this.containsAllElements(MagicalKillersRange, copiedEffectsIds)) {
+      copiedEffects.push(`Tueurs magiques`);
+    }
+
     const imbuesRange = [87, 88, 89, 90, 91, 92, 93, 94];
     if (this.containsAllElements(imbuesRange, copiedEffectsIds)) {
       copiedEffects.push(`Éléments ajoutés aux attaques physiques et hybrides`);
+    }
+
+    const statsBreaksResistancesRange = [95, 96, 97, 98, 99, 100];
+    if (this.containsAllElements(statsBreaksResistancesRange, copiedEffectsIds)) {
+      copiedEffects.push(`Rés. aux baisses de caractéristiques, à Stop et à Charme`);
     }
 
     const LBDamagesRange = [221];
@@ -45,7 +85,6 @@ export class AbilityCopyEffectsParser extends EffectParser {
     return `Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
       `${HTML_LINE_RETURN}${copiedEffects.join(HTML_LINE_RETURN)}`;
   }
-
 
 
   private getTargetOfCopiedEffect(targetId: number): string {
