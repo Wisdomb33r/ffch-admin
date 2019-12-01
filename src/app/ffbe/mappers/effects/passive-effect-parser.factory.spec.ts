@@ -59,6 +59,10 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [74,  100,  1,  50,  0,  -1]]',
       parsed: '+100% dégâts aux morts-vivants quand les PV passent sous 50% (max 1 fois)'
     },
+    {
+      effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
+      parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
+    },
     {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
