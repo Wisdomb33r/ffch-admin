@@ -21,6 +21,7 @@ class Competence
   public $hits;
   public $frames;
   public $damages;
+  public $elements;
   public $gumi_id;
   public $gumi_id_lie;
   public $enhanced;
@@ -46,6 +47,7 @@ class Competence
     $this->hits = $brex_competence->hits;
     $this->frames = $brex_competence->frames;
     $this->damages = $brex_competence->damages;
+    $this->elements = $brex_competence->elements;
     $this->gumi_id = $brex_competence->gumi_id;
     $this->gumi_id_lie = $brex_competence->gumi_id_lie;
     $this->enhanced = $brex_competence->enhanced ? true : false;

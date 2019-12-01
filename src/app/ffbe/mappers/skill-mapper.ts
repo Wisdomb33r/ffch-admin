@@ -1,4 +1,4 @@
-import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {FFBE_ELEMENTS, FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Skill} from '../model/skill.model';
 import {Competence} from '../model/competence.model';
 import {HTML_LINE_RETURN, SkillEffectsMapper} from './effects/skill-effects.mapper';
@@ -43,6 +43,7 @@ export class SkillMapper {
       hitsFramesDamagesObject.hits,
       hitsFramesDamagesObject.frames,
       hitsFramesDamagesObject.damages,
+      SkillMapper.mapElementInflict(skill)
     );
   }
 
@@ -186,5 +187,16 @@ export class SkillMapper {
         }).join(' ou ');
     }
     return requirementsText;
+  }
+
+  private static getElementIdFromEnglishName(elementEnglishString: string): number {
+    return FFBE_ELEMENTS.find(e => e.name === elementEnglishString).id;
+  }
+
+  private static mapElementInflict(skill: Skill): string {
+    if (skill.element_inflict && skill.element_inflict.length) {
+      return skill.element_inflict.map((element: string) => this.getElementIdFromEnglishName(element)).join(',');
+    }
+    return '0';
   }
 }

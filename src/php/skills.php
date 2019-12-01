@@ -113,6 +113,8 @@ function createPropertyArray($competence) {
     $values ['frames'] = $competence->frames;
   if (isset ( $competence->damages ))
     $values ['damages'] = $competence->damages;
+  if (isset ($competence->elements))
+    $values ['elements'] = $competence->elements;
   $values ['gumi_id'] = $competence->gumi_id;
   if (isset ( $competence->gumi_id_lie )) {
     $values ['gumi_id_lie'] = $competence->gumi_id_lie;

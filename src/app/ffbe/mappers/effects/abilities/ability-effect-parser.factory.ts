@@ -227,6 +227,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesOrDeathParser();
       case 118:
         return new AbilitySingleAllyCoversParser();
+      case 119:
+        return new AbilityCountersParser();
       case 120:
         return new AbilityLbDamageIncreaseParser();
       case 123:

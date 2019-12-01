@@ -43,7 +43,10 @@ export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
         results.forEach((c, index) => {
             this.competences[index].id = FfbeUtils.isNullOrUndefined(c) ? undefined : c.id;
             this.competencesContainers.push(
-              new CompetencesComparingContainer(this.competences[index], c, Competence.produce(this.competences[index]))
+              new CompetencesComparingContainer(
+                this.competences[index],
+                FfbeUtils.isNullOrUndefined(c) ? undefined : c,
+                Competence.produce(this.competences[index]))
             );
           }
         );

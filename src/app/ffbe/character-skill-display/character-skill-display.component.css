@@ -16,3 +16,7 @@ button.copy-button {
 .damage-type {
   margin-left: 10px;
 }
+
+img.element {
+  height: 24px;
+}
