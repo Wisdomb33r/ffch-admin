@@ -256,6 +256,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesDotsParser();
       case 1005:
         return new AbilityCopyEffectsParser();
+      case 1006:
+        return new AbilitySkillMultipleActivationParser();
       case 1012:
         return new AbilityDamagesHexParser();
       default:
