@@ -14,8 +14,7 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
       return this.parseTemporaryRemovalFromFight(effect[3]);
     }
 
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 5
-      || (effect[3][2] !== -1 && effect[3][2] !== 1)) {
+    if (effect[3].length < 5 || (effect[3][2] !== -1 && effect[3][2] !== 1)) {
       return 'Effet AbilitySkillMultipleActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
@@ -31,24 +30,25 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
     if (!this.isSkillFreeToCast(skill.cost) || skill.isActivatedByPassiveSkill || skill.effects_raw.length > 1) {
       const rawNumTurns: number = effect[3][4];
       if (rawNumTurns < 1) {
-        return 'Effet AbilitySkillMultipleActivationParser inconnu: Nombre de tours incorrect (' + effect[3][4] + ')';
+        return `Effet AbilitySkillMultipleActivationParser inconnu: Nombre de tours incorrect (${effect[3][4]})`;
       }
       const numTurns: number = skill.isActivatedByPassiveSkill || target.length > 0 ? rawNumTurns : rawNumTurns - 1;
       const pluralForm = numTurns > 1 ? 's' : '';
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(multiSkillAbilityActivatedId);
-      return 'Donne accès à ' + this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)
-        + ' pour ' + numTurns + ' tour' + pluralForm + target;
+      const skillLink = this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated);
+      return `Donne accès à ${skillLink}${target} pour ${numTurns} tour${pluralForm}`;
     } else {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-      return 'Permet l\'utilisation de ' + this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills) + ' ' + nbTimes + 'x par tour';
+      const skillLink = this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
+      return `Permet l'utilisation de ${skillLink} ${nbTimes}x par tour`;
     }
   }
 
   private parseTemporaryRemovalFromFight(turnsArray: Array<number>): string {
     const minTurns = turnsArray[0].toString();
-    const maxTurns = turnsArray[0] === turnsArray[1] ? '' : ' à ' + turnsArray[1].toString();
+    const maxTurns = turnsArray[0] === turnsArray[1] ? '' : ` à ${turnsArray[1]}`;
     const pluralMarker = turnsArray[0] > 1 ? ' tours' : ' tour';
-    return 'Retire le lanceur du combat pour ' + minTurns + maxTurns + pluralMarker;
+    return `Retire le lanceur du combat pour ${minTurns}${maxTurns}${pluralMarker}`;
   }
 
   private isSkillFreeToCast(cost: SkillCost): boolean {

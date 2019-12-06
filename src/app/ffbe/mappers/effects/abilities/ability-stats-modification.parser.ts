@@ -20,7 +20,7 @@ export class AbilityStatsModificationParser extends EffectParser {
     if (effect[2] === 24) {
       increases.forEach(increase => {
         if (increase.value > 0) {
-          increase.value = -increase.value
+          increase.value = -increase.value;
         }
       });
     }
