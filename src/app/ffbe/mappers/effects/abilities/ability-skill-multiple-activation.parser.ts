@@ -14,13 +14,21 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
       return this.parseTemporaryRemovalFromFight(effect[3]);
     }
 
+    const nbTimes: number = effect[3][0];
+    let modifiedSkillsIds: Array<number>;
+    if (effect[2] === 1006) {
+      modifiedSkillsIds = !Array.isArray(effect[3][1]) ? [effect[3][1]] : effect[3][1];
+      const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
+      const skillLink = this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
+      return `Permet l'utilisation de ${skillLink} ${nbTimes}x par tour`;
+    }
+
     if (effect[3].length < 5 || (effect[3][2] !== -1 && effect[3][2] !== 1)) {
       return 'Effet AbilitySkillMultipleActivationParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const nbTimes: number = effect[3][0];
     const multiSkillAbilityActivatedId: number = effect[3][1];
-    const modifiedSkillsIds: Array<number> = !Array.isArray(effect[3][3]) ? [effect[3][3]] : effect[3][3];
+    modifiedSkillsIds = !Array.isArray(effect[3][3]) ? [effect[3][3]] : effect[3][3];
 
     let target = '';
     if (effect[0] === 1 && effect[1] === 2) {
