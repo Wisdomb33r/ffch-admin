@@ -185,6 +185,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentStatsDoublehandGlexIncreaseParser();
       case 10004:
         return new PassiveEquipmentWeaponElementStatsIncreaseParser();
+      case 10006:
+        return new PassiveStatsIncreaseHpThresholdParser();
       default:
         return new UnknownEffectParser();
     }
