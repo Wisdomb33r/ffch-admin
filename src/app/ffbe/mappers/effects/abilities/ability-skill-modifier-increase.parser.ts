@@ -13,7 +13,7 @@ export class AbilitySkillModifierIncreaseParser extends SkillModifierIncreasePar
       return 'Effet AbilitySkillModifierIncreaseParser inconnu: Mauvaise liste de paramètres';
     }
     this.stackId = effect[3].length >= 7 ? effect[3][6] : 0;
-    const pluralForm = effect[3][4] >= 1 ? 's' : '';
+    const pluralForm = effect[3][4] > 1 ? 's' : '';
     const turns = effect[3][4] >= 0 ? effect[3][4] : 9999;
     this.duration = `pour ${turns} tour${pluralForm}`;
     this.target = this.getTarget(effect[0], effect[1]);
