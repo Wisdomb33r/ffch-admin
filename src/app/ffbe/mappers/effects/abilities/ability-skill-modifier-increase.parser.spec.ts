@@ -85,13 +85,13 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     skill1.names = names['10020'];
     skill1.descriptions = descriptions['10020'];
 
-    const effect = JSON.parse('[1, 2, 136, [[10020], 0, 0, 300, 5, 1, 1214, 1]]');
+    const effect = JSON.parse('[1, 2, 136, [[10020], 0, 0, 300, 1, 1, 1214, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
     // WHEN
     const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
-    expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a> à un allié pour 5 tours (ID #1214)');
+    expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a> à un allié pour 1 tour (ID #1214)');
   });
 });
