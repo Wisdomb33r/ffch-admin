@@ -11,19 +11,24 @@ export class AbilityHealingPercentParser extends EffectParser {
     if (effect[2] === 26) {
       const percent1 = effect[3][0];
       const percent2 = effect[3][1];
-      return 'Soigne ' + (percent1 === percent2 ? percent1 : 'UNKNOWN ') + '% PV ' + target;
+      const percentText = percent1 === percent2 ? percent1 : 'UNKNOWN ';
+      return `Soigne ${percentText}% PV ${target}`;
     }
 
     const hp = effect[3][0];
     const mp = effect[3][1];
-    let hpText = (hp > 0 ? hp + '% PV ' : '');
-    const mpText = (mp > 0 ? mp + '% PM ' : '');
+    let hpText = (hp > 0 ? `${hp}% PV ` : '');
+    const mpText = (mp > 0 ? `${mp}% PM ` : '');
     if (hpText && mpText) {
       hpText += 'et ';
     }
     if (!hpText.length && !mpText.length) {
       hpText += 'UNKNOWN soins ';
     }
-    return 'Soigne ' + hpText + mpText + target;
+    let suffix = '';
+    if (effect[2] === 11) {
+      suffix = ' en sacrifiant le lanceur';
+    }
+    return `Soigne ${hpText}${mpText}${target}${suffix}`;
   }
 }

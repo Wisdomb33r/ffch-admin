@@ -96,6 +96,8 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesPercentParser();
       case 10:
         return new AbilityDamagesDrainParser();
+      case 11:
+        return new AbilityHealingPercentParser();
       case 13:
         return new AbilityDamagesPhysicalTurnDelayParser();
       case 15:

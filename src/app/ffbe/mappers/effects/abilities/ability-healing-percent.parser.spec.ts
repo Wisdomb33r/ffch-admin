@@ -2,6 +2,15 @@ import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 
 describe('AbilityHealingPercentParser', () => {
 
+  it('should parse HP healing percent with caster sacrifice', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 5, 11, [0, 25]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual('Soigne 25% PM aux alliés sauf le lanceur en sacrifiant le lanceur');
+  });
+
   it('should parse HP healing percent', () => {
     // GIVEN
     const effect = JSON.parse('[4, 4, 26, [70, 70, 100]]');
