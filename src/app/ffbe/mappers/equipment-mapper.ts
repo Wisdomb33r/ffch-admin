@@ -24,8 +24,12 @@ export class EquipmentMapper {
       equipment.rarity,
       null,
       equipment.gumi_id,
-      equipment.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      equipment.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] ?
+        equipment.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] :
+        equipment.strings.desc_long[FFBE_FRENCH_TABLE_INDEX],
+      equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] ?
+        equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] :
+        equipment.strings.desc_long[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),

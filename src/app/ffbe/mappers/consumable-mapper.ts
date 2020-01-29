@@ -18,8 +18,12 @@ export class ConsumableMapper {
       null,
       null,
       consumable.gumi_id,
-      consumable.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      consumable.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] ?
+        consumable.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] :
+        consumable.strings.desc_long[FFBE_FRENCH_TABLE_INDEX],
+      consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] ?
+        consumable.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] :
+        consumable.strings.desc_long[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(consumable.effects) && consumable.effects.length > 0) ? consumable.effects.join('<br />') : null,
       ObjetCarac.newEmptyObjetCarac(),

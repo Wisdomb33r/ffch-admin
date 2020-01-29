@@ -18,8 +18,12 @@ export class MateriaMapper {
       null,
       null,
       materia.gumi_id,
-      materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX],
-      materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX],
+      materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] ?
+        materia.strings.desc_short[FFBE_FRENCH_TABLE_INDEX] :
+        materia.strings.desc_long[FFBE_FRENCH_TABLE_INDEX],
+      materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] ?
+        materia.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] :
+        materia.strings.desc_long[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       ObjetCarac.newEmptyObjetCarac(),
