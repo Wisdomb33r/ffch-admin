@@ -197,6 +197,14 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
       parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
     },
+    {
+      effect: '[0, 3, 10006, [[23, 24], 40, 9999, 30, 0, 2]]',
+      parsed: '+40% rés. Feu, rés. Glace pour 2 tours quand les PV passent sous 30% (max 9999 fois)'
+    },
+    {
+      effect: '[0, 3, 10006, [[23, 24, 25, 26, 27, 28, 29, 30], 40, 9999, 30, 0, 2]]',
+      parsed: '+40% aux résistances pour 2 tours quand les PV passent sous 30% (max 9999 fois)'
+    },
     {effect: '[9999, 9999, 9999, [0]]', parsed: 'Effet UNKNOWN'},
   ];
 
