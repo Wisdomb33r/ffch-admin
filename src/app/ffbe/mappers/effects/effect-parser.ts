@@ -83,11 +83,11 @@ export abstract class EffectParser {
       case 19:
         return 'rés. Pétrification';
       case 20:
-        return 'PV par tour';
+        return 'PV chaque tour';
       case 21:
         return 'auréole';
       case 22:
-        return 'PM par tour';
+        return 'PM chaque tour';
       case 23:
         return 'rés. Feu';
       case 24:
