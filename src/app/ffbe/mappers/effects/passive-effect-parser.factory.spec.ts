@@ -110,6 +110,10 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
     {effect: '[0, 3, 25, [20]]', parsed: '-20% de chance d\'être ciblé'},
     {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
+    {
+      effect: '[0, 3, 30, [50]]',
+      parsed: 'Absorbe 50% des PM utilisés par l\'adversaire lors de dégâts magiques encaissés'
+    },
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},

@@ -55,6 +55,7 @@ import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stea
 import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.parser';
 import {PassiveMpCostDecreaseParser} from './passives/passive-mp-cost-decrease.parser';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
+import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
 
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -101,6 +102,8 @@ export class PassiveEffectParserFactory {
         return new PassiveTargetChanceChangesParser();
       case 29:
         return new PassiveExplorationStepRegenParser();
+      case 30:
+        return new PassiveMpAbsorbParser();
       case 31:
         return new PassiveLbSpeedIncreaseParser();
       case 32:
