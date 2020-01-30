@@ -11,10 +11,11 @@ export class PassiveSkillMultipleActivationParser extends EffectParser {
     const nbTimes: number = effect[3][0];
     const doubleSkillAbilityActivatedId: number = effect[3][1];
     const modifiedSkillsIds: Array<number> = !Array.isArray(effect[3][3]) ? [effect[3][3]] : effect[3][3];
+    const noDuplicate: string = effect[3][5] === 1 ? 'd\'aptitudes <strong>distinctes</strong> parmi' : 'de';
 
     if (skill.effects_raw.length === 1 && !skill.isActivatedByPassiveSkill) {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-      return `Permet l'utilisation de ${this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills)} ${nbTimes}x par tour`;
+      return `Permet l'utilisation ${noDuplicate} ${this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills)} ${nbTimes}x par tour`;
     } else {
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(doubleSkillAbilityActivatedId);
       return `Donne accès à ${this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;

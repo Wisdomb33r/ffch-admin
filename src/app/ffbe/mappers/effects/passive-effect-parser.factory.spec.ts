@@ -336,6 +336,28 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
   });
 
+  it('should parse multi-skill without duplicates', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const skill1: Skill = skills['200200'];
+    skill1.gumi_id = 200200;
+    skill1.names = names['200200'];
+    skill1.descriptions = descriptions['200200'];
+
+    const effect = JSON.parse('[0, 3, 53, [3, 123456, -1, [200200], 1, 1]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.effects_raw = [effect]; // single effect in the skill
+    // WHEN
+    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    // THEN
+    expect(s).toEqual('Permet l\'utilisation d\'aptitudes <strong>distinctes</strong> parmi <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> 3x par tour');
+  });
+
   it('should parse multi-skill when there is multiple effects', () => {
     // GIVEN
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
