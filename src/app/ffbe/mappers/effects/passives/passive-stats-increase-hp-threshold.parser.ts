@@ -9,7 +9,8 @@ export class PassiveStatsIncreaseHpThresholdParser extends EffectParser {
 
     const stat = effect[2] === 10006 ? this.getStatsListFromIds(effect[3][0]) : this.getStatNameFromId(effect[3][0]);
     const turns = effect[3][5] > 0 ? ` pour ${effect[3][5]} tours` : '';
-    return `+${effect[3][1]}% ${stat}${turns} quand les PV passent sous ${effect[3][3]}% (max ${effect[3][2]} fois)`;
+    const effectValueSuffix = [20, 22].indexOf(effect[3][0]) >= 0 ? '' : '%';
+    return `+${effect[3][1]}${effectValueSuffix} ${stat}${turns} quand les PV passent sous ${effect[3][3]}% (max ${effect[3][2]} fois)`;
   }
 
   private getStatsListFromIds(effectIds: Array<number>): string {
