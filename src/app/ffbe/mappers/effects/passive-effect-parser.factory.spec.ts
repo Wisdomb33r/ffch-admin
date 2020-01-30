@@ -56,6 +56,10 @@ describe('PassiveEffectParser', () => {
       parsed: '+40% DÉF pour 3 tours quand les PV passent sous 30% (max 9999 fois)'
     },
     {
+      effect: '[0, 3, 4, [20, 150, 5, 30, 0, -1]]',
+      parsed: '+150 PV chaque tour quand les PV passent sous 30% (max 5 fois)'
+    },
+    {
       effect: '[0, 3, 4, [74,  100,  1,  50,  0,  -1]]',
       parsed: '+100% dégâts physiques aux morts-vivants quand les PV passent sous 50% (max 1 fois)'
     },
