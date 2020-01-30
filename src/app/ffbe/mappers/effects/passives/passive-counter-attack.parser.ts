@@ -11,8 +11,9 @@ export class PassiveCounterAttackParser extends EffectParser {
     const power = effect[3][1];
     const maxActivationNumber = effect[3][2];
     const damageTypeText = effect[2] === 12 ? 'physiques' : 'magiques';
+    const maxActivationNumberText = maxActivationNumber > 0 ? ` (max ${maxActivationNumber} fois par tour)` : '';
+    const powerText = power > 0 ? ` de puissance ${power}%` : '';
 
-    return counterChance + '% de chance de contrer les dégâts ' + damageTypeText
-      + ' par une attaque normale de puissance ' + power + '% (max ' + maxActivationNumber + ' fois par tour)';
+    return `${counterChance}% de chance de contrer les dégâts ${damageTypeText} par une attaque normale${powerText}${maxActivationNumberText}`;
   }
 }
