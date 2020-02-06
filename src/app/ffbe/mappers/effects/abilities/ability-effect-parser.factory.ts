@@ -72,6 +72,7 @@ import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
 import {AbilityMagicReflectParser} from './ability-magic-reflect.parser';
 import {AbilityItemAllAlliesEffectParser} from './ability-item-all-allies-effect.parser';
 import {AbilityCopyEffectsParser} from './ability-copy-effects.parser';
+import {AbilityMagIncreaseNextAction} from './ability-mag-increase-next-action.parser';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -202,6 +203,8 @@ export class AbilityEffectParserFactory {
         return new AbilityStopInflictionParser();
       case 89:
         return new AbilityDebuffsResistanceParser();
+      case 90:
+        return new AbilityMagIncreaseNextAction();
       case 92:
         return new AbilityKillerDamageIncreaseParser();
       case 93:
