@@ -1,4 +1,7 @@
 import {SkillCost} from './skill-cost.model';
+import {SkillEffect} from './effects/skill-effect.model';
+import {Element} from './element.model';
+import {FFBE_ELEMENTS} from '../ffbe.constants';
 
 export class Skill {
   public gumi_id: number;
@@ -28,6 +31,7 @@ export class Skill {
   public hybride = false;
   public fixe = false;
   public esper = false;
+  public effets: Array<SkillEffect> = [];
 
   public static produce(s: Skill): Skill {
     const skill: Skill = new Skill();
@@ -70,6 +74,37 @@ export class Skill {
         .reduce((val1: number, val2: number) => val1 + val2, 0);
     }
     return 0;
+  }
+
+  public wordElementInflict(): string {
+    if (this.element_inflict && this.element_inflict.length) {
+      const elements = this.element_inflict.map((elementEnglishString: string) => {
+        const element: Element = FFBE_ELEMENTS.find(e => e.name === elementEnglishString);
+        return element ? element.nom : 'UNKNOWN element';
+      }).join(', ');
+      if (elements.startsWith('Eau')) {
+        return `d'${elements}`;
+      } else {
+        return `de ${elements}`;
+      }
+    }
+    return 'neutres';
+  }
+
+  public wordAttackAndDamageForPhysicalDamages(): string {
+    if (this.attack_type !== 'Physical') {
+      switch (this.attack_type) {
+        case 'Magic':
+          return 'Attaque magique à dégâts physiques';
+        case 'Hybrid':
+          return 'Attaque hybride à dégâts physiques';
+        case 'None':
+          return 'Attaque fixe à dégâts physiques';
+        default:
+          return 'Attaque UNKNOWN à dégâts physiques';
+      }
+    }
+    return 'Dégâts physiques';
   }
 
   public containsEffectWithDamages(): boolean {
