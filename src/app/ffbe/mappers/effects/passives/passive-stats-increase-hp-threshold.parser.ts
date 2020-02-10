@@ -18,7 +18,7 @@ export class PassiveStatsIncreaseHpThresholdParser extends EffectParser {
       return 'UNKNOWN stats list';
     }
     if (effectIds.length === 8 && [23, 24, 25, 26, 27, 28, 29, 30].every(id => effectIds.indexOf(id) > -1)) {
-      return 'aux résistances';
+      return 'de rés. aux éléments';
     }
     return effectIds.map((statId: number) => this.getStatNameFromId(statId)).join(', ');
   }
