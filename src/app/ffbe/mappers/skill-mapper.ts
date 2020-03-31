@@ -132,6 +132,9 @@ export class SkillMapper {
       if (skill.magic_type === 'Green') {
         return 3;
       }
+      if (skill.magic_type === 'Blue') {
+        return 10;
+      }
     }
     if (skill.type === 'ABILITY') {
       if (!skill.active) {
