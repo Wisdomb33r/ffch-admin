@@ -180,7 +180,7 @@ describe('SkillMapper', () => {
     expect(competence.elements).toEqual('3,5');
   });
 
-  fit('should map blue magic spells correctly', () => {
+  it('should map blue magic spells correctly', () => {
     // GIVEN
     const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
     const skill: Skill = skills['40140'];
