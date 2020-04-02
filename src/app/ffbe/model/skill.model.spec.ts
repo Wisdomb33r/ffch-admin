@@ -89,6 +89,28 @@ export const MAGIC_SKILLS_TEST_DATA =
         "effects": ["Magic damage (2.5x * 1.33 = 3.33x, MAG) to all enemies (ignore reflect)"],
         "effects_raw": [[2, 1, 70, [0,  0,  250,  25]]],
         "requirements": null
+    },
+        "40140": {
+        "name": "Seed Cannon",
+        "icon": "ability_10.png",
+        "compendium_id": 268,
+        "rarity": 6,
+        "cost": {"MP": 40},
+        "magic_type": "Blue",
+        "is_sealable": false,
+        "is_reflectable": false,
+        "in_exploration": false,
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[50]],
+        "effect_frames": [[40,  40]],
+        "move_type": 0,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": null,
+        "effects": ["Magic damage (4.95x, MAG) to one enemy"],
+        "effects_raw": [[1, 1, 15, [0,  0,  0,  0,  0,  495,  0]]],
+        "requirements": [["SWITCH", 18519013]]
     }
   }`;
 
@@ -440,6 +462,14 @@ export const MAGIC_SKILLS_NAMES_TEST_DATA =
         "Météore",
         "Meteo",
         "Meteo"
+    ],
+    "40140": [
+        "Seed Cannon",
+        "種子大砲",
+        "씨앗 대포",
+        "Graine-obus",
+        "Kernspucken",
+        "Cañón de semillas"
     ]
   }`;
 
@@ -608,6 +638,14 @@ export const MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "(Une fois tous les 7 tours) Inflige des dégâts magiques de lumière en partie fixes à tous les ennemis",
         "(Einmal in 7 Runden) Fügt allen Gegnern teilweise direkten magischen Lichtschaden zu.",
         "(Un uso cada 7 turnos) Daño mágico de luz que ignora parcialmente la DEF de todos los enemigos"
+    ],
+    "40140": [
+        "Damage one enemy",
+        "攻擊1名敵人",
+        "적 1명에게 피해",
+        "Inflige des dégâts à un ennemi",
+        "Fügt einem Gegner Schaden zu.",
+        "Daña a un enemigo"
     ]
   }`;
 
