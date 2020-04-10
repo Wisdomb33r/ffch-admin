@@ -2,6 +2,7 @@
 require_once "../gestion/genscripts/object_brex_perso_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "classes.php";
+require_once "../gestion/genscripts/object_brex_obtention.class.php";
 
 class UniteEveil
 {
@@ -44,6 +45,9 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
   $brex_perso_eveil = createAndValidatePersoEveil($brex_unite, $uniteEveil);
   $brex_perso_eveil->store();
+
+  $brex_obtention = createAndValidateObjetObtention($brex_unite, $brex_perso_eveil);
+  $brex_obtention->store();
 
   $stored_brex_perso_eveil = findPersoEveilByUnit($brex_unite);
   $stored_unite_materiaux_eveil = createUniteEveil($brex_unite, $brex_perso_eveil);
@@ -109,6 +113,33 @@ function createAndValidatePersoEveil($brex_unite, $uniteEveil)
   }
 
   return $brex_perso_eveil;
+}
+
+function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
+{
+  if ($brex_unite->stars != 6 || $brex_perso_eveil->nbmateriau1 != 1) {
+    return;
+  }
+
+  $prisme = brex_objet::findByPrimaryId($brex_perso_eveil->relation1Nmateriau1);
+
+  $existing_obtention = brex_obtention::findByRelation1N(array('objet' => $prisme->id));
+  if (count($existing_obtention) > 0) {
+    dieWithBadRequest('Storage exception : existing acquisition of prism found for unit with numero: ' . $brex_unite->numero);
+  }
+
+  $brex_obtention = new brex_obtention(array());
+  $brex_obtention->setrelationobjet($prisme);
+
+  $brex_perso = brex_perso::findByPrimaryId($brex_unite->relation1Nperso);
+
+  $brex_obtention->description = 'toto';
+
+  if (!$brex_obtention->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_obtention->errors, (array)'Format exception: Validation of $brex_obtention failed'));
+  }
+
+  return $brex_obtention;
 }
 
 ?>
