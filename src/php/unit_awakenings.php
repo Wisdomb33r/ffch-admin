@@ -133,7 +133,9 @@ function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
 
   $brex_perso = brex_perso::findByPrimaryId($brex_unite->relation1Nperso);
 
-  $brex_obtention->description = 'toto';
+  $brex_obtention->description = 'Obtenu par conversion d\'une unité de <a href="ffexvius_units.php?persoid=' .
+    $brex_perso->id . '">' . $brex_perso->nom .
+    '</a> dans le menu indiqué d\'une icône de prisme de l\'écran d\'éveil des personnages.';
 
   if (!$brex_obtention->verifyValues()) {
     dieWithBadRequest(array_merge($brex_obtention->errors, (array)'Format exception: Validation of $brex_obtention failed'));
