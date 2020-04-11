@@ -5,3 +5,8 @@ button.ffchSendButton {
 .formules-display {
   display: inline-block;
 }
+
+.ajoute-obtention-display {
+  display: inline-block;
+  margin-right: 10px;
+}
