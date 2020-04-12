@@ -15,6 +15,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   @Input() unite: Unite;
   public materiauxEveilErrors: Array<string> = [];
   public materiauxEveilFromFfch: Formule;
+  public ajouteObtention: boolean;
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -30,6 +31,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
           this.materiauxEveilFromFfch = FfbeUtils.isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule);
           if (!FfbeUtils.isNullOrUndefined(this.materiauxEveilFromFfch)) {
             FfbeUtils.sortArrayIngredients(this.materiauxEveilFromFfch.ingredients);
+            this.ajouteObtention = uniteEveil.ajoute_obtention;
           }
         },
         error => this.materiauxEveilErrors.push('Erreur lors de la recherche des matériaux d\'éveil de l\'unité '
@@ -59,7 +61,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public sendUniteMateriauxEveilToFfch() {
-    const uniteMateriauxEveil = new UniteEveil(this.unite.numero, this.unite.materiauxEveil);
+    const uniteMateriauxEveil = new UniteEveil(this.unite.numero, this.unite.materiauxEveil, this.ajouteObtention);
     this.ffchClientService.postUniteMateriauxEveil$(uniteMateriauxEveil)
       .subscribe(uniteEveil =>
           this.materiauxEveilFromFfch = (FfbeUtils.isNullOrUndefined(uniteEveil) ? null : (UniteEveil.produce(uniteEveil).formule)),
