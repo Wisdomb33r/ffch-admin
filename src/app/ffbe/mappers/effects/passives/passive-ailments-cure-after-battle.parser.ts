@@ -10,9 +10,7 @@ export class PassiveAilmentsCureAfterBattleParser extends EffectParser {
 
     const target = this.getTarget(effect[0], effect[1]);
 
-    const cures = effect[3].map((value, index) => {
-      if (value === 1) return (this.getAilmentFromId(index + 1));
-    })
+    const cures = effect[3].map((value, index) => value === 1 ? this.getAilmentFromId(index + 1) : undefined)
       .filter(value => !FfbeUtils.isNullOrUndefined(value));
 
     let curesText = '';
