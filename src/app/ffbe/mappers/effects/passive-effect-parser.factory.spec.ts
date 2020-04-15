@@ -107,6 +107,14 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
+    {
+      effect: '[0, 3, 18, [1,  1,  1,  1,  1,  1,  1,  1]]',
+      parsed: 'Soigne toutes les altérations au lanceur après le combat'
+    },
+    {
+      effect: '[2, 2, 18, [0,  1,  0,  0,  1,  0,  1,  0]]',
+      parsed: 'Soigne Cécité, Paralysie et Maladie aux alliés après le combat'
+    },
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
