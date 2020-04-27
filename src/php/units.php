@@ -183,7 +183,7 @@ function createAndValidateBrexUnitCarac($carac, $brex_unite) {
   $brex_unit_carac = new brex_unit_carac ( $values );
   $brex_unit_carac->setrelationunit ( $brex_unite );
   if (! $brex_unit_carac->verifyValues ()) {
-    dieWithBadRequest ( array_merge ( $brex_unit_carac->errors, 'Format exception: Validation of brex_unit_carac failed.' ) );
+    dieWithBadRequest ( array_merge ( $brex_unit_carac->errors, (array)'Format exception: Validation of brex_unit_carac failed.' ) );
   }
   
   return $brex_unit_carac;
@@ -210,7 +210,7 @@ function createAndValidateBrexUnitComp($uniteCompetence, $brex_unite) {
   }
   
   if (! $brex_unit_comp->verifyValues ()) {
-    dieWithBadRequest ( array_merge ( $brex_unit_comp->errors, 'Format exception: Validation of brex_unit_comp failed for gumi_id ' . $uniteCompetence->competence->gumi_id ) );
+    dieWithBadRequest ( array_merge ( $brex_unit_comp->errors, (array)'Format exception: Validation of brex_unit_comp failed for gumi_id ' . $uniteCompetence->competence->gumi_id ) );
   }
   
   return $brex_unit_comp;
@@ -249,7 +249,7 @@ function copyUnitDataAndValidate(&$brex_unit, $unite) {
     $brex_unit->lim_cristals_niv_max = $unite->lim_cristals_niv_max;
   
   if (! $brex_unit->verifyValues ()) {
-    dieWithBadRequest ( array_merge ( $brex_unit->errors, 'Format exception: Validation of brex_unit failed.' ) );
+    dieWithBadRequest ( array_merge ( $brex_unit->errors, (array)'Format exception: Validation of brex_unit failed.' ) );
   }
 }
 

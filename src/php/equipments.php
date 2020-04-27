@@ -100,7 +100,7 @@ function updateAndValidatePersoEquipments($brex_perso, $uniteEquipements)
   }
 
   if (! $brex_perso->verifyValues ()) {
-    dieWithBadRequest ( array_merge ( $brex_perso->errors, 'Format exception: Validation of brex_perso failed' ) );
+    dieWithBadRequest ( array_merge ( $brex_perso->errors, (array)'Format exception: Validation of brex_perso failed' ) );
   }
 }
 
