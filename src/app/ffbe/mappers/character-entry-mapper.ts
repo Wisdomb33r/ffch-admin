@@ -40,6 +40,8 @@ export class CharacterEntryMapper {
       unite.lim_desc_en = lb.descriptions[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
+      unite.lim_parsed_effect_min = 'Effet min';
+      unite.lim_parsed_effect_max = 'Effet max';
       unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
       unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
       unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
