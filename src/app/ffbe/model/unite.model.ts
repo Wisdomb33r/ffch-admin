@@ -9,10 +9,10 @@ export class Unite {
   public limite_en: string;
   public lim_effect_min: string;
   public lim_effect_max: string;
-  public lim_parsed_effect_min: string;
-  public lim_parsed_effect_max: string;
   public lim_desc: string;
   public lim_desc_en: string;
+  public lim_min: string;
+  public lim_max: string;
   public lim_nb_niv: number;
   public lim_hits: number;
   public lim_frames: string;
