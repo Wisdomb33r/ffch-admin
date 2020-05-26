@@ -8,5 +8,7 @@ export class CharacterEntry {
   public stats: CharacterEntryStats;
   public limitburst_id: number;
   public lb: LimitBurst;
+  public upgraded_limitburst_id: number;
+  public upgraded_lb: LimitBurst;
   public awakening: any;
 }
