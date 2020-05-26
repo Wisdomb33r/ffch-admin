@@ -7,6 +7,7 @@ import {CharacterEntry} from '../model/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable()
 export class CharactersService {
@@ -41,6 +42,7 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character.entries, character.skills);
         return character;
       }
     }
@@ -56,6 +58,8 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character.entries, character.skills);
+
         return character;
       }
     }
@@ -93,6 +97,7 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character.entries, character.skills);
         return character;
       }
     }
@@ -108,6 +113,22 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = entries[entryName];
       entry.lb = this.lbService.searchForLimitBurstByGumiId(entry.limitburst_id);
+    }
+  }
+
+  private loadEnhancedLimitBurst(entries: any, skills: Array<CharacterSkill>) {
+    const entryNames: string[] = Object.getOwnPropertyNames(entries);
+    for (const entryName of entryNames) {
+      const entry: CharacterEntry = entries[entryName];
+      const availableSkills = skills.filter(skill => skill.rarity <= entry.rarity);
+      availableSkills.forEach(skill => console.log(skill));
+      //entry.lb = this.lbService.searchForLimitBurstByGumiId(entry.limitburst_id);
+      console.log(availableSkills.map(skill => skill.skill.effects_raw.find(effect => effect[2] === 72)).filter(effect => !FfbeUtils.isNullOrUndefined(effect)));
+      const effect = availableSkills.map(skill => skill.skill.effects_raw.find(effect => effect[2] === 72)).filter(effect => !FfbeUtils.isNullOrUndefined(effect));
+      console.log('effect ' + effect + ' length: ' + effect.length);
+      const lbId = effect && effect.length > 0 && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
+      console.log(lbId);
+      console.log(this.lbService.searchForLimitBurstByGumiId(lbId));
     }
   }
 
