@@ -46,6 +46,14 @@
     <div class="header-cell">Limite effet max (parsé)</div>
     <div class="cell">{{unite.lim_max}}</div>
   </div>
+  <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
+    <div class="header-cell">Limite améliorée effet min (parsé)</div>
+    <div class="cell">{{unite.lim_up_min}}</div>
+  </div>
+  <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
+    <div class="header-cell">Limite améliorée effet max (parsé)</div>
+    <div class="cell">{{unite.lim_up_max}}</div>
+  </div>
   <div class="line">
     <div class="header-cell">Limite niveaux</div>
     <div class="cell">{{unite.lim_nb_niv}}</div>

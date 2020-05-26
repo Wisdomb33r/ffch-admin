@@ -19,6 +19,7 @@ export class CharacterEntryMapper {
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
+    CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
     return unite;
   }
@@ -50,6 +51,13 @@ export class CharacterEntryMapper {
       unite.lim_cristals_niv_min = lb.levels.length > 0 && lb.levels[0].length > 0 ? lb.levels[0][0] : null;
       unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length - 1].length > 0 ? lb.levels[lb.levels.length - 1][0] : null;
       unite.lim_nb_niv = lb.levels.length;
+    }
+  }
+
+  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
+    if (upgradedLb) {
+      unite.lim_up_min = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, 0);
+      unite.lim_up_max = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, upgradedLb.levels.length - 1);
     }
   }
 

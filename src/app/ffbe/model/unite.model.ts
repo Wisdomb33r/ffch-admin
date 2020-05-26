@@ -13,6 +13,8 @@ export class Unite {
   public lim_desc_en: string;
   public lim_min: string;
   public lim_max: string;
+  public lim_up_min: string;
+  public lim_up_max: string;
   public lim_nb_niv: number;
   public lim_hits: number;
   public lim_frames: string;
@@ -37,5 +39,9 @@ export class Unite {
 
   public areAllCompetencesPresentInFfchDb(): boolean {
     return this.competences.every(uniteCompetence => !FfbeUtils.isNullOrUndefined(uniteCompetence.competence.id));
+  }
+
+  public hasUpgradedLimitBurst(): boolean {
+    return !FfbeUtils.isNullOrUndefined(this.lim_up_min) && !FfbeUtils.isNullOrUndefined(this.lim_up_max);
   }
 }
