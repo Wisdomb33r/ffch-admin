@@ -11,6 +11,8 @@ class Unite
   public $limite_en;
   public $lim_min;
   public $lim_max;
+  public $lim_up_min;
+  public $lim_up_max;
   public $lim_nb_niv;
   public $lim_hits;
   public $lim_frames;
@@ -30,6 +32,8 @@ class Unite
     $this->limite_en = $brex_unit->limite_en;
     $this->lim_min = $brex_unit->lim_min;
     $this->lim_max = $brex_unit->lim_max;
+    $this->lim_up_min = $brex_unit->lim_up_min;
+    $this->lim_up_max = $brex_unit->lim_up_max;
     $this->lim_nb_niv = $brex_unit->lim_nb_niv;
     $this->lim_hits = $brex_unit->lim_hits;
     $this->lim_frames = $brex_unit->lim_frames;
@@ -239,6 +243,10 @@ function copyUnitDataAndValidate(&$brex_unit, $unite)
     $brex_unit->lim_min = $unite->lim_min;
   if (isset ($unite->lim_max) && !isset ($brex_unit->lim_max))
     $brex_unit->lim_max = $unite->lim_max;
+  if (isset ($unite->lim_up_min) && !isset ($brex_unit->lim_up_min))
+    $brex_unit->lim_up_min = $unite->lim_up_min;
+  if (isset ($unite->lim_up_max) && !isset ($brex_unit->lim_up_max))
+    $brex_unit->lim_up_max = $unite->lim_up_max;
   if (isset ($unite->lim_nb_niv) && !isset ($brex_unit->lim_nb_niv))
     $brex_unit->lim_nb_niv = $unite->lim_nb_niv;
   if (isset ($unite->lim_hits) && !isset ($brex_unit->lim_hits))
