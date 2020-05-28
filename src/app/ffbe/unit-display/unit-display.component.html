@@ -17,14 +17,7 @@
   </div>
   <div class="line">
     <div class="header-cell">Limite</div>
-    <div class="cell">{{unite.limite}}<br/>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_desc" placeholder="Effet" required>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_desc}}
-      </ng-container>
-    </div>
+    <div class="cell">{{unite.limite}}<br/>{{unite.lim_desc}}</div>
   </div>
   <div class="line">
     <div class="header-cell">Limite EN</div>
