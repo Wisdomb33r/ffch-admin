@@ -7,6 +7,7 @@ import {CharacterEntry} from '../model/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable()
 export class CharactersService {
@@ -41,6 +42,7 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character);
         return character;
       }
     }
@@ -56,6 +58,7 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character);
         return character;
       }
     }
@@ -93,6 +96,7 @@ export class CharactersService {
         character.gumi_id = +property;
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
+        this.loadEnhancedLimitBurst(character);
         return character;
       }
     }
@@ -108,6 +112,19 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = entries[entryName];
       entry.lb = this.lbService.searchForLimitBurstByGumiId(entry.limitburst_id);
+    }
+  }
+
+  private loadEnhancedLimitBurst(character: Character) {
+    const entryNames: string[] = Object.getOwnPropertyNames(character.entries);
+    for (const entryName of entryNames) {
+      const entry: CharacterEntry = character.entries[entryName];
+      const availableSkills = character.skills.filter(skill => skill.rarity <= entry.rarity);
+      const effect = availableSkills.map(skill =>
+        FfbeUtils.isNullOrUndefined(skill.skill) ? null : skill.skill.effects_raw.find(effect => effect[2] === 72))
+        .filter(effect => !FfbeUtils.isNullOrUndefined(effect));
+      entry.upgraded_limitburst_id = effect && effect.length > 0 && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
+      entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
     }
   }
 
