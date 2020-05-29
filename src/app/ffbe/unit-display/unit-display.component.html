@@ -17,26 +17,41 @@
   </div>
   <div class="line">
     <div class="header-cell">Limite</div>
-    <div class="cell">{{unite.limite}}<br/>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_desc" placeholder="Effet" required>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_desc}}
-      </ng-container>
-    </div>
+    <div class="cell">{{unite.limite}}<br/>{{unite.lim_desc}}</div>
   </div>
   <div class="line">
     <div class="header-cell">Limite EN</div>
     <div class="cell">{{unite.limite_en}}<br/>{{unite.lim_desc_en}}</div>
   </div>
   <div class="line">
-    <div class="header-cell">Limite effet min</div>
+    <div class="header-cell">Limite effet min EN</div>
     <div class="cell">{{unite.lim_effect_min}}</div>
   </div>
   <div class="line">
-    <div class="header-cell">Limite effet max</div>
+    <div class="header-cell">Limite effet max EN</div>
     <div class="cell">{{unite.lim_effect_max}}</div>
+  </div>
+  <div class="line">
+    <div class="header-cell">Limite effet min</div>
+    <div class="cell">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required>
+      </mat-form-field>
+      <ng-container *ngIf="unite.isPresentInFfchDb()">
+        {{unite.lim_min}}
+      </ng-container>
+    </div>
+  </div>
+  <div class="line">
+    <div class="header-cell">Limite effet max</div>
+    <div class="cell">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required>
+      </mat-form-field>
+      <ng-container *ngIf="unite.isPresentInFfchDb()">
+        {{unite.lim_max}}
+      </ng-container>
+    </div>
   </div>
   <div class="line">
     <div class="header-cell">Limite niveaux</div>
