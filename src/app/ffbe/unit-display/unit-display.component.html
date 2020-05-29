@@ -47,7 +47,7 @@
     <div class="cell">{{unite.lim_max}}</div>
   </div>
   <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
-    <div class="header-cell">Limite améliorée effet min (parsé)</div>
+    <div class="header-cell">Limite améliorée effet min</div>
     <div class="cell">
       <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required>
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
-    <div class="header-cell">Limite améliorée effet max (parsé)</div>
+    <div class="header-cell">Limite améliorée effet max</div>
     <div class="cell">
       <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required>
