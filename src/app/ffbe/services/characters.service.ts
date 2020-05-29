@@ -120,7 +120,8 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = character.entries[entryName];
       const availableSkills = character.skills.filter(skill => skill.rarity <= entry.rarity);
-      const effect = availableSkills.map(skill => skill.skill.effects_raw.find(effect => effect[2] === 72))
+      const effect = availableSkills.map(skill =>
+        FfbeUtils.isNullOrUndefined(skill.skill) ? null : skill.skill.effects_raw.find(effect => effect[2] === 72))
         .filter(effect => !FfbeUtils.isNullOrUndefined(effect));
       entry.upgraded_limitburst_id = effect && effect.length > 0 && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
