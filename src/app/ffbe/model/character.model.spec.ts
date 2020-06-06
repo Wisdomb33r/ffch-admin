@@ -615,5 +615,291 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 6, "level": 99, "type": "ABILITY", "id": 204550},
             {"rarity": 6, "level": 100, "type": "ABILITY", "id": 212590}
         ]
+    },
+    "100009105": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "Loren",
+        "names": [
+            "Loren",
+            "洛倫",
+            "로렌",
+            "Loren",
+            "Loren",
+            "Loren"
+        ],
+        "game_id": 11001,
+        "game": "FFBE",
+        "roles": [
+            "Physical Attacker",
+            "Breaker"
+        ],
+        "job_id": 97,
+        "job": "Swordsman",
+        "sex_id": 2,
+        "sex": "Female",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "MATERIA",
+            504213800
+        ],
+        "sTMR": [
+            "EQUIP",
+            303004500
+        ],
+        "equip": [1, 2, 3, 4, 10, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "100009105": {
+                "compendium_id": 649,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [929, 2816, 300, 150],
+                    "MP": [40, 120, 50, 25],
+                    "ATK": [39, 119, 20, 10],
+                    "DEF": [36, 109, 20, 10],
+                    "MAG": [32, 96, 20, 10],
+                    "SPR": [32, 96, 20, 10]
+                },
+                "limitburst_id": 100009105,
+                "attack_count": 4,
+                "attack_damage": [
+                    [25, 25, 25, 25]
+                ],
+                "attack_frames": [14, 31, 56, 79],
+                "effect_frames": [12, 29, 54, 77],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060300": 20,
+                        "290060000": 10,
+                        "290060100": 10,
+                        "290060200": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A knight captain, once known in Grandshelt as the twin blade general. Being already retired, outside of being strict on her successive knights, she seems to be acquainted with Rain's father Raegen. After the attack of the Veritas, she became curious about their movements, only to appear as her youthful self.",
+                        "以前在格蘭謝爾特王國被稱為「雙劍將軍」的騎士團長。在雷因等人崛起後決定引退，以培養後繼的騎士為主，雷因兩人也接受過她的嚴苛訓練，與雷因的父親雷根似乎也相識。在維利亞斯襲擊之後開始注意世界動向，他的思念以全盛期之姿展現。",
+                        "과거 그랑셸트의 '쌍검장군'이라 불리던,기사단의 단장을 맡았던 인물. 레인과 라스웰의 대에는 은퇴한 몸으로,후배 기사의 육성에 힘쓰며그 둘을 엄격히 지도하기도 했다.레인의 아버지인 레겐과도 면식이 있는 듯하며베리어스의 습격 이후, 세계의 동향을 염려하는그 마음이 전성기의 모습으로 나타나게 되었다.",
+                        "Un chevalier capitaine autrefois connu dans Grandshelt sous le surnom de \\"Général aux lames jumelles\\". Ayant déjà pris sa retraite et outre l'attitude stricte qu'elle adopte envers ses successeurs, elle semble connaître Raegen, le père de Rain. Après l'assaut des Veritas, elle s'intéressa de plus près à leurs déplacements et finit par apparaître elle-même, sous la forme d'une vision de sa jeunesse.",
+                        "Eine Großmeisterin des Ritterorderns, die in Grandshelt ehemals vor allem als \\"Doppelklingen-General\\" bekannt war. Zu Rains Generation hatte sie bereits ihr Amt niedergelegt und war maßgeblich an der Erziehung künftiger Ritter beteiligt, bei der auch die beiden Helden ihre strenge Hand zu spüren bekamen.  Es scheint als sei sie auch mit Rains Vater Sir Raegen bekannt gewesen. Nach dem Angriff der Veritas beschäftigte sie sich derart mit deren Motiven, dass sich ihr Wille in Form ihres alten Selbst materialisierte.",
+                        "Una capitana que, en Granshelt, se la conocía como la General Espada Doble. Al estar ya retirada, parece que conoce a Raegen, el padre de Rain. Además, es bastante estricta con los caballeros que la han sucedido. Tras el ataque de los Veritas, empezó a sentir curiosidad por sus andaduras, aunque solo fuese para rememorar su juventud."
+                    ],
+                    "summon": [
+                        "Hmph...<br>To recall such days of ole.",
+                        "呼……<br>年輕歲月的回憶，在此重現嗎？",
+                        "훗……<br>젊은 날의 추억을<br>이곳에 또다시, 그런 건가.",
+                        "Mhmm...<br>Cela me rappelle ma jeunesse.",
+                        "Hmph ...<br>Was für nostalgische Tage.",
+                        "Mmm.<br>Me acuerdo de aquella época."
+                    ],
+                    "evolution": [null, null, null, null, null, null],
+                    "affinity": [
+                        "This is my thank you for allowing<br>me to fight once again<br>as a knight.",
+                        "你讓我再次以騎士的身分來戰鬥，<br>就讓我回報這份恩情吧。",
+                        "나를, 다시 한번 기사로서<br>싸울 수 있게 해준<br>그 은혜에 보답하겠다.",
+                        "Ceci est pour vous remercier de me laisser me battre à vos côtés en tant que chevalier.",
+                        "Dies ist mein Dank dafür,<br>dass ich erneut als Ritter<br>kämpfen darf.",
+                        "Este es mi agradecimiento por haberme<br>dejado luchar como caballera<br>de nuevo."
+                    ],
+                    "fusion": [
+                        "My twin blades may yet become sharp<br>enough that they can protect the people.",
+                        "我的雙劍，會越來越銳利，<br>成為保護人民的利刃。",
+                        "내 쌍검을, 더욱 연마하여<br>백성을 지키는 검이 되리라.",
+                        "Mes deux lames semblent de plus en plus coupantes.<br>Je vais pouvoir protéger beaucoup plus de personnes comme ça !",
+                        "Meine Zwillingsklingen könnten so scharf werden,<br>dass sie andere schützen können.",
+                        "Mis espadas gemelas estarán lo suficientemente<br>afiladas para proteger a la gente."
+                    ]
+                }
+            },
+            "100009106": {
+                "compendium_id": 650,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1208, 3661, 450, 225],
+                    "MP": [51, 155, 75, 37],
+                    "ATK": [51, 156, 30, 15],
+                    "DEF": [40, 120, 30, 15],
+                    "MAG": [41, 125, 30, 15],
+                    "SPR": [41, 125, 30, 15]
+                },
+                "limitburst_id": 100009106,
+                "attack_count": 4,
+                "attack_damage": [
+                    [25, 25, 25, 25]
+                ],
+                "attack_frames": [14, 31, 56, 79],
+                "effect_frames": [12, 29, 54, 77],
+                "max_lb_drop": 3,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300000350": 1
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "Once, before Rain's time, she led all Grandshelt's knights as the twin blade general, but now she only instructs her successors. Very lively, she was something of a \\"demon teacher\\" to Rain in his youth. Talented in both military and literary arts, and distraught at what the world is coming to, her strong visions manifested as a vision. This vision was of when she was a young knight.",
+                        "在雷因等人加入騎士團之前，以「雙劍將軍」之名率領格蘭謝爾特的騎士，技術非常高超，現在持續指導新人。目前隱退二線，曾經以「鬼教官」之姿對小時候的雷因等人進行過嚴苛指導。文武雙全，她擔憂世界走向的強烈的思念化作了幻兵。這是她全盛時期的騎士姿態。",
+                        "레인과 라스웰 전 세대에, '쌍검장군'으로서그랑셸트의 기사들을 이끌던 실력자로오늘날은 후배들의 지도에 힘쓰고 있다.아직 생존해 있으며, 레인과 라스웰을'귀신 교관'으로서 엄격히 지도한 듯하다.문무양도에 뛰어나며, 세계의 멸망을 염려하는강한 마음이 비전으로 나타났다.지금 이 모습은 기사로서 전성기 때의 것.",
+                        "Il y a très longtemps, bien avant l'époque de Rain, elle menait les chevaliers de Grandshelt sous le titre de Général aux lames jumelles, mais aujourd'hui, elle se contente d'instruire ses successeurs. Pleine d'entrain, elle avait aux yeux d'un jeune Rain une image d'\\"instructeur démoniaque\\". Douée tant en stratégie qu'en littérature, et troublée par le chemin que semble emprunter le monde, elle finit par se manifester sous la forme d'une vision. Cette vision est à l'image de sa jeunesse, à l'époque où elle n'était qu'un jeune chevalier.",
+                        "Eine Kriegerin mit äußerst geschickter Hand, die ein wenig vor Rains Zeit als \\"Doppelklingen-General\\" die Ritter von Grandshelt anführte. Nun ist sie allerdings mit der Unterweisung künftiger Ritter betraut. Eine lebhafte Persönlichkeit, blieb Loren Rain in seiner Jugend vor allem durch ihre strenge Erziehung als teuflische Lehrmeisterin in Erinnerung. Lauren ist in zivilen wie auch militärischen Angelegenheiten hervorragend bewandert und empfindet heftige Gram über die ungewisse Zukunft der Welt. Diese starken Gefühle materialisierten sich in Form einer Vision, welche die Gestalt ihres jungen Selbst annahm.",
+                        "Antaño, antes de que naciera Rain, dirigió a los caballeros de Grandshelt bajo el nombre de General Espada Doble. Ahora, sin embargo, solo se dedica a entrenar a sus sucesores. Está llena de energía y, cuando Rain era joven, fue una especie de instructora bastante dura. Está versada tanto en las artes militares como en las literarias, además está muy preocupada por la dirección que está tomando el mundo. Se manifestó como una visión, una visión de cuando ella era una joven caballera."
+                    ],
+                    "summon": [
+                        "Were you surprised by the old me?<br>Grandshelt's twin blade general<br>shall fight once again!",
+                        "被年輕的我嚇到了嗎？<br>格蘭謝爾特的雙劍將軍，<br>以騎士的身分再次參戰。",
+                        "젊은 시절의 내게 놀랐나?<br>그랑셸트의 쌍검장군,<br>기사로서 다시 싸움에 나서겠다.",
+                        "Es-tu surpris de mon corps usé par les affres du temps ?<br>La générale de Grandshelt aux deux lames<br>combattra à nouveau !",
+                        "Hat euch mein altes Selbst überrascht?<br>Grandshelts Zwillingsklingen-General<br>wird erneut mit euch kämpfen!",
+                        "¿Te sorprendió mi antiguo yo?<br>¡La General Espada Doble de Grandshelt<br>volverá a la carga!"
+                    ],
+                    "evolution": [
+                        "Grandshelt's twin blade general!<br>You had best remember this name!",
+                        "「格蘭謝爾特的雙劍將軍」<br>你最好記住這個名號！",
+                        "'그랑셸트의 쌍검 장군.'<br>그 이름을 다시금 귀에 새기도록 하라!",
+                        "je suis la générale aux deux lames !<br>Tu ferais mieux de te souvenir de mon nom !",
+                        "Grandshelts Zwillingsklingengeneral!<br>Erinnere dich an diesen Namen!",
+                        "¡La General Espada Doble de Grandshelt!<br>¡Más te vale recordar este nombre!"
+                    ],
+                    "affinity": [
+                        "This is my thank you for allowing<br>me to fight once again<br>as a knight.",
+                        "你讓我再次以騎士的身分來戰鬥，<br>就讓我回報這份恩情吧。",
+                        "나를, 다시 한번 기사로서<br>싸울 수 있게 해준<br>그 은혜에 보답하겠다.",
+                        "Ceci est pour vous remercier de me laisser me battre à vos côtés en tant que chevalier.",
+                        "Dies ist mein Dank dafür,<br>dass ich erneut als Ritter<br>kämpfen darf.",
+                        "Este es mi agradecimiento por haberme<br>dejado luchar como caballera<br>de nuevo."
+                    ],
+                    "fusion": [
+                        "I will absolutely use this power<br>for the sake of my people.<br>As a knight of Grandshelt.",
+                        "身為格蘭謝爾特的騎士，<br>這份力量，一定會為了人民所用的。",
+                        "이 힘을, 반드시 민중을 위해<br>사용하도록 하겠다.<br>그랑셸트의 기사로서.",
+                        "J'utiliserai sans aucun doute ce pouvoir pour le bien de mon peuple.<br>C'est mon devoir de chevalier de Grandshelt.",
+                        "Ich werde diese Macht<br>zum Schutz meiner Leute einsetzen.<br>Als Ritter von Grandshelt.",
+                        "<br>Como caballero de Grandshelt.<br>Sin duda usaré este poder<br>para el bien de mi gente."
+                    ]
+                }
+            },
+            "100009107": {
+                "compendium_id": 1033,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1570, 4759, 600, 300],
+                    "MP": [66, 201, 100, 50],
+                    "ATK": [66, 200, 50, 25],
+                    "DEF": [62, 188, 50, 25],
+                    "MAG": [53, 162, 50, 25],
+                    "SPR": [58, 176, 50, 25]
+                },
+                "limitburst_id": 100009107,
+                "attack_count": 4,
+                "attack_damage": [
+                    [25, 25, 25, 25]
+                ],
+                "attack_frames": [14, 31, 56, 79],
+                "effect_frames": [12, 29, 54, 77],
+                "max_lb_drop": 3,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "A woman once known as the twin blade general who led a group of knights and fought alongside Raegen. Loren's concern for the world, its people, and the fate of her pupils manifested into a vision that resembles her youthful self. She currently instructs Rain's party and her other successors. Just don't go mentioning how old she is.",
+                        "曾經在格蘭謝爾特王國統率眾騎士，被稱為「雙劍將軍」，是雷根的戰友。現在則擔當著包括雷因在內的後輩騎士們的指導者。她牽掛著弟子的旅途、世界與人民的心，使她以年輕的全盛期的姿態作為幻兵被召喚了。她本人的實際年齡是不能觸及的話題。",
+                        "쌍검장군'이라고 불리며, 과거 그랑셸트 왕국에서 기사들을 이끌던 여성. 레겐과는 전우 사이였으며, 현재는 레인을 포함한 후배 기사들의 지도를 맡고 있다. 사랑하는 제자의 여행과, 세계와 국민들을 생각하는 마음이 전성기 때의 젊은 시절 모습으로 비전화했다. 본체의 실제 나이에 대해서는 절대 금기인 모양이다.",
+                        "Une femme jadis connue sous le nom de \\"Générale aux lames jumelles\\" qui était à la tête d'un groupe de chevaliers et a combattu aux côtés de Raegen. Loren portait un intérêt sincère au monde, à son peuple et à leur destin commun. Cet intérêt s'est manifesté sous la forme d'une vision dont l'apparence semble tirée de sa jeunesse. Elle sert actuellement de mentor à Rain et à ses compagnons. Il est jugé prudent de ne pas parler de son âge.",
+                        "Eine Frau, die einst als der Zwillingsklingen-General bekannt war, als sie eine Gruppe anführte und Seite an Seite mit Raegen kämpfte. Lorens Sorge um die Welt, die Menschen dieser Welt und das Schicksal ihrer Schüler manifestierte sich in einer Vision, die ihrem jugendlichen Selbst ähnelt. Sie unterrichtet gegenwärtig Rains Gruppe und ihre anderen Nachfolger. Ihr wahres Alter ist allerdings ein Tabuthema.",
+                        "Una mujer que, en el pasado, era conocida como la General Espada Doble y que, además, lideró a un grupo de caballeros y luchó codo con codo junto a Raegen. La mayor preocupación de Loren es el bienestar de la gente y, por otra parte, el destino de sus alumnos se manifestó mediante una visión suya más joven. A día de hoy, se encarga de entrenar al grupo de Rain y al resto de sus sucesores. Sin embargo, lo más importante que tienes que saber es que nunca debes preguntar cuántos años tiene."
+                    ],
+                    "summon": [
+                        "Feelings, time, age, so all can be overcome, huh? Please allow me to help you.",
+                        "思念連時間跟年齡都能超越嗎？也請讓我助你一臂之力吧。",
+                        "마음은 시간도 연령도 초월하는가.<br>나도 부디 도울 수 있게 해 다오.",
+                        "Les émotions, le temps, l'âge... chacun peut être surpassé, hm ? Permettez-moi de vous aider.",
+                        "Gefühle, Zeit, Alter, das kann also alles überwunden werden? Bitte erlaube mir, dir zu helfen.",
+                        "Sentimientos, tiempo, edad, todo se puede superar, ¿eh? Deja que te ayude."
+                    ],
+                    "evolution": [
+                        "This is what I'm truly capable of. More than you expected, right?",
+                        "這就是我全盛期的力量。應該感到很意外吧？",
+                        "이게 내 전성기 때의 힘이다.<br>의외라고 생각했지?",
+                        "Voilà ce dont je suis réellement capable. Plus que prévu, n'est-ce pas ?",
+                        "Dies ist, wozu ich wirklich in der Lage bin. Damit hast du nicht gerechnet, oder?",
+                        "De todo esto soy capaz. Es más de lo que te esperabas, ¿verdad?"
+                    ],
+                    "affinity": [
+                        "This is my thank you for allowing<br>me to fight once again<br>as a knight.",
+                        "你讓我再次以騎士的身分來戰鬥，<br>就讓我回報這份恩情吧。",
+                        "나를, 다시 한번 기사로서<br>싸울 수 있게 해준<br>그 은혜에 보답하겠다.",
+                        "Ceci est pour vous remercier de me laisser me battre à vos côtés en tant que chevalier.",
+                        "Dies ist mein Dank dafür,<br>dass ich erneut als Ritter<br>kämpfen darf.",
+                        "Este es mi agradecimiento por haberme<br>dejado luchar como caballera<br>de nuevo."
+                    ],
+                    "fusion": [
+                        "This body may be temporary, but power is power. I accept it gratefully.",
+                        "雖說只是暫時的姿態。但力量就是力量，",
+                        "허상의 모습이라 해도<br>힘은 힘이다.<br>고맙게 받겠다.",
+                        "Ce corps est peut-être temporaire, mais le pouvoir reste le pouvoir. Je l'accepte avec gratitude.",
+                        "Dieser Körper mag mir zwar nur flüchtig beschieden sein, aber Macht ist Macht. Ich werde sie mit Dank annehmen.",
+                        "Puede que este cuerpo sea solo temporal, pero el poder es el poder. Y lo acepto con ganas."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 213850},
+            {"rarity": 5, "level": 18, "type": "ABILITY", "id": 100030},
+            {"rarity": 5, "level": 20, "type": "ABILITY", "id": 213830},
+            {"rarity": 5, "level": 30, "type": "ABILITY", "id": 100740},
+            {"rarity": 5, "level": 44, "type": "ABILITY", "id": 213840},
+            {"rarity": 5, "level": 60, "type": "ABILITY", "id": 206500},
+            {"rarity": 5, "level": 60, "type": "ABILITY", "id": 206510},
+            {"rarity": 5, "level": 75, "type": "ABILITY", "id": 200310},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 213810},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 213780},
+            {"rarity": 6, "level": 12, "type": "ABILITY", "id": 213860},
+            {"rarity": 6, "level": 24, "type": "ABILITY", "id": 213870},
+            {"rarity": 6, "level": 53, "type": "ABILITY", "id": 209530},
+            {"rarity": 6, "level": 57, "type": "ABILITY", "id": 100730},
+            {"rarity": 6, "level": 78, "type": "ABILITY", "id": 101240},
+            {"rarity": 6, "level": 91, "type": "ABILITY", "id": 213820},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 213790},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 227160},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 213410},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 201670},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227162},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 207410},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227163},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227161},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 227165},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 227164},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100050},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 227166}
+        ]
     }
   }`;

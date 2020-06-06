@@ -157,6 +157,24 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[1, 3, 1, [0,  0,  0,  0,  20,  0,  0]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "227160": {
+        "name": "Glory of Ares",
+        "icon": "ability_77.png",
+        "compendium_id": 3057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase LB gauge by 2 per turn",
+            "Increase equipment ATK by 50% when armed with two weapons",
+            "Replace LB with Kingdom's Order (900000087):\\n\\tPhysical damage (7.05x * 2 = 14.1x, ATK) to all enemies (ignore cover)\\n\\tReduce resistance to Lightning, Wind and Light by 50% for 3 turns to all enemies\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tGain Greased Lightning (501980), Quickbolt Blade (501970) and Swiftwind Blade (501960) for 3 turns"
+        ],
+        "effects_raw": [[0, 3, 33, [200]], [0, 3, 69, [1,  50]], [0, 3, 72, [900000087]]],
+        "requirements": [["EQUIP", 504213800], ["EQUIP", 303004500]],
+        "unit_restriction": null
     }
   }`;
 
