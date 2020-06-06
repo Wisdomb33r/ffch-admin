@@ -901,5 +901,285 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100050},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 227166}
         ]
+    },
+    "250000105": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "Serah",
+        "names": [
+            "Serah",
+            "莎拉(FFXIII-2)",
+            "세라",
+            "Serah",
+            "Serah",
+            "Serah"
+        ],
+        "game_id": 11006,
+        "game": "FFXIII-2",
+        "roles": ["Magic Attacker"],
+        "job_id": 269,
+        "job": null,
+        "sex_id": 2,
+        "sex": "Female",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "EQUIP",
+            312003400
+        ],
+        "sTMR": [
+            "MATERIA",
+            504234201
+        ],
+        "equip": [1, 3, 6, 7, 40, 50, 53, 60],
+        "entries": {
+            "250000105": {
+                "compendium_id": 1882,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [907, 2748, 240, 120],
+                    "MP": [55, 166, 40, 20],
+                    "ATK": [29, 89, 16, 8],
+                    "DEF": [31, 94, 16, 8],
+                    "MAG": [42, 128, 24, 12],
+                    "SPR": [40, 121, 16, 8]
+                },
+                "limitburst_id": 250000105,
+                "attack_count": 6,
+                "attack_damage": [
+                    [30, 20, 20, 10, 10, 10]
+                ],
+                "attack_frames": [24, 57, 76, 152, 154, 156],
+                "effect_frames": [22, 21, 55, 74, 96, 145, 150, 152],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060300": 20,
+                        "290060100": 10,
+                        "290060200": 10,
+                        "290060000": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A young woman from a distant world where changing the future is possible by traveling through time. After being crystallized from a curse, the benevolent goddess Etro grants her mercy and brings her back to life. Once she awakens, she learns that her older sister, Lightning, has disappeared after saving the world, but everyone except for her believes Lightning to be dead. When a young man named Noel suddenly appears from the future, they set off on a journey to find Lightning together.",
+                        "在穿越時空改變未來的異界故事中登場的女性。有著因詛咒而被化作水晶但受到女神艾特羅的垂憐而得以復生的過去。姐姐雷光拯救世界之後失去了蹤影，身邊的人都認為「雷光已經死了」，但只有她一個人認為姐姐還活著。在與來自未來的青年諾艾爾相遇之後，以此為契機踏上了尋找雷光的旅途。",
+                        "시공을 넘어 미래를 바꾸는 이계의 이야기에 등장하는 여자. 과거에 저주를 받아 크리스탈이 된 적이 있었으나, 여신 에트로의 자비로 되살아났다. 세계를 구한 언니 라이트닝이 사라지자 주변 사람들은 모두 '라이트닝은 죽었다'라고 여겼지만, 오직 세라만은 언니가 살아 있다고 믿었다. 머나먼 미래에서 찾아온 청년 노엘과의 만남을 계기로, 라이트닝을 찾기 위한 여행을 떠난다.",
+                        "Une jeune femme originaire d'un monde lointain où il est possible de voyager dans le temps pour altérer l'avenir. Transformée en cristal à la suite d'une terrible malédiction, Serah fut sauvée par la déesse bienfaisante Etro qui, dans un acte de clémence, la ramena à la vie. À son réveil, elle apprend la disparition de sa sœur aînée, Lightning, qui se serait en effet volatilisée après avoir sauvé le monde. Seule contre tous dans sa conviction et refusant d'accepter la mort apparente de Lightning, Serah fait alors la connaissance de Noel, un jeune homme venu du futur, et les deux se lancent dans un périple ayant pour but de retrouver l'héroïne disparue.",
+                        "Eine junge Frau aus einer anderen Wirklichkeit, in der es möglich ist, durch die Zeit zu reisen und die Zukunft zu verändern. Durch einen Fluch wurde sie einst in einen Kristall verwandelt, doch dank der Gnade der Göttin Etro erwachte sie wieder zum Leben. Nach ihrer Wiederkehr musste sie erfahren, dass ihre ältere Schwester Lightning, die eigentlich die Welt gerettet haben sollte, verschwunden war. Während alle anderen Lightning für tot hielten, glaubte Serah fest daran, dass ihre Schwester noch am Leben war. Als plötzlich ein junger Mann aus der Zukunft namens Noel auftaucht, brechen die beiden gemeinsam auf, um Lightning zu finden.",
+                        "Una joven de un mundo lejano en el que se puede viajar a través del tiempo para cambiar el futuro. Aunque se convirtió en cristal por culpa de una maldición, la benevolente diosa Etro se apiadó de ella y le devolvió la vida. Al despertar se entera de que su hermana mayor, Lightning, ha desaparecido tras salvar al mundo, y todos excepto ella la creen muerta. De repente, un chico llamado Noel que viene del futuro se presenta ante ella y ambos se embarcan en un viaje para encontrar a Lightning."
+                    ],
+                    "summon": [
+                        "I want to see Lightning so much. If there's any chance, any chance at all, I want to take it.",
+                        "我想要見姐姐，<br>只要還有可能性，我就想去相信。",
+                        "언니를 만나고 싶어.<br>가능성이 있다면 믿고 싶어.",
+                        "J'ai tant besoin de revoir Lightning... S'il existe une chance, même infime, je dois la saisir.",
+                        "Ich will Lightning wiedersehen. Wenn auch nur die geringste Chance besteht, will ich sie ergreifen.",
+                        "Tengo muchas ganas de ver a Lightning. Si hay alguna oportunidad, por pequeña que sea, quiero aprovecharla."
+                    ],
+                    "evolution": [null, null, null, null, null, null],
+                    "affinity": [
+                        "I fought right until the end. I fought, and I didn't run. I know that someone somewhere will carry on what we've started...they have to.",
+                        "我相信一定會有人<br>將我們以思念相連……<br>所以我直到最後都不會逃跑的。",
+                        "누군가가 이 마음을 이어줄 거라고<br>믿고 있으니까……<br>마지막까지 도망치지 않을 거야.",
+                        "Je me suis battue jusqu'au bout. J'ai tenu bon, je n'ai pas fui. Je sais que quelqu'un, quelque part, finira ce qu'on a commencé. Il le faut.",
+                        "Ich habe gekämpft bis zum Schluss. Ich habe gekämpft, anstatt wegzulaufen. Ich weiß, dass irgendjemand, irgendwo, zuendebringen wird, was wir begonnen haben. Es muss einfach so sein.",
+                        "Luché hasta el fin. Luché y no hui. Estoy segura de que alguien, en algún lugar, continuará lo que nosotros empezamos. Deben hacerlo."
+                    ],
+                    "fusion": [
+                        "I wonder if the moogles here transform into weapons too.",
+                        "這個世界的莫古利<br>會不會變身為武器呀？",
+                        "이 세계의 모그리도<br>무기로 변신하고 그럴까?",
+                        "Je me demande si les mogs de ce monde peuvent aussi se transformer en armes.",
+                        "Ich frage mich ja, ob die Mogrys sich hier auch in Waffen verwandeln können.",
+                        "Me pregunto si aquí los moguris también se transforman en armas."
+                    ]
+                }
+            },
+            "250000106": {
+                "compendium_id": 1883,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1179, 3573, 390, 195],
+                    "MP": [71, 216, 65, 32],
+                    "ATK": [38, 116, 26, 13],
+                    "DEF": [41, 123, 26, 13],
+                    "MAG": [55, 167, 34, 17],
+                    "SPR": [52, 158, 26, 13]
+                },
+                "limitburst_id": 250000106,
+                "attack_count": 6,
+                "attack_damage": [
+                    [30, 20, 20, 10, 10, 10]
+                ],
+                "attack_frames": [22, 55, 74, 150, 152, 154],
+                "effect_frames": [22, 21, 55, 74, 96, 145, 150, 152],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300002390": 1
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A young woman from a distant world where changing the future is possible by traveling through time. Not only is she very kind, she is very determined, especially in the face of adversity. Led by a young man from the future named Noel, she sets off on a journey across time to find her older sister, Lightning. As they solve the paradoxes afflicting different eras, she learns of Caius, a man bent on destroying the future. This leads Serah to put a stop to his ambitions in order to save the world.",
+                        "在穿越時空改變未來的異界故事中登場的女性。不只心地善良還很有韌性，有著即使處於逆境也依舊能扭轉事態的堅定意志。在接受來自未來的青年諾艾爾的指引之後，期盼著與姐姐雷光重聚而踏上了穿越時空的旅途。在解決了數個時代之中的異變之後，發現了企圖扭曲歷史破壞未來的凱厄斯。自此下定決心阻止他的野心，拯救世界。",
+                        "시공을 넘어 미래를 바꾸는 이계의 이야기에 등장하는 여자. 마음씨가 착하며 심지가 곧고, 역경에 부딪혀도 사태를 바꿔나가는 강인한 의지의 소유자다. 미래에서 찾아온 청년 노엘을 따라, 언니 라이트닝과의 재회를 바라며 시공을 넘는 여행을 떠났다. 여러 시대에서 이변을 해결하던 도중, 역사를 일그러뜨리고 미래를 파괴하려는 카이어스의 존재를 알게 되고 그의 야망을 저지하고 세계를 구할 것을 결심한다.",
+                        "Une jeune femme originaire d'un monde lointain où il est possible de voyager dans le temps pour altérer l'avenir. Serah se distingue non seulement par sa grande gentillesse, mais aussi par la détermination inébranlable dont elle fait preuve, même dans les pires circonstances. Guidée par Noel, un jeune homme venu du futur, elle se lance dans un voyage temporel périlleux visant à retrouver sa sœur aînée, Lightning. Tandis que les deux guerriers s'efforcent de corriger les nombreux paradoxes affectant diverses époques, Serah apprend l'existence de Caius, un homme qui aspire à effacer le futur coûte que coûte et jure alors de mettre fin à ses viles ambitions afin de sauver le monde.",
+                        "Eine junge Frau aus einer anderen Wirklichkeit, in der es möglich ist, durch die Zeit zu reisen und die Zukunft zu verändern. Serah hat nicht nur ein gutes Herz, sondern auch die Willenskraft, sich jeder noch so großen Widrigkeit entgegenzustellen. Begleitet von Noel, einem jungen Mann aus der Zukunft, macht sie sich auf eine Reise durch die Zeit, um ihre ältere Schwester Lightning zu finden. Während sie die Paradoxa reparieren, die in unterschiedlichen Epochen aufgetreten sind, erfahren die beiden von den Plänen eines Mannes namens Caius, der die Zukunft zerstören will. Um die Welt zu retten, beschließt Serah, Caius das Handwerk zu legen.",
+                        "Una joven de un mundo lejano en el que se puede viajar a través del tiempo para cambiar el futuro. No solo es amable, también muestra una determinación inquebrantable frente a las adversidades. Guiada por un joven del futuro llamado Noel, se embarca en un viaje a través del tiempo para encontrar a su hermana mayor, Lightning. A medida que los dos resuelven las paradojas que atribulan las diferentes eras, Serah se percata de la existencia de Caius, un hombre decidido a destruir el futuro. Esto la llevará a poner fin a sus ambiciones y a salvar el mundo."
+                    ],
+                    "summon": [
+                        "Where are we? Has my spirit been sealed up somewhere inside the Void Beyond?",
+                        "這裡是，哪裡？<br>我被關在<br>時空夾縫之中了嗎？",
+                        "여긴 어디지?<br>시공의 틈새에 갇힌 건가?",
+                        "Où sommes-nous ? Mon esprit a-t-il été emprisonné quelque part dans l'abîme du temps ?",
+                        "Wo sind wir? Ist mein Geist irgendwo in der Sphäre des Jenseits gefangen?",
+                        "¿Dónde estoy? ¿Acaso mi espíritu ha sido confinado en la Falla del Continuo?"
+                    ],
+                    "evolution": [
+                        "You know, I started this journey hoping to find my sister. But now, I want more. I want to save the future.",
+                        "起初我只是想見姐姐，<br>然而現在不同了，<br>我想要拯救未來。",
+                        "처음엔 그저 언니를 만나고 싶은<br>마음뿐이었지만, 지금은 달라.<br>미래를, 구하고 싶어.",
+                        "Tu sais, au départ, je voulais juste retrouver ma sœur. Mais dorénavant, je veux aller plus loin. Je veux sauver le futur.",
+                        "Ich ging auf diese Reise, um meine Schwester zu finden. Aber jetzt will ich mehr. Ich will die Zukunft retten.",
+                        "El motivo de mi viaje era encontrar a mi hermana. Pero ahora quiero más. Quiero salvar el futuro."
+                    ],
+                    "affinity": [
+                        "I fought right until the end. I fought, and I didn't run. I know that someone somewhere will carry on what we've started...they have to.",
+                        "我相信一定會有人<br>將我們以思念相連……<br>所以我直到最後都不會逃跑的。",
+                        "누군가가 이 마음을 이어줄 거라고<br>믿고 있으니까……<br>마지막까지 도망치지 않을 거야.",
+                        "Je me suis battue jusqu'au bout. J'ai tenu bon, je n'ai pas fui. Je sais que quelqu'un, quelque part, finira ce qu'on a commencé. Il le faut.",
+                        "Ich habe gekämpft bis zum Schluss. Ich habe gekämpft, anstatt wegzulaufen. Ich weiß, dass irgendjemand, irgendwo, zuendebringen wird, was wir begonnen haben. Es muss einfach so sein.",
+                        "Luché hasta el fin. Luché y no hui. Estoy segura de que alguien, en algún lugar, continuará lo que nosotros empezamos. Deben hacerlo."
+                    ],
+                    "fusion": [
+                        "I hope the future turns out like this. A place where we can be happy.",
+                        "如果在未來，<br>大家都能展露笑容就好了。",
+                        "모두가 웃을 수 있는<br>미래가 왔으면 좋겠어.",
+                        "J'espère que le futur sera comme ça. Un endroit où on peut tous être heureux.",
+                        "Hoffentlich werden wir auch in der Zukunft so wie jetzt lachen können.",
+                        "Espero que el futuro sea algo como esto... Un lugar donde podamos sonreír."
+                    ]
+                }
+            },
+            "250000107": {
+                "compendium_id": 1884,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1533, 4645, 540, 270],
+                    "MP": [93, 282, 90, 45],
+                    "ATK": [50, 151, 40, 20],
+                    "DEF": [53, 160, 40, 20],
+                    "MAG": [72, 218, 65, 32],
+                    "SPR": [68, 206, 40, 20]
+                },
+                "limitburst_id": 250000107,
+                "attack_count": 6,
+                "attack_damage": [
+                    [30, 20, 20, 10, 10, 10]
+                ],
+                "attack_frames": [22, 55, 74, 150, 152, 154],
+                "effect_frames": [22, 21, 55, 74, 96, 145, 150, 152],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "A young woman from a distant world where changing the future is possible by traveling through time. Upon being saved by the mercy of the goddess Etro, she acquires the powers of a seer and becomes able to witness glimpses of the future. During her journey, she eventually learns that her lifespan is shortened every time she sees the future, and yet she still prioritizes a peaceful future for everyone over her own life. Thus, she continues fighting Caius to prevent the innumerable deaths that could result from his selfish desires.",
+                        "在穿越時空改變未來的異界故事中登場的女性。由於在過去受到了女神艾特羅的干預影響，獲得了能夠窺視各種時空之可能性的能力。在旅途中，她得知了每當自己發動能力，改變歷史窺視未來時，自己的壽命都會被削減，但仍將贏取一個眾人都可以安穩度日的未來放在首位。凱厄斯為了實現自己的野心犧牲了無數生命，為了阻止他，她將戰至最後一刻。",
+                        "시공을 넘어 미래를 바꾸는 이계의 이야기에 등장하는 여자. 과거에 여신 에트로의 간섭을 받은 영향으로 모든 시공의 가능성을 엿보는 능력을 얻게 되었다. 여행을 하는 도중 역사를 바꾸고 미래를 볼 때마다 자신의 수명이 줄어든다는 사실을 알게 되지만, 누구나가 평온하게 살아갈 수 있는 미래를 우선시하며 자신의 야망을 위해 많은 사람을 희생시키려 하는 카이어스를 막고자 마지막까지 싸워나간다.",
+                        "Une jeune femme originaire d'un monde lointain où il est possible de voyager dans le temps pour altérer l'avenir. Serah obtint ses pouvoirs de prescience lorsqu'elle fut sauvée par la clémence de la déesse Etro, et possède désormais la faculté de percevoir des fragments de l'avenir. Au cours de son périple, elle découvre cependant que chacun de ses présages lui ôte une partie de son propre futur, mais persiste néanmoins dans ses efforts et s'affirme prête à sacrifier sa vie pour donner naissance à un monde paisible. Déterminée à honorer ce serment, elle poursuit donc sa lutte contre Caius dans l'espoir de prévenir les innombrables morts que celui-ci pourrait engendrer.",
+                        "Eine junge Frau aus einer anderen Wirklichkeit, in der es möglich ist, durch die Zeit zu reisen und die Zukunft zu verändern. Nach ihrer Rettung durch die Göttin Etro entwickelte Serah die Fähigkeit, unterschiedliche mögliche Zukünfte zu sehen. Auf ihrer Reise erfährt sie schließlich, dass jede Anwedundung dieser Gabe ihre Lebenszeit verkürzt. Dennoch gibt sie ihrem Kampf für eine friedvolle Zukunft den Vorrang und stellt sich Caius entgegen, der für seine selbstgerechten Ziele den Tod zahlloser Menschen in Kauf nehmen würde.",
+                        "Una joven de un mundo lejano en el que se puede viajar a través del tiempo para cambiar el futuro. Tras salvarse gracias a la indulgencia de la diosa Etro, adquiere el poder del Oráculo y es capaz de atisbar brevemente el futuro. Durante el viaje entenderá que su vida se acorta cada vez que lo hace, pero aún así prioriza el poder proporcionarle a todo el mundo un futuro en paz, por encima de su propia vida. Por eso se enfrenta sin descanso a Caius, para tratar de impedir las innumerables muertes que podría provocar su insaciable ambición."
+                    ],
+                    "summon": [
+                        "Let's go.<br>It's time to change the future.",
+                        "走吧，<br>我們可以改變未來。",
+                        "가자.<br>우린 미래를 바꿀 수 있어.",
+                        "Allons-y.<br>Il est temps de changer le futur.",
+                        "Auf geht's.<br>Lass uns die Zukunft verändern.",
+                        "En marcha.<br>Tenemos que cambiar el futuro."
+                    ],
+                    "evolution": [
+                        "It doesn't matter how tough the going gets now. I know I can face any challenge.",
+                        "不論有多艱難，<br>我也不會再逃避了。",
+                        "아무리 괴로워도<br>더는 외면하지 않겠어.",
+                        "Peu importent les difficultés que nous rencontrerons. J'affronterai toutes les épreuves.",
+                        "Ganz gleich, was auf uns zukommen mag, ich bin jeder Herausforderung gewachsen.",
+                        "No me importan ya las penurias del camino. Puedo afrontar cualquier desafío."
+                    ],
+                    "affinity": [
+                        "I fought right until the end. I fought, and I didn't run. I know that someone somewhere will carry on what we've started...they have to.",
+                        "我相信一定會有人<br>將我們以思念相連……<br>所以我直到最後都不會逃跑的。",
+                        "누군가가 이 마음을 이어줄 거라고<br>믿고 있으니까……<br>마지막까지 도망치지 않을 거야.",
+                        "Je me suis battue jusqu'au bout. J'ai tenu bon, je n'ai pas fui. Je sais que quelqu'un, quelque part, finira ce qu'on a commencé. Il le faut.",
+                        "Ich habe gekämpft bis zum Schluss. Ich habe gekämpft, anstatt wegzulaufen. Ich weiß, dass irgendjemand, irgendwo, zuendebringen wird, was wir begonnen haben. Es muss einfach so sein.",
+                        "Luché hasta el fin. Luché y no hui. Estoy segura de que alguien, en algún lugar, continuará lo que nosotros empezamos. Deben hacerlo."
+                    ],
+                    "fusion": [
+                        "I know that every time I change things, I lose a part of my life. But I don't care. I'm here to protect the future. And I will.",
+                        "改變時間就能看到未來，而我的壽命也會被削減。即使如此我也要守護未來。",
+                        "시간을 바꾸면 미래가 보이고,<br>내 생명도 깎여 나가.<br>하지만 그래도 난, 미래를 지킬 거야.",
+                        "Je sais que chaque fois que je change l'Histoire, je perds un peu de ma vie. Mais je m'en moque. Je suis là pour protéger le futur. Et c'est ce que je vais faire.",
+                        "Jede Veränderung kostet einen Teil meiner Lebenskraft. Aber das ist mir egal. Ich bin hier, um die Zukunft zu retten. Und das werde ich.",
+                        "Sé que cada vez que cambio las cosas, una parte de mí se consume. Pero no me importa. Estoy aquí para proteger el futuro. Y eso haré."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 234225},
+            {"rarity": 5, "level": 13, "type": "ABILITY", "id": 234210},
+            {"rarity": 5, "level": 23, "type": "ABILITY", "id": 234211},
+            {"rarity": 5, "level": 31, "type": "ABILITY", "id": 234212},
+            {"rarity": 5, "level": 40, "type": "ABILITY", "id": 234226},
+            {"rarity": 5, "level": 48, "type": "ABILITY", "id": 234213},
+            {"rarity": 5, "level": 62, "type": "ABILITY", "id": 234214},
+            {"rarity": 5, "level": 75, "type": "ABILITY", "id": 234215},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 234227},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 234228},
+            {"rarity": 6, "level": 18, "type": "ABILITY", "id": 234216},
+            {"rarity": 6, "level": 37, "type": "ABILITY", "id": 234217},
+            {"rarity": 6, "level": 50, "type": "ABILITY", "id": 234229},
+            {"rarity": 6, "level": 59, "type": "ABILITY", "id": 234218},
+            {"rarity": 6, "level": 68, "type": "ABILITY", "id": 234219},
+            {"rarity": 6, "level": 81, "type": "ABILITY", "id": 234220},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 234221},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 234230},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 234222},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 234231},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 230407},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 234223},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 234224},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100140},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 234232}
+        ]
     }
   }`;

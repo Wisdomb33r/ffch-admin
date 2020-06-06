@@ -175,6 +175,24 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 33, [200]], [0, 3, 69, [1,  50]], [0, 3, 72, [900000087]]],
         "requirements": [["EQUIP", 504213800], ["EQUIP", 303004500]],
         "unit_restriction": null
+    },
+    "234232": {
+        "name": "Will to Change the Future",
+        "icon": "ability_41.png",
+        "compendium_id": 8243,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF and MP by 20%",
+            "Increase the damage of Aeroga Rain (234216), Blasting Arrow (234210), Drilling Arrow (234211), Giant Drop (Amanojaku) (234214), Hallowed Arrow (234212), Head Twister (Pulse Knight) (234220), Holy Rain (234218), Snort (Typhon) (234224) and Stonga Rain (234217) by (8.5x)",
+            "Replace LB with Ultima Arrow (900000353) for 2 turns if HP is below 21%:\\n\\tMagic damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)\\n\\tReduce resistance to Wind, Earth and Light by 120% for 3 turns to all enemies\\n\\tFill esper gauge by 10\\n\\tIncrease damage of Aeroga Rain (234216), Blasting Arrow (234210), Drilling Arrow (234211), Giant Drop (Amanojaku) (234214), Hallowed Arrow (234212), Head Twister (Pulse Knight) (234220), Holy Rain (234218), Snort (Typhon) (234224) and Stonga Rain (234217) by 1500% for 4 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  0,  0,  20,  0]], [0, 3, 73, [[234210,  234211,  234212,  234214,  234216,  234217,  234218,  234220,  234224], 0, 0, 850]], [0, 3, 80, [900000353,  99999,  21,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
