@@ -1,7 +1,7 @@
-import {Skill} from '../../../model/skill.model';
-import {AbilityDamagesPhysicalEffect} from '../../../model/effects/abilities/ability-damages-physical-effect.model';
+import {Skill} from '../../skill.model';
+import {AbilityDamagesPhysicalEffect} from './ability-damages-physical-effect.model';
 
-describe('AbilityDamagesPhysicalParser', () => {
+describe('AbilityDamagesPhysicalEffect', () => {
 
   it('should parse physical neutral damages', () => {
     // GIVEN

@@ -8,7 +8,6 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesPhysicalParser} from './ability-damages-physical.parser';
 import {AbilityDamagesMagicParser} from './ability-damages-magic.parser';
 import {AbilityDamagesHybridParser} from './ability-damages-hybrid.parser';
 import {AbilityDamagesPhysicalIgnoreDefParser} from './ability-damages-physical-ignore-def.parser';
@@ -77,8 +76,6 @@ import {AbilityMagIncreaseNextAction} from './ability-mag-increase-next-action.p
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
-      case 1:
-        return new AbilityDamagesPhysicalParser();
       case 2:
         return new AbilityHealingParser();
       case 3:
