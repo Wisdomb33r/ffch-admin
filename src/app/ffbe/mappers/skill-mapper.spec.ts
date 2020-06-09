@@ -180,4 +180,20 @@ describe('SkillMapper', () => {
     expect(competence.elements).toEqual('3,5');
   });
 
+  it('should map blue magic spells correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
+    const skill: Skill = skills['40140'];
+    skill.active = true;
+    skill.type = 'MAGIC';
+    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['40140'];
+    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['40140'];
+    // WHEN
+    const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
+    // THEN
+    expect(competence.categorie).toEqual(10);
+  });
+
 });

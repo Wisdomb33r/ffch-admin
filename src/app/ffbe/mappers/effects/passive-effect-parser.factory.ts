@@ -56,6 +56,7 @@ import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.p
 import {PassiveMpCostDecreaseParser} from './passives/passive-mp-cost-decrease.parser';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
 import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
+import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-cure-after-battle.parser';
 
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -88,6 +89,8 @@ export class PassiveEffectParserFactory {
         return new PassiveItemsStealRateParser();
       case 17:
         return new PassiveJumpDamageIncreaseParser();
+      case 18:
+        return new PassiveAilmentsCureAfterBattleParser();
       case 19:
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:

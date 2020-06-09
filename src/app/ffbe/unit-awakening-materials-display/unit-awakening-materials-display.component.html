@@ -10,6 +10,11 @@
                         class="formules-display">
   </app-formules-display>
 
+  <div class="ajoute-obtention-display">
+    <mat-checkbox [(ngModel)]="ajouteObtention" [disabled]="areMateriauxEveilPresentInFfchDB()">Ajouter l'obtention ?
+    </mat-checkbox>
+  </div>
+
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteMateriauxEveilToFfch()"
           *ngIf="!isMateriauxEveilErrorsDisplayed() && !areMateriauxEveilPresentInFfchDB()">
     Envoyer

@@ -29,8 +29,8 @@ export class SkillMapper {
       skill.fixe,
       skill.esper,
       SkillMapper.transformIcon(skill.icon),
-      skill.names ? skill.names[FFBE_FRENCH_TABLE_INDEX] : `WARN:${skill.name}`,
-      skill.names ? skill.names[FFBE_ENGLISH_TABLE_INDEX] : skill.name,
+      skill.names && skill.names[FFBE_FRENCH_TABLE_INDEX] ? skill.names[FFBE_FRENCH_TABLE_INDEX] : `WARN:${skill.name}`,
+      skill.names && skill.names[FFBE_ENGLISH_TABLE_INDEX] ? skill.names[FFBE_ENGLISH_TABLE_INDEX] : `WARN:${skill.name}`,
       undefined,
       undefined,
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
@@ -131,6 +131,9 @@ export class SkillMapper {
       }
       if (skill.magic_type === 'Green') {
         return 3;
+      }
+      if (skill.magic_type === 'Blue') {
+        return 10;
       }
     }
     if (skill.type === 'ABILITY') {

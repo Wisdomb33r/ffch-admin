@@ -21,9 +21,11 @@ export const FFBE_GAMES = [
   new Game(10008, 8, 'Final Fantasy VIII'),
   new Game(10009, 9, 'Final Fantasy IX'),
   new Game(10010, 10, 'Final Fantasy X'),
+  new Game(11004, 11, 'Final Fantasy X-2'),
   new Game(10011, 12, 'Final Fantasy XI'),
   new Game(10012, 13, 'Final Fantasy XII'),
   new Game(10013, 14, 'Final Fantasy XIII'),
+  new Game(11006, 15, 'Final Fantasy XIII-2'),
   new Game(10014, 17, 'Final Fantasy XIV'),
   new Game(10015, 18, 'Final Fantasy XV'),
   new Game(11003, 20, 'Final Fantasy Type-0'),
@@ -41,6 +43,7 @@ export const FFBE_GAMES = [
   new Game(20028, 33, 'Kingdom Hearts'),
   new Game(20024, 34, 'Xenogears'),
   new Game(20025, 35, 'Octopath Traveler'),
+  new Game(20032, 36, 'FMA: Brotherhood'),
   new Game(90001, 99, 'Collaborations spéciales'), // Ariana Grande
   new Game(90003, 99, 'Collaborations spéciales'), // TOMB RAIDER
   new Game(11001, 100, 'Final Fantasy Brave Exvius'),

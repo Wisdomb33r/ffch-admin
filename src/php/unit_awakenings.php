@@ -2,11 +2,13 @@
 require_once "../gestion/genscripts/object_brex_perso_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 require_once "classes.php";
+require_once "../gestion/genscripts/object_brex_obtention.class.php";
 
 class UniteEveil
 {
   public $unite_numero;
   public $formule;
+  public $ajoute_obtention;
 }
 
 function dieWithBadRequest($errorMessages)
@@ -45,8 +47,13 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_perso_eveil = createAndValidatePersoEveil($brex_unite, $uniteEveil);
   $brex_perso_eveil->store();
 
+  if (isset($uniteEveil->ajoute_obtention) && $uniteEveil->ajoute_obtention == true) {
+    $brex_obtention = createAndValidateObjetObtention($brex_unite, $brex_perso_eveil);
+    $brex_obtention->store();
+  }
+
   $stored_brex_perso_eveil = findPersoEveilByUnit($brex_unite);
-  $stored_unite_materiaux_eveil = createUniteEveil($brex_unite, $brex_perso_eveil);
+  $stored_unite_materiaux_eveil = createUniteEveil($brex_unite, $stored_brex_perso_eveil);
 
   echo json_encode($stored_unite_materiaux_eveil, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
@@ -92,6 +99,11 @@ function createUniteEveil($brex_unite, $brex_materiaux_eveil)
 
   if ($formule) {
     $uniteEveil->formule = $formule;
+
+    if (count($formule->ingredients) > 0) {
+      $stored_brex_obtentions = brex_obtention::findByRelation1N(array('objet' => $formule->ingredients[0]->materiau->id));
+      $uniteEveil->ajoute_obtention = count($stored_brex_obtentions) > 0 ? true : false;
+    }
   }
 
   return $uniteEveil;
@@ -109,6 +121,35 @@ function createAndValidatePersoEveil($brex_unite, $uniteEveil)
   }
 
   return $brex_perso_eveil;
+}
+
+function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
+{
+  if ($brex_unite->stars != 6 || $brex_perso_eveil->nbmateriau1 != 1) {
+    return;
+  }
+
+  $prisme = brex_objet::findByPrimaryId($brex_perso_eveil->relation1Nmateriau1);
+
+  $existing_obtention = brex_obtention::findByRelation1N(array('objet' => $prisme->id));
+  if (count($existing_obtention) > 0) {
+    dieWithBadRequest('Storage exception : existing acquisition of prism found for unit with numero: ' . $brex_unite->numero);
+  }
+
+  $brex_obtention = new brex_obtention(array());
+  $brex_obtention->setrelationobjet($prisme);
+
+  $brex_perso = brex_perso::findByPrimaryId($brex_unite->relation1Nperso);
+
+  $brex_obtention->description = 'Obtenu par conversion d\'une unité de <a href="ffexvius_units.php?persoid=' .
+    $brex_perso->id . '">' . $brex_perso->nom .
+    '</a> dans le menu indiqué d\'une icône de prisme de l\'écran d\'éveil des personnages.';
+
+  if (!$brex_obtention->verifyValues()) {
+    dieWithBadRequest(array_merge($brex_obtention->errors, (array)'Format exception: Validation of $brex_obtention failed'));
+  }
+
+  return $brex_obtention;
 }
 
 ?>

@@ -6,7 +6,8 @@ export class AbilityDebuffsResistanceParser extends EffectParser {
   private targetAndTurnsText: string;
 
   public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8 || effect[3][7] !== 1) {
+    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8 ||
+      (effect[3][7] !== 0 && effect[3][7] !== 1)) {
       return 'Effet AbilityDebuffsResistanceParser inconnu: Mauvaise liste de paramètres';
     }
 

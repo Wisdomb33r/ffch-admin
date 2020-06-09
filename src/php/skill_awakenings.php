@@ -214,7 +214,7 @@ function createAndValidateMissingBrexUnitComp($brex_unit, $brex_competence)
   $brex_unit_comp->setrelationcompetence($brex_competence);
 
   if (!$brex_unit_comp->verifyValues()) {
-    dieWithBadRequest(array_merge($brex_unit_comp->errors, 'Format exception: Validation of brex_unit_comp failed for competence ' . $brex_competence->gumi_id));
+    dieWithBadRequest(array_merge($brex_unit_comp->errors, (array)'Format exception: Validation of brex_unit_comp failed for competence ' . $brex_competence->gumi_id));
   }
 
   return $brex_unit_comp;
