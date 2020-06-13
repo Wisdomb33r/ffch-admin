@@ -96,10 +96,16 @@ describe('CharactersService', () => {
     skill2.gumi_id = 227160;
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
 
+    const loadedCharacters = service['charactersFromDataMining'];
+    loadedCharacters['100009105']['skills'] = [loadedCharacters['100009105']['skills'][4], loadedCharacters['100009105']['skills'][27]];
+
     service.loadCharactersFromDataMining();
     // WHEN
     const character: Character = service.searchForCharacterByName('Loren');
     // THEN
+    expect(mySpy).toHaveBeenCalledTimes(2);
+    expect(mySpy).toHaveBeenCalledWith(213840);
+    expect(mySpy).toHaveBeenCalledWith(227166);
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100009107'].upgraded_limitburst_id).toEqual(900000087);
@@ -116,9 +122,15 @@ describe('CharactersService', () => {
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
 
     service.loadCharactersFromDataMining();
+
+    const loadedCharacters = service['charactersFromDataMining'];
+    loadedCharacters['250000105']['skills'] = [loadedCharacters['250000105']['skills'][3], loadedCharacters['250000105']['skills'][24]];
     // WHEN
     const character: Character = service.searchForCharacterByName('Serah');
     // THEN
+    expect(mySpy).toHaveBeenCalledTimes(2);
+    expect(mySpy).toHaveBeenCalledWith(234212);
+    expect(mySpy).toHaveBeenCalledWith(234232);
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['250000107'].upgraded_limitburst_id).toEqual(900000353);
