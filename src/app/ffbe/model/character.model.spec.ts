@@ -1181,5 +1181,297 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100140},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 234232}
         ]
+    },
+    "100010005": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "Raegen",
+        "names": [
+            "Raegen",
+            "雷根",
+            "레겐",
+            "Raegen",
+            "Raegen",
+            "Raegen"
+        ],
+        "game_id": 11001,
+        "game": "FFBE",
+        "roles": [
+            "Physical Attacker",
+            "Breaker",
+            "Support"
+        ],
+        "job_id": 157,
+        "job": "Sworn Eight",
+        "sex_id": 1,
+        "sex": "Male",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "MATERIA",
+            504226380
+        ],
+        "sTMR": [
+            "EQUIP",
+            406003600
+        ],
+        "equip": [1, 2, 3, 4, 7, 10, 14, 16, 30, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "100010005": {
+                "compendium_id": 941,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [965, 2924, 300, 150],
+                    "MP": [42, 127, 50, 25],
+                    "ATK": [40, 120, 20, 10],
+                    "DEF": [32, 98, 20, 10],
+                    "MAG": [32, 98, 20, 10],
+                    "SPR": [34, 103, 20, 10]
+                },
+                "limitburst_id": 100010005,
+                "attack_count": 4,
+                "attack_damage": [
+                    [10, 10, 40, 40]
+                ],
+                "attack_frames": [8, 21, 43, 47],
+                "effect_frames": [6, 19, 41, 45],
+                "max_lb_drop": 3,
+                "ability_slots": 4,
+                "magic_affinity": [6, 7, 6, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060200": 20,
+                        "290060400": 10,
+                        "290060100": 10,
+                        "290060300": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "Father to Rain and Lasswell, and one of the Sworn Eight of Paladia. Following his arrival from Paladia, Raegen became a knight of the Kingdom of Grandshelt and served to protect its people from danger. His favorite dish is the cream stew that his late wife Sofia used to make, so he is quite happy that recently Lasswell has been doing his best to recreate the dish's flavor.",
+                        "雷因和拉斯韋爾的父親，帕拉迪亞八盟傑之一。來到拉比斯之後，成為了格蘭謝爾特王國騎士，保護民眾免受威脅。喜歡的食物是妻子索菲亞的拿手好菜——奶油蘑菇湯。最近，拉斯韋爾努力鑽研製作方法，力圖重現當年的味道，這讓他十分高興。",
+                        "레인과 라스웰의 아버지이자, '파라디아의 여덟 호걸 연맹'의 멤버. 라피스로 온 후에는 그랑셸트 왕국의 기사가 되어, 위험으로부터 사람들을 지켰다. 좋아하는 음식은 죽은 아내 소피아가 만들어 주었던 크림 스튜로, 최근 들어 라스웰이 그 맛을 재현하려고 고군분투하는 모습을 보며 흐뭇해하고 있다.",
+                        "Le père de Rain et Lasswell, et l'un des Huit Jurés de Paladia. Raegen, une fois arrivé à Lapis, a rejoint les rangs des chevaliers du Royaume de Grandshelt et s'est dévoué à la protection de son peuple. Son plat préféré est le ragoût à la crème que préparait Sophia, sa femme défunte. Il est particulièrement heureux de constater que Lasswell s'applique aujourd'hui à reproduire cette recette dans toute son authenticité.",
+                        "Vater von Rain und Lasswell und Mitglied der Geschworenen Acht von Paladia. Nach seiner Ankunft in Paladia wurde Raegen zum Ritter des Königreichs Grandshelt und beschützte dessen Volk vor Gefahren. Sein Lieblingsgericht ist ein weißer Eintopf, den seine verstorbene Frau Sofia so gern kochte. Deshalb ist er sehr glücklich, als Lasswell sich an dem Gericht versucht.",
+                        "El padre de Rain y Lasswell, y uno de los Ocho Juramentados de Paladia. Tras su llegada a Paladia, Raegen se hizo caballero del Reino de Grandshelt con el objetivo de proteger a sus habitantes de cualquier peligro. Su plato favorito es el estofado de crema que su mujer Sofía solía cocinarle; en este sentido, está muy contento de todo el esfuerzo que ha puesto Lasswell para recrear el sabor de este plato."
+                    ],
+                    "summon": [
+                        "I apologize for the wait.<br>From here on out, I will fight by your side.",
+                        "久等了。<br>接下來我會在你身邊一起戰鬥的。",
+                        "기다리게 했구나.<br>이제부터는 네 곁에서 싸우겠다.",
+                        "Désolé pour l'attente.<br>À partir de maintenant, je me battrai à tes côtés.",
+                        "Hab ich dich lange warten lassen?<br>Ab jetzt kämpfe ich an deiner Seite.",
+                        "Perdona la espera.<br>A partir de ahora, lucharé a tu lado."
+                    ],
+                    "evolution": [null, null, null, null, null, null],
+                    "affinity": [
+                        "This bond we share is stronger than blood.<br>You are responsible for sealing this bond.",
+                        "比血緣還要更深的羈絆......。<br>我跟你似乎也建立了這種羈絆呢。",
+                        "혈연보다도 강한 인연……<br>너와 그러한 인연을 맺게 된 것 같구나.",
+                        "Nous sommes encore plus proches que si on était liés par le sang.<br>C'est entièrement grâce à toi.",
+                        "Eine Verbindung, die stärker ist als Blutbande ...<br>So eine Verbindung teile ich auch mit dir.",
+                        "Nuestro vínculo une más que la sangre.<br>Tú eres el responsable de haber consolidado este vínculo."
+                    ],
+                    "fusion": [
+                        "Power isn't everything.<br>However, there are things that<br>aren't possible without it.",
+                        "力量並不是一切。但是，沒有力量的話，也無法成就一切。",
+                        "힘이 전부가 아니다.<br>하지만, 힘이 없으면<br>이뤄낼 수 없는 것도 있지.",
+                        "Le pouvoir ne fait pas tout.<br>Cela étant, certaines choses sont<br>impossibles sans.",
+                        "Macht ist nicht alles.<br>Aber es gibt auch Dinge,<br>die ohne Macht nicht möglich sind.",
+                        "El poder no lo es todo.<br>Aun así, hay cosas que no serían posibles<br>sin este."
+                    ]
+                }
+            },
+            "100010006": {
+                "compendium_id": 942,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1255, 3802, 450, 225],
+                    "MP": [55, 166, 75, 37],
+                    "ATK": [51, 156, 30, 15],
+                    "DEF": [42, 128, 30, 15],
+                    "MAG": [42, 128, 30, 15],
+                    "SPR": [44, 134, 30, 15]
+                },
+                "limitburst_id": 100010006,
+                "attack_count": 4,
+                "attack_damage": [
+                    [10, 10, 40, 40]
+                ],
+                "attack_frames": [8, 21, 43, 47],
+                "effect_frames": [6, 19, 41, 45],
+                "max_lb_drop": 3,
+                "ability_slots": 4,
+                "magic_affinity": [7, 8, 7, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300000780": 1
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A legendary warrior during the war for the independence of Hess, and one of the Sworn Eight of Paladia. Raegen was born a member of the royal family of Aldore, and lost his parents as a babe due to a conspiracy plot. Following this the mother of Hess, Yuraisha, took him in and raised him as her own child. Although he has never been able to put it into words, he loves Yuraisha as his real mother and planned to name his daughter after her if he ever had one.",
+                        "為赫斯獨立戰爭做出貢獻的帕拉迪亞八盟傑之一。雖出身於阿爾多爾王族家庭，但因宮廷陰謀而失去了親人。後來，由赫斯之母尤萊莎收養，成為其養子。他在內心中十分崇敬尤萊莎，暗下決心，如果有了女兒，要為她取名尤拉。不過，他從未把這份心意說出口。",
+                        "헤스의 독립 전쟁 시절에 활약하던 '파라디아의 여덟 호걸 연맹'의 멤버. 알도르의 왕족으로 태어났으나, 음모로 인해 부모님을 잃고 그 뒤 헤스의 어머니 유라이샤에게 거두어져 그녀의 아들로서 자랐다. 말로는 표현하지 않지만 유라이샤를 어머니로서 존경하고 있으며, 자신에게 딸이 태어나면 '유라'라는 이름을 붙이려고 했었다.",
+                        "Un guerrier légendaire qui combattit durant la guerre d'indépendance de Hess, et l'un des Huit Jurés de Paladia. Raegen est issu de la famille royale d'Aldore. Ses parents, victimes d'un complot, furent assassinés alors qu'il n'était encore qu'un enfant. À la suite de cette tragédie, Yuraisha, la Mère de Hess, le prit sous son aile et l'éleva comme son propre fils. Bien qu'il n'ait jamais réussi à le lui dire, il aime Yuraisha comme sa véritable mère et prévoyait de nommer sa fille éventuelle en son honneur.",
+                        "Ein legendärer Krieger im Kampf um die Unabhängigkeit von Hess und Mitglied der Geschworenen Acht von Paladia. Raegen wurde als Mitglied der Königsfamilie von Ardoll geboren, verlor aber als Baby seine Eltern aufgrund einer Verschwörung. Danach zog ihn die Mutter der Hess, Yuraisha, wie ihr eigenes Kind groß. Auch wenn er seine Gefühle nie in Worte fassen konnte, liebt er Yuraisha wie seine eigene Mutter und wollte seine Tochter nach ihr benennen, sollte er jemals eine haben.",
+                        "Un guerrero que se convirtió en leyenda durante la guerra de independencia contra Hess. Además, también es uno de los Ocho Juramentados de Paladia. Raegen nació en el seno de la familia real de Aldore, pero sus padres murieron a causa de un complot cuando tan solo era un bebé. Después de este evento, Yuraisha, la madre de Hess, lo crio como a su propio hijo. Por ello, aunque nunca lo ha dicho, Raegen siente un profundo cariño hacia Yuraisha y la considera su madre biológica. De hecho, si alguna vez tiene una hija la llamará \\"Yuraisha\\" en su honor."
+                    ],
+                    "summon": [
+                        "I apologize for the wait.<br>From here on out, I will fight by your side.",
+                        "久等了。<br>接下來我會在你身邊一起戰鬥的。",
+                        "기다리게 했구나.<br>이제부터는 네 곁에서 싸우겠다.",
+                        "Désolé pour l'attente.<br>À partir de maintenant, je me battrai à tes côtés.",
+                        "Hab ich dich lange warten lassen?<br>Ab jetzt kämpfe ich an deiner Seite.",
+                        "Perdona la espera.<br>A partir de ahora, lucharé a tu lado."
+                    ],
+                    "evolution": [
+                        "This power is not for myself, but for those who truly require it.",
+                        "這份力量不是為了自己，<br>而是為了需要之人。",
+                        "이 힘은 나 자신을 위해서가 아니라<br>필요로 하는 이를 위해 쓰겠다.",
+                        "Ce pouvoir ne m'est pas destiné. Il servira tous ceux qui en ont vraiment besoin.",
+                        "Diese Macht ist nicht für mich, sondern für diejenigen, die sie wirklich brauchen.",
+                        "Este poder no es para mí, sino para ayudar a quien lo necesite."
+                    ],
+                    "affinity": [
+                        "This bond we share is stronger than blood.<br>You are responsible for sealing this bond.",
+                        "比血緣還要更深的羈絆......。<br>我跟你似乎也建立了這種羈絆呢。",
+                        "혈연보다도 강한 인연……<br>너와 그러한 인연을 맺게 된 것 같구나.",
+                        "Nous sommes encore plus proches que si on était liés par le sang.<br>C'est entièrement grâce à toi.",
+                        "Eine Verbindung, die stärker ist als Blutbande ...<br>So eine Verbindung teile ich auch mit dir.",
+                        "Nuestro vínculo une más que la sangre.<br>Tú eres el responsable de haber consolidado este vínculo."
+                    ],
+                    "fusion": [
+                        "And here I was thinking I had<br>completed my blade training.<br>This means there's still more.",
+                        "曾欲窮盡劍術之道。<br>這意味著我還有更多需要做的事。",
+                        "나름 검의 득도에 도달했다고<br>여기고 있었는데 말이지.<br>아직 더 나아갈 길이 있었군.",
+                        "Et dire que je pensais avoir maîtrisé ma lame.<br>Cela signifie que j'ai encore du chemin à parcourir.",
+                        "Und ich dachte, ich hätte<br>mein Training mit der Klinge abgeschlossen.<br>Es gibt also noch mehr.",
+                        "Y yo que pensaba que había<br>completado mi entrenamiento con la espada.<br>Parece que aún queda más por hacer."
+                    ]
+                }
+            },
+            "100010007": {
+                "compendium_id": 1135,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1631, 4942, 600, 300],
+                    "MP": [71, 215, 100, 50],
+                    "ATK": [67, 202, 50, 25],
+                    "DEF": [57, 174, 50, 25],
+                    "MAG": [55, 166, 50, 25],
+                    "SPR": [60, 182, 50, 25]
+                },
+                "limitburst_id": 100010007,
+                "attack_count": 4,
+                "attack_damage": [
+                    [10, 10, 40, 40]
+                ],
+                "attack_frames": [8, 21, 43, 47],
+                "effect_frames": [6, 19, 41, 45],
+                "max_lb_drop": 3,
+                "ability_slots": 4,
+                "magic_affinity": [7, 8, 7, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "One of the Sworn Eight of Paladia, able to awaken the blood of Aldore and call forth immeasurable amounts of power. Although he is the proper Aldore successor, he has no desire to take over the throne. When the war in Paladia is over, he wants to travel and build a hospital in the countryside in memory of his late wife, who was a doctor.",
+                        "帕拉迪亞八盟傑之一。可以通過覺醒阿爾多爾之血，發揮出超脫常軌的力量。是阿爾多爾王位的正統繼承人，但他本人卻並不想要繼承王位。在帕拉迪亞的戰爭終結之後，他想要繼承生前作為醫生的妻子的遺志，在偏遠地區建設醫院。",
+                        "파라디아의 여덟 호걸 연맹' 중 한 명. 알도르의 피를 각성시켜, 한계를 벗어난 힘을 끌어낼 수 있다. 알도르의 정통 후계자이지만, 본인은 왕위를 이을 생각이 없다. 파라디아에서의 싸움이 끝나고 나면, 의사였던 아내의 마음을 이어받아 각지를 돌며 병원을 세울 것을 꿈꾸고 있다.",
+                        "L'un des Huit Jurés de Paladia, capable d'éveiller le sang d'Aldore et de libérer une puissance incommensurable. Bien qu'héritier légitime d'Aldore, Raegen n'a aucune envie d'occuper le trône. Quand la guerre de Paladia prendra fin, il veut voyager et construire un hôpital à la campagne en souvenir de sa femme qui était médecin.",
+                        "Einer der Geschworenen Acht von Paladia, der das Blut von Aldore erwecken und unermessliche Kräfte heraufbeschwören kann. Obwohl er der legitime Thronfolger von Aldore ist, hat er kein Verlangen danach, den Thron zu besteigen. Sobald der Krieg in Paladia vorbei ist, möchte er sich auf Reisen begeben und in einer ländlichen Gegend ein Krankenhaus errichten, um seiner verstorbenen Frau, die als Ärztin arbeitete, zu gedenken.",
+                        "Uno de los Ocho Juramentados de Paladia, capaz de despertar la sangre de Aldore y servirse de su inconmensurable poder. Pese a ser el legítimo heredero de Aldore, no tiene intención alguna de reclamar el trono. Cuando termine la guerra de Paladia, su intención no es otra que viajar y construir un hospital en el campo en honor a su esposa, que fue doctora."
+                    ],
+                    "summon": [
+                        "I apologize for the wait.<br>From here on out, I will fight by your side.",
+                        "久等了。接下來我會在你身邊一起戰鬥的。",
+                        "기다리게 했구나.<br>이제부터는 네 곁에서 싸우겠다.",
+                        "Désolé pour l'attente.<br>À partir de maintenant, je me battrai à tes côtés.",
+                        "Entschuldige dass ich dich habe warten lassen.<br>Von jetzt an werde ich an deiner Seite kämpfen.",
+                        "Perdona la espera.<br>A partir de ahora, lucharé a tu lado."
+                    ],
+                    "evolution": [
+                        "Now, I shall wield my blade for you. However, what I truly wish for is a world that has no need for my power.",
+                        "現在我仍會為了你而揮舞著刀劍。但是，不需要我的力量那種世界。才是我所追尋的世界。",
+                        "지금은 아직 널 위해서 검을 휘두르겠다.<br>하지만 내 힘을 필요치 않는 세계,<br>그것이야말로 내가 바라는 세계다.",
+                        "Je brandirai mes lames pour toi. Mais mon plus cher désir, c'est que le monde n'ait plus besoin de ma puissance.",
+                        "Ich schwinge mein Schwert nun für dich. Mein wahrer Wunsch ist jedoch eine Welt, in der meine Stärke nicht benötigt wird.",
+                        "Blandiré mi espada por vosotros, pero el mundo que anhelo es uno en el que mi poder no sea necesario."
+                    ],
+                    "affinity": [
+                        "This bond we share is stronger than blood.<br>You are responsible for sealing this bond.",
+                        "比血緣還要更深的羈絆......。<br>我跟你似乎也建立了這種羈絆呢。",
+                        "혈연보다도 강한 인연……<br>너와 그러한 인연을 맺게 된 것 같구나.",
+                        "Nous sommes encore plus proches que si on était liés par le sang.<br>C'est entièrement grâce à toi.",
+                        "Eine Verbindung, die stärker ist als Blutbande ...<br>So eine Verbindung teile ich auch mit dir.",
+                        "Nuestro vínculo une más que la sangre.<br>Tú eres el responsable de haber consolidado este vínculo."
+                    ],
+                    "fusion": [
+                        "I will grow as strong as you require me to become.",
+                        "只要你需要我我便會不斷變強下去。",
+                        "네가 필요로 한다면<br>난 언제까지나 강해질 것이다.",
+                        "Je deviendrai aussi fort que tu l'estimeras nécessaire.",
+                        "Meine Stärke wird deinen Erwartungen gerecht werden.",
+                        "Seré todo lo fuerte que necesitéis que sea."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 1, "type": "MAGIC", "id": 20210},
+            {"rarity": 5, "level": 1, "type": "MAGIC", "id": 20200},
+            {"rarity": 5, "level": 1, "type": "MAGIC", "id": 10100},
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 800000},
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 101370},
+            {"rarity": 5, "level": 12, "type": "MAGIC", "id": 10160},
+            {"rarity": 5, "level": 25, "type": "ABILITY", "id": 226150},
+            {"rarity": 5, "level": 44, "type": "ABILITY", "id": 100110},
+            {"rarity": 5, "level": 58, "type": "ABILITY", "id": 226160},
+            {"rarity": 5, "level": 71, "type": "ABILITY", "id": 100030},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 209530},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 226170},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 213410},
+            {"rarity": 6, "level": 1, "type": "MAGIC", "id": 30260},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 226200},
+            {"rarity": 6, "level": 1, "type": "MAGIC", "id": 30270},
+            {"rarity": 6, "level": 20, "type": "ABILITY", "id": 207410},
+            {"rarity": 6, "level": 20, "type": "ABILITY", "id": 201670},
+            {"rarity": 6, "level": 30, "type": "ABILITY", "id": 226140},
+            {"rarity": 6, "level": 66, "type": "ABILITY", "id": 226130},
+            {"rarity": 6, "level": 90, "type": "ABILITY", "id": 226180},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 226120},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 226190},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 228084},
+            {"rarity": 7, "level": 105, "type": "MAGIC", "id": 20290},
+            {"rarity": 7, "level": 105, "type": "MAGIC", "id": 20300},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 228086},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 228081},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 228080},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 228083},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 228082},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100080},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 228085}
+        ]
     }
   }`;

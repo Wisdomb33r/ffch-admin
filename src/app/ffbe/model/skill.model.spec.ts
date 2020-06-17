@@ -111,6 +111,28 @@ export const MAGIC_SKILLS_TEST_DATA =
         "effects": ["Magic damage (4.95x, MAG) to one enemy"],
         "effects_raw": [[1, 1, 15, [0,  0,  0,  0,  0,  495,  0]]],
         "requirements": [["SWITCH", 18519013]]
+    },
+    "20300": {
+        "name": "Blizzaja",
+        "icon": "ability_22.png",
+        "compendium_id": 129,
+        "rarity": 7,
+        "cost": {"MP": 28},
+        "magic_type": "Black",
+        "is_sealable": true,
+        "is_reflectable": true,
+        "in_exploration": false,
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[240]],
+        "effect_frames": [[40]],
+        "move_type": 0,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Ice"],
+        "effects": ["Magic ice damage (2x, MAG) with consecutive damage increase (max. 4 times, +1x MAG each, 6x total) to all enemies"],
+        "effects_raw": [[2, 1, 72, [0,  0,  100,  100,  100,  5]]],
+        "requirements": null
     }
   }`;
 
@@ -191,6 +213,45 @@ export const PASSIVE_SKILLS_TEST_DATA =
             "Replace LB with Ultima Arrow (900000353) for 2 turns if HP is below 21%:\\n\\tMagic damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)\\n\\tReduce resistance to Wind, Earth and Light by 120% for 3 turns to all enemies\\n\\tFill esper gauge by 10\\n\\tIncrease damage of Aeroga Rain (234216), Blasting Arrow (234210), Drilling Arrow (234211), Giant Drop (Amanojaku) (234214), Hallowed Arrow (234212), Head Twister (Pulse Knight) (234220), Holy Rain (234218), Snort (Typhon) (234224) and Stonga Rain (234217) by 1500% for 4 turns"
         ],
         "effects_raw": [[0, 3, 1, [0,  20,  0,  0,  0,  20,  0]], [0, 3, 73, [[234210,  234211,  234212,  234214,  234216,  234217,  234218,  234220,  234224], 0, 0, 850]], [0, 3, 80, [900000353,  99999,  21,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "707785": {
+        "name": "Kingdom's Hero",
+        "icon": "ability_91.png",
+        "compendium_id": 3682,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF, SPR, HP and MP by 20%",
+            "Increase LB gauge by 2 per turn",
+            "Increase the limit burst gauge fill rate by 50%",
+            "Increase equipment ATK by 10% when armed with two weapons"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]], [0, 3, 69, [1,  10]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "707786": {
+        "name": "Kingdom's Hero",
+        "icon": "ability_91.png",
+        "compendium_id": 3682,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF, SPR, HP and MP by 20%",
+            "Increase LB gauge by 2 per turn",
+            "Increase the limit burst gauge fill rate by 50%",
+            "Increase equipment ATK by 60% when armed with two weapons",
+            "Replace LB with Darkness Purging Blades of Azure Crimson (900000330):\\n\\tPhysical damage (15.2x, ATK) to all enemies\\n\\tReduce resistance to Fire and Ice by 76% for 3 turns to all enemies\\n\\tIncrease damage of Octostrike Blade skills  [(228081) / +1 (707783) / +2 (707784)] by 1400% for 2 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]], [0, 3, 69, [1,  60]], [0, 3, 72, [900000330]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -460,6 +521,29 @@ export const ABILITY_SKILLS_TEST_DATA =
         ],
         "effects": ["Hybrid lightning and wind damage (13x, ATK & MAG) to all enemies"],
         "effects_raw": [[2, 1, 40, [0,  0,  0,  0,  0,  0,  0,  0,  1300,  1300]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+        "232639": {
+        "name": "Mystic Cross",
+        "icon": "ability_25.png",
+        "compendium_id": 6994,
+        "rarity": 8,
+        "cost": {"MP": 70},
+        "attack_count": [7, 1],
+        "attack_damage": [[14,  14,  14,  14,  14,  14,  16], [100]],
+        "attack_frames": [[42,  62,  82,  102,  122,  142,  162], [182]],
+        "effect_frames": [[76,  40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Wind"],
+        "effects": [
+            "Magic wind damage (4x, MAG) to all enemies",
+            "Magic wind damage (12x, MAG) with consecutive damage increase (max. 6 times, +5x MAG each, 42x total) to all enemies"
+        ],
+        "effects_raw": [[2, 1, 15, [0,  0,  0,  0,  0,  400,  0]], [2, 1, 72, [0,  0,  700,  500,  500,  7]]],
         "requirements": null,
         "unit_restriction": null
     }

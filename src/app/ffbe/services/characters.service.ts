@@ -8,6 +8,7 @@ import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {EnhancementsService} from './enhancements.service';
 
 @Injectable()
 export class CharactersService {
@@ -21,7 +22,8 @@ export class CharactersService {
 
   constructor(private dataMiningClientService: DataMiningClientService,
               private skillsService: SkillsService,
-              private lbService: LimitBurstsService) {
+              private lbService: LimitBurstsService,
+              private enhancementsService: EnhancementsService) {
     this.loadCharactersFromDataMining();
     CharactersService.INSTANCE = this;
   }
@@ -119,12 +121,19 @@ export class CharactersService {
     const entryNames: string[] = Object.getOwnPropertyNames(character.entries);
     for (const entryName of entryNames) {
       const entry: CharacterEntry = character.entries[entryName];
-      const availableSkills = character.skills.filter(skill => skill.rarity <= entry.rarity);
+      const innateSkills = character.skills.filter(skill => skill.rarity <= entry.rarity);
+      const enhancedSkills = [];
+      innateSkills.forEach(innateSkill =>
+        this.enhancementsService.searchForEnhancementsBySkillGumiId(innateSkill.id)
+          .map(enhancement => enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new))));
+
+      const availableSkills = innateSkills.map(innateSkill => innateSkill.skill).concat(enhancedSkills);
       const effect = availableSkills.map(skill =>
-        FfbeUtils.isNullOrUndefined(skill.skill) ? null : skill.skill.effects_raw
+        FfbeUtils.isNullOrUndefined(skill) || skill.active === true ? null : skill.effects_raw
           .find(effect => effect[2] === 72 || effect[2] === 80))
         .filter(effect => !FfbeUtils.isNullOrUndefined(effect));
-      entry.upgraded_limitburst_id = effect && effect.length > 0 && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
+      entry.upgraded_limitburst_id = effect && effect.length > 0
+      && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
     }
   }
