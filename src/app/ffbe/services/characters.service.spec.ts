@@ -149,7 +149,7 @@ describe('CharactersService', () => {
     expect(character.entries['250000107'].upgraded_limitburst_id).toEqual(900000353);
   }));
 
-  it('should find the correct enhanced-by-enhanced-skill limit burst ID  when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
+  it('should find the correct enhanced-by-enhanced-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
     const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
 
@@ -192,6 +192,52 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toEqual(900000330);
+  }));
+
+  it('should filter out enhanced skills for other characters when searching if present in data mining', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const skill1: Skill = skills['100020'];
+    skill1.gumi_id = 100020;
+    const skill2: Skill = skills['100021'];
+    skill2.gumi_id = 100021;
+    const skill3: Skill = skills['707785'];
+    skill3.gumi_id = 707785;
+    const skill4: Skill = skills['707786'];
+    skill4.gumi_id = 707786;
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and
+      .returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+
+    const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
+
+    const enhancement1 = enhancements['228085001'];
+    enhancement1.gumi_id = 228085001;
+    enhancement1.level = 1;
+    enhancement1.units = [100009105];
+    const enhancement2 = enhancements['228085002'];
+    enhancement2.gumi_id = 228085002;
+    enhancement2.level = 2;
+    enhancement1.units = [100009105];
+    const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
+      .returnValues([], [], [], [enhancement1, enhancement2]);
+
+    const loadedCharacters = service['charactersFromDataMining'];
+    loadedCharacters['100010005']['skills'] = [loadedCharacters['100010005']['skills'][4], loadedCharacters['100010005']['skills'][32]];
+
+    service.loadCharactersFromDataMining();
+    // WHEN
+    const character: Character = service.searchForCharacterByName('Raegen');
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(3);
+    expect(mySpy).toHaveBeenCalledWith(101370);
+    expect(mySpy).toHaveBeenCalledWith(228085);
+    expect(myEnhancementsSpy).toHaveBeenCalledTimes(4);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(101370);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(228085);
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 3);
+    expect(character.entries['100010007'].upgraded_limitburst_id).toBeNull();
   }));
 
   it('should filter out active skills when searching for enhanced limit burst ID if present in data mining', inject([CharactersService], (service: CharactersService) => {
