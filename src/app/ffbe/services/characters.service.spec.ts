@@ -14,6 +14,8 @@ import {
 import {Skill} from '../model/skill.model';
 import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
+import {LatentSkillsService} from './latent-skills.service';
+import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -33,10 +35,17 @@ class EnhancementsServiceMock {
   }
 }
 
+class LatentSkillsServiceMock {
+  public searchForLatentSkillsByCharacterGumiId(id) {
+    return [];
+  }
+}
+
 describe('CharactersService', () => {
   let dataMiningService = null;
   let skillsService = null;
   let enhancementsService = null;
+  let latentSkillsService = null;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -45,16 +54,20 @@ describe('CharactersService', () => {
         {provide: DataMiningClientService, useClass: DataMiningMock},
         {provide: SkillsService, useClass: SkillsServiceMock},
         {provide: LimitBurstsService, useClass: LimitBurstServiceMock},
-        {provide: EnhancementsService, useClass: EnhancementsServiceMock}
+        {provide: EnhancementsService, useClass: EnhancementsServiceMock},
+        {provide: LatentSkillsService, useClass: LatentSkillsServiceMock}
       ]
     });
   });
 
-  beforeEach(inject([DataMiningClientService, SkillsService, EnhancementsService],
-    (dmService: DataMiningClientService, sService: SkillsService, eService: EnhancementsService) => {
+  beforeEach(inject([DataMiningClientService, SkillsService, EnhancementsService, LatentSkillsService],
+    (dmService: DataMiningClientService, sService: SkillsService, eService: EnhancementsService,
+     lsService: LatentSkillsService) => {
       dataMiningService = dmService;
       skillsService = sService;
       enhancementsService = eService;
+      latentSkillsService = lsService;
+
       spyOn(dataMiningService, 'getCharacters$').and.callThrough();
     }));
 
@@ -192,6 +205,64 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toEqual(900000330);
+  }));
+
+  it('should find the correct enhanced-by-latent-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const skill1: Skill = skills['100020'];
+    skill1.gumi_id = 100020;
+    const skill2: Skill = skills['100021'];
+    skill2.gumi_id = 100021;
+    const skill3: Skill = skills['950144'];
+    skill3.gumi_id = 950144;
+    const skill4: Skill = skills['950145'];
+    skill4.gumi_id = 950145;
+    const skill5: Skill = skills['800352'];
+    skill5.gumi_id = 800352;
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1),
+      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4), Skill.produce(skill5));
+
+    const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
+
+    const enhancement1 = enhancements['228085001'];
+    enhancement1.gumi_id = 228085001;
+    enhancement1.level = 1;
+    const enhancement2 = enhancements['228085002'];
+    enhancement2.gumi_id = 228085002;
+    enhancement2.level = 2;
+    const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
+      .returnValues([], [], [], [enhancement1, enhancement2]);
+
+    const latentSkills = JSON.parse(LATENT_SKILLS_TEST_DATA);
+    const latentSkill1 = latentSkills['8003520'];
+    const latentSkill2 = latentSkills['8003521'];
+    const latentSkill3 = latentSkills['8003522'];
+    const myLatentSkillsSpy = spyOn(latentSkillsService, 'searchForLatentSkillsByCharacterGumiId').and
+      .returnValue([latentSkill1, latentSkill2, latentSkill3]);
+
+    const loadedCharacters = service['charactersFromDataMining'];
+    loadedCharacters['100016205']['skills'] = [loadedCharacters['100016205']['skills'][2], loadedCharacters['100016205']['skills'][23]];
+
+    service.loadCharactersFromDataMining();
+    // WHEN
+    const character: Character = service.searchForCharacterByName('Hyoh');
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(5);
+    expect(mySpy).toHaveBeenCalledWith(227287);
+    expect(mySpy).toHaveBeenCalledWith(227296);
+    expect(mySpy).toHaveBeenCalledWith(950144);
+    expect(mySpy).toHaveBeenCalledWith(950145);
+    expect(mySpy).toHaveBeenCalledWith(800352);
+    expect(myEnhancementsSpy).toHaveBeenCalledTimes(4);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(227287);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(227296);
+    expect(myLatentSkillsSpy).toHaveBeenCalledTimes(1);
+    expect(myLatentSkillsSpy).toHaveBeenCalledWith(100016205)
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 3);
+    expect(character.entries['100016207'].upgraded_limitburst_id).toEqual(950000012);
   }));
 
   it('should filter out enhanced skills for other characters when searching if present in data mining', inject([CharactersService], (service: CharactersService) => {

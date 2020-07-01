@@ -1473,5 +1473,284 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100080},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 228085}
         ]
+    },
+   "100016205": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "Hyoh",
+        "names": [
+            "Hyoh",
+            "獵豹",
+            "효우",
+            "Hyoh",
+            "Hyou",
+            "Hyou"
+        ],
+        "game_id": 11001,
+        "game": "FFBE",
+        "roles": ["Physical Attacker"],
+        "job_id": 170,
+        "job": "Orders",
+        "sex_id": 1,
+        "sex": "Male",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "EQUIP",
+            405004900
+        ],
+        "sTMR": [
+            "EQUIP",
+            303004600
+        ],
+        "equip": [1, 2, 3, 9, 10, 15, 16, 30, 31, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "100016205": {
+                "compendium_id": 1038,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [930, 2817, 240, 120],
+                    "MP": [41, 124, 40, 20],
+                    "ATK": [40, 120, 24, 12],
+                    "DEF": [35, 106, 16, 8],
+                    "MAG": [27, 83, 16, 8],
+                    "SPR": [33, 100, 16, 8]
+                },
+                "limitburst_id": 100016205,
+                "attack_count": 3,
+                "attack_damage": [
+                    [33, 33, 34]
+                ],
+                "attack_frames": [24, 32, 49],
+                "effect_frames": [22, 30, 47],
+                "max_lb_drop": 4,
+                "ability_slots": 4,
+                "magic_affinity": [6, 6, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060000": 20,
+                        "290060300": 10,
+                        "290060200": 10,
+                        "290060100": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "The Delta Star of the Orders, a group of elite warriors directly under the command of the Emperor of Aldore, who rose through the ranks in record time. Hyoh's identity is a total mystery. He rarely interacts with any of the other Orders, yet Nagi of the Iota Star seems to follow him everywhere regardless of his indifference.",
+                        "阿爾多爾皇帝直屬精銳部隊號令者的四鬥星，也是歷史上最快升到這個位置的人。他的出身與來歷一概不明，與別的號令者們也沒有什麼聯繫。只有九鬥星那岐一直單方面的纏著他。",
+                        "사상 최단 기간에 알도르 황제 직속 정예부대 '오더즈'의 사성투사 자리까지 오른 남자. 그 태생에 대해서는 아무것도 밝혀지지 않았다. 다른 오더즈와는 거의 관계를 맺고 있지 않으나, 유일하게 구성투사 나기만이 일방적인 관심을 표하고 있다.",
+                        "L'étoile Delta de l'Ordre d'Aldore. Membre d'un groupe de guerriers d'élite fidèles à l'Empereur, il s'est hissé au sommet de la hiérarchie en un temps record. Nul ne connaît la véritable identité de Hyoh. Il ne se mêle que rarement aux autres étoiles de l'Ordre, ce qui n'empêche pas Nagi de l'étoile Iota de l'accompagner partout où il va, dans la plus grande indifférence de Hyoh.",
+                        "Der Delta-Stern des Ordens von Aldore, eine Gruppe von Elitekriegern, die dem direkten Befehl des Imperators von Aldore unterstehen. Hyou erklomm die Ränge in Windeseile und seine Identität ist ein absolutes Mysterium. Er interagiert nur selten mit den anderen Mitgliedern des Ordens, aber Iota-Stern-Nagi scheint ihm trotz dessen Gleichgültigkeit überall hin zu folgen.",
+                        "La estrella Delta de la Orden de Aldore, un grupo de guerreros de élite que se encuentra bajo el mando directo del emperador de Aldore, que subió de rango en un tiempo récord. La identidad de Hyou es todo un misterio. Asimismo, rara vez interacciona con los miembros de las Órdenes, pero, aun así, Nagi de la estrella Iota para seguirle adondequiera que va sin importarle su indiferencia."
+                    ],
+                    "summon": [
+                        "Do not think you can tame me. I fight of my own free will.",
+                        "別以為這樣就能馴服我。我只會照著自己的意志戰鬥。",
+                        "날 길들일 수 있을 거란 생각은 마라.<br>난 내 의지로밖에 싸우지 않아.",
+                        "N'allez pas vous imaginer que vous pouvez me dompter. Je me bats de mon plein gré.",
+                        "Glaube ja nicht, dass du mich zähmen kannst. Ich kämpfe aus meinem eigenen freien Willen.",
+                        "No te creas que me puedes controlar. Yo lucho por mi propia causa."
+                    ],
+                    "evolution": [null, null, null, null, null, null],
+                    "affinity": [
+                        "So our bonds can become power, too... Not that I need anything like that now, however.",
+                        "羈絆會成為力量、嗎？但那並不是現在的我所需要的。",
+                        "인연이 힘이 된다는 건가.<br>지금의 내겐 필요 없지만.",
+                        "Ainsi, nos liens peuvent eux aussi se transformer en pouvoirs... Cela dit, une chose pareille ne m'est d'aucune utilité à présent.",
+                        "Beziehungen ... können also zu Stärke werden. Nicht, dass ich das irgendwie nötig hätte.",
+                        "Para que nuestro vínculo también se transforme en poder... Aunque ahora no es que necesite nada por el estilo."
+                    ],
+                    "fusion": [
+                        "I will decide the fate of our enemies. You just sit back and watch.",
+                        "要葬送誰，由我決定。你在一旁看著就好。",
+                        "누굴 없앨지는 내가 결정한다.<br>넌 그냥 거기서 보고 있어라.",
+                        "Je déciderai du sort de nos ennemis. Toi, contente-toi d'admirer.",
+                        "Ich werde über das Schicksal unserer Feinde entscheiden. Lehn dich zurück und schau zu.",
+                        "Yo soy quien decide el destino de nuestros enemigos. Tú quédate ahí y mira."
+                    ]
+                }
+            },
+            "100016206": {
+                "compendium_id": 1039,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1209, 3663, 390, 195],
+                    "MP": [53, 162, 65, 32],
+                    "ATK": [51, 156, 34, 17],
+                    "DEF": [46, 138, 26, 13],
+                    "MAG": [36, 109, 26, 13],
+                    "SPR": [43, 130, 26, 13]
+                },
+                "limitburst_id": 100016206,
+                "attack_count": 3,
+                "attack_damage": [
+                    [33, 33, 34]
+                ],
+                "attack_frames": [24, 32, 49],
+                "effect_frames": [22, 30, 47],
+                "max_lb_drop": 4,
+                "ability_slots": 4,
+                "magic_affinity": [7, 7, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300000400": 1
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "The Delta Star whose prowess has been recognized by other members of the elite Orders group, and the most promising candidate to become the next emperor. Hyoh wears a mask to hide his face, and alters his voice through artificial means, but his movements lead many to believe that he is quite young in age.",
+                        "號令者的四鬥星，他的實力最有可能成為下任皇帝，因而受到其他號令者們的關注。真面目隱藏在面具之下，聲音也經過了人工處理，不過從他的行為舉止來看可能是個很年輕的人。",
+                        "오더즈의 사성투사로, 다른 성투사들조차 차기 황제에 가장 가까운 인물이라며 주목하는 남자. 마스크로 얼굴을 가리고 목소리도 인공적으로 변화를 주었으나, 그 행동거지로 말미암아 젊은 나이일 것이라 추측할 수 있다.",
+                        "L'étoile Delta est reconnue pour ses prouesses guerrières par les autres membres de l'Ordre, et ses facultés la donnent en première place pour hériter du trône impérial. Hyoh revêt un masque cachant son visage et modifie artificiellement sa voix, mais ses mouvements semblent néanmoins trahir son jeune âge.",
+                        "Der Delta-Stern, dessen Stärke von den anderen Mitgliedern der elitären Gruppe des Ordens anerkannt wird und der der vielversprechendste Kandidat für den nächsten Imperator ist. Hyou trägt eine Maske um sein Gesicht zu verbergen und verzerrt künstlich seine Stimme, aber sein Verhalten veranlasst viele zu der Vermutung, dass er ziemlich jung ist.",
+                        "La estrella Delta. El resto de integrantes de las Órdenes, su grupo de élite, han reconocido sus proezas y, de hecho, es el candidato más prometedor para convertirse en el próximo emperador. Hyou lleva una máscara para ocultar su rostro y también altera su voz con medios artificiales. Sin embargo, esta forma de actuar ha llevado a que muchos piensen que se trata de alguien bastante joven."
+                    ],
+                    "summon": [
+                        "Do not think you can tame me. I fight of my own free will.",
+                        "別以為這樣就能馴服我。我只會照著自己的意志戰鬥。",
+                        "날 길들일 수 있을 거란 생각은 마라.<br>난 내 의지로밖에 싸우지 않아.",
+                        "N'allez pas vous imaginer que vous pouvez me dompter. Je me bats de mon plein gré.",
+                        "Glaube ja nicht, dass du mich zähmen kannst. Ich kämpfe aus meinem eigenen freien Willen.",
+                        "No te creas que me puedes controlar. Yo lucho por mi propia causa."
+                    ],
+                    "evolution": [
+                        "This still isn't enough. I need more if I'm to sink my blade into the enemy...",
+                        "就算這樣還是不夠。如果想要傷到那個傢伙......",
+                        "아직 부족해.<br>녀석에게 칼을 꽂아 넣기 위해선……",
+                        "Ça ne suffit pas. Il m'en faut plus, si je dois plonger ma lame dans le cœur de l'ennemi...",
+                        "Das ist immer noch nicht genug. Um meine Klinge in den Feind zu stoßen, brauche ich ...",
+                        "Aún no es suficiente. Necesito más si quiero atravesar al enemigo con mi espada."
+                    ],
+                    "affinity": [
+                        "So our bonds can become power, too... Not that I need anything like that now, however.",
+                        "羈絆會成為力量、嗎？但那並不是現在的我所需要的。",
+                        "인연이 힘이 된다는 건가.<br>지금의 내겐 필요 없지만.",
+                        "Ainsi, nos liens peuvent eux aussi se transformer en pouvoirs... Cela dit, une chose pareille ne m'est d'aucune utilité à présent.",
+                        "Beziehungen ... können also zu Stärke werden. Nicht, dass ich das irgendwie nötig hätte.",
+                        "Para que nuestro vínculo también se transforme en poder... Aunque ahora no es que necesite nada por el estilo."
+                    ],
+                    "fusion": [
+                        "Relinquish all, and you shall obtain all. That is how I live.",
+                        "斬斷一切，得到所有。這就是我的做法。",
+                        "모든 것을 끊어내고, 모든 것을 얻는다.<br>그게 내 방식이다.",
+                        "Qui renonce à tout s'empare de tout. Telle est ma devise.",
+                        "Sag ab von allem und alles wird dein sein. So lebe ich.",
+                        "Renuncia a todo y te harás con todo. Ese es mi lema."
+                    ]
+                }
+            },
+            "100016207": {
+                "compendium_id": 1040,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1571, 4762, 540, 270],
+                    "MP": [70, 211, 90, 45],
+                    "ATK": [67, 203, 65, 32],
+                    "DEF": [59, 180, 40, 20],
+                    "MAG": [47, 142, 40, 20],
+                    "SPR": [56, 170, 40, 20]
+                },
+                "limitburst_id": 100016207,
+                "attack_count": 3,
+                "attack_damage": [
+                    [33, 33, 34]
+                ],
+                "attack_frames": [24, 32, 49],
+                "effect_frames": [22, 30, 47],
+                "max_lb_drop": 4,
+                "ability_slots": 4,
+                "magic_affinity": [8, 8, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "No one has seen the face that lies behind Hyoh's mask. Although the only clue to his true identity was thought to be his blonde hair, rumor has it that a single member of the Orders has actually seen Hyoh's face. That member is...",
+                        "臉上總是帶著面具，沒人見過他的真面目，唯一的線索就是他的金髮……不過據說號令者中有一個人知道他面具下的真面目為何。這個人又是誰呢……",
+                        "항상 마스크로 얼굴을 가리고 있기 때문에, 그의 진짜 얼굴을 아는 자는 아무도 없다. 정체의 실마리는 오로지 금색으로 빛나는 머리카락뿐…… 이라고 알려져 있었으나, 오더즈 중에서 단 한 사람, 마스크 아래의 진짜 얼굴을 아는 자가 있다고 한다. 그자는 대체……",
+                        "Personne n'a jamais vu le visage derrière le masque. Le seul détail connu de la populace à son sujet est la couleur de ses cheveux, d'un blond très clair. Les rumeurs affirment qu'un seul membre de l'Ordre l'aurait vu sans son masque. Quant à savoir ce qui est arrivé à ce membre…",
+                        "Niemand hat das Gesicht hinter Hyous Maske erblickt. Sein blondes Haar wurde bisher für den einzigen Anhaltspunkt für seine wahre Identität gehalten, Gerüchten zufolge hat aber ein einziges Mitglied des Ordens tatsächlich Hyous Gesicht gesehen. Und dieses Mitglied ist ...?",
+                        "Nadie ha visto nunca el rostro que se esconde tras la máscara de Hyou. De hecho, se creía que su pelo rubio era la única pista para intentar averiguar su verdadera identidad. Sin embargo, se rumorea que un miembro de las Órdenes sí que ha llegado a verle el rostro. Y ese miembro es..."
+                    ],
+                    "summon": [
+                        "Do not think you can tame me. I fight of my own free will.",
+                        "別以為這樣就能馴服我。我只會照著自己的意志戰鬥。",
+                        "날 길들일 수 있을 거란 생각은 마라.<br>난 내 의지로밖에 싸우지 않아.",
+                        "N'allez pas vous imaginer que vous pouvez me dompter. Je me bats de mon plein gré.",
+                        "Glaube ja nicht, dass du mich zähmen kannst. Ich kämpfe aus meinem eigenen freien Willen.",
+                        "No te creas que me puedes controlar. Yo lucho por mi propia causa."
+                    ],
+                    "evolution": [
+                        "I've given up all emotions. All I desire is to reach the heavens.",
+                        "感情什麼的早就捨棄了。我所追求的，只有突破天際的力量。",
+                        "정 따윈 진작에 버렸다.<br>내가 바라는 건 하늘까지 닿을 힘뿐.",
+                        "J'ai abandonné toutes mes émotions. Je n'ai plus qu'un seul désir : gagner le paradis.",
+                        "Ich habe alle meine Gefühle von mir geworfen. Mein einziges Verlangen ist Macht, die selbst den Himmel erreicht.",
+                        "He dejado atrás cualquier sentimiento. Lo único que quiero es alcanzar el cielo."
+                    ],
+                    "affinity": [
+                        "So our bonds can become power, too... Not that I need anything like that now, however.",
+                        "羈絆會成為力量、嗎？但那並不是現在的我所需要的。",
+                        "인연이 힘이 된다는 건가.<br>지금의 내겐 필요 없지만.",
+                        "Ainsi, nos liens peuvent eux aussi se transformer en pouvoirs... Cela dit, une chose pareille ne m'est d'aucune utilité à présent.",
+                        "Beziehungen ... können also zu Stärke werden. Nicht, dass ich das irgendwie nötig hätte.",
+                        "Para que nuestro vínculo también se transforme en poder... Aunque ahora no es que necesite nada por el estilo."
+                    ],
+                    "fusion": [
+                        "Without power, nothing can be changed. That is why I must...",
+                        "如果沒有力量就什麼都無法改變。所以，我才……。",
+                        "힘이 없으면<br>아무것도 바꿀 수 없다.<br>그렇기 때문에, 나는……",
+                        "Sans pouvoir, on ne peut rien changer. Et c'est pour ça que je dois...",
+                        "Ohne Macht kann man keine Änderungen bewirken. Deshalb muss ich ...",
+                        "Sin poder no se cambia nada. Por eso tengo que..."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 1, "type": "MAGIC", "id": 20200},
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 210730},
+            {"rarity": 5, "level": 48, "type": "ABILITY", "id": 227287},
+            {"rarity": 5, "level": 76, "type": "ABILITY", "id": 100030},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 227282},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 227283},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 227289},
+            {"rarity": 6, "level": 5, "type": "ABILITY", "id": 100740},
+            {"rarity": 6, "level": 14, "type": "MAGIC", "id": 20290},
+            {"rarity": 6, "level": 14, "type": "ABILITY", "id": 100090},
+            {"rarity": 6, "level": 34, "type": "ABILITY", "id": 227284},
+            {"rarity": 6, "level": 55, "type": "ABILITY", "id": 227285},
+            {"rarity": 6, "level": 68, "type": "ABILITY", "id": 227286},
+            {"rarity": 6, "level": 72, "type": "ABILITY", "id": 207410},
+            {"rarity": 6, "level": 92, "type": "ABILITY", "id": 227281},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 227288},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 227290},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 227280},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 227294},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227292},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227293},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 227295},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100170},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 227296}
+        ]
     }
   }`;

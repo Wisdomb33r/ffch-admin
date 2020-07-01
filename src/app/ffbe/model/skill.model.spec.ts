@@ -254,6 +254,55 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]], [0, 3, 69, [1,  60]], [0, 3, 72, [900000330]]],
         "requirements": null,
         "unit_restriction": null
+    },
+        "950144": {
+        "name": "Trace of Crimson Rain",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive"],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "950145": {
+        "name": "Trace of Crimson Rain I",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive",
+            "Increase DEF, SPR and MP by 10%"
+        ],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]], [0, 3, 1, [0,  10,  0,  10,  0,  10,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "800352": {
+        "name": "Trace of Crimson Rain II",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive",
+            "Increase DEF, SPR and MP by 20%",
+            "Replace LB with Extreme Nova+ (950000012):\\n\\tPhysical damage (22.1x, ATK) to all enemies"
+        ],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]], [0, 3, 1, [0,  20,  0,  20,  0,  20,  0]], [0, 3, 72, [950000012]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
