@@ -134,7 +134,8 @@ export class CharactersService {
       innateSkills.forEach(innateSkill =>
         this.enhancementsService.searchForEnhancementsBySkillGumiId(innateSkill.id)
           .map(enhancement => enhancement.units.includes(character.gumi_id) ?
-            enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new)) : null));
+            enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new)) : null)
+      );
 
       const availableSkills = innateSkills.map(innateSkill => innateSkill.skill).concat(enhancedSkills).concat(latentSkills);
       const effect = availableSkills.map(skill =>
@@ -143,6 +144,10 @@ export class CharactersService {
         .filter(effect => !FfbeUtils.isNullOrUndefined(effect));
       entry.upgraded_limitburst_id = effect && effect.length > 0
       && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
+      entry.upgraded_limitburst_ids = effect && effect.length > 0 ? effect.map(singleEffect => singleEffect[3][0]) : null;
+      if (!FfbeUtils.isNullOrUndefined(entry.upgraded_limitburst_ids)) {
+        entry.upgraded_limitburst_ids = entry.upgraded_limitburst_ids.filter((value, index) => entry.upgraded_limitburst_ids.indexOf(value) === index);
+      }
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
     }
   }

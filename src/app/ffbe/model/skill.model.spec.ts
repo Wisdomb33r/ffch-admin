@@ -303,6 +303,68 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]], [0, 3, 1, [0,  20,  0,  20,  0,  20,  0]], [0, 3, 72, [950000012]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "230020": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 30%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (7%) per turn",
+            "Replace LB with Ho229 Type-B (900000320):\\n\\tPhysical damage (11.1x * 2 = 22.2x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [30,  30,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [7]], [0, 3, 72, [900000320]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
+        "unit_restriction": null
+    },
+    "914071": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 50%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (10%) per turn",
+            "Increase LB damage by 30%",
+            "Replace LB with Ho229 Type-B (900000320):\\n\\tPhysical damage (11.1x * 2 = 22.2x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [50,  50,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [10]], [0, 3, 68, [30]], [0, 3, 72, [900000320]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
+        "unit_restriction": null
+    },
+    "914072": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 50%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (10%) per turn",
+            "Increase LB damage by 100%",
+            "Replace LB with Ho229 Type-B (950000023):\\n\\tPhysical damage (15.2x * 2 = 30.4x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [50,  50,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [10]], [0, 3, 68, [100]], [0, 3, 72, [950000023]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
+        "unit_restriction": null
     }
   }`;
 

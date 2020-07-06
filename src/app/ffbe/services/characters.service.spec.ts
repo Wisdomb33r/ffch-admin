@@ -101,6 +101,9 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.gumi_id).toEqual(100000115);
+    expect(character.entries[100000115].upgraded_limitburst_id).toBeNull();
+    expect(character.entries[100000115].upgraded_limitburst_ids).toBeNull();
+
   }));
 
   it('should find null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
@@ -134,6 +137,8 @@ describe('CharactersService', () => {
     expect(mySpy).toHaveBeenCalledWith(227166);
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
+    expect(character.entries['100009107'].upgraded_limitburst_ids.length).toEqual(1);
+    expect(character.entries['100009107'].upgraded_limitburst_ids[0]).toEqual(900000087);
     expect(character.entries['100009107'].upgraded_limitburst_id).toEqual(900000087);
   }));
 
@@ -160,6 +165,8 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['250000107'].upgraded_limitburst_id).toEqual(900000353);
+    expect(character.entries['250000107'].upgraded_limitburst_ids.length).toEqual(1);
+    expect(character.entries['250000107'].upgraded_limitburst_ids[0]).toEqual(900000353);
   }));
 
   it('should find the correct enhanced-by-enhanced-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -205,6 +212,8 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toEqual(900000330);
+    expect(character.entries['100010007'].upgraded_limitburst_ids.length).toEqual(1);
+    expect(character.entries['100010007'].upgraded_limitburst_ids[0]).toEqual(900000330);
   }));
 
   it('should find the correct enhanced-by-latent-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -263,6 +272,9 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100016207'].upgraded_limitburst_id).toEqual(950000012);
+    expect(character.entries['100016207'].upgraded_limitburst_ids.length).toEqual(1);
+    expect(character.entries['100016207'].upgraded_limitburst_ids[0]).toEqual(950000012);
+
   }));
 
   it('should filter out enhanced skills for other characters when searching if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -309,6 +321,7 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toBeNull();
+    expect(character.entries['100010007'].upgraded_limitburst_ids).toBeNull();
   }));
 
   it('should filter out active skills when searching for enhanced limit burst ID if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -353,5 +366,56 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100009107'].upgraded_limitburst_id).toEqual(900000087);
+    expect(character.entries['100009107'].upgraded_limitburst_ids.length).toEqual(1);
+    expect(character.entries['100009107'].upgraded_limitburst_ids[0]).toEqual(900000087);
+
   }));
+
+  it('should find the all enhanced-by-enhanced-skill limit burst IDs when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const skill1: Skill = skills['100020'];
+    skill1.gumi_id = 100020;
+    const skill2: Skill = skills['230020'];
+    skill2.gumi_id = 230020;
+    const skill3: Skill = skills['914071'];
+    skill3.gumi_id = 914071;
+    const skill4: Skill = skills['914072'];
+    skill4.gumi_id = 914072;
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+
+    const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
+
+    const enhancement1 = enhancements['230020001'];
+    enhancement1.gumi_id = 230020001;
+    enhancement1.level = 1;
+    const enhancement2 = enhancements['230020002'];
+    enhancement2.gumi_id = 230020001;
+    enhancement2.level = 2;
+    const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
+      .returnValues([], [], [], [enhancement1, enhancement2]);
+
+    const loadedCharacters = service['charactersFromDataMining'];
+    loadedCharacters['310000105']['skills'] = [loadedCharacters['310000105']['skills'][0], loadedCharacters['310000105']['skills'][16]];
+
+    service.loadCharactersFromDataMining();
+    // WHEN
+    const character: Character = service.searchForCharacterByName('2B');
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledWith(218540);
+    expect(mySpy).toHaveBeenCalledWith(230020);
+    expect(mySpy).toHaveBeenCalledWith(914071);
+    expect(mySpy).toHaveBeenCalledWith(914072);
+    expect(myEnhancementsSpy).toHaveBeenCalledTimes(4);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(218540);
+    expect(myEnhancementsSpy).toHaveBeenCalledWith(230020);
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 3);
+    expect(character.entries['310000107'].upgraded_limitburst_id).toEqual(900000320);
+    expect(character.entries['310000107'].upgraded_limitburst_ids.length).toEqual(2);
+    expect(character.entries['310000107'].upgraded_limitburst_ids).toEqual([900000320, 950000023]);
+  }));
+
 });

@@ -1752,5 +1752,285 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100170},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 227296}
         ]
+    },
+    "310000105": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "2B",
+        "names": [
+            "2B",
+            "2B",
+            "2B",
+            "2B",
+            "2B",
+            "2B"
+        ],
+        "game_id": 20010,
+        "game": "NieR:Automata",
+        "roles": [
+            "Physical Attacker",
+            "Breaker"
+        ],
+        "job_id": 135,
+        "job": "YoRHa Troop",
+        "sex_id": 2,
+        "sex": "Female",
+        "tribe_id": 6,
+        "is_summonable": true,
+        "TMR": [
+            "EQUIP",
+            304001900
+        ],
+        "sTMR": [
+            "MATERIA",
+            504230010
+        ],
+        "equip": [2, 3, 4, 8, 9, 10, 13, 16, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "310000105": {
+                "compendium_id": 774,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [915, 2773, 240, 120],
+                    "MP": [49, 148, 40, 20],
+                    "ATK": [39, 119, 24, 12],
+                    "DEF": [35, 107, 16, 8],
+                    "MAG": [21, 63, 16, 8],
+                    "SPR": [30, 90, 16, 8]
+                },
+                "limitburst_id": 310000105,
+                "attack_count": 6,
+                "attack_damage": [
+                    [16, 16, 16, 16, 16, 20]
+                ],
+                "attack_frames": [12, 40, 51, 78, 96, 196],
+                "effect_frames": [10, 38, 49, 76, 94, 153, 161, 169, 177, 185, 194],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060400": 20,
+                        "290060100": 10,
+                        "290060200": 10,
+                        "290060000": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A unit of the YoRHa soldiers, a group from a faraway world made up of androids. This all-purpose combat model is capable of short-range sword attacks, and is also equipped with a \\"pod\\" sub system which allows for long-ranged attacks. YoRHa soldiers do not have names, and are instead called by their code number. Though these androids are prohibited by rule to hold emotions, 2B is comparatively the most calm and collected. Her proper name is YoRHa No. 2 Type B.",
+                        "遙遠異界中以自動步兵人形構成的「寄葉部隊」的一員。是通用戰鬥型人造人，可用劍擊進行近距離攻擊，也能利用支援系統「輔助機」進行遠距離攻擊。寄葉部隊的隊員沒有名字，全部以代號相稱。規定上禁止隊員們擁有任何情感，然而2B卻有著較為沉著冷靜的性格。正式名稱為「寄葉二號B型」。",
+                        "까마득히 먼 이계의, 자동 보병 인형으로 구성된 '요르하 부대'의 일원. 범용 전장 모델 안드로이드로, 검격을 이용한 근접 공격 및 지원 시스템 '포드'를 이용한 원거리 공격이 가능하다. 요르하 부대원은 모두 이름을 갖고 있지 않으며, 각자 기호로 불린다. 감정을 가지는 것은 금지되어 있으며, 그중에서도 2B는 특히 냉정 침착한 것으로 평판이 나 있다. 정식 명칭은 '요르하 2호 B형'.",
+                        "Une unité des troupes YoRHa, un groupe venant d'un monde lointain peuplé d'androïdes. Ce modèle de combat multi-usage est capable de frapper ses ennemis à l'aide d'attaque à l'épée de courte portée. Elle possède également un système de \\"pod\\" qui lui permet de lancer des attaques de longue portée. Les soldats YoRHa n'ont pas de noms et sont appelés par leur nom de code. Interdit de ressentir la moindre émotion, 2B reste néanmoins le plus calme et posé de tous les androïdes. Son nom complet est YoRHa N° 2 Type B.",
+                        "Eine Einheit der YoRHa-Soldaten aus einer fernen Welt, in der Androiden leben. Dieses Allzweckkampf-Modell verfügt über ein Schwert für den Nahkampf und ein \\"Pod\\"-System für den Fernkampf. YoRHa-Soldaten werden nach ihrer Codenummer benannt. Da den Androiden Emotionen verboten sind, wirkt 2B ruhig und gesammelt. Ihr korrekter Name lautet YoRHa Nr. 2 Typ B.",
+                        "Una unidad de los soldados de YoRHa, un grupo de un mundo lejano habitado por androides. Este polivalente modelo de combate es capaz de efectuar ataques con espada a corta distancia y, asimismo, está equipado con un subsistema \\"pod\\" que le permite realizar ataques a distancia. Los soldados YoRHa no tienen nombres; en su lugar, se les llama por su número de código. Por ley, estos androides tienen prohibido profesar sentimientos; sin embargo, 2B es sin duda la más calmada y serena de todos. Su nombre propio es YoRHa Núm. 2 Tipo B."
+                    ],
+                    "summon": [
+                        "YoRHa unit 2B.<br>Proceeding with mission.",
+                        "寄葉二號B型。<br>現在開始執行任務。",
+                        "요르하 2호 B형.<br>지금부터 임무를 수행한다.",
+                        "Unité YoRHa 2B.<br>Début de la mission.",
+                        "YoRHa-Einheit 2B.<br>Fahre mit Mission fort.",
+                        "Unidad YoRHa 2B.<br>Procediendo con la misión."
+                    ],
+                    "evolution": [null, null, null, null, null, null],
+                    "affinity": [
+                        "I will have many chances to act alongside you.<br>You've no reason to give me any undue respect.",
+                        "今後與你共同行動的機會還有很多，<br>叫我的名字時不需要加「小姐」。",
+                        "당신과 행동을 같이할<br>기회는 많다.<br>내 이름에 '씨'는 붙이지 않아도 괜찮아.",
+                        "J'aurai beaucoup d'occasions de me battre à tes côtés.<br>Tu n'as aucune raison de ne pas me témoigner de respect.",
+                        "An deiner Seite werde ich noch oft kämpfen.<br>Du hast mir allen Grund gegeben, dich zu respektieren.",
+                        "Habrá muchas oportunidades para trabajar juntos.<br>No hay razón para que me faltes al respeto de esa forma."
+                    ],
+                    "fusion": [
+                        "Glory to mankind.",
+                        "願人類榮耀長存。",
+                        "인류에 영광 있으라.",
+                        "Gloire à l'humanité.",
+                        "Der Menschheit zur Ehre.",
+                        "Gloria a la humanidad."
+                    ]
+                }
+            },
+            "310000106": {
+                "compendium_id": 775,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1190, 3605, 390, 195],
+                    "MP": [64, 193, 65, 32],
+                    "ATK": [51, 155, 34, 17],
+                    "DEF": [46, 140, 26, 13],
+                    "MAG": [27, 82, 26, 13],
+                    "SPR": [39, 118, 26, 13]
+                },
+                "limitburst_id": 310000106,
+                "attack_count": 6,
+                "attack_damage": [
+                    [16, 16, 16, 16, 16, 20]
+                ],
+                "attack_frames": [12, 40, 51, 78, 96, 196],
+                "effect_frames": [10, 38, 49, 76, 94, 153, 161, 169, 177, 185, 194],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300001200": 1
+                    }
+                },
+                "strings": {
+                    "description": [
+                        "A unit of the YoRHa soldiers, a group from a faraway world made up of androids. This all-purpose combat model is capable of short-range sword attacks, and is also equipped with a \\"pod\\" sub system which allows for long-ranged attacks. During her mission to take down the giant machine lifeform all others but 2B fell, she was able to carry it out thanks to assistance from 9S. Despite being comparatively calm and collected, she also has an emotional side to her.",
+                        "遙遠異界中以自動步兵人形構成的「寄葉部隊」的一員。是通用戰鬥型人造人，可用劍擊進行近距離攻擊，也能利用支援系統「輔助機」進行遠距離攻擊。在超大型機械生命體破壞作戰中，除2B以外的機體都遭到了破壞，最終2B與9S相互協助，才得以順利完成任務。2B擁有較為冷靜的性格，同時也有富有情感的一面。",
+                        "까마득히 먼 이계의, 자동 보병 인형으로 구성된 '요르하 부대'의 일원. 범용 전장 모델 안드로이드로, 검격을 이용한 근접 공격 및 지원 시스템 '포드'를 이용한 원거리 공격이 가능하다. 초대형 기계생명체 파괴 작전을 수행하기 위해 지상으로 강하하던 중 2B 이외의 기체는 모두 파괴되었지만, 9S의 도움으로 임무를 완수해냈다. 비교적 냉정한 성격이지만, 감정적인 측면도 가지고 있다.",
+                        "Une unité des troupes YoRHa, un groupe venant d'un monde lointain peuplé d'androïdes. Ce modèle de combat multi-usage est capable de frapper ses ennemis à l'aide d'attaque à l'épée de courte portée. Elle possède également un système de \\"pod\\" qui lui permet de lancer des attaques de longue portée. Lors de leur mission qui les opposa à la forme de vie mécanique géante, tous les androïdes tombèrent au combat sauf 2B, qui fut capable de mener à bien la mission grâce à l'aide de 9S. Bien qu'elle soit calme et posée, elle possède aussi un côté sensible.",
+                        "Eine Einheit der YoRHa-Soldaten aus einer fernen Welt, in der Androiden leben. Dieses Allzweckkampf-Modell verfügt über ein Schwert für den Nahkampf und ein \\"Pod\\"-System für den Fernkampf. Auf ihrer Mission, ein gigantisches Maschinenwesen auszuschalten, scheiterten alle außer 2B. Dank der Hilfe von 9S war sie erfolgreich. Zwar wirkt sie ruhig und gesammelt, hat aber auch eine emotionale Seite.",
+                        "Una unidad de los soldados de YoRHa, un grupo de un mundo lejano habitado por androides. Este polivalente modelo de combate es capaz de realizar ataques con espada a corta distancia y, además, está equipado con un subsistema \\"pod\\" que le permite efectuar ataques a larga distancia. Durante la misión de acabar con la forma de vida mecánica gigante, todos los androides fueron destruidos a excepción de 2B, que pudo cumplir su objetivo gracias a la ayuda de 9S. A pesar de ser más calmada y serena, también cuenta con un lado más emocional."
+                    ],
+                    "summon": [
+                        "Machine lifeforms are the enemy of YoRHa.<br>Do not forget this.",
+                        "我們寄葉部隊的敵人是<br>機械生命體。<br>請不要忘記。",
+                        "우리, 요르하 부대의 적은<br>기계생명체다.<br>그걸 잊지 말도록 해.",
+                        "Les formes de vie mécaniques sont les ennemis de YoRHa.<br>Ne l'oublie jamais.",
+                        "Maschinenwesen sind die Feinde der YoRHa. <br>Vergiss das nicht.",
+                        "Cualquier tipo de vida mecánica es enemigo de YoRHa.<br>No te olvides de eso."
+                    ],
+                    "evolution": [
+                        "Version up complete,<br>battle functionality upgraded.<br>Now ready for orders.",
+                        "戰鬥能力因為版本提升而上升了。<br>現在能夠更圓滿地完成任務。",
+                        "버전 업에 의한<br>전투능력 상승.<br>원활한 임무 수행 가능.",
+                        "Mise à jour terminée,<br>fonction de combat améliorée. Prête à recevoir vos ordres.",
+                        "Versionsupdate abgeschlossen,<br>Kampffunktionalität verbessert.<br>Bereit für Befehle.",
+                        "Versión completada,<br>funcionalidad en combate actualizada.<br>Esperando órdenes."
+                    ],
+                    "affinity": [
+                        "I will have many chances to act alongside you.<br>You've no reason to give me any undue respect.",
+                        "今後與你共同行動的機會還有很多，<br>叫我的名字時不需要加「小姐」。",
+                        "당신과 행동을 같이할<br>기회는 많다.<br>내 이름에 '씨'는 붙이지 않아도 괜찮아.",
+                        "J'aurai beaucoup d'occasions de me battre à tes côtés.<br>Tu n'as aucune raison de ne pas me témoigner de respect.",
+                        "An deiner Seite werde ich noch oft kämpfen.<br>Du hast mir allen Grund gegeben, dich zu respektieren.",
+                        "Habrá muchas oportunidades para trabajar juntos.<br>No hay razón para que me faltes al respeto de esa forma."
+                    ],
+                    "fusion": [
+                        "This is 2B. Nothing to report.",
+                        "這裡是2B，沒有異常。",
+                        "여기는 2B. 이상 없음.",
+                        "Ici 2B. Rien à rapporter.",
+                        "Hier ist 2B. Es gibt nichts zu berichten.",
+                        "Aquí 2B. Nada que informar."
+                    ]
+                }
+            },
+            "310000107": {
+                "compendium_id": 1385,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1582, 4793, 540, 270],
+                    "MP": [82, 249, 90, 45],
+                    "ATK": [68, 205, 65, 32],
+                    "DEF": [61, 184, 40, 20],
+                    "MAG": [36, 110, 40, 20],
+                    "SPR": [58, 175, 40, 20]
+                },
+                "limitburst_id": 310000107,
+                "attack_count": 6,
+                "attack_damage": [
+                    [16, 16, 16, 16, 16, 20]
+                ],
+                "attack_frames": [12, 40, 51, 78, 96, 196],
+                "effect_frames": [10, 38, 49, 76, 94, 153, 161, 169, 177, 185, 194],
+                "max_lb_drop": 2,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "A unit of the YoRHa soldiers, a group from a faraway world made up of androids. This all-purpose combat model is capable of short-range sword attacks, and is also equipped with a \\"pod\\" sub system which allows for long-ranged attacks. Following her mission to take down the giant machine lifeform, she joins the Resistance alongside 9S. She can be a tad rash in battle, and 9S has been known to claim that she \\"brings the battle to her enemies.\\"",
+                        "遙遠異界中以自動步兵人形構成的「寄葉部隊」一員。是通用戰鬥型人造人，可用劍擊進行近距離攻擊，也能利用支援系統「輔助機」進行遠距離攻擊。超大型機械生命體破壞完成後，和9S一同與地面上的反抗軍部隊匯合，在當地執行任務。戰鬥方面粗枝大葉，連9S也認為她的戰鬥方式「有些亂來」。",
+                        "까마득히 먼 이계의 자동 보병 인형으로 구성된 '요르하' 부대의 일원. 범용 전투 모델 안드로이드로, 검을 이용한 근접 공격 및 서포트 시스템 '포드'를 이용한 원거리 공격이 가능하다. 초대형 기계생명체를 파괴한 뒤, 9S와 함께 지상의 레지스탕스 부대와 합류하여 현지 임무를 수행했다. 전투에 관해서는 대담하게 임하는 면이 있으며, 9S 또한 '대범한 전투 스타일'이라고 평한 바 있다.",
+                        "Une unité des troupes YoRHa, un groupe venant d'un monde lointain peuplé d'androïdes. Ce modèle de combat polyvalent est capable d'infliger des attaques à l'épée à courte distance, et est également équipé d'un sous-système de « pod » qui lui permet d'infliger des dégâts à distance. Obéissant à sa mission d'éliminer toute forme de vie mécanique géante, elle rejoint la résistance aux côtés de 9S. Elle peut parfois être un peu imprudente au combat, et 9S dit souvent que ses ennemis « n'ont même pas le temps de dire ouf ».",
+                        "2B ist Angehörige des YoRHa-Trupps, einer Einheit kampftauglicher Androide aus einer fernen Welt. Dieses Allzweck-Kampfmodell beherrscht Nahkampf-Schwertattacken und ist außerdem mit einem \\"Pod\\"-Unterstützungssystem ausgestattet, das ihr Fernangriffe ermöglicht. Gemeinsam mit 9S trifft 2B dann, nach ihrer Mission, sich eines gigantischen Maschinenwesens zu entledigen, mit dem Widerstand zusammen. Im Kampf verhält sich 2B bisweilen etwas sorglos und ist auch bei 9S für ihren \\"brutalen Kampfstil\\" bekannt.",
+                        "Una unidad de los soldados de YoRHa, un grupo procedente de una tierra lejana habitada por androides. Este polivalente modelo de combate es capaz de efectuar ataques con espada a corta distancia y, asimismo, está equipado con un subsistema \\"pod\\" que le permite realizar ataques a distancia. Con la misión de exterminar toda forma de vida mecánica gigante, la androide decide unirse a la Resistencia junto con 9S. Puede llegar a ser un poco temeraria en el campo de batalla, motivo por el que 9S afirma que \\"provoca al enemigo\\"."
+                    ],
+                    "summon": [
+                        "Machine lifeforms are the enemy of YoRHa.<br>Do not forget this.",
+                        "我們寄葉部隊的敵人是機械生命體。請不要忘記。",
+                        "우리, 요르하 부대의 적은<br>기계생명체다.<br>그걸 잊지 말도록 해.",
+                        "Les formes de vie mécanique sont les ennemis des YoRHa.<br>Ne l'oubliez pas.",
+                        "Maschinenwesen sind der Feind der YoRHa.<br>Vergiss das nicht.",
+                        "Cualquier forma de vida mecánica es enemiga de YoRHa.<br>Nunca lo olvides."
+                    ],
+                    "evolution": [
+                        "Emotions are prohibited for us YoRHa androids. Regardless, I'm grateful for the power you've given me.",
+                        "我們寄葉的機體是被禁止表達自己的感情的。……對於被給予的力量，我很感謝。",
+                        "우리 요르하 기체는<br>감정을 드러내는 것이 금지되어 있다.<br>……힘을 전해 줘서, 고맙다.",
+                        "Les émotions sont interdites aux androïdes YoRHa. Mais je vous suis malgré tout reconnaissante de m'avoir accordé cette puissance.",
+                        "Emotionen sind uns YoRHa verboten ... Trotzdem möchte ich dir für diese Kraft danken.",
+                        "A los androides YoRHa no se nos permite tener sentimientos. Sin embargo, te estoy muy agradecida por el poder que me has concedido."
+                    ],
+                    "affinity": [
+                        "We'll have many opportunities to work together. So stop calling me \\"ma'am\\".",
+                        "今後與你共同行動的機會還有很多，叫我的名字時不需要加「小姐」。",
+                        "당신과 행동을 같이할<br>기회는 많다.<br>내 이름에 '씨'는 붙이지 않아도 괜찮아.",
+                        "Nous travaillerons sans doute souvent ensemble. Alors ne m'appelle pas \\"m'dame\\".",
+                        "Wir werden so viele Gelegenheiten haben, miteinander zu arbeiten. Also hör auf, mich \\"Ma'am\\" zu nennen.",
+                        "Tendremos muchas ocasiones de trabajar juntos, así que deja de llamarme \\"señorita\\"."
+                    ],
+                    "fusion": [
+                        "Fusion was successful. Will use newly improved abilities for the good of humanity.",
+                        "強化成功。提高的能力將會為了人類而使用。",
+                        "강화 성공.<br>향상한 능력은<br>인류를 위해 사용하겠다.",
+                        "Fusion réussie. Je mettrai mes nouvelles aptitudes au service du bien de l'humanité.",
+                        "Fusion erfolgreich abgeschlossen. Neu erworbene Fertigkeiten werden zum Wohl der Menschheit eingesetzt.",
+                        "La fusión se ha realizado correctamente. Con ella, los humanos gozarán de nuevas habilidades mejoradas."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 16, "type": "ABILITY", "id": 218540},
+            {"rarity": 5, "level": 24, "type": "ABILITY", "id": 218580},
+            {"rarity": 5, "level": 33, "type": "ABILITY", "id": 218550},
+            {"rarity": 5, "level": 41, "type": "ABILITY", "id": 218610},
+            {"rarity": 5, "level": 52, "type": "ABILITY", "id": 218560},
+            {"rarity": 5, "level": 70, "type": "ABILITY", "id": 218630},
+            {"rarity": 5, "level": 70, "type": "ABILITY", "id": 218650},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 218530},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 218510},
+            {"rarity": 6, "level": 19, "type": "ABILITY", "id": 218570},
+            {"rarity": 6, "level": 38, "type": "ABILITY", "id": 218590},
+            {"rarity": 6, "level": 66, "type": "ABILITY", "id": 218600},
+            {"rarity": 6, "level": 77, "type": "ABILITY", "id": 101370},
+            {"rarity": 6, "level": 82, "type": "ABILITY", "id": 218640},
+            {"rarity": 6, "level": 95, "type": "ABILITY", "id": 218620},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 218520},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 230020},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 230023},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 230024},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 230021},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100080},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 230022}
+        ]
     }
   }`;
