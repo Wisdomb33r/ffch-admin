@@ -149,6 +149,9 @@ export class CharactersService {
         entry.upgraded_limitburst_ids = entry.upgraded_limitburst_ids.filter((value, index) => entry.upgraded_limitburst_ids.indexOf(value) === index);
       }
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
+      if (!FfbeUtils.isNullOrUndefined(entry.upgraded_limitburst_ids) && entry.upgraded_limitburst_ids.length > 1) {
+        entry.upgraded_lbs = entry.upgraded_limitburst_ids.map(lbId => this.lbService.searchForLimitBurstByGumiId(lbId));
+      }
     }
   }
 

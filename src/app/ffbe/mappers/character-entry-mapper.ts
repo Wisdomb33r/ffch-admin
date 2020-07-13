@@ -19,7 +19,7 @@ export class CharacterEntryMapper {
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
-    CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
+    CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb, entry.upgraded_lbs);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
     return unite;
   }
@@ -54,10 +54,14 @@ export class CharacterEntryMapper {
     }
   }
 
-  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
+  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst, upgradedLbs: Array<LimitBurst>) {
     if (upgradedLb) {
       unite.lim_up_min = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, 0);
       unite.lim_up_max = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, upgradedLb.levels.length - 1);
+    }
+    if (upgradedLbs && upgradedLbs.length > 1) {
+      unite.lim_up_min = upgradedLbs.map(lb => '<!-- LBs -->' + CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, 0)).reduce((previousValue, currentValue) => previousValue + '<br /><br />' + currentValue);
+      unite.lim_up_max = upgradedLbs.map(lb => '<!-- LBs -->' + CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, upgradedLb.levels.length - 1)).reduce((previousValue, currentValue) => previousValue + '<br /><br />' + currentValue);
     }
   }
 

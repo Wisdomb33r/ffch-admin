@@ -11,5 +11,6 @@ export class CharacterEntry {
   public upgraded_limitburst_id: number;
   public upgraded_limitburst_ids: Array<number>;
   public upgraded_lb: LimitBurst;
+  public upgraded_lbs: Array<LimitBurst>;
   public awakening: any;
 }
