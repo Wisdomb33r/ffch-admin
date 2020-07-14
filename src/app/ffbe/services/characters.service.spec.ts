@@ -413,7 +413,7 @@ describe('CharactersService', () => {
     expect(myEnhancementsSpy).toHaveBeenCalledWith(230020);
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
-    expect(character.entries['310000107'].upgraded_limitburst_id).toEqual(900000320);
+    expect(character.entries['310000107'].upgraded_limitburst_id).toEqual(950000023);
     expect(character.entries['310000107'].upgraded_limitburst_ids.length).toEqual(2);
     expect(character.entries['310000107'].upgraded_limitburst_ids).toEqual([900000320, 950000023]);
   }));
