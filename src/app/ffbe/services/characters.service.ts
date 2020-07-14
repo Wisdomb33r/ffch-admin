@@ -137,12 +137,14 @@ export class CharactersService {
             enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new)) : null));
 
       const availableSkills = innateSkills.map(innateSkill => innateSkill.skill).concat(enhancedSkills).concat(latentSkills);
-      const effect = availableSkills.map(skill =>
+      const lbEnhancingEffects = availableSkills.map(skill =>
         FfbeUtils.isNullOrUndefined(skill) || skill.active === true ? null : skill.effects_raw
           .find(effect => effect[2] === 72 || effect[2] === 80))
         .filter(effect => !FfbeUtils.isNullOrUndefined(effect));
-      entry.upgraded_limitburst_id = effect && effect.length > 0
-      && effect[0] && effect[0].length > 3 && effect[0][3].length > 0 ? effect[0][3][0] : null;
+      entry.upgraded_limitburst_id = lbEnhancingEffects && lbEnhancingEffects.length > 0
+      && lbEnhancingEffects[lbEnhancingEffects.length - 1] && lbEnhancingEffects[lbEnhancingEffects.length - 1].length > 3
+      && lbEnhancingEffects[lbEnhancingEffects.length - 1][3].length > 0
+        ? lbEnhancingEffects[lbEnhancingEffects.length - 1][3][0] : null;
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
     }
   }
