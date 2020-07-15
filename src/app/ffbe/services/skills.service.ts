@@ -32,7 +32,7 @@ export class SkillsService {
       observables.push(this.dataMiningClientService.getSkillsDescriptions$());
       observables.push(this.dataMiningClientService.getSkillsMagicDescriptions$());
       forkJoin(observables)
-        .subscribe(data => {
+        .subscribe((data: any) => {
           this.skillsFromDataMining = {...data[0], ...data[1], ...data[2]};
           this.skillsNamesFromDataMining = {...data[3], ...data[4]};
           this.skillsDescriptionsFromDataMining = {...data[5], ...data[6]};
