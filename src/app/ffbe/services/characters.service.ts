@@ -134,7 +134,8 @@ export class CharactersService {
       innateSkills.forEach(innateSkill =>
         this.enhancementsService.searchForEnhancementsBySkillGumiId(innateSkill.id)
           .map(enhancement => enhancement.units.includes(character.gumi_id) ?
-            enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new)) : null));
+            enhancedSkills.push(this.skillsService.searchForSkillByGumiId(enhancement.skill_id_new)) : null)
+      );
 
       const availableSkills = innateSkills.map(innateSkill => innateSkill.skill).concat(enhancedSkills).concat(latentSkills);
       const lbEnhancingEffects = availableSkills.map(skill =>
