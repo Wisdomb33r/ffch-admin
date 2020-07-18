@@ -102,8 +102,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.gumi_id).toEqual(100000115);
     expect(character.entries[100000115].upgraded_limitburst_id).toBeNull();
-    expect(character.entries[100000115].upgraded_limitburst_ids).toBeNull();
-
   }));
 
   it('should find null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
@@ -137,8 +135,6 @@ describe('CharactersService', () => {
     expect(mySpy).toHaveBeenCalledWith(227166);
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
-    expect(character.entries['100009107'].upgraded_limitburst_ids.length).toEqual(1);
-    expect(character.entries['100009107'].upgraded_limitburst_ids[0]).toEqual(900000087);
     expect(character.entries['100009107'].upgraded_limitburst_id).toEqual(900000087);
   }));
 
@@ -165,8 +161,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['250000107'].upgraded_limitburst_id).toEqual(900000353);
-    expect(character.entries['250000107'].upgraded_limitburst_ids.length).toEqual(1);
-    expect(character.entries['250000107'].upgraded_limitburst_ids[0]).toEqual(900000353);
   }));
 
   it('should find the correct enhanced-by-enhanced-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -212,8 +206,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toEqual(900000330);
-    expect(character.entries['100010007'].upgraded_limitburst_ids.length).toEqual(1);
-    expect(character.entries['100010007'].upgraded_limitburst_ids[0]).toEqual(900000330);
   }));
 
   it('should find the correct enhanced-by-latent-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -272,9 +264,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100016207'].upgraded_limitburst_id).toEqual(950000012);
-    expect(character.entries['100016207'].upgraded_limitburst_ids.length).toEqual(1);
-    expect(character.entries['100016207'].upgraded_limitburst_ids[0]).toEqual(950000012);
-
   }));
 
   it('should filter out enhanced skills for other characters when searching if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -321,7 +310,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100010007'].upgraded_limitburst_id).toBeNull();
-    expect(character.entries['100010007'].upgraded_limitburst_ids).toBeNull();
   }));
 
   it('should filter out active skills when searching for enhanced limit burst ID if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -366,9 +354,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['100009107'].upgraded_limitburst_id).toEqual(900000087);
-    expect(character.entries['100009107'].upgraded_limitburst_ids.length).toEqual(1);
-    expect(character.entries['100009107'].upgraded_limitburst_ids[0]).toEqual(900000087);
-
   }));
 
   it('should find the all enhanced-by-enhanced-skill limit burst IDs when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
@@ -414,8 +399,6 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 3);
     expect(character.entries['310000107'].upgraded_limitburst_id).toEqual(950000023);
-    expect(character.entries['310000107'].upgraded_limitburst_ids.length).toEqual(2);
-    expect(character.entries['310000107'].upgraded_limitburst_ids).toEqual([900000320, 950000023]);
   }));
 
 });

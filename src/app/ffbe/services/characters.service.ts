@@ -146,14 +146,7 @@ export class CharactersService {
       && lbEnhancingEffects[lbEnhancingEffects.length - 1] && lbEnhancingEffects[lbEnhancingEffects.length - 1].length > 3
       && lbEnhancingEffects[lbEnhancingEffects.length - 1][3].length > 0
         ? lbEnhancingEffects[lbEnhancingEffects.length - 1][3][0] : null;
-      entry.upgraded_limitburst_ids = lbEnhancingEffects && lbEnhancingEffects.length > 0 ? lbEnhancingEffects.map(singleEffect => singleEffect[3][0]) : null;
-      if (!FfbeUtils.isNullOrUndefined(entry.upgraded_limitburst_ids)) {
-        entry.upgraded_limitburst_ids = entry.upgraded_limitburst_ids.filter((value, index) => entry.upgraded_limitburst_ids.indexOf(value) === index);
-      }
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
-      if (!FfbeUtils.isNullOrUndefined(entry.upgraded_limitburst_ids) && entry.upgraded_limitburst_ids.length > 1) {
-        entry.upgraded_lbs = entry.upgraded_limitburst_ids.map(lbId => this.lbService.searchForLimitBurstByGumiId(lbId));
-      }
     }
   }
 
