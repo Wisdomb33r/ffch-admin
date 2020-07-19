@@ -10,7 +10,7 @@
                         class="formules-display">
   </app-formules-display>
 
-  <div class="ajoute-obtention-display">
+  <div *ngIf="shouldDisplayObtention()" class="ajoute-obtention-display">
     <mat-checkbox [(ngModel)]="ajouteObtention" [disabled]="areMateriauxEveilPresentInFfchDB()">Ajouter l'obtention ?
     </mat-checkbox>
   </div>
