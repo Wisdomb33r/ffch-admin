@@ -10,12 +10,15 @@ import {ObjetElements} from '../model/objet/objet-elements';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
+import {Character} from '../model/character.model';
+import {CharactersService} from '../services/characters.service';
 
 export class EquipmentMapper {
 
   public static toObjet(equipment: Equipment) {
     const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
+    const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
 
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
@@ -30,7 +33,7 @@ export class EquipmentMapper {
       equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] ?
         equipment.strings.desc_short[FFBE_ENGLISH_TABLE_INDEX] :
         equipment.strings.desc_long[FFBE_ENGLISH_TABLE_INDEX],
-      null,
+      requirements,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ObjetCarac.newEmptyObjetCarac(),
@@ -129,4 +132,29 @@ export class EquipmentMapper {
     return new ObjetAlterationsEtat(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
   }
 
+  private static mapEquipmentRequirements(requirements: Array<any>): string {
+    let parsedRequirements = '';
+    if (requirements && Array.isArray(requirements) && requirements.length > 1) {
+      if (requirements[0] === 'SEX') {
+        const sexText = requirements[1] === 2 ? 'féminin' : 'masculin';
+        parsedRequirements += `Exclusif aux personnages de sexe ${sexText}`;
+      }
+      if (requirements[0] === 'UNIT_ID') {
+        parsedRequirements += 'Exclusif à ';
+        let first = true;
+        const identifiers = Array.isArray(requirements[1]) ? requirements[1] : [requirements[1]];
+        identifiers.forEach(identifier => {
+          const character: Character = CharactersService.getInstance().searchForCharacterByGumiId(identifier);
+          const separator = !first ? ', ' : '';
+          if (!character || !character.names || !character.names[FFBE_FRENCH_TABLE_INDEX]) {
+            parsedRequirements += `${separator}UNKNOWN character`;
+          } else {
+            parsedRequirements += `${separator}${character.names[FFBE_FRENCH_TABLE_INDEX]}`;
+          }
+          first = false;
+        });
+      }
+    }
+    return parsedRequirements;
+  }
 }
