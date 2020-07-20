@@ -179,6 +179,18 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 64, [50, 5]]',
       parsed: '+50% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
     },
+    {
+      effect: '[0, 3, 64, [100, [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19]]]',
+      parsed: '+100% de dégâts lors de l\'invocation d\'une chimère'
+    },
+    {
+      effect: '[0, 3, 64, [30,  0]]',
+      parsed: '+30% de dégâts lors de l\'invocation d\'une chimère'
+    },
+    {
+      effect: '[0, 3, 64, [30,  [5, 7, 13]]]',
+      parsed: '+30% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>, <a href="ffexvius_espers.php?esperid=5">Ramuh</a> et <a href="ffexvius_espers.php?esperid=16">Alexandre</a>'
+    },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {

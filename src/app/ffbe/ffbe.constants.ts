@@ -100,6 +100,7 @@ export const FFBE_MONSTER_TYPES = [
   new MonsterType(12, 'mort-vivant', 'morts-vivants'),
 ];
 export const FFBE_ESPERS = [
+  new Esper(0, null, 'une chimère'),
   new Esper(1, 1, 'Sirène'),
   new Esper(2, 2, 'Ifrit'),
   new Esper(3, 3, 'Shiva'),
