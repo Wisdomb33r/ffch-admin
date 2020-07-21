@@ -20,12 +20,13 @@ export class PassiveEsperSummonDamageIncreaseParser extends EffectParser {
       } else {
         const espers = esperId.map(singleEsperId => FFBE_ESPERS.find(e => e.gumiId === singleEsperId)).filter(esper => !FfbeUtils.isNullOrUndefined(esper));
         wordedEsper = espers.map(esper => this.getEsperLink(esper)).join(', ');
-        wordedEsper = 'de ' + FfbeUtils.replaceLastOccurenceInString(wordedEsper, ', ', ' et ');
+        wordedEsper = `de ${FfbeUtils.replaceLastOccurenceInString(wordedEsper, ', ', ' et ')}`;
       }
     } else {
-      wordedEsper = esperId === 0 ? 'd\'une chimère' : 'de ' + (esper ? this.getEsperLink(esper) : 'UNKNOWN esper');
+      const esperLink = esper ? this.getEsperLink(esper) : 'UNKNOWN esper';
+      wordedEsper = esperId === 0 ? `d\'une chimère` : `de ${esperLink}`;
     }
 
-    return '+' + effect[3][0] + '% de dégâts lors de l\'invocation ' + wordedEsper;
+    return `+${effect[3][0]}% de dégâts lors de l\'invocation ${wordedEsper}`;
   }
 }
