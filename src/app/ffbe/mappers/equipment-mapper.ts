@@ -149,7 +149,7 @@ export class EquipmentMapper {
           if (!character || !character.names || !character.names[FFBE_FRENCH_TABLE_INDEX]) {
             parsedRequirements += `${separator}UNKNOWN character`;
           } else {
-            parsedRequirements += `${separator}${character.names[FFBE_FRENCH_TABLE_INDEX]}`;
+            parsedRequirements += `${separator}<a href="ffexvius_units.php?gumiid=${character.gumi_id}">${character.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
           }
           first = false;
         });

@@ -76,13 +76,14 @@ describe('EquipmentMapper', () => {
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
     const charactersServiceMock = new CharactersServiceMock() as CharactersService;
     CharactersService['INSTANCE'] = charactersServiceMock;
     spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(character);
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.effet).toEqual('Exclusif à Rain');
+    expect(objet.effet).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>');
   });
 
   it('should parse characters identifiers requirement', () => {
@@ -94,14 +95,16 @@ describe('EquipmentMapper', () => {
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
     const character2: Character = characters['100016205'];
+    character2.gumi_id = 100016205;
     const charactersServiceMock = new CharactersServiceMock() as CharactersService;
     CharactersService['INSTANCE'] = charactersServiceMock;
     spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValues(character, character2);
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.effet).toEqual('Exclusif à Rain, Hyoh');
+    expect(objet.effet).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>, <a href="ffexvius_units.php?gumiid=100016205">Hyoh</a>');
   });
 
   it('should parse unknown character identifier requirement', () => {
