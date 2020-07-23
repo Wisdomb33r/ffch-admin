@@ -137,24 +137,29 @@ export class EquipmentMapper {
     if (requirements && Array.isArray(requirements) && requirements.length > 1) {
       if (requirements[0] === 'SEX') {
         const sexText = requirements[1] === 2 ? 'féminin' : 'masculin';
-        parsedRequirements += `Exclusif aux personnages de sexe ${sexText}`;
+        parsedRequirements = `Exclusif aux personnages de sexe ${sexText}`;
       }
       if (requirements[0] === 'UNIT_ID') {
-        parsedRequirements += 'Exclusif à ';
-        let first = true;
-        const identifiers = Array.isArray(requirements[1]) ? requirements[1] : [requirements[1]];
-        identifiers.forEach(identifier => {
-          const character: Character = CharactersService.getInstance().searchForCharacterByGumiId(identifier);
-          const separator = !first ? ', ' : '';
-          if (!character || !character.names || !character.names[FFBE_FRENCH_TABLE_INDEX]) {
-            parsedRequirements += `${separator}UNKNOWN character`;
-          } else {
-            parsedRequirements += `${separator}<a href="ffexvius_units.php?gumiid=${character.gumi_id}">${character.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
-          }
-          first = false;
-        });
+        parsedRequirements = this.parseUnitRequirement(requirements);
       }
     }
+    return parsedRequirements;
+  }
+
+  private static parseUnitRequirement(requirements: any[]) {
+    let parsedRequirements = 'Exclusif à ';
+    let first = true;
+    const identifiers = Array.isArray(requirements[1]) ? requirements[1] : [requirements[1]];
+    identifiers.forEach(identifier => {
+      const character: Character = CharactersService.getInstance().searchForCharacterByGumiId(identifier);
+      const separator = !first ? ', ' : '';
+      if (!character || !character.names || !character.names[FFBE_FRENCH_TABLE_INDEX]) {
+        parsedRequirements += `${separator}UNKNOWN character`;
+      } else {
+        parsedRequirements += `${separator}<a href="ffexvius_units.php?gumiid=${character.gumi_id}">${character.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
+      }
+      first = false;
+    });
     return parsedRequirements;
   }
 }
