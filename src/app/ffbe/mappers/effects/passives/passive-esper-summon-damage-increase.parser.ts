@@ -10,7 +10,6 @@ export class PassiveEsperSummonDamageIncreaseParser extends EffectParser {
     }
 
     const esperId = effect[3][1];
-    const esper = FFBE_ESPERS.find(e => e.gumiId === esperId);
 
     let wordedEsper = '';
 
@@ -23,6 +22,7 @@ export class PassiveEsperSummonDamageIncreaseParser extends EffectParser {
         wordedEsper = `de ${FfbeUtils.replaceLastOccurenceInString(wordedEsper, ', ', ' et ')}`;
       }
     } else {
+      const esper = FFBE_ESPERS.find(e => e.gumiId === esperId);
       const esperLink = esper ? this.getEsperLink(esper) : 'UNKNOWN esper';
       wordedEsper = esperId === 0 ? `d\'une chimère` : `de ${esperLink}`;
     }
