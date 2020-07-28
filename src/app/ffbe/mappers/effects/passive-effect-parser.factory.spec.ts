@@ -19,18 +19,7 @@ import {Character} from '../../model/character.model';
 import {CharactersService} from '../../services/characters.service';
 import {SkillsServiceMock} from '../../services/skills.service.spec';
 import {EquipmentsServiceMock} from '../../services/equipments.service.spec';
-
-class CharactersServiceMock {
-  private static INSTANCE: CharactersServiceMock = new CharactersServiceMock();
-
-  public static getInstance() {
-    return CharactersServiceMock.INSTANCE;
-  }
-
-  public searchForCharacterByGumiId(id: number): Character {
-    return null;
-  }
-}
+import {CharactersServiceMock} from '../../services/characters.service.spec';
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [

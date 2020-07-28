@@ -7,10 +7,7 @@ import {SkillsService} from './skills.service';
 import {Character} from '../model/character.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {SkillsServiceMock} from './skills.service.spec';
-import {
-  ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_TEST_DATA,
-  PASSIVE_SKILLS_TEST_DATA
-} from '../model/skill.model.spec';
+import {ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_TEST_DATA, PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
@@ -38,6 +35,18 @@ class EnhancementsServiceMock {
 class LatentSkillsServiceMock {
   public searchForLatentSkillsByCharacterGumiId(id) {
     return [];
+  }
+}
+
+export class CharactersServiceMock {
+  private static INSTANCE: CharactersServiceMock = new CharactersServiceMock();
+
+  public static getInstance() {
+    return CharactersServiceMock.INSTANCE;
+  }
+
+  public searchForCharacterByGumiId(id: number): Character {
+    return null;
   }
 }
 
