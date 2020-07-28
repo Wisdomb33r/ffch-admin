@@ -1,6 +1,7 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityCopyEffectsParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -8,7 +9,7 @@ export class AbilityCopyEffectsParser extends EffectParser {
       return 'Effet AbilityCopyEffectsParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const sourceOfEffect = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
+    const sourceOfEffect = this.getTarget(effect[0], effect[1], TargetPrepositionEnum.De);
     const targetOfEffect = this.getTargetOfCopiedEffect(effect[3][0]);
 
     const numTurns = effect[3][1];

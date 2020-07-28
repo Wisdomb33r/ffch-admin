@@ -1,6 +1,7 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {element} from 'protractor';
+import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityElementImbueParser extends EffectParser {
   private numCallsToWordEffectForIdenticalValues = 0;
@@ -21,7 +22,7 @@ export class AbilityElementImbueParser extends EffectParser {
       {name: 'Ténèbres', value: effect[3][7]},
     ];
 
-    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.De');
+    const target = this.getTarget(effect[0], effect[1], TargetPrepositionEnum.De);
 
     const turns = ` pour ${effect[3][8]} tour`;
 

@@ -26,46 +26,47 @@ export abstract class SkillEffect {
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
 
     if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Enemy) {
-      return this.getTargetEnemyText(preposition);
+      return SkillEffect.getTargetEnemyText(preposition);
     }
-    if (this.targetNumber === 3 && this.targetType === 1) {
-      return this.getTargetRandomEnemyText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Random && this.targetType === TargetTypeEnum.Enemy) {
+      return SkillEffect.getTargetRandomEnemyText(preposition);
     }
-    if (this.targetNumber === 2 && this.targetType === 1) {
-      return this.getTargetEnemiesText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Enemy) {
+      return SkillEffect.getTargetEnemiesText(preposition);
     }
-    if (this.targetNumber === 1 && this.targetType === 2) {
-      return this.getTargetAllyText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Ally) {
+      return SkillEffect.getTargetAllyText(preposition);
     }
-    if (this.targetNumber === 1 && this.targetType === 5) {
-      return this.getTargetAllyButCasterText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.AllyButCaster) {
+      return SkillEffect.getTargetAllyButCasterText(preposition);
     }
-    if (this.targetNumber === 3 && this.targetType === 2) {
-      return this.getTargetRandomAllyText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Random && this.targetType === TargetTypeEnum.Ally) {
+      return SkillEffect.getTargetRandomAllyText(preposition);
     }
-    if (this.targetNumber === 1 && this.targetType === 6) {
-      return this.getTargetAnyTargetText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Any) {
+      return SkillEffect.getTargetAnyTargetText(preposition);
     }
-    if (this.targetNumber === 2 && this.targetType === 6) {
-      return this.getTargetAnyGroupText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Any) {
+      return SkillEffect.getTargetAnyGroupText(preposition);
     }
-    if ((this.targetNumber === 0 || this.targetNumber === 1) && this.targetType === 3) {
-      return this.getTargetCasterText(preposition);
+    if ((this.targetNumber === TargetNumberEnum.Self || this.targetNumber === TargetNumberEnum.Single)
+      && this.targetType === TargetTypeEnum.Caster) {
+      return SkillEffect.getTargetCasterText(preposition);
     }
-    if (this.targetNumber === 2 && this.targetType === 2) {
-      return this.getTargetAlliesText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Ally) {
+      return SkillEffect.getTargetAlliesText(preposition);
     }
-    if (this.targetNumber === 2 && this.targetType === 5) {
-      return this.getTargetAlliesButCasterText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.AllyButCaster) {
+      return SkillEffect.getTargetAlliesButCasterText(preposition);
     }
-    if (this.targetNumber === 2 && this.targetType === 4) {
-      return this.getTargetAlliesAndEnemiesText(preposition);
+    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.AllyAndEnemy) {
+      return SkillEffect.getTargetAlliesAndEnemiesText(preposition);
     }
 
     return 'UNKNOWN target';
   }
 
-  private getTargetEnemyText(preposition: TargetPrepositionEnum): string {
+  public static getTargetEnemyText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à un adversaire';
     }
@@ -75,7 +76,7 @@ export abstract class SkillEffect {
     return 'un adversaire';
   }
 
-  private getTargetRandomEnemyText(preposition: TargetPrepositionEnum): string {
+  public static getTargetRandomEnemyText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à un adversaire au hasard';
     }
@@ -85,7 +86,7 @@ export abstract class SkillEffect {
     return 'un adversaire au hasard';
   }
 
-  private getTargetEnemiesText(preposition: TargetPrepositionEnum): string {
+  public static getTargetEnemiesText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'aux adversaires';
     }
@@ -95,7 +96,7 @@ export abstract class SkillEffect {
     return 'les adversaires';
   }
 
-  private getTargetAllyText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAllyText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à un allié';
     }
@@ -105,7 +106,7 @@ export abstract class SkillEffect {
     return 'un allié';
   }
 
-  private getTargetAllyButCasterText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAllyButCasterText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à un allié sauf le lanceur';
     }
@@ -115,7 +116,7 @@ export abstract class SkillEffect {
     return 'un allié sauf le lanceur';
   }
 
-  private getTargetRandomAllyText(preposition: TargetPrepositionEnum): string {
+  public static getTargetRandomAllyText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à un allié au hasard';
     }
@@ -125,7 +126,7 @@ export abstract class SkillEffect {
     return 'un allié au hasard';
   }
 
-  private getTargetAnyTargetText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAnyTargetText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'à une cible';
     }
@@ -135,7 +136,7 @@ export abstract class SkillEffect {
     return 'une cible';
   }
 
-  private getTargetAnyGroupText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAnyGroupText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'au groupe d\'une cible';
     }
@@ -145,7 +146,7 @@ export abstract class SkillEffect {
     return 'le groupe d\'une cible';
   }
 
-  private getTargetCasterText(preposition: TargetPrepositionEnum): string {
+  public static getTargetCasterText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'au lanceur';
     }
@@ -155,7 +156,7 @@ export abstract class SkillEffect {
     return 'le lanceur';
   }
 
-  private getTargetAlliesText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAlliesText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'aux alliés';
     }
@@ -165,7 +166,7 @@ export abstract class SkillEffect {
     return 'les alliés';
   }
 
-  private getTargetAlliesAndEnemiesText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAlliesAndEnemiesText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'aux alliés et adversaires';
     }
@@ -175,7 +176,7 @@ export abstract class SkillEffect {
     return 'les alliés et adversaires';
   }
 
-  protected getTargetAlliesButCasterText(preposition: TargetPrepositionEnum): string {
+  public static getTargetAlliesButCasterText(preposition: TargetPrepositionEnum): string {
     if (preposition === TargetPrepositionEnum.A) {
       return 'aux alliés sauf le lanceur';
     }
