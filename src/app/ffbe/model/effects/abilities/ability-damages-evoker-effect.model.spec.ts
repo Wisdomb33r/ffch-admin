@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {AbilityDamagesEvokerEffect} from './ability-damages-evoker-effect.model';
 
-describe('AbilityDamagesEvokerParser', () => {
+describe('AbilityDamagesEvokerEffect', () => {
 
   it('should parse evoker neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesEvokerParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesEvokerEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts d\'invocateur neutres de puissance 1000% (40% MAG, 60% PSY) à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesEvokerParser', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesEvokerEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque UNKNOWN à dégâts d\'invocateur de Feu, Terre, Lumière de puissance 4000% (0% MAG, 100% PSY) aux adversaires');
   });

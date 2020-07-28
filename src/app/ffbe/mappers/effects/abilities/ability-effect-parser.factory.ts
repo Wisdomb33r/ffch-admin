@@ -39,7 +39,6 @@ import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
-import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
 import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increase.parser';
@@ -230,8 +229,6 @@ export class AbilityEffectParserFactory {
         return new AbilityLbDamageIncreaseParser();
       case 123:
         return new AbilityCountersParser();
-      case 124:
-        return new AbilityDamagesEvokerParser();
       case 125:
         return new AbilityLbCrystalsParser();
       case 126:

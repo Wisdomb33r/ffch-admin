@@ -139,6 +139,13 @@ export class Skill {
     return 'Dégâts hybrides';
   }
 
+  public wordAttackAndDamageForEvokerDamages(): string {
+    if (this.attack_type !== 'None') {
+      return `Attaque UNKNOWN à dégâts d'invocateur`;
+    }
+    return `Attaque fixe à dégâts d'invocateur`;
+  }
+
   public containsEffectWithDamages(): boolean {
     if (this.effects_raw && this.effects_raw.length) {
       return this.effects_raw.filter(effect => this.isEffectWithDamage(effect)).length > 0;
