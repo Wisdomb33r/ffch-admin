@@ -8,7 +8,6 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesMagicParser} from './ability-damages-magic.parser';
 import {AbilityDamagesHybridParser} from './ability-damages-hybrid.parser';
 import {AbilityDamagesPhysicalIgnoreDefParser} from './ability-damages-physical-ignore-def.parser';
 import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore-spr.parser';
@@ -98,8 +97,6 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingPercentParser();
       case 13:
         return new AbilityDamagesPhysicalTurnDelayParser();
-      case 15:
-        return new AbilityDamagesMagicParser();
       case 16:
         return new AbilityHealingFixedParser();
       case 17:

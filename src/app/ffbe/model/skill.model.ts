@@ -107,6 +107,22 @@ export class Skill {
     return 'Dégâts physiques';
   }
 
+  public wordAttackAndDamageForMagicalDamages(): string {
+    if (this.attack_type !== 'Magic') {
+      switch (this.attack_type) {
+        case 'Physical':
+          return 'Attaque physique à dégâts magiques';
+        case 'Hybrid':
+          return 'Attaque hybride à dégâts magiques';
+        case 'None':
+          return 'Attaque fixe à dégâts magiques';
+        default:
+          return 'Attaque UNKNOWN à dégâts magiques';
+      }
+    }
+    return 'Dégâts magiques';
+  }
+
   public containsEffectWithDamages(): boolean {
     if (this.effects_raw && this.effects_raw.length) {
       return this.effects_raw.filter(effect => this.isEffectWithDamage(effect)).length > 0;
