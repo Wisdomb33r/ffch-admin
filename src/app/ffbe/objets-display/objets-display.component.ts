@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {Objet} from '../model/objet/objet.model';
-import {forkJoin, Observable, of, Subscription} from 'rxjs';
+import {forkJoin, Observable, Subscription, throwError} from 'rxjs';
 import {ObjetsComparingContainer} from '../model/objet/objets-comparing-container.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {catchError} from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class ObjetsDisplayComponent implements OnChanges, OnDestroy {
           .pipe(catchError(error => {
             this.objetsErrors.push('Erreur lors du traitement de l\'objet '
               + objet.nom + ' (' + objet.gumi_id + ') : ' + error);
-            return of(error);
+            return throwError(error);
           })));
       });
       this.subscription = forkJoin(observables).subscribe(results => {

@@ -111,6 +111,28 @@ export const MAGIC_SKILLS_TEST_DATA =
         "effects": ["Magic damage (4.95x, MAG) to one enemy"],
         "effects_raw": [[1, 1, 15, [0,  0,  0,  0,  0,  495,  0]]],
         "requirements": [["SWITCH", 18519013]]
+    },
+    "20300": {
+        "name": "Blizzaja",
+        "icon": "ability_22.png",
+        "compendium_id": 129,
+        "rarity": 7,
+        "cost": {"MP": 28},
+        "magic_type": "Black",
+        "is_sealable": true,
+        "is_reflectable": true,
+        "in_exploration": false,
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[240]],
+        "effect_frames": [[40]],
+        "move_type": 0,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Ice"],
+        "effects": ["Magic ice damage (2x, MAG) with consecutive damage increase (max. 4 times, +1x MAG each, 6x total) to all enemies"],
+        "effects_raw": [[2, 1, 72, [0,  0,  100,  100,  100,  5]]],
+        "requirements": null
     }
   }`;
 
@@ -156,6 +178,192 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects": ["Increase HP by 20%"],
         "effects_raw": [[1, 3, 1, [0,  0,  0,  0,  20,  0,  0]]],
         "requirements": null,
+        "unit_restriction": null
+    },
+    "227160": {
+        "name": "Glory of Ares",
+        "icon": "ability_77.png",
+        "compendium_id": 3057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase LB gauge by 2 per turn",
+            "Increase equipment ATK by 50% when armed with two weapons",
+            "Replace LB with Kingdom's Order (900000087):\\n\\tPhysical damage (7.05x * 2 = 14.1x, ATK) to all enemies (ignore cover)\\n\\tReduce resistance to Lightning, Wind and Light by 50% for 3 turns to all enemies\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tGain Greased Lightning (501980), Quickbolt Blade (501970) and Swiftwind Blade (501960) for 3 turns"
+        ],
+        "effects_raw": [[0, 3, 33, [200]], [0, 3, 69, [1,  50]], [0, 3, 72, [900000087]]],
+        "requirements": [["EQUIP", 504213800], ["EQUIP", 303004500]],
+        "unit_restriction": null
+    },
+    "234232": {
+        "name": "Will to Change the Future",
+        "icon": "ability_41.png",
+        "compendium_id": 8243,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF and MP by 20%",
+            "Increase the damage of Aeroga Rain (234216), Blasting Arrow (234210), Drilling Arrow (234211), Giant Drop (Amanojaku) (234214), Hallowed Arrow (234212), Head Twister (Pulse Knight) (234220), Holy Rain (234218), Snort (Typhon) (234224) and Stonga Rain (234217) by (8.5x)",
+            "Replace LB with Ultima Arrow (900000353) for 2 turns if HP is below 21%:\\n\\tMagic damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)\\n\\tReduce resistance to Wind, Earth and Light by 120% for 3 turns to all enemies\\n\\tFill esper gauge by 10\\n\\tIncrease damage of Aeroga Rain (234216), Blasting Arrow (234210), Drilling Arrow (234211), Giant Drop (Amanojaku) (234214), Hallowed Arrow (234212), Head Twister (Pulse Knight) (234220), Holy Rain (234218), Snort (Typhon) (234224) and Stonga Rain (234217) by 1500% for 4 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  0,  0,  20,  0]], [0, 3, 73, [[234210,  234211,  234212,  234214,  234216,  234217,  234218,  234220,  234224], 0, 0, 850]], [0, 3, 80, [900000353,  99999,  21,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "707785": {
+        "name": "Kingdom's Hero",
+        "icon": "ability_91.png",
+        "compendium_id": 3682,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF, SPR, HP and MP by 20%",
+            "Increase LB gauge by 2 per turn",
+            "Increase the limit burst gauge fill rate by 50%",
+            "Increase equipment ATK by 10% when armed with two weapons"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]], [0, 3, 69, [1,  10]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "707786": {
+        "name": "Kingdom's Hero",
+        "icon": "ability_91.png",
+        "compendium_id": 3682,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF, SPR, HP and MP by 20%",
+            "Increase LB gauge by 2 per turn",
+            "Increase the limit burst gauge fill rate by 50%",
+            "Increase equipment ATK by 60% when armed with two weapons",
+            "Replace LB with Darkness Purging Blades of Azure Crimson (900000330):\\n\\tPhysical damage (15.2x, ATK) to all enemies\\n\\tReduce resistance to Fire and Ice by 76% for 3 turns to all enemies\\n\\tIncrease damage of Octostrike Blade skills  [(228081) / +1 (707783) / +2 (707784)] by 1400% for 2 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]], [0, 3, 69, [1,  60]], [0, 3, 72, [900000330]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+        "950144": {
+        "name": "Trace of Crimson Rain",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive"],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "950145": {
+        "name": "Trace of Crimson Rain I",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive",
+            "Increase DEF, SPR and MP by 10%"
+        ],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]], [0, 3, 1, [0,  10,  0,  10,  0,  10,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "800352": {
+        "name": "Trace of Crimson Rain II",
+        "icon": "ability_77.png",
+        "compendium_id": 353,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Gain Trace of Crimson Rain (950146) at the start of the turn if Aldore King Rain is alive",
+            "Increase DEF, SPR and MP by 20%",
+            "Replace LB with Extreme Nova+ (950000012):\\n\\tPhysical damage (22.1x, ATK) to all enemies"
+        ],
+        "effects_raw": [[0, 3, 10002, [100023205,  3,  950146,  0]], [0, 3, 1, [0,  20,  0,  20,  0,  20,  0]], [0, 3, 72, [950000012]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "230020": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 30%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (7%) per turn",
+            "Replace LB with Ho229 Type-B (900000320):\\n\\tPhysical damage (11.1x * 2 = 22.2x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [30,  30,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [7]], [0, 3, 72, [900000320]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
+        "unit_restriction": null
+    },
+    "914071": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 50%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (10%) per turn",
+            "Increase LB damage by 30%",
+            "Replace LB with Ho229 Type-B (900000320):\\n\\tPhysical damage (11.1x * 2 = 22.2x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [50,  50,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [10]], [0, 3, 68, [30]], [0, 3, 72, [900000320]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
+        "unit_restriction": null
+    },
+    "914072": {
+        "name": "YoRHa No. 2 Type B",
+        "icon": "ability_76.png",
+        "compendium_id": 5057,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK and DEF by 50%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Recover MP (10%) per turn",
+            "Increase LB damage by 100%",
+            "Replace LB with Ho229 Type-B (950000023):\\n\\tPhysical damage (15.2x * 2 = 30.4x, ATK) to all enemies (ignore cover)\\n\\tReduce ATK, DEF, MAG and SPR by 74% for 3 turns to all enemies\\n\\tReduce damage taken from physical attacks taken by 20% to caster for 5 turns"
+        ],
+        "effects_raw": [[0, 3, 1, [50,  50,  0,  0,  0,  0,  0]], [0, 3, 13, [100,  25,  2]], [0, 3, 32, [10]], [0, 3, 68, [100]], [0, 3, 72, [950000023]]],
+        "requirements": [["EQUIP", 304001900], ["EQUIP", 504230010]],
         "unit_restriction": null
     }
   }`;
@@ -424,6 +632,29 @@ export const ABILITY_SKILLS_TEST_DATA =
         ],
         "effects": ["Hybrid lightning and wind damage (13x, ATK & MAG) to all enemies"],
         "effects_raw": [[2, 1, 40, [0,  0,  0,  0,  0,  0,  0,  0,  1300,  1300]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+        "232639": {
+        "name": "Mystic Cross",
+        "icon": "ability_25.png",
+        "compendium_id": 6994,
+        "rarity": 8,
+        "cost": {"MP": 70},
+        "attack_count": [7, 1],
+        "attack_damage": [[14,  14,  14,  14,  14,  14,  16], [100]],
+        "attack_frames": [[42,  62,  82,  102,  122,  142,  162], [182]],
+        "effect_frames": [[76,  40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Wind"],
+        "effects": [
+            "Magic wind damage (4x, MAG) to all enemies",
+            "Magic wind damage (12x, MAG) with consecutive damage increase (max. 6 times, +5x MAG each, 42x total) to all enemies"
+        ],
+        "effects_raw": [[2, 1, 15, [0,  0,  0,  0,  0,  400,  0]], [2, 1, 72, [0,  0,  700,  500,  500,  7]]],
         "requirements": null,
         "unit_restriction": null
     }

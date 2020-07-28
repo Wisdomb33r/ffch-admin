@@ -56,6 +56,10 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
       && this.materiauxEveilFromFfch.ingredients.length > 0;
   }
 
+  public shouldDisplayObtention(): boolean {
+    return this.unite.stars === 6;
+  }
+
   public isMateriauxEveilErrorsDisplayed(): boolean {
     return Array.isArray(this.materiauxEveilErrors) && this.materiauxEveilErrors.length > 0;
   }

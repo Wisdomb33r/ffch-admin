@@ -9,6 +9,7 @@ export class Equipment {
   type_id: number;
   is_twohanded: boolean;
   dmg_variance: Array<number>;
+  requirements: Array<any>;
   skills: Array<number>;
   dmSkills: Array<Skill>;
   effects: Array<string>;

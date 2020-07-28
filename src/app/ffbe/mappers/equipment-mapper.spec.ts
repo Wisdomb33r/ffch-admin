@@ -3,6 +3,10 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {EQUIPMENTS_TEST_DATA} from '../model/equipment/equipment.model.spec';
 import {EquipmentMapper} from './equipment-mapper';
 import {Equipment} from '../model/equipment/equipment.model';
+import {CharactersServiceMock} from '../services/characters.service.spec';
+import {CharactersService} from '../services/characters.service';
+import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
+import {Character} from '../model/character.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
@@ -37,5 +41,85 @@ describe('EquipmentMapper', () => {
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
     expect(objet.description).toEqual('Un couteau en bronze possédant un seul côté tranchant.');
+  });
+
+  it('should parse female character requirement', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.requirements = ['SEX', 2];
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.effet).toEqual('Exclusif aux personnages de sexe féminin');
+  });
+
+  it('should parse male character requirement', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.requirements = ['SEX', 1];
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.effet).toEqual('Exclusif aux personnages de sexe masculin');
+  });
+
+  it('should parse character identifier requirement', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.requirements = ['UNIT_ID', 100000102];
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(character);
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.effet).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>');
+  });
+
+  it('should parse characters identifiers requirement', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.requirements = ['UNIT_ID', [100000102, 100016205]];
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
+    const character2: Character = characters['100016205'];
+    character2.gumi_id = 100016205;
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValues(character, character2);
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.effet).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>, <a href="ffexvius_units.php?gumiid=100016205">Hyoh</a>');
+  });
+
+  it('should parse unknown character identifier requirement', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.requirements = ['UNIT_ID', [100000102, 100016205]];
+
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(null);
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.effet).toEqual('Exclusif à UNKNOWN character, UNKNOWN character');
   });
 });
