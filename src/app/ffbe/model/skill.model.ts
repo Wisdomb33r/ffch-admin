@@ -123,6 +123,22 @@ export class Skill {
     return 'Dégâts magiques';
   }
 
+  public wordAttackAndDamageForHybridDamages(): string {
+    if (this.attack_type !== 'Hybrid') {
+      switch (this.attack_type) {
+        case 'Physical':
+          return 'Attaque physique à dégâts hybrides';
+        case 'Magic':
+          return 'Attaque magique à dégâts hybrides';
+        case 'None':
+          return 'Attaque fixe à dégâts hybrides';
+        default:
+          return 'Attaque UNKNOWN à dégâts hybrides';
+      }
+    }
+    return 'Dégâts hybrides';
+  }
+
   public containsEffectWithDamages(): boolean {
     if (this.effects_raw && this.effects_raw.length) {
       return this.effects_raw.filter(effect => this.isEffectWithDamage(effect)).length > 0;

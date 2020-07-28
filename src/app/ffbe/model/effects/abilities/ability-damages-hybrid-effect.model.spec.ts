@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {AbilityDamagesHybridEffect} from './ability-damages-hybrid-effect.model';
 
-describe('AbilityDamagesHybridParser', () => {
+describe('AbilityDamagesHybridEffect', () => {
 
   it('should parse hybrid neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts hybrides neutres de puissance 300% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts hybrides de Ténèbres de puissance 400% aux adversaires (+50% précision)');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque physique à dégâts hybrides de Glace, Foudre, Vent de puissance 250% à un adversaire');
   });
@@ -46,7 +46,7 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = ['Water'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts hybrides d\'Eau de puissance 100% aux adversaires');
   });
@@ -58,7 +58,7 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque UNKNOWN à dégâts hybrides de Ténèbres de puissance 100% à un adversaire');
   });
@@ -70,9 +70,9 @@ describe('AbilityDamagesHybridParser', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = new AbilityDamagesHybridEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
     // THEN
-    expect(s).toEqual('Effet AbilityDamagesHybridParser: Dégâts hybrides asymétriques non prévus');
+    expect(s).toEqual('Effet AbilityDamagesHybridEffect: Dégâts hybrides asymétriques non prévus');
   });
 
 });
