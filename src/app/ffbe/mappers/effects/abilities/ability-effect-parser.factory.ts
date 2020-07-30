@@ -13,9 +13,7 @@ import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
 import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
 import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
-import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
-import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
@@ -130,8 +128,6 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesFixedParser();
       case 42:
         return new AbilityDamagesPhysicalComboParser();
-      case 43:
-        return new AbilityDamagesPhysicalCriticalHitParser();
       case 44:
         return new AbilityMagicMultipleActivationParser();
       case 45:
@@ -202,8 +198,6 @@ export class AbilityEffectParserFactory {
         return new AbilitySkillActivationParser();
       case 101:
         return new AbilityMitigationsParser();
-      case 102:
-        return new AbilityDamagesPhysicalDefScalingParser();
       case 111:
         return new AbilityDebuffsCureParser();
       case 112:

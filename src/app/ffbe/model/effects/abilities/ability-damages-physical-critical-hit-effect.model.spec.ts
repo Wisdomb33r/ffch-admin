@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesPhysicalCriticalHitParser', () => {
+describe('AbilityDamagesPhysicalCriticalHitEffect', () => {
 
   it('should parse critical physical neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesPhysicalCriticalHitParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques critiques neutres de puissance 500% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesPhysicalCriticalHitParser', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts physiques critiques de Glace, Foudre, Vent de puissance 500% à un adversaire (-25% précision)');
   });
