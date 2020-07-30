@@ -15,7 +15,6 @@ import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-
 import {AbilityDamagesMagicConsecutiveIncreaseParser} from './ability-damages-magic-consecutive-increase.parser';
 import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
-import {AbilityDamagesPhysicalConsecutiveIncreaseParser} from './ability-damages-physical-consecutive-increase.parser';
 import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
 import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
@@ -228,8 +227,6 @@ export class AbilityEffectParserFactory {
         return new AbilityCountersParser();
       case 125:
         return new AbilityLbCrystalsParser();
-      case 126:
-        return new AbilityDamagesPhysicalConsecutiveIncreaseParser();
       case 127:
         return new AbilityBarriersParser();
       case 130:

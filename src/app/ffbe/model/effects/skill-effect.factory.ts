@@ -4,6 +4,7 @@ import {AbilityDamagesMagicEffect} from './abilities/ability-damages-magic-effec
 import {AbilityDamagesHybridEffect} from './abilities/ability-damages-hybrid-effect.model';
 import {AbilityDamagesEvokerEffect} from './abilities/ability-damages-evoker-effect.model';
 import {AbilityDamagesPhysicalIgnoreDefEffect} from './abilities/ability-damages-physical-ignore-def-effect.model';
+import {AbilityDamagesPhysicalConsecutiveIncreaseEffect} from './abilities/ability-damages-physical-consecutive-increase-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -18,6 +19,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 124:
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 126:
+        return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }

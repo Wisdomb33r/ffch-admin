@@ -1,5 +1,5 @@
 import {Skill} from '../../skill.model';
-import {AbilityDamagesPhysicalEffect} from './ability-damages-physical-effect.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
 describe('AbilityDamagesPhysicalEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamagesPhysicalEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = new AbilityDamagesPhysicalEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres de puissance 700% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesPhysicalEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = new AbilityDamagesPhysicalEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 400% aux adversaires');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamagesPhysicalEffect', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = new AbilityDamagesPhysicalEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts physiques de Glace, Foudre, Vent de puissance 500% à un adversaire');
   });
@@ -46,7 +46,7 @@ describe('AbilityDamagesPhysicalEffect', () => {
     fakeSkill.element_inflict = ['Water'];
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = new AbilityDamagesPhysicalEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque hybride à dégâts physiques d\'Eau de puissance 700% aux adversaires');
   });
@@ -58,7 +58,7 @@ describe('AbilityDamagesPhysicalEffect', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = new AbilityDamagesPhysicalEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque UNKNOWN à dégâts physiques de Ténèbres de puissance 700% à un adversaire');
   });

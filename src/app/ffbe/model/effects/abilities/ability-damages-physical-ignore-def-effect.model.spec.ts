@@ -1,5 +1,5 @@
 import {Skill} from '../../skill.model';
-import {AbilityDamagesPhysicalIgnoreDefEffect} from './ability-damages-physical-ignore-def-effect.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
 describe('AbilityDamagesPhysicalIgnoreDefEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamagesPhysicalIgnoreDefEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = new AbilityDamagesPhysicalIgnoreDefEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres de puissance 400% (ignore 30% DÉF, 571% total) à un adversaire (ignore les couvertures)');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesPhysicalIgnoreDefEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = new AbilityDamagesPhysicalIgnoreDefEffect(effect[0], effect[1], effect[2], effect[3]).wordEffect(fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 500% (ignore 50% DÉF, 1000% total) aux adversaires (ignore les couvertures)');
   });
