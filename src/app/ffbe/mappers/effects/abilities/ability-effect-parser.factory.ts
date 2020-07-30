@@ -15,7 +15,6 @@ import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-comb
 import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
-import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -32,7 +31,6 @@ import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
-import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increase.parser';
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
@@ -80,8 +78,6 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsResistanceParser();
       case 8:
         return new AbilityHealingTurnSplitParser();
-      case 9:
-        return new AbilityDamagesPercentParser();
       case 10:
         return new AbilityDamagesDrainParser();
       case 11:
@@ -200,8 +196,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMitigationsParser();
       case 111:
         return new AbilityDebuffsCureParser();
-      case 112:
-        return new AbilityDamagesOrDeathParser();
       case 118:
         return new AbilitySingleAllyCoversParser();
       case 119:

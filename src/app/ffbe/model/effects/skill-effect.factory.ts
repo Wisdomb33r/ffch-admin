@@ -10,12 +10,16 @@ import {AbilityDamagesMagicIgnoreSprEffect} from './abilities/ability-damages-ma
 import {AbilityDamagesMagicSprScalingEffect} from './abilities/ability-damages-magic-spr-scaling-effect.model';
 import {AbilityDamagesPhysicalCriticalHitEffect} from './abilities/ability-damages-physical-critical-hit-effect.model';
 import {AbilityDamagesPhysicalDefScalingEffect} from './abilities/ability-damages-physical-def-scaling-effect.model';
+import {AbilityDamagesPercentEffect} from './abilities/ability-damages-percent-effect.model';
+import {AbilityDamagesOrDeathEffect} from './abilities/ability-damages-or-death-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
     switch (effectRaw[2]) {
       case 1:
         return new AbilityDamagesPhysicalEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 9:
+        return new AbilityDamagesPercentEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 15:
         return new AbilityDamagesMagicEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
@@ -32,6 +36,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalDefScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 103:
         return new AbilityDamagesMagicSprScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 112:
+        return new AbilityDamagesOrDeathEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 124:
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 126:

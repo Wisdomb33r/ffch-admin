@@ -15,12 +15,16 @@ export abstract class SkillEffect {
 
   protected abstract get effectName(): string;
 
-  public wordEffect(skill: Skill) {
+  public wordEffect(skill: Skill): string {
     if (this.parameterError) {
-      return `Effet ${this.effectName} inconnu: Mauvaise liste de paramètres`;
+      return this.wordBadParameterText();
     } else {
       return this.wordEffectImpl(skill);
     }
+  }
+
+  public wordBadParameterText(): string {
+    return `Effet ${this.effectName} inconnu: Mauvaise liste de paramètres`;
   }
 
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
