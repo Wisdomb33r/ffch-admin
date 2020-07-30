@@ -12,7 +12,6 @@ import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore
 import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
 import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
-import {AbilityDamagesMagicConsecutiveIncreaseParser} from './ability-damages-magic-consecutive-increase.parser';
 import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
@@ -177,8 +176,6 @@ export class AbilityEffectParserFactory {
         return new AbilityBerserkInflictionParser();
       case 70:
         return new AbilityDamagesMagicIgnoreSprParser();
-      case 72:
-        return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 84:

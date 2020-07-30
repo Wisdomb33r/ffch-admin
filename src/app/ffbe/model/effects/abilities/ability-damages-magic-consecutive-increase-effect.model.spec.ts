@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesMagicConsecutiveIncreaseParser', () => {
+describe('AbilityDamagesMagicConsecutiveIncreaseEffect', () => {
 
   it('should parse magic neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesMagicConsecutiveIncreaseParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques neutres de puissance 550% (+250% par utilisation successive, 4x, max 1550%) à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesMagicConsecutiveIncreaseParser', () => {
     fakeSkill.element_inflict = ['Earth'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts magiques de Terre de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
   });
