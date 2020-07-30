@@ -6,6 +6,8 @@ import {AbilityDamagesEvokerEffect} from './abilities/ability-damages-evoker-eff
 import {AbilityDamagesPhysicalIgnoreDefEffect} from './abilities/ability-damages-physical-ignore-def-effect.model';
 import {AbilityDamagesPhysicalConsecutiveIncreaseEffect} from './abilities/ability-damages-physical-consecutive-increase-effect.model';
 import {AbilityDamagesMagicConsecutiveIncreaseEffect} from './abilities/ability-damages-magic-consecutive-increase-effect.model';
+import {AbilityDamagesMagicIgnoreSprEffect} from './abilities/ability-damages-magic-ignore-spr-effect.model';
+import {AbilityDamagesMagicSprScalingEffect} from './abilities/ability-damages-magic-spr-scaling-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -18,8 +20,12 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalIgnoreDefEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 70:
+        return new AbilityDamagesMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
         return new AbilityDamagesMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 103:
+        return new AbilityDamagesMagicSprScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 124:
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 126:

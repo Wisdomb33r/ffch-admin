@@ -8,7 +8,6 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore-spr.parser';
 import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
 import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
@@ -16,7 +15,6 @@ import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-comb
 import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
-import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
 import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
@@ -174,8 +172,6 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingFixedParser();
       case 68:
         return new AbilityBerserkInflictionParser();
-      case 70:
-        return new AbilityDamagesMagicIgnoreSprParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 84:
@@ -208,8 +204,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMitigationsParser();
       case 102:
         return new AbilityDamagesPhysicalDefScalingParser();
-      case 103:
-        return new AbilityDamagesMagicSprScalingParser();
       case 111:
         return new AbilityDebuffsCureParser();
       case 112:

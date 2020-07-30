@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesMagicIgnoreSprParser', () => {
+describe('AbilityDamagesMagicIgnoreSprEffect', () => {
 
   it('should parse magic neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesMagicIgnoreSprParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques neutres de puissance 400% (ignore 30% PSY, 571% total) à un adversaire (ignore les reflets)');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesMagicIgnoreSprParser', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts magiques de Feu, Terre, Lumière de puissance 500% (ignore 50% PSY, 1000% total) aux adversaires (ignore les reflets)');
   });

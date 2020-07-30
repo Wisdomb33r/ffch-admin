@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesMagicSprScalingParser', () => {
+describe('AbilityDamagesMagicSprScalingEffect', () => {
 
   it('should parse magic neutral damages scaling on SPR', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesMagicSprScalingParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques neutres calculés sur la PSY de puissance 300% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesMagicSprScalingParser', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque physique à dégâts magiques de Glace, Foudre, Vent calculés sur la PSY de puissance 500% aux adversaires');
   });
