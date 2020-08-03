@@ -1,5 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
+import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityEnemyScanParser extends EffectParser {
   parse(effect: Array<any>, skill: Skill): string {
@@ -8,7 +9,7 @@ export class AbilityEnemyScanParser extends EffectParser {
       return 'Effet AbilityEnemyScanParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    const target = this.getTarget(effect[0], effect[1], TargetPrepositionEnum.None);
 
     return `Permet d'obtenir des infos sur ${target}`;
   }

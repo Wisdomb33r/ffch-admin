@@ -1,5 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
+import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityCoversParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -13,7 +14,7 @@ export class AbilityCoversParser extends EffectParser {
     const pluralForm = numTurns > 1 ? 's' : '';
     const turns = ` pour ${numTurns} tour${pluralForm}`;
 
-    const target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    const target = this.getTarget(effect[0], effect[1], TargetPrepositionEnum.None);
 
     const chances = effect[3][4];
 

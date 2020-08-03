@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesMagicParser', () => {
+describe('AbilityDamagesMagicEffect', () => {
 
   it('should parse magic neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesMagicParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques neutres de puissance 300% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesMagicParser', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts magiques de Feu, Terre, Lumière de puissance 400% aux adversaires');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamagesMagicParser', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque physique à dégâts magiques de Glace, Foudre, Vent de puissance 500% à un adversaire');
   });
@@ -46,7 +46,7 @@ describe('AbilityDamagesMagicParser', () => {
     fakeSkill.element_inflict = ['Water'];
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque hybride à dégâts magiques d\'Eau de puissance 200% aux adversaires');
   });
@@ -58,7 +58,7 @@ describe('AbilityDamagesMagicParser', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque UNKNOWN à dégâts magiques de Ténèbres de puissance 200% à un adversaire');
   });

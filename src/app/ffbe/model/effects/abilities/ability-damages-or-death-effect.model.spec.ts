@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesOrDeathParser', () => {
+describe('AbilityDamagesOrDeathEffect', () => {
 
   it('should parse death or physical neutral damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesOrDeathParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Inflige Mort (40%) ou 80% de chance d\'infliger des dégâts physiques neutres de puissance 400% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesOrDeathParser', () => {
     fakeSkill.element_inflict = ['Fire'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Inflige Mort (40%) ou des dégâts physiques de Feu de puissance 400% (ignore 50% DÉF, 800% total) à un adversaire');
   });

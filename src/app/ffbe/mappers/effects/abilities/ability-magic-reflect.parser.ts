@@ -1,5 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
+import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityMagicReflectParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -7,9 +8,9 @@ export class AbilityMagicReflectParser extends EffectParser {
       return 'Effet AbilityMagicReflectParser inconnu: Mauvaise liste de paramètres';
     }
 
-    let target = this.getTarget(effect[0], effect[1], 'TargetWithPreposition.None');
+    let target = this.getTarget(effect[0], effect[1], TargetPrepositionEnum.None);
     if (skill.isActivatedByPassiveSkill && effect[0] === 1 && effect[1] === 2) {
-      target = this.getTarget(0, 3, 'TargetWithPreposition.None');
+      target = this.getTarget(0, 3, TargetPrepositionEnum.None);
     }
     const numReflect = effect[3][1];
     const numTurns = effect[3][2];

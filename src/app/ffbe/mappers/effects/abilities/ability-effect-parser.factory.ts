@@ -8,24 +8,13 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesPhysicalParser} from './ability-damages-physical.parser';
-import {AbilityDamagesMagicParser} from './ability-damages-magic.parser';
-import {AbilityDamagesHybridParser} from './ability-damages-hybrid.parser';
-import {AbilityDamagesPhysicalIgnoreDefParser} from './ability-damages-physical-ignore-def.parser';
-import {AbilityDamagesMagicIgnoreSprParser} from './ability-damages-magic-ignore-spr.parser';
 import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
 import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
-import {AbilityDamagesMagicConsecutiveIncreaseParser} from './ability-damages-magic-consecutive-increase.parser';
 import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
-import {AbilityDamagesPhysicalConsecutiveIncreaseParser} from './ability-damages-physical-consecutive-increase.parser';
-import {AbilityDamagesPhysicalCriticalHitParser} from './ability-damages-physical-critical-hit.parser';
 import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
-import {AbilityDamagesMagicSprScalingParser} from './ability-damages-magic-spr-scaling.parser';
-import {AbilityDamagesPhysicalDefScalingParser} from './ability-damages-physical-def-scaling.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
-import {AbilityDamagesOrDeathParser} from './ability-damages-or-death.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -42,8 +31,6 @@ import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
-import {AbilityDamagesEvokerParser} from './ability-damages-evoker.parser';
-import {AbilityDamagesPercentParser} from './ability-damages-percent.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increase.parser';
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
@@ -77,8 +64,6 @@ import {AbilityMagIncreaseNextAction} from './ability-mag-increase-next-action.p
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
-      case 1:
-        return new AbilityDamagesPhysicalParser();
       case 2:
         return new AbilityHealingParser();
       case 3:
@@ -93,16 +78,12 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsResistanceParser();
       case 8:
         return new AbilityHealingTurnSplitParser();
-      case 9:
-        return new AbilityDamagesPercentParser();
       case 10:
         return new AbilityDamagesDrainParser();
       case 11:
         return new AbilityHealingPercentParser();
       case 13:
         return new AbilityDamagesPhysicalTurnDelayParser();
-      case 15:
-        return new AbilityDamagesMagicParser();
       case 16:
         return new AbilityHealingFixedParser();
       case 17:
@@ -113,8 +94,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMitigationsParser();
       case 20:
         return new AbilityNormalAttackModifierIncreaseParser();
-      case 21:
-        return new AbilityDamagesPhysicalIgnoreDefParser();
       case 24:
         return new AbilityStatsModificationParser();
       case 25:
@@ -141,14 +120,10 @@ export class AbilityEffectParserFactory {
         return new AbilityDeathInflictionParser();
       case 37:
         return new AbilityItemStealParser();
-      case 40:
-        return new AbilityDamagesHybridParser();
       case 41:
         return new AbilityDamagesFixedParser();
       case 42:
         return new AbilityDamagesPhysicalComboParser();
-      case 43:
-        return new AbilityDamagesPhysicalCriticalHitParser();
       case 44:
         return new AbilityMagicMultipleActivationParser();
       case 45:
@@ -189,10 +164,6 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingFixedParser();
       case 68:
         return new AbilityBerserkInflictionParser();
-      case 70:
-        return new AbilityDamagesMagicIgnoreSprParser();
-      case 72:
-        return new AbilityDamagesMagicConsecutiveIncreaseParser();
       case 81:
         return new AbilityDamagesPhysicalHpSacrificeParser();
       case 84:
@@ -223,14 +194,8 @@ export class AbilityEffectParserFactory {
         return new AbilitySkillActivationParser();
       case 101:
         return new AbilityMitigationsParser();
-      case 102:
-        return new AbilityDamagesPhysicalDefScalingParser();
-      case 103:
-        return new AbilityDamagesMagicSprScalingParser();
       case 111:
         return new AbilityDebuffsCureParser();
-      case 112:
-        return new AbilityDamagesOrDeathParser();
       case 118:
         return new AbilitySingleAllyCoversParser();
       case 119:
@@ -239,12 +204,8 @@ export class AbilityEffectParserFactory {
         return new AbilityLbDamageIncreaseParser();
       case 123:
         return new AbilityCountersParser();
-      case 124:
-        return new AbilityDamagesEvokerParser();
       case 125:
         return new AbilityLbCrystalsParser();
-      case 126:
-        return new AbilityDamagesPhysicalConsecutiveIncreaseParser();
       case 127:
         return new AbilityBarriersParser();
       case 130:
