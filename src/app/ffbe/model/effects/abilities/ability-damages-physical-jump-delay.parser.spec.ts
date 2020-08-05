@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesPhysicalJumpDelayParser', () => {
+describe('AbilityDamagesPhysicalJumpDelayEffect', () => {
 
   it('should parse physical neutral jump damages', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesPhysicalJumpDelayParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres sautés à activation automatique de puissance 250% avec délai de 1 tour à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesPhysicalJumpDelayParser', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts physiques de Feu, Terre, Lumière sautés à activation automatique de puissance 300% avec délai de 2 tours à un adversaire');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamagesPhysicalJumpDelayParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres sautés à activation manuelle de puissance 850% avec délai de 1 tour à un adversaire');
   });

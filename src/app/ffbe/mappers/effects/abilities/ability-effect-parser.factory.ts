@@ -10,10 +10,8 @@ import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-incre
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
-import {AbilityDamagesPhysicalTurnDelayParser} from './ability-damages-physical-turn-delay.parser';
 import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
-import {AbilityDamagesPhysicalJumpDelayParser} from './ability-damages-physical-jump-delay.parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
@@ -82,8 +80,6 @@ export class AbilityEffectParserFactory {
         return new AbilityDamagesDrainParser();
       case 11:
         return new AbilityHealingPercentParser();
-      case 13:
-        return new AbilityDamagesPhysicalTurnDelayParser();
       case 16:
         return new AbilityHealingFixedParser();
       case 17:
@@ -137,9 +133,8 @@ export class AbilityEffectParserFactory {
       case 52:
         if (effectId1 === 0) {
           return new AbilityMagicMultipleActivationParser();
-        } else {
-          return new AbilityDamagesPhysicalJumpDelayParser();
         }
+        break;
       case 53:
         return new AbilitySkillMultipleActivationParser();
       case 54:
@@ -214,8 +209,6 @@ export class AbilityEffectParserFactory {
         return new AbilityDelayedSkillParser();
       case 133:
         return new AbilityDebuffsStealParser();
-      case 134:
-        return new AbilityDamagesPhysicalJumpDelayParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
       case 139:

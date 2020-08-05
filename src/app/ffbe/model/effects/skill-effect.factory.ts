@@ -12,6 +12,8 @@ import {AbilityDamagesPhysicalCriticalHitEffect} from './abilities/ability-damag
 import {AbilityDamagesPhysicalDefScalingEffect} from './abilities/ability-damages-physical-def-scaling-effect.model';
 import {AbilityDamagesPercentEffect} from './abilities/ability-damages-percent-effect.model';
 import {AbilityDamagesOrDeathEffect} from './abilities/ability-damages-or-death-effect.model';
+import {AbilityDamagesPhysicalTurnDelayEffect} from './abilities/ability-damages-physical-turn-delay.parser';
+import {AbilityDamagesPhysicalJumpDelayEffect} from './abilities/ability-damages-physical-jump-delay.parser';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -20,6 +22,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 9:
         return new AbilityDamagesPercentEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 13:
+        return new AbilityDamagesPhysicalTurnDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 15:
         return new AbilityDamagesMagicEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
@@ -28,6 +32,12 @@ export class SkillEffectFactory {
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 43:
         return new AbilityDamagesPhysicalCriticalHitEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 52:
+        if (effectRaw[0] === 0) {
+        } else {
+          return new AbilityDamagesPhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        }
+        break;
       case 70:
         return new AbilityDamagesMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
@@ -42,6 +52,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 134:
+        return new AbilityDamagesPhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
