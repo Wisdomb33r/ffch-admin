@@ -657,6 +657,30 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[2, 1, 15, [0,  0,  0,  0,  0,  400,  0]], [2, 1, 72, [0,  0,  700,  500,  500,  7]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "512170": {
+        "name": "True Fire Achilles",
+        "icon": "ability_39.png",
+        "compendium_id": 10982,
+        "rarity": 8,
+        "cost": {"MP": 66},
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[40]],
+        "effect_frames": [[6,  6,  6,  6,  6]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Reduce resistance to Fire by 130% for 3 turns to one enemy",
+            "Physical damage (22x, ATK) to one enemy",
+            "Gain True Fire Achilles (512170) for 2 turns"
+        ],
+        "effects_raw": [[1, 1, 33, [-130,  0,  0,  0,  0,  0,  0,  0,  1,  3]], [1, 1, 1, [0,  0,  0,  0,  0,  0,  2200,  0]], [0, 3, 100, [2,  512170,  99999,  3,  1,  5]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -825,6 +849,15 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Magilame des tempêtes",
         "Sturmschwertmagie",
         "Esgrimago tempestuoso"
+    ],
+    "512170": [
+        "True Fire Achilles",
+        "真·火之要害",
+        "진·불의 아킬레스",
+        "Point faible + : Feu",
+        "Wahrer Feuer-Achilles",
+        "Aquiles de fuego verdadero",
+        "Achilles Api Sejati"
     ]
   }`;
 
@@ -993,7 +1026,16 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Inflige des dégâts de foudre et de vent à tous les ennemis",
         "Fügt allen Gegnern Blitz- und Windschaden zu.",
         "Daño de rayo y viento a todos los enemigos"
-    ]
+    ],
+    "512170": [
+        "Reduce fire resistance and damage one enemy, and enable true fire achilles for two turns",
+        "降低1名敵人的火屬性耐性+發動攻擊+2回合內可使用「真·火之要害」",
+        "적 1명의 불속성 저항력 감소+피해+2턴 동안 '진·불의 아킬레스' 사용 가능",
+        "Réduit la résistance au feu d'un ennemi et lui inflige des dégâts, et permet d'utiliser Point faible + : Feu pendant 2 tours",
+        "Verringert die Feuerresistenz eines Gegners, fügt ihm Schaden zu und ermöglicht 2 Runden lang Wahrer Feuer-Achilles.",
+        "Reduce la resistencia al fuego, daña a un enemigo y aprende Aquiles de fuego verdadero durante 2 turnos",
+        "Mengurangi resistansi api dan memberikan damage pada satu musuh, serta memungkinkan penggunaan Achilles Api Sejati selama 2 giliran"
+     ]
   }`;
 
 describe('Skill', () => {

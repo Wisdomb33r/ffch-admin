@@ -24,7 +24,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -46,7 +46,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -71,7 +71,7 @@ describe('AbilitySkillActivationParser', () => {
     skill3.gumi_id = 202340;
     skill3.names = names['202340'];
     skill3.descriptions = descriptions['202340'];
-
+    const skill: Skill = new Skill();
 
     const effect = JSON.parse('[0, 3, 100, [[2,  2,  2], [200200, 200270, 202340], 9999, 4, 1, 0]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
@@ -79,7 +79,7 @@ describe('AbilitySkillActivationParser', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
       .and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -105,7 +105,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -127,7 +127,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -149,7 +149,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -172,7 +172,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -194,7 +194,7 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -216,11 +216,35 @@ describe('AbilitySkillActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200200);
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a> aux alliés pour 1 utilisation sur 4 tours');
+  });
+
+  it('should parse skill activation for caster for the current turn when activated by passive skill', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+
+    const skill: Skill = skills['512170'];
+    skill.gumi_id = 512170;
+    skill.names = names['512170'];
+    skill.descriptions = descriptions['512170'];
+    skill.isActivatedByPassiveSkill = true;
+
+    const effect = JSON.parse('[0, 3, 100, [2,  512170,  99999,  1,  1,  5]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill);
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(512170);
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=512170">Point faible + : Feu</a> au lanceur pour 1 tour');
   });
 });
 

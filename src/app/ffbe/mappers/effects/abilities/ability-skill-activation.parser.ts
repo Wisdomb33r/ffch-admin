@@ -13,7 +13,7 @@ export class AbilitySkillActivationParser extends EffectParser {
     const target = this.getTarget(effect[0], effect[1]);
 
     const numUses = this.getNumUses(content);
-    const numTurns = this.getNumTurns(content, isTargetSelf);
+    const numTurns = this.getNumTurns(content, isTargetSelf, skill.isActivatedByPassiveSkill);
     const activatedSkillsIds: Array<number> = !Array.isArray(effect[3][1]) ? [effect[3][1]] : effect[3][1];
 
     const activatedSkills = activatedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
@@ -48,8 +48,8 @@ export class AbilitySkillActivationParser extends EffectParser {
     return effect[1] === 3;
   }
 
-  private getNumTurns(content: Array<any>, isTargetSelf: boolean): string {
-    const numTurns = isTargetSelf ? content[3] - 1 : content[3];
+  private getNumTurns(content: Array<any>, isTargetSelf: boolean, isActivatedByPassiveSkill: boolean): string {
+    const numTurns = isTargetSelf && !isActivatedByPassiveSkill ? content[3] - 1 : content[3];
     const pluralForm = numTurns > 1 ? 's' : '';
     return `${numTurns} tour${pluralForm}`;
   }
