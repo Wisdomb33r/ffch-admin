@@ -8,9 +8,7 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesPhysicalHpSacrificeParser} from './ability-damages-physical-hp-sacrifice.parser';
 import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
-import {AbilityDamagesPhysicalComboParser} from './ability-damages-physical-combo.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
@@ -118,8 +116,6 @@ export class AbilityEffectParserFactory {
         return new AbilityItemStealParser();
       case 41:
         return new AbilityDamagesFixedParser();
-      case 42:
-        return new AbilityDamagesPhysicalComboParser();
       case 44:
         return new AbilityMagicMultipleActivationParser();
       case 45:
@@ -159,8 +155,6 @@ export class AbilityEffectParserFactory {
         return new AbilityHealingFixedParser();
       case 68:
         return new AbilityBerserkInflictionParser();
-      case 81:
-        return new AbilityDamagesPhysicalHpSacrificeParser();
       case 84:
         return new AbilitySpellNullificationParser();
       case 86:

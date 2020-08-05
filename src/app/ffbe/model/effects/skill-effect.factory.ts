@@ -12,8 +12,10 @@ import {AbilityDamagesPhysicalCriticalHitEffect} from './abilities/ability-damag
 import {AbilityDamagesPhysicalDefScalingEffect} from './abilities/ability-damages-physical-def-scaling-effect.model';
 import {AbilityDamagesPercentEffect} from './abilities/ability-damages-percent-effect.model';
 import {AbilityDamagesOrDeathEffect} from './abilities/ability-damages-or-death-effect.model';
-import {AbilityDamagesPhysicalTurnDelayEffect} from './abilities/ability-damages-physical-turn-delay.parser';
-import {AbilityDamagesPhysicalJumpDelayEffect} from './abilities/ability-damages-physical-jump-delay.parser';
+import {AbilityDamagesPhysicalTurnDelayEffect} from './abilities/ability-damages-physical-turn-delay-effect.model';
+import {AbilityDamagesPhysicalJumpDelayEffect} from './abilities/ability-damages-physical-jump-delay-effect.model';
+import {AbilityDamagesPhysicalComboEffect} from './abilities/ability-damages-physical-combo-effect.model';
+import {AbilityDamagesPhysicalHpSacrificeEffect} from './abilities/ability-damages-physical-hp-sacrifice-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -30,6 +32,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalIgnoreDefEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 42:
+        return new AbilityDamagesPhysicalComboEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 43:
         return new AbilityDamagesPhysicalCriticalHitEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 52:
@@ -42,6 +46,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
         return new AbilityDamagesMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 81:
+        return new AbilityDamagesPhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 102:
         return new AbilityDamagesPhysicalDefScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 103:
