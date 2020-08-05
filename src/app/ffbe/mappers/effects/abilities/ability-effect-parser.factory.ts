@@ -8,7 +8,6 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityDamagesDrainParser} from './ability-damages-drain.parser';
 import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityDamagesFixedParser} from './ability-damages-fixed.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
@@ -22,7 +21,6 @@ import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
 import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
-import {AbilityDamagesDotsParser} from './ability-damages-dots.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
@@ -74,8 +72,6 @@ export class AbilityEffectParserFactory {
         return new AbilityAilmentsResistanceParser();
       case 8:
         return new AbilityHealingTurnSplitParser();
-      case 10:
-        return new AbilityDamagesDrainParser();
       case 11:
         return new AbilityHealingPercentParser();
       case 16:
@@ -90,8 +86,6 @@ export class AbilityEffectParserFactory {
         return new AbilityNormalAttackModifierIncreaseParser();
       case 24:
         return new AbilityStatsModificationParser();
-      case 25:
-        return new AbilityDamagesDrainParser();
       case 26:
         return new AbilityHealingPercentParser();
       case 27:
@@ -205,8 +199,6 @@ export class AbilityEffectParserFactory {
         return new AbilityDebuffsStealParser();
       case 136:
         return new AbilitySkillModifierIncreaseParser();
-      case 139:
-        return new AbilityDamagesDotsParser();
       case 1005:
         return new AbilityCopyEffectsParser();
       case 1006:

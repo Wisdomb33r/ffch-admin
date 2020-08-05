@@ -16,6 +16,8 @@ import {AbilityDamagesPhysicalTurnDelayEffect} from './abilities/ability-damages
 import {AbilityDamagesPhysicalJumpDelayEffect} from './abilities/ability-damages-physical-jump-delay-effect.model';
 import {AbilityDamagesPhysicalComboEffect} from './abilities/ability-damages-physical-combo-effect.model';
 import {AbilityDamagesPhysicalHpSacrificeEffect} from './abilities/ability-damages-physical-hp-sacrifice-effect.model';
+import {AbilityDamagesDotsEffect} from './abilities/ability-damages-dots-effect.model';
+import {AbilityDamagesDrainEffect} from './abilities/ability-damages-drain-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -24,12 +26,16 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 9:
         return new AbilityDamagesPercentEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 10:
+        return new AbilityDamagesDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new AbilityDamagesPhysicalTurnDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 15:
         return new AbilityDamagesMagicEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
         return new AbilityDamagesPhysicalIgnoreDefEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 25:
+        return new AbilityDamagesDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:
@@ -60,6 +66,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 134:
         return new AbilityDamagesPhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 139:
+        return new AbilityDamagesDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
