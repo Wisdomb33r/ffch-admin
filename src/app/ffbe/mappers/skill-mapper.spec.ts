@@ -200,6 +200,7 @@ describe('SkillMapper', () => {
     // GIVEN
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
     const skill: Skill = skills['509624'];
+    skill.active = true;
     const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
     skill.names = names['509624'];
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
