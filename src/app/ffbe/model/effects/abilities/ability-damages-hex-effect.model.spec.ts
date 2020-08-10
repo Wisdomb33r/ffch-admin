@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesHexParser', () => {
+describe('AbilityDamagesHexEffect', () => {
 
   it('should parse hex damages to one enemy', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesHexParser', () => {
     fakeSkill.element_inflict = null;
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts fixes neutres de 300000 PV par status négatif à un adversaire pour 3 tours');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesHexParser', () => {
     fakeSkill.element_inflict = null;
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts fixes neutres de 50000 PV par status négatif aux adversaires pour 4 tours');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamagesHexParser', () => {
     fakeSkill.element_inflict = ['Fire', 'Ice'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts fixes de Feu, Glace de 50000 PV par status négatif aux adversaires pour 1 tour');
   });

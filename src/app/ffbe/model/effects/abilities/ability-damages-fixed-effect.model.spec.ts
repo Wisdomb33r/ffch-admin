@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {Skill} from '../../../model/skill.model';
+import {Skill} from '../../skill.model';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilityDamagesFixedParser', () => {
+describe('AbilityDamagesFixedEffect', () => {
 
   it('should parse fixed neutral damages to caster', () => {
     // GIVEN
@@ -10,7 +10,7 @@ describe('AbilityDamagesFixedParser', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts fixes neutres de 1234 PV au lanceur');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagesFixedParser', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, fakeSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts fixes de Glace, Foudre, Vent de 98765 PV aux adversaires');
   });

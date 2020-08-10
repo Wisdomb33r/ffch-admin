@@ -3,8 +3,9 @@ import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetPrepositionEnum} from '../target-preposition.enum';
+import {FfbeUtils} from '../../../utils/ffbe-utils';
 
-export class AbilityElementDamagesIncreaseEffect extends SkillEffect {
+export class AbilityElementDamageIncreaseEffect extends SkillEffect {
 
   private increases: Array<number>;
   private turns: number;
@@ -31,7 +32,7 @@ export class AbilityElementDamagesIncreaseEffect extends SkillEffect {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     const damageType = this.effectId === 153 ? 'physiques' : 'magiques';
-    return `+${currentValue}% aux dégâts ${damageType} de ${accumulatedStats.join(', ')}`;
+    return `+${currentValue}% aux dégâts ${damageType} de ${FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ')}`;
   }
 
   protected get effectName(): string {
