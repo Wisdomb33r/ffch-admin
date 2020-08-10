@@ -19,7 +19,7 @@ export class AbilityDamagesPhysicalCriticalHitEffect extends SkillEffect {
     } else {
       this.basePower = Math.round(parameters[2]);
       this.missChance = parameters[3];
-      this.power = Math.round(this.basePower * 1.5 * this.missChance / 100);
+      this.power = Math.round(this.basePower * 1.5 * (100 - this.missChance) / 100);
     }
   }
 
