@@ -54,7 +54,7 @@ export class Skill {
     skill.names = s.names;
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
-    skill.effets = s.effects_raw?.map(raw => SkillEffectFactory.getSkillEffect(raw)).filter(effect => !!effect);
+    skill.effets = s.effects_raw?.map(raw => s.active ? SkillEffectFactory.getSkillEffect(raw) : null).filter(effect => !!effect);
     return skill;
   }
 
