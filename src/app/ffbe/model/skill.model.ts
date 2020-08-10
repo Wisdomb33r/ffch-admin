@@ -139,6 +139,22 @@ export class Skill {
     return 'Dégâts hybrides';
   }
 
+  public wordAttackAndDamageForFixedDamages(): string {
+    if (this.attack_type !== 'None') {
+      switch (this.attack_type) {
+        case 'Physical':
+          return 'Attaque physique à dégâts fixes';
+        case 'Hybrid':
+          return 'Attaque hybride à dégâts fixes';
+        case 'Magic':
+          return 'Attaque magique à dégâts fixes';
+        default:
+          return 'Attaque UNKNOWN à dégâts fixes';
+      }
+    }
+    return 'Dégâts fixes';
+  }
+
   public wordAttackAndDamageForEvokerDamages(): string {
     if (this.attack_type !== 'None') {
       return `Attaque UNKNOWN à dégâts d'invocateur`;
