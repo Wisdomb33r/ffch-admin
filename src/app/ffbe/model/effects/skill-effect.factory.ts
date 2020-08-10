@@ -18,6 +18,8 @@ import {AbilityDamagesPhysicalComboEffect} from './abilities/ability-damages-phy
 import {AbilityDamagesPhysicalHpSacrificeEffect} from './abilities/ability-damages-physical-hp-sacrifice-effect.model';
 import {AbilityDamagesDotsEffect} from './abilities/ability-damages-dots-effect.model';
 import {AbilityDamagesDrainEffect} from './abilities/ability-damages-drain-effect.model';
+import {AbilityDamagesFixedEffect} from './abilities/ability-damages-fixed-effect.model';
+import {AbilityDamagesHexEffect} from './abilities/ability-damages-hex-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -38,6 +40,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamagesHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 41:
+        return new AbilityDamagesFixedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:
         return new AbilityDamagesPhysicalComboEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 43:
@@ -68,6 +72,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesPhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 139:
         return new AbilityDamagesDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 1012:
+        return new AbilityDamagesHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
