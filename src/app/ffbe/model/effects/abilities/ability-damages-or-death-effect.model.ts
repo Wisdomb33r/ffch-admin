@@ -44,4 +44,7 @@ export class AbilityDamagesOrDeathEffect extends SkillEffect {
     return 'AbilityDamagesOrDeathEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

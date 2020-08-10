@@ -35,4 +35,8 @@ export class AbilityDamagesPhysicalJumpDelayEffect extends SkillEffect {
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalJumpDelayEffect';
   }
+
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

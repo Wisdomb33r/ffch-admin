@@ -52,4 +52,8 @@ export class AbilityDamagesDrainEffect extends SkillEffect {
     return 'AbilityDamagesPhysicalEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
+
 }

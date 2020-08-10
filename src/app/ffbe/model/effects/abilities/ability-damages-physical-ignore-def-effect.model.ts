@@ -34,4 +34,8 @@ export class AbilityDamagesPhysicalIgnoreDefEffect extends SkillEffect {
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalIgnoreDefEffect';
   }
+
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

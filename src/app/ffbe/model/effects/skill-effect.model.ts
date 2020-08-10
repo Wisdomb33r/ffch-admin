@@ -189,4 +189,8 @@ export abstract class SkillEffect {
     }
     return 'les alliés sauf le lanceur';
   }
+
+  public getDamagesPower(): number {
+    return 0;
+  }
 }

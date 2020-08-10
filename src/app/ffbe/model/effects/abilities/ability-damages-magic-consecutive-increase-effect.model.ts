@@ -38,4 +38,8 @@ export class AbilityDamagesMagicConsecutiveIncreaseEffect extends SkillEffect {
   protected get effectName(): string {
     return 'AbilityDamagesMagicConsecutiveIncreaseEffect';
   }
+
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

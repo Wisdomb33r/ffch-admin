@@ -32,4 +32,7 @@ export class AbilityDamagesMagicEffect extends SkillEffect {
     return 'AbilityDamagesMagicEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

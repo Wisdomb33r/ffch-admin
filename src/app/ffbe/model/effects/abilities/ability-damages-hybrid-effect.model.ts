@@ -44,4 +44,7 @@ export class AbilityDamagesHybridEffect extends SkillEffect {
     return 'AbilityDamagesHybridEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

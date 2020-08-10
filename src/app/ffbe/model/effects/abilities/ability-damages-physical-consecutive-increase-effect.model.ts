@@ -37,4 +37,8 @@ export class AbilityDamagesPhysicalConsecutiveIncreaseEffect extends SkillEffect
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalConsecutiveIncreaseEffect';
   }
+
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

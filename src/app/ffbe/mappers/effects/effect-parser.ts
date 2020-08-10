@@ -231,19 +231,6 @@ export abstract class EffectParser {
     return element ? element.nom : 'UNKNOWN element';
   }
 
-  protected getElementsFromElementInflict(skill: Skill): string {
-    if (skill.element_inflict && skill.element_inflict.length) {
-      let elements = skill.element_inflict.map((element: string) => this.getElementFromEnglishName(element)).join(', ');
-      if (elements.startsWith('Eau')) {
-        elements = `d'${elements}`;
-      } else {
-        elements = `de ${elements}`;
-      }
-      return elements;
-    }
-    return 'neutres';
-  }
-
   protected getMagicTypeFromId(id: number): string {
     switch (id) {
       case 0:
@@ -340,69 +327,6 @@ export abstract class EffectParser {
 
   protected getHealingText(mod: number): string {
     return mod > 0 ? `+ ${mod / 200}x la PSY + ${(mod / 1000)}x la MAG du lanceur ` : '';
-  }
-
-  protected getAttackAndDamageWordingForPhysicalDamages(attackType: string): string {
-    let attackTypeText = 'Dégâts physiques ';
-    if (attackType !== 'Physical') {
-      switch (attackType) {
-        case 'Magic':
-          attackTypeText = 'Attaque magique à dégâts physiques ';
-          break;
-        case 'Hybrid':
-          attackTypeText = 'Attaque hybride à dégâts physiques ';
-          break;
-        case 'None':
-          attackTypeText = 'Attaque fixe à dégâts physiques ';
-          break;
-        default:
-          attackTypeText = 'Attaque UNKNOWN à dégâts physiques ';
-          break;
-      }
-    }
-    return attackTypeText;
-  }
-
-  protected getAttackAndDamageWordingForMagicalDamages(attackType: string): string {
-    let attackTypeText = 'Dégâts magiques ';
-    if (attackType !== 'Magic') {
-      switch (attackType) {
-        case 'Physical':
-          attackTypeText = 'Attaque physique à dégâts magiques ';
-          break;
-        case 'Hybrid':
-          attackTypeText = 'Attaque hybride à dégâts magiques ';
-          break;
-        case 'None':
-          attackTypeText = 'Attaque fixe à dégâts magiques ';
-          break;
-        default:
-          attackTypeText = 'Attaque UNKNOWN à dégâts magiques ';
-          break;
-      }
-    }
-    return attackTypeText;
-  }
-
-  protected getAttackAndDamageWordingForFixedDamages(attackType: string): string {
-    let attackTypeText = 'Dégâts fixes ';
-    if (attackType !== 'None') {
-      switch (attackType) {
-        case 'Physical':
-          attackTypeText = 'Attaque physique à dégâts fixes ';
-          break;
-        case 'Hybrid':
-          attackTypeText = 'Attaque hybride à dégâts fixes ';
-          break;
-        case 'Magic':
-          attackTypeText = 'Attaque magique à dégâts fixes ';
-          break;
-        default:
-          attackTypeText = 'Attaque UNKNOWN à dégâts fixes ';
-          break;
-      }
-    }
-    return attackTypeText;
   }
 
   protected getEquipmentCategoryNameWithLink(equipmentId: number): string {

@@ -4,6 +4,7 @@ import {TargetTypeEnum} from '../target-type.enum';
 import {Skill} from '../../skill.model';
 
 export class AbilityDamagesPhysicalEffect extends SkillEffect {
+
   private power: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
@@ -29,5 +30,9 @@ export class AbilityDamagesPhysicalEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalEffect';
+  }
+
+  public getDamagesPower(): number {
+    return this.power;
   }
 }

@@ -38,4 +38,7 @@ export class AbilityDamagesEvokerEffect extends SkillEffect {
     return 'AbilityDamagesEvokerEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

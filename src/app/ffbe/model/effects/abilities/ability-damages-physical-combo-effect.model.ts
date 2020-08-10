@@ -12,6 +12,7 @@ export class AbilityDamagesPhysicalComboEffect extends SkillEffect {
   private increment: number;
   private nbIncrements: number;
   private maxPower: number;
+  private power: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -25,6 +26,7 @@ export class AbilityDamagesPhysicalComboEffect extends SkillEffect {
       this.maxPower = this.basePower;
       this.minAttacks = Math.round(parameters[2]);
       this.maxAttacks = Math.round(parameters[3]);
+      this.power = Math.round((this.minAttacks + this.maxAttacks) / 2 * this.basePower);
       if (parameters.length >= 6 && parameters[5] > 0) {
         this.accuracy = parameters[5];
       }
@@ -52,4 +54,7 @@ export class AbilityDamagesPhysicalComboEffect extends SkillEffect {
     return 'AbilityDamagesPhysicalComboEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

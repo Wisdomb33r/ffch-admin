@@ -4,6 +4,7 @@ import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
 
 export class AbilityDamagesMagicIgnoreSprEffect extends SkillEffect {
+
   private basePower: number;
   private power: number;
   private ignoreSpr: number;
@@ -32,5 +33,9 @@ export class AbilityDamagesMagicIgnoreSprEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'AbilityDamagesMagicIgnoreSprEffect';
+  }
+
+  public getDamagesPower(): number {
+    return this.power;
   }
 }

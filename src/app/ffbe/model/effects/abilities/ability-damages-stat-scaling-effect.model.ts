@@ -18,4 +18,7 @@ export abstract class AbilityDamagesStatScalingEffect extends SkillEffect {
     }
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

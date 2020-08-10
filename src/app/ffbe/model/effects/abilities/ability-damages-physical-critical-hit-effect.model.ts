@@ -5,8 +5,9 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class AbilityDamagesPhysicalCriticalHitEffect extends SkillEffect {
 
-  private power: number;
+  private basePower: number;
   private missChance: number;
+  private power: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -16,8 +17,9 @@ export class AbilityDamagesPhysicalCriticalHitEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 4 || parameters[0] !== 0 || parameters[1] !== 0) {
       this.parameterError = true;
     } else {
-      this.power = Math.round(parameters[2]);
+      this.basePower = Math.round(parameters[2]);
       this.missChance = parameters[3];
+      this.power = Math.round(this.basePower * 1.5 * this.missChance / 100);
     }
   }
 
@@ -27,11 +29,14 @@ export class AbilityDamagesPhysicalCriticalHitEffect extends SkillEffect {
     const target = this.wordTarget();
     skill.physique = true;
     const missChanceText = this.missChance ? ` (-${this.missChance}% précision)` : '';
-    return `${attackType} critiques ${elements} de puissance ${this.power}% ${target}${missChanceText}`;
+    return `${attackType} critiques ${elements} de puissance ${this.basePower}% ${target}${missChanceText}`;
   }
 
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalCriticalHitEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

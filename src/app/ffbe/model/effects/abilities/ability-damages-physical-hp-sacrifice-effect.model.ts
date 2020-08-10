@@ -4,6 +4,7 @@ import {TargetTypeEnum} from '../target-type.enum';
 import {SkillEffect} from '../skill-effect.model';
 
 export class AbilityDamagesPhysicalHpSacrificeEffect extends SkillEffect {
+
   private power: number;
   private hpSacrifice: number;
 
@@ -31,5 +32,9 @@ export class AbilityDamagesPhysicalHpSacrificeEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'AbilityDamagesPhysicalHpSacrificeEffect';
+  }
+
+  public getDamagesPower(): number {
+    return this.power;
   }
 }

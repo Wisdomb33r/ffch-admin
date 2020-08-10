@@ -34,4 +34,7 @@ export class AbilityDamagesPhysicalTurnDelayEffect extends SkillEffect {
     return 'AbilityDamagesPhysicalTurnDelayEffect';
   }
 
+  public getDamagesPower(): number {
+    return this.power;
+  }
 }

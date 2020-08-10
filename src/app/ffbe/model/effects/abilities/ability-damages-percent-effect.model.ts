@@ -4,7 +4,8 @@ import {TargetTypeEnum} from '../target-type.enum';
 import {SkillEffect} from '../skill-effect.model';
 
 export class AbilityDamagesPercentEffect extends SkillEffect {
-  private power: number;
+
+  private percent: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -14,13 +15,13 @@ export class AbilityDamagesPercentEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 3 || parameters[2] !== 100 || parameters[0] !== parameters[1]) {
       this.parameterError = true;
     } else {
-      this.power = parameters[0];
+      this.percent = parameters[0];
     }
   }
 
   protected wordEffectImpl(skill: Skill) {
     const target = this.wordTarget();
-    return `Retire ${this.power}% des PV ${target}`;
+    return `Retire ${this.percent}% des PV ${target}`;
   }
 
   protected get effectName(): string {
