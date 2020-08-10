@@ -8,7 +8,7 @@ describe('AbilityElementDamagesIncreaseEffect', () => {
     // WHEN
     const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+10% aux dégâts physiques de Feu, Lumière infligés par le lanceur pour 99999 tours (bonus non dissipable)');
+    expect(s).toEqual('+10% aux dégâts physiques de Feu et Lumière infligés par le lanceur pour 99999 tours (bonus non dissipable)');
   });
 
   it('should parse magical elemental damages increase to caster', () => {
@@ -17,7 +17,7 @@ describe('AbilityElementDamagesIncreaseEffect', () => {
     // WHEN
     const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+20% aux dégâts magiques de Vent, Terre, +10% aux dégâts magiques de Glace, Foudre infligés par le lanceur pour 99999 tours (bonus non dissipable)');
+    expect(s).toEqual('+20% aux dégâts magiques de Vent et Terre, +10% aux dégâts magiques de Glace et Foudre infligés par le lanceur pour 99999 tours (bonus non dissipable)');
   });
 
 });
