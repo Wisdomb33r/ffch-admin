@@ -32,7 +32,6 @@ export class AbilityDamagesOrDeathEffect extends SkillEffect {
       return this.wordBadParameterText();
     }
     const elements = skill.wordElementInflict();
-    const attackType = skill.wordAttackAndDamageForPhysicalDamages();
     const target = this.wordTarget();
     skill.physique = true;
     const dmgChanceText = this.dmgChance < 100 ? `${this.dmgChance}% de chance d'infliger ` : '';
