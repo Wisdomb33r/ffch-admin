@@ -13,6 +13,7 @@ import {AbilityDamagesPhysicalDefScalingEffect} from './abilities/ability-damage
 import {AbilityDamagesPercentEffect} from './abilities/ability-damages-percent-effect.model';
 import {AbilityDamagesOrDeathEffect} from './abilities/ability-damages-or-death-effect.model';
 import {AbilityElementDamagesIncreaseEffect} from './abilities/ability-element-damages-increase-effect.model';
+import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -43,8 +44,10 @@ export class SkillEffectFactory {
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 149:
+      case 150:
+        return new AbilityMitigationMonsterTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 153:
-        return new AbilityElementDamagesIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 154:
         return new AbilityElementDamagesIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
