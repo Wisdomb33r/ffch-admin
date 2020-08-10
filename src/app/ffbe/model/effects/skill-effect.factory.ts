@@ -12,7 +12,7 @@ import {AbilityDamagesPhysicalCriticalHitEffect} from './abilities/ability-damag
 import {AbilityDamagesPhysicalDefScalingEffect} from './abilities/ability-damages-physical-def-scaling-effect.model';
 import {AbilityDamagesPercentEffect} from './abilities/ability-damages-percent-effect.model';
 import {AbilityDamagesOrDeathEffect} from './abilities/ability-damages-or-death-effect.model';
-import {AbilityElementDamagesIncreaseEffect} from './abilities/ability-element-damages-increase-effect.model';
+import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -44,9 +44,9 @@ export class SkillEffectFactory {
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 153:
-        return new AbilityElementDamagesIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 154:
-        return new AbilityElementDamagesIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }

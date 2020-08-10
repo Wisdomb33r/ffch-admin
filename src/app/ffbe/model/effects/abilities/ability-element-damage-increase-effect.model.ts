@@ -5,7 +5,7 @@ import {SkillEffect} from '../skill-effect.model';
 import {TargetPrepositionEnum} from '../target-preposition.enum';
 import {FfbeUtils} from '../../../utils/ffbe-utils';
 
-export class AbilityElementDamagesIncreaseEffect extends SkillEffect {
+export class AbilityElementDamageIncreaseEffect extends SkillEffect {
 
   private increases: Array<number>;
   private turns: number;
