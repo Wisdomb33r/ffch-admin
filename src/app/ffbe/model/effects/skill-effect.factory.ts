@@ -22,6 +22,7 @@ import {AbilityDamagesFixedEffect} from './abilities/ability-damages-fixed-effec
 import {AbilityDamagesHexEffect} from './abilities/ability-damages-hex-effect.model';
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
+import {AbilityCooldownEffect} from './abilities/ability-cooldown-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -70,6 +71,8 @@ export class SkillEffectFactory {
         return new AbilityDamagesEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 126:
         return new AbilityDamagesPhysicalConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 130:
+        return new AbilityCooldownEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 134:
         return new AbilityDamagesPhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 139:

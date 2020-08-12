@@ -8,7 +8,6 @@ import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.par
 import {AbilityCountersParser} from './ability-counters.parser';
 import {AbilitySkillModifierIncreaseParser} from './ability-skill-modifier-increase.parser';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
-import {AbilityCooldownParser} from './ability-cooldown-parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -187,8 +186,6 @@ export class AbilityEffectParserFactory {
         return new AbilityLbCrystalsParser();
       case 127:
         return new AbilityBarriersParser();
-      case 130:
-        return new AbilityCooldownParser();
       case 132:
         return new AbilityDelayedSkillParser();
       case 133:

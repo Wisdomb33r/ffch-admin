@@ -23,7 +23,7 @@ export class AbilitySkillSwitchParser extends EffectParser {
     const activatorSkills = activatorSkillId.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     const activatorSkillsLinks = this.getSkillsNamesWithGumiIdentifierLinks(activatorSkills);
 
-    this.fillSkillWithTransitiveActivatedSkillInformation(skill, baseSkill);
+    EffectParser.fillSkillWithTransitiveActivatedSkillInformation(skill, baseSkill);
 
     return baseSkillEffect + HTML_LINE_RETURN + HTML_LINE_RETURN +
       'Se transforme en ' + activatedSkillLink + ' si utilisé après ' + activatorSkillsLinks;

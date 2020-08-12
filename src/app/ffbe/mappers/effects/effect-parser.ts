@@ -339,7 +339,7 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
     return `<a href="ffexvius_espers.php?esperid=${esper.ffchId}">${esper.name}</a>`;
   }
 
-  protected fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
+  public static fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
     skill.gumiIdActivatedSkill = activatedSKill.gumi_id;
     skill.attack_count = activatedSKill.attack_count;
     skill.attack_frames = activatedSKill.attack_frames;
