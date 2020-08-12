@@ -1,6 +1,5 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
-import {element} from 'protractor';
 import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
 
 export class AbilityElementImbueParser extends EffectParser {

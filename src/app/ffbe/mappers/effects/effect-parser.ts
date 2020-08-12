@@ -7,45 +7,10 @@ import {Consumable} from '../../model/consumable.model';
 import {Element} from '../../model/element.model';
 import {TargetPrepositionEnum} from '../../model/effects/target-preposition.enum';
 import {SkillEffect} from '../../model/effects/skill-effect.model';
+import {EffectIdenticalValuesWording} from '../../model/effects/effect-identical-values-wording';
 
-export abstract class EffectParser {
+export abstract class EffectParser extends EffectIdenticalValuesWording {
   public abstract parse(effect: Array<any>, skill: Skill): string;
-
-  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    return '';
-  }
-
-  protected wordEffectJoiningIdenticalValues(values: Array<{ name: string, value: number }>,
-                                             groupSeparator = ', ', keepZeros = false): string {
-    const decreasingSort = values.some(element => {
-      return element.value > 0;
-    });
-    values.sort((a, b) => {
-      return a.value === b.value ? 0 : (decreasingSort ? (a.value > b.value ? -1 : 1) : (a.value > b.value ? 1 : -1));
-    });
-    let text = '';
-    let currentValue: number;
-    let accumulatedStats = [];
-    values.forEach(stat => {
-      if (currentValue === stat.value) {
-        accumulatedStats.push(stat.name);
-      } else {
-        if (currentValue && accumulatedStats) {
-          text += (text.length ? groupSeparator : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
-          currentValue = undefined;
-          accumulatedStats = [];
-        }
-        if (stat.value !== undefined && (stat.value !== 0 || keepZeros)) {
-          currentValue = stat.value;
-          accumulatedStats = [stat.name];
-        }
-      }
-    });
-    if (currentValue !== undefined && (currentValue !== 0 || keepZeros)) {
-      text += (text.length ? groupSeparator : '') + this.wordEffectForIdenticalValues(currentValue, accumulatedStats);
-    }
-    return text;
-  }
 
   protected getStatNameFromId(stat: number): string {
     switch (stat) {
@@ -267,19 +232,6 @@ export abstract class EffectParser {
       {name: 'Confusion', value: effectParameters[5]},
       {name: 'Maladie', value: effectParameters[6]},
       {name: 'Pétrification', value: effectParameters[7]},
-    ];
-  }
-
-  protected getKeyValueTableForElements(effectParameters): Array<{ name: string, value: number }> {
-    return [
-      {name: 'Feu', value: effectParameters[0]},
-      {name: 'Glace', value: effectParameters[1]},
-      {name: 'Foudre', value: effectParameters[2]},
-      {name: 'Eau', value: effectParameters[3]},
-      {name: 'Vent', value: effectParameters[4]},
-      {name: 'Terre', value: effectParameters[5]},
-      {name: 'Lumière', value: effectParameters[6]},
-      {name: 'Ténèbres', value: effectParameters[7]},
     ];
   }
 

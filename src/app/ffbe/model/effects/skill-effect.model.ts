@@ -2,13 +2,15 @@ import {TargetNumberEnum} from './target-number.enum';
 import {TargetTypeEnum} from './target-type.enum';
 import {TargetPrepositionEnum} from './target-preposition.enum';
 import {Skill} from '../skill.model';
+import {EffectIdenticalValuesWording} from './effect-identical-values-wording';
 
-export abstract class SkillEffect {
+export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number) {
+    super();
   }
 
   protected abstract wordEffectImpl(skill: Skill): string;
@@ -188,6 +190,19 @@ export abstract class SkillEffect {
       return 'des alliés sauf le lanceur';
     }
     return 'les alliés sauf le lanceur';
+  }
+
+  public static getElementNameValueTableFromNumberArray(increases: Array<number>): Array<{ name: string, value: number }> {
+    return [
+      {name: 'Feu', value: increases[0]},
+      {name: 'Glace', value: increases[1]},
+      {name: 'Foudre', value: increases[2]},
+      {name: 'Eau', value: increases[3]},
+      {name: 'Vent', value: increases[4]},
+      {name: 'Terre', value: increases[5]},
+      {name: 'Lumière', value: increases[6]},
+      {name: 'Ténèbres', value: increases[7]},
+    ];
   }
 
   public getDamagesPower(): number {
