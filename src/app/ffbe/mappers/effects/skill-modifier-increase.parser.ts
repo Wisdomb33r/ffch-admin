@@ -14,7 +14,7 @@ export abstract class SkillModifierIncreaseParser extends EffectParser {
       const modIncrease = !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(skillModifierIncrease);
       const healingModIncrease = !activatedSkill ? 0 : activatedSkill.calculateHealingTotalModIncrease(skillModifierIncrease);
       this.modifiedSkillsIncreases.push({
-        name: this.getSkillNameWithGumiIdentifierLink(activatedSkill),
+        name: EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill),
         value: modIncrease > 0 ? modIncrease : healingModIncrease,
         isHeal: modIncrease === 0 && healingModIncrease > 0,
       });

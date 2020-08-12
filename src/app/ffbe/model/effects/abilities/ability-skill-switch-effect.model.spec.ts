@@ -1,15 +1,10 @@
-import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA
-} from '../../../model/skill.model.spec';
-import {Skill} from '../../../model/skill.model';
+import {ABILITY_SKILLS_NAMES_TEST_DATA, ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../../skill.model.spec';
+import {Skill} from '../../skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {SkillsServiceMock} from '../../../services/skills.service.spec';
+import {SkillEffectFactory} from '../skill-effect.factory';
 
-describe('AbilitySkillSwitchParser', () => {
+describe('AbilitySkillSwitchEffect', () => {
   it('should parse skill switch after single skill', () => {
     // GIVEN
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
@@ -44,7 +39,7 @@ describe('AbilitySkillSwitchParser', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill),
       Skill.produce(activatedSkill), Skill.produce(activatorSkill));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, switchSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -59,7 +54,7 @@ describe('AbilitySkillSwitchParser', () => {
     expect(switchSkill.attack_frames[0][1]).toEqual(5);
     expect(switchSkill.attack_frames[0][2]).toEqual(8);
     expect(switchSkill.attack_damage[0].length).toEqual(3);
-    expect(switchSkill.attack_damage[0][0]).toEqual(33)
+    expect(switchSkill.attack_damage[0][0]).toEqual(33);
     expect(switchSkill.attack_damage[0][1]).toEqual(33);
     expect(switchSkill.attack_damage[0][2]).toEqual(34);
     expect(switchSkill.attack_type).toEqual('Physical');
@@ -110,7 +105,7 @@ describe('AbilitySkillSwitchParser', () => {
       Skill.produce(activatedSkill), Skill.produce(activatorSkill1), Skill.produce(activatorSkill2),
       Skill.produce(activatorSkill3));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, switchSkill);
+    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(5);
     expect(mySpy).toHaveBeenCalledWith(200200);

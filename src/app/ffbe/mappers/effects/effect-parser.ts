@@ -297,18 +297,18 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
       || equipmentId === 52 || equipmentId === 53;
   }
 
-  protected getSkillNameWithGumiIdentifierLink(skill: Skill): string {
+  public static getSkillNameWithGumiIdentifierLink(skill: Skill): string {
     if (!skill || !skill.names || !skill.names[FFBE_FRENCH_TABLE_INDEX]) {
       return 'UNKNOWN skill';
     }
     return `<a href="ffexvius_skills.php?gumiid=${skill.gumi_id}">${skill.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
   }
 
-  protected getSkillsNamesWithGumiIdentifierLinks(skills: Array<Skill>, separator = ', '): string {
+  public static getSkillsNamesWithGumiIdentifierLinks(skills: Array<Skill>, separator = ', '): string {
     if (!skills || skills.length === 0) {
       return 'UNKNOWN skill list';
     }
-    return skills.map((skill: Skill) => this.getSkillNameWithGumiIdentifierLink(skill)).join(separator);
+    return skills.map((skill: Skill) => EffectParser.getSkillNameWithGumiIdentifierLink(skill)).join(separator);
   }
 
   protected getConsumableNameWithGumiIdentifierLink(consumable: Consumable): string {

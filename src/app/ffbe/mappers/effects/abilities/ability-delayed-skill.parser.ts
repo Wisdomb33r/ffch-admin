@@ -11,7 +11,7 @@ export class AbilityDelayedSkillParser extends EffectParser {
     const activatedSkillId = effect[3][0];
 
     const activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(activatedSkillId);
-    const activatedSkillLink = this.getSkillNameWithGumiIdentifierLink(activatedSkill);
+    const activatedSkillLink = EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill);
 
     const numTurns = effect[3][2];
     const pluralForm = (effect[3][2] > 1) ? 's' : '';

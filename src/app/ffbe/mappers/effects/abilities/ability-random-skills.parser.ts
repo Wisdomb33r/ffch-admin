@@ -17,7 +17,7 @@ export class AbilityRandomSkillsParser extends EffectParser {
       const chances = entry[1];
 
       const skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
-      const link = this.getSkillNameWithGumiIdentifierLink(skill);
+      const link = EffectParser.getSkillNameWithGumiIdentifierLink(skill);
 
       return `${chances}%: Lance ${link}`;
     });

@@ -23,6 +23,7 @@ import {AbilityDamageHexEffect} from './abilities/damage/ability-damage-hex-effe
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 import {AbilityCooldownEffect} from './abilities/ability-cooldown-effect.model';
+import {AbilitySkillSwitchEffect} from './abilities/ability-skill-switch-effect.model';
 
 export class SkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -61,6 +62,8 @@ export class SkillEffectFactory {
         return new AbilityDamageMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new AbilityDamagePhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 99:
+        return new AbilitySkillSwitchEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 102:
         return new AbilityDamagePhysicalDefScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 103:

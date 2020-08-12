@@ -30,7 +30,7 @@ export class PassiveCounterAttackWithSkillParser extends EffectParser {
     const activatedCompetence = SkillMapper.toCompetence(activatedSkill);
 
     if (!FfbeUtils.isNullOrUndefined(activatedCompetence.hits) && activatedCompetence.hits >= 5) {
-      return `${prefixText}${this.getSkillNameWithGumiIdentifierLink(activatedSkill)}${suffixText}`;
+      return `${prefixText}${EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill)}${suffixText}`;
     } else {
       return activatedCompetence.effet_fr
         .split(HTML_LINE_RETURN)

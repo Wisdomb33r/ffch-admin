@@ -18,7 +18,6 @@ import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
 import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
-import {AbilitySkillSwitchParser} from './ability-skill-switch.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
@@ -166,8 +165,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
-      case 99:
-        return new AbilitySkillSwitchParser();
       case 100:
         return new AbilitySkillActivationParser();
       case 101:
