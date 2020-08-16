@@ -1082,4 +1082,32 @@ describe('Skill', () => {
     // THEN
     expect(result).toBe(true);
   });
+
+  it('should calculate total power for multiple damaging effects', () => {
+    // GIVEN
+    const skill: Skill = Skill.produce(JSON.parse(`{
+      "name": "Fake Skill",
+      "active": true,
+      "attack_type": "Physical",
+      "effects_raw": [[1, 1, 21, [0,  0,  25,  -50]], [1, 1, 25, [20,  80,  100]], [2, 1, 1, [0,  0,  0,  0,  0,  0,  1000,  0]]]
+    }`));
+    // WHEN
+    const result = skill.calculateSkillPower();
+    // THEN
+    expect(result).toBe(1130);
+  });
+
+  it('should calculate total power for multiple non-damaging effects', () => {
+    // GIVEN
+    const skill: Skill = Skill.produce(JSON.parse(`{
+      "name": "Fake Skill",
+      "active": true,
+      "attack_type": "Physical",
+      "effects_raw": [[0, 3, 100, [2,  512170,  99999,  3,  1,  5]], [0, 3, 132, [510756,  0,  5,  100,  0,  510756]], [0, 3, 111, [1,  1,  1,  1,  0,  0]]]
+    }`));
+    // WHEN
+    const result = skill.calculateSkillPower();
+    // THEN
+    expect(result).toBeNull();
+  });
 });

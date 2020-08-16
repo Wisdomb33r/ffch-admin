@@ -17,7 +17,7 @@ export class AbilitySkillActivationParser extends EffectParser {
     const activatedSkillsIds: Array<number> = !Array.isArray(effect[3][1]) ? [effect[3][1]] : effect[3][1];
 
     const activatedSkills = activatedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-    const links = this.getSkillsNamesWithGumiIdentifierLinks(activatedSkills);
+    const links = EffectParser.getSkillsNamesWithGumiIdentifierLinks(activatedSkills);
 
     let duration = '';
 

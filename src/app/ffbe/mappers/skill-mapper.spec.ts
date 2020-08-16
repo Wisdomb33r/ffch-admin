@@ -196,4 +196,19 @@ describe('SkillMapper', () => {
     expect(competence.categorie).toEqual(10);
   });
 
+  it('should map skill power calculation to puissance field', () => {
+    // GIVEN
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const skill: Skill = skills['509624'];
+    skill.active = true;
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names['509624'];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions['509624'];
+    // WHEN
+    const competence: Competence = SkillMapper.toCompetence(Skill.produce(skill));
+    // THEN
+    expect(competence.puissance).toEqual(1150);
+  });
+
 });

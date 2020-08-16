@@ -36,7 +36,7 @@ export class SkillMapper {
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
       skill.effects.length > 0 ? skill.effects.join('<br />') : null,
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
-      null,
+      skill.calculateSkillPower(),
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
       !skill.cost || skill.cost.LB === 0 ? null : skill.cost.LB,
       !skill.cost || skill.cost.EP === 0 ? null : skill.cost.EP,

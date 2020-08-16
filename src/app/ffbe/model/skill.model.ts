@@ -2,6 +2,7 @@ import {SkillCost} from './skill-cost.model';
 import {SkillEffect} from './effects/skill-effect.model';
 import {Element} from './element.model';
 import {FFBE_ELEMENTS} from '../ffbe.constants';
+import {SkillEffectFactory} from './effects/skill-effect.factory';
 
 export class Skill {
   public gumi_id: number;
@@ -53,7 +54,13 @@ export class Skill {
     skill.names = s.names;
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
+    skill.effets = s.effects_raw?.map(raw => s.active ? SkillEffectFactory.getSkillEffect(raw) : null).filter(effect => !!effect);
     return skill;
+  }
+
+  public calculateSkillPower(): number {
+    const calculatedSkillPower = this.effets?.map(effet => effet.getDamagesPower()).reduce((val1: number, val2: number) => val1 + val2, 0);
+    return calculatedSkillPower > 0 ? calculatedSkillPower : null;
   }
 
   public calculateTotalModIncrease(modIncrease: number): number {

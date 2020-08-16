@@ -16,6 +16,7 @@ export class CompetencesComparingContainer {
       || this.isGumiIdLieDifferent()
       || this.isCategorieDifferente()
       || this.isEffetDifferent()
+      || this.isPuissanceDifferente()
       || this.isPmDifferent()
       || this.isEpDifferent()
       || this.isLbDifferent()
@@ -56,6 +57,14 @@ export class CompetencesComparingContainer {
       return false;
     } else {
       return this.competence.effet_fr !== this.dbCompetence.effet;
+    }
+  }
+
+  private isPuissanceDifferente(): boolean {
+    if (FfbeUtils.isNullOrUndefined(this.dbCompetence)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.competence.puissance, this.dbCompetence.puissance);
     }
   }
 

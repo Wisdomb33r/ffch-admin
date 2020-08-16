@@ -15,10 +15,10 @@ export class PassiveSkillMultipleActivationParser extends EffectParser {
 
     if (skill.effects_raw.length === 1 && !skill.isActivatedByPassiveSkill) {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-      return `Permet l'utilisation ${noDuplicate} ${this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills)} ${nbTimes}x par tour`;
+      return `Permet l'utilisation ${noDuplicate} ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills)} ${nbTimes}x par tour`;
     } else {
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(doubleSkillAbilityActivatedId);
-      return `Donne accès à ${this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;
+      return `Donne accès à ${EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;
     }
   }
 }

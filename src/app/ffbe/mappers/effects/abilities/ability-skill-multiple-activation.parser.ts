@@ -19,7 +19,7 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
     if (effect[2] === 1006) {
       modifiedSkillsIds = !Array.isArray(effect[3][1]) ? [effect[3][1]] : effect[3][1];
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-      const skillLink = this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
+      const skillLink = EffectParser.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
       return `Permet l'utilisation de ${skillLink} ${nbTimes}x par tour`;
     }
 
@@ -43,11 +43,11 @@ export class AbilitySkillMultipleActivationParser extends EffectParser {
       const numTurns: number = skill.isActivatedByPassiveSkill || target.length > 0 ? rawNumTurns : rawNumTurns - 1;
       const pluralForm = numTurns > 1 ? 's' : '';
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(multiSkillAbilityActivatedId);
-      const skillLink = this.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated);
+      const skillLink = EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated);
       return `Donne accès à ${skillLink}${target} pour ${numTurns} tour${pluralForm}`;
     } else {
       const modifiedSkills = modifiedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-      const skillLink = this.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
+      const skillLink = EffectParser.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills);
       return `Permet l'utilisation de ${skillLink} ${nbTimes}x par tour`;
     }
   }

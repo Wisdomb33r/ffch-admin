@@ -205,4 +205,7 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     ];
   }
 
+  public getDamagesPower(): number {
+    return 0;
+  }
 }
