@@ -26,3 +26,6 @@
   <h2>Unités</h2>
   <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
 </mat-card>
+<app-character-skills-display *ngIf="areCharacterSkillsDisplayed()"
+                              [competences]="competences">
+</app-character-skills-display>
