@@ -27,8 +27,10 @@
     <app-character-equipments-display [personnage]="personnage"></app-character-equipments-display>
     <h2>Unités</h2>
     <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
+    <h2>Compétences</h2>
     <app-skills-display *ngIf="areCharacterSkillsDisplayed()"
-                        [competences]="competences">
+                        [competences]="competences"
+                        [shouldDisplayTitle]="false">
     </app-skills-display>
   </ng-container>
 </mat-card>

@@ -15,6 +15,7 @@ export class SkillsDisplayComponent implements OnDestroy, OnChanges {
 
   @Input() competences: Array<Competence>;
   @Input() shouldStayOpen = true;
+  @Input() shouldDisplayTitle = true;
   public skillsErrors: Array<string> = [];
   public competencesContainers: Array<CompetencesComparingContainer> = [];
   public subscription: Subscription;
