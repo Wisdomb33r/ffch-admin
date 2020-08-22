@@ -7,6 +7,8 @@
   <mat-form-field>
     <input matInput [formControl]="name" placeholder="Nom" required>
   </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchCharacterInDataMining()">Chercher</button>
+  <button mat-raised-button color="primary" type="submit" (click)="searchCharactersInDataMining()">Chercher</button>
 </mat-card>
-<app-character-display *ngIf="isCharacterDisplayed()" [personnage]="personnage"></app-character-display>
+<div *ngFor="let personnage of personnages">
+  <app-character-display *ngIf="areCharactersDisplayed()" [personnage]="personnage"></app-character-display>
+</div>

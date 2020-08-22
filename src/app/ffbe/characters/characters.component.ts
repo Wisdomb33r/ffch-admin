@@ -19,7 +19,7 @@ import {ConsumablesService} from '../services/consumables.service';
 export class CharactersComponent implements OnInit {
 
   name: FormControl;
-  personnage: Personnage;
+  personnages: Array<Personnage>;
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
@@ -34,16 +34,16 @@ export class CharactersComponent implements OnInit {
   ngOnInit() {
   }
 
-  public searchCharacterInDataMining() {
-    this.personnage = null;
-    const character: Character = this.charactersService.searchForCharacterByNameOrGumiId(this.name.value);
-    if (character) {
-      this.personnage = CharacterMapper.toPersonnage(character);
+  public searchCharactersInDataMining() {
+    this.personnages = null;
+    const characters: Array<Character> = this.charactersService.searchForCharactersByNameOrGumiId(this.name.value);
+    if (characters) {
+      this.personnages = characters.map(character => CharacterMapper.toPersonnage(character));
     }
   }
 
-  public isCharacterDisplayed(): boolean {
-    return !FfbeUtils.isNullOrUndefined(this.personnage);
+  public areCharactersDisplayed(): boolean {
+    return !FfbeUtils.isNullOrUndefined(this.personnages);
   }
 
   public isDataMiningLoading(): boolean {

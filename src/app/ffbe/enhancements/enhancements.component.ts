@@ -51,8 +51,9 @@ export class EnhancementsComponent implements OnInit {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       this.gumiId.patchValue('');
-      this.character = this.charactersService.searchForCharacterByNameOrGumiId(this.characterName.value);
-      if (!FfbeUtils.isNullOrUndefined(this.character)) {
+      const characters = this.charactersService.searchForCharactersByNameOrGumiId(this.characterName.value);
+      if (!FfbeUtils.isNullOrUndefined(characters) && Array.isArray(characters) && characters.length > 0) {
+        this.character = characters[0];
         enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(this.character.gumi_id);
       }
     } else {
