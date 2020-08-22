@@ -8,7 +8,6 @@ import {CharactersService} from '../services/characters.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
-  selector: 'app-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.css']
 })

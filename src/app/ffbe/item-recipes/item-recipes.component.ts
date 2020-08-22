@@ -7,7 +7,6 @@ import {ItemRecipeMapper} from '../mappers/item-recipe-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
-  selector: 'app-item-recipes',
   templateUrl: './item-recipes.component.html',
   styleUrls: ['./item-recipes.component.css']
 })

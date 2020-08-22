@@ -12,7 +12,6 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
-  selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })

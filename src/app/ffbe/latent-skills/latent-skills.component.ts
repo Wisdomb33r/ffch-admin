@@ -11,7 +11,6 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
-  selector: 'app-latent-skills',
   templateUrl: './latent-skills.component.html',
   styleUrls: ['./latent-skills.component.css']
 })

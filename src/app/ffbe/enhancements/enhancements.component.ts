@@ -11,7 +11,6 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
-  selector: 'app-enhancements',
   templateUrl: './enhancements.component.html',
   styleUrls: ['./enhancements.component.css']
 })
