@@ -7,12 +7,14 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {AwakeningMaterialsMapper} from './awakening-materials-mapper';
 import {Skill} from '../model/skill.model';
 import {SkillEffectsMapper} from './effects/skill-effects.mapper';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
+    const compendium_id = this.convertCompendiumId(entry, perso);
     const unite = new Unite(
-      entry.compendium_id,
+      compendium_id,
       entry.rarity,
       entry.limitburst_id,
       gumi_id
@@ -33,6 +35,14 @@ export class CharacterEntryMapper {
       }
     }
     return unites;
+  }
+
+  private static convertCompendiumId(entry: CharacterEntry, perso: Personnage): number {
+    let compendiumId = entry.compendium_id;
+    if (perso.min_rank === 7 && perso.max_rank === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade)) {
+      compendiumId += 1000000;
+    }
+    return compendiumId;
   }
 
   private static convertLimitBurst(unite: Unite, lb: LimitBurst) {

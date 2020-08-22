@@ -114,6 +114,19 @@ describe('CharactersService', () => {
     expect(characters[0].entries[100000115].upgraded_limitburst_id).toBeNull();
   }));
 
+  it('should find the correct characters when searched if several characters with the same name are present in data mining', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const characters: Array<Character> = service.searchForCharactersByName('Cloud (FFVII REMAKE)');
+    // THEN
+    expect(characters).toBeTruthy();
+    expect(characters.length).toEqual(2);
+    expect(characters[0].gumi_id).toEqual(207002007);
+    expect(characters[1].gumi_id).toEqual(207002017);
+  }));
+
   it('should find null when searched if character not present', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
     service.loadCharactersFromDataMining();

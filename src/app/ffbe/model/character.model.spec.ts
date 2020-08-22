@@ -2032,5 +2032,371 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100080},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 230022}
         ]
+    },
+    "207002007": {
+        "rarity_min": 7,
+        "rarity_max": 7,
+        "name": "Cloud (FFVII REMAKE)",
+        "names": [
+            "Cloud (FFVII REMAKE)",
+            "克勞德(FFVII REMAKE)",
+            "클라우드(FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)"
+        ],
+        "game_id": 10007,
+        "game": "FFVII",
+        "roles": ["Physical Attacker"],
+        "job_id": 118,
+        "job": "SOLDIER",
+        "sex_id": 1,
+        "sex": "Male",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "EQUIP",
+            303008700
+        ],
+        "sTMR": [
+            "MATERIA",
+            504236244
+        ],
+        "equip": [2, 3, 15, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "207002007": {
+                "compendium_id": 2080,
+                "rarity": 7,
+                "exp_pattern": 35,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1607, 4871, 540, 270],
+                    "MP": [83, 251, 90, 45],
+                    "ATK": [77, 233, 65, 32],
+                    "DEF": [57, 174, 40, 20],
+                    "MAG": [52, 158, 40, 20],
+                    "SPR": [59, 179, 40, 20]
+                },
+                "limitburst_id": 207002007,
+                "attack_count": 3,
+                "attack_damage": [
+                    [33, 33, 34]
+                ],
+                "attack_frames": [19, 43, 102],
+                "effect_frames": [17, 41, 100, 17, 41, 100, 74, 74, 100],
+                "max_lb_drop": 4,
+                "ability_slots": 4,
+                "magic_affinity": [7, 7, 7, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "A young man and former member of Shinra's elite group SOLDIER who appears in tales of the distant mako-fueled city of Midgar. He wields a buster sword, a weapon rivaling his own stature in size, with great ease. After leaving Shinra he becomes a mercenary for hire, and at the behest of his childhood friend Tifa takes up a job with Avalanche, an eco-terrorist organization. Although he participates in their mission to bomb Mako Reactor 1, he has no interest in Avalanche's ideals and sees this as merely another job.",
+                        "異界魔晄都市米德加的故事中登場的曾是神羅公司精銳士兵「魔晄戰士」的青年。能夠輕鬆揮舞一人高的大劍毀滅劍。離開神羅後做起了萬能工，之後在青梅竹馬蒂法的邀請下作為傭兵協助反神羅組織雪崩，參與了壹號魔晄爐引爆作戰，但他對雪崩的思想沒有興趣，只是當做工作來參與這一任務。",
+                        "이계의 마황도시 미드가르의 이야기에 등장하는, 신라 컴퍼니의 정예 병사 '솔저'였던 청년. 자기 키만큼이나 커다란 대검 버스터 소드를 가볍게 휘두른다. 신라를 떠나 '해결사' 일을 시작하고, 소꿉친구인 티파의 권유로 용병이 되어 반 신라 조직 아발란치를 도왔다. 1번 마황로 폭파 작전에 가담했으나 아발란치의 사상에는 관심이 없고 그저 일로만 여기며 임무를 이행하고 있다.",
+                        "Un jeune homme qui appartenait autrefois au SOLDAT, la brigade d'élite de la compagnie Shinra, et qui apparaît dans les récits de Midgar, une mégalopole d'un monde lointain alimentée par l'énergie mako. Cloud est armé de son épée broyeuse, une lame de la taille d'un homme qu'il manie pourtant avec aisance sur le champ de bataille. Ayant quitté la Shinra, il se reconvertit en mercenaire et, convaincu par Tifa, son amie d'enfance, rejoignit ensuite les rangs d'un groupe terroriste anti-Shinra nommé Avalanche. En dépit du rôle actif qu'il joua dans la mission visant à saboter le réacteur mako n° 1, Cloud ne s'intéressait guère aux idéaux d'Avalanche, considérant l'opération comme un simple contrat à remplir.",
+                        "Ein junger Mann aus den Legenden der Mako-Stadt Midgar in einer fernen Welt, der dort einst der Elitetruppe SOLDAT des Shinra-Kozerns diente. Er führt mit Leichtigkeit ein Panzerschwert, das fast so groß wie er selbst ist. Nachdem er Shinra den Rücken gekehrt hatte, verdingte er sich zunächst als Söldner und gelangte schließlich über seine Kindheitsfreundin Tifa zur Anti-Shinra-Bewegung Avalanche. Obwohl er sich am Anschlag auf den Mako-Reaktor 1 beteiligt, hegt er kein Interesse an den Ansichten Avalanches und sieht den Auftrag lediglich als bloßen Job an.",
+                        "Un joven y antiguo miembro de Soldado, la fuerza de élite de la compañía Shinra, que aparece en los relatos de Midgar, una ciudad de un mundo lejano que sustentan los reactores de mako. Empuña con gran facilidad la espada mortal, un arma que iguala su propia estatura. Después de abandonar Shinra, se convierte en mercenario a sueldo y, a petición de Tifa, una amiga de la infancia, acepta un trabajo para la organización ecoterrorista Avalancha. Aunque está implicado en el bombardeo del reactor de mako n.º 1, no defiende los ideales de Avalancha y contempla la misión como otro trabajo cualquiera."
+                    ],
+                    "summon": [
+                        "I'm an ex-SOLDIER.<br>If you wanna hire me, it'll cost you. A lot.",
+                        "我是「前」神羅戰士。<br>僱用我的費用可不便宜。",
+                        "'전직' 솔저다.<br>내 보수는 싸지 않아.",
+                        "Je suis un <i>ancien</i> SOLDAT.<br>Vous voulez m'embaucher ? Je suis pas donné, vous savez.",
+                        "Ich bin Ex-SOLDAT.<br>Meine Dienste kosten.",
+                        "Soy ex-Soldado. Si quieres contratarme, te saldrá caro. Y bastante."
+                    ],
+                    "evolution": {
+                        "0": null,
+                        "7": "<blank>"
+                    },
+                    "affinity": [
+                        "Never a dull moment with you. If you wanna talk, I'm here.",
+                        "跟妳在一起都不會無聊了。<br>有什麼事就和我說說吧。",
+                        "당신과 있으면 지루하지 않아.<br>이야기 정도는 들어줄게.",
+                        "En tout cas, on n'a pas le temps de s'ennuyer avec toi. Si tu as besoin de parler, je suis là.",
+                        "Mit dir wird es nie langweilig.<br>Warum gehen wir nicht mal zu zweit irgendwohin?",
+                        "Contigo no hay quien se aburra. Si quieres hablar, por aquí estoy."
+                    ],
+                    "fusion": [
+                        "Survival can be a matter of luck or skill. And you can't rely on luck.",
+                        "只有運氣好<br>或是夠強的人才能活下去，<br>不知道妳是哪種人。",
+                        "살아남는 건<br>운이 좋거나, 강한 녀석이다.<br>네가 어느 쪽인지는 모르겠지만.",
+                        "Ceux qui survivent sont soit les chanceux, soit les vainqueurs. Reste à savoir dans quelle catégorie tu es.",
+                        "Nur die Starken und die mit viel Glück überleben. Keine Ahnung, ob du dazugehörst.",
+                        "Sobrevivir depende de tu suerte o habilidad. Y mejor no dejarlo a la suerte."
+                    ]
+                },
+                "nv_upgrade": [
+                    {
+                        "gil": 250000,
+                        "materials": {
+                            "250000010": 50,
+                            "293000100": 1
+                        },
+                        "reward": [
+                            [
+                                "VISIONCARD",
+                                207000101,
+                                "",
+                                1,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ],
+                            [
+                                "VISIONCARD",
+                                900020101,
+                                "",
+                                3,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ]
+                        ],
+                        "stats": {
+                            "HP": 633,
+                            "MP": 33,
+                            "ATK": 61,
+                            "DEF": 23,
+                            "MAG": 21,
+                            "SPR": 23
+                        }
+                    },
+                    {
+                        "gil": 500000,
+                        "materials": {
+                            "250000010": 100,
+                            "293000100": 2
+                        },
+                        "reward": [
+                            [
+                                "UNIT",
+                                906000103,
+                                "Super Trust Moogle",
+                                1,
+                                [
+                                    "100",
+                                    "1",
+                                    "0",
+                                    "0",
+                                    "0",
+                                    "1207002007"
+                                ]
+                            ],
+                            [
+                                "VISIONCARD",
+                                900020101,
+                                "",
+                                5,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ],
+                            [
+                                "KEYITEM",
+                                110260,
+                                "1/10 NV Summon Ticket",
+                                1,
+                                ["100"]
+                            ]
+                        ],
+                        "stats": {
+                            "HP": 487,
+                            "MP": 25,
+                            "ATK": 47,
+                            "DEF": 17,
+                            "MAG": 16,
+                            "SPR": 18
+                        }
+                    },
+                    {
+                        "gil": 750000,
+                        "materials": {
+                            "250000010": 200,
+                            "293000100": 2
+                        },
+                        "reward": [
+                            [
+                                "VISIONCARD",
+                                207000101,
+                                "",
+                                1,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ],
+                            [
+                                "VISIONCARD",
+                                900020101,
+                                "",
+                                7,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ]
+                        ],
+                        "stats": {
+                            "HP": 341,
+                            "MP": 18,
+                            "ATK": 33,
+                            "DEF": 12,
+                            "MAG": 11,
+                            "SPR": 13
+                        }
+                    }
+                ]
+            }
+        },
+        "skills": [
+            {"rarity": 7, "level": 1, "type": "ABILITY", "id": 236020, "brave_ability": 1},
+            {"rarity": 7, "level": 1, "type": "MAGIC", "id": 20010, "brave_ability": 1},
+            {"rarity": 7, "level": 24, "type": "ABILITY", "id": 236001, "brave_ability": 1},
+            {"rarity": 7, "level": 24, "type": "ABILITY", "id": 236005, "brave_ability": 1},
+            {"rarity": 7, "level": 30, "type": "ABILITY", "id": 236021, "brave_ability": 1},
+            {"rarity": 7, "level": 46, "type": "ABILITY", "id": 236010, "brave_ability": 1},
+            {"rarity": 7, "level": 50, "type": "ABILITY", "id": 236022, "brave_ability": 1},
+            {"rarity": 7, "level": 80, "type": "ABILITY", "id": 236036, "brave_ability": 1},
+            {"rarity": 7, "level": 85, "type": "ABILITY", "id": 236015, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236027, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236016, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236023, "brave_ability": 1},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 236024, "brave_ability": 1},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 236032, "brave_ability": 1},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 236018, "brave_ability": 1},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 236034, "brave_ability": 1},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 236037, "brave_ability": 1},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100081, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236025, "brave_ability": 1}
+        ]
+    },
+    "207002017": {
+        "rarity_min": 7,
+        "rarity_max": 7,
+        "name": "Cloud (FFVII REMAKE)",
+        "names": [
+            "Cloud (FFVII REMAKE)",
+            "克勞德(FFVII REMAKE)",
+            "클라우드(FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)",
+            "Cloud (FFVII REMAKE)"
+        ],
+        "game_id": 10007,
+        "game": "FFVII",
+        "roles": ["Physical Attacker"],
+        "job_id": 229,
+        "job": null,
+        "sex_id": 1,
+        "sex": "Male",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "EQUIP",
+            303008700
+        ],
+        "sTMR": [
+            "MATERIA",
+            504236244
+        ],
+        "equip": [2, 3, 4, 16, 40, 41, 50, 51, 52, 60],
+        "entries": {
+            "207002017": {
+                "compendium_id": 2080,
+                "rarity": 7,
+                "exp_pattern": 35,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1602, 4854, 540, 270],
+                    "MP": [84, 254, 90, 45],
+                    "ATK": [75, 227, 65, 32],
+                    "DEF": [56, 171, 40, 20],
+                    "MAG": [51, 155, 40, 20],
+                    "SPR": [60, 182, 40, 20]
+                },
+                "limitburst_id": 207002017,
+                "attack_count": 1,
+                "attack_damage": [
+                    [100]
+                ],
+                "attack_frames": [27],
+                "effect_frames": [25, 0, 25, 25],
+                "max_lb_drop": 12,
+                "ability_slots": 4,
+                "magic_affinity": [7, 7, 7, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": [
+                        "A young man and former member of Shinra's elite group SOLDIER who appears in tales of the distant mako-fueled city of Midgar. He wields a buster sword, a weapon rivaling his own stature in size, with great ease. After leaving Shinra he becomes a mercenary for hire, and at the behest of his childhood friend Tifa takes up a job with Avalanche, an eco-terrorist organization. Although he participates in their mission to bomb Mako Reactor 1, he has no interest in Avalanche's ideals and sees this as merely another job.",
+                        "異界魔晄都市米德加的故事中登場的曾是神羅公司精銳士兵「魔晄戰士」的青年。能夠輕鬆揮舞一人高的大劍毀滅劍。離開神羅後做起了萬能工，之後在青梅竹馬蒂法的邀請下作為傭兵協助反神羅組織雪崩，參與了壹號魔晄爐引爆作戰，但他對雪崩的思想沒有興趣，只是當做工作來參與這一任務。",
+                        "이계의 마황도시 미드가르의 이야기에 등장하는, 신라 컴퍼니의 정예 병사 '솔저'였던 청년. 자기 키만큼이나 커다란 대검 버스터 소드를 가볍게 휘두른다. 신라를 떠나 '해결사' 일을 시작하고, 소꿉친구인 티파의 권유로 용병이 되어 반 신라 조직 아발란치를 도왔다. 1번 마황로 폭파 작전에 가담했으나 아발란치의 사상에는 관심이 없고 그저 일로만 여기며 임무를 이행하고 있다.",
+                        "Un jeune homme qui appartenait autrefois au SOLDAT, la brigade d'élite de la compagnie Shinra, et qui apparaît dans les récits de Midgar, une mégalopole d'un monde lointain alimentée par l'énergie mako. Cloud est armé de son épée broyeuse, une lame de la taille d'un homme qu'il manie pourtant avec aisance sur le champ de bataille. Ayant quitté la Shinra, il se reconvertit en mercenaire et, convaincu par Tifa, son amie d'enfance, rejoignit ensuite les rangs d'un groupe terroriste anti-Shinra nommé Avalanche. En dépit du rôle actif qu'il joua dans la mission visant à saboter le réacteur mako n° 1, Cloud ne s'intéressait guère aux idéaux d'Avalanche, considérant l'opération comme un simple contrat à remplir.",
+                        "Ein junger Mann aus den Legenden der Mako-Stadt Midgar in einer fernen Welt, der dort einst der Elitetruppe SOLDAT des Shinra-Kozerns diente. Er führt mit Leichtigkeit ein Panzerschwert, das fast so groß wie er selbst ist. Nachdem er Shinra den Rücken gekehrt hatte, verdingte er sich zunächst als Söldner und gelangte schließlich über seine Kindheitsfreundin Tifa zur Anti-Shinra-Bewegung Avalanche. Obwohl er sich am Anschlag auf den Mako-Reaktor 1 beteiligt, hegt er kein Interesse an den Ansichten Avalanches und sieht den Auftrag lediglich als bloßen Job an.",
+                        "Un joven y antiguo miembro de Soldado, la fuerza de élite de la compañía Shinra, que aparece en los relatos de Midgar, una ciudad de un mundo lejano que sustentan los reactores de mako. Empuña con gran facilidad la espada mortal, un arma que iguala su propia estatura. Después de abandonar Shinra, se convierte en mercenario a sueldo y, a petición de Tifa, una amiga de la infancia, acepta un trabajo para la organización ecoterrorista Avalancha. Aunque está implicado en el bombardeo del reactor de mako n.º 1, no defiende los ideales de Avalancha y contempla la misión como otro trabajo cualquiera."                    ],
+                    "summon": [
+                        "I'm an ex-SOLDIER.<br>If you wanna hire me, it'll cost you. A lot.",
+                        "我是「前」神羅戰士。<br>僱用我的費用可不便宜。",
+                        "'전직' 솔저다.<br>내 보수는 싸지 않아.",
+                        "Je suis un <i>ancien</i> SOLDAT.<br>Vous voulez m'embaucher ? Je suis pas donné, vous savez.",
+                        "Ich bin Ex-SOLDAT.<br>Meine Dienste kosten.",
+                        "Soy ex-Soldado. Si quieres contratarme, te saldrá caro. Y bastante."
+                    ],
+                    "evolution": {
+                        "0": null,
+                        "7": "<blank>"
+                    },
+                    "affinity": [
+                        "Never a dull moment with you. If you wanna talk, I'm here.",
+                        "跟妳在一起都不會無聊了。<br>有什麼事就和我說說吧。",
+                        "당신과 있으면 지루하지 않아.<br>이야기 정도는 들어줄게.",
+                        "En tout cas, on n'a pas le temps de s'ennuyer avec toi. Si tu as besoin de parler, je suis là.",
+                        "Mit dir wird es nie langweilig.<br>Warum gehen wir nicht mal zu zwei irgendwohin?",
+                        "Contigo no hay quien se aburra. Si quieres hablar, por aquí estoy."
+                    ],
+                    "fusion": [
+                        "Survival can be a matter of luck or skill. And you can't rely on luck.",
+                        "只有運氣好<br>或是夠強的人才能活下去，<br>不知道妳是哪種人。",
+                        "살아남는 건<br>운이 좋거나, 강한 녀석이다.<br>네가 어느 쪽인지는 모르겠지만.",
+                        "Ceux qui survivent sont soit les chanceux, soit les vainqueurs. Reste à savoir dans quelle catégorie tu es.",
+                        "Nur die Starken und die mit viel Glück überleben. Keine Ahnung, ob du dazugehörst.",
+                        "Sobrevivir depende de tu suerte o habilidad. Y mejor no dejarlo a la suerte."
+                    ]
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 7, "level": 1, "type": "ABILITY", "id": 236020, "brave_ability": 1},
+            {"rarity": 7, "level": 1, "type": "MAGIC", "id": 20010, "brave_ability": 1},
+            {"rarity": 7, "level": 24, "type": "ABILITY", "id": 236001, "brave_ability": 1},
+            {"rarity": 7, "level": 24, "type": "ABILITY", "id": 236005, "brave_ability": 1},
+            {"rarity": 7, "level": 30, "type": "ABILITY", "id": 236021, "brave_ability": 1},
+            {"rarity": 7, "level": 46, "type": "ABILITY", "id": 236010, "brave_ability": 1},
+            {"rarity": 7, "level": 50, "type": "ABILITY", "id": 236022, "brave_ability": 1},
+            {"rarity": 7, "level": 80, "type": "ABILITY", "id": 236049, "brave_ability": 1},
+            {"rarity": 7, "level": 85, "type": "ABILITY", "id": 236015, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236040, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236023, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236038, "brave_ability": 1},
+            {"rarity": 7, "level": 100, "type": "ABILITY", "id": 236016, "brave_ability": 1},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 236024, "brave_ability": 1},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 236045, "brave_ability": 1},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 236018, "brave_ability": 1},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 236047, "brave_ability": 1},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 236050, "brave_ability": 1},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100081, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236025, "brave_ability": 1}
+        ]
     }
   }`;
