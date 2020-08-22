@@ -11,6 +11,7 @@ export class CharacterDisplayComponent implements OnInit {
 
   @Input() personnage: Personnage;
   competences: Array<Competence>;
+  isCharacterDetailDisplayed = true;
 
   constructor() {
   }
@@ -25,4 +26,7 @@ export class CharacterDisplayComponent implements OnInit {
     return Array.isArray(this.competences) && this.competences.length > 0;
   }
 
+  public switchCharacterDisplay() {
+    this.isCharacterDetailDisplayed = !this.isCharacterDetailDisplayed;
+  }
 }
