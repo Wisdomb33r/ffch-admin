@@ -7,11 +7,11 @@ import {Element} from '../model/element.model';
 import {FFBE_ELEMENTS} from '../ffbe.constants';
 
 @Component({
-  selector: 'app-character-skill-display',
-  templateUrl: './character-skill-display.component.html',
-  styleUrls: ['./character-skill-display.component.css']
+  selector: 'app-skill-display',
+  templateUrl: './skill-display.component.html',
+  styleUrls: ['./skill-display.component.css']
 })
-export class CharacterSkillDisplayComponent implements OnInit, OnChanges {
+export class SkillDisplayComponent implements OnInit, OnChanges {
 
   @Input() competence: Competence;
   @Input() present: boolean;

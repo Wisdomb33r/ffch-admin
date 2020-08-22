@@ -1,15 +1,15 @@
 <div
   [ngClass]="competencesContainer.isPresentInFfchDb() && competencesContainer.dbCompetence ? 'skill-left' : ''">
-  <app-character-skill-display
+  <app-skill-display
     [competence]="competencesContainer.competence"
     [present]="competencesContainer.isPresentInFfchDb()"
-    [different]="competencesContainer.isDifferentFromFfchDb()"></app-character-skill-display>
+    [different]="competencesContainer.isDifferentFromFfchDb()"></app-skill-display>
 </div>
 <div *ngIf="competencesContainer.isPresentInFfchDb() && competencesContainer.dbCompetence" class="skill-right">
-  <app-character-skill-display
+  <app-skill-display
     [competence]="competencesContainer.dbCompetence"
     [present]="true"
-    [different]="competencesContainer.isDifferentFromFfchDb()"></app-character-skill-display>
+    [different]="competencesContainer.isDifferentFromFfchDb()"></app-skill-display>
 </div>
 
 <div class="skill-clear"></div>
@@ -20,11 +20,11 @@
       Modifier {{competencesContainer.modifiedCompetence.nom}}</mat-card-title>
 
     <div *ngIf="modificationPanelDisplayed">
-      <app-character-skill-display
+      <app-skill-display
         [competence]="competencesContainer.modifiedCompetence"
         [present]="competencesContainer.isPresentInFfchDb()"
         [different]="competencesContainer.isDifferentFromFfchDb()"
-        [editable]="true" (skillModifiedEvent)="skillModified($event)"></app-character-skill-display>
+        [editable]="true" (skillModifiedEvent)="skillModified($event)"></app-skill-display>
     </div>
   </mat-card>
 </div>

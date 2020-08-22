@@ -28,9 +28,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <app-character-skills-display *ngIf="areSkillsDisplayed()"
-                                  [competences]="competences">
-    </app-character-skills-display>
+    <app-skills-display *ngIf="areSkillsDisplayed()"
+                        [competences]="competences">
+    </app-skills-display>
     <app-formules-display [formule]="amelioration.formule"
                           [formuleFromFfch]="getFormuleFromFfchAmelioration()"
                           [displayCost]="true"

@@ -7,11 +7,11 @@ import {catchError} from 'rxjs/operators';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
-  selector: 'app-character-skills-display',
-  templateUrl: './character-skills-display.component.html',
-  styleUrls: ['./character-skills-display.component.css']
+  selector: 'app-skills-display',
+  templateUrl: './skills-display.component.html',
+  styleUrls: ['./skills-display.component.css']
 })
-export class CharacterSkillsDisplayComponent implements OnDestroy, OnChanges {
+export class SkillsDisplayComponent implements OnDestroy, OnChanges {
 
   @Input() competences: Array<Competence>;
   @Input() shouldStayOpen = true;
