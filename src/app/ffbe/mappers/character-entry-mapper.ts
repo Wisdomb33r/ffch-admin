@@ -12,9 +12,8 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 export class CharacterEntryMapper {
 
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
-    const compendium_id = this.convertCompendiumId(entry, perso);
     const unite = new Unite(
-      compendium_id,
+      CharacterEntryMapper.convertCompendiumId(entry, perso),
       entry.rarity,
       entry.limitburst_id,
       gumi_id
