@@ -11,7 +11,6 @@ import {CharactersService} from '../services/characters.service';
 import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
-  selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })

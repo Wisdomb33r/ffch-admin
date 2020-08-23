@@ -37,17 +37,21 @@ export class CharactersService {
     }
   }
 
-  public searchForCharacterByName(name: string): Character {
+  public searchForCharactersByName(name: string): Array<Character> {
     if (this.charactersFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
-      const property = propertyNames.find(propertyName => this.charactersFromDataMining[propertyName].name === name);
-      if (property) {
-        const character: Character = this.charactersFromDataMining[property];
-        character.gumi_id = +property;
-        this.loadCharacterSkills(character.skills);
-        this.loadLimitBurst(character.entries);
-        this.loadEnhancedLimitBurst(character);
-        return character;
+      const properties = propertyNames.filter(propertyName => this.charactersFromDataMining[propertyName].name === name);
+      if (properties && properties.length > 0) {
+        const characters: Array<Character> = [];
+        properties.forEach(property => {
+          const character: Character = this.charactersFromDataMining[property];
+          character.gumi_id = +property;
+          this.loadCharacterSkills(character.skills);
+          this.loadLimitBurst(character.entries);
+          this.loadEnhancedLimitBurst(character);
+          characters.push(character);
+        });
+        return characters;
       }
     }
     return null;
@@ -69,13 +73,13 @@ export class CharactersService {
     return null;
   }
 
-  public searchForCharacterByNameOrGumiId(name: string): Character {
+  public searchForCharactersByNameOrGumiId(name: string): Array<Character> {
     if (this.charactersFromDataMining != null) {
       const tentativeGumiId = Number(name);
       if (name.length == FFBE_CHARACTER_GUMI_ID_LENGTH && !isNaN(tentativeGumiId)) {
-        return this.searchForCharacterByGumiId(tentativeGumiId);
+        return [this.searchForCharacterByGumiId(tentativeGumiId)];
       } else {
-        return this.searchForCharacterByName(name);
+        return this.searchForCharactersByName(name);
       }
     }
     return null;

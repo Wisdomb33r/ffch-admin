@@ -15,6 +15,6 @@
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchSkillsInDataMining()">Chercher</button>
 </mat-card>
-<app-character-skills-display *ngIf="isSkillsDisplayed()"
-                              [competences]="competences">
-</app-character-skills-display>
+<app-skills-display *ngIf="isSkillsDisplayed()"
+                    [competences]="competences">
+</app-skills-display>

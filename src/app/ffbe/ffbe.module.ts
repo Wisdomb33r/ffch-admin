@@ -18,10 +18,10 @@ import {MatTableModule} from '@angular/material/table';
 import {LimitBurstsService} from './services/limit-bursts.service';
 import {SkillsService} from './services/skills.service';
 import {UnitDisplayComponent} from './unit-display/unit-display.component';
-import {CharacterSkillsDisplayComponent} from './character-skills-display/character-skills-display.component';
+import {SkillsDisplayComponent} from './skills-display/skills-display.component';
 import {FfchClientService} from './services/ffch-client.service';
 import {SkillsComponent} from './skills/skills.component';
-import {CharacterSkillDisplayComponent} from './character-skill-display/character-skill-display.component';
+import {SkillDisplayComponent} from './skill-display/skill-display.component';
 import {CharacterEquipmentsDisplayComponent} from './character-equipments-display/character-equipments-display.component';
 import {UnitAwakeningMaterialsDisplayComponent} from './unit-awakening-materials-display/unit-awakening-materials-display.component';
 import {EnhancementsComponent} from './enhancements/enhancements.component';
@@ -72,9 +72,9 @@ import {LatentSkillsService} from './services/latent-skills.service';
     CharactersComponent,
     CharacterDisplayComponent,
     UnitDisplayComponent,
-    CharacterSkillsDisplayComponent,
+    SkillsDisplayComponent,
     SkillsComponent,
-    CharacterSkillDisplayComponent,
+    SkillDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
     EnhancementsComponent,
@@ -100,9 +100,9 @@ import {LatentSkillsService} from './services/latent-skills.service';
     CharactersComponent,
     CharacterDisplayComponent,
     UnitDisplayComponent,
-    CharacterSkillsDisplayComponent,
+    SkillsDisplayComponent,
     SkillsComponent,
-    CharacterSkillDisplayComponent,
+    SkillDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
   ],

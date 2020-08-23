@@ -1,6 +1,7 @@
 <mat-card>
-  <mat-card-title>{{personnage.nom}}
-    (<img *ngIf="personnage.jeu.isUnknownGame()" src="assets/red/warn.png" alt="Warn" class="gamewarn">{{personnage.jeu.name}})
+  <mat-card-title (click)="switchCharacterDisplay()">{{personnage.nom}}
+    (<img *ngIf="personnage.jeu.isUnknownGame()" src="assets/red/warn.png" alt="Warn"
+          class="gamewarn">{{personnage.jeu.name}})
   </mat-card-title>
   <table>
     <caption>Détails du personnage</caption>
@@ -21,8 +22,15 @@
       <td>{{personnage.gumi_id}}</td>
     </tr>
   </table>
-  <h2>Équipement</h2>
-  <app-character-equipments-display [personnage]="personnage"></app-character-equipments-display>
-  <h2>Unités</h2>
-  <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
+  <ng-container *ngIf="isCharacterDetailDisplayed">
+    <h2>Équipement</h2>
+    <app-character-equipments-display [personnage]="personnage"></app-character-equipments-display>
+    <h2>Unités</h2>
+    <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
+    <h2>Compétences</h2>
+    <app-skills-display *ngIf="areCharacterSkillsDisplayed()"
+                        [competences]="competences"
+                        [shouldDisplayTitle]="false">
+    </app-skills-display>
+  </ng-container>
 </mat-card>

@@ -11,7 +11,6 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
 
 @Component({
-  selector: 'app-latent-skills',
   templateUrl: './latent-skills.component.html',
   styleUrls: ['./latent-skills.component.css']
 })
@@ -41,8 +40,9 @@ export class LatentSkillsComponent implements OnInit {
     this.ameliorations = [];
     let latentSkills = [];
     if (!FfbeUtils.isNullOrUndefined(this.characterName.value) && this.characterName.value.length > 0) {
-      this.character = this.charactersService.searchForCharacterByNameOrGumiId(this.characterName.value);
-      if (!FfbeUtils.isNullOrUndefined(this.character)) {
+      const characters = this.charactersService.searchForCharactersByNameOrGumiId(this.characterName.value);
+      if (!FfbeUtils.isNullOrUndefined(characters) && Array.isArray(characters) && characters.length > 0) {
+        this.character = characters[0];
         latentSkills = this.latentSkillsService.searchForLatentSkillsByCharacterGumiId(this.character.gumi_id);
       }
     }
