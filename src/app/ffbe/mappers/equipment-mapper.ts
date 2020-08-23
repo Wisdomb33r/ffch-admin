@@ -5,7 +5,7 @@ import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
-import {ObjetCarac} from '../model/objet/objet-carac';
+import {Caracteristiques} from '../model/caracteristiques';
 import {ObjetElements} from '../model/objet/objet-elements';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
@@ -36,7 +36,7 @@ export class EquipmentMapper {
       requirements,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
-      ObjetCarac.newEmptyObjetCarac(),
+      Caracteristiques.newEmptyCaracteristiques(),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
@@ -57,8 +57,8 @@ export class EquipmentMapper {
     return objet;
   }
 
-  private static mapEquipmentStats(stats: EquipmentStats): ObjetCarac {
-    return new ObjetCarac(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
+  private static mapEquipmentStats(stats: EquipmentStats): Caracteristiques {
+    return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {

@@ -1,4 +1,4 @@
-import {ObjetCarac} from './objet-carac';
+import {Caracteristiques} from '../caracteristiques';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
@@ -31,8 +31,8 @@ export class Objet {
     public description_en: string,
     public effet: string,
     public effet_en: string,
-    public carac: ObjetCarac,
-    public caracp: ObjetCarac,
+    public carac: Caracteristiques,
+    public caracp: Caracteristiques,
     public elements: ObjetElements,
     public resistancesAlterations: ObjetAlterationsEtat,
     public competences: Array<Competence>
@@ -53,8 +53,8 @@ export class Objet {
       o.description_en,
       o.effet,
       o.effet_en,
-      ObjetCarac.produce(o.carac),
-      ObjetCarac.produce(o.caracp),
+      Caracteristiques.produce(o.carac),
+      Caracteristiques.produce(o.caracp),
       ObjetElements.produce(o.elements),
       ObjetAlterationsEtat.produce(o.resistancesAlterations),
       o.competences);
