@@ -4,7 +4,7 @@ import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constan
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {Caracteristiques} from '../model/caracteristiques';
+import {Caracteristiques} from '../model/caracteristiques.model';
 import {ObjetElements} from '../model/objet/objet-elements';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 

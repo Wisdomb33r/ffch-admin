@@ -1,4 +1,4 @@
-import {Caracteristiques} from '../caracteristiques';
+import {Caracteristiques} from '../caracteristiques.model';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';

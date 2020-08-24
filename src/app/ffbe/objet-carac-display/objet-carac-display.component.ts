@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Caracteristiques} from '../model/caracteristiques';
+import {Caracteristiques} from '../model/caracteristiques.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({

@@ -5,7 +5,7 @@ import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
-import {Caracteristiques} from '../model/caracteristiques';
+import {Caracteristiques} from '../model/caracteristiques.model';
 import {ObjetElements} from '../model/objet/objet-elements';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
