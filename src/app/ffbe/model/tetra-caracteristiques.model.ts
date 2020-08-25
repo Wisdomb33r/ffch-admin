@@ -20,6 +20,10 @@ export class TetraCaracteristiques {
       tc.caracDoubleHand, tc.caracTrueDoubleHand, tc.caracTrueDualWield);
   }
 
+  public static computeSum(entries: Array<TetraCaracteristiques>): TetraCaracteristiques {
+    return entries.reduce((a, b) => a.accumulateByAddition(b), TetraCaracteristiques.newEmptyTetraCaracteristiques());
+  }
+
   public accumulateByAddition(other: TetraCaracteristiques): TetraCaracteristiques {
     if (!FfbeUtils.isNullOrUndefined(other)) {
       this.accumulateCaracteristiquesByAddition(this.caracInconditionnelles, other.caracInconditionnelles);
