@@ -12,7 +12,12 @@ export class TetraCaracteristiques {
   }
 
   public static newEmptyTetraCaracteristiques(): TetraCaracteristiques {
-    return new TetraCaracteristiques(null, null, null, null);
+    return new TetraCaracteristiques(Caracteristiques.newEmptyCaracteristiques(), Caracteristiques.newEmptyCaracteristiques(), Caracteristiques.newEmptyCaracteristiques(), Caracteristiques.newEmptyCaracteristiques());
+  }
+
+  public static produce(tc: TetraCaracteristiques): TetraCaracteristiques {
+    return new TetraCaracteristiques(tc.caracInconditionnelles,
+      tc.caracDoubleHand, tc.caracTrueDoubleHand, tc.caracTrueDualWield);
   }
 
 }
