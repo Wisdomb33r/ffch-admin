@@ -25,6 +25,30 @@ describe('Caracteristiques', () => {
     expect(carac1).toEqual(new Caracteristiques(1, 2, 3, 4, 5, 6));
   });
 
+  it('should add one valid and one empty Caracteristiques correctly', () => {
+    // GIVEN
+    const carac1 = new Caracteristiques(1, 2, 3, 4, 5, 6);
+    const carac2 = Caracteristiques.newEmptyCaracteristiques();
+
+    // WHEN
+    carac1.accumulateByAddition(carac2);
+
+    // THEN
+    expect(carac1).toEqual(new Caracteristiques(1, 2, 3, 4, 5, 6));
+  });
+
+  it('should add one empty and one valid Caracteristiques correctly', () => {
+    // GIVEN
+    const carac1 = Caracteristiques.newEmptyCaracteristiques();
+    const carac2 = new Caracteristiques(1, 2, 3, 4, 5, 6);
+
+    // WHEN
+    carac1.accumulateByAddition(carac2);
+
+    // THEN
+    expect(carac1).toEqual(new Caracteristiques(1, 2, 3, 4, 5, 6));
+  });
+
   it('should reduce three Caracteristiques by addition correctly', () => {
     // GIVEN
     const carac1 = new Caracteristiques(1, 2, 3, 4, 5, 6);
