@@ -20,4 +20,22 @@ export class TetraCaracteristiques {
       tc.caracDoubleHand, tc.caracTrueDoubleHand, tc.caracTrueDualWield);
   }
 
+  public accumulateByAddition(other: TetraCaracteristiques): TetraCaracteristiques {
+    if (!FfbeUtils.isNullOrUndefined(other)) {
+      this.accumulateCaracteristiquesByAddition(this.caracInconditionnelles, other.caracInconditionnelles);
+      this.accumulateCaracteristiquesByAddition(this.caracDoubleHand, other.caracDoubleHand);
+      this.accumulateCaracteristiquesByAddition(this.caracTrueDoubleHand, other.caracTrueDoubleHand);
+      this.accumulateCaracteristiquesByAddition(this.caracTrueDualWield, other.caracTrueDualWield);
+    }
+    return this;
+  }
+
+  private accumulateCaracteristiquesByAddition(own: Caracteristiques, other: Caracteristiques) {
+    if (FfbeUtils.isNullOrUndefined(own)) {
+      own = other;
+    } else {
+      own.accumulateByAddition(other);
+    }
+  }
+
 }
