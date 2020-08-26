@@ -80,11 +80,11 @@ export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(null, 61, 'Outils d\'événements', 'outil d\'événement', null),
   new CategorieObjet(null, 60, 'Clés', 'clé', null),
   new CategorieObjet(null, 4, 'Matériaux d\'artisanat', 'matériau d\'artisanat', null),
-  new CategorieObjet(null, 65, 'Matériaux d\'éveil 3★ à 6★', 'matériau d\'éveil 3★ à 6★', null),
+  new CategorieObjet(null, 59, 'Matériaux d\'événement', 'matériau d\'événement', null),
   new CategorieObjet(null, 64, 'Matériaux d\'éveil de compétences', 'matériau d\'éveil de compétence', null),
+  new CategorieObjet(null, 65, 'Matériaux d\'éveil 3★ à 6★', 'matériau d\'éveil 3★ à 6★', null),
   new CategorieObjet(null, 79, 'Prismes d\'éveil', 'prisme d\'éveil', null),
   new CategorieObjet(null, 66, 'Matériaux d\'éveil NV', 'matériau d\'éveil NV', null),
-  new CategorieObjet(null, 59, 'Matériaux d\'événement', 'matériau d\'événement', null),
   new CategorieObjet(null, 36, 'Cristaux', 'cristal', null),
   new CategorieObjet(null, 58, 'Divers', 'divers', null)
 ];
