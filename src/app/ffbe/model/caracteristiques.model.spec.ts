@@ -1,4 +1,5 @@
 import {Caracteristiques} from './caracteristiques.model';
+import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model';
 
 describe('Caracteristiques', () => {
   it('should add two Caracteristiques correctly', () => {
@@ -85,6 +86,22 @@ describe('Caracteristiques', () => {
     expect(carac3).toEqual(new Caracteristiques(100, 200, 300, 400, 500, 600));
 
     expect(result).toEqual(new Caracteristiques(161, 272, 383, 494, 605, 716));
+  });
+
+  it('should convert Caracteristiques to NameValueArray correctly', () => {
+    // GIVEN
+    const carac = new Caracteristiques(10, 20, 30, 40, 50, 60);
+
+    // WHEN
+    const array = carac.toNameValuePairArray();
+
+    // THEN
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'PV' && nameValuePair.value === 10)).toEqual(0);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'PM' && nameValuePair.value === 20)).toEqual(1);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'ATT' && nameValuePair.value === 30)).toEqual(2);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'DÉF' && nameValuePair.value === 40)).toEqual(3);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'MAG' && nameValuePair.value === 50)).toEqual(4);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'PSY' && nameValuePair.value === 60)).toEqual(5);
   });
 
 });
