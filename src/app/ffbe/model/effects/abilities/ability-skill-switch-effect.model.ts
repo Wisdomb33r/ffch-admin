@@ -29,16 +29,17 @@ export class AbilitySkillSwitchEffect extends SkillEffect {
       this.enhancedSkillId = parameters[3];
       this.enhancedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.enhancedSkillId);
       this.activatorsIds = !Array.isArray(parameters[1]) ? [parameters[1]] : parameters[1];
-      this.activators = this.activatorsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     }
   }
 
   protected wordEffectImpl(skill: Skill) {
+    // Do NOT move the next line into constructor. There are skills having themselves as activator, triggering an infinite constructor loop
+    this.activators = this.activatorsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     const normalSkillText = SkillMapper.toCompetence(this.normalSkill).effet_fr;
-    const enhancedSkillLink = EffectParser.getSkillNameWithGumiIdentifierLink(this.enhancedSkill);
+    const enhancedSkillText = SkillMapper.toCompetence(this.enhancedSkill).effet_fr;
     const activatorSkillsLinks = EffectParser.getSkillsNamesWithGumiIdentifierLinks(this.activators);
     EffectParser.fillSkillWithTransitiveActivatedSkillInformation(skill, this.normalSkill);
-    const transformationText = `Se transforme en ${enhancedSkillLink} si utilisé après ${activatorSkillsLinks}`;
+    const transformationText = `Si utilisé après ${activatorSkillsLinks}:${HTML_LINE_RETURN}${enhancedSkillText}`;
     return `${normalSkillText}${HTML_LINE_RETURN}${HTML_LINE_RETURN}${transformationText}`;
   }
 

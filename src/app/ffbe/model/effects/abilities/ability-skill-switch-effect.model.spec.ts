@@ -32,6 +32,7 @@ describe('AbilitySkillSwitchEffect', () => {
     activatedSkill.gumi_id = 200270;
     activatedSkill.names = names['200270'];
     activatedSkill.descriptions = descriptions['200270'];
+    activatedSkill.active = true;
 
     const effect = JSON.parse('[1, 1, 99, [2,  229425,  2,  200270,  2,  200200]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
@@ -46,8 +47,9 @@ describe('AbilitySkillSwitchEffect', () => {
     expect(mySpy).toHaveBeenCalledWith(200270);
     expect(mySpy).toHaveBeenCalledWith(229425);
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
-      'Se transforme en <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> si utilisé après ' +
-      '<a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>');
+      'Si utilisé après <a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>:<br />' +
+      'Dégâts physiques neutres de puissance 80% avec absorption de 20% des dégâts infligés à un adversaire<br />' +
+      'Dégâts physiques neutres sur les PM de puissance 30% avec absorption de 10% des dégâts infligés à un adversaire');
     expect(switchSkill.attack_count[0]).toEqual(3);
     expect(switchSkill.attack_frames[0].length).toEqual(3);
     expect(switchSkill.attack_frames[0][0]).toEqual(2);
@@ -96,6 +98,7 @@ describe('AbilitySkillSwitchEffect', () => {
     activatedSkill.gumi_id = 200270;
     activatedSkill.names = names['200270'];
     activatedSkill.descriptions = descriptions['200270'];
+    activatedSkill.active = true;
 
     const effect = JSON.parse('[1, 1, 99, [[2,  2,  2], [229425, 510754, 202340], 2, 200270, 2, 200200]]');
 
@@ -114,9 +117,10 @@ describe('AbilitySkillSwitchEffect', () => {
     expect(mySpy).toHaveBeenCalledWith(510754);
     expect(mySpy).toHaveBeenCalledWith(202340);
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
-      'Se transforme en <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> si utilisé après ' +
-      '<a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>, ' +
+      'Si utilisé après <a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=510754">Sauveur d\'Elréa</a>, ' +
-      '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
+      '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>:<br />' +
+      'Dégâts physiques neutres de puissance 80% avec absorption de 20% des dégâts infligés à un adversaire<br />' +
+      'Dégâts physiques neutres sur les PM de puissance 30% avec absorption de 10% des dégâts infligés à un adversaire');
   });
 });

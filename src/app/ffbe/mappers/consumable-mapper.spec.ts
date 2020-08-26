@@ -15,7 +15,7 @@ describe('ConsumableMapper', () => {
     // THEN
     expect(objet.id).toBeNull();
     expect(objet.gumi_id).toEqual(101000200);
-    expect(objet.categorie).toEqual(FfbeUtils.findObjetCategorieByFfchId(5));
+    expect(objet.categorie).toEqual(FfbeUtils.findObjetCategorieByFfchId(61));
     expect(objet.stars).toEqual(null);
     expect(objet.icone).toEqual(null);
     expect(objet.nom).toEqual('Potion +');
