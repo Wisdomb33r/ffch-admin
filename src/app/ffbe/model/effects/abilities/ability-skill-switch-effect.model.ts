@@ -33,7 +33,7 @@ export class AbilitySkillSwitchEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill) {
-    // Do NOT move the next line into constructor. There are skills having themselves as activator, consequently triggering an infinite loop
+    // Do NOT move the next line into constructor. There are skills having themselves as activator, triggering an infinite constructor loop
     this.activators = this.activatorsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     const normalSkillText = SkillMapper.toCompetence(this.normalSkill).effet_fr;
     const enhancedSkillText = SkillMapper.toCompetence(this.enhancedSkill).effet_fr;
