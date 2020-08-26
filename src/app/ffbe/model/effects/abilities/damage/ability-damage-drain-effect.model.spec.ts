@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamageDrainEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamageDrainEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres sur les PM de puissance 30% avec absorption de 20% des dégâts infligés à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamageDrainEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts hybrides de Feu, Terre, Lumière sur les PM de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamageDrainEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres de puissance 30% avec absorption de 20% des dégâts infligés à un adversaire');
   });
@@ -46,7 +46,7 @@ describe('AbilityDamageDrainEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth'];
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts hybrides de Feu, Terre de puissance 120% avec absorption de 50% des dégâts infligés aux adversaires');
   });

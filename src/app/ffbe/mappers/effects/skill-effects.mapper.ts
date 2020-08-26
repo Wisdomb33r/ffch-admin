@@ -2,7 +2,7 @@ import {Skill} from '../../model/skill.model';
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
 import {AbilityEffectParserFactory} from './abilities/ability-effect-parser.factory';
 import {SkillEffect} from '../../model/effects/skill-effect.model';
-import {SkillEffectFactory} from '../../model/effects/skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../model/effects/ability-skill-effect.factory';
 
 export const HTML_LINE_RETURN = '<br />';
 
@@ -18,7 +18,7 @@ export class SkillEffectsMapper {
   public static mapAbilitySkillEffects(skill: Skill): string {
     const effects = [];
     skill.effects_raw.forEach((effect: Array<any>) => {
-      const skillEffect: SkillEffect = SkillEffectFactory.getSkillEffect(effect);
+      const skillEffect: SkillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
       if (skillEffect) {
         effects.push(skillEffect.wordEffect(skill));
       } else {

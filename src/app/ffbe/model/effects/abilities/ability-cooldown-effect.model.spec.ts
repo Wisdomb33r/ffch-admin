@@ -3,7 +3,7 @@ import {Skill} from '../../skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
 import {SkillsServiceMock} from '../../../services/skills.service.spec';
-import {SkillEffectFactory} from '../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../ability-skill-effect.factory';
 
 describe('AbilityCooldownEffect', () => {
   it('should parse cooldown skills available on turn 1', () => {
@@ -37,7 +37,7 @@ describe('AbilityCooldownEffect', () => {
     const effect = JSON.parse('[0, 3, 130, [509014, 1, [7,  7], 0]]');
 
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(2);
     expect(mySpy).toHaveBeenCalledWith(509014);
@@ -74,7 +74,7 @@ describe('AbilityCooldownEffect', () => {
 
     const effect = JSON.parse('[0, 3, 130, [200200, 1, [6,  0]]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
     // THEN
     expect(s).toEqual('Disponible tous les 7 tours dès le tour 7:<br />Dégâts physiques neutres de puissance 110% aux adversaires');
     expect(Array.isArray(cooldownActivator.attack_count) && cooldownActivator.attack_count.length === 1 && cooldownActivator.attack_count[0] === 3).toBeTruthy();
@@ -107,7 +107,7 @@ describe('AbilityCooldownEffect', () => {
 
     const effect = JSON.parse('[0, 3, 130, [509624, 1, [5,  2], 1]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
     // THEN
     expect(s).toEqual('Disponible tous les 6 tours dès le tour 4:<br />' +
       'Dégâts physiques neutres de puissance 25% (ignore 50% DÉF, 50% total) à un adversaire (ignore les couvertures)<br />' +
@@ -149,7 +149,7 @@ describe('AbilityCooldownEffect', () => {
 
     const effect = JSON.parse('[0, 3, 130, [509624, 1, [5,  2], 0]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
     // THEN
     expect(s).toEqual('Disponible tous les 6 tours dès le tour 4:<br />' +
       'Dégâts physiques neutres de puissance 25% (ignore 50% DÉF, 50% total) à un adversaire (ignore les couvertures)<br />' +
