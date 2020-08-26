@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamagePhysicalComboEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamagePhysicalComboEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Éxécution de 1 à 5 fois: Dégâts physiques neutres de puissance 400% à un adversaire (+30% précision)');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagePhysicalComboEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Éxécution 2 fois: Attaque fixe à dégâts physiques de Feu, Terre, Lumière de puissance 500% (+400% par utilisation successive, 4x, max 2100%) aux adversaires');
   });

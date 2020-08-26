@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamageOrDeathEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamageOrDeathEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Inflige Mort (40%) ou 80% de chance d\'infliger des dégâts physiques neutres de puissance 400% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamageOrDeathEffect', () => {
     fakeSkill.element_inflict = ['Fire'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Inflige Mort (40%) ou des dégâts physiques de Feu de puissance 400% (ignore 50% DÉF, 800% total) à un adversaire');
   });

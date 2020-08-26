@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamageMagicConsecutiveIncreaseEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamageMagicConsecutiveIncreaseEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques neutres de puissance 550% (+250% par utilisation successive, 4x, max 1550%) à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamageMagicConsecutiveIncreaseEffect', () => {
     fakeSkill.element_inflict = ['Earth'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts magiques de Terre de puissance 800% (+400% par utilisation successive, 5x, max 2800%) aux adversaires');
   });

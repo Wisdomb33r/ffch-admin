@@ -1,4 +1,4 @@
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamagePercentEffect', () => {
 
@@ -6,7 +6,7 @@ describe('AbilityDamagePercentEffect', () => {
     // GIVEN
     const effect = JSON.parse('[1, 3, 9, [50, 50, 100]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(s).toEqual('Retire 50% des PV au lanceur');
   });
@@ -15,7 +15,7 @@ describe('AbilityDamagePercentEffect', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 9, [35,  35,  100,  1]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(s).toEqual('Retire 35% des PV au lanceur');
   });
@@ -24,7 +24,7 @@ describe('AbilityDamagePercentEffect', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 9, [20, 30, 100]]');
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(s).toEqual('Effet AbilityDamagePercentEffect inconnu: Mauvaise liste de paramètres');
   });

@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamageHybridEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Hybrid';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts hybrides neutres de puissance 300% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = 'None';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque fixe à dégâts hybrides de Ténèbres de puissance 400% aux adversaires (+50% précision)');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque physique à dégâts hybrides de Glace, Foudre, Vent de puissance 250% à un adversaire');
   });
@@ -46,7 +46,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = ['Water'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts hybrides d\'Eau de puissance 100% aux adversaires');
   });
@@ -58,7 +58,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque UNKNOWN à dégâts hybrides de Ténèbres de puissance 100% à un adversaire');
   });
@@ -70,7 +70,7 @@ describe('AbilityDamageHybridEffect', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = undefined;
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Effet AbilityDamageHybridEffect: Dégâts hybrides asymétriques non prévus');
   });

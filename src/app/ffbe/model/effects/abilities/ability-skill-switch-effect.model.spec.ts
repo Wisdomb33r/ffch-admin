@@ -2,7 +2,7 @@ import {ABILITY_SKILLS_NAMES_TEST_DATA, ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DA
 import {Skill} from '../../skill.model';
 import {SkillsService} from '../../../services/skills.service';
 import {SkillsServiceMock} from '../../../services/skills.service.spec';
-import {SkillEffectFactory} from '../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../ability-skill-effect.factory';
 
 describe('AbilitySkillSwitchEffect', () => {
   it('should parse skill switch after single skill', () => {
@@ -39,7 +39,7 @@ describe('AbilitySkillSwitchEffect', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill),
       Skill.produce(activatedSkill), Skill.produce(activatorSkill));
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);
@@ -105,7 +105,7 @@ describe('AbilitySkillSwitchEffect', () => {
       Skill.produce(activatedSkill), Skill.produce(activatorSkill1), Skill.produce(activatorSkill2),
       Skill.produce(activatorSkill3));
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(5);
     expect(mySpy).toHaveBeenCalledWith(200200);
