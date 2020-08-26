@@ -12,7 +12,7 @@ export class ConsumableMapper {
 
   public static toObjet(consumable: Consumable): Objet {
     const objet = new Objet(null,
-      ConsumableMapper.mapTypeIntoCategorie(consumable.type),
+      ConsumableMapper.mapTypeIntoCategorie(consumable.type, consumable.strings.names[FFBE_FRENCH_TABLE_INDEX]),
       consumable.strings.names[FFBE_FRENCH_TABLE_INDEX],
       consumable.strings.names[FFBE_ENGLISH_TABLE_INDEX],
       null,
@@ -39,15 +39,21 @@ export class ConsumableMapper {
     return objet;
   }
 
-  public static mapTypeIntoCategorie(type: string): CategorieObjet {
-    let categorie = FfbeUtils.findObjetCategorieByFfchId(5);
+  public static mapTypeIntoCategorie(type: string, nom: string): CategorieObjet {
+    let categorie = FfbeUtils.findObjetCategorieByFfchId(61);
 
     if (type === '4') {
       categorie = FfbeUtils.findObjetCategorieByFfchId(36);
     } else if (type === 'Awakening') {
-      categorie = FfbeUtils.findObjetCategorieByFfchId(79);
+      categorie = FfbeUtils.findObjetCategorieByFfchId(65);
+      if (nom?.startsWith('Prisme')) {
+        categorie = FfbeUtils.findObjetCategorieByFfchId(79);
+      }
+      if (nom?.startsWith('Fragment')) {
+        categorie = FfbeUtils.findObjetCategorieByFfchId(66);
+      }
     } else if (type === 'Item') {
-      categorie = FfbeUtils.findObjetCategorieByFfchId(4);
+      categorie = FfbeUtils.findObjetCategorieByFfchId(59);
     }
 
     return categorie;

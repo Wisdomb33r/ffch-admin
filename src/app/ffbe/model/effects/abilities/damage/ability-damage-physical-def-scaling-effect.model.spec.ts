@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamagePhysicalDefScalingEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamagePhysicalDefScalingEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres calculés sur la DÉF de puissance 300% à un adversaire');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamagePhysicalDefScalingEffect', () => {
     fakeSkill.element_inflict = ['Ice', 'Lightning', 'Wind'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Attaque magique à dégâts physiques de Glace, Foudre, Vent calculés sur la DÉF de puissance 500% aux adversaires');
   });

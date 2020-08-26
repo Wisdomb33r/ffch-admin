@@ -25,7 +25,7 @@ import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation
 import {AbilityCooldownEffect} from './abilities/ability-cooldown-effect.model';
 import {AbilitySkillSwitchEffect} from './abilities/ability-skill-switch-effect.model';
 
-export class SkillEffectFactory {
+export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
     switch (effectRaw[2]) {
       case 1:

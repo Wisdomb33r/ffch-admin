@@ -1,5 +1,5 @@
 import {Skill} from '../../../skill.model';
-import {SkillEffectFactory} from '../../skill-effect.factory';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityDamageDotsEffect', () => {
 
@@ -10,7 +10,7 @@ describe('AbilityDamageDotsEffect', () => {
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Physical';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts physiques neutres de puissance 100% chaque tour à un adversaire pour 3 tours (ID #1)');
   });
@@ -22,7 +22,7 @@ describe('AbilityDamageDotsEffect', () => {
     fakeSkill.element_inflict = ['Fire', 'Earth', 'Light'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques de Feu, Terre, Lumière de puissance 200% chaque tour aux adversaires pour 3 tours (ID #123)');
   });
@@ -34,7 +34,7 @@ describe('AbilityDamageDotsEffect', () => {
     fakeSkill.element_inflict = ['Dark'];
     fakeSkill.attack_type = 'Magic';
     // WHEN
-    const s = SkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
     expect(s).toEqual('Dégâts magiques de Ténèbres calculés sur la PSY de puissance 150% chaque tour à un adversaire pour 3 tours (ID #1)');
   });

@@ -2,7 +2,7 @@ import {SkillCost} from './skill-cost.model';
 import {SkillEffect} from './effects/skill-effect.model';
 import {Element} from './element.model';
 import {FFBE_ELEMENTS} from '../ffbe.constants';
-import {SkillEffectFactory} from './effects/skill-effect.factory';
+import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
 
 export class Skill {
   public gumi_id: number;
@@ -54,7 +54,7 @@ export class Skill {
     skill.names = s.names;
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
-    skill.effets = s.effects_raw?.map(raw => s.active ? SkillEffectFactory.getSkillEffect(raw) : null).filter(effect => !!effect);
+    skill.effets = s.effects_raw?.map(raw => s.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : null).filter(effect => !!effect);
     return skill;
   }
 
