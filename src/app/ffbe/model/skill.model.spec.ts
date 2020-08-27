@@ -1,4 +1,5 @@
 import {Skill} from './skill.model';
+import {Caracteristiques} from './caracteristiques.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -1109,5 +1110,26 @@ describe('Skill', () => {
     const result = skill.calculateSkillPower();
     // THEN
     expect(result).toBeNull();
+  });
+
+  it('should compute passive increases to Caracteristiques correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['707786'];
+    plainSkill.gumi_id = 707786;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const tetraCarac = skill.calculatePassiveCaracteristiquesIncreases();
+
+    const emptyCarac = Caracteristiques.newEmptyCaracteristiques();
+
+    // THEN
+    expect(tetraCarac).toBeTruthy();
+    expect(tetraCarac.caracDoubleHand).toEqual(emptyCarac);
+    expect(tetraCarac.caracTrueDoubleHand).toEqual(emptyCarac);
+    expect(tetraCarac.caracTrueDualWield).toEqual(emptyCarac);
+    expect(tetraCarac.caracInconditionnelles).toEqual(new Caracteristiques(20, 20, 0, 20, 0, 20));
   });
 });
