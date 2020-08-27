@@ -20,7 +20,7 @@ export class AbilitySkillMagnusEffect extends SkillEffect {
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || parameters.length < 9 || parameters[1] !== 1 || parameters[4] !== 1 || parameters[5] !== 1
-      || parameters[6] !== 1 || (parameters[7] !== 0 && parameters[7] !== 1)) {
+      || parameters[6] !== 1 || (parameters[7] !== 0 && parameters[7] !== 1) || (parameters[2] !== parameters[3])) {
       this.parameterError = true;
     } else {
       this.activatedSkillId = parameters[0];
