@@ -5,6 +5,7 @@ import {Skill} from '../../../skill.model';
 import {Caracteristiques} from '../../../caracteristiques.model';
 import {FfbeUtils} from '../../../../utils/ffbe-utils';
 import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {TetraCaracteristiques} from '../../../tetra-caracteristiques.model';
 
 export class PassiveStatsIncreaseEffect extends SkillEffect {
 
@@ -51,5 +52,9 @@ export class PassiveStatsIncreaseEffect extends SkillEffect {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     return `+${currentValue}% ${accumulatedStats.join('/')}`;
+  }
+
+  public getPassiveCaracteristiquesIncreases(): TetraCaracteristiques {
+    return new TetraCaracteristiques(this.increasesCarac, null, null, null);
   }
 }
