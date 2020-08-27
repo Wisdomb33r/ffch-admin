@@ -4,7 +4,7 @@ describe('AbilityMitigationMonsterTypeEffect', () => {
 
   it('should parse beast physical damage mitigation to caster', () => {
     // GIVEN
-    const effect = JSON.parse('[0, 3, 153, [[1,  10], -1, -1, -1, -1, -1, 0, 99999, 1]]');
+    const effect = JSON.parse('[0, 3, 153, [[1,  10], -1, -1, -1, -1, -1, 1, 99999, 1]]');
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
@@ -17,8 +17,8 @@ describe('AbilityMitigationMonsterTypeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+20% de mitigation magique contre les oiseaux au lanceur pour 5 tours<br />'
-      + '+10% de mitigation magique contre les bêtes, aquatiques et démons au lanceur pour 5 tours');
+    expect(s).toEqual('+20% de mitigation magique contre les oiseaux au lanceur pour 5 tours (bonus non-dissipable)<br />'
+      + '+10% de mitigation magique contre les bêtes, aquatiques et démons au lanceur pour 5 tours (bonus non-dissipable)');
   });
 
 });
