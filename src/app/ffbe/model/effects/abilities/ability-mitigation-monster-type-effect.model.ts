@@ -9,13 +9,14 @@ export class AbilityMitigationMonsterTypeEffect extends SkillEffect {
 
   private damageDecreases: Array<{ name: string, value: number }> = [];
   private turns: number;
+  private dispelable: boolean;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 9 || parameters[6] !== 0 || parameters[8] !== 1
+    if (!Array.isArray(parameters) || parameters.length < 9 || (parameters[6] !== 0 && parameters[6] !== 1) || parameters[8] !== 1
       || !Array.isArray(parameters[0]) || parameters[0].length !== 2) {
       this.parameterError = true;
     } else {
@@ -25,6 +26,7 @@ export class AbilityMitigationMonsterTypeEffect extends SkillEffect {
           this.damageDecreases.push({name: monsterName, value: parameters[i][1]});
         }
       }
+      this.dispelable = parameters[6] !== 0;
       this.turns = parameters[7];
     }
   }
@@ -39,7 +41,8 @@ export class AbilityMitigationMonsterTypeEffect extends SkillEffect {
     const damageTypeText = this.effectId === 153 ? 'physique' : 'magique';
     const monsterTypesText = FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ');
     const damageDecreaseText = `+${currentValue}% de mitigation ${damageTypeText} contre les ${monsterTypesText}`;
-    return `${damageDecreaseText} ${target} ${turnsText}`;
+    const dispelableText = this.dispelable ? '' : ' (bonus non-dissipable)';
+    return `${damageDecreaseText} ${target} ${turnsText}${dispelableText}`;
   }
 
   protected get effectName(): string {
