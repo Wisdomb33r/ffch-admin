@@ -39,14 +39,13 @@ export class Caracteristiques {
   }
 
   public toNameValuePairArray(): NameValuePairArray {
-    const array: NameValuePairArray = Array.of(
-      new NameValuePair('PV', this.pv),
-      new NameValuePair('PM', this.pm),
-      new NameValuePair('ATT', this.att),
-      new NameValuePair('DÉF', this.def),
-      new NameValuePair('MAG', this.mag),
-      new NameValuePair('PSY', this.psy)
-    );
-    return array;
+   return Array.of(
+     new NameValuePair('PV', this.pv),
+     new NameValuePair('PM', this.pm),
+     new NameValuePair('ATT', this.att),
+     new NameValuePair('DÉF', this.def),
+     new NameValuePair('MAG', this.mag),
+     new NameValuePair('PSY', this.psy)
+   );
   }
 }
