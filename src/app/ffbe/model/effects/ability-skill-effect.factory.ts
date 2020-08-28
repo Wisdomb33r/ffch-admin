@@ -24,6 +24,7 @@ import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-da
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 import {AbilityCooldownEffect} from './abilities/ability-cooldown-effect.model';
 import {AbilitySkillSwitchEffect} from './abilities/ability-skill-switch-effect.model';
+import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -81,11 +82,12 @@ export class AbilitySkillEffectFactory {
       case 139:
         return new AbilityDamageDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 149:
-      case 150:
-        return new AbilityMitigationMonsterTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 153:
       case 154:
-        return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilityMitigationMonsterTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 157:
+        return new AbilitySkillMagnusEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
