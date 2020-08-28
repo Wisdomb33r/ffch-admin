@@ -12,6 +12,8 @@ import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model'
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
 import {Character} from '../model/character.model';
 import {CharactersService} from '../services/characters.service';
+import {Skill} from '../model/skill.model';
+import {TetraCaracteristiques} from '../model/tetra-caracteristiques.model';
 
 export class EquipmentMapper {
 
@@ -36,7 +38,7 @@ export class EquipmentMapper {
       requirements,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
-      Caracteristiques.newEmptyCaracteristiques(),
+      Array.isArray(equipment.dmSkills) ? EquipmentMapper.mapEquipmentStatsPercent(equipment.dmSkills) : null,
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
@@ -59,6 +61,11 @@ export class EquipmentMapper {
 
   private static mapEquipmentStats(stats: EquipmentStats): Caracteristiques {
     return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
+  }
+
+  private static mapEquipmentStatsPercent(dmSkills: Array<Skill>): Caracteristiques {
+    const increases = dmSkills.map(dmSkill => dmSkill.calculatePassiveCaracteristiquesIncreases());
+    return TetraCaracteristiques.computeSum(increases).caracInconditionnelles;
   }
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
