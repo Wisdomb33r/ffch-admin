@@ -7,6 +7,9 @@ import {CharactersServiceMock} from '../services/characters.service.spec';
 import {CharactersService} from '../services/characters.service';
 import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
 import {Character} from '../model/character.model';
+import {Caracteristiques} from '../model/caracteristiques.model';
+import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
+import {Skill} from '../model/skill.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
@@ -122,4 +125,21 @@ describe('EquipmentMapper', () => {
     // THEN
     expect(objet.effet).toEqual('Exclusif à UNKNOWN character, UNKNOWN character');
   });
+
+  it('should parse passive Caracteristiques increases', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['409013500'];
+    equipment.gumi_id = 409013500;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100010'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.caracp).toEqual(new Caracteristiques(10, 0, 0, 0, 0, 0));
+  });
+
 });
