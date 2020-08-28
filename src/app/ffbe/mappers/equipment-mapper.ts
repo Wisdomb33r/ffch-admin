@@ -38,7 +38,7 @@ export class EquipmentMapper {
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       (Array.isArray(equipment.dmSkills) ?
-        EquipmentMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills) : Caracteristiques.newEmptyCaracteristiques()),
+        EquipmentMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills) : new Caracteristiques()),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null

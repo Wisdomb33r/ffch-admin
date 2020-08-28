@@ -29,7 +29,7 @@ describe('Caracteristiques', () => {
   it('should add one valid and one empty Caracteristiques correctly', () => {
     // GIVEN
     const carac1 = new Caracteristiques(1, 2, 3, 4, 5, 6);
-    const carac2 = Caracteristiques.newEmptyCaracteristiques();
+    const carac2 = new Caracteristiques();
 
     // WHEN
     carac1.accumulateByAddition(carac2);
@@ -40,7 +40,7 @@ describe('Caracteristiques', () => {
 
   it('should add one empty and one valid Caracteristiques correctly', () => {
     // GIVEN
-    const carac1 = Caracteristiques.newEmptyCaracteristiques();
+    const carac1 = new Caracteristiques();
     const carac2 = new Caracteristiques(1, 2, 3, 4, 5, 6);
 
     // WHEN

@@ -26,8 +26,8 @@ export class MateriaMapper {
         materia.strings.desc_long[FFBE_ENGLISH_TABLE_INDEX],
       null,
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
-      Caracteristiques.newEmptyCaracteristiques(),
-      Caracteristiques.newEmptyCaracteristiques(),
+      new Caracteristiques(),
+      new Caracteristiques(),
       ObjetElements.newEmptyObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
