@@ -1,5 +1,4 @@
 import {EffectParser} from './effect-parser';
-import {PassiveStatsIncreaseParser} from './passives/passive-stats-increase.parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveEsperDamageIncreaseParser} from './passives/passive-esper-damage-increase.parser';
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
@@ -61,8 +60,6 @@ import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
-      case 1:
-        return new PassiveStatsIncreaseParser();
       case 2:
         return new PassiveAilmentsResistanceParser();
       case 3:
