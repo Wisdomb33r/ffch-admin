@@ -13,7 +13,6 @@ import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.
 import {Character} from '../model/character.model';
 import {CharactersService} from '../services/characters.service';
 import {Skill} from '../model/skill.model';
-import {TetraCaracteristiques} from '../model/tetra-caracteristiques.model';
 
 export class EquipmentMapper {
 
@@ -21,8 +20,6 @@ export class EquipmentMapper {
     const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
-    const bonusCaracteristiques: TetraCaracteristiques = Array.isArray(equipment.dmSkills) ?
-      EquipmentMapper.mapEquipmentIncreasesToCaracteristiques(equipment.dmSkills) : TetraCaracteristiques.newEmptyTetraCaracteristiques();
 
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
@@ -40,7 +37,8 @@ export class EquipmentMapper {
       requirements,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
-      bonusCaracteristiques.caracInconditionnelles,
+      (Array.isArray(equipment.dmSkills) ?
+        EquipmentMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills) : Caracteristiques.newEmptyCaracteristiques()),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
@@ -65,9 +63,9 @@ export class EquipmentMapper {
     return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
-  private static mapEquipmentIncreasesToCaracteristiques(dmSkills: Array<Skill>): TetraCaracteristiques {
-    const increases = dmSkills.map(dmSkill => dmSkill.calculatePassiveCaracteristiquesIncreases());
-    return TetraCaracteristiques.computeSum(increases);
+  private static mapEquipmentBaseIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
+    const increases = dmSkills.map(dmSkill => dmSkill.calculateBaseIncreasesPercent());
+    return Caracteristiques.computeSum(increases);
   }
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {

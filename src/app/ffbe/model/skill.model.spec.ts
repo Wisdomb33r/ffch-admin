@@ -1121,15 +1121,9 @@ describe('Skill', () => {
     const skill = Skill.produce(plainSkill);
 
     // WHEN
-    const tetraCarac = skill.calculatePassiveCaracteristiquesIncreases();
-
-    const emptyCarac = Caracteristiques.newEmptyCaracteristiques();
+    const carac = skill.calculateBaseIncreasesPercent();
 
     // THEN
-    expect(tetraCarac).toBeTruthy();
-    expect(tetraCarac.caracDoubleHand).toEqual(emptyCarac);
-    expect(tetraCarac.caracTrueDoubleHand).toEqual(emptyCarac);
-    expect(tetraCarac.caracTrueDualWield).toEqual(emptyCarac);
-    expect(tetraCarac.caracInconditionnelles).toEqual(new Caracteristiques(20, 20, 0, 20, 0, 20));
+    expect(carac).toEqual(new Caracteristiques(20, 20, 0, 20, 0, 20));
   });
 });

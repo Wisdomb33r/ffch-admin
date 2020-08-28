@@ -9,13 +9,9 @@ describe('PassiveStatsIncreaseEffect', () => {
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
 
     // WHEN
-    const tetraCarac = skillEffect.getPassiveCaracteristiquesIncreases();
+    const carac = skillEffect.getBaseIncreasesPercent();
 
     // THEN
-    expect(tetraCarac).toBeTruthy();
-    expect(tetraCarac.caracDoubleHand).toEqual(null);
-    expect(tetraCarac.caracTrueDoubleHand).toEqual(null);
-    expect(tetraCarac.caracTrueDualWield).toEqual(null);
-    expect(tetraCarac.caracInconditionnelles).toEqual(new Caracteristiques(0, 20, 0, 20, 0, 0));
+    expect(carac).toEqual(new Caracteristiques(0, 20, 0, 20, 0, 0));
   });
 });

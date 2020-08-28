@@ -3,7 +3,7 @@ import {SkillEffect} from './effects/skill-effect.model';
 import {Element} from './element.model';
 import {FFBE_ELEMENTS} from '../ffbe.constants';
 import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
-import {TetraCaracteristiques} from './tetra-caracteristiques.model';
+import {Caracteristiques} from './caracteristiques.model';
 import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
 
 export class Skill {
@@ -85,8 +85,8 @@ export class Skill {
     return 0;
   }
 
-  public calculatePassiveCaracteristiquesIncreases(): TetraCaracteristiques {
-    return TetraCaracteristiques.computeSum(this.effets.map(effet => effet.getPassiveCaracteristiquesIncreases()));
+  public calculateBaseIncreasesPercent(): Caracteristiques {
+    return Caracteristiques.computeSum(this.effets.map(effet => effet.getBaseIncreasesPercent()));
   }
 
   public wordElementInflict(): string {

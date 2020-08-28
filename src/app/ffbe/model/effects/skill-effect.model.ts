@@ -3,7 +3,7 @@ import {TargetTypeEnum} from './target-type.enum';
 import {TargetPrepositionEnum} from './target-preposition.enum';
 import {Skill} from '../skill.model';
 import {EffectIdenticalValuesWording} from './effect-identical-values-wording';
-import {TetraCaracteristiques} from '../tetra-caracteristiques.model';
+import {Caracteristiques} from '../caracteristiques.model';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
@@ -210,7 +210,7 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     return 0;
   }
 
-  public getPassiveCaracteristiquesIncreases(): TetraCaracteristiques {
+  public getBaseIncreasesPercent(): Caracteristiques {
     return null;
   }
 }
