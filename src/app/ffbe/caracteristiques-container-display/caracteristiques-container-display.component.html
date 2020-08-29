@@ -1,38 +1,45 @@
 <table>
-  <caption>Caractéristiques de l'unité</caption>
+  <caption>Caractéristiques</caption>
   <tr>
     <th>Stats</th>
     <th>Base</th>
-    <th>Pots</th>
+    <th *ngIf="displayPots">Pots</th>
+    <th>Bonus base</th>
   </tr>
   <tr>
     <td>PV</td>
     <td>{{container.getBase().pv}}</td>
-    <td>{{container.getPots().pv}}</td>
+    <td *ngIf="displayPots">{{container.getPots().pv}}</td>
+    <td>{{container.getBonusBasePercent().pv}} %</td>
   </tr>
   <tr>
     <td>PM</td>
     <td>{{container.getBase().pm}}</td>
-    <td>{{container.getPots().pm}}</td>
+    <td *ngIf="displayPots">{{container.getPots().pm}}</td>
+    <td>{{container.getBonusBasePercent().pm}} %</td>
   </tr>
   <tr>
     <td>ATT</td>
     <td>{{container.getBase().att}}</td>
-    <td>{{container.getPots().att}}</td>
+    <td *ngIf="displayPots">{{container.getPots().att}}</td>
+    <td>{{container.getBonusBasePercent().att}} %</td>
   </tr>
   <tr>
     <td>DÉF</td>
     <td>{{container.getBase().def}}</td>
-    <td>{{container.getPots().def}}</td>
+    <td *ngIf="displayPots">{{container.getPots().def}}</td>
+    <td>{{container.getBonusBasePercent().def}} %</td>
   </tr>
   <tr>
     <td>MAGIE</td>
     <td>{{container.getBase().mag}}</td>
-    <td>{{container.getPots().mag}}</td>
+    <td *ngIf="displayPots">{{container.getPots().mag}}</td>
+    <td>{{container.getBonusBasePercent().mag}} %</td>
   </tr>
   <tr>
     <td>PSY</td>
     <td>{{container.getBase().psy}}</td>
-    <td>{{container.getPots().psy}}</td>
+    <td *ngIf="displayPots">{{container.getPots().psy}}</td>
+    <td>{{container.getBonusBasePercent().psy}} %</td>
   </tr>
 </table>

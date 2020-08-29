@@ -10,6 +10,7 @@ import {CaracteristiquesContainer} from '../model/caracteristiques-container.mod
 export class CaracteristiquesContainerDisplayComponent implements OnInit {
 
   @Input() container: CaracteristiquesContainer;
+  @Input() displayPots: boolean = true;
 
   constructor() {
   }

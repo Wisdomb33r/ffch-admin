@@ -18,7 +18,8 @@ export class UniteCarac implements CaracteristiquesContainer {
     return this.pots;
   }
 
+  // Fixme! #267
   getBonusBasePercent(): Caracteristiques {
-    return undefined;
+    return new Caracteristiques();
   }
 }

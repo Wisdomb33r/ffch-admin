@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Caracteristiques} from '../model/caracteristiques.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
+import {CaracteristiquesContainer} from '../model/caracteristiques-container.model';
 
 @Component({
   selector: 'app-objet-carac-display',
@@ -9,30 +8,13 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 })
 export class ObjetCaracDisplayComponent implements OnInit {
 
-  @Input() carac: Caracteristiques;
-  @Input() titre: string;
-  @Input() estPourcent: boolean;
-  @Input() estModifiable: boolean;
+  @Input() container: CaracteristiquesContainer;
   public displayed = false;
 
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  public caracFormatee(carac: number): string {
-    let caracFormatee = '';
-
-    if (!FfbeUtils.isNullOrUndefined(carac)) {
-      caracFormatee = carac.toString() + this.suffixe();
-    }
-
-    return caracFormatee;
-  }
-
-  public suffixe(): string {
-    return this.estPourcent ? ' %' : '';
   }
 
   public switchDisplayed() {
