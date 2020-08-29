@@ -37,8 +37,7 @@ export class EquipmentMapper {
       requirements,
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
-      (Array.isArray(equipment.dmSkills) ?
-        EquipmentMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills) : new Caracteristiques()),
+      EquipmentMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
@@ -64,6 +63,10 @@ export class EquipmentMapper {
   }
 
   private static mapEquipmentBaseIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
+    if (!Array.isArray(dmSkills)) {
+      return new Caracteristiques();
+    }
+
     const increases = dmSkills.map(dmSkill => dmSkill.calculateBaseIncreasesPercent());
     return Caracteristiques.computeSum(increases);
   }
