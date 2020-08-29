@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Unite} from '../model/unite.model';
+import {CaracteristiquesContainer} from '../model/caracteristiques-container.model';
 
 @Component({
   selector: 'app-caracteristiques-container-display',
@@ -8,7 +9,7 @@ import {Unite} from '../model/unite.model';
 })
 export class CaracteristiquesContainerDisplayComponent implements OnInit {
 
-  @Input() unite: Unite;
+  @Input() container: CaracteristiquesContainer;
 
   constructor() {
   }
