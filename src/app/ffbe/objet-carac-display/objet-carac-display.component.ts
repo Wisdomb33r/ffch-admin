@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetCarac} from '../model/objet/objet-carac';
+import {Caracteristiques} from '../model/caracteristiques.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
@@ -9,7 +9,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 })
 export class ObjetCaracDisplayComponent implements OnInit {
 
-  @Input() carac: ObjetCarac;
+  @Input() carac: Caracteristiques;
   @Input() titre: string;
   @Input() estPourcent: boolean;
   @Input() estModifiable: boolean;

@@ -3,6 +3,8 @@ import {SkillEffect} from './effects/skill-effect.model';
 import {Element} from './element.model';
 import {FFBE_ELEMENTS} from '../ffbe.constants';
 import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
+import {Caracteristiques} from './caracteristiques.model';
+import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
 
 export class Skill {
   public gumi_id: number;
@@ -54,7 +56,7 @@ export class Skill {
     skill.names = s.names;
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
-    skill.effets = s.effects_raw?.map(raw => s.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : null).filter(effect => !!effect);
+    skill.effets = s.effects_raw?.map(raw => s.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : PassiveSkillEffectFactory.getSkillEffect(raw)).filter(effect => !!effect);
     return skill;
   }
 
@@ -81,6 +83,10 @@ export class Skill {
         .reduce((val1: number, val2: number) => val1 + val2, 0);
     }
     return 0;
+  }
+
+  public calculateBaseIncreasesPercent(): Caracteristiques {
+    return Caracteristiques.computeSum(this.effets.map(effet => effet.getBaseIncreasesPercent()));
   }
 
   public wordElementInflict(): string {
