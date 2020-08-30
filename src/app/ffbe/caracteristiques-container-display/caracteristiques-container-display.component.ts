@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Unite} from '../model/unite.model';
 import {CaracteristiquesContainer} from '../model/caracteristiques-container.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({
   selector: 'app-caracteristiques-container-display',
@@ -16,6 +16,20 @@ export class CaracteristiquesContainerDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public caracFormatee(carac: number, estPourcent: boolean = false): string {
+    let caracFormatee = '';
+
+    if (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) {
+      caracFormatee = carac.toString() + (estPourcent ? ' %' : '');
+    }
+
+    return caracFormatee;
+  }
+
+  public caracFormateePourcent(carac: number): string {
+    return this.caracFormatee(carac, true);
   }
 
 }
