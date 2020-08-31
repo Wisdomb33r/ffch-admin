@@ -6,7 +6,8 @@ export class UniteCarac implements CaracteristiquesContainer {
     public level: number,
     public level_max: number,
     public base: Caracteristiques,
-    public pots: Caracteristiques
+    public pots: Caracteristiques,
+    public bonusBasePercent: Caracteristiques
   ) {
   }
 
@@ -18,8 +19,7 @@ export class UniteCarac implements CaracteristiquesContainer {
     return this.pots;
   }
 
-  // Fixme! #267
   getBonusBasePercent(): Caracteristiques {
-    return new Caracteristiques();
+    return this.bonusBasePercent;
   }
 }

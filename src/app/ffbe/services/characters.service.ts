@@ -134,6 +134,7 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = character.entries[entryName];
       const innateSkills = character.skills.filter(skill => skill.rarity <= entry.rarity);
+      entry.character_entry_skills = innateSkills.map(innateSkill => innateSkill.skill);
       const enhancedSkills = [];
       innateSkills.forEach(innateSkill =>
         this.enhancementsService.searchForEnhancementsBySkillGumiId(innateSkill.id)
