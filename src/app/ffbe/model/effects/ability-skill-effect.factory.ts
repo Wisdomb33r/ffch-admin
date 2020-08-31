@@ -23,7 +23,7 @@ import {AbilityDamageHexEffect} from './abilities/damage/ability-damage-hex-effe
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 import {AbilityCooldownEffect} from './abilities/ability-cooldown-effect.model';
-import {AbilitySkillSwitchEffect} from './abilities/ability-skill-switch-effect.model';
+import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-effect.model';
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 
 export class AbilitySkillEffectFactory {
