@@ -454,74 +454,6 @@ export const ABILITY_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
-    "509024": {
-        "name": "Twin Meteor",
-        "icon": "ability_105.png",
-        "compendium_id": 4644,
-        "rarity": 9,
-        "cost": {"MP": 145},
-        "attack_count": [60],
-        "attack_damage": [[1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]],
-        "attack_frames": [[141,  147,  153,  159,  165,  171,  177,  183,  189,  195,  201,  207,  213,  219,  225,  231,  237,  243,  249,  255,  261,  267,  273,  279,  285,  291,  297,  303,  309,  315,  321,  327,  333,  339,  345,  351,  357,  363,  369,  375,  381,  387,  393,  399,  405,  411,  417,  423,  429,  435,  441,  447,  453,  459,  465,  471,  477,  483,  489,  495]],
-        "effect_frames": [[40,  40,  200,  200]],
-        "move_type": 4,
-        "motion_type": 8,
-        "effect_type": "Default",
-        "attack_type": "Magic",
-        "element_inflict": ["Light"],
-        "effects": ["Magic light damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)"],
-        "effects_raw": [[2, 1, 70, [0,  0,  1800,  50]]],
-        "requirements": null,
-        "unit_restriction": null
-    },
-    "509624": {
-        "name": "Brave Blade (FFV)",
-        "icon": "ability_54.png",
-        "compendium_id": 10707,
-        "rarity": 9,
-        "cost": {"MP": 99},
-        "attack_count": [4, 3, 1],
-        "attack_damage": [[25,  25,  25,  25], [30,  30,  40], [100]],
-        "attack_frames": [[70,  76,  82,  88], [94,  100,  106], [112]],
-        "effect_frames": [[40,  40,  40]],
-        "move_type": 4,
-        "motion_type": 2,
-        "effect_type": "Default",
-        "attack_type": "Physical",
-        "element_inflict": null,
-        "effects": [
-            "Physical damage (0.25x * 2 = 0.5x, ATK) to one enemy (ignore cover)",
-            "Physical damage (0.5x * 2 = 1x, ATK) to one enemy (ignore cover)",
-            "Physical damage (5x * 2 = 10x, ATK) to one enemy (ignore cover)"
-        ],
-        "effects_raw": [[1, 1, 21, [0,  0,  25,  -50]], [1, 1, 21, [0,  0,  50,  -50]], [1, 1, 21, [0,  0,  500,  -50]]],
-        "requirements": null,
-        "unit_restriction": null
-    },
-    "912882": {
-        "name": "Siphon Lance",
-        "icon": "ability_6.png",
-        "compendium_id": 86444,
-        "rarity": 5,
-        "cost": {"MP": 10},
-        "attack_count": [7, 7, 1],
-        "attack_damage": [[12,  12,  12,  12,  13,  19,  20], [12,  12,  12,  12,  13,  19,  20], [100]],
-        "attack_frames": [[40,  50,  60,  70,  80,  90,  100], [35,  45,  55,  65,  75,  85,  95], [0]],
-        "effect_frames": [[39,  48,  57,  66,  75,  84,  93], [35,  44,  53,  62,  71,  80,  89]],
-        "move_type": 4,
-        "motion_type": 5,
-        "effect_type": "Default",
-        "attack_type": "Physical",
-        "element_inflict": null,
-        "effects": [
-            "Physical damage (3x, ATK) to one enemy",
-            "Physical damage (0.8x, ATK) as HP drain (50%) to one enemy",
-            "Restore 160 MP to caster"
-        ],
-        "effects_raw": [[1, 1, 1, [0,  0,  0,  0,  0,  0,  300]], [1, 1, 25, [50,  80,  100]], [0, 3, 17, [160]]],
-        "requirements": null,
-        "unit_restriction": null
-    },
     "229425": {
         "name": "Get Serious",
         "icon": "ability_105.png",
@@ -541,6 +473,49 @@ export const ABILITY_SKILLS_TEST_DATA =
             "Unlock Get Serious (509014) on turn 1 [8 turns CD]"
         ],
         "effects_raw": [[0, 3, 130, [509014, 1, [7,  7], 0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "232639": {
+        "name": "Mystic Cross",
+        "icon": "ability_25.png",
+        "compendium_id": 6994,
+        "rarity": 8,
+        "cost": {"MP": 70},
+        "attack_count": [7, 1],
+        "attack_damage": [[14,  14,  14,  14,  14,  14,  16], [100]],
+        "attack_frames": [[42,  62,  82,  102,  122,  142,  162], [182]],
+        "effect_frames": [[76,  40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Wind"],
+        "effects": [
+            "Magic wind damage (4x, MAG) to all enemies",
+            "Magic wind damage (12x, MAG) with consecutive damage increase (max. 6 times, +5x MAG each, 42x total) to all enemies"
+        ],
+        "effects_raw": [[2, 1, 15, [0,  0,  0,  0,  0,  400,  0]], [2, 1, 72, [0,  0,  700,  500,  500,  7]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "509024": {
+        "name": "Twin Meteor",
+        "icon": "ability_105.png",
+        "compendium_id": 4644,
+        "rarity": 9,
+        "cost": {"MP": 145},
+        "attack_count": [60],
+        "attack_damage": [[1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]],
+        "attack_frames": [[141,  147,  153,  159,  165,  171,  177,  183,  189,  195,  201,  207,  213,  219,  225,  231,  237,  243,  249,  255,  261,  267,  273,  279,  285,  291,  297,  303,  309,  315,  321,  327,  333,  339,  345,  351,  357,  363,  369,  375,  381,  387,  393,  399,  405,  411,  417,  423,  429,  435,  441,  447,  453,  459,  465,  471,  477,  483,  489,  495]],
+        "effect_frames": [[40,  40,  200,  200]],
+        "move_type": 4,
+        "motion_type": 8,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Light"],
+        "effects": ["Magic light damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)"],
+        "effects_raw": [[2, 1, 70, [0,  0,  1800,  50]]],
         "requirements": null,
         "unit_restriction": null
     },
@@ -569,23 +544,27 @@ export const ABILITY_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
-    "912380": {
-        "name": "Triple Whip",
-        "icon": "ability_8.png",
-        "compendium_id": 86060,
+    "509624": {
+        "name": "Brave Blade (FFV)",
+        "icon": "ability_54.png",
+        "compendium_id": 10707,
         "rarity": 9,
-        "cost": {},
-        "attack_count": [0],
-        "attack_damage": [[]],
-        "attack_frames": [[]],
-        "effect_frames": [[]],
+        "cost": {"MP": 99},
+        "attack_count": [4, 3, 1],
+        "attack_damage": [[25,  25,  25,  25], [30,  30,  40], [100]],
+        "attack_frames": [[70,  76,  82,  88], [94,  100,  106], [112]],
+        "effect_frames": [[40,  40,  40]],
         "move_type": 4,
-        "motion_type": 3,
+        "motion_type": 2,
         "effect_type": "Default",
-        "attack_type": "None",
+        "attack_type": "Physical",
         "element_inflict": null,
-        "effects": ["Gain 3 uses of Baaad Breath (509010), Bad Breath (229418), Brutal Whip (229426), First-Aid Malboro (229413), Get Serious (229425), Ground Whip (229420), Malboro Support (229428), Malboro Tentacle (229414), Smash (229412), Toxic Whip (229427) and Wild Whip (229419) for one turn"],
-        "effects_raw": [[0, 3, 53, [3, 229421, -1, [229412,  229413,  229414,  229418,  229419,  229420,  229425,  229426,  229427,  229428,  509010], 1]]],
+        "effects": [
+            "Physical damage (0.25x * 2 = 0.5x, ATK) to one enemy (ignore cover)",
+            "Physical damage (0.5x * 2 = 1x, ATK) to one enemy (ignore cover)",
+            "Physical damage (5x * 2 = 10x, ATK) to one enemy (ignore cover)"
+        ],
+        "effects_raw": [[1, 1, 21, [0,  0,  25,  -50]], [1, 1, 21, [0,  0,  50,  -50]], [1, 1, 21, [0,  0,  500,  -50]]],
         "requirements": null,
         "unit_restriction": null
     },
@@ -613,6 +592,30 @@ export const ABILITY_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
+    "512170": {
+        "name": "True Fire Achilles",
+        "icon": "ability_39.png",
+        "compendium_id": 10982,
+        "rarity": 8,
+        "cost": {"MP": 66},
+        "attack_count": [1],
+        "attack_damage": [[100]],
+        "attack_frames": [[40]],
+        "effect_frames": [[6,  6,  6,  6,  6]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Reduce resistance to Fire by 130% for 3 turns to one enemy",
+            "Physical damage (22x, ATK) to one enemy",
+            "Gain True Fire Achilles (512170) for 2 turns"
+        ],
+        "effects_raw": [[1, 1, 33, [-130,  0,  0,  0,  0,  0,  0,  0,  1,  3]], [1, 1, 1, [0,  0,  0,  0,  0,  0,  2200,  0]], [0, 3, 100, [2,  512170,  99999,  3,  1,  5]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
     "912221": {
         "name": "Tempest Spellblade",
         "icon": "ability_9.png",
@@ -636,50 +639,118 @@ export const ABILITY_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
-        "232639": {
-        "name": "Mystic Cross",
-        "icon": "ability_25.png",
-        "compendium_id": 6994,
-        "rarity": 8,
-        "cost": {"MP": 70},
-        "attack_count": [7, 1],
-        "attack_damage": [[14,  14,  14,  14,  14,  14,  16], [100]],
-        "attack_frames": [[42,  62,  82,  102,  122,  142,  162], [182]],
-        "effect_frames": [[76,  40,  40]],
+    "912380": {
+        "name": "Triple Whip",
+        "icon": "ability_8.png",
+        "compendium_id": 86060,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[]],
+        "move_type": 4,
+        "motion_type": 3,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Gain 3 uses of Baaad Breath (509010), Bad Breath (229418), Brutal Whip (229426), First-Aid Malboro (229413), Get Serious (229425), Ground Whip (229420), Malboro Support (229428), Malboro Tentacle (229414), Smash (229412), Toxic Whip (229427) and Wild Whip (229419) for one turn"],
+        "effects_raw": [[0, 3, 53, [3, 229421, -1, [229412,  229413,  229414,  229418,  229419,  229420,  229425,  229426,  229427,  229428,  509010], 1]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912791": {
+        "name": "Vixen's Fire - Seventh Tail",
+        "icon": "global_ability_10014.png",
+        "compendium_id": 86361,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [1, 9],
+        "attack_damage": [[100], [1,  1,  1,  1,  1,  1,  1,  1,  92]],
+        "attack_frames": [[0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
+        "effect_frames": [[0,  0,  0,  0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
         "move_type": 4,
         "motion_type": 2,
         "effect_type": "Default",
         "attack_type": "Magic",
-        "element_inflict": ["Wind"],
+        "element_inflict": null,
         "effects": [
-            "Magic wind damage (4x, MAG) to all enemies",
-            "Magic wind damage (12x, MAG) with consecutive damage increase (max. 6 times, +5x MAG each, 42x total) to all enemies"
+            "Increase MAG by 280% for one turn to caster (can not be removed)",
+            "Magic damage (17x * 2 = 34x, MAG) to all enemies (ignore reflect)",
+            "Use Vixen's Fire - Eighth Tail (912792) next turn on caster"
         ],
-        "effects_raw": [[2, 1, 15, [0,  0,  0,  0,  0,  400,  0]], [2, 1, 72, [0,  0,  700,  500,  500,  7]]],
+        "effects_raw": [[0, 3, 3, [0,  0,  280,  0,  1,  1,  1]], [2, 1, 70, [0,  0,  1700,  50]], [0, 3, 132, [912792,  1,  1,  100,  1,  912785]]],
         "requirements": null,
         "unit_restriction": null
     },
-    "512170": {
-        "name": "True Fire Achilles",
-        "icon": "ability_39.png",
-        "compendium_id": 10982,
-        "rarity": 8,
-        "cost": {"MP": 66},
-        "attack_count": [1],
-        "attack_damage": [[100]],
-        "attack_frames": [[40]],
-        "effect_frames": [[6,  6,  6,  6,  6]],
+    "912792": {
+        "name": "Vixen's Fire - Eighth Tail",
+        "icon": "global_ability_10014.png",
+        "compendium_id": 86362,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [1, 9],
+        "attack_damage": [[100], [1,  1,  1,  1,  1,  1,  1,  1,  92]],
+        "attack_frames": [[0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
+        "effect_frames": [[0,  0,  0,  0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
         "move_type": 4,
         "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": null,
+        "effects": [
+            "Increase MAG by 290% for one turn to caster (can not be removed)",
+            "Magic damage (18x * 2 = 36x, MAG) to all enemies (ignore reflect)",
+            "Use Vixen's Fire - Ninth Tail (912793) next turn on caster"
+        ],
+        "effects_raw": [[0, 3, 3, [0,  0,  290,  0,  1,  1,  1]], [2, 1, 70, [0,  0,  1800,  50]], [0, 3, 132, [912793,  1,  1,  100,  1,  912785]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912793": {
+        "name": "Vixen's Fire - Ninth Tail",
+        "icon": "global_ability_10014.png",
+        "compendium_id": 86363,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [1, 9],
+        "attack_damage": [[100], [1,  1,  1,  1,  1,  1,  1,  1,  92]],
+        "attack_frames": [[0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
+        "effect_frames": [[0,  0,  0,  0], [42,  48,  54,  60,  66,  72,  78,  84,  90]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": null,
+        "effects": [
+            "Increase MAG by 300% for 3 turns to caster (can not be removed)",
+            "Magic damage (20x * 2 = 40x, MAG) to all enemies (ignore reflect)"
+        ],
+        "effects_raw": [[0, 3, 3, [0,  0,  300,  0,  3,  1,  1]], [2, 1, 70, [0,  0,  2000,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912882": {
+        "name": "Siphon Lance",
+        "icon": "ability_6.png",
+        "compendium_id": 86444,
+        "rarity": 5,
+        "cost": {"MP": 10},
+        "attack_count": [7, 7, 1],
+        "attack_damage": [[12,  12,  12,  12,  13,  19,  20], [12,  12,  12,  12,  13,  19,  20], [100]],
+        "attack_frames": [[40,  50,  60,  70,  80,  90,  100], [35,  45,  55,  65,  75,  85,  95], [0]],
+        "effect_frames": [[39,  48,  57,  66,  75,  84,  93], [35,  44,  53,  62,  71,  80,  89]],
+        "move_type": 4,
+        "motion_type": 5,
         "effect_type": "Default",
         "attack_type": "Physical",
         "element_inflict": null,
         "effects": [
-            "Reduce resistance to Fire by 130% for 3 turns to one enemy",
-            "Physical damage (22x, ATK) to one enemy",
-            "Gain True Fire Achilles (512170) for 2 turns"
+            "Physical damage (3x, ATK) to one enemy",
+            "Physical damage (0.8x, ATK) as HP drain (50%) to one enemy",
+            "Restore 160 MP to caster"
         ],
-        "effects_raw": [[1, 1, 33, [-130,  0,  0,  0,  0,  0,  0,  0,  1,  3]], [1, 1, 1, [0,  0,  0,  0,  0,  0,  2200,  0]], [0, 3, 100, [2,  512170,  99999,  3,  1,  5]]],
+        "effects_raw": [[1, 1, 1, [0,  0,  0,  0,  0,  0,  300]], [1, 1, 25, [50,  80,  100]], [0, 3, 17, [160]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -787,30 +858,6 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Schnellfeuer",
         "Tiro rápido"
     ],
-        "509024": [
-        "Twin Meteor",
-        "W隕石",
-        "W메테오",
-        "Météore X",
-        "Doppelmeteo",
-        "Meteo dual"
-    ],
-    "509624": [
-        "Brave Blade (FFV)",
-        "勇者利劍(FFV)",
-        "브레이브 블레이드(FFV)",
-        "Lame des braves (FFV)",
-        "Mutklinge (FFV)",
-        "Hoja valiente (FFV)"
-    ],
-    "912882": [
-        "Siphon Lance",
-        "攝魔長槍",
-        "흡수의 창",
-        "Lance siphon",
-        "Soglanze",
-        "Lanza sifón"
-    ],
     "229425": [
         "Get Serious",
         "認真",
@@ -827,13 +874,21 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Ernst machen",
         "Látigo venenoso"
     ],
-    "912380": [
-        "Triple Whip",
-        "T鞭打",
-        "T채찍",
-        "Fouet triple",
-        "Dreifachpeitsche",
-        "Látigo triple"
+    "509024": [
+        "Twin Meteor",
+        "W隕石",
+        "W메테오",
+        "Météore X",
+        "Doppelmeteo",
+        "Meteo dual"
+    ],
+    "509624": [
+        "Brave Blade (FFV)",
+        "勇者利劍(FFV)",
+        "브레이브 블레이드(FFV)",
+        "Lame des braves (FFV)",
+        "Mutklinge (FFV)",
+        "Hoja valiente (FFV)"
     ],
     "510754": [
         "Saviour of Erdrea",
@@ -843,14 +898,6 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Retter von Erdria",
         "Salvador de Erdrea"
     ],
-    "912221": [
-        "Tempest Spellblade",
-        "風雷魔劍舞",
-        "풍뢰의 마검무",
-        "Magilame des tempêtes",
-        "Sturmschwertmagie",
-        "Esgrimago tempestuoso"
-    ],
     "512170": [
         "True Fire Achilles",
         "真·火之要害",
@@ -859,6 +906,54 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Wahrer Feuer-Achilles",
         "Aquiles de fuego verdadero",
         "Achilles Api Sejati"
+    ],
+    "912221": [
+        "Tempest Spellblade",
+        "風雷魔劍舞",
+        "풍뢰의 마검무",
+        "Magilame des tempêtes",
+        "Sturmschwertmagie",
+        "Esgrimago tempestuoso"
+    ],
+    "912380": [
+        "Triple Whip",
+        "T鞭打",
+        "T채찍",
+        "Fouet triple",
+        "Dreifachpeitsche",
+        "Látigo triple"
+    ],
+    "912791": [
+        "Vixen's Fire - Seventh Tail",
+        "狐火 - 七尾",
+        "여우불·칠미",
+        "Renard de feu - Septième queue",
+        "Fähenfeuer - Siebter Schweif",
+        "Fuego vulpino - Séptima cola"
+    ],
+    "912792": [
+        "Vixen's Fire - Eighth Tail",
+        "狐火 - 八尾",
+        "여우불·팔미",
+        "Renard de feu - Huitième queue",
+        "Fähenfeuer - Achter Schweif",
+        "Fuego vulpino - Octava cola"
+    ],
+    "912793": [
+        "Vixen's Fire - Ninth Tail",
+        "狐火 - 九尾",
+        "여우불·구미",
+        "Renard de feu - Dernière queue",
+        "Fähenfeuer - Letzter Schweif",
+        "Fuego vulpino - Novena cola"
+    ],
+    "912882": [
+        "Siphon Lance",
+        "攝魔長槍",
+        "흡수의 창",
+        "Lance siphon",
+        "Soglanze",
+        "Lanza sifón"
     ]
   }`;
 
@@ -972,22 +1067,6 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Verursacht 1-6 Mal Schaden bei zufällig gewählten Gegnern.",
         "Daño al azar de una a 6 veces a todos los enemigos"
     ],
-    "509624": [
-        "Deal partial unmitigated damage to one enemy three times",
-        "對1名敵人發動3次發動無視部分防禦的攻擊",
-        "적 1명에게 3회 일부 방어 무시 피해",
-        "Inflige des dégâts en partie fixes à un ennemi à 3 reprises",
-        "Fügt einem Gegner dreimal teilweise direkten Schaden zu.",
-        "Daño que ignora parcialmente la DEF de un enemigo 3 veces"
-    ],
-    "912882": [
-        "Damage and drain HP from one enemy and restore own MP",
-        "攻擊1名敵人+吸收HP+恢復自身的MP",
-        "적 1명에게 피해+HP 흡수+자신의 MP 회복",
-        "Inflige des dégâts et aspire les PV d'un ennemi et restaure les PM du lanceur",
-        "Fügt einem Gegner Schaden zu, stiehlt dessen LP und regeneriert MP des Benutzers.",
-        "Daña a un enemigo, absorbe su VIT, y recupera PM propios"
-    ],
     "229425": [
         "(One use every 8 turns) Boost ATK, and remove and boost resistance to ATK, DEF, MAG, and SPR reductions for self and enable triple whip for four turns",
         "【每8回合可使用1次】提高自身攻擊+解除降低攻擊防禦魔力精神的效果+提高降低攻擊防禦魔力精神的耐性+4回合內可使用「T鞭打」",
@@ -1004,13 +1083,13 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "(Einmal in 8 Runden) Erhöht ANG, entfernt und erhöht dann Resistenz gegen ANG-, ABW-, MAG- und PSY-Verringerungen für Benutzer + ermöglicht 4 Runen lang Dreifachpeitsche.",
         "(Un uso cada 8 turnos) Aumenta el ATQ, elimina las reducciones de ATQ, DEF, MAG y ESP, aumenta la resistencia propia a los mismos, y aprende Látigo triple durante 4 turnos"
     ],
-    "912380": [
-        "Enable specific abilities to be used three times in one turn (Activate one time each regardless of equipment conditions)",
-        "1回合內可以使用3次特定能力（無視裝備狀態，只會各發動1次）",
-        "1턴 동안 특정 어빌리티 3회 사용 가능(장비 상태와 관계 없이 1회씩 발동)",
-        "Permet d'utiliser des aptitudes spécifiques trois fois en un tour (s'active une seule fois, quel que soit l'équipement)",
-        "Ermöglicht gewissen Fertigkeiten dreimalige Anwendung in einer Runde (Aktiviere je ein Mal, unabhängig von Ausrüstungssituation).",
-        "Aprende determinadas habilidades que se pueden usar 3 veces en un mismo turno (se activa una vez cada una sin importar las condiciones del equipo)"
+    "509624": [
+        "Deal partial unmitigated damage to one enemy three times",
+        "對1名敵人發動3次發動無視部分防禦的攻擊",
+        "적 1명에게 3회 일부 방어 무시 피해",
+        "Inflige des dégâts en partie fixes à un ennemi à 3 reprises",
+        "Fügt einem Gegner dreimal teilweise direkten Schaden zu.",
+        "Daño que ignora parcialmente la DEF de un enemigo 3 veces"
     ],
     "510754": [
         "Enable threepeat performance for one turn at the beginning of battle or after being revived, and gradually boost damage of certain abilities after two turns",
@@ -1020,14 +1099,6 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Ermöglicht bei Kampfbeginn oder nach Wiederbelebung Dreifachvorstellung für eine Runde und erhöht nach zwei Runden allmählich den Schaden bestimmter Fertigkeiten.",
         "Aprende Ración triple durante un turno al inicio del combate o tras ser revivido, y aumenta poco a poco el daño de determinadas habilidades tras 2 turnos"
     ],
-    "912221": [
-        "Deal lightning and wind damage to all enemies",
-        "對全體敵人發動雷風屬性攻擊",
-        "적 전체에 번개와 바람속성 피해",
-        "Inflige des dégâts de foudre et de vent à tous les ennemis",
-        "Fügt allen Gegnern Blitz- und Windschaden zu.",
-        "Daño de rayo y viento a todos los enemigos"
-    ],
     "512170": [
         "Reduce fire resistance and damage one enemy, and enable true fire achilles for two turns",
         "降低1名敵人的火屬性耐性+發動攻擊+2回合內可使用「真·火之要害」",
@@ -1036,7 +1107,55 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Verringert die Feuerresistenz eines Gegners, fügt ihm Schaden zu und ermöglicht 2 Runden lang Wahrer Feuer-Achilles.",
         "Reduce la resistencia al fuego, daña a un enemigo y aprende Aquiles de fuego verdadero durante 2 turnos",
         "Mengurangi resistansi api dan memberikan damage pada satu musuh, serta memungkinkan penggunaan Achilles Api Sejati selama 2 giliran"
-     ]
+    ],
+    "912221": [
+        "Deal lightning and wind damage to all enemies",
+        "對全體敵人發動雷風屬性攻擊",
+        "적 전체에 번개와 바람속성 피해",
+        "Inflige des dégâts de foudre et de vent à tous les ennemis",
+        "Fügt allen Gegnern Blitz- und Windschaden zu.",
+        "Daño de rayo y viento a todos los enemigos"
+    ],
+    "912380": [
+        "Enable specific abilities to be used three times in one turn (Activate one time each regardless of equipment conditions)",
+        "1回合內可以使用3次特定能力（無視裝備狀態，只會各發動1次）",
+        "1턴 동안 특정 어빌리티 3회 사용 가능(장비 상태와 관계 없이 1회씩 발동)",
+        "Permet d'utiliser des aptitudes spécifiques trois fois en un tour (s'active une seule fois, quel que soit l'équipement)",
+        "Ermöglicht gewissen Fertigkeiten dreimalige Anwendung in einer Runde (Aktiviere je ein Mal, unabhängig von Ausrüstungssituation).",
+        "Aprende determinadas habilidades que se pueden usar 3 veces en un mismo turno (se activa una vez cada una sin importar las condiciones del equipo)"
+    ],
+    "912791": [
+        "Boost MAG for caster, deal partial unmitigated magic damage to all enemies, enable consecrated rites, and cast vixen's fire - eighth tail next turn",
+        "提高自身的魔力+對全體敵人發動無視部分魔法防禦的攻擊+可使用「奉獻的祭式」+下一回合發動「狐火 - 八尾」",
+        "자신의 마력 상승+적 전체에 일부 마법 방어 무시 피해+'봉헌의 제식' 사용 가능+다음 턴에 '여우불·팔미' 효과 부여",
+        "Augmente la MAGIE du lanceur, inflige des dégâts magiques en partie fixes à tous les ennemis, permet d'utiliser Rites consacrés, et lance Renard de feu - Huitième queue au tour suivant",
+        "Erhöht MAG des Benutzers, fügt allen Gegnern teilweise direkten mag. Schaden zu, ermöglicht Geweihter Ritus und zaubert Fähenfeuer - Achter Schweif in der nächsten Runde.",
+        "Aumenta la MAG del usuario, inflige daño mágico que ignora parcialmente la DEF de todos los enemigos, aprende Ritos consagrados y lanza Fuego vulpino - Octava cola al turno siguiente"
+    ],
+    "912792": [
+        "Boost MAG for caster, deal partial unmitigated magic damage to all enemies, enable consecrated rites, and cast vixen's fire - ninth tail next turn",
+        "提高自身的魔力+對全體敵人發動無視部分魔法防禦的攻擊+可使用「奉獻的祭式」+下一回合發動「狐火 - 九尾」",
+        "자신의 마력 상승+적 전체에 일부 마법 방어 무시 피해+'봉헌의 제식' 사용 가능+다음 턴에 '여우불·구미' 효과 부여",
+        "Augmente la MAGIE du lanceur, inflige des dégâts magiques en partie fixes à tous les ennemis, permet d'utiliser Rites consacrés, et lance Renard de feu - Dernière queue au tour suivant",
+        "Erhöht MAG des Benutzers, fügt allen Gegnern teilweise direkten mag. Schaden zu, ermöglicht Geweihter Ritus und zaubert Fähenfeuer - Letzter Schweif in der nächsten Runde.",
+        "Aumenta la MAG del usuario, inflige daño mágico que ignora parcialmente la DEF de todos los enemigos, aprende Ritos consagrados y lanza Fuego vulpino - Novena cola al turno siguiente"
+    ],
+    "912793": [
+        "Boost MAG for caster, deal partial unmitigated magic damage to all enemies, and enable consecrated rites",
+        "提高自身的魔力+對全體敵人發動無視部分魔法防禦的攻擊+可使用「奉獻的祭式」",
+        "자신의 마력 상승+적 전체에 일부 마법 방어 무시 피해+'봉헌의 제식' 사용 가능",
+        "Augmente la MAGIE du lanceur, inflige des dégâts magiques en partie fixes à tous les ennemis, et permet d'utiliser Rites consacrés",
+        "Erhöht MAG des Benutzers, fügt allen Gegnern teilweise direkten mag. Schaden zu und ermöglicht Geweihter Ritus.",
+        "Aumenta la MAG del usuario, inflige daño mágico que ignora parcialmente la DEF de todos los enemigos y aprende Ritos consagrados"
+    ],
+    "912882": [
+        "Damage and drain HP from one enemy and restore own MP",
+        "攻擊1名敵人+吸收HP+恢復自身的MP",
+        "적 1명에게 피해+HP 흡수+자신의 MP 회복",
+        "Inflige des dégâts et aspire les PV d'un ennemi et restaure les PM du lanceur",
+        "Fügt einem Gegner Schaden zu, stiehlt dessen LP und regeneriert MP des Benutzers.",
+        "Daña a un enemigo, absorbe su VIT, y recupera PM propios"
+    ]
   }`;
 
 describe('Skill', () => {

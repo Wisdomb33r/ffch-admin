@@ -1,9 +1,10 @@
-import {EffectParser} from '../../../../mappers/effects/effect-parser';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {SkillEffect} from '../../skill-effect.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
+import {AbilityEffectParserFactory} from '../../../../mappers/effects/abilities/ability-effect-parser.factory';
 
 export class AbilitySkillDelayedEffect extends SkillEffect {
 
@@ -20,7 +21,6 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
       this.parameterError = true;
     } else {
       this.activatedSkillId = parameters[0];
-      this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.activatedSkillId);
       this.turnsDelay = parameters[2];
     }
   }
@@ -30,9 +30,36 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill) {
-    const activatedSkillLink = EffectParser.getSkillNameWithGumiIdentifierLink(this.activatedSkill);
-    const turnsDelayText = `avec délai de ${this.turnsDelay} tour${this.turnsDelay > 1 ? 's' : ''}`;
+    const delayedEffects: Array<{ delay: number, wordedEffect: string }> = this.wordEffectForDelayedSkill(skill);
     const target = this.wordTarget();
-    return `Lance ${activatedSkillLink} ${turnsDelayText} ${target}`;
+    let activatedSkillText = '';
+    let currentDelay = 0;
+    delayedEffects.forEach(delayedEffect => {
+      if (currentDelay === delayedEffect.delay) {
+        activatedSkillText += `${delayedEffect.wordedEffect}<br />`;
+      } else {
+        currentDelay = delayedEffect.delay;
+        activatedSkillText += `<br />Activation <strong>${this.turnsDelay} tour${this.turnsDelay > 1 ? 's' : ''} plus tard</strong>:<br />${delayedEffect.wordedEffect}<br />`;
+      }
+    });
+    return activatedSkillText;
+  }
+
+  public wordEffectForDelayedSkill(skill: Skill): Array<{ delay: number, wordedEffect: string }> {
+    this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.activatedSkillId);
+    let delayedEffects: Array<{ delay: number, wordedEffect: string }> = [];
+    this.activatedSkill.effects_raw?.forEach((effect: Array<any>) => {
+      const skillEffect: SkillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
+      if (skillEffect) {
+        delayedEffects = delayedEffects.concat(skillEffect.wordEffectForDelayedSkill(this.activatedSkill));
+      } else {
+        delayedEffects.push({
+          delay: 0,
+          wordedEffect: AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, skill)
+        });
+      }
+    });
+    delayedEffects.forEach(delayedEffect => delayedEffect.delay += this.turnsDelay);
+    return delayedEffects;
   }
 }
