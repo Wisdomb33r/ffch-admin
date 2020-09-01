@@ -34,6 +34,7 @@ export class CharacterEntryStatsMapper {
   }
 
   private static mapBonusBasePercent(characterEntrySkills: Array<Skill>): Caracteristiques {
-    return Caracteristiques.computeSum(characterEntrySkills.map(skill => skill.calculateBaseIncreasesPercent()));
+    return Caracteristiques.computeSum(characterEntrySkills.filter(skill => !skill.hasEquipmentRequirements())
+      .map(skill => skill.calculateBaseIncreasesPercent()));
   }
 }
