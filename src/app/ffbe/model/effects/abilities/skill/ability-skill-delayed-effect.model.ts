@@ -6,6 +6,7 @@ import {TargetTypeEnum} from '../../target-type.enum';
 import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 import {AbilityEffectParserFactory} from '../../../../mappers/effects/abilities/ability-effect-parser.factory';
 import {FfbeUtils} from '../../../../utils/ffbe-utils';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
 
 export class AbilitySkillDelayedEffect extends SkillEffect {
 
@@ -40,11 +41,12 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
         activatedSkillText += `${delayedEffect.wordedEffect}<br />`;
       } else {
         currentDelay = delayedEffect.delay;
-        activatedSkillText += `<br />Activation <strong>${currentDelay} tour${currentDelay > 1 ? 's' : ''} plus tard</strong>:`;
-        activatedSkillText += `<br />${delayedEffect.wordedEffect}<br />`;
+        const turnsPlural = currentDelay > 1 ? 's' : '';
+        activatedSkillText += `${HTML_LINE_RETURN}Activation <strong>${currentDelay} tour${turnsPlural} plus tard</strong>:`;
+        activatedSkillText += `${HTML_LINE_RETURN}${delayedEffect.wordedEffect}${HTML_LINE_RETURN}`;
       }
     });
-    activatedSkillText = FfbeUtils.replaceLastOccurenceInString(activatedSkillText, '<br />', '');
+    activatedSkillText = FfbeUtils.replaceLastOccurenceInString(activatedSkillText, HTML_LINE_RETURN, '');
     return activatedSkillText;
   }
 
