@@ -1126,4 +1126,34 @@ describe('Skill', () => {
     // THEN
     expect(carac).toEqual(new Caracteristiques(20, 20, 0, 20, 0, 20));
   });
+
+  it('should classify skills without equipment requirements correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['707785'];
+    plainSkill.gumi_id = 707785;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const isTrustAbility = skill.hasEquipmentRequirements();
+
+    // THEN
+    expect(isTrustAbility).toBeFalse();
+  });
+
+  it('should classify skills with equipment requirement correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['230020'];
+    plainSkill.gumi_id = 230020;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const isTrustAbility = skill.hasEquipmentRequirements();
+
+    // THEN
+    expect(isTrustAbility).toBeTrue();
+  });
 });

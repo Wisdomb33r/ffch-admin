@@ -262,4 +262,9 @@ export class Skill {
       return 0.0;
     }
   }
+
+  public hasEquipmentRequirements(): boolean {
+    return Array.isArray(this.requirements) && this.requirements.length > 0 &&
+      this.requirements.some(requirement => Array.isArray(requirement) && requirement.length > 0 && requirement[0] === 'EQUIP');
+  }
 }
