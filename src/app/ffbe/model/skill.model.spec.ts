@@ -616,6 +616,51 @@ export const ABILITY_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
+   "512175": {
+        "name": "Jade Parry",
+        "icon": "ability_105.png",
+        "compendium_id": 9043,
+        "rarity": 9,
+        "cost": {"MP": 120},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[40,  40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Dodge 1 physical attacks for one turn to all allies",
+            "Use Jade Parry (512176) next turn on all allies",
+            "Use Jade Parry (512176) after a 2 turn delay on all allies",
+            "Use Jade Parry (512176) after a 3 turn delay on all allies"
+        ],
+        "effects_raw": [[2, 2, 54, [1,  1,  0]], [2, 2, 132, [512176,  1,  1,  100,  0,  2]], [2, 2, 132, [512176,  1,  2,  100,  0,  3]], [2, 2, 132, [512176,  1,  3,  100,  0,  4]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "512176": {
+        "name": "Jade Parry",
+        "icon": "ability_97.png",
+        "compendium_id": 9043,
+        "rarity": 9,
+        "cost": {},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[0,  0]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Dodge 1 physical attacks for one turn to all allies"],
+        "effects_raw": [[2, 2, 54, [1,  1,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
     "912221": {
         "name": "Tempest Spellblade",
         "icon": "ability_9.png",
@@ -907,6 +952,22 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Aquiles de fuego verdadero",
         "Achilles Api Sejati"
     ],
+    "512175": [
+        "Jade Parry",
+        "翡翠格擋",
+        "제이다이트 페리",
+        "Parade de jade",
+        "Jade-Parade",
+        "Parada de jaspe"
+    ],
+    "512176": [
+        "Jade Parry",
+        "翡翠格擋",
+        "제이다이트 페리",
+        "Parade de jade",
+        "Jade-Parade",
+        "Parada de jaspe"
+    ],
     "912221": [
         "Tempest Spellblade",
         "風雷魔劍舞",
@@ -1107,6 +1168,22 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "Verringert die Feuerresistenz eines Gegners, fügt ihm Schaden zu und ermöglicht 2 Runden lang Wahrer Feuer-Achilles.",
         "Reduce la resistencia al fuego, daña a un enemigo y aprende Aquiles de fuego verdadero durante 2 turnos",
         "Mengurangi resistansi api dan memberikan damage pada satu musuh, serta memungkinkan penggunaan Achilles Api Sejati selama 2 giliran"
+    ],
+    "512175": [
+        "(One use every 4 turns) Enable all allies to evade some physical attacks one time, and then recast for three consecutive turns",
+        "【每4回合可使用1次】賦予全體隊員閃避1次部分物理攻擊的效果+3回合內連續發動",
+        "[4턴에 1회 사용 가능] 아군 전체에 일부 물리 공격 1회 회피 효과 부여+3턴 연속 재사용",
+        "(Une fois tous les 4 tours) Permet à tous les alliés d'esquiver une fois certaines attaques physiques, puis relance l'aptitude pendant les 3 tours suivants",
+        "(Einmal in 4 Runden) Ermöglicht es allen Verbündeten, einigen physischen Angriffen einmal auszuweichen, und wiederholt diesen Effekt in den nächsten drei Runden.",
+        "(Un uso cada 4 turnos) Todos los aliados pueden evadir algunos ataques físicos una vez, y el efecto se vuelve a aplicar durante 3 turnos consecutivos"
+    ],
+    "512176": [
+        "(One use every 4 turns) Enable all allies to evade some physical attacks one time, and then recast for three consecutive turns",
+        "【每4回合可使用1次】賦予全體隊員閃避1次部分物理攻擊的效果+3回合內連續發動",
+        "[4턴에 1회 사용 가능] 아군 전체에 일부 물리 공격 1회 회피 효과 부여+3턴 연속 재사용",
+        "(Une fois tous les 4 tours) Permet à tous les alliés d'esquiver une fois certaines attaques physiques, puis relance l'aptitude pendant les 3 tours suivants",
+        "(Einmal in 4 Runden) Ermöglicht es allen Verbündeten, einigen physischen Angriffen einmal auszuweichen, und wiederholt diesen Effekt in den nächsten drei Runden.",
+        "(Un uso cada 4 turnos) Todos los aliados pueden evadir algunos ataques físicos una vez, y el efecto se vuelve a aplicar durante 3 turnos consecutivos"
     ],
     "912221": [
         "Deal lightning and wind damage to all enemies",
