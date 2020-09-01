@@ -33,7 +33,6 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill) {
     const delayedEffects: Array<{ delay: number, wordedEffect: string }> = this.wordEffectForDelayedSkill(skill);
-    const target = this.wordTarget();
     let activatedSkillText = '';
     let currentDelay = 0;
     delayedEffects.forEach(delayedEffect => {
