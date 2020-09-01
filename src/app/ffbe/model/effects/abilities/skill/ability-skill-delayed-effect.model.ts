@@ -5,6 +5,7 @@ import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 import {AbilityEffectParserFactory} from '../../../../mappers/effects/abilities/ability-effect-parser.factory';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
 
 export class AbilitySkillDelayedEffect extends SkillEffect {
 
@@ -39,9 +40,11 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
         activatedSkillText += `${delayedEffect.wordedEffect}<br />`;
       } else {
         currentDelay = delayedEffect.delay;
-        activatedSkillText += `<br />Activation <strong>${this.turnsDelay} tour${this.turnsDelay > 1 ? 's' : ''} plus tard</strong>:<br />${delayedEffect.wordedEffect}<br />`;
+        activatedSkillText += `<br />Activation <strong>${currentDelay} tour${currentDelay > 1 ? 's' : ''} plus tard</strong>:`;
+        activatedSkillText += `<br />${delayedEffect.wordedEffect}<br />`;
       }
     });
+    activatedSkillText = FfbeUtils.replaceLastOccurenceInString(activatedSkillText, '<br />', '');
     return activatedSkillText;
   }
 
