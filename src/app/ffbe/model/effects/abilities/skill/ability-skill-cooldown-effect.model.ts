@@ -1,13 +1,13 @@
-import {Skill} from '../../skill.model';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
-import {SkillsService} from '../../../services/skills.service';
-import {SkillMapper} from '../../../mappers/skill-mapper';
-import {SkillEffect} from '../skill-effect.model';
-import {TargetNumberEnum} from '../target-number.enum';
-import {TargetTypeEnum} from '../target-type.enum';
-import {EffectParser} from '../../../mappers/effects/effect-parser';
+import {Skill} from '../../../skill.model';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {SkillsService} from '../../../../services/skills.service';
+import {SkillMapper} from '../../../../mappers/skill-mapper';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
 
-export class AbilityCooldownEffect extends SkillEffect {
+export class AbilitySkillCooldownEffect extends SkillEffect {
 
   private activatedSkillId: number;
   private activatedSkill: Skill;
