@@ -19,7 +19,6 @@ import {AbilityElementImbueParser} from './ability-element-imbue.parser';
 import {AbilityDispelsParser} from './ability-dispels.parser';
 import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
-import {AbilityDelayedSkillParser} from './ability-delayed-skill.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
 import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
@@ -183,8 +182,6 @@ export class AbilityEffectParserFactory {
         return new AbilityLbCrystalsParser();
       case 127:
         return new AbilityBarriersParser();
-      case 132:
-        return new AbilityDelayedSkillParser();
       case 133:
         return new AbilityDebuffsStealParser();
       case 136:

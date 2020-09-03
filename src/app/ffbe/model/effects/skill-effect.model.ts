@@ -26,6 +26,10 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     }
   }
 
+  public wordEffectForDelayedSkill(skill: Skill): Array<{ delay: number, wordedEffect: string }> {
+    return [{delay: 0, wordedEffect: this.wordEffect(skill)}];
+  }
+
   public wordBadParameterText(): string {
     return `Effet ${this.effectName} inconnu: Mauvaise liste de paramètres`;
   }
