@@ -8,6 +8,7 @@ import {Competence} from '../model/competence.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {SkillMapper} from './skill-mapper';
 import {UniteCompetence} from '../model/unite-competence.model';
+import {CharacterSkill} from '../model/character-skill.model';
 
 export class CharacterMapper {
 
@@ -27,16 +28,24 @@ export class CharacterMapper {
     perso.unites = CharacterEntryMapper.toUniteArray(character.entries, perso);
     character.skills.forEach(characterSkill => {
       const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
+      const characterSkillRarity = CharacterMapper.computeCharacterSkillRarity(characterSkill)
       perso.unites
-        .filter(unite => unite.stars >= characterSkill.rarity)
+        .filter(unite => unite.stars >= characterSkillRarity)
         .forEach(unite => unite.competences.push(
           new UniteCompetence(
             competence,
-            unite.stars > characterSkill.rarity ? 1 : characterSkill.level
+            (unite.stars > characterSkillRarity && perso.unites.length > 1) ? 1 : characterSkill.level
           )
         ));
     });
     return perso;
   }
 
+  public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
+    let rarity = characterSkill.rarity;
+    if (!FfbeUtils.isNullOrUndefined(characterSkill.brave_ability)) {
+      rarity += characterSkill.brave_ability;
+    }
+    return rarity;
+  }
 }
