@@ -40,4 +40,14 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
     return '<a href="ffexvius_units.php?unitid=' + (this.unite.isPresentInFfchDb() ? this.unite.id.toString() : '')
       + '\"><em>' + this.unite.limite + '</em></a>';
   }
+
+  public generateDisplayableRank(): string {
+    let rank = `${this.unite.stars.toString()}\u2605`;
+    if (this.unite.stars === 8) {
+      rank = 'NV';
+    } else if (this.unite.stars === 81) {
+      rank = 'BS';
+    }
+    return rank;
+  }
 }

@@ -10,3 +10,11 @@ button.copy-button {
   display: inline-block;
   margin-right: 5px;
 }
+
+div.neovision {
+  font-weight: bolder;
+  background: -webkit-linear-gradient(#ff0000, #fffb00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black; /* width and color */
+}
