@@ -11,7 +11,11 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 export class SkillMapper {
 
   public static toCompetence(skill: Skill): Competence {
+    SkillMapper.orderSkillEffectsRaw(skill);
     let parsedSkillEffects: string = SkillEffectsMapper.mapSkillEffects(skill);
+    if (parsedSkillEffects.startsWith(HTML_LINE_RETURN)) {
+      parsedSkillEffects = parsedSkillEffects.substring(6);
+    }
     const parsedItemsRequirements: string = SkillMapper.mapRequirements(skill);
     if (parsedItemsRequirements.length) {
       parsedSkillEffects += HTML_LINE_RETURN + parsedItemsRequirements;
@@ -34,7 +38,7 @@ export class SkillMapper {
       undefined,
       undefined,
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
-      skill.effects.length > 0 ? skill.effects.join('<br />') : null,
+      skill.effects.length > 0 ? skill.effects.join(HTML_LINE_RETURN) : null,
       parsedSkillEffects && parsedSkillEffects.length ? parsedSkillEffects : 'Aucun effet',
       skill.calculateSkillPower(),
       !skill.cost || skill.cost.MP === 0 ? null : skill.cost.MP,
@@ -44,6 +48,14 @@ export class SkillMapper {
       hitsFramesDamagesObject.frames,
       hitsFramesDamagesObject.damages,
       SkillMapper.mapElementInflict(skill)
+    );
+  }
+
+  // effect 132 is for delayed skills but might appear in the data mining before another effect which is activated immediately
+  // to avoid confusion, need to move the delayed skills at the end of the table
+  private static orderSkillEffectsRaw(skill: Skill) {
+    skill.effects_raw?.sort(
+      (effect1, effect2) => effect1[2] === 132 && effect2[2] !== 132 ? 1 : (effect1[2] !== 132 && effect2[2] === 132 ? -1 : 0)
     );
   }
 

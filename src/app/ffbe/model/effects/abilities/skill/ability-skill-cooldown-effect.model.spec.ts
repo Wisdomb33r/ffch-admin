@@ -1,9 +1,9 @@
-import {ABILITY_SKILLS_NAMES_TEST_DATA, ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../../skill.model.spec';
-import {Skill} from '../../skill.model';
-import {SkillsService} from '../../../services/skills.service';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
-import {SkillsServiceMock} from '../../../services/skills.service.spec';
-import {AbilitySkillEffectFactory} from '../ability-skill-effect.factory';
+import {ABILITY_SKILLS_NAMES_TEST_DATA, ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../../../skill.model.spec';
+import {Skill} from '../../../skill.model';
+import {SkillsService} from '../../../../services/skills.service';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {SkillsServiceMock} from '../../../../services/skills.service.spec';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('AbilityCooldownEffect', () => {
   it('should parse cooldown skills available on turn 1', () => {

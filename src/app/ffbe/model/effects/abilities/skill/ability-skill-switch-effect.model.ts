@@ -1,11 +1,11 @@
-import {EffectParser} from '../../../mappers/effects/effect-parser';
-import {Skill} from '../../skill.model';
-import {SkillsService} from '../../../services/skills.service';
-import {SkillMapper} from '../../../mappers/skill-mapper';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
-import {TargetNumberEnum} from '../target-number.enum';
-import {TargetTypeEnum} from '../target-type.enum';
-import {SkillEffect} from '../skill-effect.model';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {Skill} from '../../../skill.model';
+import {SkillsService} from '../../../../services/skills.service';
+import {SkillMapper} from '../../../../mappers/skill-mapper';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+import {SkillEffect} from '../../skill-effect.model';
 
 export class AbilitySkillSwitchEffect extends SkillEffect {
 

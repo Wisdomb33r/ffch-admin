@@ -14,7 +14,7 @@ export class CharacterEntryMapper {
   public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
     const unite = new Unite(
       CharacterEntryMapper.convertCompendiumId(entry, perso),
-      entry.rarity,
+      CharacterEntryMapper.convertRarity(entry, perso),
       entry.limitburst_id,
       gumi_id
     );
@@ -38,10 +38,28 @@ export class CharacterEntryMapper {
 
   private static convertCompendiumId(entry: CharacterEntry, perso: Personnage): number {
     let compendiumId = entry.compendium_id;
-    if (perso.min_rank === 7 && perso.max_rank === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade)) {
+    if (CharacterEntryMapper.isBraveShiftUnit(entry, perso)) {
       compendiumId += 1000000;
     }
     return compendiumId;
+  }
+
+  private static convertRarity(entry: CharacterEntry, perso: Personnage): number {
+    let rarity = entry.rarity;
+    if (CharacterEntryMapper.isNeoVisionUnit(entry, perso)) {
+      rarity = 8;
+    } else if (CharacterEntryMapper.isBraveShiftUnit(entry, perso)) {
+      rarity = 81;
+    }
+    return rarity;
+  }
+
+  private static isNeoVisionUnit(entry: CharacterEntry, perso: Personnage): boolean {
+    return perso.max_rank === 7 && !FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
+  }
+
+  private static isBraveShiftUnit(entry: CharacterEntry, perso: Personnage): boolean {
+    return perso.min_rank === 7 && perso.max_rank === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
   }
 
   private static convertLimitBurst(unite: Unite, lb: LimitBurst) {
