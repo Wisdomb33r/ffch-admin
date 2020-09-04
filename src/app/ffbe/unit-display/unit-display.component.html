@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
     <img *ngIf="unite.isPresentInFfchDb()" src="assets/ok.png" class="ffchstatus" alt="OK">
     <img *ngIf="!unite.isPresentInFfchDb()" src="assets/nok.png" class="ffchstatus" alt="Not OK">
-    {{unite.stars}}&#9733;
+    <div [ngClass]="{'neovision' : unite.stars > 7 }">{{generateDisplayableRank()}}</div>
   </mat-expansion-panel-header>
   <ul class="error" *ngIf="isUniteErrorsDisplayed()">
     <li *ngFor="let message of uniteErrors">{{message}}</li>

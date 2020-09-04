@@ -233,8 +233,6 @@ function createAndValidateBrexUnitCompArray($uniteCompetences, $brex_unite) {
 }
 function copyUnitDataAndValidate(&$brex_unit, $unite)
 {
-  if (isset ($unite->stars) && !isset ($brex_unit->stars))
-    $brex_unit->stars = $unite->stars;
   if (isset ($unite->limite) && !isset ($brex_unit->limite))
     $brex_unit->limite = $unite->limite;
   if (isset ($unite->limite_en) && !isset ($brex_unit->limite_en))
