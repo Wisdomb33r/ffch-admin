@@ -1,6 +1,5 @@
 import {CharacterEntry} from '../model/character-entry.model';
 import {Unite} from '../model/unite.model';
-import {Personnage} from '../model/personnage.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
