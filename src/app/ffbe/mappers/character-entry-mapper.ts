@@ -8,13 +8,17 @@ import {AwakeningMaterialsMapper} from './awakening-materials-mapper';
 import {Skill} from '../model/skill.model';
 import {SkillEffectsMapper} from './effects/skill-effects.mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {Competence} from '../model/competence.model';
+import {CharacterSkill} from '../model/character-skill.model';
+import {UniteCompetence} from '../model/unite-competence.model';
+import {Character} from '../model/character.model';
 
 export class CharacterEntryMapper {
 
-  public static toUnite(entry: CharacterEntry, gumi_id: number, perso: Personnage): Unite {
+  public static toUnite(entry: CharacterEntry, gumi_id: number, character: Character, competences: Array<Competence>): Unite {
     const unite = new Unite(
-      CharacterEntryMapper.convertCompendiumId(entry, perso),
-      CharacterEntryMapper.convertRarity(entry, perso),
+      CharacterEntryMapper.convertCompendiumId(entry, character),
+      CharacterEntryMapper.convertRarity(entry, character),
       entry.limitburst_id,
       gumi_id
     );
@@ -22,44 +26,45 @@ export class CharacterEntryMapper {
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
+    CharacterEntryMapper.convertUniteCompetences(unite, character, entry, competences);
     return unite;
   }
 
-  public static toUniteArray(entries: any, perso: Personnage): Array<Unite> {
+  public static toUniteArray(entries: any, character: Character, competences: Array<Competence>): Array<Unite> {
     const unites: Array<Unite> = [];
     if (entries) {
       const entryNames: string[] = Object.getOwnPropertyNames(entries);
       for (const entryName of entryNames) {
-        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, perso));
+        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character, competences));
       }
     }
     return unites;
   }
 
-  private static convertCompendiumId(entry: CharacterEntry, perso: Personnage): number {
+  private static convertCompendiumId(entry: CharacterEntry, character: Character): number {
     let compendiumId = entry.compendium_id;
-    if (CharacterEntryMapper.isBraveShiftUnit(entry, perso)) {
+    if (CharacterEntryMapper.isBraveShiftUnit(entry, character)) {
       compendiumId += 1000000;
     }
     return compendiumId;
   }
 
-  private static convertRarity(entry: CharacterEntry, perso: Personnage): number {
+  private static convertRarity(entry: CharacterEntry, character: Character): number {
     let rarity = entry.rarity;
-    if (CharacterEntryMapper.isNeoVisionUnit(entry, perso)) {
+    if (CharacterEntryMapper.isNeoVisionUnit(entry, character)) {
       rarity = 8;
-    } else if (CharacterEntryMapper.isBraveShiftUnit(entry, perso)) {
+    } else if (CharacterEntryMapper.isBraveShiftUnit(entry, character)) {
       rarity = 81;
     }
     return rarity;
   }
 
-  private static isNeoVisionUnit(entry: CharacterEntry, perso: Personnage): boolean {
-    return perso.max_rank === 7 && !FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
+  private static isNeoVisionUnit(entry: CharacterEntry, character: Character): boolean {
+    return character.rarity_max === 7 && !FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
   }
 
-  private static isBraveShiftUnit(entry: CharacterEntry, perso: Personnage): boolean {
-    return perso.min_rank === 7 && perso.max_rank === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
+  private static isBraveShiftUnit(entry: CharacterEntry, character: Character): boolean {
+    return character.rarity_min === 7 && character.rarity_max === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
   }
 
   private static convertLimitBurst(unite: Unite, lb: LimitBurst) {
@@ -113,5 +118,23 @@ export class CharacterEntryMapper {
         unite.materiauxEveil = formule;
       }
     }
+  }
+
+  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
+    unite.competences = [];
+    entry.character_entry_skills.forEach(characterSkill => {
+      const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
+      const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
+      const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
+      unite.competences.push(new UniteCompetence(competence, niveau));
+    });
+  }
+
+  public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
+    let rarity = characterSkill.rarity;
+    if (!FfbeUtils.isNullOrUndefined(characterSkill.brave_ability)) {
+      rarity += characterSkill.brave_ability;
+    }
+    return rarity;
   }
 }

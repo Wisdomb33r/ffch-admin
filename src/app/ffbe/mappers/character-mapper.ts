@@ -25,27 +25,8 @@ export class CharacterMapper {
       character.gumi_id,
       equipments
     );
-    perso.unites = CharacterEntryMapper.toUniteArray(character.entries, perso);
-    character.skills.forEach(characterSkill => {
-      const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
-      const characterSkillRarity = CharacterMapper.computeCharacterSkillRarity(characterSkill)
-      perso.unites
-        .filter(unite => unite.stars >= characterSkillRarity)
-        .forEach(unite => unite.competences.push(
-          new UniteCompetence(
-            competence,
-            (unite.stars > characterSkillRarity && perso.unites.length > 1) ? 1 : characterSkill.level
-          )
-        ));
-    });
+    const competences = character.skills.map(characterSkill => SkillMapper.toCompetence(characterSkill.skill));
+    perso.unites = CharacterEntryMapper.toUniteArray(character.entries, character, competences);
     return perso;
-  }
-
-  public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
-    let rarity = characterSkill.rarity;
-    if (!FfbeUtils.isNullOrUndefined(characterSkill.brave_ability)) {
-      rarity += characterSkill.brave_ability;
-    }
-    return rarity;
   }
 }
