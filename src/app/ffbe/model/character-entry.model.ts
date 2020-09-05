@@ -1,6 +1,6 @@
 import {CharacterEntryStats} from '../model/character-entry-stats.model';
 import {LimitBurst} from './limit-burst.model';
-import {Skill} from './skill.model';
+import {CharacterSkill} from './character-skill.model';
 
 export class CharacterEntry {
   public gumi_id: number;
@@ -13,5 +13,5 @@ export class CharacterEntry {
   public upgraded_lb: LimitBurst;
   public awakening: any;
   public nv_upgrade: any;
-  public character_entry_skills: Array<Skill>;
+  public character_entry_skills: Array<CharacterSkill>;
 }

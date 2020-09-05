@@ -2398,5 +2398,586 @@ export const CHARACTER_TEST_DATA =
             {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100081, "brave_ability": 1},
             {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236025, "brave_ability": 1}
         ]
+    },
+    "207000305": {
+        "rarity_min": 5,
+        "rarity_max": 7,
+        "name": "Tifa",
+        "names": {
+            "0": "Tifa",
+            "4": "Tifa",
+            "5": "Tifa",
+            "3": "Tifa",
+            "6": "Tifa",
+            "2": "티파",
+            "7": "Tifa",
+            "1": "蒂法"
+        },
+        "game_id": 10007,
+        "game": "FFVII",
+        "roles": ["Physical Attacker"],
+        "job_id": 183,
+        "job": "Avalanche",
+        "sex_id": 2,
+        "sex": "Female",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "MATERIA",
+            504227847
+        ],
+        "sTMR": [
+            "EQUIP",
+            309003300
+        ],
+        "equip": [1, 5, 9, 15, 16, 40, 50, 51, 53, 60],
+        "entries": {
+            "207000305": {
+                "compendium_id": 1110,
+                "rarity": 5,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [916, 2776, 300, 150],
+                    "MP": [41, 123, 50, 25],
+                    "ATK": [39, 117, 20, 10],
+                    "DEF": [34, 103, 20, 10],
+                    "MAG": [28, 86, 20, 10],
+                    "SPR": [36, 110, 20, 10]
+                },
+                "limitburst_id": 207000305,
+                "attack_count": 2,
+                "attack_damage": [
+                    [40, 60]
+                ],
+                "attack_frames": [2, 27],
+                "effect_frames": [0, 25],
+                "max_lb_drop": 8,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 4000,
+                    "materials": {
+                        "290060300": 20,
+                        "290060400": 10,
+                        "290060000": 10,
+                        "290060100": 5,
+                        "290050500": 5
+                    }
+                },
+                "strings": {
+                    "description": {
+                        "0": "A young woman from a distant world who is embroiled in a struggle to save her planet. Although Tifa may seem the lively type who always tries keeping the mood light, this is all a front she uses to avoid sharing her insecurities with others. She is Cloud's childhood friend, and when they happen upon each other in Midgar, she's the one who suggests he join Avalanche.",
+                        "4": "Eine junge Frau aus einer fernen Welt, in der sie in den Kampf zur Rettung des Planeten verwickelt ist. Auf den ersten Blick scheint Tifa immer guter Laune zu sein, doch hinter ihrer munteren Fassade versteckt sie ihre Unsicherheiten, mit denen sie den Menschen in ihrem Umfeld nicht zur Last fallen will. Sie ist eine Jugendfreundin von Cloud und schlägt ihm vor, sich Avalanche anzuschließen, als sie ihn in Midgar zufällig wiedersieht.",
+                        "5": "Joven de un mundo lejano enzarzada en una lucha por salvar el planeta. Aunque Tifa puede parecer el tipo de chica alegre que siempre trata de conservar el buen humor, en realidad se trata de una fachada que utiliza para evitar que los demás conozcan sus inseguridades. Es amiga de la infancia de Cloud y, más adelante, llega a recomendarle unirse al grupo Avalancha durante su encuentro en Midgar.",
+                        "3": "Protagoniste de l'histoire d'un monde où l'énergie vitale de la planète est en jeu, cette jeune femme cache un tempérament timide derrière son apparente assurance. S'inquiétant que son entourage s'aperçoive de cette faiblesse, elle s'efforce d'agir avec entrain et bonne humeur. Amie d'enfance de Cloud, c'est elle qui l'a présenté aux autres membres d'Avalanche après que le destin les a rassemblés à Midgar.",
+                        "6": "Seorang wanita muda dari dunia lain yang terlibat dalam perjuangan untuk menyelamatkan planetnya. Walaupun Tifa terlihat seperti orang yang selalu membuat suasana menyenangkan, ini semua dilakukan agar ia tidak menunjukkan kecemasannya kepada orang lain. Ia adalah teman masa kecil Cloud. Saat mereka bertemu di Midgar, dialah yang memintanya untuk bergabung dengan Avalanche.",
+                        "2": "별의 운명을 둘러싼 이계의 이야기에 등장하는 여성. 활발해 보이는 외모에 비해 실은 상당히 내성적인 성격이다. 그러나 약한 내면을 주변에게 들키지 않기 위해, 무리해서 밝은 척 행동하고 있다. 클라우드의 소꿉친구로, 미드가르에서 우연히 재회한 그에게 아발란치의 일을 소개해 주었다.",
+                        "1": "在圍繞著星球的生命的異界故事中登場的女性。與開朗的言行相反，性格非常拘謹而膽小，為了不被周圍的人發現，才總是強裝出一副開朗的樣子。克勞德的青梅竹馬，給在米德加偶然重逢的他介紹了雪崩的工作。"
+                    },
+                    "summon": {
+                        "0": "How about...something to drink? I'll make something hard for you.",
+                        "4": "Wie sieht's aus? Möchtest du was trinken? Ich mach dir was Starkes!",
+                        "5": "¿Te apetece... algo de beber? Te prepararé algo fuerte.",
+                        "3": "Que dirais-tu... d'un coup à boire ? Tu veux que je te prépare quelque chose de fort ?",
+                        "6": "Bagaimana kalau... kau minum dulu? Aku akan membuatkan sesuatu yang kuat.",
+                        "2": "저기, 뭐 좀 마실래?<br>센 칵테일이라도 만들어 줄까?",
+                        "1": "喂，要喝點什麼？乾脆來做點強烈的雞尾酒吧？"
+                    },
+                    "evolution": {
+                        "0": null,
+                        "7": ""
+                    },
+                    "affinity": {
+                        "0": "Words aren't the only thing that tell people what you're thinking...",
+                        "4": "Es sind nicht nur Worte durch die man Menschen etwas mitteilen kann.",
+                        "5": "Las palabras no son la única forma de transmitir lo que le pasa a uno por la cabeza...",
+                        "3": "On ne communique pas que par les mots...",
+                        "6": "Pemikiranmu tidak selalu tercermin lewat kata-kata...",
+                        "2": "마음을 전할 수 있는 건<br>말뿐만이 아니야……",
+                        "1": "能夠傳達思念的，可不只是言語而已……"
+                    },
+                    "fusion": {
+                        "0": "Think I got a little stronger again. Zangan always tells me I'm a natural, you know.",
+                        "4": "Ich glaube, ich bin wieder ein bisschen stärker geworden. Zangan sagt immer, dass ich ein Naturtalent bin, weißt du.",
+                        "5": "Creo que me he vuelto un poco más fuerte otra vez. Zangan siempre me dice que tengo talento, ¿sabes?",
+                        "3": "Je crois que je me suis encore améliorée ! Zangan m'a toujours dit que j'avais ça dans le sang.",
+                        "6": "Kurasa aku jadi lebih kuat. Zangan selalu berkata aku punya bakat alami, kau tahu.",
+                        "2": "조금 더 강해진 것 같아.<br>스승님께서도 소질이 있다고 하셨어.",
+                        "1": "好像又變得更強了。師父也說我很有天份呢。"
+                    }
+                }
+            },
+            "207000306": {
+                "compendium_id": 1111,
+                "rarity": 6,
+                "exp_pattern": 30,
+                "stat_pattern": 1,
+                "stats": {
+                    "HP": [1191, 3609, 450, 225],
+                    "MP": [53, 160, 75, 37],
+                    "ATK": [50, 153, 30, 15],
+                    "DEF": [44, 134, 30, 15],
+                    "MAG": [37, 112, 30, 15],
+                    "SPR": [47, 143, 30, 15]
+                },
+                "limitburst_id": 207000306,
+                "attack_count": 2,
+                "attack_damage": [
+                    [40, 60]
+                ],
+                "attack_frames": [2, 27],
+                "effect_frames": [0, 25],
+                "max_lb_drop": 9,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 3000000,
+                    "materials": {
+                        "300000630": 1
+                    }
+                },
+                "strings": {
+                    "description": {
+                        "0": "A young woman from a distant world who is embroiled in a struggle to save her planet. Although Tifa may seem the lively type who always tries keeping the mood light, this is all a front she uses to avoid sharing her insecurities with others. She is Cloud's childhood friend, and when they happen upon each other in Midgar, she's the one who suggests he join Avalanche. A student of Zangan's techniques, her fists are powerful enough to take down even the strongest of opponents.",
+                        "4": "Eine junge Frau aus einer fernen Welt, in der sie in den Kampf zur Rettung des Planeten verwickelt ist. Auf den ersten Blick scheint Tifa immer guter Laune zu sein, doch hinter ihrer munteren Fassade versteckt sie ihre Unsicherheiten, mit denen sie den Menschen in ihrem Umfeld nicht zur Last fallen will. Sie ist eine Jugendfreundin von Cloud und schlägt ihm vor, sich Avalanche anzuschließen, als sie ihn in Midgar zufällig wiedersieht. Tifa selbst ist eine Schülerin Zangas und wendet seinen Kampfstil mit so viel Geschick an, dass sie selbst die stämmigsten Männer bezwingen kann.",
+                        "5": "Joven de un mundo lejano enzarzada en una lucha por salvar el planeta. Aunque Tifa puede parecer el tipo de chica alegre que siempre trata de conservar el buen humor, en realidad se trata de una fachada que utiliza para evitar que los demás conozcan sus inseguridades. Es amiga de la infancia de Cloud y, más adelante, llega a recomendarle unirse al grupo Avalancha durante su encuentro en Midgar. Estudia la técnica Zangan, por lo que sus puños tienen la fuerza suficiente como para derribar a los oponentes más fuertes.",
+                        "3": "Protagoniste de l'histoire d'un monde où l'énergie vitale de la planète est en jeu, cette jeune femme cache un tempérament timide derrière son apparente assurance. S'inquiétant que son entourage s'aperçoive de cette faiblesse, elle s'efforce d'agir avec entrain et bonne humeur. Amie d'enfance de Cloud, c'est elle qui l'a présenté aux autres membres d'Avalanche après que le destin les a rassemblés à Midgar. Ses techniques d'art martial, héritées de son maître Zangan, lui permettent de se mesurer à des adversaires bien plus grands ou forts qu'elle.",
+                        "6": "Seorang wanita muda dari dunia lain yang terlibat dalam perjuangan untuk menyelamatkan planetnya. Walaupun Tifa terlihat seperti orang yang selalu membuat suasana menyenangkan, ini semua dilakukan agar ia tidak menunjukkan kecemasannya kepada orang lain. Ia adalah teman masa kecil Cloud. Saat mereka bertemu di Midgar, dialah yang memintanya untuk bergabung dengan Avalanche. Seorang murid teknik Zangan, tinjunya cukup kuat untuk menjatuhkan musuh terkuat sekali pun.",
+                        "2": "별의 운명을 둘러싼 이계의 이야기에 등장하는 여성. 활발해 보이는 외모에 비해 실은 상당히 내성적인 성격이다. 그러나 약한 내면을 주변에게 들키지 않기 위해, 무리해서 밝은 척 행동하고 있다. 클라우드의 소꿉친구로, 미드가르에서 우연히 재회한 그에게 아발란치의 일을 소개해 주었다. 잔간류 격투술을 사용하며, 그 실력은 건장한 남자와도 대적할 정도이다.",
+                        "1": "在圍繞著星球的生命的異界故事中登場的女性。與開朗的言行相反，性格非常拘謹而膽小，為了不被周圍的人發現，才總是強裝出一副開朗的樣子。克勞德的青梅竹馬，給在米德加偶然重逢的他介紹了雪崩的工作。使用斬岩流格鬥術，身手可以和健壯的男子一較高下。"
+                    },
+                    "summon": {
+                        "0": "How about...something to drink? I'll make something hard for you.",
+                        "4": "Wie sieht's aus? Möchtest du was trinken? Ich mach dir was Starkes!",
+                        "5": "¿Te apetece... algo de beber? Te prepararé algo fuerte.",
+                        "3": "Que dirais-tu... d'un coup à boire ? Tu veux que je te prépare quelque chose de fort ?",
+                        "6": "Bagaimana kalau... kau minum dulu? Aku akan membuatkan sesuatu yang kuat.",
+                        "2": "저기, 뭐 좀 마실래?<br>센 칵테일이라도 만들어 줄까?",
+                        "1": "喂，要喝點什麼？乾脆來做點強烈的雞尾酒吧？"
+                    },
+                    "evolution": {
+                        "0": "This is it. We'd better get ready...!",
+                        "4": "Da wären wir.<br>Haltet euch bereit!",
+                        "5": "Pues así son las cosas.<br>¡Más vale que nos vayamos preparando...!",
+                        "3": "C'est maintenant que les choses sérieuses commencent. Nous ferions bien de nous tenir prêts !",
+                        "6": "Ini dia. Sebaiknya kita bersiap...!",
+                        "2": "지금부터가 진짜야!<br>기운 내서 가야지!",
+                        "1": "接下來才要來真的！不打起精神不行呢！"
+                    },
+                    "affinity": {
+                        "0": "Words aren't the only thing that tell people what you're thinking...",
+                        "4": "Es sind nicht nur Worte durch die man Menschen etwas mitteilen kann.",
+                        "5": "Las palabras no son la única forma de transmitir lo que le pasa a uno por la cabeza...",
+                        "3": "On ne communique pas que par les mots...",
+                        "6": "Pemikiranmu tidak selalu tercermin lewat kata-kata...",
+                        "2": "마음을 전할 수 있는 건<br>말뿐만이 아니야……",
+                        "1": "能夠傳達思念的，可不只是言語而已……"
+                    },
+                    "fusion": {
+                        "0": "If you take me lightly, you're gonna pay for it!!",
+                        "4": "Wenn du mich unterschätzt, wirst du's bereuen!",
+                        "5": "Si no me tomas en serio, ¡¡lo pagarás!!",
+                        "3": "Si tu ne me prends pas au sérieux, tu vas le payer très cher !",
+                        "6": "Jika kau meremehkanku, kau akan membayarnya!!",
+                        "2": "날 얕보다간 큰코다칠걸!",
+                        "1": "敢小看我的話可是會吃苦頭的喔。"
+                    }
+                }
+            },
+            "207000307": {
+                "compendium_id": 1112,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1548, 4692, 600, 300],
+                    "MP": [69, 209, 100, 50],
+                    "ATK": [66, 199, 50, 25],
+                    "DEF": [58, 175, 50, 25],
+                    "MAG": [48, 146, 50, 25],
+                    "SPR": [62, 187, 50, 25]
+                },
+                "limitburst_id": 207000307,
+                "attack_count": 2,
+                "attack_damage": [
+                    [40, 60]
+                ],
+                "attack_frames": [2, 27],
+                "effect_frames": [0, 25],
+                "max_lb_drop": 9,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": {
+                    "gil": 250000,
+                    "materials": {
+                        "250000020": 25,
+                        "293000200": 1
+                    }
+                },
+                "strings": {
+                    "description": {
+                        "0": "A young woman from a distant world who is embroiled in a struggle to save her planet. Although Tifa may seem the lively type who always tries keeping the mood light, this is all a front she uses to avoid sharing her insecurities with others. She is Cloud's childhood friend, and when they happen upon each other in Midgar, she's the one who suggests he join Avalanche. A student of Zangan's techniques, her fists are powerful enough to take down even the strongest of opponents. She also runs the bar Seventh Heaven in Midgar.",
+                        "4": "Eine junge Frau aus einer fernen Welt, in der sie in den Kampf zur Rettung des Planeten verwickelt ist. Auf den ersten Blick scheint Tifa immer guter Laune zu sein, doch hinter ihrer munteren Fassade versteckt sie ihre Unsicherheiten, mit denen sie den Menschen in ihrem Umfeld nicht zur Last fallen will. Sie ist eine Jugendfreundin von Cloud und schlägt ihm vor, sich Avalanche anzuschließen, als sie ihn in Midgard zufällig wiedersieht. Tifa selbst ist eine Schülerin Zangas und wendet seinen Kampfstil mit so viel Geschick an, dass sie selbst die stämmigsten Männer bezwingen kann. Hauptberuflich betreibt sie jedoch die Bar \\"7. Himmel\\" in den Slums in Sektor 7 Midgars.",
+                        "5": "Joven de un mundo lejano enzarzada en una lucha por salvar el planeta. Aunque Tifa puede parecer el tipo de chica alegre que siempre trata de conservar el buen humor, en realidad se trata de una fachada que utiliza para evitar que los demás conozcan sus inseguridades. Es amiga de la infancia de Cloud y, más adelante, llega a recomendarle unirse al grupo Avalancha durante su encuentro en Midgar. Estudia la técnica Zangan, por lo que sus puños tienen la fuerza suficiente como para derribar a los oponentes más fuertes. Es la dueña y gerente del bar El Séptimo Cielo, en Midgar.",
+                        "3": "Protagoniste de l'histoire d'un monde où l'énergie vitale de la planète est en jeu, cette jeune femme cache un tempérament timide derrière son apparente assurance. S'inquiétant que son entourage s'aperçoive de cette faiblesse, elle s'efforce d'agir avec entrain et bonne humeur. Amie d'enfance de Cloud, c'est elle qui l'a présenté aux autres membres d'Avalanche après que le destin les a rassemblés à Midgar. Elle gère un bar appelé Le Septième Ciel dans le bidonville du secteur 7 de cette ville.",
+                        "6": "Seorang wanita muda dari dunia lain yang terlibat dalam perjuangan untuk menyelamatkan planetnya. Walaupun Tifa terlihat seperti orang yang selalu membuat suasana menyenangkan, ia melakukan itu semua agar kecemasannya tidak terlihat kepada orang lain. Ia adalah teman masa kecil Cloud. Saat mereka bertemu di Midgar, Tifalah yang memintanya untuk bergabung dengan Avalanche. Sebagai sorang murid teknik Zangan, tinjunya cukup kuat untuk menjatuhkan musuh terkuat sekali pun. Ia juga merupakan pemilik bar Seventh Heaven di Midgar.",
+                        "2": "별의 운명을 둘러싼 이계의 이야기에 등장하는 여성. 활발해 보이는 외모에 비해 실은 상당히 내성적인 성격이다. 그러나 약한 내면을 주변 사람에게 들키지 않기 위해, 무리해서 밝은 척 행동하고 있다. 클라우드의 소꿉친구로, 미드가르에서 우연히 재회한 그에게 아발란치의 일을 소개해 주었다. 마황도시 미드가르 7번가의 빈민가에서, '세븐스 헤븐'이라는 바를 운영하고 있다.",
+                        "1": "在圍繞著星球的生命的異界故事中登場的女性。與開朗的言行相反，性格非常拘謹而膽小，為了不被周圍的人發現，才總是強裝出一副開朗的樣子。克勞德的青梅竹馬，給在米德加偶然重逢的他介紹了雪崩的工作。在魔晄都市米德加的第七區貧民窟經營著酒吧「第七天堂」。"
+                    },
+                    "summon": {
+                        "0": "How about...something to drink? I'll make something hard for you.",
+                        "4": "Wie sieht's aus? Möchtest du was trinken? Ich mach dir was Starkes!",
+                        "5": "¿Te apetece... algo de beber? Te prepararé algo fuerte.",
+                        "3": "Que dirais-tu... d'un coup à boire ? Tu veux que je te prépare quelque chose de fort ?",
+                        "6": "Bagaimana kalau... kau minum dulu? Aku akan membuatkan sesuatu yang kuat.",
+                        "2": "저기, 뭐 좀 마실래?<br>센 칵테일이라도 만들어 줄까?",
+                        "1": "喂，要喝點什麼？乾脆來做點強烈的雞尾酒吧？"
+                    },
+                    "evolution": {
+                        "0": "There's still many things for us to do...I'm not giving up!!",
+                        "4": "Wir haben noch viel zu tun ... Ich gebe nicht auf!",
+                        "5": "Todavía nos queda mucho por hacer...¡No pienso rendirme!",
+                        "3": "Nous avons encore beaucoup de choses à faire... Je n'abandonne pas !",
+                        "6": "Masih ada banyak hal yang harus kita lakukan...<br>Aku tidak akan menyerah!",
+                        "2": "우리에겐 아직 할 수 있는 게 있어……!<br>난 포기하지 않아!",
+                        "1": "我們還有能夠做到的事情......！我、不會放棄！！"
+                    },
+                    "affinity": {
+                        "0": "Words aren't the only thing that tell people what you're thinking...",
+                        "4": "Es sind nicht nur Worte durch die man Menschen etwas mitteilen kann.",
+                        "5": "Las palabras no son la única forma de transmitir lo que le pasa a uno por la cabeza...",
+                        "3": "On ne communique pas que par les mots...",
+                        "6": "Pemikiranmu tidak selalu tercermin lewat kata-kata...",
+                        "2": "마음을 전할 수 있는 건<br>말뿐만이 아니야……",
+                        "1": "能夠傳達思念的，可不只是言語而已……"
+                    },
+                    "fusion": {
+                        "0": "As long as my friends are by my side, I won't give up even if I'm scared.",
+                        "4": "Solange mir meine Freunde zur Seite stehen ... werde ich nicht aufgeben, auch wenn ich Angst habe.",
+                        "5": "Mientras mis amigos permanezcan a mi lado... No me rendiré aunque esté asustada.",
+                        "3": "Du moment que je suis avec mes amis... Du moment qu'ils sont à mes côtés... Je ne renoncerai pas, même si j'ai peur.",
+                        "6": "Selama teman-temanku ada di sisiku, aku tidak akan menyerah meskipun aku takut.",
+                        "2": "동료들이 있는걸.<br>무섭지만, 지지 않을 거야.",
+                        "1": "因為我有夥伴。就算感到害怕，我也絕不認輸。"
+                    }
+                }
+            },
+            "207000317": {
+                "compendium_id": 2081,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1568, 4750, 600, 300],
+                    "MP": [79, 238, 100, 50],
+                    "ATK": [68, 205, 50, 25],
+                    "DEF": [57, 173, 50, 25],
+                    "MAG": [51, 156, 50, 25],
+                    "SPR": [62, 187, 50, 25]
+                },
+                "limitburst_id": 207000307,
+                "attack_count": 2,
+                "attack_damage": [
+                    [40, 60]
+                ],
+                "attack_frames": [2, 27],
+                "effect_frames": [0, 25],
+                "max_lb_drop": 9,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": {
+                        "0": "A young woman from a distant world who is embroiled in a struggle to save her planet. Although Tifa may seem the lively type who always tries keeping the mood light, this is all a front she uses to avoid sharing her insecurities with others. She is Cloud's childhood friend, and when they happen upon each other in Midgar, she's the one who suggests he join Avalanche. A student of Zangan's techniques, her fists are powerful enough to take down even the strongest of opponents. She also runs the bar Seventh Heaven in Midgar.",
+                        "4": "Eine junge Frau aus einer fernen Welt, in der sie in den Kampf zur Rettung des Planeten verwickelt ist. Auf den ersten Blick scheint Tifa immer guter Laune zu sein, doch hinter ihrer munteren Fassade versteckt sie ihre Unsicherheiten, mit denen sie den Menschen in ihrem Umfeld nicht zur Last fallen will. Sie ist eine Jugendfreundin von Cloud und schlägt ihm vor, sich Avalanche anzuschließen, als sie ihn in Midgard zufällig wiedersieht. Tifa selbst ist eine Schülerin Zangas und wendet seinen Kampfstil mit so viel Geschick an, dass sie selbst die stämmigsten Männer bezwingen kann. Hauptberuflich betreibt sie jedoch die Bar \\"7. Himmel\\" in den Slums in Sektor 7 Midgars.",
+                        "5": "Joven de un mundo lejano enzarzada en una lucha por salvar el planeta. Aunque Tifa puede parecer el tipo de chica alegre que siempre trata de conservar el buen humor, en realidad se trata de una fachada que utiliza para evitar que los demás conozcan sus inseguridades. Es amiga de la infancia de Cloud y, más adelante, llega a recomendarle unirse al grupo Avalancha durante su encuentro en Midgar. Estudia la técnica Zangan, por lo que sus puños tienen la fuerza suficiente como para derribar a los oponentes más fuertes. Es la dueña y gerente del bar El Séptimo Cielo, en Midgar.",
+                        "3": "Protagoniste de l'histoire d'un monde où l'énergie vitale de la planète est en jeu, cette jeune femme cache un tempérament timide derrière son apparente assurance. S'inquiétant que son entourage s'aperçoive de cette faiblesse, elle s'efforce d'agir avec entrain et bonne humeur. Amie d'enfance de Cloud, c'est elle qui l'a présenté aux autres membres d'Avalanche après que le destin les a rassemblés à Midgar. Elle gère un bar appelé Le Septième Ciel dans le bidonville du secteur 7 de cette ville.",
+                        "6": "Seorang wanita muda dari dunia lain yang terlibat dalam perjuangan untuk menyelamatkan planetnya. Walaupun Tifa terlihat seperti orang yang selalu membuat suasana menyenangkan, ia melakukan itu semua agar kecemasannya tidak terlihat kepada orang lain. Ia adalah teman masa kecil Cloud. Saat mereka bertemu di Midgar, Tifalah yang memintanya untuk bergabung dengan Avalanche. Sebagai sorang murid teknik Zangan, tinjunya cukup kuat untuk menjatuhkan musuh terkuat sekali pun. Ia juga merupakan pemilik bar Seventh Heaven di Midgar.",
+                        "2": "별의 운명을 둘러싼 이계의 이야기에 등장하는 여성. 활발해 보이는 외모에 비해 실은 상당히 내성적인 성격이다. 그러나 약한 내면을 주변 사람에게 들키지 않기 위해, 무리해서 밝은 척 행동하고 있다. 클라우드의 소꿉친구로, 미드갈에서 우연히 재회한 그에게 아발란치의 일을 소개해 주었다. 마황도시 미드갈 7번가의 빈민가에서, '세븐스 헤븐'이라는 바를 운영하고 있다.",
+                        "1": "在圍繞著星球的生命的異界故事中登場的女性。與開朗的言行相反，性格非常拘謹而膽小，為了不被周圍的人發現，才總是強裝出一副開朗的樣子。克勞德的青梅竹馬，給在密德格偶然重逢的他介紹了雪崩的工作。在魔晄都市密德格的第七區貧民窟經營著酒吧「第七天堂」。"
+                    },
+                    "summon": {
+                        "0": "How about...something to drink? I'll make something hard for you.",
+                        "4": "Wie sieht's aus? Möchtest du was trinken? Ich mach dir was Starkes!",
+                        "5": "¿Te apetece... algo de beber? Te prepararé algo fuerte.",
+                        "3": "Que dirais-tu... d'un coup à boire ? Tu veux que je te prépare quelque chose de fort ?",
+                        "6": "Bagaimana kalau... kau minum dulu? Aku akan membuatkan sesuatu yang kuat.",
+                        "2": "저기, 뭐 좀 마실래?<br>센 칵테일이라도 만들어 줄까?",
+                        "1": "喂，要喝點什麼？乾脆來做點強烈的雞尾酒吧？"
+                    },
+                    "evolution": {
+                        "0": "There's still many things for us to do...<br>I'm not giving up!!",
+                        "4": "Wir haben noch viel zu tun ... Ich gebe nicht auf!",
+                        "5": "Todavía nos queda mucho por hacer...¡No pienso rendirme!",
+                        "3": "Nous avons encore beaucoup de choses à faire... Je n'abandonne pas !",
+                        "6": "Masih ada banyak hal yang harus kita lakukan...<br>Aku tidak akan menyerah!",
+                        "2": "우리에겐 아직 할 수 있는 게 있어……!<br>난 포기하지 않아!",
+                        "1": "我們還有能夠做到的事情......！我、不會放棄！！"
+                    },
+                    "affinity": {
+                        "0": "Words aren't the only thing that tell people what you're thinking...",
+                        "4": "Es sind nicht nur Worte durch die man Menschen etwas mitteilen kann.",
+                        "5": "Las palabras no son la única forma de transmitir lo que le pasa a uno por la cabeza...",
+                        "3": "On ne communique pas que par les mots...",
+                        "6": "Pemikiranmu tidak selalu tercermin lewat kata-kata...",
+                        "2": "마음을 전할 수 있는 건<br>말뿐만이 아니야……",
+                        "1": "能夠傳達思念的，可不只是言語而已……"
+                    },
+                    "fusion": {
+                        "0": "As long as my friends are by my side, I won't give up even if I'm scared.",
+                        "4": "Solange mir meine Freunde zur Seite stehen ... werde ich nicht aufgeben, auch wenn ich Angst habe.",
+                        "5": "Mientras mis amigos permanezcan a mi lado... No me rendiré aunque esté asustada.",
+                        "3": "Du moment que je suis avec mes amis... Du moment qu'ils sont à mes côtés... Je ne renoncerai pas, même si j'ai peur.",
+                        "6": "Selama teman-temanku ada di sisiku, aku tidak akan menyerah meskipun aku takut.",
+                        "2": "동료들이 있는걸.<br>무섭지만, 지지 않을 거야.",
+                        "1": "因為我有夥伴。就算感到害怕，我也絕不認輸。"
+                    }
+                },
+                "nv_upgrade": [
+                    {
+                        "gil": 250000,
+                        "materials": {
+                            "250000020": 50,
+                            "293000200": 2
+                        },
+                        "reward": null,
+                        "stats": {
+                            "HP": 618,
+                            "MP": 31,
+                            "ATK": 27,
+                            "DEF": 22,
+                            "MAG": 20,
+                            "SPR": 24
+                        }
+                    },
+                    {
+                        "gil": 500000,
+                        "materials": {
+                            "250000020": 75,
+                            "293000200": 3
+                        },
+                        "reward": [
+                            [
+                                "VISIONCARD",
+                                900020101,
+                                "Metal Gigantuar's Here!",
+                                1,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ]
+                        ],
+                        "stats": {
+                            "HP": 475,
+                            "MP": 24,
+                            "ATK": 21,
+                            "DEF": 17,
+                            "MAG": 16,
+                            "SPR": 19
+                        }
+                    },
+                    {
+                        "gil": 750000,
+                        "materials": {
+                            "250000020": 100,
+                            "293000200": 3,
+                            "293000100": 1
+                        },
+                        "reward": [
+                            [
+                                "VISIONCARD",
+                                900020101,
+                                "Metal Gigantuar's Here!",
+                                2,
+                                [
+                                    "100",
+                                    "1"
+                                ]
+                            ]
+                        ],
+                        "stats": {
+                            "HP": 333,
+                            "MP": 17,
+                            "ATK": 14,
+                            "DEF": 12,
+                            "MAG": 11,
+                            "SPR": 13
+                        }
+                    }
+                ]
+            }
+        },
+        "skills": [
+            {"rarity": 5, "level": 1, "type": "ABILITY", "id": 227830},
+            {"rarity": 5, "level": 17, "type": "ABILITY", "id": 227841},
+            {"rarity": 5, "level": 39, "type": "ABILITY", "id": 227831},
+            {"rarity": 5, "level": 56, "type": "ABILITY", "id": 227840},
+            {"rarity": 5, "level": 72, "type": "ABILITY", "id": 227832},
+            {"rarity": 5, "level": 80, "type": "ABILITY", "id": 227833},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 227834},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 800526},
+            {"rarity": 6, "level": 1, "type": "ABILITY", "id": 800527},
+            {"rarity": 6, "level": 20, "type": "ABILITY", "id": 227842},
+            {"rarity": 6, "level": 42, "type": "ABILITY", "id": 227835},
+            {"rarity": 6, "level": 69, "type": "ABILITY", "id": 227837},
+            {"rarity": 6, "level": 92, "type": "ABILITY", "id": 227836},
+            {"rarity": 6, "level": 100, "type": "ABILITY", "id": 227845},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 227844},
+            {"rarity": 7, "level": 101, "type": "ABILITY", "id": 227838},
+            {"rarity": 7, "level": 105, "type": "ABILITY", "id": 227843},
+            {"rarity": 7, "level": 110, "type": "ABILITY", "id": 227839},
+            {"rarity": 7, "level": 115, "type": "ABILITY", "id": 100050},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 227846},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236111, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236120, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236125, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236116, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236118, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236128, "brave_ability": 1}
+        ]
+    },
+    "207000327": {
+        "rarity_min": 7,
+        "rarity_max": 7,
+        "name": "Tifa",
+        "names": {
+            "0": "Tifa",
+            "4": "Tifa",
+            "5": "Tifa",
+            "3": "Tifa",
+            "6": "Tifa",
+            "2": "티파",
+            "1": "蒂法"
+        },
+        "game_id": 10007,
+        "game": "FFVII",
+        "roles": ["Physical Attacker"],
+        "job_id": 183,
+        "job": "Avalanche",
+        "sex_id": 2,
+        "sex": "Female",
+        "tribe_id": 5,
+        "is_summonable": true,
+        "TMR": [
+            "MATERIA",
+            504227847
+        ],
+        "sTMR": [
+            "EQUIP",
+            309003300
+        ],
+        "equip": [1, 5, 9, 15, 16, 40, 50, 51, 53, 60],
+        "entries": {
+            "207000327": {
+                "compendium_id": 2081,
+                "rarity": 7,
+                "exp_pattern": 30,
+                "stat_pattern": 4,
+                "stats": {
+                    "HP": [1570, 4758, 600, 300],
+                    "MP": [78, 235, 100, 50],
+                    "ATK": [69, 208, 50, 25],
+                    "DEF": [58, 176, 50, 25],
+                    "MAG": [50, 153, 50, 25],
+                    "SPR": [61, 184, 50, 25]
+                },
+                "limitburst_id": 207000327,
+                "attack_count": 3,
+                "attack_damage": [
+                    [25, 25, 50]
+                ],
+                "attack_frames": [12, 20, 38],
+                "effect_frames": [10, 18, 36, 36],
+                "max_lb_drop": 4,
+                "ability_slots": 4,
+                "magic_affinity": [0, 0, 0, 0],
+                "element_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "status_resist": [0, 0, 0, 0, 0, 0, 0, 0],
+                "physical_resist": 0,
+                "magical_resist": 0,
+                "awakening": null,
+                "strings": {
+                    "description": {
+                        "0": "A young woman from a distant world who is embroiled in a struggle to save her planet. Although Tifa may seem the lively type who always tries keeping the mood light, this is all a front she uses to avoid sharing her insecurities with others. She is Cloud's childhood friend, and when they happen upon each other in Midgar, she's the one who suggests he join Avalanche. A student of Zangan's techniques, her fists are powerful enough to take down even the strongest of opponents. She also runs the bar Seventh Heaven in Midgar.",
+                        "4": "Eine junge Frau aus einer fernen Welt, in der sie in den Kampf zur Rettung des Planeten verwickelt ist. Auf den ersten Blick scheint Tifa immer guter Laune zu sein, doch hinter ihrer munteren Fassade versteckt sie ihre Unsicherheiten, mit denen sie den Menschen in ihrem Umfeld nicht zur Last fallen will. Sie ist eine Jugendfreundin von Cloud und schlägt ihm vor, sich Avalanche anzuschließen, als sie ihn in Midgard zufällig wiedersieht. Tifa selbst ist eine Schülerin Zangas und wendet seinen Kampfstil mit so viel Geschick an, dass sie selbst die stämmigsten Männer bezwingen kann. Hauptberuflich betreibt sie jedoch die Bar \\"7. Himmel\\" in den Slums in Sektor 7 Midgars.",
+                        "5": "Joven de un mundo lejano enzarzada en una lucha por salvar el planeta. Aunque Tifa puede parecer el tipo de chica alegre que siempre trata de conservar el buen humor, en realidad se trata de una fachada que utiliza para evitar que los demás conozcan sus inseguridades. Es amiga de la infancia de Cloud y, más adelante, llega a recomendarle unirse al grupo Avalancha durante su encuentro en Midgar. Estudia la técnica Zangan, por lo que sus puños tienen la fuerza suficiente como para derribar a los oponentes más fuertes. Es la dueña y gerente del bar El Séptimo Cielo, en Midgar.",
+                        "3": "Protagoniste de l'histoire d'un monde où l'énergie vitale de la planète est en jeu, cette jeune femme cache un tempérament timide derrière son apparente assurance. S'inquiétant que son entourage s'aperçoive de cette faiblesse, elle s'efforce d'agir avec entrain et bonne humeur. Amie d'enfance de Cloud, c'est elle qui l'a présenté aux autres membres d'Avalanche après que le destin les a rassemblés à Midgar. Elle gère un bar appelé Le Septième Ciel dans le bidonville du secteur 7 de cette ville.",
+                        "6": "Seorang wanita muda dari dunia lain yang terlibat dalam perjuangan untuk menyelamatkan planetnya. Walaupun Tifa terlihat seperti orang yang selalu membuat suasana menyenangkan, ia melakukan itu semua agar kecemasannya tidak terlihat kepada orang lain. Ia adalah teman masa kecil Cloud. Saat mereka bertemu di Midgar, Tifalah yang memintanya untuk bergabung dengan Avalanche. Sebagai sorang murid teknik Zangan, tinjunya cukup kuat untuk menjatuhkan musuh terkuat sekali pun. Ia juga merupakan pemilik bar Seventh Heavendi Midgar.",
+                        "2": "별의 운명을 둘러싼 이계의 이야기에 등장하는 여성. 활발해 보이는 외모에 비해 실은 상당히 내성적인 성격이다. 그러나 약한 내면을 주변 사람에게 들키지 않기 위해, 무리해서 밝은 척 행동하고 있다. 클라우드의 소꿉친구로, 미드갈에서 우연히 재회한 그에게 아발란치의 일을 소개해 주었다. 마황도시 미드갈 7번가의 빈민가에서, '세븐스 헤븐'이라는 바를 운영하고 있다.",
+                        "1": "在圍繞著星球的生命的異界故事中登場的女性。與開朗的言行相反，性格非常拘謹而膽小，為了不被周圍的人發現，才總是強裝出一副開朗的樣子。克勞德的青梅竹馬，給在密德格偶然重逢的他介紹了雪崩的工作。在魔晄都市密德格的第七區貧民窟經營著酒吧「第七天堂」。"
+                    },
+                    "summon": {
+                        "0": "How about...something to drink? I'll make something hard for you.",
+                        "4": "Wie sieht's aus? Möchtest du was trinken? Ich mach dir was Starkes!",
+                        "5": "¿Te apetece... algo de beber? Te prepararé algo fuerte.",
+                        "3": "Que dirais-tu... d'un coup à boire ? Tu veux que je te prépare quelque chose de fort ?",
+                        "6": "Bagaimana kalau... kau minum dulu? Aku akan membuatkan sesuatu yang kuat.",
+                        "2": "저기, 뭐 좀 마실래?<br>센 칵테일이라도 만들어 줄까?",
+                        "1": "喂，要喝點什麼？乾脆來做點強烈的雞尾酒吧？"
+                    },
+                    "evolution": {
+                        "0": "There's still many things for us to do...<br>I'm not giving up!!",
+                        "4": "Wir haben noch viel zu tun ... Ich gebe nicht auf!",
+                        "5": "Todavía nos queda mucho por hacer...¡No pienso rendirme!",
+                        "3": "Nous avons encore beaucoup de choses à faire... Je n'abandonne pas !",
+                        "6": "Masih ada banyak hal yang harus kita lakukan...<br>Aku tidak akan menyerah!",
+                        "2": "우리에겐 아직 할 수 있는 게 있어……!<br>난 포기하지 않아!",
+                        "1": "我們還有能夠做到的事情......！我、不會放棄！！"
+                    },
+                    "affinity": {
+                        "0": "Words aren't the only thing that tell people what you're thinking...",
+                        "4": "Es sind nicht nur Worte durch die man Menschen etwas mitteilen kann.",
+                        "5": "Las palabras no son la única forma de transmitir lo que le pasa a uno por la cabeza...",
+                        "3": "On ne communique pas que par les mots...",
+                        "6": "Pemikiranmu tidak selalu tercermin lewat kata-kata...",
+                        "2": "마음을 전할 수 있는 건<br>말뿐만이 아니야……",
+                        "1": "能夠傳達思念的，可不只是言語而已……"
+                    },
+                    "fusion": {
+                        "0": "As long as my friends are by my side, I won't give up even if I'm scared.",
+                        "4": "Solange mir meine Freunde zur Seite stehen ... werde ich nicht aufgeben, auch wenn ich Angst habe.",
+                        "5": "Mientras mis amigos permanezcan a mi lado... No me rendiré aunque esté asustada.",
+                        "3": "Du moment que je suis avec mes amis... Du moment qu'ils sont à mes côtés... Je ne renoncerai pas, même si j'ai peur.",
+                        "6": "Selama teman-temanku ada di sisiku, aku tidak akan menyerah meskipun aku takut.",
+                        "2": "동료들이 있는걸.<br>무섭지만, 지지 않을 거야.",
+                        "1": "因為我有夥伴。就算感到害怕，我也絕不認輸。"
+                    }
+                }
+            }
+        },
+        "skills": [
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236111, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236134, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236139, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236141, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236142, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236143, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236116, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236118, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236145, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236150, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236151, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236152, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 236153, "brave_ability": 1},
+            {"rarity": 7, "level": 120, "type": "ABILITY", "id": 230765, "brave_ability": 1}
+        ]
     }
   }`;

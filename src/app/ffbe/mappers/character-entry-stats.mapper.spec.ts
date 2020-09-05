@@ -46,20 +46,26 @@ describe('CharacterEntryStatsMapper', function () {
 
       const plainSkill1: Skill = skills['100010'];
       plainSkill1.gumi_id = 100010;
-      const skill1 = Skill.produce(plainSkill1);
 
       const plainSkill2: Skill = skills['230020'];
       plainSkill2.gumi_id = 230020;
-      const skill2 = Skill.produce(plainSkill2);
 
       const plainSkill3: Skill = skills['234232'];
       plainSkill3.gumi_id = 234232;
-      const skill3 = Skill.produce(plainSkill3);
 
-      const caracterEntrySkills = [skill1, skill2, skill3];
+      character.skills = JSON.parse('[' +
+        '{"rarity": 2, "level": 3, "type": "ABILITY", "id": 100010},' +
+        '{"rarity": 2, "level": 8, "type": "MAGIC", "id": 230020},' +
+        '{"rarity": 2, "level": 17, "type": "ABILITY", "id": 234232}' +
+        ']');
+      character.skills[0].skill = Skill.produce(plainSkill1);
+      character.skills[1].skill = Skill.produce(plainSkill2);
+      character.skills[2].skill = Skill.produce(plainSkill3);
+
+      character.entries['100000102'].character_entry_skills = character.skills;
 
       // WHEN
-      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, caracterEntrySkills);
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].character_entry_skills);
 
       // THEN
       expect(uniteCarac.getBonusBasePercent()).toEqual(new Caracteristiques(10, 20, 0, 20, 0, 0));

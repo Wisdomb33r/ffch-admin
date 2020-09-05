@@ -2,6 +2,7 @@ import {Caracteristiques} from './caracteristiques.model';
 import {CaracteristiquesContainer} from './caracteristiques-container.model';
 
 export class UniteCarac implements CaracteristiquesContainer {
+
   constructor(
     public level: number,
     public level_max: number,

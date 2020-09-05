@@ -8,10 +8,11 @@ import {UniteCarac} from '../model/unite-carac.model';
 import {Unite} from '../model/unite.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {Skill} from '../model/skill.model';
+import {CharacterSkill} from '../model/character-skill.model';
 
 export class CharacterEntryStatsMapper {
 
-  public static toUniteCarac(stats: CharacterEntryStats, unite: Unite, characterEntrySkills: Array<Skill>): UniteCarac {
+  public static toUniteCarac(stats: CharacterEntryStats, unite: Unite, characterEntrySkills: Array<CharacterSkill>): UniteCarac {
     return new UniteCarac(
       FFBE_CHARACTER_MAX_LEVEL[unite.stars],
       FFBE_CHARACTER_MAX_LEVEL[unite.stars],
@@ -33,8 +34,8 @@ export class CharacterEntryStatsMapper {
     );
   }
 
-  private static mapBonusBasePercent(characterEntrySkills: Array<Skill>): Caracteristiques {
-    return Caracteristiques.computeSum(characterEntrySkills.filter(skill => !skill.hasEquipmentRequirements())
-      .map(skill => skill.calculateBaseIncreasesPercent()));
+  private static mapBonusBasePercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
+    return Caracteristiques.computeSum(characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements())
+      .map(characterSkill => characterSkill.skill.calculateBaseIncreasesPercent()));
   }
 }
