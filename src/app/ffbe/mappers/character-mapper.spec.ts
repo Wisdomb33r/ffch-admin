@@ -70,6 +70,39 @@ describe('CharacterMapper', () => {
     expect(personnage.unites[3].competences[3].competence.gumi_id).toEqual(200270);
     expect(personnage.unites[3].competences[3].niveau).toEqual(120);
   });
+
+  it('should create UniteCompetences correctly when mapping an awakened Brave-Shift Character', () => {
+    // GIVEN
+    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
+    const skill1: Skill = skills['100021'];
+    skill1.gumi_id = 100021;
+    const skill2: Skill = skills['232639'];
+    skill2.gumi_id = 232639;
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['207000327'];
+    character.skills = JSON.parse('[' +
+      '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
+      '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      ']');
+
+    character.skills[0].skill = Skill.produce(skill1);
+    character.skills[1].skill = Skill.produce(skill2);
+
+    character.entries['207000327'].character_entry_skills = character.skills;
+
+    // WHEN
+    const personnage = CharacterMapper.toPersonnage(character);
+
+    // THEN
+    expect(personnage).toBeTruthy();
+    expect(personnage.unites.length === 1);
+    expect(personnage.unites[0].competences.length).toEqual(2);
+    expect(personnage.unites[0].competences[0].competence.gumi_id).toEqual(100021);
+    expect(personnage.unites[0].competences[0].niveau).toEqual(120);
+    expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
+    expect(personnage.unites[0].competences[1].niveau).toEqual(120);
+  });
 });
 
 
