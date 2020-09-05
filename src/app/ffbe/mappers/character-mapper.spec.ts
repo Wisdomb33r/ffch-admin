@@ -103,6 +103,73 @@ describe('CharacterMapper', () => {
     expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
     expect(personnage.unites[0].competences[1].niveau).toEqual(120);
   });
+
+  it('should create UniteCompetences correctly when mapping an native Neo-Vision Character', () => {
+    // GIVEN
+    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
+    const skill1: Skill = skills['100021'];
+    skill1.gumi_id = 100021;
+    const skill2: Skill = skills['232639'];
+    skill2.gumi_id = 232639;
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['207002007'];
+    character.skills = JSON.parse('[' +
+      '{"rarity": 7, "level": 50, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
+      '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      ']');
+
+    character.skills[0].skill = Skill.produce(skill1);
+    character.skills[1].skill = Skill.produce(skill2);
+
+    character.entries['207002007'].character_entry_skills = character.skills;
+
+    // WHEN
+    const personnage = CharacterMapper.toPersonnage(character);
+
+    // THEN
+    expect(personnage).toBeTruthy();
+    expect(personnage.unites.length === 1);
+    expect(personnage.unites[0].competences.length).toEqual(2);
+    expect(personnage.unites[0].competences[0].competence.gumi_id).toEqual(100021);
+    expect(personnage.unites[0].competences[0].niveau).toEqual(50);
+    expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
+    expect(personnage.unites[0].competences[1].niveau).toEqual(110);
+  });
+
+  it('should create UniteCompetences correctly when mapping an native Brave-Shift Character', () => {
+    // GIVEN
+    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
+    const skill1: Skill = skills['100021'];
+    skill1.gumi_id = 100021;
+    const skill2: Skill = skills['232639'];
+    skill2.gumi_id = 232639;
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['207002017'];
+    character.skills = JSON.parse('[' +
+      '{"rarity": 7, "level": 30, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
+      '{"rarity": 7, "level": 115, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      ']');
+
+    character.skills[0].skill = Skill.produce(skill1);
+    character.skills[1].skill = Skill.produce(skill2);
+
+    character.entries['207002017'].character_entry_skills = character.skills;
+
+    // WHEN
+    const personnage = CharacterMapper.toPersonnage(character);
+
+    // THEN
+    expect(personnage).toBeTruthy();
+    expect(personnage.unites.length === 1);
+    expect(personnage.unites[0].competences.length).toEqual(2);
+    expect(personnage.unites[0].competences[0].competence.gumi_id).toEqual(100021);
+    expect(personnage.unites[0].competences[0].niveau).toEqual(30);
+    expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
+    expect(personnage.unites[0].competences[1].niveau).toEqual(115);
+  });
+
 });
 
 
