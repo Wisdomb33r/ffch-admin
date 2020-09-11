@@ -9,6 +9,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 1, [10, 10, 0, 0, 0, 0, 30]]',
       parsed: '+10% ATT/DÉF' + HTML_LINE_RETURN + '+30% de coups critiques des attaques normales'
     },
+    {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {effect: '[0,3,84,[75]]', parsed: '+75% au multiplicateur de départ des chaînes de combos physiques'},
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},

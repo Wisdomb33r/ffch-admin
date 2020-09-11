@@ -175,7 +175,6 @@ describe('PassiveEffectParser', () => {
       parsed: '+30% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>, <a href="ffexvius_espers.php?esperid=5">Ramuh</a> et <a href="ffexvius_espers.php?esperid=16">Alexandre</a>'
     },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
-    {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {
       effect: '[0, 3, 70, [25,  0,  2]]',
       parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
