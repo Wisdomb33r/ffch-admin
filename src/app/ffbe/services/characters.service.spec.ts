@@ -286,7 +286,7 @@ describe('CharactersService', () => {
     expect(myEnhancementsSpy).toHaveBeenCalledWith(227287);
     expect(myEnhancementsSpy).toHaveBeenCalledWith(227296);
     expect(myLatentSkillsSpy).toHaveBeenCalledTimes(1);
-    expect(myLatentSkillsSpy).toHaveBeenCalledWith(100016205)
+    expect(myLatentSkillsSpy).toHaveBeenCalledWith(100016205);
     expect(characters).toBeTruthy();
     expect(characters.length).toEqual(1);
     expect(characters[0].entries.length === 3);
@@ -429,6 +429,66 @@ describe('CharactersService', () => {
     expect(characters.length).toEqual(1);
     expect(characters[0].entries.length === 3);
     expect(characters[0].entries['310000107'].upgraded_limitburst_id).toEqual(950000023);
+  }));
+
+  it('should filter CharacterSkills for each CharacterEntry correctly when loading an awakened Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character: Character = service.searchForCharacterByGumiId(207000305);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 4);
+    expect(character.entries['207000305'].characterEntrySkills.length).toEqual(6);
+    expect(character.entries['207000306'].characterEntrySkills.length).toEqual(14);
+    expect(character.entries['207000307'].characterEntrySkills.length).toEqual(20);
+    expect(character.entries['207000307'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 227843).length).toEqual(1);
+    expect(character.entries['207000307'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236118).length).toEqual(0);
+    expect(character.entries['207000317'].characterEntrySkills.length).toEqual(26);
+  }));
+
+  it('should filter CharacterSkills correctly when loading the Brave-Shift form of an awakened Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character: Character = service.searchForCharacterByGumiId(207000327);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 1);
+    expect(character.entries['207000327'].characterEntrySkills.length).toEqual(14);
+    expect(character.entries['207000327'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 230765).length).toEqual(1);
+  }));
+
+  it('should filter CharacterSkills correctly when loading a native Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character: Character = service.searchForCharacterByGumiId(207002007);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 1);
+    expect(character.entries['207002007'].characterEntrySkills.length).toEqual(19);
+    expect(character.entries['207002007'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236034).length).toEqual(1);
+  }));
+
+  it('should filter CharacterSkills correctly when loading the Brave-Shift form of an native Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character: Character = service.searchForCharacterByGumiId(207002017);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 1);
+    expect(character.entries['207002017'].characterEntrySkills.length).toEqual(20);
+    expect(character.entries['207002017'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236047).length).toEqual(1);
   }));
 
 });

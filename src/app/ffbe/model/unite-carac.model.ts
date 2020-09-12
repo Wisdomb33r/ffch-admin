@@ -1,5 +1,3 @@
-import { Unite } from './unite.model';
-
 export class UniteCarac {
   constructor(
     public level: number,
