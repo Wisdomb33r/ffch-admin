@@ -13,5 +13,5 @@ export class CharacterEntry {
   public upgraded_lb: LimitBurst;
   public awakening: any;
   public nv_upgrade: any;
-  public character_entry_skills: Array<CharacterSkill>;
+  public characterEntrySkills: Array<CharacterSkill>;
 }

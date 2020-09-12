@@ -11,30 +11,31 @@ import {Competence} from '../model/competence.model';
 import {CharacterSkill} from '../model/character-skill.model';
 import {UniteCompetence} from '../model/unite-competence.model';
 import {Character} from '../model/character.model';
+import {SkillMapper} from './skill-mapper';
 
 export class CharacterEntryMapper {
 
-  public static toUnite(entry: CharacterEntry, gumi_id: number, character: Character, competences: Array<Competence>): Unite {
+  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character): Unite {
     const unite = new Unite(
       CharacterEntryMapper.convertCompendiumId(entry, character),
       CharacterEntryMapper.convertRarity(entry, character),
       entry.limitburst_id,
-      gumi_id
+      gumiId
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.character_entry_skills);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
-    CharacterEntryMapper.convertUniteCompetences(unite, character, entry, competences);
+    CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
     return unite;
   }
 
-  public static toUniteArray(entries: any, character: Character, competences: Array<Competence>): Array<Unite> {
+  public static toUniteArray(entries: any, character: Character): Array<Unite> {
     const unites: Array<Unite> = [];
     if (entries) {
       const entryNames: string[] = Object.getOwnPropertyNames(entries);
       for (const entryName of entryNames) {
-        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character, competences));
+        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character));
       }
     }
     return unites;
@@ -119,10 +120,10 @@ export class CharacterEntryMapper {
     }
   }
 
-  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
+  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
     unite.competences = [];
-    entry.character_entry_skills.forEach(characterSkill => {
-      const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
+    entry.characterEntrySkills.forEach(characterSkill => {
+      const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));

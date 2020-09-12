@@ -441,12 +441,12 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.entries.length === 4);
-    expect(character.entries['207000305'].character_entry_skills.length).toEqual(6);
-    expect(character.entries['207000306'].character_entry_skills.length).toEqual(14);
-    expect(character.entries['207000307'].character_entry_skills.length).toEqual(20);
-    expect(character.entries['207000307'].character_entry_skills.filter(characterEntrySkill => characterEntrySkill.id === 227843).length).toEqual(1);
-    expect(character.entries['207000307'].character_entry_skills.filter(characterEntrySkill => characterEntrySkill.id === 236118).length).toEqual(0);
-    expect(character.entries['207000317'].character_entry_skills.length).toEqual(26);
+    expect(character.entries['207000305'].characterEntrySkills.length).toEqual(6);
+    expect(character.entries['207000306'].characterEntrySkills.length).toEqual(14);
+    expect(character.entries['207000307'].characterEntrySkills.length).toEqual(20);
+    expect(character.entries['207000307'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 227843).length).toEqual(1);
+    expect(character.entries['207000307'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236118).length).toEqual(0);
+    expect(character.entries['207000317'].characterEntrySkills.length).toEqual(26);
   }));
 
   it('should filter CharacterSkills correctly when loading the Brave-Shift form of an awakened Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
@@ -459,8 +459,8 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.entries.length === 1);
-    expect(character.entries['207000327'].character_entry_skills.length).toEqual(14);
-    expect(character.entries['207000327'].character_entry_skills.filter(characterEntrySkill => characterEntrySkill.id === 230765).length).toEqual(1);
+    expect(character.entries['207000327'].characterEntrySkills.length).toEqual(14);
+    expect(character.entries['207000327'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 230765).length).toEqual(1);
   }));
 
   it('should filter CharacterSkills correctly when loading a native Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
@@ -473,8 +473,8 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.entries.length === 1);
-    expect(character.entries['207002007'].character_entry_skills.length).toEqual(19);
-    expect(character.entries['207002007'].character_entry_skills.filter(characterEntrySkill => characterEntrySkill.id === 236034).length).toEqual(1);
+    expect(character.entries['207002007'].characterEntrySkills.length).toEqual(19);
+    expect(character.entries['207002007'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236034).length).toEqual(1);
   }));
 
   it('should filter CharacterSkills correctly when loading the Brave-Shift form of an native Neo-Vision Character', inject([CharactersService], (service: CharactersService) => {
@@ -487,8 +487,8 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.entries.length === 1);
-    expect(character.entries['207002017'].character_entry_skills.length).toEqual(20);
-    expect(character.entries['207002017'].character_entry_skills.filter(characterEntrySkill => characterEntrySkill.id === 236047).length).toEqual(1);
+    expect(character.entries['207002017'].characterEntrySkills.length).toEqual(20);
+    expect(character.entries['207002017'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236047).length).toEqual(1);
   }));
 
 });

@@ -17,9 +17,8 @@ export class CharacterDisplayComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.competences = [];
-    this.personnage.unites[this.personnage.unites.length - 1].competences
-      .forEach(uniteCompetence => this.competences.push(uniteCompetence.competence));
+    this.competences = this.personnage.unites[this.personnage.unites.length - 1].competences
+      .map(uniteCompetence => uniteCompetence.competence);
   }
 
   public areCharacterSkillsDisplayed(): boolean {
