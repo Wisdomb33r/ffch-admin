@@ -22,7 +22,7 @@ export class CharacterEntryMapper {
       entry.limitburst_id,
       gumiId
     );
-    unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.character_entry_skills);
+    unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.characterEntrySkills);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);

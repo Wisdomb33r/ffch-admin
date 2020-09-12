@@ -62,10 +62,10 @@ describe('CharacterEntryStatsMapper', function () {
       character.skills[1].skill = Skill.produce(plainSkill2);
       character.skills[2].skill = Skill.produce(plainSkill3);
 
-      character.entries['100000102'].character_entry_skills = character.skills;
+      character.entries['100000102'].characterEntrySkills = character.skills;
 
       // WHEN
-      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].character_entry_skills);
+    const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].characterEntrySkills);
 
       // THEN
       expect(uniteCarac.getBonusBasePercent()).toEqual(new Caracteristiques(10, 20, 0, 20, 0, 0));
