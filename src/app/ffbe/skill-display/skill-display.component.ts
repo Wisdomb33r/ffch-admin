@@ -58,8 +58,7 @@ export class SkillDisplayComponent implements OnInit, OnChanges {
   }
 
   public generateLinkToFfch(): string {
-    return '<a href="ffexvius_skills.php?compid=' + (this.present ? this.competence.id.toString() : '') + '">'
-      + this.competence.nom + '</a>';
+    return `<a href="ffexvius_skills.php?gumiid=${this.competence.gumi_id}">${this.competence.nom}</a>`;
   }
 
   public isSKillFromDamagingCategory(): boolean {
