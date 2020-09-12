@@ -14,12 +14,12 @@ import {Character} from '../model/character.model';
 
 export class CharacterEntryMapper {
 
-  public static toUnite(entry: CharacterEntry, gumi_id: number, character: Character, competences: Array<Competence>): Unite {
+  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character, competences: Array<Competence>): Unite {
     const unite = new Unite(
       CharacterEntryMapper.convertCompendiumId(entry, character),
       CharacterEntryMapper.convertRarity(entry, character),
       entry.limitburst_id,
-      gumi_id
+      gumiId
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
@@ -121,7 +121,7 @@ export class CharacterEntryMapper {
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
     unite.competences = [];
-    entry.character_entry_skills.forEach(characterSkill => {
+    entry.characterEntrySkills.forEach(characterSkill => {
       const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;

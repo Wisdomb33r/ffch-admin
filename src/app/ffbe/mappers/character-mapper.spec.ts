@@ -31,10 +31,10 @@ describe('CharacterMapper', () => {
     character.skills[2].skill = Skill.produce(skill3);
     character.skills[3].skill = Skill.produce(skill4);
 
-    character.entries['207000305'].character_entry_skills = character.skills.slice(0, 1);
-    character.entries['207000306'].character_entry_skills = character.skills.slice(0, 2);
-    character.entries['207000307'].character_entry_skills = character.skills.slice(0, 3);
-    character.entries['207000317'].character_entry_skills = character.skills;
+    character.entries['207000305'].characterEntrySkills = character.skills.slice(0, 1);
+    character.entries['207000306'].characterEntrySkills = character.skills.slice(0, 2);
+    character.entries['207000307'].characterEntrySkills = character.skills.slice(0, 3);
+    character.entries['207000317'].characterEntrySkills = character.skills;
 
     // WHEN
     const personnage = CharacterMapper.toPersonnage(character);
@@ -89,7 +89,7 @@ describe('CharacterMapper', () => {
     character.skills[0].skill = Skill.produce(skill1);
     character.skills[1].skill = Skill.produce(skill2);
 
-    character.entries['207000327'].character_entry_skills = character.skills;
+    character.entries['207000327'].characterEntrySkills = character.skills;
 
     // WHEN
     const personnage = CharacterMapper.toPersonnage(character);
@@ -122,7 +122,7 @@ describe('CharacterMapper', () => {
     character.skills[0].skill = Skill.produce(skill1);
     character.skills[1].skill = Skill.produce(skill2);
 
-    character.entries['207002007'].character_entry_skills = character.skills;
+    character.entries['207002007'].characterEntrySkills = character.skills;
 
     // WHEN
     const personnage = CharacterMapper.toPersonnage(character);
@@ -155,7 +155,7 @@ describe('CharacterMapper', () => {
     character.skills[0].skill = Skill.produce(skill1);
     character.skills[1].skill = Skill.produce(skill2);
 
-    character.entries['207002017'].character_entry_skills = character.skills;
+    character.entries['207002017'].characterEntrySkills = character.skills;
 
     // WHEN
     const personnage = CharacterMapper.toPersonnage(character);

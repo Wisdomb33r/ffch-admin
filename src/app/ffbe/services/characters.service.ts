@@ -134,8 +134,8 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = character.entries[entryName];
       const innateSkills = character.skills.filter(skill =>
-        (skill.rarity <= entry.rarity && (this.isEightStarUnit(character, entry) || skill.brave_ability !== 1)));
-      entry.character_entry_skills = innateSkills;
+        (skill.rarity <= entry.rarity && (CharactersService.isEightStarUnit(character, entry) || skill.brave_ability !== 1)));
+      entry.characterEntrySkills = innateSkills;
       const enhancedSkills = [];
       innateSkills.forEach(innateSkill =>
         this.enhancementsService.searchForEnhancementsBySkillGumiId(innateSkill.id)
@@ -156,7 +156,7 @@ export class CharactersService {
     }
   }
 
-  private isEightStarUnit(character: Character, characterEntry: CharacterEntry): boolean {
+  private static isEightStarUnit(character: Character, characterEntry: CharacterEntry): boolean {
     return (character.rarity_min === 7 && character.rarity_max === 7 ||
       (character.rarity_max === 7 && Array.isArray(characterEntry.nv_upgrade) && characterEntry.nv_upgrade.length > 0));
   }
