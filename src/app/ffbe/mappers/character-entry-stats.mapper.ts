@@ -7,15 +7,14 @@ import {CharacterEntryStats} from '../model/character-entry-stats.model';
 import {UniteCarac} from '../model/unite-carac.model';
 import {Unite} from '../model/unite.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {Skill} from '../model/skill.model';
 import {CharacterSkill} from '../model/character-skill.model';
 
 export class CharacterEntryStatsMapper {
 
   public static toUniteCarac(stats: CharacterEntryStats, unite: Unite, characterEntrySkills: Array<CharacterSkill>): UniteCarac {
     return new UniteCarac(
-      FFBE_CHARACTER_MAX_LEVEL[unite.stars],
-      FFBE_CHARACTER_MAX_LEVEL[unite.stars],
+      CharacterEntryStatsMapper.computeLevelMax(unite.stars),
+      CharacterEntryStatsMapper.computeLevelMax(unite.stars),
       new Caracteristiques(
         stats.HP[FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX],
         stats.MP[FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX],
@@ -37,5 +36,9 @@ export class CharacterEntryStatsMapper {
   private static mapBonusBasePercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
     return Caracteristiques.computeSum(characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements())
       .map(characterSkill => characterSkill.skill.calculateBaseIncreasesPercent()));
+  }
+
+  private static computeLevelMax(rank: number): number {
+    return FFBE_CHARACTER_MAX_LEVEL[Math.min(rank, 8)];
   }
 }

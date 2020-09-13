@@ -52,6 +52,7 @@ class UniteCarac
   public $level_max;
   public $base;
   public $pots;
+  public $bonusBasePercent;
 
   function __construct($brex_unit_carac)
   {
@@ -62,6 +63,8 @@ class UniteCarac
       $brex_unit_carac->def, $brex_unit_carac->mag, $brex_unit_carac->psy);
     $this->pots = new Caracteristiques($brex_unit_carac->pv_pots, $brex_unit_carac->pm_pots, $brex_unit_carac->att_pots,
       $brex_unit_carac->def_pots, $brex_unit_carac->mag_pots, $brex_unit_carac->psy_pots);
+    $this->bonusBasePercent = new Caracteristiques($brex_unit_carac->pv_passif, $brex_unit_carac->pm_passif, $brex_unit_carac->att_passif,
+      $brex_unit_carac->def_passif, $brex_unit_carac->mag_passif, $brex_unit_carac->psy_passif);
   }
 }
 
@@ -180,6 +183,18 @@ function createAndValidateBrexUnitCarac($carac, $brex_unite)
     $values ['mag_pots'] = $carac->pots->mag;
   if (isset ($carac->pots->psy))
     $values ['psy_pots'] = $carac->pots->psy;
+  if (isset ($carac->bonusBasePercent->pv))
+    $values ['pv_passif'] = $carac->bonusBasePercent->pv;
+  if (isset ($carac->bonusBasePercent->pm))
+    $values ['pm_passif'] = $carac->bonusBasePercent->pm;
+  if (isset ($carac->bonusBasePercent->att))
+    $values ['att_passif'] = $carac->bonusBasePercent->att;
+  if (isset ($carac->bonusBasePercent->def))
+    $values ['def_passif'] = $carac->bonusBasePercent->def;
+  if (isset ($carac->bonusBasePercent->mag))
+    $values ['mag_passif'] = $carac->bonusBasePercent->mag;
+  if (isset ($carac->bonusBasePercent->psy))
+    $values ['psy_passif'] = $carac->bonusBasePercent->psy;
 
   $brex_unit_carac = new brex_unit_carac ($values);
   $brex_unit_carac->setrelationunit($brex_unite);
