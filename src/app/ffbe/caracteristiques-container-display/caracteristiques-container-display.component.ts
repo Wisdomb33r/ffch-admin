@@ -10,7 +10,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 export class CaracteristiquesContainerDisplayComponent implements OnInit {
 
   @Input() container: CaracteristiquesContainer;
-  @Input() displayPots: boolean = true;
+  @Input() displayPots = true;
 
   constructor() {
   }
@@ -18,7 +18,7 @@ export class CaracteristiquesContainerDisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public caracFormatee(carac: number, estPourcent: boolean = false): string {
+  public formateCarac(carac: number, estPourcent = false): string {
     let caracFormatee = '';
 
     if (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) {
@@ -28,8 +28,8 @@ export class CaracteristiquesContainerDisplayComponent implements OnInit {
     return caracFormatee;
   }
 
-  public caracFormateePourcent(carac: number): string {
-    return this.caracFormatee(carac, true);
+  public formateCaracPourcent(carac: number): string {
+    return this.formateCarac(carac, true);
   }
 
 }

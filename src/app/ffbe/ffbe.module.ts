@@ -96,7 +96,7 @@ import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-cont
     ObjetAlterationsEtatDuoDisplayComponent,
     ObjetAlterationsEtatDisplayComponent,
     LatentSkillsComponent,
-    CaracteristiquesContainerDisplayComponent
+    CaracteristiquesContainerDisplayComponent,
   ],
   exports: [
     CharactersComponent,

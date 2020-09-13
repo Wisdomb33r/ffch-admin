@@ -65,7 +65,7 @@ describe('CharacterEntryStatsMapper', function () {
       character.entries['100000102'].characterEntrySkills = character.skills;
 
       // WHEN
-    const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].characterEntrySkills);
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].characterEntrySkills);
 
       // THEN
       expect(uniteCarac.getBonusBasePercent()).toEqual(new Caracteristiques(10, 20, 0, 20, 0, 0));
