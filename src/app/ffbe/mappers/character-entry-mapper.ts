@@ -2,7 +2,12 @@ import {CharacterEntry} from '../model/character-entry.model';
 import {Unite} from '../model/unite.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
-import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {
+  FFBE_ENGLISH_TABLE_INDEX,
+  FFBE_FRENCH_TABLE_INDEX,
+  FFBE_UNITE_BRAVE_SHIFT_RANK,
+  FFBE_UNITE_NEO_VISION_RANK
+} from '../ffbe.constants';
 import {AwakeningMaterialsMapper} from './awakening-materials-mapper';
 import {Skill} from '../model/skill.model';
 import {SkillEffectsMapper} from './effects/skill-effects.mapper';
@@ -52,9 +57,9 @@ export class CharacterEntryMapper {
   private static convertRarity(entry: CharacterEntry, character: Character): number {
     let rarity = entry.rarity;
     if (CharacterEntryMapper.isNeoVisionUnit(entry, character)) {
-      rarity = 8;
+      rarity = FFBE_UNITE_NEO_VISION_RANK;
     } else if (CharacterEntryMapper.isBraveShiftUnit(entry, character)) {
-      rarity = 81;
+      rarity = FFBE_UNITE_BRAVE_SHIFT_RANK;
     }
     return rarity;
   }

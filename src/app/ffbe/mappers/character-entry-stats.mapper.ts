@@ -1,7 +1,7 @@
 import {
   FFBE_BASE_CHARACTER_ENTRY_STATS_TABLE_INDEX,
   FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX,
-  FFBE_CHARACTER_MAX_LEVEL
+  FFBE_CHARACTER_MAX_LEVEL, FFBE_UNITE_NEO_VISION_RANK
 } from '../ffbe.constants';
 import {CharacterEntryStats} from '../model/character-entry-stats.model';
 import {UniteCarac} from '../model/unite-carac.model';
@@ -39,6 +39,6 @@ export class CharacterEntryStatsMapper {
   }
 
   private static computeLevelMax(rank: number): number {
-    return FFBE_CHARACTER_MAX_LEVEL[Math.min(rank, 8)];
+    return FFBE_CHARACTER_MAX_LEVEL[Math.min(rank, FFBE_UNITE_NEO_VISION_RANK)];
   }
 }
