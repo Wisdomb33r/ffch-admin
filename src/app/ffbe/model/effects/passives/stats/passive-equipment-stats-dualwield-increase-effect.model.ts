@@ -3,6 +3,7 @@ import {SkillEffect} from '../../skill-effect.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {Caracteristiques} from '../../../caracteristiques.model';
 
 export class PassiveEquipmentStatsDualwieldIncreaseEffect extends SkillEffect {
 
@@ -29,5 +30,30 @@ export class PassiveEquipmentStatsDualwieldIncreaseEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'PassiveEquipmentStatsDualwieldIncreaseEffect';
+  }
+
+  getDualwieldIncreasesPercent(): Caracteristiques {
+    const carac = new Caracteristiques(0, 0, 0, 0, 0, 0);
+    switch (this.statNumber) {
+      case 1:
+        carac.att = this.increase;
+        break;
+      case 2:
+        carac.def = this.increase;
+        break;
+      case 3:
+        carac.mag = this.increase;
+        break;
+      case 4:
+        carac.psy = this.increase;
+        break;
+      case 5:
+        carac.pv = this.increase;
+        break;
+      case 6:
+        carac.pm = this.increase;
+        break;
+    }
+    return carac;
   }
 }
