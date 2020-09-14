@@ -79,11 +79,6 @@ describe('PassiveEffectParser', () => {
       parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'
     },
     {
-      effect: '[1, 3, 13, [25,  25,  0]]',
-      parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
-        + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
-    },
-    {
       effect: '[0, 3, 14, [4, 5, 6]]',
       parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
     },
@@ -175,10 +170,6 @@ describe('PassiveEffectParser', () => {
       parsed: '+30% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>, <a href="ffexvius_espers.php?esperid=5">Ramuh</a> et <a href="ffexvius_espers.php?esperid=16">Alexandre</a>'
     },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
-    {
-      effect: '[0, 3, 70, [25,  0,  2]]',
-      parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
-    },
     {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
       effect: '[0, 3, 75, [4, 5, 50, 50]]',

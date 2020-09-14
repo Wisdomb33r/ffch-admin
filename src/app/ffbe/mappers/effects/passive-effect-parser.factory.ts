@@ -10,7 +10,6 @@ import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-battle-start-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
-import {PassiveEquipmentStatsDoublehandIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-stats-doublehand-increase.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
@@ -77,8 +76,6 @@ export class PassiveEffectParserFactory {
         return new PassiveKillerDamageIncreaseParser();
       case 12:
         return new PassiveCounterAttackParser();
-      case 13:
-        return new PassiveEquipmentStatsDoublehandIncreaseParser();
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockParser();
       case 16:
@@ -157,8 +154,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillTurnStartActivationParser();
       case 68:
         return new PassiveLbDamageIncreaseParser();
-      case 70:
-        return new PassiveEquipmentStatsDoublehandIncreaseParser();
       case 72:
         return new PassiveLbUpgradeParser();
       case 73:
