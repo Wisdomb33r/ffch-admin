@@ -114,12 +114,12 @@ export class CharacterEntryMapper {
     return limitBurstEffect;
   }
 
-  private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {console.log(entry.awakening);console.log(entry.nv_upgrade);
+  private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
     if (entry.awakening?.materials) {
       unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.awakening);
     } else if (entry.nv_upgrade?.length) {
       unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.nv_upgrade[0]);
-    }console.log(unite.materiauxEveil);
+    }
   }
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
