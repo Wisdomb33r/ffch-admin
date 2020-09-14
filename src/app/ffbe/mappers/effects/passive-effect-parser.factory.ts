@@ -10,7 +10,7 @@ import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-battle-start-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
-import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
+import {PassiveEquipmentStatsDoublehandIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-stats-doublehand-increase.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
@@ -33,7 +33,7 @@ import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.pa
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveEquipmentStatsIncreaseParser} from './passives/passive-equipment-stats-increase.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
-import {PassiveEquipmentStatsDoublehandGlexIncreaseParser} from './passives/passive-equipment-stats-doublehand-glex-increase.parser';
+import {PassiveEquipmentStatsDoublehandGlexIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-stats-doublehand-glex-increase.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDualWieldDamageCapParser} from './passives/passive-dual-wield-damage-cap.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
