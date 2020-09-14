@@ -28,6 +28,7 @@ export class MateriaMapper {
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       new Caracteristiques(),
       new Caracteristiques(),
+      new Caracteristiques(),
       ObjetElements.newEmptyObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null

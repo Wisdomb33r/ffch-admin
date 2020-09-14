@@ -23,4 +23,8 @@ export class UniteCarac implements CaracteristiquesContainer {
   getBonusBasePercent(): Caracteristiques {
     return this.bonusBasePercent;
   }
+
+  getBonusDualWieldPercent(): Caracteristiques {
+    return new Caracteristiques();
+  }
 }
