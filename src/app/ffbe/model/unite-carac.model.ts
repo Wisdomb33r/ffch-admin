@@ -8,7 +8,8 @@ export class UniteCarac implements CaracteristiquesContainer {
     public level_max: number,
     public base: Caracteristiques,
     public pots: Caracteristiques,
-    public bonusBasePercent: Caracteristiques
+    public bonusBasePercent: Caracteristiques,
+    public bonusDualwieldPercent: Caracteristiques
   ) {
   }
 
@@ -25,6 +26,6 @@ export class UniteCarac implements CaracteristiquesContainer {
   }
 
   getBonusDualWieldPercent(): Caracteristiques {
-    return new Caracteristiques();
+    return this.bonusDualwieldPercent;
   }
 }

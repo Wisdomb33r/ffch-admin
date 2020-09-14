@@ -65,10 +65,50 @@ describe('CharacterEntryStatsMapper', function () {
       character.entries['100000102'].characterEntrySkills = character.skills;
 
       // WHEN
-      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats, unite, character.entries['100000102'].characterEntrySkills);
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100000102].stats,
+        unite, character.entries['100000102'].characterEntrySkills);
 
       // THEN
       expect(uniteCarac.getBonusBasePercent()).toEqual(new Caracteristiques(10, 20, 0, 20, 0, 0));
+    }
+  );
+
+  it('should parse percent bonus to Equipment stats when dual-wielding correctly', () => {
+      // GIVEN
+      const characters = JSON.parse(CHARACTER_TEST_DATA);
+      const character: Character = characters['100009105'];
+      character.gumi_id = 100009105;
+
+      const unite = new Unite(1033, 7, 100009105, 100009105);
+
+      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+      const plainSkill1: Skill = skills['100010'];
+      plainSkill1.gumi_id = 100010;
+
+      const plainSkill2: Skill = skills['227160'];
+      plainSkill2.gumi_id = 227160;
+
+      const plainSkill3: Skill = skills['707785'];
+      plainSkill3.gumi_id = 707785;
+
+      character.skills = JSON.parse('[' +
+        '{"rarity": 5, "level": 3, "type": "ABILITY", "id": 100010},' +
+        '{"rarity": 7, "level": 101, "type": "ABILITY", "id": 227160},' +
+        '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 707785}' +
+        ']');
+      character.skills[0].skill = Skill.produce(plainSkill1);
+      character.skills[1].skill = Skill.produce(plainSkill2);
+      character.skills[2].skill = Skill.produce(plainSkill3);
+
+      character.entries['100009105'].characterEntrySkills = character.skills;
+
+      // WHEN
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[100009105].stats,
+        unite, character.entries['100009105'].characterEntrySkills);
+
+      // THEN
+      expect(uniteCarac.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 10, 0, 0, 0));
     }
   );
 });
