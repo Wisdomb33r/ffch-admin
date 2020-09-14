@@ -12,7 +12,7 @@ import {EffectIdenticalValuesWording} from '../../model/effects/effect-identical
 export abstract class EffectParser extends EffectIdenticalValuesWording {
   public abstract parse(effect: Array<any>, skill: Skill): string;
 
-  protected getStatNameFromId(stat: number): string {
+  public static getStatNameFromId(stat: number): string {
     switch (stat) {
       case 1:
         return 'ATT';

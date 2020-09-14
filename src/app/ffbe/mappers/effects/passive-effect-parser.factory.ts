@@ -10,8 +10,6 @@ import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-battle-start-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
-import {PassiveEquipmentStatsDoublehandIncreaseParser} from './passives/passive-equipment-stats-doublehand-increase.parser';
-import {PassiveEquipmentStatsDualwieldIncreaseParser} from './passives/passive-equipment-stats-dualwield-increase.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
@@ -34,7 +32,6 @@ import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.pa
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveEquipmentStatsIncreaseParser} from './passives/passive-equipment-stats-increase.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
-import {PassiveEquipmentStatsDoublehandGlexIncreaseParser} from './passives/passive-equipment-stats-doublehand-glex-increase.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDualWieldDamageCapParser} from './passives/passive-dual-wield-damage-cap.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
@@ -78,8 +75,6 @@ export class PassiveEffectParserFactory {
         return new PassiveKillerDamageIncreaseParser();
       case 12:
         return new PassiveCounterAttackParser();
-      case 13:
-        return new PassiveEquipmentStatsDoublehandIncreaseParser();
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockParser();
       case 16:
@@ -158,10 +153,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillTurnStartActivationParser();
       case 68:
         return new PassiveLbDamageIncreaseParser();
-      case 69:
-        return new PassiveEquipmentStatsDualwieldIncreaseParser();
-      case 70:
-        return new PassiveEquipmentStatsDoublehandIncreaseParser();
       case 72:
         return new PassiveLbUpgradeParser();
       case 73:
@@ -184,8 +175,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillModifierIncreaseParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
-      case 10003:
-        return new PassiveEquipmentStatsDoublehandGlexIncreaseParser();
       case 10004:
         return new PassiveEquipmentWeaponElementStatsIncreaseParser();
       case 10006:

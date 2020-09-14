@@ -9,7 +9,7 @@ export class AbilityCountersParser extends EffectParser {
 
     const activationChance = effect[3][0];
     const calculationStat = effect[3][1];
-    const statText = calculationStat === 1 ? '' : `calculée sur la ${this.getStatNameFromId(calculationStat)} `;
+    const statText = calculationStat === 1 ? '' : `calculée sur la ${EffectParser.getStatNameFromId(calculationStat)} `;
     const power = effect[3][2];
     const duration = effect[3][3];
     const pluralForm = duration > 1 ? 's' : '';
