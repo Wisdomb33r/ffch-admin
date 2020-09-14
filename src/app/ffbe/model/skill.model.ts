@@ -89,6 +89,10 @@ export class Skill {
     return Caracteristiques.computeSum(this.effets.map(effet => effet.getBaseIncreasesPercent()));
   }
 
+  public calculateDualwieldIncreasesPercent(): Caracteristiques {
+    return Caracteristiques.computeSum(this.effets.map(effet => effet.getDualwieldIncreasesPercent()));
+  }
+
   public wordElementInflict(): string {
     if (this.element_inflict && this.element_inflict.length) {
       const elements = this.element_inflict.map((elementEnglishString: string) => {

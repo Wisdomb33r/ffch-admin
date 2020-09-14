@@ -1352,4 +1352,20 @@ describe('Skill', () => {
     // THEN
     expect(isTrustAbility).toBeTrue();
   });
+
+  it('should compute passive increases to DualWield Caracteristiques correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['227160'];
+    plainSkill.gumi_id = 227160;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateDualwieldIncreasesPercent();
+
+    // THEN
+    expect(carac).toEqual(new Caracteristiques(0, 0, 50, 0, 0, 0));
+  });
 });
+
