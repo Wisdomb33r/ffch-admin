@@ -7,8 +7,9 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ObjetElements} from '../model/objet/objet-elements';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 
-export class MateriaMapper {
+export class MateriaMapper extends ItemWithSkillsMapper {
 
   public static toObjet(materia: Materia): Objet {
     const objet = new Objet(null,
@@ -27,8 +28,8 @@ export class MateriaMapper {
       null,
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       new Caracteristiques(),
-      new Caracteristiques(),
-      new Caracteristiques(),
+      ItemWithSkillsMapper.mapEquipmentBaseIncreasesPercent(materia.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
       ObjetElements.newEmptyObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
