@@ -23,6 +23,16 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},
     {effect: '[0,3,89,[100,100,0,0,2000,0]]', parsed: '+2000 PV, +100 ATT/DÉF'},
+    {
+      effect: '[0, 3, 10003, [10, 10, 20, 20, 10, 20]]',
+      parsed: '+20% ATT/MAG/PSY de l\'équipement si l\'unité porte une seule arme à une main (DH)'
+        + HTML_LINE_RETURN + '+10% PV/PM/DÉF de l\'équipement si l\'unité porte une seule arme à une main (DH)'
+    },
+    {
+      effect: '[1, 3, 10003, [0, 0, 100, 0, 50, 0, 1]]',
+      parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
+        + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
+    },
   ];
 
   passiveEffectParserTestMappings.forEach(testParams => {

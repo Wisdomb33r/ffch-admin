@@ -189,16 +189,6 @@ describe('PassiveEffectParser', () => {
       parsed: 'Augmente le coefficient multiplicateur maximal de la chaîne de combo à 600% lorsque l\'unité porte deux armes'
     },
     {
-      effect: '[0, 3, 10003, [10, 10, 20, 20, 10, 20]]',
-      parsed: '+20% ATT/MAG/PSY de l\'équipement si l\'unité porte une seule arme à une main (DH)'
-        + HTML_LINE_RETURN + '+10% PV/PM/DÉF de l\'équipement si l\'unité porte une seule arme à une main (DH)'
-    },
-    {
-      effect: '[1, 3, 10003, [0, 0, 100, 0, 50, 0, 1]]',
-      parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
-        + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
-    },
-    {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
       parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
     },

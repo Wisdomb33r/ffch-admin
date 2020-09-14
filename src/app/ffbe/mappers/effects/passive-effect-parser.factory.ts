@@ -32,7 +32,6 @@ import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.pa
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveEquipmentStatsIncreaseParser} from './passives/passive-equipment-stats-increase.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
-import {PassiveEquipmentStatsDoublehandGlexIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-stats-doublehand-glex-increase.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDualWieldDamageCapParser} from './passives/passive-dual-wield-damage-cap.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
@@ -176,8 +175,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillModifierIncreaseParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
-      case 10003:
-        return new PassiveEquipmentStatsDoublehandGlexIncreaseParser();
       case 10004:
         return new PassiveEquipmentWeaponElementStatsIncreaseParser();
       case 10006:
