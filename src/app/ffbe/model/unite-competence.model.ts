@@ -1,5 +1,4 @@
 import {Competence} from './competence.model';
-import {Unite} from './unite.model';
 
 export class UniteCompetence {
   constructor(

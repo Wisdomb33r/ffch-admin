@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Unite} from '../model/unite.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {FFBE_UNITE_BRAVE_SHIFT_RANK, FFBE_UNITE_NEO_VISION_RANK} from '../ffbe.constants';
 
 @Component({
   selector: 'app-unit-display',
@@ -43,9 +44,9 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
 
   public generateDisplayableRank(): string {
     let rank = `${this.unite.stars.toString()}\u2605`;
-    if (this.unite.stars === 8) {
+    if (this.unite.stars === FFBE_UNITE_NEO_VISION_RANK) {
       rank = 'NV';
-    } else if (this.unite.stars === 81) {
+    } else if (this.unite.stars === FFBE_UNITE_BRAVE_SHIFT_RANK) {
       rank = 'BS';
     }
     return rank;

@@ -113,44 +113,7 @@
     </div>
   </div>
 
-  <table>
-    <caption>Caractéristiques de l'unité</caption>
-    <tr>
-      <th>Stats</th>
-      <th>Base</th>
-      <th>Pots</th>
-    </tr>
-    <tr>
-      <td>PV</td>
-      <td>{{unite.carac.pv}}</td>
-      <td>{{unite.carac.pv_pots}}</td>
-    </tr>
-    <tr>
-      <td>PM</td>
-      <td>{{unite.carac.pm}}</td>
-      <td>{{unite.carac.pm_pots}}</td>
-    </tr>
-    <tr>
-      <td>ATT</td>
-      <td>{{unite.carac.att}}</td>
-      <td>{{unite.carac.att_pots}}</td>
-    </tr>
-    <tr>
-      <td>DÉF</td>
-      <td>{{unite.carac.def}}</td>
-      <td>{{unite.carac.def_pots}}</td>
-    </tr>
-    <tr>
-      <td>MAGIE</td>
-      <td>{{unite.carac.mag}}</td>
-      <td>{{unite.carac.mag_pots}}</td>
-    </tr>
-    <tr>
-      <td>PSY</td>
-      <td>{{unite.carac.psy}}</td>
-      <td>{{unite.carac.psy_pots}}</td>
-    </tr>
-  </table>
+  <app-caracteristiques-container-display [container]="unite.carac"></app-caracteristiques-container-display>
 
   <mat-table [dataSource]="unite.competences">
 

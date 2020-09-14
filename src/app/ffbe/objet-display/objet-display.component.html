@@ -67,21 +67,7 @@
       </tr>
     </table>
 
-    <div [ngClass]="'objet-carac-left'">
-      <app-objet-carac-display [titre]="'Stats'"
-                               [carac]="objet.carac"
-                               [estPourcent]="false"
-                               [estModifiable]="false">
-      </app-objet-carac-display>
-    </div>
-    <div [ngClass]="'objet-carac-right'">
-      <app-objet-carac-display [titre]="'Stats %'"
-                               [carac]="objet.caracp"
-                               [estPourcent]="true"
-                               [estModifiable]="!present">
-      </app-objet-carac-display>
-    </div>
-    <div [ngClass]="'objet-carac-clear'"></div>
+    <app-objet-carac-display [container]="objet"></app-objet-carac-display>
 
     <app-objet-elements-triplet-display [objet]="objet"></app-objet-elements-triplet-display>
 

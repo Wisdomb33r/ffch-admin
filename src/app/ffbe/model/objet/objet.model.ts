@@ -5,8 +5,9 @@ import {CategorieObjet} from './categorie-objet.model';
 import {ObjetElements} from './objet-elements';
 import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
+import {CaracteristiquesContainer} from '../caracteristiques-container.model';
 
-export class Objet {
+export class Objet implements CaracteristiquesContainer {
 
   public extended_gumi_id: string;
   public prix_vente: number;
@@ -82,5 +83,17 @@ export class Objet {
 
   public isWeapon(): boolean {
     return (!FfbeUtils.isNullOrUndefined(this.categorie) && this.categorie.gumiId > 0 && this.categorie.gumiId <= 16);
+  }
+
+  getBase(): Caracteristiques {
+    return this.carac;
+  }
+
+  getPots(): Caracteristiques {
+    return null;
+  }
+
+  getBonusBasePercent(): Caracteristiques {
+    return this.caracp;
   }
 }

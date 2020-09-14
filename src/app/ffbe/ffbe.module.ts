@@ -50,6 +50,7 @@ import {ObjetAlterationsEtatDuoDisplayComponent} from './objet-alterations-etat-
 import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-display/objet-alterations-etat-display.component';
 import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
 import {LatentSkillsService} from './services/latent-skills.service';
+import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-container-display/caracteristiques-container-display.component';
 
 @NgModule({
   imports: [
@@ -95,6 +96,7 @@ import {LatentSkillsService} from './services/latent-skills.service';
     ObjetAlterationsEtatDuoDisplayComponent,
     ObjetAlterationsEtatDisplayComponent,
     LatentSkillsComponent,
+    CaracteristiquesContainerDisplayComponent,
   ],
   exports: [
     CharactersComponent,
