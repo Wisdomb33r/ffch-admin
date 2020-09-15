@@ -29,13 +29,23 @@ export class CharacterEntryStatsMapper {
         stats.DEF[FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX],
         stats.MAG[FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX],
         stats.SPR[FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX]),
-      CharacterEntryStatsMapper.mapBonusBasePercent(characterEntrySkills)
+      CharacterEntryStatsMapper.mapBonusBasePercent(characterEntrySkills),
+      CharacterEntryStatsMapper.mapBonusDualwieldPercent(characterEntrySkills)
     );
   }
 
   private static mapBonusBasePercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
-    return Caracteristiques.computeSum(characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements())
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
       .map(characterSkill => characterSkill.skill.calculateBaseIncreasesPercent()));
+  }
+
+  private static mapBonusDualwieldPercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
+      .map(characterSkill => characterSkill.skill.calculateDualwieldIncreasesPercent()));
+  }
+
+  private static filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills: Array<CharacterSkill>): Array<CharacterSkill> {
+    return characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements());
   }
 
   private static computeLevelMax(rank: number): number {

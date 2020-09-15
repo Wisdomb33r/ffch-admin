@@ -139,7 +139,43 @@ describe('EquipmentMapper', () => {
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.caracp).toEqual(new Caracteristiques(10, 0, 0, 0, 0, 0));
+    expect(objet.getBonusBasePercent()).toEqual(new Caracteristiques(10, 0, 0, 0, 0, 0));
   });
 
+  it('should parse passive increases to equipment Caracteristiques when dual-wielding', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['409029600'];
+    equipment.gumi_id = 409029600;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['230650'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 50, 0, 0, 0));
+  });
+
+  it('should filter out passive increases to equipment Caracteristiques when dual-wielding that have unit restrictions', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000184'];
+    equipment.gumi_id = 1100000184;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['911268'];
+    const skill2: Skill = skills['912847'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(null);
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 25, 0, 0, 0));
+  });
 });

@@ -1,6 +1,7 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
+require_once "classes.php";
 
 class Unite
 {
@@ -53,6 +54,7 @@ class UniteCarac
   public $base;
   public $pots;
   public $bonusBasePercent;
+  public $bonusDualwieldPercent;
 
   function __construct($brex_unit_carac)
   {
@@ -65,6 +67,8 @@ class UniteCarac
       $brex_unit_carac->def_pots, $brex_unit_carac->mag_pots, $brex_unit_carac->psy_pots);
     $this->bonusBasePercent = new Caracteristiques($brex_unit_carac->pv_passif, $brex_unit_carac->pm_passif, $brex_unit_carac->att_passif,
       $brex_unit_carac->def_passif, $brex_unit_carac->mag_passif, $brex_unit_carac->psy_passif);
+    $this->bonusDualwieldPercent = new Caracteristiques($brex_unit_carac->pv_dw, $brex_unit_carac->pm_dw, $brex_unit_carac->att_dw,
+      $brex_unit_carac->def_dw, $brex_unit_carac->mag_dw, $brex_unit_carac->psy_dw);
   }
 }
 
@@ -136,11 +140,13 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     $brex_unites = brex_unit::finderParNumero($_GET ['numero']);
     if (count($brex_unites) > 0) {
       $unite = new Unite ($brex_unites [0]);
-      $brex_unite_carac = brex_unit_carac::findByRelation1N(array('unit' => $unite->id
+      $brex_unite_caracs = brex_unit_carac::findByRelation1N(array('unit' => $unite->id
       ));
       $brex_unite_comps = brex_unit_comp::findByRelation1N(array('unit' => $unite->id
       ));
-      if ((count($brex_unite_carac) > 0) || (count($brex_unite_comps) > 0)) {
+      if ((count($brex_unite_caracs) > 0) || (count($brex_unite_comps) > 0)) {
+        updateUniteWithCarac($unite, $brex_unite_caracs);
+        updateUniteWithCompetences($unite, $brex_unite_comps);
         echo json_encode($unite, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
       } else {
         http_response_code(404);
@@ -195,6 +201,18 @@ function createAndValidateBrexUnitCarac($carac, $brex_unite)
     $values ['mag_passif'] = $carac->bonusBasePercent->mag;
   if (isset ($carac->bonusBasePercent->psy))
     $values ['psy_passif'] = $carac->bonusBasePercent->psy;
+  if (isset ($carac->bonusDualwieldPercent->pv))
+    $values ['pv_dw'] = $carac->bonusDualwieldPercent->pv;
+  if (isset ($carac->bonusDualwieldPercent->pm))
+    $values ['pm_dw'] = $carac->bonusDualwieldPercent->pm;
+  if (isset ($carac->bonusDualwieldPercent->att))
+    $values ['att_dw'] = $carac->bonusDualwieldPercent->att;
+  if (isset ($carac->bonusDualwieldPercent->def))
+    $values ['def_dw'] = $carac->bonusDualwieldPercent->def;
+  if (isset ($carac->bonusDualwieldPercent->mag))
+    $values ['mag_dw'] = $carac->bonusDualwieldPercent->mag;
+  if (isset ($carac->bonusDualwieldPercent->psy))
+    $values ['psy_dw'] = $carac->bonusDualwieldPercent->psy;
 
   $brex_unit_carac = new brex_unit_carac ($values);
   $brex_unit_carac->setrelationunit($brex_unite);
@@ -274,6 +292,19 @@ function copyUnitDataAndValidate(&$brex_unit, $unite)
 
   if (!$brex_unit->verifyValues()) {
     dieWithBadRequest(array_merge($brex_unit->errors, (array)'Format exception: Validation of brex_unit failed.'));
+  }
+}
+
+function updateUniteWithCarac($unite, $brex_unite_caracs)
+{
+  $unite->carac = new UniteCarac($brex_unite_caracs[0]);
+}
+
+function updateUniteWithCompetences($unite, $brex_unit_comps)
+{
+  $unite->competences = [];
+  foreach ($brex_unit_comps as $brex_unit_comp) {
+    $unite->competences [] = new UniteCompetence($brex_unit_comp);
   }
 }
 

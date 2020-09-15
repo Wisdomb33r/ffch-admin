@@ -150,6 +150,13 @@ function createAndValidateObjet($objet)
   if (property_exists($objet, 'variance_min')) $values ['variance_min'] = $objet->variance_min;
   if (property_exists($objet, 'variance_max')) $values ['variance_max'] = $objet->variance_max;
 
+  $values ['pv_dw'] = $objet->caracpDualwield->pv;
+  $values ['pm_dw'] = $objet->caracpDualwield->pm;
+  $values ['att_dw'] = $objet->caracpDualwield->att;
+  $values ['def_dw'] = $objet->caracpDualwield->def;
+  $values ['mag_dw'] = $objet->caracpDualwield->mag;
+  $values ['psy_dw'] = $objet->caracpDualwield->psy;
+
   $brex_objet = new brex_objet($values);
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);

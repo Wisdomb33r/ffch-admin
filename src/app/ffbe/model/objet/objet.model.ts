@@ -34,6 +34,7 @@ export class Objet implements CaracteristiquesContainer {
     public effet_en: string,
     public carac: Caracteristiques,
     public caracp: Caracteristiques,
+    public caracpDualwield: Caracteristiques,
     public elements: ObjetElements,
     public resistancesAlterations: ObjetAlterationsEtat,
     public competences: Array<Competence>
@@ -56,6 +57,7 @@ export class Objet implements CaracteristiquesContainer {
       o.effet_en,
       Caracteristiques.produce(o.carac),
       Caracteristiques.produce(o.caracp),
+      Caracteristiques.produce(o.caracpDualwield),
       ObjetElements.produce(o.elements),
       ObjetAlterationsEtat.produce(o.resistancesAlterations),
       o.competences);
@@ -95,5 +97,9 @@ export class Objet implements CaracteristiquesContainer {
 
   getBonusBasePercent(): Caracteristiques {
     return this.caracp;
+  }
+
+  getBonusDualWieldPercent(): Caracteristiques {
+    return this.caracpDualwield;
   }
 }

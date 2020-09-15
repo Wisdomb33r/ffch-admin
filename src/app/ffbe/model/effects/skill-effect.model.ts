@@ -217,4 +217,8 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
   public getBaseIncreasesPercent(): Caracteristiques {
     return null;
   }
+
+  public getDualwieldIncreasesPercent(): Caracteristiques {
+    return null;
+  }
 }

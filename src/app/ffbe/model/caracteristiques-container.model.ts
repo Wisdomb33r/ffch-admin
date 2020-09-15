@@ -6,4 +6,6 @@ export interface CaracteristiquesContainer {
   getPots(): Caracteristiques;
 
   getBonusBasePercent(): Caracteristiques;
+
+  getBonusDualWieldPercent(): Caracteristiques;
 }

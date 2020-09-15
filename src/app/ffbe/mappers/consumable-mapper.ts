@@ -28,6 +28,7 @@ export class ConsumableMapper {
       (Array.isArray(consumable.effects) && consumable.effects.length > 0) ? consumable.effects.join('<br />') : null,
       new Caracteristiques(),
       new Caracteristiques(),
+      new Caracteristiques(),
       ObjetElements.newEmptyObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       null
