@@ -35,13 +35,17 @@ export class CharacterEntryStatsMapper {
   }
 
   private static mapBonusBasePercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
-    return Caracteristiques.computeSum(characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements())
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
       .map(characterSkill => characterSkill.skill.calculateBaseIncreasesPercent()));
   }
 
   private static mapBonusDualwieldPercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
-    return Caracteristiques.computeSum(characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements())
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
       .map(characterSkill => characterSkill.skill.calculateDualwieldIncreasesPercent()));
+  }
+
+  private static filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills: Array<CharacterSkill>): Array<CharacterSkill> {
+    return characterEntrySkills.filter(characterSkill => !characterSkill.skill.hasEquipmentRequirements());
   }
 
   private static computeLevelMax(rank: number): number {
