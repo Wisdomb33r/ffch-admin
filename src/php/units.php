@@ -53,6 +53,7 @@ class UniteCarac
   public $base;
   public $pots;
   public $bonusBasePercent;
+  public $bonusDualwieldPercent;
 
   function __construct($brex_unit_carac)
   {
@@ -65,6 +66,8 @@ class UniteCarac
       $brex_unit_carac->def_pots, $brex_unit_carac->mag_pots, $brex_unit_carac->psy_pots);
     $this->bonusBasePercent = new Caracteristiques($brex_unit_carac->pv_passif, $brex_unit_carac->pm_passif, $brex_unit_carac->att_passif,
       $brex_unit_carac->def_passif, $brex_unit_carac->mag_passif, $brex_unit_carac->psy_passif);
+    $this->bonusDualwieldPercent = new Caracteristiques($brex_unit_carac->pv_dw, $brex_unit_carac->pm_dw, $brex_unit_carac->att_dw,
+      $brex_unit_carac->def_dw, $brex_unit_carac->mag_dw, $brex_unit_carac->psy_dw);
   }
 }
 
@@ -195,6 +198,18 @@ function createAndValidateBrexUnitCarac($carac, $brex_unite)
     $values ['mag_passif'] = $carac->bonusBasePercent->mag;
   if (isset ($carac->bonusBasePercent->psy))
     $values ['psy_passif'] = $carac->bonusBasePercent->psy;
+  if (isset ($carac->bonusDualwieldPercent->pv))
+    $values ['pv_dw'] = $carac->bonusDualwieldPercent->pv;
+  if (isset ($carac->bonusDualwieldPercent->pm))
+    $values ['pm_dw'] = $carac->bonusDualwieldPercent->pm;
+  if (isset ($carac->bonusDualwieldPercent->att))
+    $values ['att_dw'] = $carac->bonusDualwieldPercent->att;
+  if (isset ($carac->bonusDualwieldPercent->def))
+    $values ['def_dw'] = $carac->bonusDualwieldPercent->def;
+  if (isset ($carac->bonusDualwieldPercent->mag))
+    $values ['mag_dw'] = $carac->bonusDualwieldPercent->mag;
+  if (isset ($carac->bonusDualwieldPercent->psy))
+    $values ['psy_dw'] = $carac->bonusDualwieldPercent->psy;
 
   $brex_unit_carac = new brex_unit_carac ($values);
   $brex_unit_carac->setrelationunit($brex_unite);
