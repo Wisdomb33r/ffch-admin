@@ -414,6 +414,37 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 6, [2,  50,  0,  0,  0,  0,  0,  0]], [0, 3, 69, [1,  100,  0]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "911268": {
+        "name": "Aloha Spirit",
+        "icon": "ability_77.png",
+        "compendium_id": 85102,
+        "rarity": 7,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase equipment ATK by 25% when armed with two weapons",
+            "25% chance of evading physical attacks"
+        ],
+        "effects_raw": [[0, 3, 69, [1,  25]], [0, 3, 22, [25]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "912847": {
+        "name": "Big Kahuna",
+        "icon": "ability_72.png",
+        "compendium_id": 86417,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase equipment ATK by 25% when armed with two weapons"],
+        "effects_raw": [[0, 3, 69, [1,  25]]],
+        "requirements": null,
+        "unit_restriction": [401005305, 100011705, 401000305, 401000704, 100000202]
     }
   }`;
 
@@ -1414,6 +1445,36 @@ describe('Skill', () => {
 
     // THEN
     expect(carac).toEqual(new Caracteristiques(0, 0, 50, 0, 0, 0));
+  });
+
+  it('should classify skills without unit restriction correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['911268'];
+    plainSkill.gumi_id = 911268;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const hasUnitRestriction = skill.hasUnitRestriction();
+
+    // THEN
+    expect(hasUnitRestriction).toBeFalse();
+  });
+
+  it('should classify skills with unit restriction correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['912847'];
+    plainSkill.gumi_id = 912847;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const hasUnitRestriction = skill.hasUnitRestriction();
+
+    // THEN
+    expect(hasUnitRestriction).toBeTrue();
   });
 });
 

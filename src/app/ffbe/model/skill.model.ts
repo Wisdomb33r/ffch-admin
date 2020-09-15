@@ -25,6 +25,7 @@ export class Skill {
   public names: Array<string>;
   public descriptions: Array<string>;
   public requirements: Array<Array<string>>;
+  public unit_restriction: Array<number>;
 
   // transcient fields
   public gumiIdActivatedSkill;
@@ -56,6 +57,7 @@ export class Skill {
     skill.names = s.names;
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
+    skill.unit_restriction = s.unit_restriction;
     skill.effets = s.effects_raw?.map(raw => s.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : PassiveSkillEffectFactory.getSkillEffect(raw)).filter(effect => !!effect);
     return skill;
   }
@@ -270,5 +272,9 @@ export class Skill {
   public hasEquipmentRequirements(): boolean {
     return Array.isArray(this.requirements) && this.requirements.length > 0 &&
       this.requirements.some(requirement => Array.isArray(requirement) && requirement.length > 0 && requirement[0] === 'EQUIP');
+  }
+
+  public hasUnitRestriction(): boolean {
+    return Array.isArray(this.unit_restriction) && this.unit_restriction.length > 0;
   }
 }
