@@ -91,6 +91,14 @@ export class Skill {
     return Caracteristiques.computeSum(this.effets.map(effet => effet.getBaseIncreasesPercent()));
   }
 
+  public calculateDoublehandIncreasesPercent(): Caracteristiques {
+    return Caracteristiques.computeSum(this.effets.map(effet => effet.getDoublehandIncreasesPercent()));
+  }
+
+  public calculateTrueDoubleHandIncreasesPercent(): Caracteristiques {
+    return Caracteristiques.computeSum(this.effets.map(effet => effet.getTrueDoublehandIncreasesPercent()));
+  }
+
   public calculateDualwieldIncreasesPercent(): Caracteristiques {
     return Caracteristiques.computeSum(this.effets.map(effet => effet.getDualwieldIncreasesPercent()));
   }
