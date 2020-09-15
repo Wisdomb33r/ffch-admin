@@ -230,5 +230,68 @@ export const EQUIPMENTS_TEST_DATA =
                 "1": "來自異界的不可思議的靴子，穿上它能夠變得身輕如燕。在異界，它是難以入手的貴重裝備品之一，雖然能在商店買到，但價格十分高昂。為了守護世界而踏上旅程的青年一行也曾使用過這種靴子。"
             }
         }
+    },
+    "1100000184": {
+        "name": "Colorful Lei",
+        "compendium_id": 90187,
+        "compendium_shown": true,
+        "rarity": 8,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [911268, 912847],
+        "effects": [
+            "Grants 'Aloha Spirit' passive.",
+            "Grants 'Big Kahuna' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 45,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "global_equip_10124.png",
+        "strings": {
+            "name": {
+                "0": "Colorful Lei",
+                "4": "Farbenvolles Blumenband",
+                "5": "Colgante de flores",
+                "3": "Collier de fleurs colorées",
+                "6": "Colorful Lei",
+                "2": "오색찬란 꽃목걸이",
+                "1": "彩色花圈"
+            },
+            "desc_short": {
+                "0": "An assortment of colorful magical flowers.",
+                "4": "Eine Auswahl farbenvoller magischer Blumen.",
+                "5": "Un surtido de coloridas flores mágicas.",
+                "3": "Un assortiment de fleurs magiques colorées.",
+                "6": "Rangkaian bunga ajaib yang berwarna-warni.",
+                "2": "다채로운 마법 꽃 묶음",
+                "1": "由各式各樣五顏六色的神奇花朵組成"
+            },
+            "desc_long": {
+                "0": "An assortment of magical flowers, leaves, twigs, and various other materials that have been arranged to resemble a wreath. Rumor has it that its vibrant colors fill the wearer with great energy.",
+                "4": "Eine Auswahl magischer Blumen, Blätter, Zweige und anderer Materialien, die in Form eines Kranzes arrangiert wurden. Gerüchten zufolge sollen die prächtigen Farben ihren Träger mit hoher Energie versehen.",
+                "5": "Un surtido de flores, hojas y ramas mágicas y coloridas, además de otros materiales que se han arreglado para tener aspecto de corona. Se rumorea que la intensidad de sus colores hace que su portador rebose de energía.",
+                "3": "Un assortiment de fleurs magiques, de feuilles, de brindilles et d'autres matériaux arrangés en couronne. Des rumeurs racontent que ses couleurs vives donnent à son porteur une grande énergie.",
+                "6": "Bermacam-macam bunga, daun, ranting, dan berbagai bahan magic lain yang dirangkai menyerupai karangan bunga. Rumor mengatakan bahwa warna-warnanya yang cerah dapat berikan energi besar kepada pemakainya.",
+                "2": "마법의 꽃과 이파리, 나뭇가지가 화환처럼 엮인 묶음. 소문에 따르면, 그 다채로운 색깔은 착용자에게 엄청난 에너지를 전해준다고 한다.",
+                "1": "由各種具有魔力的花朵、樹葉、樹枝和其他材料組成的花圈。傳言其繽紛的色彩將能夠為穿戴者帶來眾多能量。"
+            }
+        }
     }
   }`;

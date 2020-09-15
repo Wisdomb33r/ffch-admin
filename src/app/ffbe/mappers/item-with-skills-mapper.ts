@@ -7,7 +7,8 @@ export abstract class ItemWithSkillsMapper {
       return new Caracteristiques();
     }
 
-    const increases = dmSkills.map(dmSkill => dmSkill.calculateBaseIncreasesPercent());
+    const increases = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateBaseIncreasesPercent());
     return Caracteristiques.computeSum(increases);
   }
 
@@ -16,7 +17,12 @@ export abstract class ItemWithSkillsMapper {
       return new Caracteristiques();
     }
 
-    const increases = dmSkills.map(dmSkill => dmSkill.calculateDualwieldIncreasesPercent());
+    const increases = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateDualwieldIncreasesPercent());
     return Caracteristiques.computeSum(increases);
+  }
+
+  private static filterSkillsWithoutUnitRestriction(dmSkills: Array<Skill>): Array<Skill> {
+    return dmSkills.filter(skill => !skill.hasUnitRestriction());
   }
 }
