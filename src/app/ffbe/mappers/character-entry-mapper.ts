@@ -30,7 +30,7 @@ export class CharacterEntryMapper {
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.characterEntrySkills);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
-    CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
+    CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
     CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
     return unite;
   }
@@ -114,21 +114,18 @@ export class CharacterEntryMapper {
     return limitBurstEffect;
   }
 
-  private static convertAwakeningMaterials(unite: Unite, awakening: any) {
-    if (awakening && awakening.materials) {
-
-      const formule = AwakeningMaterialsMapper.toFormule(awakening);
-
-      if (formule.ingredients.length > 0) {
-        unite.materiauxEveil = formule;
-      }
+  private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
+    if (entry.awakening?.materials) {
+      unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.awakening);
+    } else if (entry.nv_upgrade?.length) {
+      unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.nv_upgrade[0]);
     }
   }
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
     unite.competences = [];
     entry.characterEntrySkills.forEach(characterSkill => {
-      const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
+      const competence: Competence = SkillMapper.toCompetence(Skill.produce(characterSkill.skill));
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
