@@ -7,7 +7,7 @@ export class PassiveStatsIncreaseHpThresholdParser extends EffectParser {
       return 'Effet PassiveStatsIncreaseHpThresholdParser inconnu: Mauvaise liste de paramètres';
     }
 
-    const stat = effect[2] === 10006 ? this.getStatsListFromIds(effect[3][0]) : this.getStatNameFromId(effect[3][0]);
+    const stat = effect[2] === 10006 ? this.getStatsListFromIds(effect[3][0]) : EffectParser.getStatNameFromId(effect[3][0]);
     const turns = effect[3][5] > 0 ? ` pour ${effect[3][5]} tours` : '';
     const effectValueSuffix = [20, 22].indexOf(effect[3][0]) >= 0 ? '' : '%';
     return `+${effect[3][1]}${effectValueSuffix} ${stat}${turns} quand les PV passent sous ${effect[3][3]}% (max ${effect[3][2]} fois)`;
@@ -20,6 +20,6 @@ export class PassiveStatsIncreaseHpThresholdParser extends EffectParser {
     if (effectIds.length === 8 && [23, 24, 25, 26, 27, 28, 29, 30].every(id => effectIds.indexOf(id) > -1)) {
       return 'de rés. aux éléments';
     }
-    return effectIds.map((statId: number) => this.getStatNameFromId(statId)).join(', ');
+    return effectIds.map((statId: number) => EffectParser.getStatNameFromId(statId)).join(', ');
   }
 }
