@@ -125,7 +125,7 @@ export class CharacterEntryMapper {
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
     unite.competences = [];
     entry.characterEntrySkills.forEach(characterSkill => {
-      const competence: Competence = SkillMapper.toCompetence(characterSkill.skill);
+      const competence: Competence = SkillMapper.toCompetence(Skill.produce(characterSkill.skill));
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
