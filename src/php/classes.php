@@ -120,6 +120,7 @@ class Objet
   public $two_handed;
   public $variance_min;
   public $variance_max;
+  public $caracpDualwield;
   public $competences;
   public $lienTMR;
 
@@ -143,6 +144,7 @@ class Objet
     }
     $this->variance_min = $brex_objet->variance_min;
     $this->variance_max = $brex_objet->variance_max;
+    $this->caracpDualwield = new Caracteristiques($brex_objet->pv_dw, $brex_objet->pm_dw, $brex_objet->att_dw, $brex_objet->def_dw, $brex_objet->mag_dw, $brex_objet->psy_dw);
 
     if (strlen($brex_objet->img) > 0) {
       $this->icone = $brex_objet->getImageimgPath();
