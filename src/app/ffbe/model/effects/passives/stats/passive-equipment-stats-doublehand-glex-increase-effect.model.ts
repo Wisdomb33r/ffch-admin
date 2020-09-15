@@ -47,4 +47,12 @@ export class PassiveEquipmentStatsDoublehandGlexIncreaseEffect extends SkillEffe
     }
     return `+${currentValue}% ${accumulatedStats.join('/')} de l\'équipement ${mode}`;
   }
+
+  getDoublehandIncreasesPercent(): Caracteristiques {
+    return this.isTrueDoublehand ? super.getDoublehandIncreasesPercent() : this.increasesCarac;
+  }
+
+  getTrueDoublehandIncreasesPercent(): Caracteristiques {
+    return this.isTrueDoublehand ? this.increasesCarac : super.getTrueDoublehandIncreasesPercent();
+  }
 }

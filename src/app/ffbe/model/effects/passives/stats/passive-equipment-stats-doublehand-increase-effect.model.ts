@@ -3,6 +3,7 @@ import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {SkillEffect} from '../../skill-effect.model';
+import {Caracteristiques} from '../../../caracteristiques.model';
 
 export class PassiveEquipmentStatsDoublehandIncreaseEffect extends SkillEffect {
 
@@ -56,5 +57,31 @@ export class PassiveEquipmentStatsDoublehandIncreaseEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'PassiveEquipmentStatsDoublehandIncreaseEffect';
+  }
+
+  getDoublehandIncreasesPercent(): Caracteristiques {
+    if (this.doublehandType !== 0) {
+      return super.getDoublehandIncreasesPercent();
+    }
+
+    return this.calculeBonusCarac();
+  }
+
+  getTrueDoublehandIncreasesPercent(): Caracteristiques {
+    if (this.doublehandType !== 2) {
+      return super.getTrueDoublehandIncreasesPercent();
+    }
+
+    return this.calculeBonusCarac();
+  }
+
+  private calculeBonusCarac(): Caracteristiques {
+    const bonus = new Caracteristiques(0, 0, 0, 0, 0, 0);
+    if (this.caracType === 13) {
+      bonus.att = this.bonusCarac;
+    } else if (this.caracType === 70) {
+      bonus.mag = this.bonusCarac;
+    }
+    return bonus;
   }
 }
