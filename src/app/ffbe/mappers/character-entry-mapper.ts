@@ -30,7 +30,7 @@ export class CharacterEntryMapper {
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.characterEntrySkills);
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
-    CharacterEntryMapper.convertAwakeningMaterials(unite, entry.awakening);
+    CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
     CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
     return unite;
   }
@@ -114,14 +114,11 @@ export class CharacterEntryMapper {
     return limitBurstEffect;
   }
 
-  private static convertAwakeningMaterials(unite: Unite, awakening: any) {
-    if (awakening && awakening.materials) {
-
-      const formule = AwakeningMaterialsMapper.toFormule(awakening);
-
-      if (formule.ingredients.length > 0) {
-        unite.materiauxEveil = formule;
-      }
+  private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
+    if (entry.awakening?.materials) {
+      unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.awakening);
+    } else if (entry.nv_upgrade?.length) {
+      unite.materiauxEveil = AwakeningMaterialsMapper.toFormule(entry.nv_upgrade[0]);
     }
   }
 
