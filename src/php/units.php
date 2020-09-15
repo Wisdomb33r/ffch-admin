@@ -1,6 +1,7 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
+require_once "classes.php";
 
 class Unite
 {
@@ -139,11 +140,13 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     $brex_unites = brex_unit::finderParNumero($_GET ['numero']);
     if (count($brex_unites) > 0) {
       $unite = new Unite ($brex_unites [0]);
-      $brex_unite_carac = brex_unit_carac::findByRelation1N(array('unit' => $unite->id
+      $brex_unite_caracs = brex_unit_carac::findByRelation1N(array('unit' => $unite->id
       ));
       $brex_unite_comps = brex_unit_comp::findByRelation1N(array('unit' => $unite->id
       ));
-      if ((count($brex_unite_carac) > 0) || (count($brex_unite_comps) > 0)) {
+      if ((count($brex_unite_caracs) > 0) || (count($brex_unite_comps) > 0)) {
+        updateUniteWithCarac($unite, $brex_unite_caracs);
+        updateUniteWithCompetences($unite, $brex_unite_comps);
         echo json_encode($unite, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
       } else {
         http_response_code(404);
@@ -289,6 +292,19 @@ function copyUnitDataAndValidate(&$brex_unit, $unite)
 
   if (!$brex_unit->verifyValues()) {
     dieWithBadRequest(array_merge($brex_unit->errors, (array)'Format exception: Validation of brex_unit failed.'));
+  }
+}
+
+function updateUniteWithCarac($unite, $brex_unite_caracs)
+{
+  $unite->carac = new UniteCarac($brex_unite_caracs[0]);
+}
+
+function updateUniteWithCompetences($unite, $brex_unit_comps)
+{
+  $unite->competences = [];
+  foreach ($brex_unit_comps as $brex_unit_comp) {
+    $unite->competences [] = new UniteCompetence($brex_unit_comp);
   }
 }
 
