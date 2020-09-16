@@ -54,6 +54,8 @@ class UniteCarac
   public $base;
   public $pots;
   public $bonusBasePercent;
+  public $bonusDoublehandPercent;
+  public $bonusTrueDoublehandPercent;
   public $bonusDualwieldPercent;
 
   function __construct($brex_unit_carac)
@@ -67,6 +69,10 @@ class UniteCarac
       $brex_unit_carac->def_pots, $brex_unit_carac->mag_pots, $brex_unit_carac->psy_pots);
     $this->bonusBasePercent = new Caracteristiques($brex_unit_carac->pv_passif, $brex_unit_carac->pm_passif, $brex_unit_carac->att_passif,
       $brex_unit_carac->def_passif, $brex_unit_carac->mag_passif, $brex_unit_carac->psy_passif);
+    $this->bonusDoublehandPercent = new Caracteristiques($brex_unit_carac->pv_dh, $brex_unit_carac->pm_dh, $brex_unit_carac->att_dh,
+      $brex_unit_carac->def_dh, $brex_unit_carac->mag_dh, $brex_unit_carac->psy_dh);
+    $this->bonusTrueDoublehandPercent = new Caracteristiques($brex_unit_carac->pv_tdh, $brex_unit_carac->pm_tdh, $brex_unit_carac->att_tdh,
+      $brex_unit_carac->def_tdh, $brex_unit_carac->mag_tdh, $brex_unit_carac->psy_tdh);
     $this->bonusDualwieldPercent = new Caracteristiques($brex_unit_carac->pv_dw, $brex_unit_carac->pm_dw, $brex_unit_carac->att_dw,
       $brex_unit_carac->def_dw, $brex_unit_carac->mag_dw, $brex_unit_carac->psy_dw);
   }
@@ -201,6 +207,33 @@ function createAndValidateBrexUnitCarac($carac, $brex_unite)
     $values ['mag_passif'] = $carac->bonusBasePercent->mag;
   if (isset ($carac->bonusBasePercent->psy))
     $values ['psy_passif'] = $carac->bonusBasePercent->psy;
+
+  if (isset ($carac->bonusDoublehandPercent->pv))
+    $values ['pv_dh'] = $carac->bonusDoublehandPercent->pv;
+  if (isset ($carac->bonusDoublehandPercent->pm))
+    $values ['pm_dh'] = $carac->bonusDoublehandPercent->pm;
+  if (isset ($carac->bonusDoublehandPercent->att))
+    $values ['att_dh'] = $carac->bonusDoublehandPercent->att;
+  if (isset ($carac->bonusDoublehandPercent->def))
+    $values ['def_dh'] = $carac->bonusDoublehandPercent->def;
+  if (isset ($carac->bonusDoublehandPercent->mag))
+    $values ['mag_dh'] = $carac->bonusDoublehandPercent->mag;
+  if (isset ($carac->bonusDoublehandPercent->psy))
+    $values ['psy_dh'] = $carac->bonusDoublehandPercent->psy;
+
+  if (isset ($carac->bonusTrueDoublehandPercent->pv))
+    $values ['pv_tdh'] = $carac->bonusTrueDoublehandPercent->pv;
+  if (isset ($carac->bonusTrueDoublehandPercent->pm))
+    $values ['pm_tdh'] = $carac->bonusTrueDoublehandPercent->pm;
+  if (isset ($carac->bonusTrueDoublehandPercent->att))
+    $values ['att_tdh'] = $carac->bonusTrueDoublehandPercent->att;
+  if (isset ($carac->bonusTrueDoublehandPercent->def))
+    $values ['def_tdh'] = $carac->bonusTrueDoublehandPercent->def;
+  if (isset ($carac->bonusTrueDoublehandPercent->mag))
+    $values ['mag_tdh'] = $carac->bonusTrueDoublehandPercent->mag;
+  if (isset ($carac->bonusTrueDoublehandPercent->psy))
+    $values ['psy_tdh'] = $carac->bonusTrueDoublehandPercent->psy;
+
   if (isset ($carac->bonusDualwieldPercent->pv))
     $values ['pv_dw'] = $carac->bonusDualwieldPercent->pv;
   if (isset ($carac->bonusDualwieldPercent->pm))
