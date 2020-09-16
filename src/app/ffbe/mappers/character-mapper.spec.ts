@@ -1,5 +1,5 @@
-import {Character} from '../model/character.model';
-import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
+import {Character} from '../model/character/character.model';
+import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
 import {PASSIVE_SKILLS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {CharacterMapper} from './character-mapper';

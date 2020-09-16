@@ -1,4 +1,4 @@
-import {Skill} from './skill.model';
+import {Skill} from '../skill.model';
 
 export class CharacterSkill {
   public rarity: number;

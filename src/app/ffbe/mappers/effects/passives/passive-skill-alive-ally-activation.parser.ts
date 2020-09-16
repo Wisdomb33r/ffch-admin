@@ -2,7 +2,7 @@ import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {SkillMapper} from '../../skill-mapper';
 import {SkillsService} from '../../../services/skills.service';
-import {Character} from '../../../model/character.model';
+import {Character} from '../../../model/character/character.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../../../ffbe.constants';
 import {CharactersService} from '../../../services/characters.service';
 import {HTML_LINE_RETURN} from '../skill-effects.mapper';

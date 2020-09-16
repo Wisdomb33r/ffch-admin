@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LatentSkillsService} from '../services/latent-skills.service';
 import {FormControl} from '@angular/forms';
 import {CharactersService} from '../services/characters.service';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {Amelioration} from '../model/amelioration.model';
 import {LatentSkillMapper} from '../mappers/latent-skill-mapper';
 import {EquipmentsService} from '../services/equipments.service';

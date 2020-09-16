@@ -1,6 +1,6 @@
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Game} from '../model/game.model';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {Personnage} from '../model/personnage.model';
 import {CharacterEntryMapper} from './character-entry-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';

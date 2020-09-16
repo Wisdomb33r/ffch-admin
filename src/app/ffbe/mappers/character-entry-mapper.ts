@@ -1,4 +1,4 @@
-import {CharacterEntry} from '../model/character-entry.model';
+import {CharacterEntry} from '../model/character/character-entry.model';
 import {Unite} from '../model/unite.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
@@ -13,9 +13,9 @@ import {Skill} from '../model/skill.model';
 import {SkillEffectsMapper} from './effects/skill-effects.mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Competence} from '../model/competence.model';
-import {CharacterSkill} from '../model/character-skill.model';
+import {CharacterSkill} from '../model/character/character-skill.model';
 import {UniteCompetence} from '../model/unite-competence.model';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {SkillMapper} from './skill-mapper';
 
 export class CharacterEntryMapper {

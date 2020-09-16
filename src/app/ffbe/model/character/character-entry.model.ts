@@ -1,5 +1,5 @@
-import {CharacterEntryStats} from '../model/character-entry-stats.model';
-import {LimitBurst} from './limit-burst.model';
+import {CharacterEntryStats} from './character-entry-stats.model';
+import {LimitBurst} from '../limit-burst.model';
 import {CharacterSkill} from './character-skill.model';
 
 export class CharacterEntry {

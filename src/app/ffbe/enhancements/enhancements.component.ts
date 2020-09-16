@@ -4,7 +4,7 @@ import {EnhancementsService} from '../services/enhancements.service';
 import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 import {Amelioration} from '../model/amelioration.model';
 import {CharactersService} from '../services/characters.service';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';

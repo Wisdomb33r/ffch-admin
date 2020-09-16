@@ -4,7 +4,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {Personnage} from '../model/personnage.model';
 import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {CharacterMapper} from '../mappers/character-mapper';
 import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';

@@ -1,5 +1,5 @@
-import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
-import {Character} from '../model/character.model';
+import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
+import {Character} from '../model/character/character.model';
 import {Unite} from '../model/unite.model';
 import {UniteCarac} from '../model/unite-carac.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
@@ -9,7 +9,7 @@ import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 
 describe('CharacterEntryStatsMapper', function () {
   it('should parse stats correctly', () => {
-      // GIVEN
+    // GIVEN
       const characters = JSON.parse(CHARACTER_TEST_DATA);
       const character: Character = characters['100000102'];
       character.gumi_id = 100000102;
