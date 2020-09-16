@@ -462,6 +462,24 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 6, [2,  70,  35,  0,  35]], [1, 3, 10003, [0,  0,  100,  0,  50,  50]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "236037": {
+        "name": "Entrusted Broadsword",
+        "icon": "ability_76.png",
+        "compendium_id": 9738,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK, SPR and MP by 20%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon"
+        ],
+        "effects_raw": [[0, 3, 1, [20,  0,  0,  20,  0,  20,  0]], [0, 3, 13, [100,  25,  2]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

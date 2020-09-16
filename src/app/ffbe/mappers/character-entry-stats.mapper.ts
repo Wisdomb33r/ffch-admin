@@ -30,6 +30,8 @@ export class CharacterEntryStatsMapper {
         stats.MAG[FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX],
         stats.SPR[FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX]),
       CharacterEntryStatsMapper.mapBonusBasePercent(characterEntrySkills),
+      CharacterEntryStatsMapper.mapBonusDoublehandPercent(characterEntrySkills),
+      CharacterEntryStatsMapper.mapBonusTrueDoublehandPercent(characterEntrySkills),
       CharacterEntryStatsMapper.mapBonusDualwieldPercent(characterEntrySkills)
     );
   }
@@ -37,6 +39,16 @@ export class CharacterEntryStatsMapper {
   private static mapBonusBasePercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
     return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
       .map(characterSkill => characterSkill.skill.calculateBaseIncreasesPercent()));
+  }
+
+  private static mapBonusDoublehandPercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
+      .map(characterSkill => characterSkill.skill.calculateDoublehandIncreasesPercent()));
+  }
+
+  private static mapBonusTrueDoublehandPercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {
+    return Caracteristiques.computeSum(CharacterEntryStatsMapper.filterCharacterSkillsWithoutEquipmentRequirements(characterEntrySkills)
+      .map(characterSkill => characterSkill.skill.calculateTrueDoubleHandIncreasesPercent()));
   }
 
   private static mapBonusDualwieldPercent(characterEntrySkills: Array<CharacterSkill>): Caracteristiques {

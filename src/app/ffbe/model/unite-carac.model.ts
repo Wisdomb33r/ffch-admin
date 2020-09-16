@@ -9,6 +9,8 @@ export class UniteCarac implements CaracteristiquesContainer {
     public base: Caracteristiques,
     public pots: Caracteristiques,
     public bonusBasePercent: Caracteristiques,
+    public bonusDoublehandPercent: Caracteristiques,
+    public bonusTrueDoublehandPercent: Caracteristiques,
     public bonusDualwieldPercent: Caracteristiques
   ) {
   }
@@ -26,11 +28,11 @@ export class UniteCarac implements CaracteristiquesContainer {
   }
 
   getBonusDoublehandPercent(): Caracteristiques {
-    return undefined;
+    return this.bonusDoublehandPercent;
   }
 
   getBonusTrueDoublehandPercent(): Caracteristiques {
-    return undefined;
+    return this.bonusTrueDoublehandPercent;
   }
 
   getBonusDualWieldPercent(): Caracteristiques {
