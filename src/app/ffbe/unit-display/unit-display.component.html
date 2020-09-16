@@ -115,6 +115,8 @@
 
   <app-caracteristiques-container-display [container]="unite.carac"></app-caracteristiques-container-display>
 
+  <app-caracteristiques-ex-display *ngIf="shouldDisplayCaracEx()"></app-caracteristiques-ex-display>
+
   <mat-table [dataSource]="unite.competences">
 
     <ng-container matColumnDef="level">
