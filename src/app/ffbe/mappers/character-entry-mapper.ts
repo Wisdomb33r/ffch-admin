@@ -18,6 +18,8 @@ import {UniteCompetence} from '../model/unite-competence.model';
 import {Character} from '../model/character/character.model';
 import {SkillMapper} from './skill-mapper';
 import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.model';
+import {Caracteristiques} from '../model/caracteristiques.model';
+import {UniteCarac} from '../model/unite-carac.model';
 
 export class CharacterEntryMapper {
 
@@ -144,5 +146,26 @@ export class CharacterEntryMapper {
 
   private static convertEXCaracteristiques(unite: Unite, nvUpgradeEntries: Array<NeoVisionUpgradeEntry>) {
     unite.caracEX = null;
+    if (Array.isArray(nvUpgradeEntries) && nvUpgradeEntries.length > 0) {
+      unite.caracEX = nvUpgradeEntries.map((nvUpgradeEntry, index ) => {
+        return new UniteCarac(
+          unite.carac.level_max + index + 1,
+          unite.carac.level_max,
+          new Caracteristiques(
+            nvUpgradeEntry.stats.HP,
+            nvUpgradeEntry.stats.MP,
+            nvUpgradeEntry.stats.ATK,
+            nvUpgradeEntry.stats.DEF,
+            nvUpgradeEntry.stats.MAG,
+            nvUpgradeEntry.stats.SPR
+            ),
+          new Caracteristiques(),
+          new Caracteristiques(),
+          new Caracteristiques(),
+          new Caracteristiques(),
+          new Caracteristiques()
+        );
+      });
+    }
   }
 }
