@@ -218,6 +218,14 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     return null;
   }
 
+  public getDoublehandIncreasesPercent(): Caracteristiques {
+    return null;
+  }
+
+  public getTrueDoublehandIncreasesPercent(): Caracteristiques {
+    return null;
+  }
+
   public getDualwieldIncreasesPercent(): Caracteristiques {
     return null;
   }

@@ -445,6 +445,76 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 69, [1,  25]]],
         "requirements": null,
         "unit_restriction": [401005305, 100011705, 401000305, 401000704, 100000202]
+    },
+    "702240": {
+        "name": "Hero of Legend",
+        "icon": "ability_77.png",
+        "compendium_id": 396,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK by 70% and DEF and SPR by 35% when equipped with a Sword",
+            "Increase equipment ATK (100%) and DEF and SPR (50%) when armed with a single one-handed weapon"
+        ],
+        "effects_raw": [[0, 3, 6, [2,  70,  35,  0,  35]], [1, 3, 10003, [0,  0,  100,  0,  50,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "236037": {
+        "name": "Entrusted Broadsword",
+        "icon": "ability_76.png",
+        "compendium_id": 9738,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase ATK, SPR and MP by 20%",
+            "Increase equipment ATK by 100% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon"
+        ],
+        "effects_raw": [[0, 3, 1, [20,  0,  0,  20,  0,  20,  0]], [0, 3, 13, [100,  25,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "101360": {
+        "name": "Doublehand",
+        "icon": "ability_76.png",
+        "compendium_id": 55,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase equipment ATK by 50% when armed with a single one-handed weapon",
+            "Increase Accuracy by 25% when armed with a single one-handed weapon"
+        ],
+        "effects_raw": [[1, 3, 13, [50,  25,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "911627": {
+        "name": "Fencer's Poise",
+        "icon": "ability_76.png",
+        "compendium_id": 85425,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase equipment ATK by 50% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Increase equipment MAG by 50% when armed with a single weapon"
+        ],
+        "effects_raw": [[0, 3, 13, [50,  25,  2]], [0, 3, 70, [50,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -1475,6 +1545,36 @@ describe('Skill', () => {
 
     // THEN
     expect(hasUnitRestriction).toBeTrue();
+  });
+
+  it('should compute passive increases to DoubleHand Caracteristiques correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['702240'];
+    plainSkill.gumi_id = 702240;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateDoublehandIncreasesPercent();
+
+    // THEN
+    expect(carac).toEqual(new Caracteristiques(0, 0, 100, 50, 0, 50));
+  });
+
+  it('should compute passive increases to TrueDoubleHand Caracteristiques correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['914072'];
+    plainSkill.gumi_id = 914072;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateTrueDoubleHandIncreasesPercent();
+
+    // THEN
+    expect(carac).toEqual(new Caracteristiques(0, 0, 100, 0, 0, 0));
   });
 });
 

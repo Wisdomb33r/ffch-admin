@@ -12,6 +12,26 @@ export abstract class ItemWithSkillsMapper {
     return Caracteristiques.computeSum(increases);
   }
 
+  protected static mapEquipmentDoublehandIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
+    if (!Array.isArray(dmSkills)) {
+      return new Caracteristiques();
+    }
+
+    const increases = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateDoublehandIncreasesPercent());
+    return Caracteristiques.computeSum(increases);
+  }
+
+  protected static mapEquipmentTrueDoublehandIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
+    if (!Array.isArray(dmSkills)) {
+      return new Caracteristiques();
+    }
+
+    const increases = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateTrueDoubleHandIncreasesPercent());
+    return Caracteristiques.computeSum(increases);
+  }
+
   protected static mapEquipmentDualwieldIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
     if (!Array.isArray(dmSkills)) {
       return new Caracteristiques();

@@ -150,6 +150,20 @@ function createAndValidateObjet($objet)
   if (property_exists($objet, 'variance_min')) $values ['variance_min'] = $objet->variance_min;
   if (property_exists($objet, 'variance_max')) $values ['variance_max'] = $objet->variance_max;
 
+  $values ['pv_dh'] = $objet->caracpDoublehand->pv;
+  $values ['pm_dh'] = $objet->caracpDoublehand->pm;
+  $values ['build_att_dh'] = $objet->caracpDoublehand->att;
+  $values ['def_dh'] = $objet->caracpDoublehand->def;
+  $values ['build_mag_dh'] = $objet->caracpDoublehand->mag;
+  $values ['psy_dh'] = $objet->caracpDoublehand->psy;
+
+  $values ['pv_tdh'] = $objet->caracpTrueDoublehand->pv;
+  $values ['pm_tdh'] = $objet->caracpTrueDoublehand->pm;
+  $values ['build_att_tdh'] = $objet->caracpTrueDoublehand->att;
+  $values ['def_tdh'] = $objet->caracpTrueDoublehand->def;
+  $values ['build_mag_tdh'] = $objet->caracpTrueDoublehand->mag;
+  $values ['psy_tdh'] = $objet->caracpTrueDoublehand->psy;
+
   $values ['pv_dw'] = $objet->caracpDualwield->pv;
   $values ['pm_dw'] = $objet->caracpDualwield->pm;
   $values ['att_dw'] = $objet->caracpDualwield->att;

@@ -7,5 +7,9 @@ export interface CaracteristiquesContainer {
 
   getBonusBasePercent(): Caracteristiques;
 
+  getBonusDoublehandPercent(): Caracteristiques;
+
+  getBonusTrueDoublehandPercent(): Caracteristiques;
+
   getBonusDualWieldPercent(): Caracteristiques;
 }

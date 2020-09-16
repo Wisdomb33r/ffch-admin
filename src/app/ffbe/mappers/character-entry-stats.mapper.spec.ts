@@ -150,4 +150,82 @@ describe('CharacterEntryStatsMapper', function () {
       expect(uniteCarac.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 10, 0, 0, 0));
     }
   );
+
+  it('should parse percent bonus to Equipment stats when single-wielding a one-handed weapon correctly', () => {
+      // GIVEN
+      const characters = JSON.parse(CHARACTER_TEST_DATA);
+      const character: Character = characters['207002007'];
+      character.gumi_id = 207002007;
+
+      const unite = new Unite(2080, 8, 207002007, 207002007);
+
+      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+      const plainSkill1: Skill = skills['100010'];
+      plainSkill1.gumi_id = 100010;
+
+      const plainSkill2: Skill = skills['950145'];
+      plainSkill2.gumi_id = 950145;
+
+      const plainSkill3: Skill = skills['702240'];
+      plainSkill3.gumi_id = 702240;
+
+      character.skills = JSON.parse('[' +
+        '{"rarity": 7, "level": 24, "type": "ABILITY", "id": 100010, "brave_ability": 1},' +
+        '{"rarity": 7, "level": 100, "type": "ABILITY", "id": 950145, "brave_ability": 1},' +
+        '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 702240, "brave_ability": 1}' +
+        ']');
+      character.skills[0].skill = Skill.produce(plainSkill1);
+      character.skills[1].skill = Skill.produce(plainSkill2);
+      character.skills[2].skill = Skill.produce(plainSkill3);
+
+      character.entries['207002007'].characterEntrySkills = character.skills;
+
+      // WHEN
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[207002007].stats,
+        unite, character.entries['207002007'].characterEntrySkills);
+
+      // THEN
+      expect(uniteCarac.getBonusDoublehandPercent()).toEqual(new Caracteristiques(0, 0, 100, 50, 0, 50));
+    }
+  );
+
+  it('should parse percent bonus to Equipment stats when single-wielding any weapon correctly', () => {
+      // GIVEN
+      const characters = JSON.parse(CHARACTER_TEST_DATA);
+      const character: Character = characters['207002007'];
+      character.gumi_id = 207002007;
+
+      const unite = new Unite(2080, 8, 207002007, 207002007);
+
+      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+      const plainSkill1: Skill = skills['100010'];
+      plainSkill1.gumi_id = 100010;
+
+      const plainSkill2: Skill = skills['950145'];
+      plainSkill2.gumi_id = 950145;
+
+      const plainSkill3: Skill = skills['236037'];
+      plainSkill3.gumi_id = 236037;
+
+      character.skills = JSON.parse('[' +
+        '{"rarity": 7, "level": 24, "type": "ABILITY", "id": 100010, "brave_ability": 1},' +
+        '{"rarity": 7, "level": 100, "type": "ABILITY", "id": 950145, "brave_ability": 1},' +
+        '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 914072, "brave_ability": 1}' +
+        ']');
+      character.skills[0].skill = Skill.produce(plainSkill1);
+      character.skills[1].skill = Skill.produce(plainSkill2);
+      character.skills[2].skill = Skill.produce(plainSkill3);
+
+      character.entries['207002007'].characterEntrySkills = character.skills;
+
+      // WHEN
+      const uniteCarac = CharacterEntryStatsMapper.toUniteCarac(character.entries[207002007].stats,
+        unite, character.entries['207002007'].characterEntrySkills);
+
+      // THEN
+      expect(uniteCarac.getBonusTrueDoublehandPercent()).toEqual(new Caracteristiques(0, 0, 100, 0, 0, 0));
+    }
+  );
 });

@@ -38,6 +38,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       (Array.isArray(equipment.effects) && equipment.effects.length > 0) ? equipment.effects.join('<br />') : null,
       EquipmentMapper.mapEquipmentStats(equipment.stats),
       ItemWithSkillsMapper.mapEquipmentBaseIncreasesPercent(equipment.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(equipment.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(equipment.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
