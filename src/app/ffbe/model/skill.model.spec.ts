@@ -480,6 +480,41 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 1, [20,  0,  0,  20,  0,  20,  0]], [0, 3, 13, [100,  25,  2]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "101360": {
+        "name": "Doublehand",
+        "icon": "ability_76.png",
+        "compendium_id": 55,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase equipment ATK by 50% when armed with a single one-handed weapon",
+            "Increase Accuracy by 25% when armed with a single one-handed weapon"
+        ],
+        "effects_raw": [[1, 3, 13, [50,  25,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "911627": {
+        "name": "Fencer's Poise",
+        "icon": "ability_76.png",
+        "compendium_id": 85425,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase equipment ATK by 50% when armed with a single weapon",
+            "Increase Accuracy by 25% when armed with a single weapon",
+            "Increase equipment MAG by 50% when armed with a single weapon"
+        ],
+        "effects_raw": [[0, 3, 13, [50,  25,  2]], [0, 3, 70, [50,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

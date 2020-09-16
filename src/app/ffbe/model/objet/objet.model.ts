@@ -34,6 +34,8 @@ export class Objet implements CaracteristiquesContainer {
     public effet_en: string,
     public carac: Caracteristiques,
     public caracp: Caracteristiques,
+    public caracpDoublehand: Caracteristiques,
+    public caracpTrueDoublehand: Caracteristiques,
     public caracpDualwield: Caracteristiques,
     public elements: ObjetElements,
     public resistancesAlterations: ObjetAlterationsEtat,
@@ -57,6 +59,8 @@ export class Objet implements CaracteristiquesContainer {
       o.effet_en,
       Caracteristiques.produce(o.carac),
       Caracteristiques.produce(o.caracp),
+      Caracteristiques.produce(o.caracpDoublehand),
+      Caracteristiques.produce(o.caracpTrueDoublehand),
       Caracteristiques.produce(o.caracpDualwield),
       ObjetElements.produce(o.elements),
       ObjetAlterationsEtat.produce(o.resistancesAlterations),
@@ -100,11 +104,11 @@ export class Objet implements CaracteristiquesContainer {
   }
 
   getBonusDoublehandPercent(): Caracteristiques {
-    return undefined;
+    return this.caracpDoublehand;
   }
 
   getBonusTrueDoublehandPercent(): Caracteristiques {
-    return undefined;
+    return this.caracpTrueDoublehand;
   }
 
   getBonusDualWieldPercent(): Caracteristiques {

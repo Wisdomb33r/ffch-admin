@@ -29,6 +29,8 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       (Array.isArray(materia.effects) && materia.effects.length > 0) ? materia.effects.join('<br />') : null,
       new Caracteristiques(),
       ItemWithSkillsMapper.mapEquipmentBaseIncreasesPercent(materia.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(materia.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
       ObjetElements.newEmptyObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),

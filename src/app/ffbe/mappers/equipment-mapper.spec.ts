@@ -178,4 +178,36 @@ describe('EquipmentMapper', () => {
     // THEN
     expect(objet.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 25, 0, 0, 0));
   });
+
+  it('should parse passive increases to equipment Caracteristiques when single-wielding a one-handed weapon', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000056'];
+    equipment.gumi_id = 1100000056;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['101360'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.getBonusDoublehandPercent()).toEqual(new Caracteristiques(0, 0, 50, 0, 0, 0));
+  });
+
+  it('should parse passive increases to equipment Caracteristiques when single-wielding any weapon', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000215'];
+    equipment.gumi_id = 1100000215;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['911627'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.getBonusTrueDoublehandPercent()).toEqual(new Caracteristiques(0, 0, 50, 0, 50, 0));
+  });
 });

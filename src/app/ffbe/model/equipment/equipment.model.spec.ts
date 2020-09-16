@@ -293,5 +293,125 @@ export const EQUIPMENTS_TEST_DATA =
                 "1": "由各種具有魔力的花朵、樹葉、樹枝和其他材料組成的花圈。傳言其繽紛的色彩將能夠為穿戴者帶來眾多能量。"
             }
         }
+    },
+    "1100000056": {
+        "name": "Sparky",
+        "compendium_id": 90060,
+        "compendium_shown": true,
+        "rarity": 8,
+        "type_id": 14,
+        "type": "Gun",
+        "slot_id": 1,
+        "slot": "Weapon",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [101360],
+        "effects": ["Grants 'Doublehand' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 120,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": ["Lightning"],
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 30000,
+        "price_sell": 3000,
+        "icon": "global_equip_10000.png",
+        "strings": {
+            "name": {
+                "0": "Sparky",
+                "4": "Funkel",
+                "5": "Chispitas",
+                "3": "Fulguro",
+                "6": "Sparky",
+                "2": "스파키",
+                "1": "小火花"
+            },
+            "desc_short": {
+                "0": "A heavy hand cannon that packs a powerful punch.",
+                "4": "Eine schwere Kanone mit mächtigem Schuss",
+                "5": "Un cañón de mano pesado con una potencia brutal.",
+                "3": "Un canon d'un gros calibre qui relâche des tirs d'une puissance extrême",
+                "6": "Meriam tangan berat berdaya ledak tinggi.",
+                "2": "발군의 파괴력을 자랑하는 핸드 캐넌",
+                "1": "破壞力極強的手持大砲"
+            },
+            "desc_long": {
+                "0": "While cumbersome in battle, the deafening blast of this mighty hand cannon is able to shaken the most stoic of hearts. Sparky imbues its payload with an electrical charge before discharging them, putting targets it hits into critical stasis. It is considered by some to be the most fearsome weapon forged in recent history.",
+                "4": "Im Kampf schwerfällig erschüttert der Schuss dieser mächtigen Handkanone selbst die stärksten Geister. Funkel entlässt seine Ladung mit einer elektrischen Ladung und versetzt seine Ziele in kritische Stase. Sie gilt als eine der schrecklichsten Waffe der jüngeren Geschichte.",
+                "5": "Aunque cuesta maniobrarlo en combate, la ensordecedora explosión que causa este cañón de mano es capaz de hacer temblar al más bravo. Chispitas infunde una carga eléctrica a sus balas antes de dispararlas, lo que deja en éxtasis a sus víctimas. Algunos la consideran el arma más temible jamás forjada de la historia reciente.",
+                "3": "Bien que très encombrant pour n'importe quel soldat sur le champ de bataille, le tir de ce canon tout-puissant est une telle déflagration qu'il pourrait faire vibrer le plus froid de tous les cœurs. Le Fulguro se charge d'électricité avant de relâcher un tir mortel aussi puissant que la foudre capable de tuer d'un seul coup même les plus puissants des ennemis. Certains le considèrent comme l'arme la plus puissante jamais forgée par l'homme à ce jour.",
+                "6": "Meskipun sulit dipakai dalam pertempuran, ledakan besar dari kanon tangan kuat ini dapat menggoyahkan hati yang paling tabah. Sparky mengimbuhi bagian peledaknya dengan muatan listrik sebelum melepaskannya, menjadikan targetnya stasis kritis. Banyak dianggap sebagai senjata paling menakutkan yang ditempa dalam sejarah baru-baru ini.",
+                "2": "전장에 들고 나가기엔 다소 무리가 있으나, 귀를 찢을 듯한 대포의 굉음은 아무리 담대한 자라 하더라도 벌벌 떨게 만든다. 스파키는 그 이름 그대로, 전기가 감도는 포탄을 발사하여 적에게 치명적인 피해를 입힐 수 있다. 그 때문에, 일부에서는 근대 사상 가장 두려운 병기라 여겨지기도 한다.",
+                "1": "雖然在戰場上的搬運有些困難，但是震耳欲聾的大砲聲，能讓抱著必死決心的敵人也嚇得屁滾尿流。就如火花之名一樣，它所發射的砲彈都會有帶著電氣的火花，能夠對敵人造成致命性的傷害。在某些記載中，它被認為是近代最可怕的兵器之一。"
+            }
+        }
+    },
+    "1100000215": {
+        "name": "Florid Hairpin",
+        "compendium_id": 90218,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [911627],
+        "effects": ["Grants 'Fencer's Poise' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 25,
+            "DEF": 0,
+            "MAG": 25,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "global_equip_10156.png",
+        "strings": {
+            "name": {
+                "0": "Florid Hairpin",
+                "4": "Blumige Haarnadel",
+                "5": "Coletero florido",
+                "3": "Épingle ouvragée",
+                "6": "Hiasan Rambut Floral",
+                "2": "화려한 머리핀",
+                "1": "薄紅髮夾"
+            },
+            "desc_short": {
+                "0": "An ornate hairpin belonging to a famous swordswoman.",
+                "4": "Eine ziselierte Haarnadel, die einer berühmten Schwertkämpferin gehört.",
+                "5": "Un coletero bastante ornamentado que pertenece a una famosa espadachina.",
+                "3": "Une épingle ornée qui appartenait autrefois à une célèbre épéiste.",
+                "6": "Hiasan rambut milik seorang pendekar wanita terkenal.",
+                "2": "어느 유명한 검사가 장착하던 화려한 머리핀",
+                "1": "著名女劍士的可愛的髮夾"
+            },
+            "desc_long": {
+                "0": "An ornate hairpin belonging to a famous swordswoman. It is a family heirloom which she always wears to help her maintain a certain air of elegance even in the most distressful times, such as whilst in battle. Rumor has it that this accessory also possesses the power to boost the combat capabilities of its bearer, especially when they are holding a weapon with both hands.",
+                "4": "Eine ziselierte Haarnadel, die einer berühmten Schwertkämpferin gehört. Dieser Haarschmuck ist ein Familienerbstück, den sie jederzeit trägt, um auch in schwierigen Zeiten, wie etwa auf dem Schlachtfeld, eine gewisse Eleganz aufrechtzuerhalten. Man munkelt, dass dieses Accessoire auch die Kraft besitzt, die Kampffähigkeiten seiner Trägerin zu steigern, insbesondere wenn diese eine Waffe mit beiden Händen führt.",
+                "5": "Un coletero bastante ornamentado que pertenece a una famosa espadachina. Se trata de una herencia familiar que siempre lleva consigo para mantener un aire de elegancia incluso en los momentos más angustiosos como, por ejemplo, durante el fragor de la batalla. Además, dicen por ahí que este accesorio también cuenta con el poder para aumentar los atributos para el combate de su portador, especialmente cuando este lleva un arma de dos manos.",
+                "3": "Une épingle ornée qui appartenait autrefois à une célèbre épéiste. Celle-ci portait toujours cet objet de famille sur elle, ce qui lui conférait une certaine aura d'élégance même aux heures les plus sombres, et notamment au combat. Les rumeurs affirment que cet accessoire possède aussi le pouvoir d'amplifier les facultés guerrières du porteur, en particulier lorsque celui-ci brandit une seule arme des deux mains.",
+                "6": "Hiasan rambut milik seorang pendekar wanita terkenal. Ini adalah pusaka keluarga yang selalu ia pakai untuk membantunya menjaga aura keanggunan, bahkan di saat-saat paling sulit sekalipun, seperti berperang. Rumor mengatakan bahwa aksesori ini juga memiliki kekuatan untuk meningkatkan kemampuan tempur pemakainya, terutama ketika mereka memegang senjata dengan kedua tangan.",
+                "2": "어느 유명한 검사가 장착하던 화려한 머리핀. 그녀의 집안에 대대로 전해져 내려온 가보로, 전투 등의 가혹한 환경에서도 우아함을 잃는 일 없도록 항상 몸에 달고 있다. 이 장신구를 장착하면 양손에 무기를 들었을 때 전투 능력을 향상해주는 힘이 깃들어 있다고 한다.",
+                "1": "著名女劍士的可愛的髮夾。祖上留下來的傳家寶，就算在殘酷的戰鬥中她也會為了保持優雅而將其戴在頭上。傳聞這件裝飾品能夠提高裝備者手持兩把武器時的戰鬥能力。"
+            }
+        }
     }
   }`;
