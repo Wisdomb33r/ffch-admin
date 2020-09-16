@@ -5,6 +5,8 @@
     <th>Base</th>
     <th *ngIf="displayPots">Pots</th>
     <th>Bonus base</th>
+    <th>Bonus DoubleHand</th>
+    <th>Bonus TrueDoubleHand</th>
     <th>Bonus DualWield</th>
   </tr>
   <tr>
@@ -12,6 +14,8 @@
     <td>{{formateCarac(container.getBase().pv)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().pv)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().pv)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().pv)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().pv)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().pv)}}</td>
   </tr>
   <tr>
@@ -19,6 +23,8 @@
     <td>{{formateCarac(container.getBase().pm)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().pm)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().pm)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().pm)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().pm)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().pm)}}</td>
   </tr>
   <tr>
@@ -26,6 +32,8 @@
     <td>{{formateCarac(container.getBase().att)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().att)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().att)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().att)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().att)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().att)}}</td>
   </tr>
   <tr>
@@ -33,6 +41,8 @@
     <td>{{formateCarac(container.getBase().def)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().def)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().def)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().def)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().def)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().def)}}</td>
   </tr>
   <tr>
@@ -40,6 +50,8 @@
     <td>{{formateCarac(container.getBase().mag)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().mag)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().mag)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().mag)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().mag)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().mag)}}</td>
   </tr>
   <tr>
@@ -47,6 +59,8 @@
     <td>{{formateCarac(container.getBase().psy)}}</td>
     <td *ngIf="displayPots">{{formateCarac(container.getPots().psy)}}</td>
     <td>{{formateCaracPourcent(container.getBonusBasePercent().psy)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusDoublehandPercent().psy)}}</td>
+    <td>{{formateCaracPourcent(container.getBonusTrueDoublehandPercent().psy)}}</td>
     <td>{{formateCaracPourcent(container.getBonusDualWieldPercent().psy)}}</td>
   </tr>
 </table>
