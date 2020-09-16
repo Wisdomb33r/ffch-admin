@@ -99,6 +99,14 @@ export class Objet implements CaracteristiquesContainer {
     return this.caracp;
   }
 
+  getBonusDoublehandPercent(): Caracteristiques {
+    return undefined;
+  }
+
+  getBonusTrueDoublehandPercent(): Caracteristiques {
+    return undefined;
+  }
+
   getBonusDualWieldPercent(): Caracteristiques {
     return this.caracpDualwield;
   }

@@ -25,6 +25,14 @@ export class UniteCarac implements CaracteristiquesContainer {
     return this.bonusBasePercent;
   }
 
+  getBonusDoublehandPercent(): Caracteristiques {
+    return undefined;
+  }
+
+  getBonusTrueDoublehandPercent(): Caracteristiques {
+    return undefined;
+  }
+
   getBonusDualWieldPercent(): Caracteristiques {
     return this.bonusDualwieldPercent;
   }
