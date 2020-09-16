@@ -1,6 +1,7 @@
 import {CharacterEntryStats} from './character-entry-stats.model';
 import {LimitBurst} from '../limit-burst.model';
 import {CharacterSkill} from './character-skill.model';
+import {NeoVisionUpgradeEntry} from './neovision-upgrade-entry.model';
 
 export class CharacterEntry {
   public gumi_id: number;
@@ -12,6 +13,6 @@ export class CharacterEntry {
   public upgraded_limitburst_id: number;
   public upgraded_lb: LimitBurst;
   public awakening: any;
-  public nv_upgrade: any;
+  public nv_upgrade: Array<NeoVisionUpgradeEntry>;
   public characterEntrySkills: Array<CharacterSkill>;
 }
