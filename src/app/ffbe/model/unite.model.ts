@@ -24,6 +24,7 @@ export class Unite {
   public competences: Array<UniteCompetence> = [];
   public carac: UniteCarac;
   public materiauxEveil: Formule;
+  public caracEX: Array<UniteCarac>;
 
   constructor(
     public numero: number,

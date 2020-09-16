@@ -17,6 +17,7 @@ import {CharacterSkill} from '../model/character/character-skill.model';
 import {UniteCompetence} from '../model/unite-competence.model';
 import {Character} from '../model/character/character.model';
 import {SkillMapper} from './skill-mapper';
+import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.model';
 
 export class CharacterEntryMapper {
 
@@ -32,6 +33,7 @@ export class CharacterEntryMapper {
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
     CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
+    CharacterEntryMapper.convertEXCaracteristiques(unite, entry.nv_upgrade);
     return unite;
   }
 
@@ -138,5 +140,9 @@ export class CharacterEntryMapper {
       rarity += characterSkill.brave_ability;
     }
     return rarity;
+  }
+
+  private static convertEXCaracteristiques(unite: Unite, nvUpgradeEntries: Array<NeoVisionUpgradeEntry>) {
+    unite.caracEX = null;
   }
 }
