@@ -42,7 +42,6 @@ export class AbilityDamageDrainEffect extends SkillEffect {
         break;
     }
     const target = this.wordTarget();
-    skill.physique = true;
     const drainTypeText = this.effectId === 10 ? ' sur les PM' : '';
     const drainText = `avec absorption de ${this.drain}% des dégâts infligés`;
     return `${attackTypeText} ${elements}${drainTypeText} de puissance ${this.power}% ${drainText} ${target}`;
