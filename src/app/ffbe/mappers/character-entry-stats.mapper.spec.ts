@@ -1,5 +1,5 @@
-import {CHARACTER_TEST_DATA} from '../model/character.model.spec';
-import {Character} from '../model/character.model';
+import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
+import {Character} from '../model/character/character.model';
 import {Unite} from '../model/unite.model';
 import {UniteCarac} from '../model/unite-carac.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';

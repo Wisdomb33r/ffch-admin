@@ -10,7 +10,7 @@ import {ObjetElements} from '../model/objet/objet-elements';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 

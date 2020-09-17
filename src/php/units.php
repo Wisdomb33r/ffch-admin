@@ -23,6 +23,7 @@ class Unite
   public $lim_cristals_niv_max;
   public $carac;
   public $competences;
+  public $caracEX;
 
   function __construct($brex_unit)
   {
@@ -131,11 +132,19 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     dieWithBadRequest('Storage exception : found existing characteristics or competences for unit');
   }
 
-  $brex_unit_carac = createAndValidateBrexUnitCarac($unite->carac, $unite_existante);
+  if ($unite_existante->stars < 8 && isset($unite->caracEX)) {
+    dieWithBadRequest('Format exception : Cannot handle carac EX for non-NeoVision/BraveShift unit');
+  } else if ($unite_existante->stars >= 8 && !isset($unite->caracEX)) {
+    dieWithBadRequest('Format exception : Missing carac EX for NeoVision/BraveShift unit');
+  }
+
+  $brex_unit_caracs = createAndValidateBrexUnitCaracs($unite, $unite_existante);
   $brex_unit_comp_array = createAndValidateBrexUnitCompArray($unite->competences, $unite_existante);
   copyUnitDataAndValidate($unite_existante, $unite);
   $unite_existante->store();
-  $brex_unit_carac->store();
+  foreach ($brex_unit_caracs as $brex_unit_carac) {
+    $brex_unit_carac->store();
+  }
   foreach ($brex_unit_comp_array as $brex_unit_comp) {
     $brex_unit_comp->store();
   }
@@ -164,6 +173,22 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     http_response_code(400);
   }
 }
+
+function createAndValidateBrexUnitCaracs($unite, $brex_unite)
+{
+  $brex_unit_caracs = array();
+
+  $brex_unit_caracs [] = createAndValidateBrexUnitCarac($unite->carac, $brex_unite);
+
+  if ($unite->stars > 7) {
+    foreach ($unite->caracEX as $caracEX) {
+      $brex_unit_caracs [] = createAndValidateBrexUnitCarac($caracEX, $brex_unite);
+    }
+  }
+
+  return $brex_unit_caracs;
+}
+
 function createAndValidateBrexUnitCarac($carac, $brex_unite)
 {
   $values = array();
@@ -328,9 +353,21 @@ function copyUnitDataAndValidate(&$brex_unit, $unite)
   }
 }
 
-function updateUniteWithCarac($unite, $brex_unite_caracs)
+function updateUniteWithCarac($unite, $brex_unit_caracs)
 {
-  $unite->carac = new UniteCarac($brex_unite_caracs[0]);
+  $caracsEX = array();
+
+  foreach ($brex_unit_caracs as $brex_unit_carac) {
+    if ($brex_unit_carac->level == $brex_unit_carac->level_max) {
+      $unite->carac = new UniteCarac($brex_unit_carac);
+    } else {
+      $caracsEX [] = new UniteCarac($brex_unit_carac);
+    }
+  }
+
+  if (count($caracsEX) > 0) {
+    $unite->caracEX = $caracsEX;
+  }
 }
 
 function updateUniteWithCompetences($unite, $brex_unit_comps)

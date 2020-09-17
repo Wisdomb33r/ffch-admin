@@ -3,7 +3,7 @@ import {Objet} from '../model/objet/objet.model';
 import {ConsumableMapper} from './consumable-mapper';
 import {EquipmentMapper} from './equipment-mapper';
 import {MateriaMapper} from './materia-mapper';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {ObjetLienTMR} from '../model/objet/objet-lien-tmr.model';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';

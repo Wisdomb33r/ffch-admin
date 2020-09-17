@@ -1,4 +1,4 @@
-import {CharacterEntry} from '../model/character-entry.model';
+import {CharacterEntry} from '../model/character/character-entry.model';
 import {Unite} from '../model/unite.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {LimitBurst} from '../model/limit-burst.model';
@@ -13,10 +13,13 @@ import {Skill} from '../model/skill.model';
 import {SkillEffectsMapper} from './effects/skill-effects.mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Competence} from '../model/competence.model';
-import {CharacterSkill} from '../model/character-skill.model';
+import {CharacterSkill} from '../model/character/character-skill.model';
 import {UniteCompetence} from '../model/unite-competence.model';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {SkillMapper} from './skill-mapper';
+import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.model';
+import {Caracteristiques} from '../model/caracteristiques.model';
+import {UniteCarac} from '../model/unite-carac.model';
 
 export class CharacterEntryMapper {
 
@@ -32,6 +35,7 @@ export class CharacterEntryMapper {
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
     CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
+    CharacterEntryMapper.convertEXCaracteristiques(unite, entry.nv_upgrade);
     return unite;
   }
 
@@ -138,5 +142,29 @@ export class CharacterEntryMapper {
       rarity += characterSkill.brave_ability;
     }
     return rarity;
+  }
+
+  private static convertEXCaracteristiques(unite: Unite, nvUpgradeEntries: Array<NeoVisionUpgradeEntry>) {
+    if (Array.isArray(nvUpgradeEntries) && nvUpgradeEntries.length > 0) {
+      unite.caracEX = nvUpgradeEntries.map((nvUpgradeEntry, index ) => {
+        return new UniteCarac(
+          unite.carac.level_max + index + 1,
+          unite.carac.level_max,
+          new Caracteristiques(
+            nvUpgradeEntry.stats.HP,
+            nvUpgradeEntry.stats.MP,
+            nvUpgradeEntry.stats.ATK,
+            nvUpgradeEntry.stats.DEF,
+            nvUpgradeEntry.stats.MAG,
+            nvUpgradeEntry.stats.SPR
+          ),
+          null,
+          null,
+          null,
+          null,
+          null
+        );
+      });
+    }
   }
 }

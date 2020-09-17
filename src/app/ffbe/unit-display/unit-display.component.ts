@@ -51,4 +51,9 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
     }
     return rank;
   }
+
+  public shouldDisplayCaracEx(): boolean {
+    return (this.unite.stars === FFBE_UNITE_NEO_VISION_RANK || this.unite.stars === FFBE_UNITE_BRAVE_SHIFT_RANK)
+      && !FfbeUtils.isNullOrUndefined(this.unite.caracEX);
+  }
 }

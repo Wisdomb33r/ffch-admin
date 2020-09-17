@@ -3,11 +3,11 @@ import {
   FFBE_POT_CHARACTER_ENTRY_STATS_TABLE_INDEX,
   FFBE_CHARACTER_MAX_LEVEL, FFBE_UNITE_NEO_VISION_RANK
 } from '../ffbe.constants';
-import {CharacterEntryStats} from '../model/character-entry-stats.model';
+import {CharacterEntryStats} from '../model/character/character-entry-stats.model';
 import {UniteCarac} from '../model/unite-carac.model';
 import {Unite} from '../model/unite.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {CharacterSkill} from '../model/character-skill.model';
+import {CharacterSkill} from '../model/character/character-skill.model';
 
 export class CharacterEntryStatsMapper {
 

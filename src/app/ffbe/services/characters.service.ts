@@ -1,9 +1,9 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
-import {Character} from '../model/character.model';
+import {Character} from '../model/character/character.model';
 import {SkillsService} from './skills.service';
-import {CharacterSkill} from '../model/character-skill.model';
-import {CharacterEntry} from '../model/character-entry.model';
+import {CharacterSkill} from '../model/character/character-skill.model';
+import {CharacterEntry} from '../model/character/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
 import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
