@@ -254,8 +254,6 @@ function createAndValidateCompetenceEveil($amelioration, $brex_perso, $brex_comp
   updateMateriauxEveil($brex_competence_eveil, $amelioration->formule);
 
   $brex_competence_eveil->niveau = $amelioration->niveau;
-  $brex_competence_eveil->gils = $amelioration->formule->gils;
-
 
   if (!$brex_competence_eveil->verifyValues()) {
     dieWithBadRequest(array_merge($brex_competence_eveil->errors, (array)'Format exception: Validation of brex_comp_eveil failed'));

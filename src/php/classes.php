@@ -241,6 +241,7 @@ function updateMateriauxEveil($brex_materiaux_eveil, $formule)
 
     ++$numeroAttributMateriau;
   }
+  $brex_materiaux_eveil->gils = $formule->gils;
 }
 
 function updateMateriauEveil($brex_materiaux_eveil, $numeroAttributMateriau, $ingredient)
