@@ -22,7 +22,7 @@ export class CaracteristiquesContainerDisplayComponent implements OnInit {
     let caracFormatee = '';
 
     if (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) {
-      caracFormatee = carac.toString() + (estPourcent ? ' %' : '');
+      caracFormatee = `${carac}${estPourcent ? ' %' : ''}`;
     }
 
     return caracFormatee;

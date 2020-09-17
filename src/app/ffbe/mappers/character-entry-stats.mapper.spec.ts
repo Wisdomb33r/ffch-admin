@@ -9,7 +9,7 @@ import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 
 describe('CharacterEntryStatsMapper', function () {
   it('should parse stats correctly', () => {
-    // GIVEN
+      // GIVEN
       const characters = JSON.parse(CHARACTER_TEST_DATA);
       const character: Character = characters['100000102'];
       character.gumi_id = 100000102;

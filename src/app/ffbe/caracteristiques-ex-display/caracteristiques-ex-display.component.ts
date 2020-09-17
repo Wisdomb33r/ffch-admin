@@ -18,7 +18,7 @@ export class CaracteristiquesEXDisplayComponent implements OnInit {
   }
 
   public formateCarac(carac: number): string {
-    return (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) ? carac.toString() : '';
+    return (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) ? `${carac}` : '';
   }
 
 }

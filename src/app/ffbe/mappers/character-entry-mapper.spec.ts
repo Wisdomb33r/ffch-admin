@@ -31,7 +31,7 @@ describe('CharacterEntryMapper', function () {
 
     // THEN
     expect(unite).toBeTruthy();
-    expect(unite.caracEX).toBeNull();
+    expect(unite.caracEX).toBeUndefined();
   });
 
   it('should parse EX stats of NeoVision unit correctly', () => {

@@ -145,7 +145,6 @@ export class CharacterEntryMapper {
   }
 
   private static convertEXCaracteristiques(unite: Unite, nvUpgradeEntries: Array<NeoVisionUpgradeEntry>) {
-    unite.caracEX = null;
     if (Array.isArray(nvUpgradeEntries) && nvUpgradeEntries.length > 0) {
       unite.caracEX = nvUpgradeEntries.map((nvUpgradeEntry, index ) => {
         return new UniteCarac(
@@ -158,12 +157,12 @@ export class CharacterEntryMapper {
             nvUpgradeEntry.stats.DEF,
             nvUpgradeEntry.stats.MAG,
             nvUpgradeEntry.stats.SPR
-            ),
-          new Caracteristiques(),
-          new Caracteristiques(),
-          new Caracteristiques(),
-          new Caracteristiques(),
-          new Caracteristiques()
+          ),
+          null,
+          null,
+          null,
+          null,
+          null
         );
       });
     }
