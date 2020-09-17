@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FfbeUtils} from '../utils/ffbe-utils';
+import {UniteCarac} from '../model/unite-carac.model';
 
 @Component({
   selector: 'app-caracteristiques-ex-display',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaracteristiquesEXDisplayComponent implements OnInit {
 
-  constructor() { }
+  @Input() caracEX: Array<UniteCarac>;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  public formateCarac(carac: number): string {
+    return (!FfbeUtils.isNullOrUndefined(carac) && carac > 0) ? carac.toString() : '';
   }
 
 }
