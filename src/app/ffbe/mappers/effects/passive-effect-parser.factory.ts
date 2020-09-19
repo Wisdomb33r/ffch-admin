@@ -49,7 +49,6 @@ import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
 import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
 import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.parser';
-import {PassiveMpCostDecreaseEffect} from '../../model/effects/passives/passive-mp-cost-decrease-effect.model';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
 import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
 import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-cure-after-battle.parser';
@@ -163,8 +162,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
       case 76:
         return new PassiveEquipmentCategoryElementsResistanceParser();
-      case 77:
-        return new PassiveMpCostDecreaseEffect();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 81:
