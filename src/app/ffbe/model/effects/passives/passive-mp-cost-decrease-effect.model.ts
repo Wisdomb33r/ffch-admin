@@ -12,7 +12,8 @@ export class PassiveMpCostDecreaseEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 3 || parameters[1] !== 1 || parameters[2] !== 0) {
+    if (!Array.isArray(parameters) || parameters.length < 3
+      || parameters[1] !== 1 || (parameters[2] !== 0 && parameters[2] !== 4)) {
       this.parameterError = true;
     } else {
       this.costDecreasePercent = parameters[0];
