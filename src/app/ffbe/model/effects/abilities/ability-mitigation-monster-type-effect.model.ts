@@ -16,7 +16,8 @@ export class AbilityMitigationMonsterTypeEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 9 || (parameters[6] !== 0 && parameters[6] !== 1) || parameters[8] !== 1
+    if (!Array.isArray(parameters) || parameters.length < 9
+      || (parameters[6] !== -1 && parameters[6] !== 0 && parameters[6] !== 1) || parameters[8] !== 1
       || !Array.isArray(parameters[0]) || parameters[0].length !== 2) {
       this.parameterError = true;
     } else {
