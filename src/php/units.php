@@ -132,10 +132,10 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     dieWithBadRequest('Storage exception : found existing characteristics or competences for unit');
   }
 
-  if ($unite_existante->stars < 8 && isset($unite->caracEX)) {
-    dieWithBadRequest('Format exception : Cannot handle carac EX for non-NeoVision/BraveShift unit');
-  } else if ($unite_existante->stars >= 8 && !isset($unite->caracEX)) {
-    dieWithBadRequest('Format exception : Missing carac EX for NeoVision/BraveShift unit');
+  if ($unite_existante->stars != 8 && isset($unite->caracEX)) {
+    dieWithBadRequest('Format exception : Cannot handle carac EX for non-NeoVision unit');
+  } else if ($unite_existante->stars == 8 && !isset($unite->caracEX)) {
+    dieWithBadRequest('Format exception : Missing carac EX for NeoVision unit');
   }
 
   $brex_unit_caracs = createAndValidateBrexUnitCaracs($unite, $unite_existante);
@@ -180,7 +180,7 @@ function createAndValidateBrexUnitCaracs($unite, $brex_unite)
 
   $brex_unit_caracs [] = createAndValidateBrexUnitCarac($unite->carac, $brex_unite);
 
-  if ($unite->stars > 7) {
+  if ($unite->stars == 8) {
     foreach ($unite->caracEX as $caracEX) {
       $brex_unit_caracs [] = createAndValidateBrexUnitCarac($caracEX, $brex_unite);
     }
