@@ -3,12 +3,14 @@ import {Skill} from '../../../skill.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {NameValuePair, NameValuePairArray} from '../../../name-value-pair-array.model';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
 
 export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
 
   protected basePower: number;
-  protected bonusPower: number;
-  protected equipmentGumiId: number;
+  protected bonusPowers: Array<number>;
+  protected equipmentGumiIds: Array<number>;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -20,8 +22,8 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
       this.parameterError = true;
     } else {
       this.basePower = Math.round(parameters[3]);
-      this.bonusPower = Math.round(parameters[1]);
-      this.equipmentGumiId = parameters[0];
+      this.bonusPowers = Array.isArray(parameters[1]) ? parameters[1].map(power => Math.round(power)) : [Math.round(parameters[1])];
+      this.equipmentGumiIds = Array.isArray(parameters[0]) ? parameters[0] : [parameters[0]];
     }
   }
 
@@ -35,10 +37,23 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
     skill.physique = true;
     const target = this.wordTarget();
 
-    const breakText = `avec un bonus BREAK de ${this.bonusPower}% si l'unité porte ` +
-      `${EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une' : 'un'} ` +
-      `${EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId)}`;
+    const equipmentBonuses: NameValuePairArray = [];
+
+    this.bonusPowers.map((bonus, index) => {
+      const equipmentGumiId = this.equipmentGumiIds[index];
+      const equipmentName = `${EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une' : 'un'} ` +
+        `${EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId)}`;
+      equipmentBonuses.push(new NameValuePair(equipmentName, bonus));
+    });
+
+    const breakText = this.wordEffectJoiningIdenticalValues(equipmentBonuses);
+
     return `${attackType} ${elements} de puissance ${this.basePower}% ${target} ${breakText}`;
+  }
+
+  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
+    return `avec un bonus BREAK de ${currentValue}% si l'unité porte ` +
+      `${FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' ou ')}`;
   }
 
 }
