@@ -39,7 +39,7 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
 
     const equipmentBonuses: NameValuePairArray = [];
 
-    this.bonusPowers.map((bonus, index) => {
+    this.bonusPowers.forEach((bonus, index) => {
       const equipmentGumiId = this.equipmentGumiIds[index];
       const equipmentName = `${EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une' : 'un'} ` +
         `${EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId)}`;
