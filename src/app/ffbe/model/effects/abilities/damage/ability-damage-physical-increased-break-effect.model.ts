@@ -2,6 +2,7 @@ import {SkillEffect} from '../../skill-effect.model';
 import {Skill} from '../../../skill.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
 
 export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
 
@@ -34,13 +35,10 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
     skill.physique = true;
     const target = this.wordTarget();
 
-    //+ (EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
-    //       + EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId)
-
-    const breakText = `avec un bonus BREAK de ${this.bonusPower}% si l'unité porte un katana`;
+    const breakText = `avec un bonus BREAK de ${this.bonusPower}% si l'unité porte ` +
+      `${EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une' : 'un'} ` +
+      `${EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId)}`;
     return `${attackType} ${elements} de puissance ${this.basePower}% ${target} ${breakText}`;
-    //     expect(s).toEqual('Dégâts physiques neutres de puissance 100% à un adversaire avec un bonus BREAK de 400% si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>');
-
   }
 
 }
