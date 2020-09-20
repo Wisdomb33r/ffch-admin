@@ -34,8 +34,8 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
     skill.physique = true;
     const target = this.wordTarget();
 
-    //+ (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
-    //       + this.getEquipmentCategoryTypeWithLink(equipmentGumiId)
+    //+ (EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+    //       + EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId)
 
     const breakText = `avec un bonus BREAK de ${this.bonusPower}% si l'unité porte un katana`;
     return `${attackType} ${elements} de puissance ${this.basePower}% ${target} ${breakText}`;
