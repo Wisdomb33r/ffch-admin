@@ -46,7 +46,7 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
       equipmentBonuses.push(new NameValuePair(equipmentName, bonus));
     });
 
-    const breakText = this.wordEffectJoiningIdenticalValues(equipmentBonuses);
+    const breakText = this.wordEffectJoiningIdenticalValues(equipmentBonuses, ' et ');
 
     return `${attackType} ${elements} de puissance ${this.basePower}% ${target} ${breakText}`;
   }
