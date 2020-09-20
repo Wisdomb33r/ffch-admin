@@ -18,8 +18,8 @@ export class PassiveEquipmentCategoryElementsResistanceParser extends EffectPars
       {name: 'Ténèbres', value: effect[3][8]},
     ];
     return this.wordEffectJoiningIdenticalValues(increases)
-      + ' si l\'unité porte ' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
-      + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
+      + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+      + EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

@@ -18,8 +18,8 @@ export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
     ];
     // TODO critical strikes
     return FfbeUtils.replaceLastOccurenceInString(this.wordEffectJoiningIdenticalValues(increases), ', ', ' et ')
-      + ' si l\'unité porte ' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
-      + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
+      + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+      + EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

@@ -28,7 +28,7 @@ export class PassiveEquipmentCategoryKillerDamageIncreaseParser extends EffectPa
       text += (text.length ? HTML_LINE_RETURN : '') + '+' + magicalDamageIncrease + '% de dégâts magiques ' + monsterTypeText;
     }
 
-    return text + ' si l\'unité porte ' + (this.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
-      + this.getEquipmentCategoryTypeWithLink(equipmentGumiId);
+    return text + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(equipmentGumiId) ? 'une ' : 'un ')
+      + EffectParser.getEquipmentCategoryTypeWithLink(equipmentGumiId);
   }
 }
