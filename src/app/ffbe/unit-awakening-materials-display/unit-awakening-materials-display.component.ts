@@ -57,7 +57,7 @@ export class UnitAwakeningMaterialsDisplayComponent implements OnChanges {
   }
 
   public shouldDisplayObtention(): boolean {
-    return this.unite.stars === 6 || this.unite.stars === 7;
+    return this.unite.stars === 6 || this.unite.stars === 7 || this.unite.stars === 8;
   }
 
   public isMateriauxEveilErrorsDisplayed(): boolean {
