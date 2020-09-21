@@ -224,6 +224,7 @@ export class Skill {
       || effectId === 126 // physical damages with consecutive damage increase
       || effectId === 134 // physical damages with 1 turn timed jump delay
       || effectId === 139 // physical / magic DOT's
+      || effectId === 159 // physical damages with BREAK bonus
     );
   }
 
