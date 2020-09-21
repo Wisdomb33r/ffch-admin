@@ -56,4 +56,8 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
       `${FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' ou ')}`;
   }
 
+  public getDamagesPower(): number {
+    return this.basePower;
+  }
+
 }

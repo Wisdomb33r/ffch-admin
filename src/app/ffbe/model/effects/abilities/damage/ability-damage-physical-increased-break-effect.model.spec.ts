@@ -43,5 +43,19 @@ describe('AbilityDamagePhysicalIncreasedBreakEffect', () => {
       ' avec un bonus BREAK de 600% si l\'unité porte une <a href="ffexvius_objects.php?categid=27">épée longue</a>, une <a href="ffexvius_objects.php?categid=33">harpe</a> ou un <a href="ffexvius_objects.php?categid=34">fouet</a>' +
       ' et avec un bonus BREAK de 400% si l\'unité porte une <a href="ffexvius_objects.php?categid=1">épée</a> ou un <a href="ffexvius_objects.php?categid=6">arc</a>');
   });
+
+  it('should return the correct damages power', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 159, [4,  400,  1,  150,  0,  1]]');
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.element_inflict = null;
+    fakeSkill.attack_type = 'Physical';
+
+    // WHEN
+    const power = AbilitySkillEffectFactory.getSkillEffect(effect).getDamagesPower();
+
+    // THEN
+    expect(power).toEqual(150);
+  });
 });
 
