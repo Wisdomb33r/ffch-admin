@@ -131,25 +131,6 @@ function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
 
   $materiauSpecifique = brex_objet::findByPrimaryId($brex_perso_eveil->relation1Nmateriau1);
 
-  if ($brex_unite->stars == 7 && $materiauSpecifique->relation1Ncategorie != 66) {
-    $materiauTrouve = false;
-
-    for ($numeroAttributMateriau = 2; $numeroAttributMateriau <= 5 && !$materiauTrouve; ++$numeroAttributMateriau) {
-      $nomMethodeRelation = 'relation1Nmateriau' . $numeroAttributMateriau;
-
-      if (isset($brex_perso_eveil->$nomMethodeRelation)) {
-        $materiauSpecifique = brex_objet::findByPrimaryId($brex_perso_eveil->$nomMethodeRelation);
-        if ($materiauSpecifique->relation1Ncategorie == 66) {
-          $materiauTrouve = true;
-        }
-      }
-    }
-
-    if (!$materiauTrouve) {
-      return;
-    }
-  }
-
   $existing_obtention = brex_obtention::findByRelation1N(array('objet' => $materiauSpecifique->id));
   if (count($existing_obtention) > 0) {
     dieWithBadRequest('Storage exception : existing acquisition of prism or fragment found for unit with numero: ' . $brex_unite->numero);
