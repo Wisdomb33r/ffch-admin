@@ -125,25 +125,46 @@ function createAndValidatePersoEveil($brex_unite, $uniteEveil)
 
 function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
 {
-  if ($brex_unite->stars != 6 || $brex_perso_eveil->nbmateriau1 != 1) {
+  if ($brex_unite->stars != 6 && $brex_unite->stars != 7) {
     return;
   }
 
-  $prisme = brex_objet::findByPrimaryId($brex_perso_eveil->relation1Nmateriau1);
+  $materiauSpecifique = brex_objet::findByPrimaryId($brex_perso_eveil->relation1Nmateriau1);
 
-  $existing_obtention = brex_obtention::findByRelation1N(array('objet' => $prisme->id));
+  if ($brex_unite->stars == 7 && $materiauSpecifique->relation1Ncategorie != 66) {
+    $materiauTrouve = false;
+
+    for ($numeroAttributMateriau = 2; $numeroAttributMateriau <= 5 && !$materiauTrouve; ++$numeroAttributMateriau) {
+      $nomMethodeRelation = 'relation1Nmateriau' . $numeroAttributMateriau;
+
+      if (isset($brex_perso_eveil->$nomMethodeRelation)) {
+        $materiauSpecifique = brex_objet::findByPrimaryId($brex_perso_eveil->$nomMethodeRelation);
+        if ($materiauSpecifique->relation1Ncategorie == 66) {
+          $materiauTrouve = true;
+        }
+      }
+    }
+
+    if (!$materiauTrouve) {
+      return;
+    }
+  }
+
+  $existing_obtention = brex_obtention::findByRelation1N(array('objet' => $materiauSpecifique->id));
   if (count($existing_obtention) > 0) {
-    dieWithBadRequest('Storage exception : existing acquisition of prism found for unit with numero: ' . $brex_unite->numero);
+    dieWithBadRequest('Storage exception : existing acquisition of prism or fragment found for unit with numero: ' . $brex_unite->numero);
   }
 
   $brex_obtention = new brex_obtention(array());
-  $brex_obtention->setrelationobjet($prisme);
+  $brex_obtention->setrelationobjet($materiauSpecifique);
 
   $brex_perso = brex_perso::findByPrimaryId($brex_unite->relation1Nperso);
 
+  $materiauName = $brex_unite->stars == 6 ? 'prisme' : 'fragments';
+
   $brex_obtention->description = 'Obtenu par conversion d\'une unité de <a href="ffexvius_units.php?persoid=' .
     $brex_perso->id . '">' . $brex_perso->nom .
-    '</a> dans le menu indiqué d\'une icône de prisme de l\'écran d\'éveil des personnages.';
+    '</a> dans l\'onglet "Conversion en ' . $materiauName . '" de l\'écran d\'éveil des personnages.';
 
   if (!$brex_obtention->verifyValues()) {
     dieWithBadRequest(array_merge($brex_obtention->errors, (array)'Format exception: Validation of $brex_obtention failed'));
