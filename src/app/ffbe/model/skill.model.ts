@@ -218,7 +218,8 @@ export class Skill {
       || effectId === 72 // magic damages with consecutive damage increase
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 102 // physical damages scaling on DEF
-      || effectId === 112 // death physical damages
+      || effectId === 112 // death or physical damages
+      || effectId === 113 // death or magical damages
       || effectId === 103 // magic damages scaling on SPR
       || effectId === 124 // evoker damages
       || effectId === 126 // physical damages with consecutive damage increase
@@ -252,6 +253,14 @@ export class Skill {
         return 100 / (100 + effect[3][3]);
       case 70:
         // magical damages with ignore SPR
+        return 100 / (100 - effect[3][3]);
+      case 112:
+        // death or physical damages with potential ignore DEF
+        const ignoreDef = effect[3][3] ? effect[3][3] : 0;
+        return 100 / (100 + effect[3][3]);
+      case 113:
+        // death or magical damages with potential ignore DEF
+        const ignoreSpr = effect[3][3] ? effect[3][3] : 0;
         return 100 / (100 - effect[3][3]);
       case 42:
         // physical combos with multiple consecutive attacks
