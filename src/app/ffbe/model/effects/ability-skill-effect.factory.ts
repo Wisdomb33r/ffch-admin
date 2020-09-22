@@ -72,6 +72,7 @@ export class AbilitySkillEffectFactory {
       case 103:
         return new AbilityDamageMagicSprScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 112:
+      case 113:
         return new AbilityDamageOrDeathEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 124:
         return new AbilityDamageEvokerEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);

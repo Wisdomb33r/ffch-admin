@@ -1576,5 +1576,89 @@ describe('Skill', () => {
     // THEN
     expect(carac).toEqual(new Caracteristiques(0, 0, 100, 0, 0, 0));
   });
+
+  it('should compute total mod increase for physical damages with ignore def effect', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Physical';
+    fakeSkill.effects_raw = JSON.parse('[[2, 1, 21, [0, 0, 1650, -50]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(150);
+
+    // THEN
+    expect(modIncrease).toEqual(300);
+  });
+
+  it('should compute total mod increase for magic damages with ignore spr effect', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Magic';
+    fakeSkill.effects_raw = JSON.parse('[[2, 1, 70, [0, 0, 2500, 50]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(600);
+
+    // THEN
+    expect(modIncrease).toEqual(1200);
+  });
+
+  it('should compute total mod increase for death or physical damages effect', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Physical';
+    fakeSkill.effects_raw = JSON.parse('[[1, 1, 112, [180, 50, 100]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(200);
+
+    // THEN
+    expect(modIncrease).toEqual(200);
+  });
+
+  it('should compute total mod increase for death or physical damages effect with ignore DEF', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Physical';
+    fakeSkill.effects_raw = JSON.parse('[[1, 1, 112, [180, 50, 100, -50]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(200);
+
+    // THEN
+    expect(modIncrease).toEqual(400);
+  });
+
+  it('should compute total mod increase for death or magical damages effect', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Magic';
+    fakeSkill.effects_raw = JSON.parse('[[2, 1, 113, [1500, 90, 100]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(200);
+
+    // THEN
+    expect(modIncrease).toEqual(200);
+  });
+
+  it('should compute total mod increase for death or magical damages effect with ignore SPR', () => {
+    // GIVEN
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.active = true;
+    fakeSkill.attack_type = 'Magic';
+    fakeSkill.effects_raw = JSON.parse('[[2, 1, 113, [1500, 90, 100, 50]]]');
+
+    // WHEN
+    const modIncrease = fakeSkill.calculateTotalModIncrease(200);
+
+    // THEN
+    expect(modIncrease).toEqual(400);
+  });
 });
 
