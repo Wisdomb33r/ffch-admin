@@ -29,7 +29,8 @@ export class AbilityDamageOrDeathEffect extends SkillEffect {
     const attackType = this.effectId === 112 ? skill.wordAttackAndDamageForPhysicalDamages() : skill.wordAttackAndDamageForMagicalDamages();
     const elements = skill.wordElementInflict();
     const target = this.wordTarget();
-    skill.physique = true;
+    skill.physique = this.effectId === 112;
+    skill.magique = this.effectId === 113;
     const dmgText = `de puissance ${this.basePower}%`;
     const ignoreDefText = this.ignoreDef > 0 ? ` (ignore ${this.ignoreDef}% DÉF, ${this.power}% total)` : '';
     return `Inflige Mort (${this.deathChance}%) ou ${attackType} ${elements} ${dmgText}${ignoreDefText} ${target}`;
