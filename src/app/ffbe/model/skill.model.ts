@@ -68,7 +68,7 @@ export class Skill {
   }
 
   public calculateTotalModIncrease(modIncrease: number): number {
-    if (this.effects && this.effects.length) {
+    if (this.effects_raw && this.effects_raw.length) {
       return this.effects_raw
         .filter(effect => this.isEffectWithDamage(effect))
         .map(effect => modIncrease * this.calculateModIncreaseForEffect(effect))
@@ -248,20 +248,16 @@ export class Skill {
   private calculateModIncreaseForEffect(effect): number {
     const effectId = effect[2];
     switch (effectId) {
+      // physical damages with ignore DEF
       case 21:
-        // physical damages with ignore DEF
-        return 100 / (100 + effect[3][3]);
+      // magical damages with ignore SPR
       case 70:
-        // magical damages with ignore SPR
-        return 100 / (100 - effect[3][3]);
+      // death or physical damages with potential ignore DEF
       case 112:
-        // death or physical damages with potential ignore DEF
-        const ignoreDef = effect[3][3] ? effect[3][3] : 0;
-        return 100 / (100 + effect[3][3]);
+      // death or magical damages with potential ignore DEF
       case 113:
-        // death or magical damages with potential ignore DEF
-        const ignoreSpr = effect[3][3] ? effect[3][3] : 0;
-        return 100 / (100 - effect[3][3]);
+        const ignoreStat = effect[3][3] ? Math.abs(effect[3][3]) : 0;
+        return 100 / (100 - ignoreStat);
       case 42:
         // physical combos with multiple consecutive attacks
         return (effect[3][2] + effect[3][3]) / 2.0;

@@ -39,4 +39,15 @@ describe('AbilityDamageOrDeathEffect', () => {
     expect(s).toEqual('Inflige Mort (90%) ou Attaque physique à dégâts magiques de Feu de puissance 200% à un adversaire au hasard');
   });
 
+  it('should parse death or magical damages with ignore SPR', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 113, [400, 40, 100, 50]]');
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.attack_type = 'Magic';
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    // THEN
+    expect(s).toEqual('Inflige Mort (40%) ou Dégâts magiques neutres de puissance 400% (ignore 50% DÉF, 800% total) à un adversaire');
+  });
+
 });
