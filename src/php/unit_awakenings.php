@@ -125,7 +125,7 @@ function createAndValidatePersoEveil($brex_unite, $uniteEveil)
 
 function createAndValidateObjetObtention($brex_unite, $brex_perso_eveil)
 {
-  if ($brex_unite->stars < 6 && $brex_unite->stars > 8) {
+  if ($brex_unite->stars < 6 || $brex_unite->stars > 8) {
     return;
   }
 
