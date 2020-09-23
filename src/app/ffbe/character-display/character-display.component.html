@@ -27,9 +27,14 @@
     <app-character-equipments-display [personnage]="personnage"></app-character-equipments-display>
     <h2>Unités</h2>
     <app-unit-display *ngFor="let unite of personnage.unites" [unite]="unite"></app-unit-display>
-    <h2>Compétences</h2>
-    <app-skills-display *ngIf="areCharacterSkillsDisplayed()"
+    <h2 *ngIf="this.competences?.length">Compétences</h2>
+    <app-skills-display *ngIf="this.competences?.length"
                         [competences]="competences"
+                        [shouldDisplayTitle]="false">
+    </app-skills-display>
+    <h2 *ngIf="this.competencesActivees?.length">Compétences activées</h2>
+    <app-skills-display *ngIf="this.competencesActivees?.length"
+                        [competences]="competencesActivees"
                         [shouldDisplayTitle]="false">
     </app-skills-display>
   </ng-container>

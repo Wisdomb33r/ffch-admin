@@ -26,6 +26,7 @@ export class AbilitySkillActivationEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill) {
     const target = this.wordTarget();
+    // Loading the activated skills cannot be moved to constructor as some of them are activating themselves
     const activatedSkills = this.activatedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
     const linksText = EffectParser.getSkillsNamesWithGumiIdentifierLinks(activatedSkills);
     const durationText = this.wordDuration(skill.isActivatedByPassiveSkill);
@@ -63,6 +64,12 @@ export class AbilitySkillActivationEffect extends SkillEffect {
 
   private hasUseLimit(): boolean {
     return this.numberUses > 0 && this.numberUses < 990;
+  }
+
+  public getActivatedSkills(): Array<Skill> {
+    return this.activatedSkillsIds
+      ? this.activatedSkillsIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId))
+      : [];
   }
 
 }
