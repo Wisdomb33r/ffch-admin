@@ -1,11 +1,11 @@
-import {EffectParser} from '../effect-parser';
-import {Skill} from '../../../model/skill.model';
-import {SkillEffect} from '../../../model/effects/skill-effect.model';
+import {EffectParser} from '../../../mappers/effects/effect-parser';
+import {Skill} from '../../skill.model';
+import {SkillEffect} from '../skill-effect.model';
 
-export class PassiveElementsResistanceParser extends EffectParser {
+export class PassiveElementsResistanceEffect extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
-      return 'Effet PassiveElementsResistanceParser inconnu: Mauvaise liste de paramètres';
+      return 'Effet PassiveElementsResistanceEffect inconnu: Mauvaise liste de paramètres';
     }
     const increases: Array<{ name: string, value: number }> = SkillEffect.getElementNameValueTableFromNumberArray(effect[3]);
     return this.wordEffectJoiningIdenticalValues(increases);
