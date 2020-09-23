@@ -12,7 +12,6 @@ import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
 import {AbilityHealingFixedParser} from './ability-healing-fixed.parser';
-import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
 import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
@@ -164,8 +163,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
-      case 100:
-        return new AbilitySkillActivationParser();
       case 101:
         return new AbilityMitigationsParser();
       case 111:

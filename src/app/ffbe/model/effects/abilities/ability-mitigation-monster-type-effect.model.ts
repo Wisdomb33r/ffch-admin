@@ -37,7 +37,7 @@ export class AbilityMitigationMonsterTypeEffect extends SkillEffect {
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    const target = `${this.wordTarget()}`;
+    const target = this.wordTarget();
     const turnsText = `pour ${this.turns} tour${this.turns > 1 ? 's' : ''}`;
     const damageTypeText = this.effectId === 153 ? 'physique' : 'magique';
     const monsterTypesText = FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ');
