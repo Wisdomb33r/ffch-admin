@@ -6,12 +6,15 @@ import {PassiveEquipmentStatsDualwieldIncreaseEffect} from './passives/stats/pas
 import {PassiveEquipmentStatsDoublehandIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-increase-effect.model';
 import {PassiveEquipmentStatsDoublehandGlexIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-glex-increase-effect.model';
 import {PassiveMpCostDecreaseEffect} from './passives/passive-mp-cost-decrease-effect.model';
+import {PassiveElementsResistanceEffect} from './passives/passive-elements-resistance-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
     switch (effectRaw[2]) {
       case 1:
         return new PassiveStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 3:
+        return new PassiveElementsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 69:

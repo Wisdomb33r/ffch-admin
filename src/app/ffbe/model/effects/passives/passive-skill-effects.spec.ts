@@ -10,6 +10,11 @@ describe('PassiveSkillEffect', () => {
       parsed: '+10% ATT/DÉF' + HTML_LINE_RETURN + '+30% de coups critiques des attaques normales'
     },
     {
+      effect: '[0, 3, 3, [50, 40, 60, 50, 50, 50, 40, 20]]',
+      parsed: '+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres'
+    },
+    {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
+    {
       effect: '[1, 3, 13, [25,  25,  0]]',
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
