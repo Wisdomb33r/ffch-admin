@@ -20,13 +20,6 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
     }
   }
 
-  public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
-      return 'Effet PassiveElementsResistanceEffect inconnu: Mauvaise liste de paramètres';
-    }
-    this.increases = SkillEffect.getElementNameValueTableFromNumberArray(effect[3]);
-  }
-
   protected get effectName(): string {
     return 'PassiveElementsResistanceEffect';
   }
