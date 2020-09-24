@@ -208,6 +208,7 @@ export class Skill {
       || effectId === 13 // physical damages with 1 turn delay
       || effectId === 15 // magic damages
       || effectId === 21 // physical damages with ignore DEF
+      || effectId === 22 // physical damages with increased power on specific enemy type
       || effectId === 25 // physical / magic damages with HP drain
       || effectId === 40 // hybrid damages
       || (effectId === 41 && effect[1] !== 3) // fixed damages, excepting to caster
