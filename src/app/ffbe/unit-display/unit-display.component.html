@@ -118,7 +118,8 @@
   <app-caracteristiques-ex-display *ngIf="shouldDisplayCaracEx()"
                                    [caracEX]="unite.caracEX"></app-caracteristiques-ex-display>
 
-  <mat-table [dataSource]="unite.competences">
+  <h2>Compétences activées</h2>
+  <mat-table [dataSource]="unite.competencesActivees">
 
     <ng-container matColumnDef="level">
       <mat-header-cell *matHeaderCellDef>Niveau</mat-header-cell>
@@ -132,9 +133,24 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.competence.description}}</mat-cell>
+    <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: skillsColumnsToDisplay;"></mat-row>
+
+  </mat-table>
+
+  <h2>Compétences</h2>
+  <mat-table [dataSource]="unite.competences">
+
+    <ng-container matColumnDef="level">
+      <mat-header-cell *matHeaderCellDef>Niveau</mat-header-cell>
+      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.niveau}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id_nom">
+      <mat-header-cell *matHeaderCellDef>Id et nom</mat-header-cell>
+      <mat-cell *matCellDef="let uniteCompetence">{{uniteCompetence.competence.gumi_id}}
+        {{uniteCompetence.competence.nom}}
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="skillsColumnsToDisplay"></mat-header-row>
