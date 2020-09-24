@@ -9,7 +9,7 @@ export class AbilityAilmentsResistanceParser extends EffectParser {
     // TODO all values equal to 0
     // TODO What if effect[3][8] !== 1 ?
 
-    const statModifier = this.wordEffectJoiningIdenticalValues(this.getKeyValueTableForAilements(effect[3]));
+    const statModifier = this.wordEffectJoiningIdenticalValues(EffectParser.getKeyValueTableForAilements(effect[3]));
 
     const target = this.getTarget(effect[0], effect[1]);
 

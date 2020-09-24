@@ -7,7 +7,7 @@ export class AbilityAilmentsRandomInflictionParser extends EffectParser {
       return 'Effet AbilityAilmentsRandomInflictionParser inconnu: Mauvaise liste de paramètres';
     }
     const ailmentsNumber = effect[3][9];
-    const ailmentsText = this.wordEffectJoiningIdenticalValues(this.getKeyValueTableForAilements(effect[3]));
+    const ailmentsText = this.wordEffectJoiningIdenticalValues(EffectParser.getKeyValueTableForAilements(effect[3]));
 
     const target = this.getTarget(effect[0], effect[1]);
     const pluralForm = ailmentsNumber > 1 ? 's' : '';

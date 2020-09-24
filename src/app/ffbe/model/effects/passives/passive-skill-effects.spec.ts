@@ -10,6 +10,11 @@ describe('PassiveSkillEffect', () => {
       parsed: '+10% ATT/DÉF' + HTML_LINE_RETURN + '+30% de coups critiques des attaques normales'
     },
     {
+      effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
+      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
+    },
+    {effect: '[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux altérations'},
+    {
       effect: '[0, 3, 3, [50, 40, 60, 50, 50, 50, 40, 20]]',
       parsed: '+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres'
     },

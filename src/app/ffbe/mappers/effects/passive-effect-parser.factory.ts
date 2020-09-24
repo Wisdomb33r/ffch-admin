@@ -2,7 +2,6 @@ import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveEsperDamageIncreaseParser} from './passives/passive-esper-damage-increase.parser';
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
-import {PassiveAilmentsResistanceEffect} from '../../model/effects/passives/passive-ailments-resistance-effect.model';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
@@ -55,8 +54,6 @@ import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
-      case 2:
-        return new PassiveAilmentsResistanceEffect();
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
       case 5:
