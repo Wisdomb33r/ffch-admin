@@ -1,3 +1,5 @@
+import {NameValuePairArray} from '../name-value-pair-array.model';
+
 export class ObjetElements {
   public constructor(
     public feu: number,
@@ -9,6 +11,19 @@ export class ObjetElements {
     public lumiere: number,
     public tenebres: number
   ) {
+  }
+
+  public toNameValuePairArray(): NameValuePairArray {
+    return [
+      {name: 'Feu', value: this.feu},
+      {name: 'Glace', value: this.glace},
+      {name: 'Foudre', value: this.foudre},
+      {name: 'Eau', value: this.eau},
+      {name: 'Vent', value: this.air},
+      {name: 'Terre', value: this.terre},
+      {name: 'Lumière', value: this.lumiere},
+      {name: 'Ténèbres', value: this.tenebres},
+    ];
   }
 
   public static newEmptyObjetElements(): ObjetElements {

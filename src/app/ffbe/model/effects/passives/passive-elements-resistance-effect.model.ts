@@ -26,16 +26,7 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return this.wordEffectJoiningIdenticalValues(SkillEffect.getElementNameValueTableFromNumberArray([
-      this.increases.feu,
-      this.increases.glace,
-      this.increases.foudre,
-      this.increases.eau,
-      this.increases.air,
-      this.increases.terre,
-      this.increases.lumiere,
-      this.increases.tenebres
-    ]));
+    return this.wordEffectJoiningIdenticalValues(this.increases.toNameValuePairArray());
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
