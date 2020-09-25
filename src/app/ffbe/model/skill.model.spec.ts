@@ -1,5 +1,6 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
+import {ObjetElements} from './objet/objet-elements.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -513,6 +514,24 @@ export const PASSIVE_SKILLS_TEST_DATA =
             "Increase equipment MAG by 50% when armed with a single weapon"
         ],
         "effects_raw": [[0, 3, 13, [50,  25,  2]], [0, 3, 70, [50,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228512": {
+        "name": "Mother of Hess",
+        "icon": "ability_77.png",
+        "compendium_id": 3964,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Wind, Earth and Dark by 30%",
+            "Increase LB gauge by 2 per turn"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 3, [0,  0,  0,  0,  30,  30,  0,  30]], [0, 3, 33, [200]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -1659,6 +1678,21 @@ describe('Skill', () => {
 
     // THEN
     expect(modIncrease).toEqual(400);
+  });
+
+  it('should compute passive increases element resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['228512'];
+    plainSkill.gumi_id = 228512;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateElementResistances();
+
+    // THEN
+    expect(carac).toEqual(new ObjetElements(0, 0, 0, 0, 30, 30, 0 , 30));
   });
 });
 
