@@ -1,7 +1,7 @@
 import {Consumable} from '../model/consumable.model';
 import {Objet} from '../model/objet/objet.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {ObjetElements} from '../model/objet/objet-elements.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';

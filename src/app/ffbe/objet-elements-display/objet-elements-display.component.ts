@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {ObjetElements} from '../model/objet/objet-elements.model';
 
 @Component({
   selector: 'app-objet-elements-display',
