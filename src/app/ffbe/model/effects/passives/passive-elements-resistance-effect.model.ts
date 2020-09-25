@@ -2,11 +2,11 @@ import {Skill} from '../../skill.model';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
-import {NameValuePairArray} from '../../name-value-pair-array.model';
+import {ObjetElements} from '../../objet/objet-elements';
 
 export class PassiveElementsResistanceEffect extends SkillEffect {
 
-  private increases: NameValuePairArray;
+  private increases: ObjetElements;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -16,7 +16,8 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 8) {
       this.parameterError = true;
     } else {
-      this.increases = SkillEffect.getElementNameValueTableFromNumberArray(parameters);
+      this.increases = new ObjetElements(parameters[0], parameters[1], parameters[2], parameters[3],
+        parameters[4], parameters[5], parameters[6], parameters[7]);
     }
   }
 
@@ -25,7 +26,16 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return this.wordEffectJoiningIdenticalValues(this.increases);
+    return this.wordEffectJoiningIdenticalValues(SkillEffect.getElementNameValueTableFromNumberArray([
+      this.increases.feu,
+      this.increases.glace,
+      this.increases.foudre,
+      this.increases.eau,
+      this.increases.air,
+      this.increases.terre,
+      this.increases.lumiere,
+      this.increases.tenebres
+    ]));
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
@@ -33,5 +43,9 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
       return '+' + currentValue + '% de rés. aux éléments';
     }
     return '+' + currentValue + '% de rés. ' + accumulatedStats.join(', ');
+  }
+
+  getElementResistances(): ObjetElements {
+    return this.increases;
   }
 }

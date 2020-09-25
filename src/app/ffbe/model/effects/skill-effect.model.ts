@@ -4,6 +4,7 @@ import {TargetPrepositionEnum} from './target-preposition.enum';
 import {Skill} from '../skill.model';
 import {EffectIdenticalValuesWording} from './effect-identical-values-wording';
 import {Caracteristiques} from '../caracteristiques.model';
+import {ObjetElements} from '../objet/objet-elements';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
@@ -227,6 +228,10 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
   }
 
   public getDualwieldIncreasesPercent(): Caracteristiques {
+    return null;
+  }
+
+  public getElementResistances(): ObjetElements {
     return null;
   }
 }
