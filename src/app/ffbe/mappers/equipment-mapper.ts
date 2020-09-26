@@ -43,7 +43,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(equipment.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
-      EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
+      EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist, equipment.dmSkills),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -57,7 +57,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
       objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
     }
-    objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict);
+    objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict, null);
 
     return objet;
   }
@@ -138,11 +138,21 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return value;
   }
 
-  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ResistancesAlterations {
-    if (FfbeUtils.isNullOrUndefined(e)) {
+  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect, dmSkills: Array<Skill>): ResistancesAlterations {
+    if (FfbeUtils.isNullOrUndefined(e) && (!Array.isArray(dmSkills) || dmSkills.length === 0)) {
       return new ResistancesAlterations();
     }
-    return new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
+
+    let resistances = new ResistancesAlterations(0, 0, 0, 0, 0, 0, 0, 0);
+    if (!FfbeUtils.isNullOrUndefined(e)) {
+      resistances.accumulateByAddition(new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify));
+    }
+
+    resistances.accumulateByAddition(ItemWithSkillsMapper.mapAilmentResistances(dmSkills));
+
+    ItemWithSkillsMapper.capResistancesAlterations(resistances);
+
+    return resistances;
   }
 
   private static mapEquipmentRequirements(requirements: Array<any>): string {

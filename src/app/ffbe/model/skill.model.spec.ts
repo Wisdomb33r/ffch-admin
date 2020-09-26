@@ -582,6 +582,52 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 2, [0,  0,  0,  0,  100,  100,  0,  0]], [0, 3, 33, [300]], [0, 3, 3, [30,  30,  30,  30,  30,  30,  30,  30]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "911899": {
+        "name": "Well-Fed",
+        "icon": "ability_77.png",
+        "compendium_id": 85665,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Recover MP (5%) per turn",
+            "Increase LB gauge by 2 per turn",
+            "Increase resistance to all status effects by 100%"
+        ],
+        "effects_raw": [[0, 3, 32, [5]], [0, 3, 33, [200]], [0, 3, 2, [100,  100,  100,  100,  100,  100,  100,  100]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "100160": {
+        "name": "SPR +10%",
+        "icon": "ability_77.png",
+        "compendium_id": 13,
+        "rarity": 1,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase SPR by 10%"],
+        "effects_raw": [[1, 3, 1, [0,  0,  0,  10,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228182": {
+        "name": "Null Death",
+        "icon": "ability_1.png",
+        "compendium_id": 3740,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["No effect"],
+        "effects_raw": [[0, 3, 2, [0,  0,  0,  0,  0,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

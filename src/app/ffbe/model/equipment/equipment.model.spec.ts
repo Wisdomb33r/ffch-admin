@@ -601,5 +601,140 @@ export const EQUIPMENTS_TEST_DATA =
                 "Belati yang digunakan oleh seorang pahlawan yang memiliki keyakinan akan masa depan negeri kelahirannya di dunia Eos yang jauh. Belati ini terkenal karena bilahnya yang unik dan melengkung. Ia kehilangan tanah airnya setelah diserang oleh Kekaisaran Niflheim. Tak lama setelah itu, ia bergabung dengan pasukan elite Kerajaan Lucis, \\"Kingsglaive,\\" dan berjuang untuk masa depan tanah airnya."
             ]
         }
+    },
+    "1100000237": {
+        "name": "Shortcake",
+        "compendium_id": 90240,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [911899, 100160],
+        "effects": [
+            "Grants 'Well-Fed' passive.",
+            "Grants 'SPR +10%' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 0,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 54,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": {
+                "Poison": 100,
+                "Blind": 100,
+                "Sleep": 100,
+                "Silence": 100,
+                "Paralyze": 100,
+                "Confusion": 100,
+                "Disease": 100,
+                "Petrify": 100
+            },
+            "status_inflict": null
+        },
+        "price_buy": 7000,
+        "price_sell": 700,
+        "icon": "global_equip_10178.png",
+        "strings": {
+            "name": [
+                "Shortcake",
+                "草莓蛋糕",
+                "쇼트케이크",
+                "Fraisier",
+                "Teekuchen",
+                "Tarta de fruta",
+                "Shortcake"
+            ],
+            "desc_short": [
+                "Sponge cake neatly topped with cream and strawberries.",
+                "由生奶油與草莓製成的新鮮的蛋糕",
+                "생크림과 딸기가 예쁘게 장식된 쇼트케이크",
+                "Un gâteau couronné de chantilly et de fraises.",
+                "Ein Teekuchen, der geschickt mit Schlagsahne und Erdbeeren belegt wurde.",
+                "Un bizcocho recubierto de nata y fresas.",
+                "Kue bolu lembut dengan krim dan stroberi."
+            ],
+            "desc_long": [
+                "Sponge cake neatly topped with cream and strawberries. At first glance, it looks like an ordinary strawberry shortcake, but the soft cake and sweet strawberries, coupled with the smoothness of the cream, make it an unforgettable dessert. Just one bite and you'll feel your whole world melding together perfectly.",
+                "由生奶油與草莓製成的新鮮的蛋糕。雖然看起來只是個普通的蛋糕，但它綿軟的口感與草莓的甜味和生奶油的鮮香絕妙地組合在一起令人難以忘懷，吃上一口就能使人的煩惱全部煙消雲散。",
+                "생크림과 딸기가 예쁘게 장식된 쇼트케이크. 얼핏 보면 평범한 딸기 쇼트 케이크 같지만, 딸기의 달콤함과 부드러운 생크림의 조합은 절대 잊을 수 없을 정도라고 한다. 한입 먹게 되면 모든 고민이 사라질 것이다.",
+                "Un gâteau couronné de chantilly et de fraises. À première vue, il a tout l'air d'une pâtisserie comme les autres, mais sa pâte tendre et moelleuse, sa crème fouettée légère comme un nuage, ainsi que ses fraises délicieusement sucrées en font un dessert inoubliable. Une seule bouchée, et soudain le monde entier semble plus coloré.",
+                "Ein Teekuchen, der kunstvoll mit Schlagsahne und Erdbeeren dekoriert wurde. Auf den ersten Blick sieht das Dessert zwar wie ein gewöhnlicher Erdbeerkuchen aus, doch der Mürbeteig und die Süße der Erdbeeren machen den Kuchen in Kombination mit der cremigen Schlagsahne zu einer unvergesslichen Nachspeise. Ein einziger Bissen genügt und alle Sorgen schmelzen dahin.",
+                "Un bizcocho recubierto de nata y fresas. A primera vista, no se trata más que de un pastelito de fresa y nata, pero la esponjosidad del bizcocho y el dulzor de las fresas, junto con la cremosidad de la nata, lo convierten en un postre digno de alabanza. Un solo bocado bastará para alegrarle a uno el día.",
+                "Kue bolu lembut dengan hiasan krim dan stroberi. Pertama kali melihatnya, kue ini terlihat seperti kue stroberi biasa, tapi setelah dirasakan, kue lembut dengan stroberi manis yang ditambah kelembutan krim ini menjadi makanan penutup yang tak terlupakan. Cukup satu gigitan, kau akan rasakan kelezatan tiada tara."
+            ]
+        }
+    },
+    "409001700": {
+        "name": "Safety Bit",
+        "compendium_id": 424,
+        "compendium_shown": true,
+        "rarity": 4,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [228182],
+        "effects": ["Grants 'Null Death' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 0,
+            "DEF": 3,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": {
+                "Petrify": 100,
+                "Death": 100
+            },
+            "status_inflict": null
+        },
+        "price_buy": 3000,
+        "price_sell": 300,
+        "icon": "item_50116.png",
+        "strings": {
+            "name": [
+                "Safety Bit",
+                "祈安珠",
+                "세이프티 비트",
+                "Sphère de sûreté",
+                "Sicherheitseinsatz",
+                "Lazo seguro",
+                "Safety Bit"
+            ],
+            "desc_short": [
+                "An accessory that protects one's life.",
+                "能夠守護持有者生命的首飾",
+                "목숨을 지켜주는 장신구",
+                "Un accessoire qui peut sauver la vie.",
+                "Ein lebensschützendes Accessoire.",
+                "Un accesorio que protege la vida propia.",
+                "Aksesori yang melindungi nyawa seseorang."
+            ],
+            "desc_long": [
+                "An accessory that protects the wearer from attacks that result in death or stone. The gem encased in the middle is specifically what serves to keep death at bay. Some monsters are known for their ability to take a life with a single blow, while other types of wildlife can turn adventurers into stone with their attacks, greatly hindering any efforts to vanquish them. However, this accessory can provide the safety needed to carry out such a task.",
+                "能夠從致死一擊或石化等致命性攻擊保護裝備者的首飾。其中鑲嵌的寶珠能夠阻擋致命攻擊。有些魔物具備致死一擊或石化等能力，因此討伐牠們是十分危險的任務。持有這種首飾，就可以安心戰鬥了。",
+                "즉사와 석화 등의 치명적인 공격에서 사용자를 보호하는 장신구. 장식된 보주가 죽음에 이르는 공격을 튕겨내는 역할을 한다. 마물들 중에서는 일격으로 목숨을 빼앗을 수 있는 공격과 생물을 돌로 바꾸어 버리는 공격을 해 오는 것들이 많아, 처치하는 데에 위험을 동반한다. 이 장신구를 소지하고 있으면, 안전하게 싸울 수 있을 것이다.",
+                "Un accessoire qui protège son porteur des attaques qui entraînent la mort ou la pétrification. Le joyau situé en son sein est précisément ce qui permet de tenir la mort à distance. Certains monstres sont connus pour leur capacité à prendre une vie d'un seul coup, alors que d'autres animaux peuvent transformer n'importe quel aventurier téméraire en statue, gâchant tous les efforts effectués pour parvenir à les vaincre. C'est pour prévenir tout cela que cet objet a été fabriqué.",
+                "Ein Accessoire, das den Träger vor Tod und Stein beschützt. Der in seiner Mitte eingelegte Stein hält den Tod fern. Einige Monster können das Leben mit einem einzigen Schlag nehmen, während andere einen Abenteurer versteinern und so den Kampf erschweren. Gegen solche Monster hilft dieser Ring in großem Maß.",
+                "Un accesorio que protege a quien lo lleva de ataques que conducen a la muerte o a la piedra. La gema incrustada en el centro es concretamente lo que mantiene a raya a la muerte. Algunos monstruos son conocidos por arrebatar la vida de un solo golpe, mientras que otras formas de vida convierten a los aventureros en piedra con sus ataques, socavando los intentos de acabar con ellos. Sin embargo, este accesorio puede proporcionar la seguridad necesaria para dicha tarea.",
+                "Aksesori yang melindungi penggunanya dari serangan yang berakibat kematian atau stone. Permata yang terbungkus di tengahnya secara spesifik adalah yang berguna mencegah kematian. Beberapa monster dikenal akan kemampuan mereka untuk mengambil nyawa dengan sekali pukul, sementara beberapa tipe hewan liar lain dapat mengubah petualang menjadi batu dengan serangannya, sangat menghalangi usaha untuk menghabisi mereka. Namun, aksesori ini dapat memberikan keamanan yang dibutuhkan untuk menyelesaikan tugas semacam itu."
+            ]
+        }
     }
   }`;
