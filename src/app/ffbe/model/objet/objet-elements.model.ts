@@ -3,19 +3,15 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ObjetElements {
   public constructor(
-    public feu: number,
-    public glace: number,
-    public foudre: number,
-    public eau: number,
-    public air: number,
-    public terre: number,
-    public lumiere: number,
-    public tenebres: number
+    public feu: number = null,
+    public glace: number = null,
+    public foudre: number = null,
+    public eau: number = null,
+    public air: number = null,
+    public terre: number = null,
+    public lumiere: number = null,
+    public tenebres: number = null
   ) {
-  }
-
-  public static newEmptyObjetElements(): ObjetElements {
-    return new ObjetElements(null, null, null, null, null, null, null, null);
   }
 
   public static produce(oe: ObjetElements): ObjetElements {
@@ -24,7 +20,7 @@ export class ObjetElements {
 
 
   public static computeSum(entries: Array<ObjetElements>): ObjetElements {
-    return entries.reduce((a, b) => a.accumulateByAddition(b), ObjetElements.newEmptyObjetElements());
+    return entries.reduce((a, b) => a.accumulateByAddition(b), new ObjetElements());
   }
 
   public accumulateByAddition(other: ObjetElements): ObjetElements {

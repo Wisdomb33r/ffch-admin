@@ -67,13 +67,13 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
     if (FfbeUtils.isNullOrUndefined(res)) {
-      return ObjetElements.newEmptyObjetElements();
+      return new ObjetElements();
     }
     return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
   }
 
   private static mapEquipmentElementInflicts(inflicts: Array<string>) {
-    const elements = ObjetElements.newEmptyObjetElements();
+    const elements = new ObjetElements();
 
     if (Array.isArray(inflicts) && inflicts.length > 0) {
       inflicts.forEach(element => {
@@ -102,7 +102,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
 
   private static mapEquipmentElements(resistances: ObjetElements, inflicts: ObjetElements) {
 
-    const elements = ObjetElements.newEmptyObjetElements();
+    const elements = new ObjetElements();
 
     elements.feu = EquipmentMapper.computeElementValue(resistances.feu, inflicts.feu);
     elements.glace = EquipmentMapper.computeElementValue(resistances.glace, inflicts.glace);

@@ -31,7 +31,7 @@ export class ConsumableMapper {
       new Caracteristiques(),
       new Caracteristiques(),
       new Caracteristiques(),
-      ObjetElements.newEmptyObjetElements(),
+      new ObjetElements(),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       null
     );

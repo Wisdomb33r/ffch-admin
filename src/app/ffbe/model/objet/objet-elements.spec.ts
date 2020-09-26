@@ -29,7 +29,7 @@ describe('ObjetElements', () => {
   it('should add one valid and one empty ObjetElementss correctly', () => {
     // GIVEN
     const elements1 = new ObjetElements(1, 2, 3, 4, 5, 6, 7, 8);
-    const elements2 = ObjetElements.newEmptyObjetElements();
+    const elements2 = new ObjetElements();
 
     // WHEN
     elements1.accumulateByAddition(elements2);
@@ -40,7 +40,7 @@ describe('ObjetElements', () => {
 
   it('should add one empty and one valid ObjetElementss correctly', () => {
     // GIVEN
-    const elements1 = ObjetElements.newEmptyObjetElements();
+    const elements1 = new ObjetElements();
     const elements2 = new ObjetElements(1, 2, 3, 4, 5, 6, 7, 8);
 
     // WHEN
