@@ -1,6 +1,6 @@
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/objet/objet-elements.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export abstract class ItemWithSkillsMapper {
@@ -44,15 +44,15 @@ export abstract class ItemWithSkillsMapper {
     return Caracteristiques.computeSum(increases);
   }
 
-  protected static mapElementResistances(dmSkills: Array<Skill>): ObjetElements {
+  protected static mapElementResistances(dmSkills: Array<Skill>): ResistancesElementaires {
     if (!Array.isArray(dmSkills)) {
-      return new ObjetElements();
+      return new ResistancesElementaires();
     }
 
     const resistances = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
       .map(dmSkill => dmSkill.calculateElementResistances());
 
-    return ObjetElements.computeSum(resistances);
+    return ResistancesElementaires.computeSum(resistances);
   }
 
   private static filterSkillsWithoutUnitRestriction(dmSkills: Array<Skill>): Array<Skill> {

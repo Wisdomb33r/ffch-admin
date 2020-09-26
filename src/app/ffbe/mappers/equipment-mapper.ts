@@ -6,7 +6,7 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/objet/objet-elements.model';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
@@ -66,14 +66,14 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
-  private static mapEquipmentElementResistances(res: EquipmentElementResist, dmSkills: Array<Skill>): ObjetElements {
+  private static mapEquipmentElementResistances(res: EquipmentElementResist, dmSkills: Array<Skill>): ResistancesElementaires {
     if (FfbeUtils.isNullOrUndefined(res) && (!Array.isArray(dmSkills) || dmSkills.length === 0)) {
-      return new ObjetElements();
+      return new ResistancesElementaires();
     }
 
-    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0);
+    let resistances = new ResistancesElementaires(0, 0, 0, 0, 0, 0, 0, 0);
     if (!FfbeUtils.isNullOrUndefined(res)) {
-      resistances.accumulateByAddition(new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
+      resistances.accumulateByAddition(new ResistancesElementaires(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
     }
 
     resistances.accumulateByAddition(ItemWithSkillsMapper.mapElementResistances(dmSkills));
@@ -82,7 +82,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
   }
 
   private static mapEquipmentElementInflicts(inflicts: Array<string>) {
-    const elements = new ObjetElements();
+    const elements = new ResistancesElementaires();
 
     if (Array.isArray(inflicts) && inflicts.length > 0) {
       inflicts.forEach(element => {
@@ -109,9 +109,9 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return elements;
   }
 
-  private static mapEquipmentElements(resistances: ObjetElements, inflicts: ObjetElements) {
+  private static mapEquipmentElements(resistances: ResistancesElementaires, inflicts: ResistancesElementaires) {
 
-    const elements = new ObjetElements();
+    const elements = new ResistancesElementaires();
 
     elements.feu = EquipmentMapper.computeElementValue(resistances.feu, inflicts.feu);
     elements.glace = EquipmentMapper.computeElementValue(resistances.glace, inflicts.glace);

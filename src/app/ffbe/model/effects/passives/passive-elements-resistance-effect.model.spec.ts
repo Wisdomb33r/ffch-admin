@@ -1,5 +1,5 @@
 import {PassiveSkillEffectFactory} from '../passive-skill-effect.factory';
-import {ObjetElements} from '../../objet/objet-elements.model';
+import {ResistancesElementaires} from '../../objet/objet-elements.model';
 
 describe('PassiveElementsResistanceEffect', () => {
   it('should compute passive element resistances correctly', () => {
@@ -11,6 +11,6 @@ describe('PassiveElementsResistanceEffect', () => {
     const carac = skillEffect.getElementResistances();
 
     // THEN
-    expect(carac).toEqual(new ObjetElements(10, 20, 30, 40, 50, 60, 70, 80));
+    expect(carac).toEqual(new ResistancesElementaires(10, 20, 30, 40, 50, 60, 70, 80));
   });
 });

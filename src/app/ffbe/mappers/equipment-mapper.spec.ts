@@ -10,7 +10,7 @@ import {Character} from '../model/character/character.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
-import {ObjetElements} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/objet/objet-elements.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
@@ -221,7 +221,7 @@ describe('EquipmentMapper', () => {
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.elements).toEqual(new ObjetElements(15, 15, 0, 0, 15, 15, 0, 0));
+    expect(objet.elements).toEqual(new ResistancesElementaires(15, 15, 0, 0, 15, 15, 0, 0));
   });
 
   it('should parse passive element resistances from skills correctly', () => {
@@ -237,7 +237,7 @@ describe('EquipmentMapper', () => {
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.elements).toEqual(new ObjetElements(30, 0, 0, 30, 30, 30, 0, 0));
+    expect(objet.elements).toEqual(new ResistancesElementaires(30, 0, 0, 30, 30, 30, 0, 0));
   });
 
   it('should parse passive element resistances from stats and skills correctly', () => {
@@ -254,7 +254,7 @@ describe('EquipmentMapper', () => {
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
-    expect(objet.elements).toEqual(new ObjetElements(45, 15, 0, 30, 45, 45, 0, 0));
+    expect(objet.elements).toEqual(new ResistancesElementaires(45, 15, 0, 30, 45, 45, 0, 0));
   });
 
   it('should parse passive element inflicts from equipment stats correctly', () => {
@@ -272,9 +272,9 @@ describe('EquipmentMapper', () => {
     const objet: Objet = EquipmentMapper.toObjet(equipment);
 
     // THEN
-    expect(objet.resistancesElementaires).toEqual(new ObjetElements(20, 20, 20, 20, 20, 20, 20, 20));
-    expect(objet.elementsArme).toEqual(new ObjetElements(1000, null, null, null, null, null, null, null));
-    expect(objet.elements).toEqual(new ObjetElements(1020, 20, 20, 20, 20, 20, 20, 20));
+    expect(objet.resistancesElementaires).toEqual(new ResistancesElementaires(20, 20, 20, 20, 20, 20, 20, 20));
+    expect(objet.elementsArme).toEqual(new ResistancesElementaires(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ResistancesElementaires(1020, 20, 20, 20, 20, 20, 20, 20));
   });
 
   it('should parse passive element resistances and inflicts from equipment stats and skills correctly', () => {
@@ -293,8 +293,8 @@ describe('EquipmentMapper', () => {
     const objet: Objet = EquipmentMapper.toObjet(equipment);
 
     // THEN
-    expect(objet.resistancesElementaires).toEqual(new ObjetElements(35, 35, 20, 20, 35, 35, 20, 20));
-    expect(objet.elementsArme).toEqual(new ObjetElements(1000, null, null, null, null, null, null, null));
-    expect(objet.elements).toEqual(new ObjetElements(1035, 35, 20, 20, 35, 35, 20, 20));
+    expect(objet.resistancesElementaires).toEqual(new ResistancesElementaires(35, 35, 20, 20, 35, 35, 20, 20));
+    expect(objet.elementsArme).toEqual(new ResistancesElementaires(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ResistancesElementaires(1035, 35, 20, 20, 35, 35, 20, 20));
   });
 });

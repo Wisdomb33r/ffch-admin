@@ -1,6 +1,6 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
-import {ObjetElements} from './objet/objet-elements.model';
+import {ResistancesElementaires} from './objet/objet-elements.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -1739,7 +1739,7 @@ describe('Skill', () => {
     const carac = skill.calculateElementResistances();
 
     // THEN
-    expect(carac).toEqual(new ObjetElements(0, 0, 0, 0, 30, 30, 0 , 30));
+    expect(carac).toEqual(new ResistancesElementaires(0, 0, 0, 0, 30, 30, 0, 30));
   });
 });
 

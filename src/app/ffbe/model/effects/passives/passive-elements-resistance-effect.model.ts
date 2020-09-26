@@ -2,11 +2,11 @@ import {Skill} from '../../skill.model';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
-import {ObjetElements} from '../../objet/objet-elements.model';
+import {ResistancesElementaires} from '../../objet/objet-elements.model';
 
 export class PassiveElementsResistanceEffect extends SkillEffect {
 
-  private increases: ObjetElements;
+  private increases: ResistancesElementaires;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -16,7 +16,7 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 8) {
       this.parameterError = true;
     } else {
-      this.increases = new ObjetElements(parameters[0], parameters[1], parameters[2], parameters[3],
+      this.increases = new ResistancesElementaires(parameters[0], parameters[1], parameters[2], parameters[3],
         parameters[4], parameters[5], parameters[6], parameters[7]);
     }
   }
@@ -36,7 +36,7 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
     return '+' + currentValue + '% de rés. ' + accumulatedStats.join(', ');
   }
 
-  getElementResistances(): ObjetElements {
+  getElementResistances(): ResistancesElementaires {
     return this.increases;
   }
 }

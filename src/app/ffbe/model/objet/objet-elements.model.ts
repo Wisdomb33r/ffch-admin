@@ -1,7 +1,7 @@
 import {NameValuePairArray} from '../name-value-pair-array.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 
-export class ObjetElements {
+export class ResistancesElementaires {
   public constructor(
     public feu: number = null,
     public glace: number = null,
@@ -14,16 +14,16 @@ export class ObjetElements {
   ) {
   }
 
-  public static produce(oe: ObjetElements): ObjetElements {
-    return new ObjetElements(oe.feu, oe.glace, oe.foudre, oe.eau, oe.air, oe.terre, oe.lumiere, oe.tenebres);
+  public static produce(oe: ResistancesElementaires): ResistancesElementaires {
+    return new ResistancesElementaires(oe.feu, oe.glace, oe.foudre, oe.eau, oe.air, oe.terre, oe.lumiere, oe.tenebres);
   }
 
 
-  public static computeSum(entries: Array<ObjetElements>): ObjetElements {
-    return entries.reduce((a, b) => a.accumulateByAddition(b), new ObjetElements());
+  public static computeSum(entries: Array<ResistancesElementaires>): ResistancesElementaires {
+    return entries.reduce((a, b) => a.accumulateByAddition(b), new ResistancesElementaires());
   }
 
-  public accumulateByAddition(other: ObjetElements): ObjetElements {
+  public accumulateByAddition(other: ResistancesElementaires): ResistancesElementaires {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return this;
     }

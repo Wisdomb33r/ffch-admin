@@ -5,7 +5,7 @@ import {FFBE_ELEMENTS} from '../ffbe.constants';
 import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
 import {Caracteristiques} from './caracteristiques.model';
 import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
-import {ObjetElements} from './objet/objet-elements.model';
+import {ResistancesElementaires} from './objet/objet-elements.model';
 
 export class Skill {
   public gumi_id: number;
@@ -104,8 +104,8 @@ export class Skill {
     return Caracteristiques.computeSum(this.effets.map(effet => effet.getDualwieldIncreasesPercent()));
   }
 
-  public calculateElementResistances(): ObjetElements {
-    return ObjetElements.computeSum(this.effets.map(effet => effet.getElementResistances()));
+  public calculateElementResistances(): ResistancesElementaires {
+    return ResistancesElementaires.computeSum(this.effets.map(effet => effet.getElementResistances()));
   }
 
   public wordElementInflict(): string {
