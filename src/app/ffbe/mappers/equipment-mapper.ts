@@ -71,7 +71,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       return new ObjetElements();
     }
 
-    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0,);
+    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0);
     if (!FfbeUtils.isNullOrUndefined(res)) {
       resistances.accumulateByAddition(new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
     }

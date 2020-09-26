@@ -78,5 +78,46 @@ export const MATERIAS_TEST_DATA =
                 "1": "裝備2把單手武器時武具攻擊提升，並且在裝備劍時提高50%攻擊。[無法重複裝備]"
             }
         }
+    },
+    "504232511": {
+        "name": "Exceptional Ingenuity",
+        "compendium_id": 1015,
+        "compendium_shown": true,
+        "unit_restriction": null,
+        "skills": [232511],
+        "effects": ["Grants 'Exceptional Ingenuity' passive."],
+        "unique": false,
+        "price_buy": 200000,
+        "price_sell": 20000,
+        "icon": "ability_91.png",
+        "strings": {
+            "names": [
+                "Exceptional Ingenuity",
+                "無懈可擊的謀略家",
+                "빈틈없는 지략가",
+                "Ingéniosité exceptionnelle",
+                "Außergewöhnlicher Einfallsreichtum",
+                "Ingenuidad excepcional",
+                "Kecerdasan Memukau"
+            ],
+            "desc_short": [
+                "Boost MP and fire, ice, lightning, water, wind, earth, light, and dark resistance by 30%, nullify paralysis and confusion, and fill LB gauge every turn",
+                "提高30%MP、火冰雷水風土光暗屬性耐性+麻痺混亂無效+每回合增加極限技槽",
+                "MP와 불, 얼음, 번개, 물, 바람, 땅, 빛, 어둠속성 저항력 30% 상승+마비와 혼란 무효화+매 턴마다 LB 게이지 증가",
+                "Augmente les PM et la résistance au feu, à la glace, à la foudre, à l'eau, au vent, à la terre, à la lumière et aux ténèbres de 30 %, annule paralysie et confusion, et remplit la jauge de limite à chaque tour",
+                "Erhöht MP und Feuer-, Eis-, Blitz-, Wasser-, Wind-, Erde-, Licht- und Dunkelresistenz um 30%, annuliert Lähmung und Konfus und füllt jede Runde Limitmeter.",
+                "Aumenta los PM y la resistencia a fuego, hielo, rayo, agua, viento, tierra, luz y oscuridad un 30%, anula parálisis y confusión, y rellena la barra de EL cada turno",
+                "Meningkatkan MP, resistansi api, es, petir, air, angin, tanah, cahaya, dan kegelapan sebanyak 30%, menihilkan status paralyze dan confuse, serta mengisi bar LB setiap giliran"
+            ],
+            "desc_long": [
+                "Boosts MP and fire, ice, lightning, water, wind, earth, light, and dark resistance by 30%, nullifies paralysis and confusion, and fills LB gauge every turn.",
+                "提高30%MP、火冰雷水風土光暗屬性耐性，麻痺混亂無效，並且每回合增加極限技槽。",
+                "MP와 불, 얼음, 번개, 물, 바람, 땅, 빛, 어둠속성 저항력이 30% 상승하고, 마비와 혼란을 무효화하며, 매 턴마다 LB 게이지가 증가합니다.",
+                "Augmente les PM et la résistance au feu, à la glace, à la foudre, à l'eau, au vent, à la terre, à la lumière et aux ténèbres de 30 %, annule paralysie et confusion, et remplit la jauge de limite à chaque tour",
+                "Erhöht MP und Feuer-, Eis-, Blitz-, Wasser-, Wind-, Erde-, Licht- und Dunkelresistenz um 30%, annuliert Lähmung und Konfus und füllt jede Runde Limitmeter.",
+                "Aumenta los PM y la resistencia a fuego, hielo, rayo, agua, viento, tierra, luz y oscuridad un 30%, anula parálisis y confusión, y rellena la barra de EL cada turno.",
+                "Meningkatkan MP, resistansi api, es, petir, air, angin, tanah, cahaya, dan kegelapan sebanyak 30%, menihilkan status paralyze dan confuse, serta mengisi bar limit burst setiap giliran."
+            ]
+        }
     }
   }`;

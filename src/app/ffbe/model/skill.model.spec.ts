@@ -562,6 +562,25 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 3, [20,  20,  20,  20,  20,  20,  20,  20]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "232511": {
+        "name": "Exceptional Ingenuity",
+        "icon": "ability_91.png",
+        "compendium_id": 6894,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Paralyze and Confusion by 100%",
+            "Increase LB gauge by 3 per turn",
+            "Increase resistance to all elements by 30%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 2, [0,  0,  0,  0,  100,  100,  0,  0]], [0, 3, 33, [300]], [0, 3, 3, [30,  30,  30,  30,  30,  30,  30,  30]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

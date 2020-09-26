@@ -6,6 +6,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
+import {ObjetElements} from '../model/objet/objet-elements.model';
 
 describe('MateriaMapper', () => {
   it('should transform materia raw data into Objet', () => {
@@ -71,5 +72,21 @@ describe('MateriaMapper', () => {
     const objet: Objet = MateriaMapper.toObjet(materia);
     // THEN
     expect(objet.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 100, 0, 0, 0));
+  });
+
+  it('should parse passive increases to element resistances', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504232511'];
+    materia.gumi_id = 504232511;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.elements).toEqual(new ObjetElements(30, 30, 30, 30, 30, 30, 30, 30));
   });
 });

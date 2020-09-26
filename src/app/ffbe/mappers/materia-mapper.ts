@@ -8,6 +8,7 @@ import {Caracteristiques} from '../model/caracteristiques.model';
 import {ObjetElements} from '../model/objet/objet-elements.model';
 import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
+import {Skill} from '../model/skill.model';
 
 export class MateriaMapper extends ItemWithSkillsMapper {
 
@@ -32,7 +33,7 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
-      new ObjetElements(),
+      MateriaMapper.mapMateriaElementResistances(materia.dmSkills),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
@@ -47,4 +48,17 @@ export class MateriaMapper extends ItemWithSkillsMapper {
     return objet;
   }
 
+  private static mapMateriaElementResistances(dmSkills: Array<Skill>): ObjetElements {
+    if (FfbeUtils.isNullOrUndefined(dmSkills) || dmSkills.length === 0) {
+      return new ObjetElements();
+    }
+
+    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0);
+
+    if (!FfbeUtils.isNullOrUndefined(dmSkills) && dmSkills.length > 0) {
+      resistances.accumulateByAddition(ObjetElements.computeSum(dmSkills.map(skill => skill.calculateElementResistances())));
+    }
+
+    return resistances;
+  }
 }
