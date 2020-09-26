@@ -3,7 +3,7 @@ import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
 import {ResistancesElementaires} from '../resistances-elementaires.model';
-import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
+import {ResistancesAlterations} from './objet-alterations-etat.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
 
@@ -38,7 +38,7 @@ export class Objet implements CaracteristiquesContainer {
     public caracpTrueDoublehand: Caracteristiques,
     public caracpDualwield: Caracteristiques,
     public elements: ResistancesElementaires,
-    public resistancesAlterations: ObjetAlterationsEtat,
+    public resistancesAlterations: ResistancesAlterations,
     public competences: Array<Competence>
   ) {
   }
@@ -63,7 +63,7 @@ export class Objet implements CaracteristiquesContainer {
       Caracteristiques.produce(o.caracpTrueDoublehand),
       Caracteristiques.produce(o.caracpDualwield),
       ResistancesElementaires.produce(o.elements),
-      ObjetAlterationsEtat.produce(o.resistancesAlterations),
+      ResistancesAlterations.produce(o.resistancesAlterations),
       o.competences);
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {

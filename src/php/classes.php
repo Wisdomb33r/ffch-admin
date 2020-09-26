@@ -62,7 +62,7 @@ class ResistancesElementaires
   }
 }
 
-class ObjetAlterationsEtat
+class ResistancesAlterations
 {
   public $poison;
   public $cecite;
@@ -140,7 +140,7 @@ class Objet
     $this->carac = new Caracteristiques($brex_objet->pv, $brex_objet->pm, $brex_objet->att, $brex_objet->def, $brex_objet->mag, $brex_objet->psy);
     $this->caracp = new Caracteristiques($brex_objet->pvp, $brex_objet->pmp, $brex_objet->attp, $brex_objet->defp, $brex_objet->magp, $brex_objet->psyp);
     $this->elements = new ResistancesElementaires($brex_objet->res_feu, $brex_objet->res_glace, $brex_objet->res_foudre, $brex_objet->res_eau, $brex_objet->res_air, $brex_objet->res_terre, $brex_objet->res_lumiere, $brex_objet->res_tenebres);
-    $this->resistancesAlterations = new ObjetAlterationsEtat($brex_objet->res_poison, $brex_objet->res_cecite, $brex_objet->res_sommeil, $brex_objet->res_mutisme, $brex_objet->res_paralysie, $brex_objet->res_confusion, $brex_objet->res_maladie, $brex_objet->res_petrification);
+    $this->resistancesAlterations = new ResistancesAlterations($brex_objet->res_poison, $brex_objet->res_cecite, $brex_objet->res_sommeil, $brex_objet->res_mutisme, $brex_objet->res_paralysie, $brex_objet->res_confusion, $brex_objet->res_maladie, $brex_objet->res_petrification);
     if (!is_null($brex_objet->two_handed)) {
       $this->two_handed = $brex_objet->two_handed ? true : false;
     }

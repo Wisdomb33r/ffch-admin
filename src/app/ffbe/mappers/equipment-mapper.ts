@@ -8,7 +8,7 @@ import {EquipmentStats} from '../model/equipment/equipment-stats.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
-import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {ResistancesAlterations} from '../model/objet/objet-alterations-etat.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
 import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
@@ -138,11 +138,11 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return value;
   }
 
-  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ObjetAlterationsEtat {
+  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ResistancesAlterations {
     if (FfbeUtils.isNullOrUndefined(e)) {
-      return ObjetAlterationsEtat.newEmptyObjetAlterationsEtat();
+      return ResistancesAlterations.newEmptyObjetAlterationsEtat();
     }
-    return new ObjetAlterationsEtat(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
+    return new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
   }
 
   private static mapEquipmentRequirements(requirements: Array<any>): string {

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {ResistancesAlterations} from '../model/objet/objet-alterations-etat.model';
 
 @Component({
   selector: 'app-objet-alterations-etat-display',
@@ -8,7 +8,7 @@ import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model'
 })
 export class ObjetAlterationsEtatDisplayComponent implements OnInit {
 
-  @Input() objetAlterationsEtat: ObjetAlterationsEtat;
+  @Input() objetAlterationsEtat: ResistancesAlterations;
   @Input() titre: string;
   @Input() estModifiable: boolean;
 

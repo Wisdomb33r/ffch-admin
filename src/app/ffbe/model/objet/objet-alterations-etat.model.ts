@@ -1,6 +1,6 @@
 import {FfbeUtils} from '../../utils/ffbe-utils';
 
-export class ObjetAlterationsEtat {
+export class ResistancesAlterations {
   public constructor(
     public poison: number,
     public cecite: number,
@@ -13,15 +13,15 @@ export class ObjetAlterationsEtat {
   ) {
   }
 
-  public static newEmptyObjetAlterationsEtat(): ObjetAlterationsEtat {
-    return new ObjetAlterationsEtat(null, null, null, null, null, null, null, null);
+  public static newEmptyObjetAlterationsEtat(): ResistancesAlterations {
+    return new ResistancesAlterations(null, null, null, null, null, null, null, null);
   }
 
-  public static produce(oae: ObjetAlterationsEtat): ObjetAlterationsEtat {
+  public static produce(oae: ResistancesAlterations): ResistancesAlterations {
     if (FfbeUtils.isNullOrUndefined(oae)) {
       return this.newEmptyObjetAlterationsEtat();
     }
-    return new ObjetAlterationsEtat(oae.poison, oae.cecite, oae.sommeil, oae.silence, oae.paralysie, oae.confusion, oae.maladie, oae.petrification);
+    return new ResistancesAlterations(oae.poison, oae.cecite, oae.sommeil, oae.silence, oae.paralysie, oae.confusion, oae.maladie, oae.petrification);
   }
 
 }
