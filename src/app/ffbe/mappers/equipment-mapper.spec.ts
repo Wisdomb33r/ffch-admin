@@ -256,4 +256,45 @@ describe('EquipmentMapper', () => {
     // THEN
     expect(objet.elements).toEqual(new ObjetElements(45, 15, 0, 30, 45, 45, 0, 0));
   });
+
+  it('should parse passive element inflicts from equipment stats correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301003500'];
+    equipment.gumi_id = 301003500;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['100020'];
+    const skill2: Skill = skills['227937'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+
+    // THEN
+    expect(objet.resistancesElementaires).toEqual(new ObjetElements(20, 20, 20, 20, 20, 20, 20, 20));
+    expect(objet.elementsArme).toEqual(new ObjetElements(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ObjetElements(1020, 20, 20, 20, 20, 20, 20, 20));
+  });
+
+  it('should parse passive element resistances and inflicts from equipment stats and skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301003500'];
+    equipment.gumi_id = 301003500;
+    equipment.stats.element_resist = equipments['1100000369'].stats.element_resist;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['100020'];
+    const skill2: Skill = skills['227937'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+
+    // THEN
+    expect(objet.resistancesElementaires).toEqual(new ObjetElements(35, 35, 20, 20, 35, 35, 20, 20));
+    expect(objet.elementsArme).toEqual(new ObjetElements(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ObjetElements(1035, 35, 20, 20, 35, 35, 20, 20));
+  });
 });

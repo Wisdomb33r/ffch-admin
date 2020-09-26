@@ -539,7 +539,7 @@ export const EQUIPMENTS_TEST_DATA =
             ]
         }
     },
-        "301003500": {
+    "301003500": {
         "name": "Nyx's Dagger",
         "compendium_id": 1019,
         "compendium_shown": true,
