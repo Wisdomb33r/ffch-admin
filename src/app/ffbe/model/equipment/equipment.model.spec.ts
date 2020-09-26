@@ -413,5 +413,130 @@ export const EQUIPMENTS_TEST_DATA =
                 "1": "著名女劍士的可愛的髮夾。祖上留下來的傳家寶，就算在殘酷的戰鬥中她也會為了保持優雅而將其戴在頭上。傳聞這件裝飾品能夠提高裝備者手持兩把武器時的戰鬥能力。"
             }
         }
+    },
+    "1100000369": {
+        "name": "Mistletoe Clip",
+        "compendium_id": 90371,
+        "compendium_shown": true,
+        "rarity": 8,
+        "type_id": 40,
+        "type": "Hat",
+        "slot_id": 3,
+        "slot": "Headgear",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": null,
+        "effects": null,
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 40,
+            "DEF": 0,
+            "MAG": 40,
+            "SPR": 0,
+            "element_resist": {
+                "Fire": 15,
+                "Ice": 15,
+                "Wind": 15,
+                "Earth": 15
+            },
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 10000,
+        "price_sell": 1000,
+        "icon": "global_equip_10306.png",
+        "strings": {
+            "name": [
+                "Mistletoe Clip",
+                "柊木髮夾",
+                "겨우살이풀 머리장식",
+                "Brindille de gui",
+                "Mistelzweighaarklammer",
+                "Clip de muérdago",
+                "Hiasan Rambut Mistletoe"
+            ],
+            "desc_short": [
+                "A hair clip fashioned in the image of mistletoe.",
+                "效仿柊木造型製作的髮夾。",
+                "겨우살이풀의 모양을 한 머리장식",
+                "Une barrette à cheveux en forme de brindille de gui.",
+                "Eine Haarklammer, deren Gestaltung einem echten Mistelzweig nachempfunden wurde.",
+                "Un clip para el pelo con forma de muérdago.",
+                "Jepit rambut berhiaskan gambar daun mistletoe."
+            ],
+            "desc_long": [
+                "A hair clip fashioned in the image of mistletoe. One of the many symbols of the festivities that take place during winter, it helps set the spirit of the season.",
+                "效仿柊木造型製作的髮夾。冬季慶典的代表元素之一，在發揚此節慶精神這點上可說是不可或缺的存在。",
+                "겨우살이풀의 모양을 한 머리장식. 겨울 축제를 나타내는 여러 상징물 중 하나로, 그 계절의 분위기를 내기에 안성맞춤이다.",
+                "Une barrette à cheveux en forme de brindille de gui, l'un des nombreux symboles des festivités hivernales. Elle permet à son porteur de profiter directement de l'ambiance si typique de cette saison.",
+                "Eine Haarklammer, deren Gestaltung einem echten Mistelzweig nachempfunden wurde. Der Mistelzweig ist nur eines von zahlreichen Symbolen der im Winter abgehaltenen Festivitäten und sorgt so für eine zur Saison passenden Stimmung.",
+                "Un clip para el pelo con forma de muérdago. Uno de los muchos símbolos de las fiestas que se celebran en invierno y que ayuda a mantener el espíritu de las fiestas.",
+                "Jepit rambut berhiaskan gambar daun mistletoe. Salah satu simbol perayaan yang berlangsung di musim dingin, benda ini membantu mengobarkan semangat untuk hari raya ini."
+            ]
+        }
+    },
+    "405004800": {
+        "name": "Luneth's Clothes",
+        "compendium_id": 898,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 50,
+        "type": "Cloth",
+        "slot_id": 4,
+        "slot": "Chest",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [226886],
+        "effects": ["Grants 'Memories of the Wind' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 45,
+            "DEF": 1,
+            "MAG": 0,
+            "SPR": 1,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 200000,
+        "price_sell": 20000,
+        "icon": "item_20144.png",
+        "strings": {
+            "name": [
+                "Luneth's Clothes",
+                "路涅斯衣",
+                "루네스의 옷",
+                "Tenue de Luneth",
+                "Luneths Kleidung",
+                "Ropa de Luneth",
+                "Pakaian Luneth"
+            ],
+            "desc_short": [
+                "A set of clothes worn by a young man from a faraway world.",
+                "異界少年所穿著的服裝",
+                "이계의 소년이 입고 있던 옷",
+                "Un ensemble de vêtements porté par un jeune homme venu d'un monde lointain.",
+                "Eine Garnitur Klamotten, die von einem jungen Mann aus einer fernen Welt getragen wurden.",
+                "La ropa de un joven de un mundo lejano.",
+                "Seperangkat pakaian yang dipakai oleh seorang pria muda dari dunia lain."
+            ],
+            "desc_long": [
+                "A set of clothes worn by a young man from a faraway world. The top has a unique design with three large belts strapped across a leather vest. He was chosen to be one of the Warriors of the Light, and travels across the world with his friends to learn the secrets of his world.",
+                "異界少年所穿著的服裝。上衣的皮革背心有著三條粗皮帶的特殊設計。被選為光之戰士的少年，與夥伴們在旅途中得知了世界的秘密。",
+                "어떤 이계의 소년이 입고 있던 옷. 상의인 가죽조끼는 3개의 큰 벨트가 달린 독특한 디자인이다. 빛의 전사로 선택받은 그 소년은 동료들과 함께 여행하며 세계의 비밀을 알아갔다고 한다.",
+                "Un ensemble de vêtements porté par un jeune homme venu d'un monde lointain. Le haut possède une forme unique avec ses trois grandes ceintures entourant une veste en cuir. Il a été choisi pour devenir l'un des Guerriers de la Lumière et parcourt le monde entier en compagnie de ses amis pour en découvrir les secrets.",
+                "Eine Garnitur Klamotten, die von einem jungen Mann aus einer fernen Welt getragen wurden. Am Oberkörper trug er eine Lederweste mit einzigartigem Design, an der drei große Gürtel befestigt sind. Aufgenommen in die Reihen der Krieger des Lichts, bereisten er und seine Freunde die Welt, um ihre Geheimnisse zu ergründen.",
+                "La ropa de un joven de un mundo lejano. La parte de arriba cuenta posee un diseño único donde se pueden observar tres botones bastante grandes atados al chaleco de cuero. Luneth fue elegido para convertirse en uno de los Guerreros de la Luz y, por tanto, viaja por todas partes con sus amigos para aprender los secretos de su mundo.",
+                "Seperangkat pakaian yang dipakai seorang pria muda dari dunia yang jauh. Atasannya memiliki desain unik dengan tiga sabuk besar yang diikat di rompi kulit. Ia terpilih menjadi salah satu Kesatria Cahaya, dan melakukan perjalanan keliling dunia dengan teman-temannya untuk mengetahui rahasia dunianya."
+            ]
+        }
     }
   }`;

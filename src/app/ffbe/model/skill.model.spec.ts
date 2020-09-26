@@ -534,6 +534,20 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 3, [0,  0,  0,  0,  30,  30,  0,  30]], [0, 3, 33, [200]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "226886": {
+        "name": "Memories of the Wind",
+        "icon": "ability_9.png",
+        "compendium_id": 2885,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to Fire, Water, Wind and Earth by 30%"],
+        "effects_raw": [[0, 3, 3, [30,  0,  0,  30,  30,  30,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

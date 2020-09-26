@@ -13,11 +13,12 @@ import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.
 import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
+import {Skill} from '../model/skill.model';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
   public static toObjet(equipment: Equipment) {
-    const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist);
+    const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist, equipment.dmSkills);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
 
@@ -65,11 +66,21 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
-  private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
-    if (FfbeUtils.isNullOrUndefined(res)) {
+  private static mapEquipmentElementResistances(res: EquipmentElementResist, dmSkills: Array<Skill>): ObjetElements {
+    if (FfbeUtils.isNullOrUndefined(res) && (FfbeUtils.isNullOrUndefined(dmSkills) || dmSkills.length === 0)) {
       return new ObjetElements();
     }
-    return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
+
+    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0,);
+    if (!FfbeUtils.isNullOrUndefined(res)) {
+      resistances.accumulateByAddition(new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
+    }
+
+    if (!FfbeUtils.isNullOrUndefined(dmSkills) && dmSkills.length > 0) {
+      resistances.accumulateByAddition(ObjetElements.computeSum(dmSkills.map(skill => skill.calculateElementResistances())));
+    }
+
+    return resistances;
   }
 
   private static mapEquipmentElementInflicts(inflicts: Array<string>) {
