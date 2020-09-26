@@ -44,7 +44,7 @@ export class ResistancesAlterations {
   public toNameValuePairArray(): NameValuePairArray {
     return [
       {name: 'Poison', value: this.poison},
-      {name: 'Cecité', value: this.cecite},
+      {name: 'Cécité', value: this.cecite},
       {name: 'Sommeil', value: this.sommeil},
       {name: 'Silence', value: this.silence},
       {name: 'Paralysie', value: this.paralysie},

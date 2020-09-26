@@ -97,7 +97,7 @@ describe('ResistancesAlterations', () => {
 
     // THEN
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Poison' && nameValuePair.value === 10)).toEqual(0);
-    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Cecité' && nameValuePair.value === 20)).toEqual(1);
+    expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Cécité' && nameValuePair.value === 20)).toEqual(1);
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Sommeil' && nameValuePair.value === 30)).toEqual(2);
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Silence' && nameValuePair.value === 40)).toEqual(3);
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Paralysie' && nameValuePair.value === 50)).toEqual(4);

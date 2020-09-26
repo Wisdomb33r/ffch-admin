@@ -8,9 +8,9 @@ describe('PassiveElementsResistanceEffect', () => {
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
 
     // WHEN
-    const carac = skillEffect.getElementResistances();
+    const resistances = skillEffect.getElementResistances();
 
     // THEN
-    expect(carac).toEqual(new ResistancesElementaires(10, 20, 30, 40, 50, 60, 70, 80));
+    expect(resistances).toEqual(new ResistancesElementaires(10, 20, 30, 40, 50, 60, 70, 80));
   });
 });
