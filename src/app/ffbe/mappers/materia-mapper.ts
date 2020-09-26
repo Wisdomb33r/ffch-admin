@@ -33,7 +33,7 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
-      MateriaMapper.mapMateriaElementResistances(materia.dmSkills),
+      ItemWithSkillsMapper.mapElementResistances(materia.dmSkills),
       ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
@@ -46,19 +46,5 @@ export class MateriaMapper extends ItemWithSkillsMapper {
     objet.prix_vente = materia.price_sell;
 
     return objet;
-  }
-
-  private static mapMateriaElementResistances(dmSkills: Array<Skill>): ObjetElements {
-    if (FfbeUtils.isNullOrUndefined(dmSkills) || dmSkills.length === 0) {
-      return new ObjetElements();
-    }
-
-    let resistances = new ObjetElements(0, 0, 0, 0, 0, 0, 0, 0);
-
-    if (!FfbeUtils.isNullOrUndefined(dmSkills) && dmSkills.length > 0) {
-      resistances.accumulateByAddition(ObjetElements.computeSum(dmSkills.map(skill => skill.calculateElementResistances())));
-    }
-
-    return resistances;
   }
 }

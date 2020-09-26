@@ -67,7 +67,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
   }
 
   private static mapEquipmentElementResistances(res: EquipmentElementResist, dmSkills: Array<Skill>): ObjetElements {
-    if (FfbeUtils.isNullOrUndefined(res) && (FfbeUtils.isNullOrUndefined(dmSkills) || dmSkills.length === 0)) {
+    if (FfbeUtils.isNullOrUndefined(res) && (!Array.isArray(dmSkills) || dmSkills.length === 0)) {
       return new ObjetElements();
     }
 
@@ -76,9 +76,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       resistances.accumulateByAddition(new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
     }
 
-    if (!FfbeUtils.isNullOrUndefined(dmSkills) && dmSkills.length > 0) {
-      resistances.accumulateByAddition(ObjetElements.computeSum(dmSkills.map(skill => skill.calculateElementResistances())));
-    }
+    resistances.accumulateByAddition(ItemWithSkillsMapper.mapElementResistances(dmSkills));
 
     return resistances;
   }

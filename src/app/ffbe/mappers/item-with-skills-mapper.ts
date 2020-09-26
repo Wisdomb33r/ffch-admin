@@ -1,5 +1,7 @@
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
+import {ObjetElements} from '../model/objet/objet-elements.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export abstract class ItemWithSkillsMapper {
   protected static mapEquipmentBaseIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
@@ -40,6 +42,17 @@ export abstract class ItemWithSkillsMapper {
     const increases = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
       .map(dmSkill => dmSkill.calculateDualwieldIncreasesPercent());
     return Caracteristiques.computeSum(increases);
+  }
+
+  protected static mapElementResistances(dmSkills: Array<Skill>): ObjetElements {
+    if (!Array.isArray(dmSkills)) {
+      return new ObjetElements();
+    }
+
+    const resistances = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateElementResistances());
+
+    return ObjetElements.computeSum(resistances);
   }
 
   private static filterSkillsWithoutUnitRestriction(dmSkills: Array<Skill>): Array<Skill> {
