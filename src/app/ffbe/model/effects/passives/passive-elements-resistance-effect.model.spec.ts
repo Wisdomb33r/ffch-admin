@@ -1,5 +1,5 @@
 import {PassiveSkillEffectFactory} from '../passive-skill-effect.factory';
-import {ResistancesElementaires} from '../../objet/objet-elements.model';
+import {ResistancesElementaires} from '../../resistances-elementaires.model';
 
 describe('PassiveElementsResistanceEffect', () => {
   it('should compute passive element resistances correctly', () => {

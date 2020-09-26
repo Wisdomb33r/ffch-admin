@@ -1,5 +1,5 @@
-import {NameValuePairArray} from '../name-value-pair-array.model';
-import {FfbeUtils} from '../../utils/ffbe-utils';
+import {NameValuePairArray} from './name-value-pair-array.model';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class ResistancesElementaires {
   public constructor(

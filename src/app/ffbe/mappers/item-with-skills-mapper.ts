@@ -1,6 +1,6 @@
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ResistancesElementaires} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export abstract class ItemWithSkillsMapper {

@@ -1,5 +1,5 @@
-import {ResistancesElementaires} from './objet-elements.model';
-import {NameValuePair, NameValuePairArray} from '../name-value-pair-array.model';
+import {ResistancesElementaires} from './resistances-elementaires.model';
+import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model';
 
 describe('ResistancesElementaires', () => {
   it('should add two ResistancesElementaires correctly', () => {

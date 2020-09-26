@@ -5,7 +5,7 @@ import {FFBE_ELEMENTS} from '../ffbe.constants';
 import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
 import {Caracteristiques} from './caracteristiques.model';
 import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
-import {ResistancesElementaires} from './objet/objet-elements.model';
+import {ResistancesElementaires} from './resistances-elementaires.model';
 
 export class Skill {
   public gumi_id: number;

@@ -1,6 +1,6 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
-import {ResistancesElementaires} from './objet/objet-elements.model';
+import {ResistancesElementaires} from './resistances-elementaires.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{

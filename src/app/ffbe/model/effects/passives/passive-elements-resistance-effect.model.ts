@@ -2,7 +2,7 @@ import {Skill} from '../../skill.model';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
-import {ResistancesElementaires} from '../../objet/objet-elements.model';
+import {ResistancesElementaires} from '../../resistances-elementaires.model';
 
 export class PassiveElementsResistanceEffect extends SkillEffect {
 

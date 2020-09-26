@@ -4,7 +4,7 @@ import {TargetPrepositionEnum} from './target-preposition.enum';
 import {Skill} from '../skill.model';
 import {EffectIdenticalValuesWording} from './effect-identical-values-wording';
 import {Caracteristiques} from '../caracteristiques.model';
-import {ResistancesElementaires} from '../objet/objet-elements.model';
+import {ResistancesElementaires} from '../resistances-elementaires.model';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;

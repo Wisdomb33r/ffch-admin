@@ -6,7 +6,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ResistancesElementaires} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 
 describe('MateriaMapper', () => {
   it('should transform materia raw data into Objet', () => {

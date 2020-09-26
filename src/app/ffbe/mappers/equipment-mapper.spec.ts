@@ -10,7 +10,7 @@ import {Character} from '../model/character/character.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
-import {ResistancesElementaires} from '../model/objet/objet-elements.model';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
