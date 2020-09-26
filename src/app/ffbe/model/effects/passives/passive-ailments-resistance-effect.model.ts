@@ -3,12 +3,11 @@ import {FfbeUtils} from '../../../utils/ffbe-utils';
 import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
 import {SkillEffect} from '../skill-effect.model';
-import {EffectParser} from '../../../mappers/effects/effect-parser';
-import {NameValuePairArray} from '../../name-value-pair-array.model';
+import {ResistancesAlterations} from '../../resistances-alterations.model';
 
 export class PassiveAilmentsResistanceEffect extends SkillEffect {
 
-  private increases: NameValuePairArray;
+  private resistances: ResistancesAlterations;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -18,7 +17,8 @@ export class PassiveAilmentsResistanceEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 8) {
       this.parameterError = true;
     } else {
-      this.increases = EffectParser.getKeyValueTableForAilements(parameters);
+      this.resistances = new ResistancesAlterations(parameters[0], parameters[1], parameters[2], parameters[3],
+        parameters[4], parameters[5], parameters[6], parameters[7]);
     }
   }
 
@@ -27,7 +27,7 @@ export class PassiveAilmentsResistanceEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return this.wordEffectJoiningIdenticalValues(this.increases);
+    return this.wordEffectJoiningIdenticalValues(this.resistances.toNameValuePairArray());
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
@@ -35,5 +35,9 @@ export class PassiveAilmentsResistanceEffect extends SkillEffect {
       return '+' + currentValue + '% de rés. aux altérations';
     }
     return '+' + currentValue + '% de rés. ' + FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ');
+  }
+
+  getAilmentResistances(): ResistancesAlterations {
+    return this.resistances;
   }
 }
