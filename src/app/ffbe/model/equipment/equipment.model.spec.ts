@@ -538,5 +538,68 @@ export const EQUIPMENTS_TEST_DATA =
                 "Seperangkat pakaian yang dipakai seorang pria muda dari dunia yang jauh. Atasannya memiliki desain unik dengan tiga sabuk besar yang diikat di rompi kulit. Ia terpilih menjadi salah satu Kesatria Cahaya, dan melakukan perjalanan keliling dunia dengan teman-temannya untuk mengetahui rahasia dunianya."
             ]
         }
+    },
+        "301003500": {
+        "name": "Nyx's Dagger",
+        "compendium_id": 1019,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 1,
+        "type": "Dagger",
+        "slot_id": 1,
+        "slot": "Weapon",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [100020, 227937],
+        "effects": [
+            "Grants 'HP +20%' passive.",
+            "Grants 'Nyx's Kukri' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 158,
+            "DEF": 50,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": ["Fire"],
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "item_10128.png",
+        "strings": {
+            "name": [
+                "Nyx's Dagger",
+                "尼克斯的短劍",
+                "닉스의 단검",
+                "Dague de Nyx",
+                "Nyx‘ Dolch",
+                "Daga de Nyx",
+                "Belati Nyx"
+            ],
+            "desc_short": [
+                "A dagger that was used by a hero from the faraway world of Eos.",
+                "異界伊歐斯的英雄使用的短劍",
+                "이계 이오스의 영웅이 애용하던 단검",
+                "Une dague utilisée par un héros du monde fort lointain d'Eos.",
+                "Ein Dolch, der von einem Held aus der entfernten Welt Eos verwendet wurde.",
+                "Una daga que blandió un héroe del lejano mundo de Eos.",
+                "Belati yang digunakan oleh pahlawan dari dunia Eos yang jauh."
+            ],
+            "desc_long": [
+                "A dagger that was used by a certain hero who held faith in the future of his homeland in the faraway world of Eos. The dagger is noted for its unique, curved blade. He lost his homeland after being invaded by the Niflheim Empire. Soon after, he joined the Kingdom of Lucis's elite force, the \\"Kingsglaive,\\" and fought for the future of his homeland.",
+                "在異界伊歐斯一位相信故鄉一定會迎來美好未來的英雄所使用之短劍。V字型的劍身是其特徵。因為尼弗海姆帝國的侵略而失去故鄉的他，加入了路希斯國王直屬的特殊部隊「王之劍」，為了故鄉的未來而奮戰到底。",
+                "이계 이오스에서 고향의 미래를 믿은 영웅이 애용한 단검 한 자루. 완만하게 휘어진 검날이 특징이다. 니플하임 제국의 침략으로 고향을 잃은 그는 루시스 왕국의 국왕 직속 부대 '킹스글레이브'의 멤버가 되어 고향의 미래를 위해 싸워나갔다.",
+                "Une dague utilisée par un héros qui avait foi dans le futur de sa patrie dans le monde fort lointain d'Éos. La dague dénote par sa lame originale et courbée. Son utilisateur perdit sa patrie après l'invasion de l'empire de Niflheim. Peu après, il devint l'un des glaives royaux du royaume de Lucis afin de combattre pour l'avenir de son pays.",
+                "Ein Dolch, der von einem gewissen Held, der an die Zukunft seines Heimatlandes in der entfernten Welt Eos glaubte, verwendet wurde. Der Dolch ist für seine einzigartige, gekrümmte Klinge bekannt. Er verlor seine Heimat, nachdem es vom Niflheim-Imperium eingenommen wurde. Wenig später trat er der Eliteeinheit des Königreichs von Lucis, der \\"Königsgleve\\", bei und kämpfte für die Zukunft seiner Heimat.",
+                "Una daga utilizada por cierto héroe que tenía fe en el futuro de su tierra natal, en el lejano mundo de Eos. La daga llama la atención por su particular hoja curva. El héroe perdió su tierra natal después de que fuese invadida por el Imperio de Niflheim. Poco después, se unió a los Glaives reales, la fuerza de élite del Reino de Lucis, y luchó por el futuro de su tierra natal.",
+                "Belati yang digunakan oleh seorang pahlawan yang memiliki keyakinan akan masa depan negeri kelahirannya di dunia Eos yang jauh. Belati ini terkenal karena bilahnya yang unik dan melengkung. Ia kehilangan tanah airnya setelah diserang oleh Kekaisaran Niflheim. Tak lama setelah itu, ia bergabung dengan pasukan elite Kerajaan Lucis, \\"Kingsglaive,\\" dan berjuang untuk masa depan tanah airnya."
+            ]
+        }
     }
   }`;

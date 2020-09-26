@@ -548,6 +548,20 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 3, [30,  0,  0,  30,  30,  30,  0,  0]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "227937": {
+        "name": "Nyx's Kukri",
+        "icon": "ability_9.png",
+        "compendium_id": 3589,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to all elements by 20%"],
+        "effects_raw": [[0, 3, 3, [20,  20,  20,  20,  20,  20,  20,  20]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
