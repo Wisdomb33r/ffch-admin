@@ -6,6 +6,7 @@ import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory'
 import {Caracteristiques} from './caracteristiques.model';
 import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
 import {ResistancesElementaires} from './resistances-elementaires.model';
+import {ResistancesAlterations} from './resistances-alterations.model';
 
 export class Skill {
   public gumi_id: number;
@@ -106,6 +107,10 @@ export class Skill {
 
   public calculateElementResistances(): ResistancesElementaires {
     return ResistancesElementaires.computeSum(this.effets.map(effet => effet.getElementResistances()));
+  }
+
+  public calculeAilmentResistances(): ResistancesAlterations {
+    return ResistancesAlterations.computeSum(this.effets.map(effet => effet.getAilmentResistances()));
   }
 
   public wordElementInflict(): string {

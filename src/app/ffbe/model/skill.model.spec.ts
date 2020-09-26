@@ -1,6 +1,7 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
 import {ResistancesElementaires} from './resistances-elementaires.model';
+import {ResistancesAlterations} from './resistances-alterations.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -1727,7 +1728,7 @@ describe('Skill', () => {
     expect(modIncrease).toEqual(400);
   });
 
-  it('should compute passive increases element resistances correctly', () => {
+  it('should compute passive increases to element resistances correctly', () => {
     // GIVEN
     const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
 
@@ -1740,6 +1741,21 @@ describe('Skill', () => {
 
     // THEN
     expect(carac).toEqual(new ResistancesElementaires(0, 0, 0, 0, 30, 30, 0, 30));
+  });
+
+  it('should compute passive increases ailment resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['232511'];
+    plainSkill.gumi_id = 232511;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculeAilmentResistances();
+
+    // THEN
+    expect(carac).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
   });
 });
 
