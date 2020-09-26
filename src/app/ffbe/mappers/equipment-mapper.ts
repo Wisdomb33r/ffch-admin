@@ -140,7 +140,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
 
   private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ResistancesAlterations {
     if (FfbeUtils.isNullOrUndefined(e)) {
-      return ResistancesAlterations.newEmptyObjetAlterationsEtat();
+      return new ResistancesAlterations();
     }
     return new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
   }

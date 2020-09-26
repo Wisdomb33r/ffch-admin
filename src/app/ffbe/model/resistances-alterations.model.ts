@@ -14,13 +14,9 @@ export class ResistancesAlterations {
   ) {
   }
 
-  public static newEmptyObjetAlterationsEtat(): ResistancesAlterations {
-    return new ResistancesAlterations(null, null, null, null, null, null, null, null);
-  }
-
   public static produce(oae: ResistancesAlterations): ResistancesAlterations {
     if (FfbeUtils.isNullOrUndefined(oae)) {
-      return this.newEmptyObjetAlterationsEtat();
+      return new ResistancesAlterations();
     }
     return new ResistancesAlterations(oae.poison, oae.cecite, oae.sommeil, oae.silence, oae.paralysie, oae.confusion, oae.maladie, oae.petrification);
   }

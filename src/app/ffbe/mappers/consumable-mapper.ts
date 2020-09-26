@@ -32,7 +32,7 @@ export class ConsumableMapper {
       new Caracteristiques(),
       new Caracteristiques(),
       new ResistancesElementaires(),
-      ResistancesAlterations.newEmptyObjetAlterationsEtat(),
+      new ResistancesAlterations(),
       null
     );
 
