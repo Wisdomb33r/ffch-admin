@@ -23,6 +23,7 @@ class Unite
   public $lim_cristals_niv_max;
   public $carac;
   public $competences;
+  public $competencesActivees;
   public $caracEX;
 
   function __construct($brex_unit)
@@ -138,17 +139,21 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     dieWithBadRequest('Format exception : Missing carac EX for NeoVision unit');
   }
 
-  $brex_unit_caracs = createAndValidateBrexUnitCaracs($unite, $unite_existante);
-  $brex_unit_comp_array = createAndValidateBrexUnitCompArray($unite->competences, $unite_existante);
-  copyUnitDataAndValidate($unite_existante, $unite);
-  $unite_existante->store();
-  foreach ($brex_unit_caracs as $brex_unit_carac) {
-    $brex_unit_carac->store();
+  $brex_unit_caracs = createAndValidateBrexUnitCaracs ( $unite, $unite_existante );
+  $brex_unit_comp_array = createAndValidateBrexUnitCompArray ( $unite->competences, $unite_existante );
+  $activated_unit_comp_array = createAndValidateBrexUnitCompArray ( $unite->competencesActivees, $unite_existante );
+  copyUnitDataAndValidate ( $unite_existante, $unite );
+  $unite_existante->store ();
+  foreach ( $brex_unit_caracs as $brex_unit_carac ) {
+    $brex_unit_carac->store ();
   }
-  foreach ($brex_unit_comp_array as $brex_unit_comp) {
-    $brex_unit_comp->store();
+  foreach ( $brex_unit_comp_array as $brex_unit_comp ) {
+    $brex_unit_comp->store ();
   }
-  $unite_resultante = new Unite ($unite_existante);
+  foreach ( $activated_unit_comp_array as $brex_unit_comp ) {
+    $brex_unit_comp->store ();
+  }
+  $unite_resultante = new Unite ( $unite_existante );
   echo json_encode($unite_resultante, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
   if (isset ($_GET ['numero'])) {
