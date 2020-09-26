@@ -3,7 +3,7 @@ import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
 import {ResistancesElementaires} from '../resistances-elementaires.model';
-import {ResistancesAlterations} from './objet-alterations-etat.model';
+import {ResistancesAlterations} from '../resistances-alterations.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
 

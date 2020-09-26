@@ -1,4 +1,4 @@
-import {FfbeUtils} from '../../utils/ffbe-utils';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class ResistancesAlterations {
   public constructor(

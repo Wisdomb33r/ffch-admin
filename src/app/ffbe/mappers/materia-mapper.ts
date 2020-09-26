@@ -6,7 +6,7 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';
-import {ResistancesAlterations} from '../model/objet/objet-alterations-etat.model';
+import {ResistancesAlterations} from '../model/resistances-alterations.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {Skill} from '../model/skill.model';
 
