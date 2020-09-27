@@ -5,8 +5,6 @@ import {ItemCategoryFactory} from '../model/item-category.model';
 import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements';
-import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 
 export class MateriaMapper extends ItemWithSkillsMapper {
@@ -32,8 +30,8 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
-      ObjetElements.newEmptyObjetElements(),
-      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
+      ItemWithSkillsMapper.mapElementResistances(materia.dmSkills),
+      ItemWithSkillsMapper.capResistancesAlterations(ItemWithSkillsMapper.mapAilmentResistances(materia.dmSkills)),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -46,5 +44,4 @@ export class MateriaMapper extends ItemWithSkillsMapper {
 
     return objet;
   }
-
 }

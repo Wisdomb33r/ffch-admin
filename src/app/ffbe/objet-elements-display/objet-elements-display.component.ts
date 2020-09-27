@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 
 @Component({
   selector: 'app-objet-elements-display',
@@ -8,7 +8,7 @@ import {ObjetElements} from '../model/objet/objet-elements';
 })
 export class ObjetElementsDisplayComponent implements OnInit {
 
-  @Input() objetElements: ObjetElements;
+  @Input() objetElements: ResistancesElementaires;
   @Input() titre: string;
   @Input() estModifiable: boolean;
 

@@ -2,8 +2,8 @@ import {Caracteristiques} from '../caracteristiques.model';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
-import {ObjetElements} from './objet-elements';
-import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
+import {ResistancesElementaires} from '../resistances-elementaires.model';
+import {ResistancesAlterations} from '../resistances-alterations.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
 
@@ -11,8 +11,8 @@ export class Objet implements CaracteristiquesContainer {
 
   public extended_gumi_id: string;
   public prix_vente: number;
-  public resistancesElementaires: ObjetElements;
-  public elementsArme: ObjetElements;
+  public resistancesElementaires: ResistancesElementaires;
+  public elementsArme: ResistancesElementaires;
   public alterationsArme;
   public two_handed;
   public variance_min: number;
@@ -37,8 +37,8 @@ export class Objet implements CaracteristiquesContainer {
     public caracpDoublehand: Caracteristiques,
     public caracpTrueDoublehand: Caracteristiques,
     public caracpDualwield: Caracteristiques,
-    public elements: ObjetElements,
-    public resistancesAlterations: ObjetAlterationsEtat,
+    public elements: ResistancesElementaires,
+    public resistancesAlterations: ResistancesAlterations,
     public competences: Array<Competence>
   ) {
   }
@@ -62,8 +62,8 @@ export class Objet implements CaracteristiquesContainer {
       Caracteristiques.produce(o.caracpDoublehand),
       Caracteristiques.produce(o.caracpTrueDoublehand),
       Caracteristiques.produce(o.caracpDualwield),
-      ObjetElements.produce(o.elements),
-      ObjetAlterationsEtat.produce(o.resistancesAlterations),
+      ResistancesElementaires.produce(o.elements),
+      ResistancesAlterations.produce(o.resistancesAlterations),
       o.competences);
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {

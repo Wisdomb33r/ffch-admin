@@ -1,5 +1,7 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
+import {ResistancesElementaires} from './resistances-elementaires.model';
+import {ResistancesAlterations} from './resistances-alterations.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -513,6 +515,117 @@ export const PASSIVE_SKILLS_TEST_DATA =
             "Increase equipment MAG by 50% when armed with a single weapon"
         ],
         "effects_raw": [[0, 3, 13, [50,  25,  2]], [0, 3, 70, [50,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228512": {
+        "name": "Mother of Hess",
+        "icon": "ability_77.png",
+        "compendium_id": 3964,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Wind, Earth and Dark by 30%",
+            "Increase LB gauge by 2 per turn"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 3, [0,  0,  0,  0,  30,  30,  0,  30]], [0, 3, 33, [200]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "226886": {
+        "name": "Memories of the Wind",
+        "icon": "ability_9.png",
+        "compendium_id": 2885,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to Fire, Water, Wind and Earth by 30%"],
+        "effects_raw": [[0, 3, 3, [30,  0,  0,  30,  30,  30,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "227937": {
+        "name": "Nyx's Kukri",
+        "icon": "ability_9.png",
+        "compendium_id": 3589,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to all elements by 20%"],
+        "effects_raw": [[0, 3, 3, [20,  20,  20,  20,  20,  20,  20,  20]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "232511": {
+        "name": "Exceptional Ingenuity",
+        "icon": "ability_91.png",
+        "compendium_id": 6894,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Paralyze and Confusion by 100%",
+            "Increase LB gauge by 3 per turn",
+            "Increase resistance to all elements by 30%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 2, [0,  0,  0,  0,  100,  100,  0,  0]], [0, 3, 33, [300]], [0, 3, 3, [30,  30,  30,  30,  30,  30,  30,  30]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "911899": {
+        "name": "Well-Fed",
+        "icon": "ability_77.png",
+        "compendium_id": 85665,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Recover MP (5%) per turn",
+            "Increase LB gauge by 2 per turn",
+            "Increase resistance to all status effects by 100%"
+        ],
+        "effects_raw": [[0, 3, 32, [5]], [0, 3, 33, [200]], [0, 3, 2, [100,  100,  100,  100,  100,  100,  100,  100]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "100160": {
+        "name": "SPR +10%",
+        "icon": "ability_77.png",
+        "compendium_id": 13,
+        "rarity": 1,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase SPR by 10%"],
+        "effects_raw": [[1, 3, 1, [0,  0,  0,  10,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228182": {
+        "name": "Null Death",
+        "icon": "ability_1.png",
+        "compendium_id": 3740,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["No effect"],
+        "effects_raw": [[0, 3, 2, [0,  0,  0,  0,  0,  0,  0,  0]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -1659,6 +1772,36 @@ describe('Skill', () => {
 
     // THEN
     expect(modIncrease).toEqual(400);
+  });
+
+  it('should compute passive increases to element resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['228512'];
+    plainSkill.gumi_id = 228512;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateElementResistances();
+
+    // THEN
+    expect(carac).toEqual(new ResistancesElementaires(0, 0, 0, 0, 30, 30, 0, 30));
+  });
+
+  it('should compute passive increases ailment resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['232511'];
+    plainSkill.gumi_id = 232511;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculeAilmentResistances();
+
+    // THEN
+    expect(carac).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
   });
 });
 

@@ -23,16 +23,6 @@ import {CharactersServiceMock} from '../../services/characters.service.spec';
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [
-    {
-      effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
-    },
-    {effect: '[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux altérations'},
-    {
-      effect: '[0, 3, 3, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres'
-    },
-    {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
     {effect: '[0, 3, 4, [1, 40, 9999, 30, 0, -1]]', parsed: '+40% ATT quand les PV passent sous 30% (max 9999 fois)'},
     {
       effect: '[0, 3, 4, [2, 40, 9999, 30, 0, 3]]',

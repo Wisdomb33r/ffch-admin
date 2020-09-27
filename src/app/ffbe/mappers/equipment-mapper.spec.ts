@@ -10,6 +10,8 @@ import {Character} from '../model/character/character.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
+import {ResistancesAlterations} from '../model/resistances-alterations.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
@@ -209,5 +211,158 @@ describe('EquipmentMapper', () => {
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
     expect(objet.getBonusTrueDoublehandPercent()).toEqual(new Caracteristiques(0, 0, 50, 0, 50, 0));
+  });
+
+  it('should parse passive element resistances from equipment stats correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000369'];
+    equipment.gumi_id = 1100000369;
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.elements).toEqual(new ResistancesElementaires(15, 15, 0, 0, 15, 15, 0, 0));
+  });
+
+  it('should parse passive element resistances from skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['405004800'];
+    equipment.gumi_id = 405004800;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['226886'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.elements).toEqual(new ResistancesElementaires(30, 0, 0, 30, 30, 30, 0, 0));
+  });
+
+  it('should parse passive element resistances from stats and skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000369'];
+    equipment.gumi_id = 1100000369;
+    equipment.skills = [226886];
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['226886'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.elements).toEqual(new ResistancesElementaires(45, 15, 0, 30, 45, 45, 0, 0));
+  });
+
+  it('should parse passive element inflicts from equipment stats correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301003500'];
+    equipment.gumi_id = 301003500;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['100020'];
+    const skill2: Skill = skills['227937'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+
+    // THEN
+    expect(objet.resistancesElementaires).toEqual(new ResistancesElementaires(20, 20, 20, 20, 20, 20, 20, 20));
+    expect(objet.elementsArme).toEqual(new ResistancesElementaires(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ResistancesElementaires(1020, 20, 20, 20, 20, 20, 20, 20));
+  });
+
+  it('should parse passive element resistances and inflicts from equipment stats and skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301003500'];
+    equipment.gumi_id = 301003500;
+    equipment.stats.element_resist = equipments['1100000369'].stats.element_resist;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['100020'];
+    const skill2: Skill = skills['227937'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+
+    // THEN
+    expect(objet.resistancesElementaires).toEqual(new ResistancesElementaires(35, 35, 20, 20, 35, 35, 20, 20));
+    expect(objet.elementsArme).toEqual(new ResistancesElementaires(1000, null, null, null, null, null, null, null));
+    expect(objet.elements).toEqual(new ResistancesElementaires(1035, 35, 20, 20, 35, 35, 20, 20));
+  });
+
+  it('should parse passive ailment resistances from equipment stats correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['409001700'];
+    equipment.gumi_id = 409001700;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['228182'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(0, 0, 0, 0, 0, 0, 0, 100));
+  });
+
+  it('should parse passive ailment resistances from skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['301000200'];
+    equipment.gumi_id = 301000200;
+    equipment.skills = [232511];
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
+  });
+
+  it('should parse passive ailment resistances from stats and skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['409001700'];
+    equipment.gumi_id = 409001700;
+    equipment.skills = [232511];
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 100));
+  });
+
+  it('should cap passive ailment resistances at 100% correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000237'];
+    equipment.gumi_id = 1100000237;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['911899'];
+    const skill2: Skill = skills['100160'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(100, 100, 100, 100, 100, 100, 100, 100));
   });
 });
