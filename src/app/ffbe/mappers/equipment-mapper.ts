@@ -71,7 +71,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       return new ResistancesElementaires();
     }
 
-    let resistances = new ResistancesElementaires(0, 0, 0, 0, 0, 0, 0, 0);
+    const resistances = new ResistancesElementaires(0, 0, 0, 0, 0, 0, 0, 0);
     if (!FfbeUtils.isNullOrUndefined(res)) {
       resistances.accumulateByAddition(new ResistancesElementaires(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
     }
@@ -143,7 +143,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       return new ResistancesAlterations();
     }
 
-    let resistances = new ResistancesAlterations(0, 0, 0, 0, 0, 0, 0, 0);
+    const resistances = new ResistancesAlterations(0, 0, 0, 0, 0, 0, 0, 0);
     if (!FfbeUtils.isNullOrUndefined(e)) {
       resistances.accumulateByAddition(new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify));
     }

@@ -32,9 +32,9 @@ export class PassiveAilmentsResistanceEffect extends SkillEffect {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% de rés. aux altérations';
+      return `+${currentValue}% de rés. aux altérations`;
     }
-    return '+' + currentValue + '% de rés. ' + FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ');
+    return `+${currentValue}% de rés. ${FfbeUtils.replaceLastOccurenceInString(accumulatedStats.join(', '), ', ', ' et ')}`;
   }
 
   getAilmentResistances(): ResistancesAlterations {

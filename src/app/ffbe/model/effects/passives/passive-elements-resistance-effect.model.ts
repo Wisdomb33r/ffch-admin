@@ -31,9 +31,9 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
     if (accumulatedStats.length === 8) {
-      return '+' + currentValue + '% de rés. aux éléments';
+      return `+${currentValue}% de rés. aux éléments`;
     }
-    return '+' + currentValue + '% de rés. ' + accumulatedStats.join(', ');
+    return `+${currentValue}% de rés. ${accumulatedStats.join(', ')}`;
   }
 
   getElementResistances(): ResistancesElementaires {
