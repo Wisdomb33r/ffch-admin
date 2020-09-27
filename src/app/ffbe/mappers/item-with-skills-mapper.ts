@@ -70,14 +70,17 @@ export abstract class ItemWithSkillsMapper {
     return dmSkills.filter(skill => !skill.hasUnitRestriction());
   }
 
-  protected static capResistancesAlterations(resistancesAlterations: ResistancesAlterations) {
-    resistancesAlterations.poison = Math.min(resistancesAlterations.poison, 100);
-    resistancesAlterations.cecite = Math.min(resistancesAlterations.cecite, 100);
-    resistancesAlterations.sommeil = Math.min(resistancesAlterations.sommeil, 100);
-    resistancesAlterations.silence = Math.min(resistancesAlterations.silence, 100);
-    resistancesAlterations.paralysie = Math.min(resistancesAlterations.paralysie, 100);
-    resistancesAlterations.confusion = Math.min(resistancesAlterations.confusion, 100);
-    resistancesAlterations.maladie = Math.min(resistancesAlterations.maladie, 100);
-    resistancesAlterations.petrification = Math.min(resistancesAlterations.petrification, 100);
+  protected static capResistancesAlterations(resistancesAlterations: ResistancesAlterations): ResistancesAlterations {
+
+    return new ResistancesAlterations(
+      Math.min(resistancesAlterations.poison, 100),
+      Math.min(resistancesAlterations.cecite, 100),
+      Math.min(resistancesAlterations.sommeil, 100),
+      Math.min(resistancesAlterations.silence, 100),
+      Math.min(resistancesAlterations.paralysie, 100),
+      Math.min(resistancesAlterations.confusion, 100),
+      Math.min(resistancesAlterations.maladie, 100),
+      Math.min(resistancesAlterations.petrification, 100)
+    );
   }
 }

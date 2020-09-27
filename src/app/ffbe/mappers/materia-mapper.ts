@@ -9,6 +9,7 @@ import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {ResistancesAlterations} from '../model/resistances-alterations.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {Skill} from '../model/skill.model';
+import {Item} from '../model/item.model';
 
 export class MateriaMapper extends ItemWithSkillsMapper {
 
@@ -34,7 +35,7 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapElementResistances(materia.dmSkills),
-      new ResistancesAlterations(),
+      ItemWithSkillsMapper.capResistancesAlterations(ItemWithSkillsMapper.mapAilmentResistances(materia.dmSkills)),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 

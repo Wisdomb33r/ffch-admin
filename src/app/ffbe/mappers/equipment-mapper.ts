@@ -150,9 +150,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
 
     resistances.accumulateByAddition(ItemWithSkillsMapper.mapAilmentResistances(dmSkills));
 
-    ItemWithSkillsMapper.capResistancesAlterations(resistances);
-
-    return resistances;
+    return ItemWithSkillsMapper.capResistancesAlterations(resistances);
   }
 
   private static mapEquipmentRequirements(requirements: Array<any>): string {
