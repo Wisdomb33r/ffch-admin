@@ -8,6 +8,7 @@ import {PassiveEquipmentStatsDoublehandGlexIncreaseEffect} from './passives/stat
 import {PassiveMpCostDecreaseEffect} from './passives/passive-mp-cost-decrease-effect.model';
 import {PassiveElementsResistanceEffect} from './passives/passive-elements-resistance-effect.model';
 import {PassiveAilmentsResistanceEffect} from './passives/passive-ailments-resistance-effect.model';
+import {PassiveKillerDamageIncreaseEffect} from './passives/passive-killer-damage-increase-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -18,6 +19,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveAilmentsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 3:
         return new PassiveElementsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 11:
+        return new PassiveKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 69:

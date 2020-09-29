@@ -15,7 +15,6 @@ import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
-import {PassiveKillerDamageIncreaseEffect} from '../../model/effects/passives/passive-killer-damage-increase-effect.model';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
@@ -64,8 +63,6 @@ export class PassiveEffectParserFactory {
         return new PassiveCoverParser();
       case 9:
         return new PassiveItemsHealingPotencyIncreaseParser();
-      case 11:
-        return new PassiveKillerDamageIncreaseEffect();
       case 12:
         return new PassiveCounterAttackParser();
       case 14:
