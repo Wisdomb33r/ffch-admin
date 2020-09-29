@@ -1,9 +1,9 @@
-import {EffectParser} from '../effect-parser';
-import {Skill} from '../../../model/skill.model';
+import {EffectParser} from '../../../mappers/effects/effect-parser';
+import {Skill} from '../../skill.model';
 import {FFBE_MONSTER_TYPES} from '../../../ffbe.constants';
-import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
 
-export class PassiveKillerDamageIncreaseParser extends EffectParser {
+export class PassiveKillerDamageIncreaseEffect extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 3) {
       return 'Effet PassiveKillerDamageIncreaseParser inconnu: Mauvaise liste de paramètres';
