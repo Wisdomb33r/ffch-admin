@@ -40,7 +40,6 @@ import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
 import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parser';
-import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 import {AbilityNormalAttackModifierIncreaseParser} from './ability-normal-attack-modifier-increase.parser';
 import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
@@ -86,8 +85,6 @@ export class AbilityEffectParserFactory {
         return new AbilityRaiseAutoParser();
       case 28:
         return new AbilityItemAllAlliesEffectParser();
-      case 29:
-        return new AbilityRandomSkillsParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
       case 31:

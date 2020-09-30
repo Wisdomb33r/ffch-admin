@@ -28,6 +28,7 @@ import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-e
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
 import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-activation-effect.model';
+import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -46,6 +47,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamagePhysicalIgnoreDefEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 25:
         return new AbilityDamageDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 29:
+        return new AbilitySkillRandomEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamageHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
