@@ -38,4 +38,8 @@ export class AbilitySkillRandomEffect extends SkillEffect {
   protected get effectName(): string {
     return 'AbilitySkillRandomEffect';
   }
+
+  public getActivatedSkills(): Array<Skill> {
+    return this.randomSKills?.length ? this.randomSKills.map(entry => entry.skill) : [];
+  }
 }
