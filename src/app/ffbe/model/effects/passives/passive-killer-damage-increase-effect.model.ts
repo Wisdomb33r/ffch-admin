@@ -4,6 +4,7 @@ import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
 import {TargetNumberEnum} from '../target-number.enum';
 import {TargetTypeEnum} from '../target-type.enum';
 import {SkillEffect} from '../skill-effect.model';
+import {Tueurs} from '../../tueurs.model';
 
 export class PassiveKillerDamageIncreaseEffect extends SkillEffect {
 
@@ -55,4 +56,59 @@ export class PassiveKillerDamageIncreaseEffect extends SkillEffect {
 
     return texts.join(HTML_LINE_RETURN);
   }
+
+  getPhysicalKillers(): Tueurs {
+    return this.computeKillers(this.monsterTypeGumiIds, this.physicalDamageIncreases);
+  }
+
+  getMagicalKillers(): Tueurs {
+    return this.computeKillers(this.monsterTypeGumiIds, this.magicalDamageIncreases);
+  }
+
+  private computeKillers(monsterTypeGumiIds: Array<number>, damageIncreases: Array<number>): Tueurs {
+    const tueurs = new Tueurs();
+    monsterTypeGumiIds.forEach((monsterTypeGumiId, index) => {
+      const currentIncrease = damageIncreases.length > index ? damageIncreases[index] : null;
+      switch (monsterTypeGumiId) {
+        case 1:
+          tueurs.betes = currentIncrease;
+          break;
+        case 2:
+          tueurs.oiseaux = currentIncrease;
+          break;
+        case 3:
+          tueurs.aquatiques = currentIncrease;
+          break;
+        case 4:
+          tueurs.demons = currentIncrease;
+          break;
+        case 5:
+          tueurs.humains = currentIncrease;
+          break;
+        case 6:
+          tueurs.machines = currentIncrease;
+          break;
+        case 7:
+          tueurs.dragons = currentIncrease;
+          break;
+        case 8:
+          tueurs.esprits = currentIncrease;
+          break;
+        case 9:
+          tueurs.insectes = currentIncrease;
+          break;
+        case 10:
+          tueurs.pierres = currentIncrease;
+          break;
+        case 11:
+          tueurs.plantes = currentIncrease;
+          break;
+        case 12:
+          tueurs.mortsVivants = currentIncrease;
+          break;
+      }
+    });
+    return tueurs;
+  }
+
 }
