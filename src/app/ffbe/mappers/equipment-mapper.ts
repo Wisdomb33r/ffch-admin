@@ -22,6 +22,9 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
 
+    const tueursPhysiques = ItemWithSkillsMapper.mapPhysicalKillers(equipment.dmSkills);
+    const tueursMagiques = ItemWithSkillsMapper.mapMagicalKillers(equipment.dmSkills);
+
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
       equipment.strings.name[FFBE_FRENCH_TABLE_INDEX],
@@ -57,6 +60,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
       objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
     }
+    objet.tueursPhysiques = tueursPhysiques;
+    objet.tueursMagiques = tueursMagiques;
     objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict, null);
 
     return objet;

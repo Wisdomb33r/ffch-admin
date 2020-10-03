@@ -12,6 +12,7 @@ import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {ResistancesAlterations} from '../model/resistances-alterations.model';
+import {Tueurs} from '../model/tueurs.model';
 
 describe('EquipmentMapper', () => {
   it('should transform equipment raw data into Objet', () => {
@@ -364,5 +365,38 @@ describe('EquipmentMapper', () => {
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
     expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(100, 100, 100, 100, 100, 100, 100, 100));
+  });
+
+  it('should parse passive physical killers from skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['409012200'];
+    equipment.gumi_id = 409012200;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['213190'];
+    equipment.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.tueursPhysiques).toEqual(new Tueurs(15, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0));
+  });
+
+  it('should parse passive magical killers from skills correctly', () => {
+    // GIVEN
+    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
+    const equipment: Equipment = equipments['1100000362'];
+    equipment.gumi_id = 1100000362;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill1: Skill = skills['910229'];
+    const skill2: Skill = skills['913476'];
+    equipment.dmSkills = [Skill.produce(skill1), Skill.produce(skill2)];
+
+    // WHEN
+    const objet: Objet = EquipmentMapper.toObjet(equipment);
+    // THEN
+    expect(objet.tueursMagiques).toEqual(new Tueurs(0, 0, 0, 0, 0, 50, 75, 0, 0, 0, 0, 0));
   });
 });

@@ -6,6 +6,7 @@ import {ResistancesElementaires} from '../resistances-elementaires.model';
 import {ResistancesAlterations} from '../resistances-alterations.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
+import {Tueurs} from '../tueurs.model';
 
 export class Objet implements CaracteristiquesContainer {
 
@@ -17,6 +18,8 @@ export class Objet implements CaracteristiquesContainer {
   public two_handed;
   public variance_min: number;
   public variance_max: number;
+  public tueursPhysiques: Tueurs;
+  public tueursMagiques: Tueurs;
 
   public lienTMR: ObjetLienTMR;
 
@@ -71,6 +74,8 @@ export class Objet implements CaracteristiquesContainer {
     }
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
+    objet.tueursPhysiques = o.tueursPhysiques;
+    objet.tueursMagiques = o.tueursMagiques;
     objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
     return objet;
   }

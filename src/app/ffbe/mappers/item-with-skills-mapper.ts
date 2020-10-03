@@ -2,6 +2,7 @@ import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {ResistancesAlterations} from '../model/resistances-alterations.model';
+import {Tueurs} from '../model/tueurs.model';
 
 export abstract class ItemWithSkillsMapper {
   protected static mapEquipmentBaseIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
@@ -64,6 +65,28 @@ export abstract class ItemWithSkillsMapper {
       .map(dmSkill => dmSkill.calculeAilmentResistances());
 
     return ResistancesAlterations.computeSum(resistances);
+  }
+
+  protected static mapPhysicalKillers(dmSkills: Array<Skill>): Tueurs {
+    if (!Array.isArray(dmSkills)) {
+      return new Tueurs();
+    }
+
+    const tueurs = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculatePhysicalKillers());
+
+    return Tueurs.computeSum(tueurs);
+  }
+
+  protected static mapMagicalKillers(dmSkills: Array<Skill>): Tueurs {
+    if (!Array.isArray(dmSkills)) {
+      return new Tueurs();
+    }
+
+    const tueurs = ItemWithSkillsMapper.filterSkillsWithoutUnitRestriction(dmSkills)
+      .map(dmSkill => dmSkill.calculateMagicalKillers());
+
+    return Tueurs.computeSum(tueurs);
   }
 
   private static filterSkillsWithoutUnitRestriction(dmSkills: Array<Skill>): Array<Skill> {
