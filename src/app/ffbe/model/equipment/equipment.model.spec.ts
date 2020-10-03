@@ -736,5 +736,112 @@ export const EQUIPMENTS_TEST_DATA =
                 "Aksesori yang melindungi penggunanya dari serangan yang berakibat kematian atau stone. Permata yang terbungkus di tengahnya secara spesifik adalah yang berguna mencegah kematian. Beberapa monster dikenal akan kemampuan mereka untuk mengambil nyawa dengan sekali pukul, sementara beberapa tipe hewan liar lain dapat mengubah petualang menjadi batu dengan serangannya, sangat menghalangi usaha untuk menghabisi mereka. Namun, aksesori ini dapat memberikan keamanan yang dibutuhkan untuk menyelesaikan tugas semacam itu."
             ]
         }
+    },
+    "409012200": {
+        "name": "バンギスアーム",
+        "compendium_id": 575,
+        "compendium_shown": true,
+        "rarity": 6,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [213190],
+        "effects": ["Grants 'Dragon's Wisdom' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 12,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 20000,
+        "price_sell": 2000,
+        "icon": "item_50254.png",
+        "strings": {
+            "name": {
+                "0": null
+            },
+            "desc_short": [
+                null,
+                "以恐暴龍素材製成的防具"
+            ],
+            "desc_long": {
+                "0": null,
+                "1": "來自異界的護臂，利用了棲息於異界的恐暴龍身上的素材。恐暴龍有著一張開裂到頸部的大嘴，其下顎佈滿了無數尖刺。這些刺是在進化過程中逐漸向外生長的牙齒。用這種怪物的素材製成的防具也同樣佈滿了尖刺。"
+            }
+        }
+    },
+    "1100000362": {
+        "name": "Holographic Transceiver",
+        "compendium_id": 90364,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 6,
+        "type": "Rod",
+        "slot_id": 1,
+        "slot": "Weapon",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [910229, 913476],
+        "effects": [
+            "Grants 'Dracoslayer' passive.",
+            "Grants 'Mechaslayer' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 20,
+            "DEF": 0,
+            "MAG": 175,
+            "SPR": 20,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "global_equip_10299.png",
+        "strings": {
+            "name": [
+                "Holographic Transceiver",
+                "全息收發機",
+                "홀로그램 송수신기",
+                "Émetteur-récepteur holographique",
+                "Holo-Empfänger",
+                "Transmisor holográfico",
+                "Holographic Transceiver"
+            ],
+            "desc_short": [
+                "A high-tech communication device that can also serve as a weapon.",
+                "能夠當做武器來使用的全息收發機",
+                "무기로도 사용할 수 있는 최신형 통신장비",
+                "Un appareil de haute technologie, qui sert tant pour communiquer que pour combattre.",
+                "Ein hochmodernes Telekommunikationsgerät, das auch als Waffe dient.",
+                "Un dispositivo de comunicación de alta tecnología que puede usarse como arma.",
+                "Alat komunikasi berteknologi tinggi yang juga bisa digunakan sebagai senjata."
+            ],
+            "desc_long": [
+                "A high-tech communication device that can also serve as a weapon. Not only does it boast the latest in holographic projection, the audio signals it emits are strong enough to blast through anything in their path. Rumor has it that it can reach high frequencies that are especially harmful to dragons and mechanical monsters.",
+                "能夠當做武器來使用的全息收發機。不僅擁有最新式的全息投影功能，其中搭載的聲音訊號還能夠為使用者掃清前進道路上的各種障礙，據說它還能夠對龍系及機械系魔物發出有害的超聲波。",
+                "무기로도 사용할 수 있는 최신형 통신장비. 최신형 홀로그램 투사 기능을 지원할 뿐만 아니라 장비에서 발산하는 음성신호는 앞에 있는 모든 것을 날려버리기에 충분할 정도로 강력하다. 특히 드래곤과 기계형 마물에게 치명적인 고주파를 발산할 수 있다고 전해진다.",
+                "Un appareil de haute technologie, qui sert tant pour communiquer que pour combattre. Non seulement il projette des images holographiques de haute qualité, mais en plus il émet un signal audio assez fort pour détruire tout ce qui se trouve sur son passage. On prétend qu'il peut atteindre des fréquences très hautes qui seraient particulièrement dangereuses pour les dragons et les monstres mécaniques.",
+                "Ein hochmodernes Telekommunikationsgerät, das auch als Waffe dient. Zu seinen Stärken gehört nicht fortgeschrittenste derzeit verfügbare Projektionstechnologie, sondern auch seine Audiosignale, die stark genug sind, jegliche Hindernisse einfach wegzufegen. Man munkelt, es soll sogar Hochfrequenzsignale aussenden können, gegen die sich vor allem Drachen und mechanische Monster empfindlich zeigen.",
+                "Un dispositivo de comunicación de alta tecnología que puede usarse como arma. Es una joya de la proyección holográfica más puntera y las señales de sonido que emite son lo suficientemente potentes como para destrozar todo lo que se les pone por delante. Dicen los rumores que puede alcanzar frecuencias muy altas que afectan especialmente a dragones y máquinas.",
+                "Alat komunikasi berteknologi tinggi yang juga dapat digunakan sebagai senjata. Bukan hanya memiliki proyeksi holografis terkemuka, sinyal audio yang dipancarkannya cukup kuat untuk menembus apa pun yang menghalanginya. Konon alat ini dapat mencapai frekuensi tinggi yang sangat berbahaya bagi naga dan monster mekanis."
+            ]
+        }
     }
   }`;

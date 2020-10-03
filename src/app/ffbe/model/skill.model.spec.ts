@@ -665,6 +665,51 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "effects_raw": [[0, 3, 1, [0,  0,  60,  0,  0,  0,  0]], [0, 3, 11, [5,  0,  50]], [0, 3, 11, [9,  0,  50]], [0, 3, 11, [11,  0,  50]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "910229": {
+        "name": "Dracoslayer",
+        "icon": "ability_79.png",
+        "compendium_id": 9319,
+        "rarity": 5,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Dragons by 75%"],
+        "effects_raw": [[0, 3, 11, [7,  0,  75]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "913476": {
+        "name": "Mechaslayer",
+        "icon": "global_ability_10074.png",
+        "compendium_id": 86858,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Machinas by 50%"],
+        "effects_raw": [[0, 3, 11, [6,  0,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "204030": {
+        "name": "Syldra's Protection",
+        "icon": "ability_79.png",
+        "compendium_id": 457,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase physical damage against Aquatics by 50%",
+            "Increase physical damage against Dragons by 50%"
+        ],
+        "effects_raw": [[0, 3, 11, [3,  50,  0]], [1, 3, 11, [7,  50,  0]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
