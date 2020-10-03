@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ResistancesAlterations} from '../model/resistances-alterations.model';
+import {ResistancesAlterations} from '../../model/resistances-alterations.model';
 
 @Component({
   selector: 'app-objet-alterations-etat-display',
