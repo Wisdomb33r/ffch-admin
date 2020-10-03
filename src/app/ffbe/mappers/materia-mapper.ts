@@ -10,6 +10,10 @@ import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 export class MateriaMapper extends ItemWithSkillsMapper {
 
   public static toObjet(materia: Materia): Objet {
+
+    const tueursPhysiques = ItemWithSkillsMapper.mapPhysicalKillers(materia.dmSkills);
+    const tueursMagiques = ItemWithSkillsMapper.mapMagicalKillers(materia.dmSkills);
+
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByFfchId(57),
       materia.strings.names[FFBE_FRENCH_TABLE_INDEX],
@@ -34,6 +38,9 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.capResistancesAlterations(ItemWithSkillsMapper.mapAilmentResistances(materia.dmSkills)),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
+
+    objet.tueursPhysiques = tueursPhysiques;
+    objet.tueursMagiques = tueursMagiques;
 
     if (Array.isArray(materia.dmSkills) && materia.dmSkills.length >= 1) {
       objet.stars = materia.dmSkills[0].rarity;
