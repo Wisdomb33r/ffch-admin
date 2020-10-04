@@ -67,4 +67,59 @@ describe('TueurMapper', () => {
     // THEN
     expect(result).toEqual('0,0,0,0,0,0,10,0,50,0,0,0');
   });
+
+  it('should map null string to empty Tueurs correctly', () => {
+    // GIVEN
+    const dbEntry = null;
+
+    // WHEN
+    const tueurs = TueursMapper.fromDataBaseRepresentation(dbEntry);
+
+    // THEN
+    expect(tueurs).toEqual(new Tueurs());
+  });
+
+  it('should map empty string to empty Tueurs correctly', () => {
+    // GIVEN
+    const dbEntry = '';
+
+    // WHEN
+    const tueurs = TueursMapper.fromDataBaseRepresentation(dbEntry);
+
+    // THEN
+    expect(tueurs).toEqual(new Tueurs());
+  });
+
+  it('should map invalid string to empty Tueurs correctly', () => {
+    // GIVEN
+    const dbEntry = '0,50,0';
+
+    // WHEN
+    const tueurs = TueursMapper.fromDataBaseRepresentation(dbEntry);
+
+    // THEN
+    expect(tueurs).toEqual(new Tueurs());
+  });
+
+  it('should map valid string to Tueurs correctly', () => {
+    // GIVEN
+    const dbEntry = '30,10,20,40,70,80,50,90,60,110,100,120';
+
+    // WHEN
+    const tueurs = TueursMapper.fromDataBaseRepresentation(dbEntry);
+
+    // THEN
+    expect(tueurs).toEqual(new Tueurs(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120));
+  });
+
+  it('should map invalid string values to null correctly', () => {
+    // GIVEN
+    const dbEntry = '30,10,20,40,invalid,80,50,90,60,values,100,120';
+
+    // WHEN
+    const tueurs = TueursMapper.fromDataBaseRepresentation(dbEntry);
+
+    // THEN
+    expect(tueurs).toEqual(new Tueurs(10, 20, 30, 40, 50, 60, null, 80, 90, 100, null, 120));
+  });
 });

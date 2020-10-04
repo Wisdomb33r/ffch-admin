@@ -59,7 +59,49 @@ export class TueursMapper {
   }
 
   public static fromDataBaseRepresentation(dbEntry: string): Tueurs {
+    if (FfbeUtils.isNullOrUndefined(dbEntry)) {
+      return new Tueurs();
+    }
+    const values = dbEntry.split(',');
+
+    if (!Array.isArray(values) || values.length !== FFBE_MONSTER_TYPES.length) {
+      return new Tueurs();
+    }
+    console.log(values);
     return new Tueurs();
   }
 
 }
+
+/*
+
+1  aquatic      50,0,0,0,0,0,0,0,0,0,0,0
+2  beast        0,50,0,0,0,0,0,0,0,0,0,0
+3  bird         0,0,50,0,0,0,0,0,0,0,0,0
+4  demon        0,0,0,50,0,0,0,0,0,0,0,0
+5  dragon       0,0,0,0,50,0,0,0,0,0,0,0
+6  fairy        0,0,0,0,0,50,0,0,0,0,0,0
+7  human        0,0,0,0,0,0,50,0,0,0,0,0
+8  insect       0,0,0,0,0,0,0,50,0,0,0,0
+9  machine      0,0,0,0,0,0,0,0,50,0,0,0
+10 plant        0,0,0,0,0,0,0,0,0,50,0,0
+11 stone        0,0,0,0,0,0,0,0,0,0,50,0
+12 undead       0,0,0,0,0,0,0,0,0,0,0,50
+
+ */
+
+/*
+
+  new MonsterType(1, 'bête', 'bêtes'),
+  new MonsterType(2, 'oiseau', 'oiseaux'),
+  new MonsterType(3, 'aquatique', 'aquatiques'),
+  new MonsterType(4, 'démon', 'démons'),
+  new MonsterType(5, 'humain', 'humains'),
+  new MonsterType(6, 'machine', 'machines'),
+  new MonsterType(7, 'dragon', 'dragons'),
+  new MonsterType(8, 'esprit', 'esprits'),
+  new MonsterType(9, 'insecte', 'insectes'),
+  new MonsterType(10, 'pierre', 'pierres'),
+  new MonsterType(11, 'plante', 'plantes'),
+  new MonsterType(12, 'mort-vivant', 'morts-vivants'),
+ */
