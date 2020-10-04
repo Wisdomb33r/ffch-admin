@@ -1,14 +1,15 @@
-import {EffectParser} from '../../../mappers/effects/effect-parser';
-import {Skill} from '../../skill.model';
-import {SkillsService} from '../../../services/skills.service';
-import {SkillMapper} from '../../../mappers/skill-mapper';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
-import {FfbeUtils} from '../../../utils/ffbe-utils';
-import {SkillEffect} from '../skill-effect.model';
-import {TargetNumberEnum} from '../target-number.enum';
-import {TargetTypeEnum} from '../target-type.enum';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {Skill} from '../../../skill.model';
+import {SkillsService} from '../../../../services/skills.service';
+import {SkillMapper} from '../../../../mappers/skill-mapper';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+import {Competence} from '../../../competence.model';
 
-export class PassiveCounterAttackWithSkillEffect extends SkillEffect {
+export class PassiveSkillCounterAttackActivationEffect extends SkillEffect {
 
   private counterChance: number;
   private activatedSkill: Skill;
@@ -43,8 +44,8 @@ export class PassiveCounterAttackWithSkillEffect extends SkillEffect {
       return `${prefixText} UNKNOWN skill ${suffixText}`;
     }
 
-    const activatedCompetence = SkillMapper.toCompetence(this.activatedSkill);
-    if (!FfbeUtils.isNullOrUndefined(activatedCompetence.hits) && activatedCompetence.hits >= 5) {
+    const activatedCompetence: Competence = SkillMapper.toCompetence(this.activatedSkill);
+    if (this.shouldActivatedSkillBeDisplayedAsLink(activatedCompetence)) {
       return `${prefixText}${EffectParser.getSkillNameWithGumiIdentifierLink(this.activatedSkill)}${suffixText}`;
     } else {
       return activatedCompetence.effet_fr
@@ -52,5 +53,21 @@ export class PassiveCounterAttackWithSkillEffect extends SkillEffect {
         .map(effet => `${prefixText}${effet}${suffixText}`)
         .join(HTML_LINE_RETURN);
     }
+  }
+
+  private shouldActivatedSkillBeDisplayedAsLink(activatedCompetence: Competence): boolean {
+    return !FfbeUtils.isNullOrUndefined(activatedCompetence.hits) && activatedCompetence.hits >= 5;
+  }
+
+  public getActivatedSkills(): Array<Skill> {
+    const activatedSkills: Array<Skill> = [];
+    if (this.activatedSkill) {
+      const activatedCompetence: Competence = SkillMapper.toCompetence(this.activatedSkill);
+      if (this.shouldActivatedSkillBeDisplayedAsLink(activatedCompetence)) {
+        activatedSkills.push(this.activatedSkill);
+      }
+      return activatedSkills.concat(this.activatedSkill.activatedSkills);
+    }
+    return activatedSkills;
   }
 }

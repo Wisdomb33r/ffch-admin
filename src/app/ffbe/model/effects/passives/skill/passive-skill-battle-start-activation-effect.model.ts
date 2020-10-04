@@ -1,10 +1,10 @@
-import {Skill} from '../../skill.model';
-import {SkillMapper} from '../../../mappers/skill-mapper';
-import {SkillsService} from '../../../services/skills.service';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
-import {SkillEffect} from '../skill-effect.model';
-import {TargetNumberEnum} from '../target-number.enum';
-import {TargetTypeEnum} from '../target-type.enum';
+import {Skill} from '../../../skill.model';
+import {SkillMapper} from '../../../../mappers/skill-mapper';
+import {SkillsService} from '../../../../services/skills.service';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
 
 export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
 

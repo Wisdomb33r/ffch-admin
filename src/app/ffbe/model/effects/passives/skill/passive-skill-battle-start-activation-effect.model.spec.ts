@@ -2,11 +2,11 @@ import {
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
   PASSIVE_SKILLS_TEST_DATA
-} from '../../skill.model.spec';
-import {Skill} from '../../skill.model';
-import {SkillsServiceMock} from '../../../services/skills.service.spec';
-import {SkillsService} from '../../../services/skills.service';
-import {PassiveSkillEffectFactory} from '../passive-skill-effect.factory';
+} from '../../../skill.model.spec';
+import {Skill} from '../../../skill.model';
+import {SkillsServiceMock} from '../../../../services/skills.service.spec';
+import {SkillsService} from '../../../../services/skills.service';
+import {PassiveSkillEffectFactory} from '../../passive-skill-effect.factory';
 
 describe('PassiveSkillBattleStartActivationEffect', () => {
 
