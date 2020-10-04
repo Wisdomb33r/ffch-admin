@@ -7,6 +7,7 @@ import {PassiveEquipmentStatsDoublehandIncreaseEffect} from './passives/stats/pa
 import {PassiveEquipmentStatsDoublehandGlexIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-glex-increase-effect.model';
 import {PassiveMpCostDecreaseEffect} from './passives/passive-mp-cost-decrease-effect.model';
 import {PassiveSkillBattleStartActivationEffect} from './passives/passive-skill-battle-start-activation-effect.model';
+import {PassiveCounterAttackWithSkillEffect} from './passives/passive-counter-attack-with-skill-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -17,6 +18,9 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 49:
+      case 50:
+        return new PassiveCounterAttackWithSkillEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 56:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 69:
