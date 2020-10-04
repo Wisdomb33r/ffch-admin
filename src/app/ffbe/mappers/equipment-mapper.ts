@@ -14,6 +14,7 @@ import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {Skill} from '../model/skill.model';
+import {TueursMapper} from './tueurs-mapper';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
@@ -47,8 +48,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist, equipment.dmSkills),
-      '',
-      '',
+      TueursMapper.toDataBaseRepresentation(tueursPhysiques),
+      TueursMapper.toDataBaseRepresentation(tueursMagiques),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
