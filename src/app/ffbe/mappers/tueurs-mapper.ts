@@ -67,41 +67,32 @@ export class TueursMapper {
     if (!Array.isArray(values) || values.length !== FFBE_MONSTER_TYPES.length) {
       return new Tueurs();
     }
-    console.log(values);
-    return new Tueurs();
+
+    const tueurs = new Tueurs();
+
+    tueurs.aquatiques = TueursMapper.toTueurValue(values[0]);
+    tueurs.betes = TueursMapper.toTueurValue(values[1]);
+    tueurs.oiseaux = TueursMapper.toTueurValue(values[2]);
+    tueurs.demons = TueursMapper.toTueurValue(values[3]);
+    tueurs.dragons = TueursMapper.toTueurValue(values[4]);
+    tueurs.esprits = TueursMapper.toTueurValue(values[5]);
+    tueurs.humains = TueursMapper.toTueurValue(values[6]);
+    tueurs.insectes = TueursMapper.toTueurValue(values[7]);
+    tueurs.machines = TueursMapper.toTueurValue(values[8]);
+    tueurs.plantes = TueursMapper.toTueurValue(values[9]);
+    tueurs.pierres = TueursMapper.toTueurValue(values[10]);
+    tueurs.mortsVivants = TueursMapper.toTueurValue(values[11]);
+
+    return tueurs;
+  }
+
+  private static toTueurValue(entry: string): number {
+    const value: number = +entry;
+
+    if (FfbeUtils.isNullOrUndefined(value) || isNaN(value)) {
+      return null;
+    }
+    return value;
   }
 
 }
-
-/*
-
-1  aquatic      50,0,0,0,0,0,0,0,0,0,0,0
-2  beast        0,50,0,0,0,0,0,0,0,0,0,0
-3  bird         0,0,50,0,0,0,0,0,0,0,0,0
-4  demon        0,0,0,50,0,0,0,0,0,0,0,0
-5  dragon       0,0,0,0,50,0,0,0,0,0,0,0
-6  fairy        0,0,0,0,0,50,0,0,0,0,0,0
-7  human        0,0,0,0,0,0,50,0,0,0,0,0
-8  insect       0,0,0,0,0,0,0,50,0,0,0,0
-9  machine      0,0,0,0,0,0,0,0,50,0,0,0
-10 plant        0,0,0,0,0,0,0,0,0,50,0,0
-11 stone        0,0,0,0,0,0,0,0,0,0,50,0
-12 undead       0,0,0,0,0,0,0,0,0,0,0,50
-
- */
-
-/*
-
-  new MonsterType(1, 'bête', 'bêtes'),
-  new MonsterType(2, 'oiseau', 'oiseaux'),
-  new MonsterType(3, 'aquatique', 'aquatiques'),
-  new MonsterType(4, 'démon', 'démons'),
-  new MonsterType(5, 'humain', 'humains'),
-  new MonsterType(6, 'machine', 'machines'),
-  new MonsterType(7, 'dragon', 'dragons'),
-  new MonsterType(8, 'esprit', 'esprits'),
-  new MonsterType(9, 'insecte', 'insectes'),
-  new MonsterType(10, 'pierre', 'pierres'),
-  new MonsterType(11, 'plante', 'plantes'),
-  new MonsterType(12, 'mort-vivant', 'morts-vivants'),
- */
