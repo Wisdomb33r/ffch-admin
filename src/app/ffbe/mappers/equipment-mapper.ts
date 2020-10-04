@@ -17,7 +17,7 @@ import {Skill} from '../model/skill.model';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
-  public static toObjet(equipment: Equipment) {
+  public static toObjet(equipment: Equipment): Objet {
     const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist, equipment.dmSkills);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
@@ -47,6 +47,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist, equipment.dmSkills),
+      '',
+      '',
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 

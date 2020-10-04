@@ -36,6 +36,8 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapElementResistances(materia.dmSkills),
       ItemWithSkillsMapper.capResistancesAlterations(ItemWithSkillsMapper.mapAilmentResistances(materia.dmSkills)),
+      '',
+      '',
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 

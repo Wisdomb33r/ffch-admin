@@ -399,4 +399,6 @@ describe('EquipmentMapper', () => {
     // THEN
     expect(objet.tueursMagiques).toEqual(new Tueurs(0, 0, 0, 0, 0, 50, 75, 0, 0, 0, 0, 0));
   });
+
+
 });
