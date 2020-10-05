@@ -53,6 +53,7 @@ import {LatentSkillsService} from './services/latent-skills.service';
 import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-container-display/caracteristiques-container-display.component';
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
 import { ObjetTueursDuoDisplayComponent } from './objets-display-components/objet-tueurs-duo-display/objet-tueurs-duo-display.component';
+import { ObjetTueursDisplayComponent } from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
 
 @NgModule({
   imports: [
@@ -101,6 +102,7 @@ import { ObjetTueursDuoDisplayComponent } from './objets-display-components/obje
     CaracteristiquesContainerDisplayComponent,
     CaracteristiquesEXDisplayComponent,
     ObjetTueursDuoDisplayComponent,
+    ObjetTueursDisplayComponent,
   ],
   exports: [
     CharactersComponent,
