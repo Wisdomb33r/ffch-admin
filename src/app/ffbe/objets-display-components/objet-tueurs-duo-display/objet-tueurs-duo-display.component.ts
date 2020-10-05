@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObjetTueursDuoDisplayComponent implements OnInit {
 
+  public displayed = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public switchDisplayed() {
+    this.displayed = !this.displayed;
   }
 
 }
