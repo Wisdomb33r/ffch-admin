@@ -1,0 +1,13 @@
+.objet-tueurs-left {
+  width: 49%;
+  float: left;
+}
+
+.objet-tueurs-right {
+  width: 49%;
+  float: right;
+}
+
+.objet-tueurs-clear {
+  clear: both;
+}

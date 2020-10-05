@@ -4,6 +4,17 @@
   </mat-card-title>
 
   <div *ngIf="displayed">
-  <p>objet-tueurs-duo-display works!</p>
+
+    <div [ngClass]="'objet-tueurs-left'">
+      <app-objet-tueurs-display>
+      </app-objet-tueurs-display>
+    </div>
+
+    <div [ngClass]="'objet-tueurs-right'">
+      <app-objet-tueurs-display>
+      </app-objet-tueurs-display>
+    </div>
+    <div [ngClass]="'objet-tueurs-clear'"></div>
+
   </div>
 </mat-card>
