@@ -6,6 +6,7 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
+import {TueursMapper} from './tueurs-mapper';
 
 export class MateriaMapper extends ItemWithSkillsMapper {
 
@@ -36,8 +37,8 @@ export class MateriaMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(materia.dmSkills),
       ItemWithSkillsMapper.mapElementResistances(materia.dmSkills),
       ItemWithSkillsMapper.capResistancesAlterations(ItemWithSkillsMapper.mapAilmentResistances(materia.dmSkills)),
-      '',
-      '',
+      TueursMapper.toDataBaseRepresentation(tueursPhysiques),
+      TueursMapper.toDataBaseRepresentation(tueursMagiques),
       Array.isArray(materia.dmSkills) ? materia.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
