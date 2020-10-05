@@ -52,6 +52,7 @@ import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
 import {LatentSkillsService} from './services/latent-skills.service';
 import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-container-display/caracteristiques-container-display.component';
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
+import { ObjetTueursDuoDisplayComponent } from './objets-display-components/objet-tueurs-duo-display/objet-tueurs-duo-display.component';
 
 @NgModule({
   imports: [
@@ -99,6 +100,7 @@ import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/
     LatentSkillsComponent,
     CaracteristiquesContainerDisplayComponent,
     CaracteristiquesEXDisplayComponent,
+    ObjetTueursDuoDisplayComponent,
   ],
   exports: [
     CharactersComponent,
