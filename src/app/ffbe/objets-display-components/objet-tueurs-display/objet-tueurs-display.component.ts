@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-objet-tueurs-display',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObjetTueursDisplayComponent implements OnInit {
 
-  constructor() { }
+  @Input() titre: string;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -6,12 +6,12 @@
   <div *ngIf="displayed">
 
     <div [ngClass]="'objet-tueurs-left'">
-      <app-objet-tueurs-display>
+      <app-objet-tueurs-display [titre]="'Physiques'">
       </app-objet-tueurs-display>
     </div>
 
     <div [ngClass]="'objet-tueurs-right'">
-      <app-objet-tueurs-display>
+      <app-objet-tueurs-display [titre]="'Magiques'">
       </app-objet-tueurs-display>
     </div>
     <div [ngClass]="'objet-tueurs-clear'"></div>
