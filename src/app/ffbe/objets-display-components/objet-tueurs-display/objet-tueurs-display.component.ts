@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Tueurs} from '../../model/tueurs.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
+import {FFBE_MONSTER_TYPES} from '../../ffbe.constants';
 
 @Component({
   selector: 'app-objet-tueurs-display',
@@ -16,6 +17,11 @@ export class ObjetTueursDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public formateMonsterType(type: number): string {
+    const lowercaseName = FFBE_MONSTER_TYPES[type].pluralName;
+    return lowercaseName.charAt(0).toUpperCase() + lowercaseName.slice(1);
   }
 
   public formateTueur(value: number): string {
