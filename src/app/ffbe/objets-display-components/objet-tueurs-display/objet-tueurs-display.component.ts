@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Tueurs} from '../../model/tueurs.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objet-tueurs-display',
@@ -15,6 +16,14 @@ export class ObjetTueursDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public formateTueur(value: number): string {
+    let result = '';
+    if (!FfbeUtils.isNullOrUndefined(value) && value !== 0) {
+      result = `${value}%`;
+    }
+    return result;
   }
 
 }

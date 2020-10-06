@@ -3,5 +3,13 @@
     {{titre}}
   </mat-card-title>
 
-  <p>objet-tueurs-display works!</p>
+  <div>
+    <table>
+      <caption>Tueurs</caption>
+      <tr>
+        <th>Aquatiques</th>
+        <td>{{formateTueur(tueurs.aquatiques)}}</td>
+      </tr>
+    </table>
+  </div>
 </mat-card>
