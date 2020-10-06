@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Objet} from '../../model/objet/objet.model';
 
 @Component({
   selector: 'app-objet-tueurs-duo-display',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObjetTueursDuoDisplayComponent implements OnInit {
 
+  @Input() objet: Objet;
   public displayed = false;
 
   constructor() { }
