@@ -79,8 +79,8 @@ export class Objet implements CaracteristiquesContainer {
     }
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
-    objet.tueursPhysiques = FfbeUtils.isNullOrUndefined(o.tueurs) ? o.tueursPhysiques: TueursMapper.fromDataBaseRepresentation(o.tueurs);
-    objet.tueursMagiques = FfbeUtils.isNullOrUndefined(o.tueurs_m) ? o.tueursMagiques: TueursMapper.fromDataBaseRepresentation(o.tueurs_m);
+    objet.tueursPhysiques = FfbeUtils.isNullOrUndefined(o.tueursPhysiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs) : o.tueursPhysiques;
+    objet.tueursMagiques = FfbeUtils.isNullOrUndefined(o.tueursMagiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs_m) : o.tueursMagiques;
     objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
     return objet;
   }

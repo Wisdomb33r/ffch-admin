@@ -120,6 +120,8 @@ class Objet
   public $two_handed;
   public $variance_min;
   public $variance_max;
+  public $tueurs;
+  public $tueurs_m;
   public $caracpDoublehand;
   public $caracpTrueDoublehand;
   public $caracpDualwield;
@@ -146,6 +148,8 @@ class Objet
     }
     $this->variance_min = $brex_objet->variance_min;
     $this->variance_max = $brex_objet->variance_max;
+    $this->tueurs = $brex_objet->tueurs;
+    $this->tueurs_m = $brex_objet->tueurs_m;
     $this->caracpDoublehand = new Caracteristiques($brex_objet->pv_dh, $brex_objet->pm_dh, $brex_objet->build_att_dh, $brex_objet->def_dh, $brex_objet->build_mag_dh, $brex_objet->psy_dh);
     $this->caracpTrueDoublehand = new Caracteristiques($brex_objet->pv_tdh, $brex_objet->pm_tdh, $brex_objet->build_att_tdh, $brex_objet->def_tdh, $brex_objet->build_mag_tdh, $brex_objet->psy_tdh);
     $this->caracpDualwield = new Caracteristiques($brex_objet->pv_dw, $brex_objet->pm_dw, $brex_objet->att_dw, $brex_objet->def_dw, $brex_objet->mag_dw, $brex_objet->psy_dw);
