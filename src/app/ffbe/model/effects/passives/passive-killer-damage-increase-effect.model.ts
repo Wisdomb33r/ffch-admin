@@ -57,11 +57,11 @@ export class PassiveKillerDamageIncreaseEffect extends SkillEffect {
     return texts.join(HTML_LINE_RETURN);
   }
 
-  getPhysicalKillers(): Tueurs {
+  public getPhysicalKillers(): Tueurs {
     return this.computeKillers(this.monsterTypeGumiIds, this.physicalDamageIncreases);
   }
 
-  getMagicalKillers(): Tueurs {
+  public getMagicalKillers(): Tueurs {
     return this.computeKillers(this.monsterTypeGumiIds, this.magicalDamageIncreases);
   }
 

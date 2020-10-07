@@ -19,9 +19,8 @@ export class ObjetTueursDisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public formateMonsterType(type: number): string {
-    const lowercaseName = FFBE_MONSTER_TYPES[type].pluralName;
-    return lowercaseName.charAt(0).toUpperCase() + lowercaseName.slice(1);
+  public getMonsterName(type: number): string {
+    return FFBE_MONSTER_TYPES[type].pluralName;
   }
 
   public formateTueur(value: number): string {
