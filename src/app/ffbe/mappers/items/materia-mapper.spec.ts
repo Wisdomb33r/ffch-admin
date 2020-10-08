@@ -1,14 +1,14 @@
-import {Objet} from '../model/objet/objet.model';
+import {Objet} from '../../model/objet/objet.model';
 import {MateriaMapper} from './materia-mapper';
-import {MATERIAS_TEST_DATA} from '../model/items/materia/materia.model.spec';
-import {Materia} from '../model/items/materia/materia.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
-import {Skill} from '../model/skill.model';
-import {Caracteristiques} from '../model/caracteristiques.model';
-import {ResistancesElementaires} from '../model/resistances-elementaires.model';
-import {ResistancesAlterations} from '../model/resistances-alterations.model';
-import {Tueurs} from '../model/tueurs.model';
+import {MATERIAS_TEST_DATA} from '../../model/items/materia/materia.model.spec';
+import {Materia} from '../../model/items/materia/materia.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {PASSIVE_SKILLS_TEST_DATA} from '../../model/skill.model.spec';
+import {Skill} from '../../model/skill.model';
+import {Caracteristiques} from '../../model/caracteristiques.model';
+import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
+import {ResistancesAlterations} from '../../model/resistances-alterations.model';
+import {Tueurs} from '../../model/tueurs.model';
 
 describe('MateriaMapper', () => {
   it('should transform materia raw data into Objet', () => {

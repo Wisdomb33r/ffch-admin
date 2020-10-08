@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Item} from '../model/items/item.model';
 import {ItemsService} from '../services/items.service';
-import {ItemMapper} from '../mappers/item-mapper';
+import {ItemMapper} from '../mappers/items/item-mapper';
 import {Objet} from '../model/objet/objet.model';
 import {CharactersService} from '../services/characters.service';
 import {FfbeUtils} from '../utils/ffbe-utils';

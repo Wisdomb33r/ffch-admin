@@ -1,8 +1,8 @@
-import {Skill} from '../model/skill.model';
-import {Caracteristiques} from '../model/caracteristiques.model';
-import {ResistancesElementaires} from '../model/resistances-elementaires.model';
-import {ResistancesAlterations} from '../model/resistances-alterations.model';
-import {Tueurs} from '../model/tueurs.model';
+import {Skill} from '../../model/skill.model';
+import {Caracteristiques} from '../../model/caracteristiques.model';
+import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
+import {ResistancesAlterations} from '../../model/resistances-alterations.model';
+import {Tueurs} from '../../model/tueurs.model';
 
 export abstract class ItemWithSkillsMapper {
   protected static mapEquipmentBaseIncreasesPercent(dmSkills: Array<Skill>): Caracteristiques {
