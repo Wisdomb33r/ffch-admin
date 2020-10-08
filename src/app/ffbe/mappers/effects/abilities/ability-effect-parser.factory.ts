@@ -12,7 +12,6 @@ import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
 import {AbilityHealingFixedParser} from './ability-healing-fixed.parser';
-import {AbilitySkillActivationParser} from './ability-skill-activation.parser';
 import {AbilityLbCrystalsParser} from './ability-lb-crystals.parser';
 import {AbilityLbSpeedIncreaseParser} from './ability-lb-speed-increase.parser';
 import {AbilityElementImbueParser} from './ability-element-imbue.parser';
@@ -41,7 +40,6 @@ import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
 import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parser';
-import {AbilityRandomSkillsParser} from './ability-random-skills.parser';
 import {AbilityNormalAttackModifierIncreaseParser} from './ability-normal-attack-modifier-increase.parser';
 import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
@@ -87,8 +85,6 @@ export class AbilityEffectParserFactory {
         return new AbilityRaiseAutoParser();
       case 28:
         return new AbilityItemAllAlliesEffectParser();
-      case 29:
-        return new AbilityRandomSkillsParser();
       case 30:
         return new AbilityHealingTurnSplitParser();
       case 31:
@@ -164,8 +160,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 98:
         return new AbilitySkillMultipleActivationParser();
-      case 100:
-        return new AbilitySkillActivationParser();
       case 101:
         return new AbilityMitigationsParser();
       case 111:

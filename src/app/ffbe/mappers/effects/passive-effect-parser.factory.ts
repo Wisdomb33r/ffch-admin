@@ -6,7 +6,6 @@ import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-in
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveSkillBattleStartActivationParser} from './passives/passive-skill-battle-start-activation.parser';
 import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
@@ -22,7 +21,6 @@ import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
-import {PassiveCounterAttackWithSkillParser} from './passives/passive-counter-attack-with-skill.parser';
 import {PassiveEsperSummonDamageIncreaseParser} from './passives/passive-esper-summon-damage-increase.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
@@ -95,8 +93,6 @@ export class PassiveEffectParserFactory {
         return new PassiveMpRecoveryParser();
       case 33:
         return new PassiveLbPerTurnParser();
-      case 35:
-        return new PassiveSkillBattleStartActivationParser();
       case 37:
         return new PassiveGilsRateParser();
       case 41:
@@ -115,10 +111,6 @@ export class PassiveEffectParserFactory {
         return new PassiveItemsDropRateParser();
       case 48:
         return new PassiveMpDecreaseForSongsParser();
-      case 49:
-        return new PassiveCounterAttackWithSkillParser();
-      case 50:
-        return new PassiveCounterAttackWithSkillParser();
       case 51:
         return new PassiveDeceivesDeathParser();
       case 52:
@@ -129,8 +121,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEvasionMagicalParser();
       case 55:
         return new PassiveDebuffsResistanceParser();
-      case 56:
-        return new PassiveSkillBattleStartActivationParser();
       case 59:
         return new PassiveCoverParser();
       case 61:

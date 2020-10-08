@@ -128,12 +128,38 @@ export class CharacterEntryMapper {
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
     unite.competences = [];
+    let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
-      const competence: Competence = SkillMapper.toCompetence(Skill.produce(characterSkill.skill));
+      const skill: Skill = Skill.produce(characterSkill.skill);
+      const competence: Competence = SkillMapper.toCompetence(skill);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
+      skill.activatedSkills?.forEach(activatedSkill => {
+        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSKill => {
+          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSKill.gumi_id)) {
+            unite.competencesActivees.push(new UniteCompetence(SkillMapper.toCompetence(transitiveActivatedSKill), currentActivatedSkillLevel));
+            currentActivatedSkillLevel += 2;
+          }
+        });
+      });
     });
+  }
+
+  private static searchTransitiveActivatedSkills(skill: Skill): Array<Skill> {
+    const skills: Array<Skill> = [skill];
+    let skillNumber = -1;
+    while (skillNumber < skills.length) {
+      skillNumber = skills.length;
+      for (let i = 0; i < skills.length; i++) {
+        skills[i].activatedSkills.forEach(activated => {
+          if (!skills.find(s => s.gumi_id === activated.gumi_id)) {
+            skills.push(activated);
+          }
+        });
+      }
+    }
+    return skills;
   }
 
   public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
@@ -146,7 +172,7 @@ export class CharacterEntryMapper {
 
   private static convertEXCaracteristiques(unite: Unite, nvUpgradeEntries: Array<NeoVisionUpgradeEntry>) {
     if (Array.isArray(nvUpgradeEntries) && nvUpgradeEntries.length > 0) {
-      unite.caracEX = nvUpgradeEntries.map((nvUpgradeEntry, index ) => {
+      unite.caracEX = nvUpgradeEntries.map((nvUpgradeEntry, index) => {
         return new UniteCarac(
           unite.carac.level_max + index + 1,
           unite.carac.level_max,

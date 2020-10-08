@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Personnage} from '../model/personnage.model';
 import {Competence} from '../model/competence.model';
 
@@ -11,6 +11,7 @@ export class CharacterDisplayComponent implements OnChanges {
 
   @Input() personnage: Personnage;
   competences: Array<Competence>;
+  competencesActivees: Array<Competence>;
   isCharacterDetailDisplayed = true;
 
   constructor() {
@@ -19,10 +20,8 @@ export class CharacterDisplayComponent implements OnChanges {
   ngOnChanges() {
     this.competences = this.personnage.unites[this.personnage.unites.length - 1].competences
       .map(uniteCompetence => uniteCompetence.competence);
-  }
-
-  public areCharacterSkillsDisplayed(): boolean {
-    return Array.isArray(this.competences) && this.competences.length > 0;
+    this.competencesActivees = this.personnage.unites[this.personnage.unites.length - 1].competencesActivees
+      .map(uniteCompetence => uniteCompetence.competence);
   }
 
   public switchCharacterDisplay() {

@@ -65,6 +65,10 @@ export class Skill {
     return skill;
   }
 
+  public get activatedSkills(): Array<Skill> {
+    return this.effets?.map(effet => effet.getActivatedSkills()).reduce((accumulator, value) => accumulator.concat(value), []);
+  }
+
   public calculateSkillPower(): number {
     const calculatedSkillPower = this.effets?.map(effet => effet.getDamagesPower()).reduce((val1: number, val2: number) => val1 + val2, 0);
     return calculatedSkillPower > 0 ? calculatedSkillPower : null;

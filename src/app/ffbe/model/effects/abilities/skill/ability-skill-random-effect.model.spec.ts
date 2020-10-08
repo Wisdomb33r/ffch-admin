@@ -1,14 +1,14 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
 import {
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
   ABILITY_SKILLS_TEST_DATA
-} from '../../../model/skill.model.spec';
-import {Skill} from '../../../model/skill.model';
-import {SkillsService} from '../../../services/skills.service';
-import {SkillsServiceMock} from '../../../services/skills.service.spec';
+} from '../../../skill.model.spec';
+import {Skill} from '../../../skill.model';
+import {SkillsService} from '../../../../services/skills.service';
+import {SkillsServiceMock} from '../../../../services/skills.service.spec';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
-describe('AbilityRandomSkillsParser', () => {
+describe('AbilitySkillRandomEffect', () => {
   it('should parse random skills', () => {
     // GIVEN
     const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
@@ -35,7 +35,7 @@ describe('AbilityRandomSkillsParser', () => {
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
       .and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);

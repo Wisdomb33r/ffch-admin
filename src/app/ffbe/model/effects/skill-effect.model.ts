@@ -248,4 +248,8 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
   public getMagicalKillers(): Tueurs {
     return null;
   }
+
+  public getActivatedSkills(): Array<Skill> {
+    return [];
+  }
 }

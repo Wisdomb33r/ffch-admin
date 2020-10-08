@@ -13,7 +13,6 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
 
   @Input() unite: Unite;
   public uniteErrors: Array<string> = [];
-  skillsColumnsToDisplay = ['level', 'id_nom', 'description'];
 
   constructor(private ffchClientService: FfchClientService) {
   }
