@@ -6,7 +6,7 @@ import {CharacterSkill} from '../model/character/character-skill.model';
 import {CharacterEntry} from '../model/character/character-entry.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {FFBE_CHARACTER_GUMI_ID_LENGTH} from '../ffbe.constants';
-import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
+import {ItemCategory, ItemCategoryFactory} from '../model/items/item-category.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EnhancementsService} from './enhancements.service';
 import {LatentSkillsService} from './latent-skills.service';

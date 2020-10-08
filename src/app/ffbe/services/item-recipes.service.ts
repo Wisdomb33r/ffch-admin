@@ -1,6 +1,6 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
-import {ItemRecipe} from '../model/item-recipe.model';
+import {ItemRecipe} from '../model/items/item-recipe.model';
 import {ItemsService} from './items.service';
 
 @Injectable({

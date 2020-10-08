@@ -3,7 +3,7 @@ import {Objet} from '../model/objet/objet.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {ItemCategoryFactory} from '../model/item-category.model';
+import {ItemCategoryFactory} from '../model/items/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ResistancesAlterations} from '../model/resistances-alterations.model';

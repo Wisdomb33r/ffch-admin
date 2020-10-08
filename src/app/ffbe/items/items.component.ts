@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Item} from '../model/item.model';
+import {Item} from '../model/items/item.model';
 import {ItemsService} from '../services/items.service';
 import {ItemMapper} from '../mappers/item-mapper';
 import {Objet} from '../model/objet/objet.model';

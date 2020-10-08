@@ -1,4 +1,4 @@
-import {ItemRecipe} from '../model/item-recipe.model';
+import {ItemRecipe} from '../model/items/item-recipe.model';
 import {Recette} from '../model/recette.model';
 import {Formule} from '../model/formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
