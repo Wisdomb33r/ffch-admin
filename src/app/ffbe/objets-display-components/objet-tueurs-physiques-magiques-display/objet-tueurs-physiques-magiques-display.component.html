@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title (click)="switchDisplayed()">
+    Tueurs
+  </mat-card-title>
+
+  <div *ngIf="displayed">
+
+    <div class="objet-tueurs-left">
+      <app-objet-tueurs-display [titre]="'Physiques'"
+                                [tueurs]="objet.tueursPhysiques">
+      </app-objet-tueurs-display>
+    </div>
+
+    <div class="objet-tueurs-right">
+      <app-objet-tueurs-display [titre]="'Magiques'"
+                                [tueurs]="objet.tueursMagiques">
+      </app-objet-tueurs-display>
+    </div>
+    <div class="objet-tueurs-clear"></div>
+
+  </div>
+</mat-card>

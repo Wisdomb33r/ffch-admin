@@ -14,13 +14,17 @@ import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {Skill} from '../model/skill.model';
+import {TueursMapper} from './tueurs-mapper';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
-  public static toObjet(equipment: Equipment) {
+  public static toObjet(equipment: Equipment): Objet {
     const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist, equipment.dmSkills);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
+
+    const tueursPhysiques = ItemWithSkillsMapper.mapPhysicalKillers(equipment.dmSkills);
+    const tueursMagiques = ItemWithSkillsMapper.mapMagicalKillers(equipment.dmSkills);
 
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
@@ -44,6 +48,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
       EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist, equipment.dmSkills),
+      TueursMapper.toDataBaseRepresentation(tueursPhysiques),
+      TueursMapper.toDataBaseRepresentation(tueursMagiques),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -57,6 +63,8 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
       objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
     }
+    objet.tueursPhysiques = tueursPhysiques;
+    objet.tueursMagiques = tueursMagiques;
     objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict, null);
 
     return objet;

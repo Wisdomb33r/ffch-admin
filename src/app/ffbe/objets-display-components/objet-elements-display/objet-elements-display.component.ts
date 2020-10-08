@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ResistancesElementaires} from '../model/resistances-elementaires.model';
+import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
 
 @Component({
   selector: 'app-objet-elements-display',

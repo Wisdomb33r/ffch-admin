@@ -2,6 +2,7 @@ import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
 import {ResistancesElementaires} from './resistances-elementaires.model';
 import {ResistancesAlterations} from './resistances-alterations.model';
+import {Tueurs} from './tueurs.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -626,6 +627,87 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "element_inflict": null,
         "effects": ["No effect"],
         "effects_raw": [[0, 3, 2, [0,  0,  0,  0,  0,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "213190": {
+        "name": "Dragon's Wisdom",
+        "icon": "ability_79.png",
+        "compendium_id": 1378,
+        "rarity": 4,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase physical damage against Beasts by 15%",
+            "Increase physical damage against Dragons by 15%"
+        ],
+        "effects_raw": [[1, 3, 11, [1,  15,  0]], [1, 3, 11, [7,  15,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "230563": {
+        "name": "Overcoming Death",
+        "icon": "ability_79.png",
+        "compendium_id": 5450,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MAG by 60%",
+            "Increase magic damage against Humans by 50%",
+            "Increase magic damage against Insects by 50%",
+            "Increase magic damage against Plants by 50%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  60,  0,  0,  0,  0]], [0, 3, 11, [5,  0,  50]], [0, 3, 11, [9,  0,  50]], [0, 3, 11, [11,  0,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "910229": {
+        "name": "Dracoslayer",
+        "icon": "ability_79.png",
+        "compendium_id": 9319,
+        "rarity": 5,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Dragons by 75%"],
+        "effects_raw": [[0, 3, 11, [7,  0,  75]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "913476": {
+        "name": "Mechaslayer",
+        "icon": "global_ability_10074.png",
+        "compendium_id": 86858,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Machinas by 50%"],
+        "effects_raw": [[0, 3, 11, [6,  0,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "204030": {
+        "name": "Syldra's Protection",
+        "icon": "ability_79.png",
+        "compendium_id": 457,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase physical damage against Aquatics by 50%",
+            "Increase physical damage against Dragons by 50%"
+        ],
+        "effects_raw": [[0, 3, 11, [3,  50,  0]], [1, 3, 11, [7,  50,  0]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -1802,6 +1884,36 @@ describe('Skill', () => {
 
     // THEN
     expect(carac).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
+  });
+
+  it('should compute passive physical killers correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['213190'];
+    plainSkill.gumi_id = 213190;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const killers = skill.calculatePhysicalKillers();
+
+    // THEN
+    expect(killers).toEqual(new Tueurs(15, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0));
+  });
+
+  it('should compute passive magical killers correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['230563'];
+    plainSkill.gumi_id = 230563;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const killers = skill.calculateMagicalKillers();
+
+    // THEN
+    expect(killers).toEqual(new Tueurs(0, 0, 0, 0, 50, 0, 0, 0, 50, 0, 50, 0));
   });
 });
 

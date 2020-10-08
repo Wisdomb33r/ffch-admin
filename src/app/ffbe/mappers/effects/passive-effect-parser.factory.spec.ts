@@ -52,19 +52,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {
-      effect: '[0, 3, 11, [[4,  6], 50, 0]]',
-      parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
-    },
-    {effect: '[0, 3, 11, [1, 50, 50]]', parsed: '+50% de dégâts physiques et magiques contre les bêtes'},
-    {
-      effect: '[0, 3, 11, [5, 50, 100]]',
-      parsed: '+50% de dégâts physiques contre les humains' + HTML_LINE_RETURN + '+100% de dégâts magiques contre les humains'
-    },
-    {
-      effect: '[0, 3, 11, [[4, 5], [25, 50], 0]]',
-      parsed: '+25% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les humains'
-    },
-    {
       effect: '[0, 3, 12, [50, 200, 4]]',
       parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'
     },

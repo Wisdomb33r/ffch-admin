@@ -6,6 +6,8 @@ import {ResistancesElementaires} from '../resistances-elementaires.model';
 import {ResistancesAlterations} from '../resistances-alterations.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
+import {Tueurs} from '../tueurs.model';
+import {TueursMapper} from '../../mappers/tueurs-mapper';
 
 export class Objet implements CaracteristiquesContainer {
 
@@ -17,6 +19,8 @@ export class Objet implements CaracteristiquesContainer {
   public two_handed;
   public variance_min: number;
   public variance_max: number;
+  public tueursPhysiques: Tueurs;
+  public tueursMagiques: Tueurs;
 
   public lienTMR: ObjetLienTMR;
 
@@ -39,6 +43,8 @@ export class Objet implements CaracteristiquesContainer {
     public caracpDualwield: Caracteristiques,
     public elements: ResistancesElementaires,
     public resistancesAlterations: ResistancesAlterations,
+    public tueurs: string,
+    public tueurs_m: string,
     public competences: Array<Competence>
   ) {
   }
@@ -64,6 +70,8 @@ export class Objet implements CaracteristiquesContainer {
       Caracteristiques.produce(o.caracpDualwield),
       ResistancesElementaires.produce(o.elements),
       ResistancesAlterations.produce(o.resistancesAlterations),
+      o.tueurs,
+      o.tueurs_m,
       o.competences);
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
@@ -71,6 +79,8 @@ export class Objet implements CaracteristiquesContainer {
     }
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
+    objet.tueursPhysiques = FfbeUtils.isNullOrUndefined(o.tueursPhysiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs) : o.tueursPhysiques;
+    objet.tueursMagiques = FfbeUtils.isNullOrUndefined(o.tueursMagiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs_m) : o.tueursMagiques;
     objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
     return objet;
   }
