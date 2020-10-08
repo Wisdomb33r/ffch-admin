@@ -1,7 +1,7 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {ConsumablesService} from '../../../services/consumables.service';
-import {Consumable} from '../../../model/consumable.model';
+import {Consumable} from '../../../model/items/consumable/consumable.model';
 import {FfbeUtils} from '../../../utils/ffbe-utils';
 
 export class AbilityItemAllAlliesEffectParser extends EffectParser {

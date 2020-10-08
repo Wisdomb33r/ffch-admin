@@ -1,4 +1,4 @@
-import {Consumable} from './consumable.model';
+import {Consumable} from './items/consumable/consumable.model';
 import {Equipment} from './items/equipment/equipment.model';
 import {Materia} from './materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';

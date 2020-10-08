@@ -1,4 +1,4 @@
-import {Consumable} from '../model/consumable.model';
+import {Consumable} from '../model/items/consumable/consumable.model';
 import {Objet} from '../model/objet/objet.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {ResistancesElementaires} from '../model/resistances-elementaires.model';

@@ -1,7 +1,7 @@
 import {Objet} from '../model/objet/objet.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {CONSUMABLES_TEST_DATA} from '../model/consumable.model.spec';
-import {Consumable} from '../model/consumable.model';
+import {CONSUMABLES_TEST_DATA} from '../model/items/consumable/consumable.model.spec';
+import {Consumable} from '../model/items/consumable/consumable.model';
 import {ConsumableMapper} from './consumable-mapper';
 
 describe('ConsumableMapper', () => {

@@ -1,4 +1,4 @@
-import {Consumable} from '../model/consumable.model';
+import {Consumable} from '../model/items/consumable/consumable.model';
 
 export class ConsumablesServiceMock {
   private static INSTANCE: ConsumablesServiceMock = new ConsumablesServiceMock();
