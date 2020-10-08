@@ -53,4 +53,8 @@ export class AbilitySkillCooldownEffect extends SkillEffect {
   public getDamagesPower(): number {
     return this.activatedSkill.calculateSkillPower();
   }
+
+  public getActivatedSkills(): Array<Skill> {
+    return this.activatedSkill.activatedSkills;
+  }
 }
