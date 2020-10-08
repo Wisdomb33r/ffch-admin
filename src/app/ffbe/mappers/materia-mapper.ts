@@ -1,4 +1,4 @@
-import {Materia} from '../model/materia.model';
+import {Materia} from '../model/items/materia/materia.model';
 import {Objet} from '../model/objet/objet.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';

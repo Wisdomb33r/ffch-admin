@@ -1,4 +1,4 @@
-import {Materia} from '../model/materia.model';
+import {Materia} from '../model/items/materia/materia.model';
 
 export class MateriasServiceMock {
   private static INSTANCE: MateriasServiceMock = new MateriasServiceMock();

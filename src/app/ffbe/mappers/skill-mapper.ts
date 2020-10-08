@@ -5,7 +5,7 @@ import {HTML_LINE_RETURN, SkillEffectsMapper} from './effects/skill-effects.mapp
 import {EquipmentsService} from '../services/equipments.service';
 import {Equipment} from '../model/items/equipment/equipment.model';
 import {MateriasService} from '../services/materias.service';
-import {Materia} from '../model/materia.model';
+import {Materia} from '../model/items/materia/materia.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class SkillMapper {

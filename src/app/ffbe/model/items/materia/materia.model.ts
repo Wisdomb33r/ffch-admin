@@ -1,5 +1,5 @@
 import {MateriaStrings} from './materia-strings.model';
-import {Skill} from './skill.model';
+import {Skill} from '../../skill.model';
 
 export class Materia {
   gumi_id: number;
