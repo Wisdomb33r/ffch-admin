@@ -1,9 +1,9 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Objet} from '../model/objet/objet.model';
-import {FfchClientService} from '../services/ffch-client.service';
-import {FFBE_CATEGORIES_OBJETS} from '../ffbe.constants';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {CategorieObjet} from '../model/objet/categorie-objet.model';
+import {Objet} from '../../model/objet/objet.model';
+import {FfchClientService} from '../../services/ffch-client.service';
+import {FFBE_CATEGORIES_OBJETS} from '../../ffbe.constants';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 
 @Component({
   selector: 'app-objet-display',

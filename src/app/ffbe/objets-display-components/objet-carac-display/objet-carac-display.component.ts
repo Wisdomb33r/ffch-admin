@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CaracteristiquesContainer} from '../model/caracteristiques-container.model';
+import {CaracteristiquesContainer} from '../../model/caracteristiques-container.model';
 
 @Component({
   selector: 'app-objet-carac-display',

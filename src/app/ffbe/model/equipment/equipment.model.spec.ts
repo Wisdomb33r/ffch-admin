@@ -413,5 +413,435 @@ export const EQUIPMENTS_TEST_DATA =
                 "1": "著名女劍士的可愛的髮夾。祖上留下來的傳家寶，就算在殘酷的戰鬥中她也會為了保持優雅而將其戴在頭上。傳聞這件裝飾品能夠提高裝備者手持兩把武器時的戰鬥能力。"
             }
         }
+    },
+    "1100000369": {
+        "name": "Mistletoe Clip",
+        "compendium_id": 90371,
+        "compendium_shown": true,
+        "rarity": 8,
+        "type_id": 40,
+        "type": "Hat",
+        "slot_id": 3,
+        "slot": "Headgear",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": null,
+        "effects": null,
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 40,
+            "DEF": 0,
+            "MAG": 40,
+            "SPR": 0,
+            "element_resist": {
+                "Fire": 15,
+                "Ice": 15,
+                "Wind": 15,
+                "Earth": 15
+            },
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 10000,
+        "price_sell": 1000,
+        "icon": "global_equip_10306.png",
+        "strings": {
+            "name": [
+                "Mistletoe Clip",
+                "柊木髮夾",
+                "겨우살이풀 머리장식",
+                "Brindille de gui",
+                "Mistelzweighaarklammer",
+                "Clip de muérdago",
+                "Hiasan Rambut Mistletoe"
+            ],
+            "desc_short": [
+                "A hair clip fashioned in the image of mistletoe.",
+                "效仿柊木造型製作的髮夾。",
+                "겨우살이풀의 모양을 한 머리장식",
+                "Une barrette à cheveux en forme de brindille de gui.",
+                "Eine Haarklammer, deren Gestaltung einem echten Mistelzweig nachempfunden wurde.",
+                "Un clip para el pelo con forma de muérdago.",
+                "Jepit rambut berhiaskan gambar daun mistletoe."
+            ],
+            "desc_long": [
+                "A hair clip fashioned in the image of mistletoe. One of the many symbols of the festivities that take place during winter, it helps set the spirit of the season.",
+                "效仿柊木造型製作的髮夾。冬季慶典的代表元素之一，在發揚此節慶精神這點上可說是不可或缺的存在。",
+                "겨우살이풀의 모양을 한 머리장식. 겨울 축제를 나타내는 여러 상징물 중 하나로, 그 계절의 분위기를 내기에 안성맞춤이다.",
+                "Une barrette à cheveux en forme de brindille de gui, l'un des nombreux symboles des festivités hivernales. Elle permet à son porteur de profiter directement de l'ambiance si typique de cette saison.",
+                "Eine Haarklammer, deren Gestaltung einem echten Mistelzweig nachempfunden wurde. Der Mistelzweig ist nur eines von zahlreichen Symbolen der im Winter abgehaltenen Festivitäten und sorgt so für eine zur Saison passenden Stimmung.",
+                "Un clip para el pelo con forma de muérdago. Uno de los muchos símbolos de las fiestas que se celebran en invierno y que ayuda a mantener el espíritu de las fiestas.",
+                "Jepit rambut berhiaskan gambar daun mistletoe. Salah satu simbol perayaan yang berlangsung di musim dingin, benda ini membantu mengobarkan semangat untuk hari raya ini."
+            ]
+        }
+    },
+    "405004800": {
+        "name": "Luneth's Clothes",
+        "compendium_id": 898,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 50,
+        "type": "Cloth",
+        "slot_id": 4,
+        "slot": "Chest",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [226886],
+        "effects": ["Grants 'Memories of the Wind' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 45,
+            "DEF": 1,
+            "MAG": 0,
+            "SPR": 1,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 200000,
+        "price_sell": 20000,
+        "icon": "item_20144.png",
+        "strings": {
+            "name": [
+                "Luneth's Clothes",
+                "路涅斯衣",
+                "루네스의 옷",
+                "Tenue de Luneth",
+                "Luneths Kleidung",
+                "Ropa de Luneth",
+                "Pakaian Luneth"
+            ],
+            "desc_short": [
+                "A set of clothes worn by a young man from a faraway world.",
+                "異界少年所穿著的服裝",
+                "이계의 소년이 입고 있던 옷",
+                "Un ensemble de vêtements porté par un jeune homme venu d'un monde lointain.",
+                "Eine Garnitur Klamotten, die von einem jungen Mann aus einer fernen Welt getragen wurden.",
+                "La ropa de un joven de un mundo lejano.",
+                "Seperangkat pakaian yang dipakai oleh seorang pria muda dari dunia lain."
+            ],
+            "desc_long": [
+                "A set of clothes worn by a young man from a faraway world. The top has a unique design with three large belts strapped across a leather vest. He was chosen to be one of the Warriors of the Light, and travels across the world with his friends to learn the secrets of his world.",
+                "異界少年所穿著的服裝。上衣的皮革背心有著三條粗皮帶的特殊設計。被選為光之戰士的少年，與夥伴們在旅途中得知了世界的秘密。",
+                "어떤 이계의 소년이 입고 있던 옷. 상의인 가죽조끼는 3개의 큰 벨트가 달린 독특한 디자인이다. 빛의 전사로 선택받은 그 소년은 동료들과 함께 여행하며 세계의 비밀을 알아갔다고 한다.",
+                "Un ensemble de vêtements porté par un jeune homme venu d'un monde lointain. Le haut possède une forme unique avec ses trois grandes ceintures entourant une veste en cuir. Il a été choisi pour devenir l'un des Guerriers de la Lumière et parcourt le monde entier en compagnie de ses amis pour en découvrir les secrets.",
+                "Eine Garnitur Klamotten, die von einem jungen Mann aus einer fernen Welt getragen wurden. Am Oberkörper trug er eine Lederweste mit einzigartigem Design, an der drei große Gürtel befestigt sind. Aufgenommen in die Reihen der Krieger des Lichts, bereisten er und seine Freunde die Welt, um ihre Geheimnisse zu ergründen.",
+                "La ropa de un joven de un mundo lejano. La parte de arriba cuenta posee un diseño único donde se pueden observar tres botones bastante grandes atados al chaleco de cuero. Luneth fue elegido para convertirse en uno de los Guerreros de la Luz y, por tanto, viaja por todas partes con sus amigos para aprender los secretos de su mundo.",
+                "Seperangkat pakaian yang dipakai seorang pria muda dari dunia yang jauh. Atasannya memiliki desain unik dengan tiga sabuk besar yang diikat di rompi kulit. Ia terpilih menjadi salah satu Kesatria Cahaya, dan melakukan perjalanan keliling dunia dengan teman-temannya untuk mengetahui rahasia dunianya."
+            ]
+        }
+    },
+    "301003500": {
+        "name": "Nyx's Dagger",
+        "compendium_id": 1019,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 1,
+        "type": "Dagger",
+        "slot_id": 1,
+        "slot": "Weapon",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [100020, 227937],
+        "effects": [
+            "Grants 'HP +20%' passive.",
+            "Grants 'Nyx's Kukri' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 158,
+            "DEF": 50,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": ["Fire"],
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "item_10128.png",
+        "strings": {
+            "name": [
+                "Nyx's Dagger",
+                "尼克斯的短劍",
+                "닉스의 단검",
+                "Dague de Nyx",
+                "Nyx‘ Dolch",
+                "Daga de Nyx",
+                "Belati Nyx"
+            ],
+            "desc_short": [
+                "A dagger that was used by a hero from the faraway world of Eos.",
+                "異界伊歐斯的英雄使用的短劍",
+                "이계 이오스의 영웅이 애용하던 단검",
+                "Une dague utilisée par un héros du monde fort lointain d'Eos.",
+                "Ein Dolch, der von einem Held aus der entfernten Welt Eos verwendet wurde.",
+                "Una daga que blandió un héroe del lejano mundo de Eos.",
+                "Belati yang digunakan oleh pahlawan dari dunia Eos yang jauh."
+            ],
+            "desc_long": [
+                "A dagger that was used by a certain hero who held faith in the future of his homeland in the faraway world of Eos. The dagger is noted for its unique, curved blade. He lost his homeland after being invaded by the Niflheim Empire. Soon after, he joined the Kingdom of Lucis's elite force, the \\"Kingsglaive,\\" and fought for the future of his homeland.",
+                "在異界伊歐斯一位相信故鄉一定會迎來美好未來的英雄所使用之短劍。V字型的劍身是其特徵。因為尼弗海姆帝國的侵略而失去故鄉的他，加入了路希斯國王直屬的特殊部隊「王之劍」，為了故鄉的未來而奮戰到底。",
+                "이계 이오스에서 고향의 미래를 믿은 영웅이 애용한 단검 한 자루. 완만하게 휘어진 검날이 특징이다. 니플하임 제국의 침략으로 고향을 잃은 그는 루시스 왕국의 국왕 직속 부대 '킹스글레이브'의 멤버가 되어 고향의 미래를 위해 싸워나갔다.",
+                "Une dague utilisée par un héros qui avait foi dans le futur de sa patrie dans le monde fort lointain d'Éos. La dague dénote par sa lame originale et courbée. Son utilisateur perdit sa patrie après l'invasion de l'empire de Niflheim. Peu après, il devint l'un des glaives royaux du royaume de Lucis afin de combattre pour l'avenir de son pays.",
+                "Ein Dolch, der von einem gewissen Held, der an die Zukunft seines Heimatlandes in der entfernten Welt Eos glaubte, verwendet wurde. Der Dolch ist für seine einzigartige, gekrümmte Klinge bekannt. Er verlor seine Heimat, nachdem es vom Niflheim-Imperium eingenommen wurde. Wenig später trat er der Eliteeinheit des Königreichs von Lucis, der \\"Königsgleve\\", bei und kämpfte für die Zukunft seiner Heimat.",
+                "Una daga utilizada por cierto héroe que tenía fe en el futuro de su tierra natal, en el lejano mundo de Eos. La daga llama la atención por su particular hoja curva. El héroe perdió su tierra natal después de que fuese invadida por el Imperio de Niflheim. Poco después, se unió a los Glaives reales, la fuerza de élite del Reino de Lucis, y luchó por el futuro de su tierra natal.",
+                "Belati yang digunakan oleh seorang pahlawan yang memiliki keyakinan akan masa depan negeri kelahirannya di dunia Eos yang jauh. Belati ini terkenal karena bilahnya yang unik dan melengkung. Ia kehilangan tanah airnya setelah diserang oleh Kekaisaran Niflheim. Tak lama setelah itu, ia bergabung dengan pasukan elite Kerajaan Lucis, \\"Kingsglaive,\\" dan berjuang untuk masa depan tanah airnya."
+            ]
+        }
+    },
+    "1100000237": {
+        "name": "Shortcake",
+        "compendium_id": 90240,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [911899, 100160],
+        "effects": [
+            "Grants 'Well-Fed' passive.",
+            "Grants 'SPR +10%' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 0,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 54,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": {
+                "Poison": 100,
+                "Blind": 100,
+                "Sleep": 100,
+                "Silence": 100,
+                "Paralyze": 100,
+                "Confusion": 100,
+                "Disease": 100,
+                "Petrify": 100
+            },
+            "status_inflict": null
+        },
+        "price_buy": 7000,
+        "price_sell": 700,
+        "icon": "global_equip_10178.png",
+        "strings": {
+            "name": [
+                "Shortcake",
+                "草莓蛋糕",
+                "쇼트케이크",
+                "Fraisier",
+                "Teekuchen",
+                "Tarta de fruta",
+                "Shortcake"
+            ],
+            "desc_short": [
+                "Sponge cake neatly topped with cream and strawberries.",
+                "由生奶油與草莓製成的新鮮的蛋糕",
+                "생크림과 딸기가 예쁘게 장식된 쇼트케이크",
+                "Un gâteau couronné de chantilly et de fraises.",
+                "Ein Teekuchen, der geschickt mit Schlagsahne und Erdbeeren belegt wurde.",
+                "Un bizcocho recubierto de nata y fresas.",
+                "Kue bolu lembut dengan krim dan stroberi."
+            ],
+            "desc_long": [
+                "Sponge cake neatly topped with cream and strawberries. At first glance, it looks like an ordinary strawberry shortcake, but the soft cake and sweet strawberries, coupled with the smoothness of the cream, make it an unforgettable dessert. Just one bite and you'll feel your whole world melding together perfectly.",
+                "由生奶油與草莓製成的新鮮的蛋糕。雖然看起來只是個普通的蛋糕，但它綿軟的口感與草莓的甜味和生奶油的鮮香絕妙地組合在一起令人難以忘懷，吃上一口就能使人的煩惱全部煙消雲散。",
+                "생크림과 딸기가 예쁘게 장식된 쇼트케이크. 얼핏 보면 평범한 딸기 쇼트 케이크 같지만, 딸기의 달콤함과 부드러운 생크림의 조합은 절대 잊을 수 없을 정도라고 한다. 한입 먹게 되면 모든 고민이 사라질 것이다.",
+                "Un gâteau couronné de chantilly et de fraises. À première vue, il a tout l'air d'une pâtisserie comme les autres, mais sa pâte tendre et moelleuse, sa crème fouettée légère comme un nuage, ainsi que ses fraises délicieusement sucrées en font un dessert inoubliable. Une seule bouchée, et soudain le monde entier semble plus coloré.",
+                "Ein Teekuchen, der kunstvoll mit Schlagsahne und Erdbeeren dekoriert wurde. Auf den ersten Blick sieht das Dessert zwar wie ein gewöhnlicher Erdbeerkuchen aus, doch der Mürbeteig und die Süße der Erdbeeren machen den Kuchen in Kombination mit der cremigen Schlagsahne zu einer unvergesslichen Nachspeise. Ein einziger Bissen genügt und alle Sorgen schmelzen dahin.",
+                "Un bizcocho recubierto de nata y fresas. A primera vista, no se trata más que de un pastelito de fresa y nata, pero la esponjosidad del bizcocho y el dulzor de las fresas, junto con la cremosidad de la nata, lo convierten en un postre digno de alabanza. Un solo bocado bastará para alegrarle a uno el día.",
+                "Kue bolu lembut dengan hiasan krim dan stroberi. Pertama kali melihatnya, kue ini terlihat seperti kue stroberi biasa, tapi setelah dirasakan, kue lembut dengan stroberi manis yang ditambah kelembutan krim ini menjadi makanan penutup yang tak terlupakan. Cukup satu gigitan, kau akan rasakan kelezatan tiada tara."
+            ]
+        }
+    },
+    "409001700": {
+        "name": "Safety Bit",
+        "compendium_id": 424,
+        "compendium_shown": true,
+        "rarity": 4,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [228182],
+        "effects": ["Grants 'Null Death' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 0,
+            "DEF": 3,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": {
+                "Petrify": 100,
+                "Death": 100
+            },
+            "status_inflict": null
+        },
+        "price_buy": 3000,
+        "price_sell": 300,
+        "icon": "item_50116.png",
+        "strings": {
+            "name": [
+                "Safety Bit",
+                "祈安珠",
+                "세이프티 비트",
+                "Sphère de sûreté",
+                "Sicherheitseinsatz",
+                "Lazo seguro",
+                "Safety Bit"
+            ],
+            "desc_short": [
+                "An accessory that protects one's life.",
+                "能夠守護持有者生命的首飾",
+                "목숨을 지켜주는 장신구",
+                "Un accessoire qui peut sauver la vie.",
+                "Ein lebensschützendes Accessoire.",
+                "Un accesorio que protege la vida propia.",
+                "Aksesori yang melindungi nyawa seseorang."
+            ],
+            "desc_long": [
+                "An accessory that protects the wearer from attacks that result in death or stone. The gem encased in the middle is specifically what serves to keep death at bay. Some monsters are known for their ability to take a life with a single blow, while other types of wildlife can turn adventurers into stone with their attacks, greatly hindering any efforts to vanquish them. However, this accessory can provide the safety needed to carry out such a task.",
+                "能夠從致死一擊或石化等致命性攻擊保護裝備者的首飾。其中鑲嵌的寶珠能夠阻擋致命攻擊。有些魔物具備致死一擊或石化等能力，因此討伐牠們是十分危險的任務。持有這種首飾，就可以安心戰鬥了。",
+                "즉사와 석화 등의 치명적인 공격에서 사용자를 보호하는 장신구. 장식된 보주가 죽음에 이르는 공격을 튕겨내는 역할을 한다. 마물들 중에서는 일격으로 목숨을 빼앗을 수 있는 공격과 생물을 돌로 바꾸어 버리는 공격을 해 오는 것들이 많아, 처치하는 데에 위험을 동반한다. 이 장신구를 소지하고 있으면, 안전하게 싸울 수 있을 것이다.",
+                "Un accessoire qui protège son porteur des attaques qui entraînent la mort ou la pétrification. Le joyau situé en son sein est précisément ce qui permet de tenir la mort à distance. Certains monstres sont connus pour leur capacité à prendre une vie d'un seul coup, alors que d'autres animaux peuvent transformer n'importe quel aventurier téméraire en statue, gâchant tous les efforts effectués pour parvenir à les vaincre. C'est pour prévenir tout cela que cet objet a été fabriqué.",
+                "Ein Accessoire, das den Träger vor Tod und Stein beschützt. Der in seiner Mitte eingelegte Stein hält den Tod fern. Einige Monster können das Leben mit einem einzigen Schlag nehmen, während andere einen Abenteurer versteinern und so den Kampf erschweren. Gegen solche Monster hilft dieser Ring in großem Maß.",
+                "Un accesorio que protege a quien lo lleva de ataques que conducen a la muerte o a la piedra. La gema incrustada en el centro es concretamente lo que mantiene a raya a la muerte. Algunos monstruos son conocidos por arrebatar la vida de un solo golpe, mientras que otras formas de vida convierten a los aventureros en piedra con sus ataques, socavando los intentos de acabar con ellos. Sin embargo, este accesorio puede proporcionar la seguridad necesaria para dicha tarea.",
+                "Aksesori yang melindungi penggunanya dari serangan yang berakibat kematian atau stone. Permata yang terbungkus di tengahnya secara spesifik adalah yang berguna mencegah kematian. Beberapa monster dikenal akan kemampuan mereka untuk mengambil nyawa dengan sekali pukul, sementara beberapa tipe hewan liar lain dapat mengubah petualang menjadi batu dengan serangannya, sangat menghalangi usaha untuk menghabisi mereka. Namun, aksesori ini dapat memberikan keamanan yang dibutuhkan untuk menyelesaikan tugas semacam itu."
+            ]
+        }
+    },
+    "409012200": {
+        "name": "バンギスアーム",
+        "compendium_id": 575,
+        "compendium_shown": true,
+        "rarity": 6,
+        "type_id": 60,
+        "type": "Accessory",
+        "slot_id": 5,
+        "slot": "Accessory",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [213190],
+        "effects": ["Grants 'Dragon's Wisdom' passive."],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 12,
+            "DEF": 0,
+            "MAG": 0,
+            "SPR": 0,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 20000,
+        "price_sell": 2000,
+        "icon": "item_50254.png",
+        "strings": {
+            "name": {
+                "0": null
+            },
+            "desc_short": [
+                null,
+                "以恐暴龍素材製成的防具"
+            ],
+            "desc_long": {
+                "0": null,
+                "1": "來自異界的護臂，利用了棲息於異界的恐暴龍身上的素材。恐暴龍有著一張開裂到頸部的大嘴，其下顎佈滿了無數尖刺。這些刺是在進化過程中逐漸向外生長的牙齒。用這種怪物的素材製成的防具也同樣佈滿了尖刺。"
+            }
+        }
+    },
+    "1100000362": {
+        "name": "Holographic Transceiver",
+        "compendium_id": 90364,
+        "compendium_shown": true,
+        "rarity": 9,
+        "type_id": 6,
+        "type": "Rod",
+        "slot_id": 1,
+        "slot": "Weapon",
+        "is_twohanded": false,
+        "dmg_variance": null,
+        "accuracy": 0,
+        "requirements": null,
+        "skills": [910229, 913476],
+        "effects": [
+            "Grants 'Dracoslayer' passive.",
+            "Grants 'Mechaslayer' passive."
+        ],
+        "stats": {
+            "HP": 0,
+            "MP": 0,
+            "ATK": 20,
+            "DEF": 0,
+            "MAG": 175,
+            "SPR": 20,
+            "element_resist": null,
+            "element_inflict": null,
+            "status_resist": null,
+            "status_inflict": null
+        },
+        "price_buy": 100000,
+        "price_sell": 10000,
+        "icon": "global_equip_10299.png",
+        "strings": {
+            "name": [
+                "Holographic Transceiver",
+                "全息收發機",
+                "홀로그램 송수신기",
+                "Émetteur-récepteur holographique",
+                "Holo-Empfänger",
+                "Transmisor holográfico",
+                "Holographic Transceiver"
+            ],
+            "desc_short": [
+                "A high-tech communication device that can also serve as a weapon.",
+                "能夠當做武器來使用的全息收發機",
+                "무기로도 사용할 수 있는 최신형 통신장비",
+                "Un appareil de haute technologie, qui sert tant pour communiquer que pour combattre.",
+                "Ein hochmodernes Telekommunikationsgerät, das auch als Waffe dient.",
+                "Un dispositivo de comunicación de alta tecnología que puede usarse como arma.",
+                "Alat komunikasi berteknologi tinggi yang juga bisa digunakan sebagai senjata."
+            ],
+            "desc_long": [
+                "A high-tech communication device that can also serve as a weapon. Not only does it boast the latest in holographic projection, the audio signals it emits are strong enough to blast through anything in their path. Rumor has it that it can reach high frequencies that are especially harmful to dragons and mechanical monsters.",
+                "能夠當做武器來使用的全息收發機。不僅擁有最新式的全息投影功能，其中搭載的聲音訊號還能夠為使用者掃清前進道路上的各種障礙，據說它還能夠對龍系及機械系魔物發出有害的超聲波。",
+                "무기로도 사용할 수 있는 최신형 통신장비. 최신형 홀로그램 투사 기능을 지원할 뿐만 아니라 장비에서 발산하는 음성신호는 앞에 있는 모든 것을 날려버리기에 충분할 정도로 강력하다. 특히 드래곤과 기계형 마물에게 치명적인 고주파를 발산할 수 있다고 전해진다.",
+                "Un appareil de haute technologie, qui sert tant pour communiquer que pour combattre. Non seulement il projette des images holographiques de haute qualité, mais en plus il émet un signal audio assez fort pour détruire tout ce qui se trouve sur son passage. On prétend qu'il peut atteindre des fréquences très hautes qui seraient particulièrement dangereuses pour les dragons et les monstres mécaniques.",
+                "Ein hochmodernes Telekommunikationsgerät, das auch als Waffe dient. Zu seinen Stärken gehört nicht fortgeschrittenste derzeit verfügbare Projektionstechnologie, sondern auch seine Audiosignale, die stark genug sind, jegliche Hindernisse einfach wegzufegen. Man munkelt, es soll sogar Hochfrequenzsignale aussenden können, gegen die sich vor allem Drachen und mechanische Monster empfindlich zeigen.",
+                "Un dispositivo de comunicación de alta tecnología que puede usarse como arma. Es una joya de la proyección holográfica más puntera y las señales de sonido que emite son lo suficientemente potentes como para destrozar todo lo que se les pone por delante. Dicen los rumores que puede alcanzar frecuencias muy altas que afectan especialmente a dragones y máquinas.",
+                "Alat komunikasi berteknologi tinggi yang juga dapat digunakan sebagai senjata. Bukan hanya memiliki proyeksi holografis terkemuka, sinyal audio yang dipancarkannya cukup kuat untuk menembus apa pun yang menghalanginya. Konon alat ini dapat mencapai frekuensi tinggi yang sangat berbahaya bagi naga dan monster mekanis."
+            ]
+        }
     }
   }`;

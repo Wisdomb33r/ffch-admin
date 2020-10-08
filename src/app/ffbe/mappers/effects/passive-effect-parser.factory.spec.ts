@@ -23,16 +23,6 @@ import {CharactersServiceMock} from '../../services/characters.service.spec';
 
 describe('PassiveEffectParser', () => {
   const passiveEffectParserTestMappings = [
-    {
-      effect: '[0, 3, 2, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Sommeil, +50% de rés. Poison, Silence, Paralysie et Confusion, +40% de rés. Cécité et Maladie, +20% de rés. Pétrification'
-    },
-    {effect: '[0, 3, 2, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux altérations'},
-    {
-      effect: '[0, 3, 3, [50, 40, 60, 50, 50, 50, 40, 20]]',
-      parsed: '+60% de rés. Foudre, +50% de rés. Feu, Eau, Vent, Terre, +40% de rés. Glace, Lumière, +20% de rés. Ténèbres'
-    },
-    {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
     {effect: '[0, 3, 4, [1, 40, 9999, 30, 0, -1]]', parsed: '+40% ATT quand les PV passent sous 30% (max 9999 fois)'},
     {
       effect: '[0, 3, 4, [2, 40, 9999, 30, 0, 3]]',
@@ -61,19 +51,6 @@ describe('PassiveEffectParser', () => {
       parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },
     {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
-    {
-      effect: '[0, 3, 11, [[4,  6], 50, 0]]',
-      parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
-    },
-    {effect: '[0, 3, 11, [1, 50, 50]]', parsed: '+50% de dégâts physiques et magiques contre les bêtes'},
-    {
-      effect: '[0, 3, 11, [5, 50, 100]]',
-      parsed: '+50% de dégâts physiques contre les humains' + HTML_LINE_RETURN + '+100% de dégâts magiques contre les humains'
-    },
-    {
-      effect: '[0, 3, 11, [[4, 5], [25, 50], 0]]',
-      parsed: '+25% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les humains'
-    },
     {
       effect: '[0, 3, 12, [50, 200, 4]]',
       parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'

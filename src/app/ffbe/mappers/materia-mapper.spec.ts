@@ -6,6 +6,9 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
+import {ResistancesAlterations} from '../model/resistances-alterations.model';
+import {Tueurs} from '../model/tueurs.model';
 
 describe('MateriaMapper', () => {
   it('should transform materia raw data into Objet', () => {
@@ -57,7 +60,7 @@ describe('MateriaMapper', () => {
     expect(objet.getBonusBasePercent()).toEqual(new Caracteristiques(0, 0, 30, 0, 0, 0));
   });
 
-  it('should parse passive increases to equipment Caracteristiques when dual-wielding', () => {
+  it('should parse passive increases to materia Caracteristiques when dual-wielding', () => {
     // GIVEN
     const materias = JSON.parse(MATERIAS_TEST_DATA);
     const materia: Materia = materias['504231562'];
@@ -72,4 +75,118 @@ describe('MateriaMapper', () => {
     // THEN
     expect(objet.getBonusDualWieldPercent()).toEqual(new Caracteristiques(0, 0, 100, 0, 0, 0));
   });
+
+  it('should parse passive increases to element resistances', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504232511'];
+    materia.gumi_id = 504232511;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.elements).toEqual(new ResistancesElementaires(30, 30, 30, 30, 30, 30, 30, 30));
+  });
+
+  it('should parse passive increases to ailment resistances correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504232511'];
+    materia.gumi_id = 504232511;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
+  });
+
+  it('should cap passive increases to ailment resistances att 100% correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504232511'];
+    materia.gumi_id = 504232511;
+    materia.skills = [232511, 232511];
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['232511'];
+    materia.dmSkills = [Skill.produce(skill), Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.resistancesAlterations).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
+  });
+
+  it('should parse passive physical killers from skills correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504204030'];
+    materia.gumi_id = 504204030;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['204030'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.tueursPhysiques).toEqual(new Tueurs(0, 0, 50, 0, 0, 0, 50, 0, 0, 0, 0, 0));
+  });
+
+  it('should parse passive physical killers from skills into database representation correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504204030'];
+    materia.gumi_id = 504204030;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['204030'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.tueurs).toEqual('50,0,0,0,50,0,0,0,0,0,0,0');
+  });
+
+  it('should parse passive magical killers from skills correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504230563'];
+    materia.gumi_id = 504230563;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['230563'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.tueursMagiques).toEqual(new Tueurs(0, 0, 0, 0, 50, 0, 0, 0, 50, 0, 50, 0));
+  });
+
+  it('should parse passive magical killers from skills into database representation correctly', () => {
+    // GIVEN
+    const materias = JSON.parse(MATERIAS_TEST_DATA);
+    const materia: Materia = materias['504230563'];
+    materia.gumi_id = 504230563;
+
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['230563'];
+    materia.dmSkills = [Skill.produce(skill)];
+
+    // WHEN
+    const objet: Objet = MateriaMapper.toObjet(materia);
+    // THEN
+    expect(objet.tueurs_m).toEqual('0,0,0,0,0,0,50,50,0,50,0,0');
+  });
+
 });

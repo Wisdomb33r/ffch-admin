@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Objet} from '../model/objet/objet.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
+import {Objet} from '../../model/objet/objet.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 @Component({
   selector: 'app-objet-alterations-etat-duo-display',

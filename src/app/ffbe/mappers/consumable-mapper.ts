@@ -1,12 +1,12 @@
 import {Consumable} from '../model/consumable.model';
 import {Objet} from '../model/objet/objet.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {ItemCategoryFactory} from '../model/item-category.model';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {ResistancesAlterations} from '../model/resistances-alterations.model';
 
 export class ConsumableMapper {
 
@@ -31,8 +31,10 @@ export class ConsumableMapper {
       new Caracteristiques(),
       new Caracteristiques(),
       new Caracteristiques(),
-      ObjetElements.newEmptyObjetElements(),
-      ObjetAlterationsEtat.newEmptyObjetAlterationsEtat(),
+      new ResistancesElementaires(),
+      new ResistancesAlterations(),
+      null,
+      null,
       null
     );
 

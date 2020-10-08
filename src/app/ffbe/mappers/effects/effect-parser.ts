@@ -222,7 +222,7 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
     }
   }
 
-  protected getKeyValueTableForAilements(effectParameters): Array<{ name: string, value: number }> {
+  public static getKeyValueTableForAilements(effectParameters): Array<{ name: string, value: number }> {
     return [
       {name: 'Poison', value: effectParameters[0]},
       {name: 'Cécité', value: effectParameters[1]},

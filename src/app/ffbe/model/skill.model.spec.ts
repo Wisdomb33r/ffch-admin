@@ -1,5 +1,8 @@
 import {Skill} from './skill.model';
 import {Caracteristiques} from './caracteristiques.model';
+import {ResistancesElementaires} from './resistances-elementaires.model';
+import {ResistancesAlterations} from './resistances-alterations.model';
+import {Tueurs} from './tueurs.model';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -513,6 +516,198 @@ export const PASSIVE_SKILLS_TEST_DATA =
             "Increase equipment MAG by 50% when armed with a single weapon"
         ],
         "effects_raw": [[0, 3, 13, [50,  25,  2]], [0, 3, 70, [50,  0,  2]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228512": {
+        "name": "Mother of Hess",
+        "icon": "ability_77.png",
+        "compendium_id": 3964,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Wind, Earth and Dark by 30%",
+            "Increase LB gauge by 2 per turn"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 3, [0,  0,  0,  0,  30,  30,  0,  30]], [0, 3, 33, [200]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "226886": {
+        "name": "Memories of the Wind",
+        "icon": "ability_9.png",
+        "compendium_id": 2885,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to Fire, Water, Wind and Earth by 30%"],
+        "effects_raw": [[0, 3, 3, [30,  0,  0,  30,  30,  30,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "227937": {
+        "name": "Nyx's Kukri",
+        "icon": "ability_9.png",
+        "compendium_id": 3589,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase resistance to all elements by 20%"],
+        "effects_raw": [[0, 3, 3, [20,  20,  20,  20,  20,  20,  20,  20]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "232511": {
+        "name": "Exceptional Ingenuity",
+        "icon": "ability_91.png",
+        "compendium_id": 6894,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MP by 30%",
+            "Increase resistance to Paralyze and Confusion by 100%",
+            "Increase LB gauge by 3 per turn",
+            "Increase resistance to all elements by 30%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  0,  0,  0,  30,  0]], [0, 3, 2, [0,  0,  0,  0,  100,  100,  0,  0]], [0, 3, 33, [300]], [0, 3, 3, [30,  30,  30,  30,  30,  30,  30,  30]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "911899": {
+        "name": "Well-Fed",
+        "icon": "ability_77.png",
+        "compendium_id": 85665,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Recover MP (5%) per turn",
+            "Increase LB gauge by 2 per turn",
+            "Increase resistance to all status effects by 100%"
+        ],
+        "effects_raw": [[0, 3, 32, [5]], [0, 3, 33, [200]], [0, 3, 2, [100,  100,  100,  100,  100,  100,  100,  100]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "100160": {
+        "name": "SPR +10%",
+        "icon": "ability_77.png",
+        "compendium_id": 13,
+        "rarity": 1,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase SPR by 10%"],
+        "effects_raw": [[1, 3, 1, [0,  0,  0,  10,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "228182": {
+        "name": "Null Death",
+        "icon": "ability_1.png",
+        "compendium_id": 3740,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["No effect"],
+        "effects_raw": [[0, 3, 2, [0,  0,  0,  0,  0,  0,  0,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "213190": {
+        "name": "Dragon's Wisdom",
+        "icon": "ability_79.png",
+        "compendium_id": 1378,
+        "rarity": 4,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase physical damage against Beasts by 15%",
+            "Increase physical damage against Dragons by 15%"
+        ],
+        "effects_raw": [[1, 3, 11, [1,  15,  0]], [1, 3, 11, [7,  15,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "230563": {
+        "name": "Overcoming Death",
+        "icon": "ability_79.png",
+        "compendium_id": 5450,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase MAG by 60%",
+            "Increase magic damage against Humans by 50%",
+            "Increase magic damage against Insects by 50%",
+            "Increase magic damage against Plants by 50%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  0,  60,  0,  0,  0,  0]], [0, 3, 11, [5,  0,  50]], [0, 3, 11, [9,  0,  50]], [0, 3, 11, [11,  0,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "910229": {
+        "name": "Dracoslayer",
+        "icon": "ability_79.png",
+        "compendium_id": 9319,
+        "rarity": 5,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Dragons by 75%"],
+        "effects_raw": [[0, 3, 11, [7,  0,  75]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "913476": {
+        "name": "Mechaslayer",
+        "icon": "global_ability_10074.png",
+        "compendium_id": 86858,
+        "rarity": 9,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": ["Increase magic damage against Machinas by 50%"],
+        "effects_raw": [[0, 3, 11, [6,  0,  50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "204030": {
+        "name": "Syldra's Protection",
+        "icon": "ability_79.png",
+        "compendium_id": 457,
+        "rarity": 6,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase physical damage against Aquatics by 50%",
+            "Increase physical damage against Dragons by 50%"
+        ],
+        "effects_raw": [[0, 3, 11, [3,  50,  0]], [1, 3, 11, [7,  50,  0]]],
         "requirements": null,
         "unit_restriction": null
     }
@@ -1659,6 +1854,66 @@ describe('Skill', () => {
 
     // THEN
     expect(modIncrease).toEqual(400);
+  });
+
+  it('should compute passive increases to element resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['228512'];
+    plainSkill.gumi_id = 228512;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculateElementResistances();
+
+    // THEN
+    expect(carac).toEqual(new ResistancesElementaires(0, 0, 0, 0, 30, 30, 0, 30));
+  });
+
+  it('should compute passive increases ailment resistances correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['232511'];
+    plainSkill.gumi_id = 232511;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const carac = skill.calculeAilmentResistances();
+
+    // THEN
+    expect(carac).toEqual(new ResistancesAlterations(0, 0, 0, 0, 100, 100, 0, 0));
+  });
+
+  it('should compute passive physical killers correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['213190'];
+    plainSkill.gumi_id = 213190;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const killers = skill.calculatePhysicalKillers();
+
+    // THEN
+    expect(killers).toEqual(new Tueurs(15, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0));
+  });
+
+  it('should compute passive magical killers correctly', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+
+    const plainSkill: Skill = skills['230563'];
+    plainSkill.gumi_id = 230563;
+    const skill = Skill.produce(plainSkill);
+
+    // WHEN
+    const killers = skill.calculateMagicalKillers();
+
+    // THEN
+    expect(killers).toEqual(new Tueurs(0, 0, 0, 0, 50, 0, 0, 0, 50, 0, 50, 0));
   });
 });
 

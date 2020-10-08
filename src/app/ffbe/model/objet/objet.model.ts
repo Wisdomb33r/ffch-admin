@@ -2,21 +2,25 @@ import {Caracteristiques} from '../caracteristiques.model';
 import {Competence} from '../competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {CategorieObjet} from './categorie-objet.model';
-import {ObjetElements} from './objet-elements';
-import {ObjetAlterationsEtat} from './objet-alterations-etat.model';
+import {ResistancesElementaires} from '../resistances-elementaires.model';
+import {ResistancesAlterations} from '../resistances-alterations.model';
 import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
+import {Tueurs} from '../tueurs.model';
+import {TueursMapper} from '../../mappers/tueurs-mapper';
 
 export class Objet implements CaracteristiquesContainer {
 
   public extended_gumi_id: string;
   public prix_vente: number;
-  public resistancesElementaires: ObjetElements;
-  public elementsArme: ObjetElements;
+  public resistancesElementaires: ResistancesElementaires;
+  public elementsArme: ResistancesElementaires;
   public alterationsArme;
   public two_handed;
   public variance_min: number;
   public variance_max: number;
+  public tueursPhysiques: Tueurs;
+  public tueursMagiques: Tueurs;
 
   public lienTMR: ObjetLienTMR;
 
@@ -37,8 +41,10 @@ export class Objet implements CaracteristiquesContainer {
     public caracpDoublehand: Caracteristiques,
     public caracpTrueDoublehand: Caracteristiques,
     public caracpDualwield: Caracteristiques,
-    public elements: ObjetElements,
-    public resistancesAlterations: ObjetAlterationsEtat,
+    public elements: ResistancesElementaires,
+    public resistancesAlterations: ResistancesAlterations,
+    public tueurs: string,
+    public tueurs_m: string,
     public competences: Array<Competence>
   ) {
   }
@@ -62,8 +68,10 @@ export class Objet implements CaracteristiquesContainer {
       Caracteristiques.produce(o.caracpDoublehand),
       Caracteristiques.produce(o.caracpTrueDoublehand),
       Caracteristiques.produce(o.caracpDualwield),
-      ObjetElements.produce(o.elements),
-      ObjetAlterationsEtat.produce(o.resistancesAlterations),
+      ResistancesElementaires.produce(o.elements),
+      ResistancesAlterations.produce(o.resistancesAlterations),
+      o.tueurs,
+      o.tueurs_m,
       o.competences);
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
@@ -71,6 +79,8 @@ export class Objet implements CaracteristiquesContainer {
     }
     objet.variance_min = o.variance_min;
     objet.variance_max = o.variance_max;
+    objet.tueursPhysiques = FfbeUtils.isNullOrUndefined(o.tueursPhysiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs) : o.tueursPhysiques;
+    objet.tueursMagiques = FfbeUtils.isNullOrUndefined(o.tueursMagiques) ? TueursMapper.fromDataBaseRepresentation(o.tueurs_m) : o.tueursMagiques;
     objet.lienTMR = ObjetLienTMR.produce(o.lienTMR);
     return objet;
   }

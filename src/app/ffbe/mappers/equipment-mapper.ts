@@ -6,20 +6,25 @@ import {SkillMapper} from './skill-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EquipmentStats} from '../model/equipment/equipment-stats.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
-import {ObjetElements} from '../model/objet/objet-elements';
+import {ResistancesElementaires} from '../model/resistances-elementaires.model';
 import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
-import {ObjetAlterationsEtat} from '../model/objet/objet-alterations-etat.model';
+import {ResistancesAlterations} from '../model/resistances-alterations.model';
 import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
 import {Character} from '../model/character/character.model';
 import {CharactersService} from '../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
+import {Skill} from '../model/skill.model';
+import {TueursMapper} from './tueurs-mapper';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
-  public static toObjet(equipment: Equipment) {
-    const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist);
+  public static toObjet(equipment: Equipment): Objet {
+    const resistancesElementaires = EquipmentMapper.mapEquipmentElementResistances(equipment.stats.element_resist, equipment.dmSkills);
     const elementsArme = EquipmentMapper.mapEquipmentElementInflicts(equipment.stats.element_inflict);
     const requirements: string = EquipmentMapper.mapEquipmentRequirements(equipment.requirements);
+
+    const tueursPhysiques = ItemWithSkillsMapper.mapPhysicalKillers(equipment.dmSkills);
+    const tueursMagiques = ItemWithSkillsMapper.mapMagicalKillers(equipment.dmSkills);
 
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByGumiId(equipment.type_id),
@@ -42,7 +47,9 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(equipment.dmSkills),
       ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(equipment.dmSkills),
       EquipmentMapper.mapEquipmentElements(resistancesElementaires, elementsArme),
-      EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist),
+      EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_resist, equipment.dmSkills),
+      TueursMapper.toDataBaseRepresentation(tueursPhysiques),
+      TueursMapper.toDataBaseRepresentation(tueursMagiques),
       Array.isArray(equipment.dmSkills) ? equipment.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
@@ -56,7 +63,9 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
       objet.variance_min = Math.round(equipment.dmg_variance[0] * 100);
       objet.variance_max = Math.round(equipment.dmg_variance[1] * 100);
     }
-    objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict);
+    objet.tueursPhysiques = tueursPhysiques;
+    objet.tueursMagiques = tueursMagiques;
+    objet.alterationsArme = EquipmentMapper.mapEquipmentStatusEffect(equipment.stats.status_inflict, null);
 
     return objet;
   }
@@ -65,15 +74,23 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return new Caracteristiques(stats.HP, stats.MP, stats.ATK, stats.DEF, stats.MAG, stats.SPR);
   }
 
-  private static mapEquipmentElementResistances(res: EquipmentElementResist): ObjetElements {
-    if (FfbeUtils.isNullOrUndefined(res)) {
-      return ObjetElements.newEmptyObjetElements();
+  private static mapEquipmentElementResistances(res: EquipmentElementResist, dmSkills: Array<Skill>): ResistancesElementaires {
+    if (FfbeUtils.isNullOrUndefined(res) && (!Array.isArray(dmSkills) || dmSkills.length === 0)) {
+      return new ResistancesElementaires();
     }
-    return new ObjetElements(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark);
+
+    const resistances = new ResistancesElementaires(0, 0, 0, 0, 0, 0, 0, 0);
+    if (!FfbeUtils.isNullOrUndefined(res)) {
+      resistances.accumulateByAddition(new ResistancesElementaires(res.Fire, res.Ice, res.Lightning, res.Water, res.Wind, res.Earth, res.Light, res.Dark));
+    }
+
+    resistances.accumulateByAddition(ItemWithSkillsMapper.mapElementResistances(dmSkills));
+
+    return resistances;
   }
 
   private static mapEquipmentElementInflicts(inflicts: Array<string>) {
-    const elements = ObjetElements.newEmptyObjetElements();
+    const elements = new ResistancesElementaires();
 
     if (Array.isArray(inflicts) && inflicts.length > 0) {
       inflicts.forEach(element => {
@@ -100,9 +117,9 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return elements;
   }
 
-  private static mapEquipmentElements(resistances: ObjetElements, inflicts: ObjetElements) {
+  private static mapEquipmentElements(resistances: ResistancesElementaires, inflicts: ResistancesElementaires) {
 
-    const elements = ObjetElements.newEmptyObjetElements();
+    const elements = new ResistancesElementaires();
 
     elements.feu = EquipmentMapper.computeElementValue(resistances.feu, inflicts.feu);
     elements.glace = EquipmentMapper.computeElementValue(resistances.glace, inflicts.glace);
@@ -129,11 +146,19 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     return value;
   }
 
-  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect): ObjetAlterationsEtat {
-    if (FfbeUtils.isNullOrUndefined(e)) {
-      return ObjetAlterationsEtat.newEmptyObjetAlterationsEtat();
+  private static mapEquipmentStatusEffect(e: EquipmentStatusEffect, dmSkills: Array<Skill>): ResistancesAlterations {
+    if (FfbeUtils.isNullOrUndefined(e) && (!Array.isArray(dmSkills) || dmSkills.length === 0)) {
+      return new ResistancesAlterations();
     }
-    return new ObjetAlterationsEtat(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify);
+
+    const resistances = new ResistancesAlterations(0, 0, 0, 0, 0, 0, 0, 0);
+    if (!FfbeUtils.isNullOrUndefined(e)) {
+      resistances.accumulateByAddition(new ResistancesAlterations(e.Poison, e.Blind, e.Sleep, e.Silence, e.Paralyze, e.Confusion, e.Disease, e.Petrify));
+    }
+
+    resistances.accumulateByAddition(ItemWithSkillsMapper.mapAilmentResistances(dmSkills));
+
+    return ItemWithSkillsMapper.capResistancesAlterations(resistances);
   }
 
   private static mapEquipmentRequirements(requirements: Array<any>): string {

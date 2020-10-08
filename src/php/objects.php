@@ -150,6 +150,9 @@ function createAndValidateObjet($objet)
   if (property_exists($objet, 'variance_min')) $values ['variance_min'] = $objet->variance_min;
   if (property_exists($objet, 'variance_max')) $values ['variance_max'] = $objet->variance_max;
 
+  $values ['tueurs'] = $objet->tueurs;
+  $values ['tueurs_m'] = $objet->tueurs_m;
+
   $values ['pv_dh'] = $objet->caracpDoublehand->pv;
   $values ['pm_dh'] = $objet->caracpDoublehand->pm;
   $values ['build_att_dh'] = $objet->caracpDoublehand->att;

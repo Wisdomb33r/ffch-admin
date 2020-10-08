@@ -5,6 +5,9 @@ import {FFBE_ELEMENTS} from '../ffbe.constants';
 import {AbilitySkillEffectFactory} from './effects/ability-skill-effect.factory';
 import {Caracteristiques} from './caracteristiques.model';
 import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory';
+import {ResistancesElementaires} from './resistances-elementaires.model';
+import {ResistancesAlterations} from './resistances-alterations.model';
+import {Tueurs} from './tueurs.model';
 
 export class Skill {
   public gumi_id: number;
@@ -105,6 +108,22 @@ export class Skill {
 
   public calculateDualwieldIncreasesPercent(): Caracteristiques {
     return Caracteristiques.computeSum(this.effets.map(effet => effet.getDualwieldIncreasesPercent()));
+  }
+
+  public calculateElementResistances(): ResistancesElementaires {
+    return ResistancesElementaires.computeSum(this.effets.map(effet => effet.getElementResistances()));
+  }
+
+  public calculeAilmentResistances(): ResistancesAlterations {
+    return ResistancesAlterations.computeSum(this.effets.map(effet => effet.getAilmentResistances()));
+  }
+
+  public calculatePhysicalKillers(): Tueurs {
+    return Tueurs.computeSum(this.effets.map(effet => effet.getPhysicalKillers()));
+  }
+
+  public calculateMagicalKillers(): Tueurs {
+    return Tueurs.computeSum(this.effets.map(effet => effet.getMagicalKillers()));
   }
 
   public wordElementInflict(): string {
@@ -212,6 +231,7 @@ export class Skill {
       || effectId === 13 // physical damages with 1 turn delay
       || effectId === 15 // magic damages
       || effectId === 21 // physical damages with ignore DEF
+      || effectId === 22 // physical damages with increased power on specific enemy type
       || effectId === 25 // physical / magic damages with HP drain
       || effectId === 40 // hybrid damages
       || (effectId === 41 && effect[1] !== 3) // fixed damages, excepting to caster

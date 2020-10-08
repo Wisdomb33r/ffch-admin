@@ -27,6 +27,7 @@ import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-e
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
+import {AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect} from './abilities/damage/ability-damage-physical-increased-modifier-enemy-type-effect.model';
 import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-activation-effect.model';
 import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-effect.model';
 
@@ -45,6 +46,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageMagicEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
         return new AbilityDamagePhysicalIgnoreDefEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 22:
+        return new AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 25:
         return new AbilityDamageDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 29:

@@ -2,8 +2,6 @@ import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveEsperDamageIncreaseParser} from './passives/passive-esper-damage-increase.parser';
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
-import {PassiveAilmentsResistanceParser} from './passives/passive-ailments-resistance.parser';
-import {PassiveElementsResistanceParser} from './passives/passive-elements-resistance.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
@@ -16,7 +14,6 @@ import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
-import {PassiveKillerDamageIncreaseParser} from './passives/passive-killer-damage-increase.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
@@ -54,10 +51,6 @@ import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-
 export class PassiveEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
     switch (effectId3) {
-      case 2:
-        return new PassiveAilmentsResistanceParser();
-      case 3:
-        return new PassiveElementsResistanceParser();
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
       case 5:
@@ -68,8 +61,6 @@ export class PassiveEffectParserFactory {
         return new PassiveCoverParser();
       case 9:
         return new PassiveItemsHealingPotencyIncreaseParser();
-      case 11:
-        return new PassiveKillerDamageIncreaseParser();
       case 12:
         return new PassiveCounterAttackParser();
       case 14:

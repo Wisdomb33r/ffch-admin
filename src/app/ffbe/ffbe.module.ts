@@ -41,17 +41,19 @@ import {MateriasService} from './services/materias.service';
 import {ClipboardModule} from 'ngx-clipboard';
 import {CompetencesComparingContainerDisplayComponent} from './competences-comparing-container-display/competences-comparing-container-display.component';
 import {ItemsComponent} from './items/items.component';
-import {ObjetsDisplayComponent} from './objets-display/objets-display.component';
-import {ObjetDisplayComponent} from './objet-display/objet-display.component';
-import {ObjetCaracDisplayComponent} from './objet-carac-display/objet-carac-display.component';
-import {ObjetElementsDisplayComponent} from './objet-elements-display/objet-elements-display.component';
-import {ObjetElementsTripletDisplayComponent} from './objet-elements-triplet-display/objet-elements-triplet-display.component';
-import {ObjetAlterationsEtatDuoDisplayComponent} from './objet-alterations-etat-duo-display/objet-alterations-etat-duo-display.component';
-import {ObjetAlterationsEtatDisplayComponent} from './objet-alterations-etat-display/objet-alterations-etat-display.component';
+import {ObjetsDisplayComponent} from './objets-display-components/objets-display/objets-display.component';
+import {ObjetDisplayComponent} from './objets-display-components/objet-display/objet-display.component';
+import {ObjetCaracDisplayComponent} from './objets-display-components/objet-carac-display/objet-carac-display.component';
+import {ObjetElementsDisplayComponent} from './objets-display-components/objet-elements-display/objet-elements-display.component';
+import {ObjetElementsTripletDisplayComponent} from './objets-display-components/objet-elements-triplet-display/objet-elements-triplet-display.component';
+import {ObjetAlterationsEtatDuoDisplayComponent} from './objets-display-components/objet-alterations-etat-duo-display/objet-alterations-etat-duo-display.component';
+import {ObjetAlterationsEtatDisplayComponent} from './objets-display-components/objet-alterations-etat-display/objet-alterations-etat-display.component';
 import {LatentSkillsComponent} from './latent-skills/latent-skills.component';
 import {LatentSkillsService} from './services/latent-skills.service';
 import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-container-display/caracteristiques-container-display.component';
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
+import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-components/objet-tueurs-physiques-magiques-display/objet-tueurs-physiques-magiques-display.component';
+import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
 
 @NgModule({
   imports: [
@@ -99,6 +101,8 @@ import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/
     LatentSkillsComponent,
     CaracteristiquesContainerDisplayComponent,
     CaracteristiquesEXDisplayComponent,
+    ObjetTueursPhysiquesMagiquesDisplayComponent,
+    ObjetTueursDisplayComponent,
   ],
   exports: [
     CharactersComponent,
