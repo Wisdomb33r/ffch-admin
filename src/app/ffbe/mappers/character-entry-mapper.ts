@@ -128,7 +128,7 @@ export class CharacterEntryMapper {
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
     unite.competences = [];
-    let currentActivatedSkillLevel = -100;
+    let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = Skill.produce(characterSkill.skill);
       const competence: Competence = SkillMapper.toCompetence(skill);
@@ -139,7 +139,7 @@ export class CharacterEntryMapper {
         CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSKill => {
           if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSKill.gumi_id)) {
             unite.competencesActivees.push(new UniteCompetence(SkillMapper.toCompetence(transitiveActivatedSKill), currentActivatedSkillLevel));
-            currentActivatedSkillLevel++;
+            currentActivatedSkillLevel += 2;
           }
         });
       });
