@@ -1,5 +1,5 @@
 import {Consumable} from './consumable.model';
-import {Equipment} from './equipment/equipment.model';
+import {Equipment} from './items/equipment/equipment.model';
 import {Materia} from './materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';
 

@@ -1,5 +1,5 @@
 import {EquipmentStrings} from './equipment-strings.model';
-import {Skill} from '../skill.model';
+import {Skill} from '../../skill.model';
 import {EquipmentStats} from './equipment-stats.model';
 
 export class Equipment {

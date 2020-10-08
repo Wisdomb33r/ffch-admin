@@ -1,6 +1,6 @@
 import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
-import {Equipment} from '../model/equipment/equipment.model';
+import {Equipment} from '../model/items/equipment/equipment.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Skill} from '../model/skill.model';
 import {SkillsService} from './skills.service';

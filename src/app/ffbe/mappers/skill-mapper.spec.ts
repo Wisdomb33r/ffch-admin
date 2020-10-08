@@ -10,8 +10,8 @@ import {
   MAGIC_SKILLS_TEST_DATA,
   PASSIVE_SKILLS_TEST_DATA
 } from '../model/skill.model.spec';
-import {EQUIPMENTS_TEST_DATA} from '../model/equipment/equipment.model.spec';
-import {Equipment} from '../model/equipment/equipment.model';
+import {EQUIPMENTS_TEST_DATA} from '../model/items/equipment/equipment.model.spec';
+import {Equipment} from '../model/items/equipment/equipment.model';
 import {EquipmentsServiceMock} from '../services/equipments.service.spec';
 import {EquipmentsService} from '../services/equipments.service';
 import {MATERIAS_TEST_DATA} from '../model/materia.model.spec';

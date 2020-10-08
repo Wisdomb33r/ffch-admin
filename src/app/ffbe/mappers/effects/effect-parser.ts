@@ -2,7 +2,7 @@ import {Skill} from '../../model/skill.model';
 import {FFBE_CATEGORIES_OBJETS, FFBE_ELEMENTS, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {CategorieObjet} from '../../model/objet/categorie-objet.model';
 import {Esper} from '../../model/esper.model';
-import {Equipment} from '../../model/equipment/equipment.model';
+import {Equipment} from '../../model/items/equipment/equipment.model';
 import {Consumable} from '../../model/consumable.model';
 import {Element} from '../../model/element.model';
 import {TargetPrepositionEnum} from '../../model/effects/target-preposition.enum';
