@@ -10,7 +10,7 @@ import {SkillsServiceMock} from './skills.service.spec';
 import {ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_TEST_DATA, PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {EnhancementsService} from './enhancements.service';
-import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
+import {ENHANCEMENTS_TEST_DATA} from '../model/enhancement.model.testdata.spec';
 import {LatentSkillsService} from './latent-skills.service';
 import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
 
