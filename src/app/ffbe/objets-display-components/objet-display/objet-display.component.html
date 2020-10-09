@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-title (click)="switchDisplayed()">
-    <img *ngIf="present && !different" src="../../../../assets/ok.png" class="ffchstatus" alt="OK">
-    <img *ngIf="!present" src="../../../../assets/nok.png" class="ffchstatus" alt="Not OK">
-    <img *ngIf="present && different" src="../../../../assets/grey/warn.png" class="ffchstatus" alt="Warn">
+    <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus" alt="OK">
+    <img *ngIf="!present" src="assets/nok.png" class="ffchstatus" alt="Not OK">
+    <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
     {{objet.gumi_id}} {{objet.nom}}
   </mat-card-title>
 
@@ -58,9 +58,9 @@
                  alt="{{objet.nom}}" title="{{objet.nom}} ({{objet.gumi_id}})"/>
             <img
                     *ngIf="!objet.isImagePresentInFfchDb()"
-                    src="../../../../assets/grey/warn.png" alt="{{objet.nom}} ({{objet.gumi_id}})"
+                    src="assets/grey/warn.png" alt="{{objet.nom}} ({{objet.gumi_id}})"
                     title="{{objet.nom}} ({{objet.gumi_id}})"/>
-            <img *ngIf="!objet.isPresentInFfchDb()" src="../../../../assets/red/warn.png"
+            <img *ngIf="!objet.isPresentInFfchDb()" src="assets/red/warn.png"
                  alt="{{objet.gumi_id}}" title="{{objet.gumi_id}}"/>
           </span>
         </td>
