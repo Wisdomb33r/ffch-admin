@@ -11,9 +11,9 @@ import {
 } from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
 import {HTML_LINE_RETURN} from './skill-effects.mapper';
-import {Equipment} from '../../model/equipment/equipment.model';
+import {Equipment} from '../../model/items/equipment/equipment.model';
 import {EquipmentsService} from '../../services/equipments.service';
-import {EQUIPMENTS_TEST_DATA} from '../../model/equipment/equipment.model.spec';
+import {EQUIPMENTS_TEST_DATA} from '../../model/items/equipment/equipment.model.spec';
 import {CHARACTER_TEST_DATA} from '../../model/character/character.model.spec';
 import {Character} from '../../model/character/character.model';
 import {CharactersService} from '../../services/characters.service';

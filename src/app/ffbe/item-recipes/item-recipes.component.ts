@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
-import {ItemRecipe} from '../model/item-recipe.model';
-import {ItemRecipeMapper} from '../mappers/item-recipe-mapper';
+import {ItemRecipe} from '../model/items/item-recipe.model';
+import {ItemRecipeMapper} from '../mappers/items/item-recipe-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Component({

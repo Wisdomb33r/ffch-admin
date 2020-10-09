@@ -1,6 +1,6 @@
-import {Consumable} from './consumable.model';
+import {Consumable} from './consumable/consumable.model';
 import {Equipment} from './equipment/equipment.model';
-import {Materia} from './materia.model';
+import {Materia} from './materia/materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';
 
 export class Item {

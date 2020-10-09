@@ -1,8 +1,8 @@
 import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {CONSUMABLES_TEST_DATA} from '../../../model/consumable.model.spec';
+import {CONSUMABLES_TEST_DATA} from '../../../model/items/consumable/consumable.model.spec';
 import {ConsumablesService} from '../../../services/consumables.service';
 import {ConsumablesServiceMock} from '../../../services/consumables.service.spec';
-import {Consumable} from '../../../model/consumable.model';
+import {Consumable} from '../../../model/items/consumable/consumable.model';
 
 describe('AbilityItemAllAlliesEffectParser', () => {
   it('should parse item list usage on all allies', () => {

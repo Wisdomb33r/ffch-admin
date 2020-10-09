@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Item} from '../model/item.model';
+import {Item} from '../model/items/item.model';
 import {ConsumablesService} from './consumables.service';
 import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {ItemCategory, ItemCategoryFactory} from '../model/item-category.model';
+import {ItemCategory, ItemCategoryFactory} from '../model/items/item-category.model';
 
 @Injectable()
 export class ItemsService {

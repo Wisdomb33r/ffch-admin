@@ -1,10 +1,10 @@
-import {ItemRecipe} from '../model/item-recipe.model';
-import {Recette} from '../model/recette.model';
-import {Formule} from '../model/formule.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {Ingredient} from '../model/ingredient.model';
+import {ItemRecipe} from '../../model/items/item-recipe.model';
+import {Recette} from '../../model/recette.model';
+import {Formule} from '../../model/formule.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {Ingredient} from '../../model/ingredient.model';
 import {isNumber} from 'util';
-import {Objet} from '../model/objet/objet.model';
+import {Objet} from '../../model/objet/objet.model';
 import {ItemMapper} from './item-mapper';
 
 export class ItemRecipeMapper {

@@ -1,13 +1,13 @@
-import {Item} from '../model/item.model';
-import {Objet} from '../model/objet/objet.model';
+import {Item} from '../../model/items/item.model';
+import {Objet} from '../../model/objet/objet.model';
 import {ConsumableMapper} from './consumable-mapper';
 import {EquipmentMapper} from './equipment-mapper';
 import {MateriaMapper} from './materia-mapper';
-import {Character} from '../model/character/character.model';
-import {ObjetLienTMR} from '../model/objet/objet-lien-tmr.model';
-import {ItemCategoryFactory} from '../model/item-category.model';
-import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {FfbeUtils} from '../utils/ffbe-utils';
+import {Character} from '../../model/character/character.model';
+import {ObjetLienTMR} from '../../model/objet/objet-lien-tmr.model';
+import {ItemCategoryFactory} from '../../model/items/item-category.model';
+import {FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ItemMapper {
 

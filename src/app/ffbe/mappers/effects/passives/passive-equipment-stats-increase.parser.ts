@@ -1,6 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
-import {Equipment} from '../../../model/equipment/equipment.model';
+import {Equipment} from '../../../model/items/equipment/equipment.model';
 import {EquipmentsService} from '../../../services/equipments.service';
 
 export class PassiveEquipmentStatsIncreaseParser extends EffectParser {

@@ -1,20 +1,20 @@
-import {Equipment} from '../model/equipment/equipment.model';
-import {Objet} from '../model/objet/objet.model';
-import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {ItemCategoryFactory} from '../model/item-category.model';
-import {SkillMapper} from './skill-mapper';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {EquipmentStats} from '../model/equipment/equipment-stats.model';
-import {Caracteristiques} from '../model/caracteristiques.model';
-import {ResistancesElementaires} from '../model/resistances-elementaires.model';
-import {EquipmentElementResist} from '../model/equipment/equipment-element-resist.model';
-import {ResistancesAlterations} from '../model/resistances-alterations.model';
-import {EquipmentStatusEffect} from '../model/equipment/equipment-status-effect.model';
-import {Character} from '../model/character/character.model';
-import {CharactersService} from '../services/characters.service';
+import {Equipment} from '../../model/items/equipment/equipment.model';
+import {Objet} from '../../model/objet/objet.model';
+import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
+import {ItemCategoryFactory} from '../../model/items/item-category.model';
+import {SkillMapper} from '../skill-mapper';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {EquipmentStats} from '../../model/items/equipment/equipment-stats.model';
+import {Caracteristiques} from '../../model/caracteristiques.model';
+import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
+import {EquipmentElementResist} from '../../model/items/equipment/equipment-element-resist.model';
+import {ResistancesAlterations} from '../../model/resistances-alterations.model';
+import {EquipmentStatusEffect} from '../../model/items/equipment/equipment-status-effect.model';
+import {Character} from '../../model/character/character.model';
+import {CharactersService} from '../../services/characters.service';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
-import {Skill} from '../model/skill.model';
-import {TueursMapper} from './tueurs-mapper';
+import {Skill} from '../../model/skill.model';
+import {TueursMapper} from '../tueurs-mapper';
 
 export class EquipmentMapper extends ItemWithSkillsMapper {
 
