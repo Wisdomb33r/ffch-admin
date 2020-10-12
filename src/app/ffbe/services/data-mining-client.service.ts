@@ -15,6 +15,7 @@ const recipeFile = dataMiningBaseURL + 'recipes.json';
 const consumableFile = dataMiningBaseURL + 'items.json';
 const equipmentFile = dataMiningBaseURL + 'equipment.json';
 const materiaFile = dataMiningBaseURL + 'materia.json';
+const visionCardsFile = dataMiningBaseURL + 'vision_cards.json';
 const dataMiningStringsBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe-gl-strings/master/';
 const skillsNamesFile = dataMiningStringsBaseURL + 'MST_ABILITY_NAME.json';
 const skillsMagicNamesFile = dataMiningStringsBaseURL + 'MST_MAGIC_NAME.json';
@@ -22,6 +23,7 @@ const skillsDescriptionsFile = dataMiningStringsBaseURL + 'MST_ABILITY_SHORTDESC
 const skillsMagicDescriptionsFile = dataMiningStringsBaseURL + 'MST_MAGIC_SHORTDESCRIPTION.json';
 const lbNamesFile = dataMiningStringsBaseURL + 'MST_LIMITBURST_NAME.json';
 const lbDescriptionsFile = dataMiningStringsBaseURL + 'MST_LIMITBURST_DESCRIPTION.json';
+const visionCardsNamesFile = dataMiningStringsBaseURL + 'MST_VISION_CARD_NAME.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -119,5 +121,13 @@ export class DataMiningClientService {
 
   public getMaterias$(): Observable<Object> {
     return this.http.get(materiaFile);
+  }
+
+  public getVisionCards$(): Observable<Object> {
+    return this.http.get(visionCardsFile);
+  }
+
+  public getVisionCardsNames$(): Observable<Object> {
+    return this.http.get(visionCardsNamesFile);
   }
 }
