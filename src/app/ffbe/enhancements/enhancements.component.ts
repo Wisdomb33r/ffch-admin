@@ -9,6 +9,7 @@ import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
+import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
 
 @Component({
   templateUrl: './enhancements.component.html',
@@ -40,12 +41,12 @@ export class EnhancementsComponent implements OnInit {
 
   public searchEnhancementsInDataMining() {
     this.ameliorations = [];
-    let enhancements = [];
+    let enhancementsContainer: BaseActivatedEnhancementsContainer;
     if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.characterName.patchValue('');
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
-      enhancements = this.enhancementsService.searchForEnhancementsBySkillGumiId(this.gumiId.value);
+      enhancementsContainer = this.enhancementsService.searchForEnhancementsBySkillGumiId(this.gumiId.value);
     } else if (!FfbeUtils.isNullOrUndefined(this.characterName.value) && this.characterName.value.length > 0) {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
@@ -53,12 +54,12 @@ export class EnhancementsComponent implements OnInit {
       const characters = this.charactersService.searchForCharactersByNameOrGumiId(this.characterName.value);
       if (!FfbeUtils.isNullOrUndefined(characters) && Array.isArray(characters) && characters.length > 0) {
         this.character = characters[0];
-        enhancements = this.enhancementsService.searchForEnhancementsByCharacterGumiId(this.character.gumi_id);
+        enhancementsContainer = this.enhancementsService.searchForEnhancementsByCharacterGumiId(this.character.gumi_id);
       }
     } else {
-      enhancements = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
+      enhancementsContainer = this.enhancementsService.searchForEnhancementsByNames(this.englishName.value, this.frenchName.value);
     }
-    enhancements.forEach(enhancement => {
+    enhancementsContainer.baseEnhancements.forEach(enhancement => {
       const amelioration = EnhancementMapper.toAmelioration(enhancement);
       if (!FfbeUtils.isNullOrUndefined(this.character)) {
         amelioration.perso_gumi_id = this.character.gumi_id;

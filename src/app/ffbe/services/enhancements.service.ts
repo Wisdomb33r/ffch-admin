@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Enhancement} from '../model/enhancement.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
 
 @Injectable()
 export class EnhancementsService {
@@ -20,7 +21,7 @@ export class EnhancementsService {
     }
   }
 
-  public searchForEnhancementsByNames(english: string, french: string): Array<Enhancement> {
+  public searchForEnhancementsByNames(english: string, french: string): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (english && french) {
@@ -41,7 +42,7 @@ export class EnhancementsService {
     return this.createEnhancementsFromMatchingProperties(matchingProperties);
   }
 
-  public searchForEnhancementsBySkillGumiId(skillGumiId: number): Array<Enhancement> {
+  public searchForEnhancementsBySkillGumiId(skillGumiId: number): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (!FfbeUtils.isNullOrUndefined(skillGumiId)) {
@@ -62,7 +63,7 @@ export class EnhancementsService {
     return this.createEnhancementsFromMatchingProperties(matchingProperties);
   }
 
-  public searchForEnhancementsByCharacterGumiId(characterGumiId: number): Array<Enhancement> {
+  public searchForEnhancementsByCharacterGumiId(characterGumiId: number): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (!FfbeUtils.isNullOrUndefined(characterGumiId)) {
@@ -78,7 +79,7 @@ export class EnhancementsService {
     return this.enhancementsFromDataMining != null;
   }
 
-  protected createEnhancementsFromMatchingProperties(matchingProperties: Array<string>): Array<Enhancement> {
+  protected createEnhancementsFromMatchingProperties(matchingProperties: Array<string>): BaseActivatedEnhancementsContainer {
     const enhancements: Array<Enhancement> = [];
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
@@ -88,7 +89,7 @@ export class EnhancementsService {
         enhancements.push(enhancement);
       });
     }
-    return enhancements;
+    return new BaseActivatedEnhancementsContainer(enhancements);
   }
 
   protected addBaseSkillAndLevel(enhancement: Enhancement) {
