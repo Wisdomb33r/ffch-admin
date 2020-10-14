@@ -3,7 +3,6 @@ import {ENHANCEMENTS_TEST_DATA} from '../model/enhancement.model.testdata.spec';
 import {inject, TestBed} from '@angular/core/testing';
 import {DataMiningClientService} from './data-mining-client.service';
 import {EnhancementsService} from './enhancements.service';
-import {Enhancement} from '../model/enhancement.model';
 
 class DataMiningMock {
   public getEnhancements$(): Observable<Object> {
@@ -56,18 +55,21 @@ describe('EnhancementsService', () => {
     service.loadEnhancementsFromDataMining();
 
     // WHEN
-    const enhancements: Array<Enhancement> = service.searchForEnhancementsByNames('Kingdom\'s Hero', null);
+    const enhancementsContainer = service.searchForEnhancementsByNames('Kingdom\'s Hero', null);
+    const baseEnhancements = enhancementsContainer.baseEnhancements;
+
     // THEN
-    expect(enhancements).toBeTruthy();
-    expect(enhancements.length).toEqual(2);
-    expect(enhancements[0].gumi_id).toEqual(228085001);
-    expect(enhancements[0].skill_id_old).toEqual(228085);
-    expect(enhancements[0].skill_id_new).toEqual(707785);
-    expect(enhancements[0].skill_id_base).toEqual(228085);
-    expect(enhancements[1].gumi_id).toEqual(228085002);
-    expect(enhancements[1].skill_id_old).toEqual(707785);
-    expect(enhancements[1].skill_id_new).toEqual(707786);
-    expect(enhancements[1].skill_id_base).toEqual(228085);
+    expect(baseEnhancements).toBeTruthy();
+    expect(baseEnhancements.length).toEqual(2);
+    expect(baseEnhancements[0].gumi_id).toEqual(228085001);
+    expect(baseEnhancements[0].skill_id_old).toEqual(228085);
+    expect(baseEnhancements[0].skill_id_new).toEqual(707785);
+    expect(baseEnhancements[0].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[1].gumi_id).toEqual(228085002);
+    expect(baseEnhancements[1].skill_id_old).toEqual(707785);
+    expect(baseEnhancements[1].skill_id_new).toEqual(707786);
+    expect(baseEnhancements[1].skill_id_base).toEqual(228085);
+    expect(enhancementsContainer.activatedEnhancements).toBeNull();
   }));
 
   it('should find the correct enhancements by French name when searched if present in data mining', inject([EnhancementsService], (service: EnhancementsService) => {
@@ -75,18 +77,21 @@ describe('EnhancementsService', () => {
     service.loadEnhancementsFromDataMining();
 
     // WHEN
-    const enhancements: Array<Enhancement> = service.searchForEnhancementsByNames( null, 'YoRHa N° 2 Type B');
+    const enhancementsContainer = service.searchForEnhancementsByNames(null, 'YoRHa N° 2 Type B');
+    const baseEnhancements = enhancementsContainer.baseEnhancements;
+
     // THEN
-    expect(enhancements).toBeTruthy();
-    expect(enhancements.length).toEqual(2);
-    expect(enhancements[0].gumi_id).toEqual(230020001);
-    expect(enhancements[0].skill_id_old).toEqual(230020);
-    expect(enhancements[0].skill_id_new).toEqual(914071);
-    expect(enhancements[0].skill_id_base).toEqual(230020);
-    expect(enhancements[1].gumi_id).toEqual(230020002);
-    expect(enhancements[1].skill_id_old).toEqual(914071);
-    expect(enhancements[1].skill_id_new).toEqual(914072);
-    expect(enhancements[1].skill_id_base).toEqual(230020);
+    expect(baseEnhancements).toBeTruthy();
+    expect(baseEnhancements.length).toEqual(2);
+    expect(baseEnhancements[0].gumi_id).toEqual(230020001);
+    expect(baseEnhancements[0].skill_id_old).toEqual(230020);
+    expect(baseEnhancements[0].skill_id_new).toEqual(914071);
+    expect(baseEnhancements[0].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[1].gumi_id).toEqual(230020002);
+    expect(baseEnhancements[1].skill_id_old).toEqual(914071);
+    expect(baseEnhancements[1].skill_id_new).toEqual(914072);
+    expect(baseEnhancements[1].skill_id_base).toEqual(230020);
+    expect(enhancementsContainer.activatedEnhancements).toBeNull();
   }));
 
   it('should find the correct enhancements by GumiID of base skill when searched if present in data mining', inject([EnhancementsService], (service: EnhancementsService) => {
@@ -94,18 +99,21 @@ describe('EnhancementsService', () => {
     service.loadEnhancementsFromDataMining();
 
     // WHEN
-    const enhancements: Array<Enhancement> = service.searchForEnhancementsBySkillGumiId(228085);
+    const enhancementsContainer = service.searchForEnhancementsBySkillGumiId(228085);
+    const baseEnhancements = enhancementsContainer.baseEnhancements;
+
     // THEN
-    expect(enhancements).toBeTruthy();
-    expect(enhancements.length).toEqual(2);
-    expect(enhancements[0].gumi_id).toEqual(228085001);
-    expect(enhancements[0].skill_id_old).toEqual(228085);
-    expect(enhancements[0].skill_id_new).toEqual(707785);
-    expect(enhancements[0].skill_id_base).toEqual(228085);
-    expect(enhancements[1].gumi_id).toEqual(228085002);
-    expect(enhancements[1].skill_id_old).toEqual(707785);
-    expect(enhancements[1].skill_id_new).toEqual(707786);
-    expect(enhancements[1].skill_id_base).toEqual(228085);
+    expect(baseEnhancements).toBeTruthy();
+    expect(baseEnhancements.length).toEqual(2);
+    expect(baseEnhancements[0].gumi_id).toEqual(228085001);
+    expect(baseEnhancements[0].skill_id_old).toEqual(228085);
+    expect(baseEnhancements[0].skill_id_new).toEqual(707785);
+    expect(baseEnhancements[0].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[1].gumi_id).toEqual(228085002);
+    expect(baseEnhancements[1].skill_id_old).toEqual(707785);
+    expect(baseEnhancements[1].skill_id_new).toEqual(707786);
+    expect(baseEnhancements[1].skill_id_base).toEqual(228085);
+    expect(enhancementsContainer.activatedEnhancements).toBeNull();
   }));
 
   it('should find the correct enhancements by Character GumiID when searched if present in data mining', inject([EnhancementsService], (service: EnhancementsService) => {
@@ -113,18 +121,21 @@ describe('EnhancementsService', () => {
     service.loadEnhancementsFromDataMining();
 
     // WHEN
-    const enhancements: Array<Enhancement> = service.searchForEnhancementsByCharacterGumiId( 310000105);
+    const enhancementsContainer = service.searchForEnhancementsByCharacterGumiId(310000105);
+    const baseEnhancements = enhancementsContainer.baseEnhancements;
+
     // THEN
-    expect(enhancements).toBeTruthy();
-    expect(enhancements.length).toEqual(2);
-    expect(enhancements[0].gumi_id).toEqual(230020001);
-    expect(enhancements[0].skill_id_old).toEqual(230020);
-    expect(enhancements[0].skill_id_new).toEqual(914071);
-    expect(enhancements[0].skill_id_base).toEqual(230020);
-    expect(enhancements[1].gumi_id).toEqual(230020002);
-    expect(enhancements[1].skill_id_old).toEqual(914071);
-    expect(enhancements[1].skill_id_new).toEqual(914072);
-    expect(enhancements[1].skill_id_base).toEqual(230020);
+    expect(baseEnhancements).toBeTruthy();
+    expect(baseEnhancements.length).toEqual(2);
+    expect(baseEnhancements[0].gumi_id).toEqual(230020001);
+    expect(baseEnhancements[0].skill_id_old).toEqual(230020);
+    expect(baseEnhancements[0].skill_id_new).toEqual(914071);
+    expect(baseEnhancements[0].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[1].gumi_id).toEqual(230020002);
+    expect(baseEnhancements[1].skill_id_old).toEqual(914071);
+    expect(baseEnhancements[1].skill_id_new).toEqual(914072);
+    expect(baseEnhancements[1].skill_id_base).toEqual(230020);
+    expect(enhancementsContainer.activatedEnhancements).toBeNull();
   }));
 
 });
