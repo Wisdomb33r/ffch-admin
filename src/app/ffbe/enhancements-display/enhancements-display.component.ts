@@ -9,6 +9,7 @@ import {Amelioration} from '../model/amelioration.model';
 export class EnhancementsDisplayComponent implements OnInit {
 
   @Input() ameliorations: Array<Amelioration>;
+  @Input() titre: string;
 
   constructor() {
   }
