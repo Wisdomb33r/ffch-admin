@@ -133,5 +133,38 @@ export const ENHANCEMENTS_TEST_DATA =
                 "Mayor aumento del daño del EL (a un 100%)"
             ]
         }
+    },
+  "300000139": {
+        "name": "Destructive Blade - Glacial Fissure",
+        "skill_id_old": 236574,
+        "skill_id_new": 236575,
+        "cost": {
+            "gil": 150000,
+            "materials": {
+                "271000700": 20,
+                "271000800": 10
+            }
+        },
+        "units": [100031507],
+        "strings": {
+            "names": [
+                "Destructive Blade - Glacial Fissure",
+                "壞刀・裂冰河",
+                "멸도·열빙하",
+                "Lame destructrice - Fissure glaciale",
+                "Zerstörerische Klinge – Gletscherspalte",
+                "Espada destructora - Fisura glacial",
+                "Pedang Penghancur - Retakan Gletser"
+            ],
+            "description": [
+                "3900%",
+                "3900%",
+                "3900%",
+                "3900%",
+                "3900%",
+                "3900%",
+                "3900%"
+            ]
+        }
     }
   }`
