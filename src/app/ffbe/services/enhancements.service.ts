@@ -5,6 +5,7 @@ import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
 import {SkillsService} from './skills.service';
+import {Skill} from '../model/skill.model';
 
 @Injectable()
 export class EnhancementsService {
@@ -83,6 +84,7 @@ export class EnhancementsService {
 
   protected createEnhancementsFromMatchingProperties(matchingProperties: Array<string>): BaseActivatedEnhancementsContainer {
     const baseEnhancements: Array<Enhancement> = [];
+    // TODO: Change enhancementContainer so that both arrays have length 0 by default
     const activatedEnhancements: Array<Enhancement> = [];
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
@@ -90,7 +92,7 @@ export class EnhancementsService {
         enhancement.gumi_id = +property;
         this.addBaseSkillAndLevel(enhancement);
         baseEnhancements.push(enhancement);
-        activatedEnhancements.concat(this.computeActivatedEnhancements(enhancement));
+        Array.prototype.push.apply(activatedEnhancements, this.computeActivatedEnhancements(enhancement));
       });
     }
     return new BaseActivatedEnhancementsContainer(baseEnhancements, activatedEnhancements);
@@ -127,28 +129,37 @@ export class EnhancementsService {
 
     console.log('searching old skill:');
     const oldSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_old);
-    // const newSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_new);
+    const newSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_new);
 
     console.log('old skill:');
     console.log(oldSkill);
-    // console.log(newSkill);
+    console.log('new skill:');
+
+    console.log(newSkill);
 
     const skillsActivatedByOldSkill = oldSkill.activatedSkills;
-    // const skillsActivatedByNewSkill = newSkill.activatedSkills;
+    const skillsActivatedByNewSkill = newSkill.activatedSkills;
 
     console.log(skillsActivatedByOldSkill);
-    // console.log(skillsActivatedByNewSkill);
-    /*
-        if (skillsActivatedByOldSkill.length > 0 && skillsActivatedByNewSkill.length > 0
-          && skillsActivatedByOldSkill.length === skillsActivatedByNewSkill.length) {
-          skillsActivatedByOldSkill.forEach((skill: Skill, index: number) => {
-            const activatedEnhancement = new Enhancement();
-            activatedEnhancement.skill_id_old = skill.gumi_id;
-            activatedEnhancement.skill_id_new = skillsActivatedByNewSkill[index].gumi_id;
-            activatedEnhancement.level = baseEnhancement.level;
-            activatedEnhancements.push(activatedEnhancement);
-          });
-        }*/
+    console.log(skillsActivatedByNewSkill);
+
+    if (skillsActivatedByOldSkill.length > 0 && skillsActivatedByNewSkill.length > 0
+      && skillsActivatedByOldSkill.length === skillsActivatedByNewSkill.length) {
+      skillsActivatedByOldSkill.forEach((skill: Skill, index: number) => {
+        const activatedEnhancement = new Enhancement();
+        activatedEnhancement.units = baseEnhancement.units;
+        activatedEnhancement.skill_id_old = skill.gumi_id;
+        activatedEnhancement.skill_id_new = skillsActivatedByNewSkill[index].gumi_id;
+        // TODO: Compute skill_id_base and level properly
+        activatedEnhancement.skill_id_base = skill.gumi_id;
+        activatedEnhancement.level = baseEnhancement.level;
+        // TODO: Add cost
+        // TODO: Add names & description
+        activatedEnhancements.push(activatedEnhancement);
+      });
+    }
+    console.log('activated enhancements:');
+    console.log(activatedEnhancements);
     return activatedEnhancements;
   }
 }

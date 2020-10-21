@@ -234,6 +234,24 @@ export const PASSIVE_SKILLS_TEST_DATA =
         "requirements": null,
         "unit_restriction": null
     },
+    "228085": {
+        "name": "Kingdom's Hero",
+        "icon": "ability_91.png",
+        "compendium_id": 3682,
+        "rarity": 8,
+        "unique": false,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase DEF, SPR, HP and MP by 20%",
+            "Increase LB gauge by 2 per turn",
+            "Increase the limit burst gauge fill rate by 50%"
+        ],
+        "effects_raw": [[0, 3, 1, [0,  20,  0,  20,  20,  20,  0]], [0, 3, 33, [200]], [0, 3, 31, [50]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
     "707785": {
         "name": "Kingdom's Hero",
         "icon": "ability_91.png",
