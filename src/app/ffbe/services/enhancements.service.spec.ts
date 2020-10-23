@@ -85,10 +85,12 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[0].skill_id_old).toEqual(228085);
     expect(baseEnhancements[0].skill_id_new).toEqual(707785);
     expect(baseEnhancements[0].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[0].level).toEqual(1);
     expect(baseEnhancements[1].gumi_id).toEqual(228085002);
     expect(baseEnhancements[1].skill_id_old).toEqual(707785);
     expect(baseEnhancements[1].skill_id_new).toEqual(707786);
     expect(baseEnhancements[1].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
 
     expect(mySpy).toHaveBeenCalledWith(228085);
@@ -126,10 +128,12 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[0].skill_id_old).toEqual(230020);
     expect(baseEnhancements[0].skill_id_new).toEqual(914071);
     expect(baseEnhancements[0].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[0].level).toEqual(1);
     expect(baseEnhancements[1].gumi_id).toEqual(230020002);
     expect(baseEnhancements[1].skill_id_old).toEqual(914071);
     expect(baseEnhancements[1].skill_id_new).toEqual(914072);
     expect(baseEnhancements[1].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
 
     expect(mySpy).toHaveBeenCalledWith(230020);
@@ -167,10 +171,12 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[0].skill_id_old).toEqual(228085);
     expect(baseEnhancements[0].skill_id_new).toEqual(707785);
     expect(baseEnhancements[0].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[0].level).toEqual(1);
     expect(baseEnhancements[1].gumi_id).toEqual(228085002);
     expect(baseEnhancements[1].skill_id_old).toEqual(707785);
     expect(baseEnhancements[1].skill_id_new).toEqual(707786);
     expect(baseEnhancements[1].skill_id_base).toEqual(228085);
+    expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
 
     expect(mySpy).toHaveBeenCalledTimes(4);
@@ -208,10 +214,12 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[0].skill_id_old).toEqual(230020);
     expect(baseEnhancements[0].skill_id_new).toEqual(914071);
     expect(baseEnhancements[0].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[0].level).toEqual(1);
     expect(baseEnhancements[1].gumi_id).toEqual(230020002);
     expect(baseEnhancements[1].skill_id_old).toEqual(914071);
     expect(baseEnhancements[1].skill_id_new).toEqual(914072);
     expect(baseEnhancements[1].skill_id_base).toEqual(230020);
+    expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
     expect(mySpy).toHaveBeenCalledTimes(4);
     expect(mySpy).toHaveBeenCalledWith(230020);
