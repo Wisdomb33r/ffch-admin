@@ -23,7 +23,7 @@ import {UniteCarac} from '../model/unite-carac.model';
 
 export class CharacterEntryMapper {
 
-  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character): Unite {
+  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character, competences: Array<Competence>): Unite {
     const unite = new Unite(
       CharacterEntryMapper.convertCompendiumId(entry, character),
       CharacterEntryMapper.convertRarity(entry, character),
@@ -34,17 +34,17 @@ export class CharacterEntryMapper {
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
-    CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
+    CharacterEntryMapper.convertUniteCompetences(unite, character, entry, competences);
     CharacterEntryMapper.convertEXCaracteristiques(unite, entry.nv_upgrade);
     return unite;
   }
 
-  public static toUniteArray(entries: any, character: Character): Array<Unite> {
+  public static toUniteArray(entries: any, character: Character, competences: Array<Competence>): Array<Unite> {
     const unites: Array<Unite> = [];
     if (entries) {
       const entryNames: string[] = Object.getOwnPropertyNames(entries);
       for (const entryName of entryNames) {
-        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character));
+        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character, competences));
       }
     }
     return unites;
@@ -126,12 +126,12 @@ export class CharacterEntryMapper {
     }
   }
 
-  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
+  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
     unite.competences = [];
     let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = Skill.produce(characterSkill.skill);
-      const competence: Competence = SkillMapper.toCompetence(skill);
+      const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
