@@ -134,7 +134,79 @@ export const ENHANCEMENTS_TEST_DATA =
             ]
         }
     },
-  "300000139": {
+    "208930001": {
+        "name": "Extract",
+        "skill_id_old": 208930,
+        "skill_id_new": 703730,
+        "cost": {
+            "gil": 1000000,
+            "materials": {
+                "270001100": 20,
+                "270001200": 15,
+                "270001300": 10,
+                "270001400": 4,
+                "270001500": 2
+            }
+        },
+        "units": [100006704],
+        "strings": {
+            "names": {
+                "0": "Extract",
+                "4": "Extrakt",
+                "5": "Extracción",
+                "3": "Extraction",
+                "6": "Ekstraksi",
+                "2": "엑기스",
+                "1": "藥物提煉"
+            },
+            "description": {
+                "0": "Boosts efficacy of berserker serum and blockade serum (mid)",
+                "4": "Erhöht Effizienz von Berserker- und Blockade-Serum (mittel)",
+                "5": "Aumenta la eficacia del Suero de berserker y del Suero de tanque (bastante)",
+                "3": "Augmente l'efficacité de Sérum de berserker et de Sérum de tank (moyen)",
+                "6": "Meningkatkan efek Serum Keganasan dan Serum Blokade (sedang)",
+                "2": "'광전사 세럼', '철벽강장제' 효과 상승(중)",
+                "1": "提高「猛攻突擊藥」「鐵壁強壯藥」的效果(中)"
+            }
+        }
+    },
+    "208930002": {
+        "name": "Extract",
+        "skill_id_old": 703730,
+        "skill_id_new": 703740,
+        "cost": {
+            "gil": 1000000,
+            "materials": {
+                "270001100": 30,
+                "270001200": 23,
+                "270001300": 15,
+                "270001400": 8,
+                "270001500": 2
+            }
+        },
+        "units": [100006704],
+        "strings": {
+            "names": {
+                "0": "Extract",
+                "4": "Extrakt",
+                "5": "Extracción",
+                "3": "Extraction",
+                "6": "Ekstraksi",
+                "2": "엑기스",
+                "1": "藥物提煉"
+            },
+            "description": {
+                "0": "After using berserker serum, blockade serum, or resist down, they can be used for one turn",
+                "4": "Nach Einsatz von Berserker- und Blockade-Serum oder Resistenzausfall Einsatz für eine Runde",
+                "5": "Después de usar Suero de berserker, Suero de tanque o Antiresistencias, se pueden volver a usar durante un turno",
+                "3": "Après avoir utilisé Sérum de berserker, Sérum de tank ou Réducteur de résistance, ils peuvent être utilisé pendant un tour",
+                "6": "Ability dapat digunakan selama 1 giliran apabila digunakan setelah Serum Keganasan, Serum Blokade, atau Resist Down",
+                "2": "1턴에에 한해 '광전사 세럼', '철벽강장제', '모든 속성 약화 세럼' 사용 후 '광전사 세럼', '철벽강장제', '모든 속성 약화 세럼' 사용 가능",
+                "1": "使用「猛攻突擊藥」「鐵壁強壯藥」「全屬性弱化藥」後，1回合內可使用「猛攻突擊藥」「鐵壁強壯藥」「全屬性弱化藥」"
+            }
+        }
+    },
+    "300000139": {
         "name": "Destructive Blade - Glacial Fissure",
         "skill_id_old": 236574,
         "skill_id_new": 236575,

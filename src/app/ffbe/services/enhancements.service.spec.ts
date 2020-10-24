@@ -228,6 +228,159 @@ describe('EnhancementsService', () => {
     expect(mySpy).toHaveBeenCalledWith(914072);
   }));
 
+  it('should compute the correct enhancements for skills enabled by innate skills', inject([EnhancementsService], (service: EnhancementsService) => {
+      // GIVEN
+      service.loadEnhancementsFromDataMining();
+
+      const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+
+      const skill1: Skill = skills['208930'];
+      skill1.gumi_id = 208930;
+      skill1.active = true;
+      const skill2: Skill = skills['703730'];
+      skill2.gumi_id = 703730;
+      skill2.active = true;
+      const skill3: Skill = skills['703740'];
+      skill3.gumi_id = 703740;
+      skill3.active = true;
+
+      const skill4: Skill = skills['501090'];
+      skill4.gumi_id = 501090;
+      skill4.active = true;
+      const skill5: Skill = skills['503770'];
+      skill5.gumi_id = 503770;
+      skill5.active = true;
+      const skill6: Skill = skills['503690'];
+      skill6.gumi_id = 503690;
+      skill6.active = true;
+
+      const skill7: Skill = skills['501100'];
+      skill7.gumi_id = 501100;
+      skill7.active = true;
+      const skill8: Skill = skills['503780'];
+      skill8.gumi_id = 503780;
+      skill8.active = true;
+      const skill9: Skill = skills['503700'];
+      skill9.gumi_id = 503700;
+      skill9.active = true;
+
+      const skill10: Skill = skills['501110'];
+      skill10.gumi_id = 501110;
+      skill10.active = true;
+      const skill11: Skill = skills['503790'];
+      skill11.gumi_id = 503790;
+      skill11.active = true;
+      const skill12: Skill = skills['503710'];
+      skill12.gumi_id = 503710;
+      skill12.active = true;
+
+      SkillsService['INSTANCE'] = skillsService;
+      const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callFake(input => {
+          console.log('Mock called for ' + input);
+          switch (input) {
+            case 208930:
+              return Skill.produce(skill1);
+            case 703730:
+              return Skill.produce(skill2);
+            case 703740:
+              return Skill.produce(skill3);
+            case 501090:
+              return Skill.produce(skill4);
+            case 503770:
+              return Skill.produce(skill5);
+            case 503690:
+              return Skill.produce(skill6);
+            case 501100:
+              return Skill.produce(skill7);
+            case 503780:
+              return Skill.produce(skill8);
+            case 503700:
+              return Skill.produce(skill9);
+            case 501110:
+              return Skill.produce(skill10);
+            case 503790:
+              return Skill.produce(skill11);
+            case 503710:
+              return Skill.produce(skill12);
+            default:
+              console.log('SearchForSkillByGumiId called for non-mocked skill ' + input);
+          }
+        }
+      );
+
+      // WHEN
+      const enhancementsContainer = service.searchForEnhancementsBySkillGumiId(208930);
+      const baseEnhancements = enhancementsContainer.baseEnhancements;
+      const activatedEnhancements = enhancementsContainer.activatedEnhancements;
+
+      // THEN
+      expect(baseEnhancements).toBeTruthy();
+      expect(baseEnhancements.length).toEqual(2);
+      expect(baseEnhancements[0].gumi_id).toEqual(208930001);
+      expect(baseEnhancements[0].skill_id_old).toEqual(208930);
+      expect(baseEnhancements[0].skill_id_new).toEqual(703730);
+      expect(baseEnhancements[0].skill_id_base).toEqual(208930);
+      expect(baseEnhancements[0].level).toEqual(1);
+      expect(baseEnhancements[1].gumi_id).toEqual(208930002);
+      expect(baseEnhancements[1].skill_id_old).toEqual(703730);
+      expect(baseEnhancements[1].skill_id_new).toEqual(703740);
+      expect(baseEnhancements[1].skill_id_base).toEqual(208930);
+      expect(baseEnhancements[1].level).toEqual(2);
+
+      expect(mySpy).toHaveBeenCalledTimes(16);
+      expect(mySpy).toHaveBeenCalledWith(208930);
+      expect(mySpy).toHaveBeenCalledWith(703730);
+      expect(mySpy).toHaveBeenCalledWith(703740);
+      expect(mySpy).toHaveBeenCalledWith(501090);
+      expect(mySpy).toHaveBeenCalledWith(503770);
+      expect(mySpy).toHaveBeenCalledWith(503690);
+      expect(mySpy).toHaveBeenCalledWith(501100);
+      expect(mySpy).toHaveBeenCalledWith(503780);
+      expect(mySpy).toHaveBeenCalledWith(503700);
+      expect(mySpy).toHaveBeenCalledWith(501110);
+      expect(mySpy).toHaveBeenCalledWith(503790);
+      expect(mySpy).toHaveBeenCalledWith(503710);
+
+      expect(activatedEnhancements).toBeTruthy();
+      expect(activatedEnhancements.length).toEqual(6);
+      expect(activatedEnhancements[0].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[0].skill_id_old).toEqual(501090);
+      expect(activatedEnhancements[0].skill_id_new).toEqual(503770);
+      expect(activatedEnhancements[0].skill_id_base).toEqual(501090);
+      expect(activatedEnhancements[0].level).toEqual(1);
+
+      expect(activatedEnhancements[1].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[1].skill_id_old).toEqual(501100);
+      expect(activatedEnhancements[1].skill_id_new).toEqual(503780);
+      expect(activatedEnhancements[1].skill_id_base).toEqual(501100);
+      expect(activatedEnhancements[1].level).toEqual(1);
+
+      expect(activatedEnhancements[2].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[2].skill_id_old).toEqual(501110);
+      expect(activatedEnhancements[2].skill_id_new).toEqual(503790);
+      expect(activatedEnhancements[2].skill_id_base).toEqual(501110);
+      expect(activatedEnhancements[2].level).toEqual(1);
+
+      expect(activatedEnhancements[3].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[3].skill_id_old).toEqual(503770);
+      expect(activatedEnhancements[3].skill_id_new).toEqual(503690);
+      expect(activatedEnhancements[3].skill_id_base).toEqual(503770);
+      expect(activatedEnhancements[3].level).toEqual(2);
+
+      expect(activatedEnhancements[4].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[4].skill_id_old).toEqual(503780);
+      expect(activatedEnhancements[4].skill_id_new).toEqual(503700);
+      expect(activatedEnhancements[4].skill_id_base).toEqual(503780);
+      expect(activatedEnhancements[4].level).toEqual(2);
+
+      expect(activatedEnhancements[5].gumi_id).toBeUndefined();
+      expect(activatedEnhancements[5].skill_id_old).toEqual(503790);
+      expect(activatedEnhancements[5].skill_id_new).toEqual(503710);
+      expect(activatedEnhancements[5].skill_id_base).toEqual(503790);
+      expect(activatedEnhancements[5].level).toEqual(2);
+    })
+  );
+
   it('should compute the correct enhancements for skills activated by random skills', inject([EnhancementsService], (service: EnhancementsService) => {
       // GIVEN
       service.loadEnhancementsFromDataMining();
