@@ -130,7 +130,7 @@ export class EnhancementsService {
     console.log('searching old skill:');
     const oldSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_old);
     const newSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_new);
-
+    const baseSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_base);
     console.log('old skill:');
     console.log(oldSkill);
     console.log('new skill:');
@@ -139,6 +139,7 @@ export class EnhancementsService {
 
     const skillsActivatedByOldSkill = oldSkill.activatedSkills;
     const skillsActivatedByNewSkill = newSkill.activatedSkills;
+    const skillsActivatedByBaseSkill = baseSkill.activatedSkills;
 
     console.log(skillsActivatedByOldSkill);
     console.log(skillsActivatedByNewSkill);
@@ -150,8 +151,7 @@ export class EnhancementsService {
         activatedEnhancement.units = baseEnhancement.units;
         activatedEnhancement.skill_id_old = skill.gumi_id;
         activatedEnhancement.skill_id_new = skillsActivatedByNewSkill[index].gumi_id;
-        // TODO: Compute skill_id_base and level properly
-        activatedEnhancement.skill_id_base = skill.gumi_id;
+        activatedEnhancement.skill_id_base = skillsActivatedByBaseSkill[index].gumi_id;
         activatedEnhancement.level = baseEnhancement.level;
         // TODO: Add cost
         // TODO: Add names & description

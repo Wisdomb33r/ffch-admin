@@ -72,7 +72,8 @@ describe('EnhancementsService', () => {
 
     SkillsService['INSTANCE'] = skillsService;
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(
-      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill2), Skill.produce(skill3));
+      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill1),
+      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill1));
 
     // WHEN
     const enhancementsContainer = service.searchForEnhancementsByNames('Kingdom\'s Hero', null);
@@ -95,9 +96,8 @@ describe('EnhancementsService', () => {
 
     expect(mySpy).toHaveBeenCalledWith(228085);
     expect(mySpy).toHaveBeenCalledWith(707785);
-    expect(mySpy).toHaveBeenCalledWith(707785);
     expect(mySpy).toHaveBeenCalledWith(707786);
-    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledTimes(6);
   }));
 
   it('should find the correct enhancements by French name when searched if present in data mining', inject([EnhancementsService], (service: EnhancementsService) => {
@@ -115,7 +115,8 @@ describe('EnhancementsService', () => {
 
     SkillsService['INSTANCE'] = skillsService;
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(
-      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill2), Skill.produce(skill3));
+      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill1),
+      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill1));
 
     // WHEN
     const enhancementsContainer = service.searchForEnhancementsByNames(null, 'YoRHa N° 2 Type B');
@@ -138,9 +139,8 @@ describe('EnhancementsService', () => {
 
     expect(mySpy).toHaveBeenCalledWith(230020);
     expect(mySpy).toHaveBeenCalledWith(914071);
-    expect(mySpy).toHaveBeenCalledWith(914071);
     expect(mySpy).toHaveBeenCalledWith(914072);
-    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledTimes(6);
   }));
 
   it('should find the correct enhancements by GumiID of base skill when searched if present in data mining', inject([EnhancementsService], (service: EnhancementsService) => {
@@ -158,7 +158,8 @@ describe('EnhancementsService', () => {
 
     SkillsService['INSTANCE'] = skillsService;
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(
-      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill2), Skill.produce(skill3));
+      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill1),
+      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill1));
 
     // WHEN
     const enhancementsContainer = service.searchForEnhancementsBySkillGumiId(228085);
@@ -179,9 +180,8 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
 
-    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledTimes(6);
     expect(mySpy).toHaveBeenCalledWith(228085);
-    expect(mySpy).toHaveBeenCalledWith(707785);
     expect(mySpy).toHaveBeenCalledWith(707785);
     expect(mySpy).toHaveBeenCalledWith(707786);
   }));
@@ -201,7 +201,8 @@ describe('EnhancementsService', () => {
 
     SkillsService['INSTANCE'] = skillsService;
     const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(
-      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill2), Skill.produce(skill3));
+      Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill1),
+      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill1));
 
     // WHEN
     const enhancementsContainer = service.searchForEnhancementsByCharacterGumiId(310000105);
@@ -221,9 +222,8 @@ describe('EnhancementsService', () => {
     expect(baseEnhancements[1].skill_id_base).toEqual(230020);
     expect(baseEnhancements[1].level).toEqual(2);
     expect(enhancementsContainer.activatedEnhancements.length).toEqual(0);
-    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledTimes(6);
     expect(mySpy).toHaveBeenCalledWith(230020);
-    expect(mySpy).toHaveBeenCalledWith(914071);
     expect(mySpy).toHaveBeenCalledWith(914071);
     expect(mySpy).toHaveBeenCalledWith(914072);
   }));
@@ -327,7 +327,7 @@ describe('EnhancementsService', () => {
       expect(baseEnhancements[1].skill_id_base).toEqual(208930);
       expect(baseEnhancements[1].level).toEqual(2);
 
-      expect(mySpy).toHaveBeenCalledTimes(16);
+      expect(mySpy).toHaveBeenCalledTimes(24);
       expect(mySpy).toHaveBeenCalledWith(208930);
       expect(mySpy).toHaveBeenCalledWith(703730);
       expect(mySpy).toHaveBeenCalledWith(703740);
@@ -364,19 +364,19 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[3].gumi_id).toBeUndefined();
       expect(activatedEnhancements[3].skill_id_old).toEqual(503770);
       expect(activatedEnhancements[3].skill_id_new).toEqual(503690);
-      expect(activatedEnhancements[3].skill_id_base).toEqual(503770);
+      expect(activatedEnhancements[3].skill_id_base).toEqual(501090);
       expect(activatedEnhancements[3].level).toEqual(2);
 
       expect(activatedEnhancements[4].gumi_id).toBeUndefined();
       expect(activatedEnhancements[4].skill_id_old).toEqual(503780);
       expect(activatedEnhancements[4].skill_id_new).toEqual(503700);
-      expect(activatedEnhancements[4].skill_id_base).toEqual(503780);
+      expect(activatedEnhancements[4].skill_id_base).toEqual(501100);
       expect(activatedEnhancements[4].level).toEqual(2);
 
       expect(activatedEnhancements[5].gumi_id).toBeUndefined();
       expect(activatedEnhancements[5].skill_id_old).toEqual(503790);
       expect(activatedEnhancements[5].skill_id_new).toEqual(503710);
-      expect(activatedEnhancements[5].skill_id_base).toEqual(503790);
+      expect(activatedEnhancements[5].skill_id_base).toEqual(501110);
       expect(activatedEnhancements[5].level).toEqual(2);
     })
   );
@@ -442,7 +442,7 @@ describe('EnhancementsService', () => {
       expect(baseEnhancements[0].skill_id_new).toEqual(236575);
       expect(baseEnhancements[0].skill_id_base).toEqual(236574);
 
-      expect(mySpy).toHaveBeenCalledTimes(6);
+      expect(mySpy).toHaveBeenCalledTimes(9);
       expect(mySpy).toHaveBeenCalledWith(236574);
       expect(mySpy).toHaveBeenCalledWith(236575);
       expect(mySpy).toHaveBeenCalledWith(512781);
