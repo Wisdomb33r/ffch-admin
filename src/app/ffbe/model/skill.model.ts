@@ -41,8 +41,6 @@ export class Skill {
   public effets: Array<SkillEffect> = [];
 
   public static produce(s: Skill): Skill {
-    console.log('producing skill ' + s.gumi_id);
-    console.log(s);
     const skill: Skill = new Skill();
     skill.gumi_id = s.gumi_id;
     skill.name = s.name;

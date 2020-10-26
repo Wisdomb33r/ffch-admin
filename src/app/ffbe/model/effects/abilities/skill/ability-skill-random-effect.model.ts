@@ -18,14 +18,10 @@ export class AbilitySkillRandomEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 2) {
       this.parameterError = true;
     } else {
-      console.log('AbilitySkillRandomEffect');
       this.randomSKills = parameters
         .filter(value => Array.isArray(value) && value.length >= 2)
         .map(entry => {
-          console.log('random skill id ' + entry[0]);
-          console.log(SkillsService.getInstance());
           const skill = SkillsService.getInstance().searchForSkillByGumiId(entry[0]);
-          console.log(skill);
           const chance = entry[1];
           return {chance, skill};
         });

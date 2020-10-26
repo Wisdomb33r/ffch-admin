@@ -127,22 +127,13 @@ export class EnhancementsService {
   protected computeActivatedEnhancements(baseEnhancement: Enhancement): Array<Enhancement> {
     const activatedEnhancements = [];
 
-    console.log('searching old skill:');
     const oldSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_old);
     const newSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_new);
     const baseSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_base);
-    console.log('old skill:');
-    console.log(oldSkill);
-    console.log('new skill:');
-
-    console.log(newSkill);
 
     const skillsActivatedByOldSkill = oldSkill.activatedSkills;
     const skillsActivatedByNewSkill = newSkill.activatedSkills;
     const skillsActivatedByBaseSkill = baseSkill.activatedSkills;
-
-    console.log(skillsActivatedByOldSkill);
-    console.log(skillsActivatedByNewSkill);
 
     if (skillsActivatedByOldSkill.length > 0 && skillsActivatedByNewSkill.length > 0
       && skillsActivatedByOldSkill.length === skillsActivatedByNewSkill.length) {
@@ -158,8 +149,6 @@ export class EnhancementsService {
         activatedEnhancements.push(activatedEnhancement);
       });
     }
-    console.log('activated enhancements:');
-    console.log(activatedEnhancements);
     return activatedEnhancements;
   }
 }

@@ -276,7 +276,6 @@ describe('EnhancementsService', () => {
 
       SkillsService['INSTANCE'] = skillsService;
       const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callFake(input => {
-          console.log('Mock called for ' + input);
           switch (input) {
             case 208930:
               return Skill.produce(skill1);
@@ -303,7 +302,7 @@ describe('EnhancementsService', () => {
             case 503710:
               return Skill.produce(skill12);
             default:
-              console.log('SearchForSkillByGumiId called for non-mocked skill ' + input);
+              console.error('SearchForSkillByGumiId called for non-mocked skill ' + input);
           }
         }
       );
@@ -409,7 +408,6 @@ describe('EnhancementsService', () => {
 
       SkillsService['INSTANCE'] = skillsService;
       const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callFake(input => {
-          console.log('Mock called for ' + input);
           switch (input) {
             case 236574:
               return Skill.produce(skill1);
@@ -424,7 +422,7 @@ describe('EnhancementsService', () => {
             case 512784:
               return Skill.produce(skill6);
             default:
-              console.log('SearchForSkillByGumiId called for non-mocked skill ' + input);
+              console.error('SearchForSkillByGumiId called for non-mocked skill ' + input);
           }
         }
       );
