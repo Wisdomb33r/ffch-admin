@@ -3,10 +3,15 @@ import {ENHANCEMENTS_TEST_DATA} from '../model/enhancement.model.testdata.spec';
 import {inject, TestBed} from '@angular/core/testing';
 import {DataMiningClientService} from './data-mining-client.service';
 import {EnhancementsService} from './enhancements.service';
-import {ABILITY_SKILLS_TEST_DATA, PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
+import {
+  ABILITY_SKILLS_NAMES_TEST_DATA,
+  ABILITY_SKILLS_TEST_DATA,
+  PASSIVE_SKILLS_TEST_DATA
+} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {SkillsService} from './skills.service';
 import {SkillsServiceMock} from './skills.service.spec';
+import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 
 class DataMiningMock {
   public getEnhancements$(): Observable<Object> {
@@ -228,51 +233,40 @@ describe('EnhancementsService', () => {
     expect(mySpy).toHaveBeenCalledWith(914072);
   }));
 
+  function assembleActiveSkill(skillId: string, rawSkills: any, rawNames: any): Skill {
+    const skill: Skill = rawSkills[skillId];
+    skill.gumi_id = +skillId;
+    skill.names = rawNames[skillId];
+    skill.active = true;
+    return skill;
+  }
+
   it('should compute the correct enhancements for skills enabled by innate skills', inject([EnhancementsService], (service: EnhancementsService) => {
       // GIVEN
       service.loadEnhancementsFromDataMining();
 
       const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+      const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
 
-      const skill1: Skill = skills['208930'];
-      skill1.gumi_id = 208930;
-      skill1.active = true;
-      const skill2: Skill = skills['703730'];
-      skill2.gumi_id = 703730;
-      skill2.active = true;
-      const skill3: Skill = skills['703740'];
-      skill3.gumi_id = 703740;
-      skill3.active = true;
+      // Innate skill
+      const skill1: Skill = assembleActiveSkill('208930', skills, names);
+      const skill2: Skill = assembleActiveSkill('703730', skills, names);
+      const skill3: Skill = assembleActiveSkill('703740', skills, names);
 
-      const skill4: Skill = skills['501090'];
-      skill4.gumi_id = 501090;
-      skill4.active = true;
-      const skill5: Skill = skills['503770'];
-      skill5.gumi_id = 503770;
-      skill5.active = true;
-      const skill6: Skill = skills['503690'];
-      skill6.gumi_id = 503690;
-      skill6.active = true;
+      // Activated skill 1
+      const skill4: Skill = assembleActiveSkill('501090', skills, names);
+      const skill5: Skill = assembleActiveSkill('503770', skills, names);
+      const skill6: Skill = assembleActiveSkill('503690', skills, names);
 
-      const skill7: Skill = skills['501100'];
-      skill7.gumi_id = 501100;
-      skill7.active = true;
-      const skill8: Skill = skills['503780'];
-      skill8.gumi_id = 503780;
-      skill8.active = true;
-      const skill9: Skill = skills['503700'];
-      skill9.gumi_id = 503700;
-      skill9.active = true;
+      // Activated skill 2
+      const skill7: Skill = assembleActiveSkill('501100', skills, names);
+      const skill8: Skill = assembleActiveSkill('503780', skills, names);
+      const skill9: Skill = assembleActiveSkill('503700', skills, names);
 
-      const skill10: Skill = skills['501110'];
-      skill10.gumi_id = 501110;
-      skill10.active = true;
-      const skill11: Skill = skills['503790'];
-      skill11.gumi_id = 503790;
-      skill11.active = true;
-      const skill12: Skill = skills['503710'];
-      skill12.gumi_id = 503710;
-      skill12.active = true;
+      // Activated skill 3
+      const skill10: Skill = assembleActiveSkill('501110', skills, names);
+      const skill11: Skill = assembleActiveSkill('503790', skills, names);
+      const skill12: Skill = assembleActiveSkill('503710', skills, names);
 
       SkillsService['INSTANCE'] = skillsService;
       const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callFake(input => {
@@ -347,36 +341,48 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[0].skill_id_new).toEqual(503770);
       expect(activatedEnhancements[0].skill_id_base).toEqual(501090);
       expect(activatedEnhancements[0].level).toEqual(1);
+      expect(activatedEnhancements[0].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Berserker Serum');
+      expect(activatedEnhancements[0].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de berserker');
 
       expect(activatedEnhancements[1].gumi_id).toBeUndefined();
       expect(activatedEnhancements[1].skill_id_old).toEqual(501100);
       expect(activatedEnhancements[1].skill_id_new).toEqual(503780);
       expect(activatedEnhancements[1].skill_id_base).toEqual(501100);
       expect(activatedEnhancements[1].level).toEqual(1);
+      expect(activatedEnhancements[1].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Blockade Serum');
+      expect(activatedEnhancements[1].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de tank');
 
       expect(activatedEnhancements[2].gumi_id).toBeUndefined();
       expect(activatedEnhancements[2].skill_id_old).toEqual(501110);
       expect(activatedEnhancements[2].skill_id_new).toEqual(503790);
       expect(activatedEnhancements[2].skill_id_base).toEqual(501110);
       expect(activatedEnhancements[2].level).toEqual(1);
+      expect(activatedEnhancements[2].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Resist Down');
+      expect(activatedEnhancements[2].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Réducteur de résistance');
 
       expect(activatedEnhancements[3].gumi_id).toBeUndefined();
       expect(activatedEnhancements[3].skill_id_old).toEqual(503770);
       expect(activatedEnhancements[3].skill_id_new).toEqual(503690);
       expect(activatedEnhancements[3].skill_id_base).toEqual(501090);
       expect(activatedEnhancements[3].level).toEqual(2);
+      expect(activatedEnhancements[3].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Berserker Serum');
+      expect(activatedEnhancements[3].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de berserker');
 
       expect(activatedEnhancements[4].gumi_id).toBeUndefined();
       expect(activatedEnhancements[4].skill_id_old).toEqual(503780);
       expect(activatedEnhancements[4].skill_id_new).toEqual(503700);
       expect(activatedEnhancements[4].skill_id_base).toEqual(501100);
       expect(activatedEnhancements[4].level).toEqual(2);
+      expect(activatedEnhancements[4].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Blockade Serum');
+      expect(activatedEnhancements[4].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de tank');
 
       expect(activatedEnhancements[5].gumi_id).toBeUndefined();
       expect(activatedEnhancements[5].skill_id_old).toEqual(503790);
       expect(activatedEnhancements[5].skill_id_new).toEqual(503710);
       expect(activatedEnhancements[5].skill_id_base).toEqual(501110);
       expect(activatedEnhancements[5].level).toEqual(2);
+      expect(activatedEnhancements[5].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Resist Down');
+      expect(activatedEnhancements[5].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Réducteur de résistance');
     })
   );
 

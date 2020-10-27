@@ -6,6 +6,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
 import {SkillsService} from './skills.service';
 import {Skill} from '../model/skill.model';
+import {EnhancementStrings} from '../model/enhancement-strings.model';
 
 @Injectable()
 export class EnhancementsService {
@@ -145,7 +146,7 @@ export class EnhancementsService {
         activatedEnhancement.skill_id_base = skillsActivatedByBaseSkill[index].gumi_id;
         activatedEnhancement.level = baseEnhancement.level;
         // TODO: Add cost
-        // TODO: Add names & description
+        activatedEnhancement.strings = new EnhancementStrings(skillsActivatedByBaseSkill[index].names, skillsActivatedByBaseSkill[index].descriptions);
         activatedEnhancements.push(activatedEnhancement);
       });
     }

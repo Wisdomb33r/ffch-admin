@@ -1767,6 +1767,42 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Lance siphon",
         "Soglanze",
         "Lanza sifón"
+    ],
+    "208930": [
+        "Extract",
+        "藥物提煉",
+        "엑기스",
+        "Extraction",
+        "Extrakt",
+        "Extracción",
+        "Ekstraksi"
+    ],
+    "501090": [
+        "Berserker Serum",
+        "猛攻突擊藥",
+        "광전사 세럼",
+        "Sérum de berserker",
+        "Berserker-Serum",
+        "Suero de berserker",
+        "Serum Keganasan"
+    ],
+    "501100": [
+        "Blockade Serum",
+        "鐵壁強壯藥",
+        "철벽강장제",
+        "Sérum de tank",
+        "Blockade-Serum",
+        "Suero de tanque",
+        "Serum Blokade"
+    ],
+    "501110": [
+        "Resist Down",
+        "全屬性弱化藥",
+        "모든 속성 약화 세럼",
+        "Réducteur de résistance",
+        "Resistenzausfall",
+        "Antiresistencias",
+        "Resist Down"
     ]
   }`;
 
