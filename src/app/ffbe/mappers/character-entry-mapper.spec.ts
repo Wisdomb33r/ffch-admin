@@ -27,7 +27,7 @@ describe('CharacterEntryMapper', function () {
     character.entries['207000305'].characterEntrySkills = character.skills;
 
     // WHEN
-    const unite = CharacterEntryMapper.toUnite(character.entries['207000305'], 207000305, character);
+    const unite = CharacterEntryMapper.toUnite(character.entries['207000305'], 207000305, character, []);
 
     // THEN
     expect(unite).toBeTruthy();
@@ -55,7 +55,7 @@ describe('CharacterEntryMapper', function () {
     character.entries['207000317'].characterEntrySkills = character.skills;
 
     // WHEN
-    const unite = CharacterEntryMapper.toUnite(character.entries['207000317'], 207000317, character);
+    const unite = CharacterEntryMapper.toUnite(character.entries['207000317'], 207000317, character, []);
 
     // THEN
     expect(unite).toBeTruthy();

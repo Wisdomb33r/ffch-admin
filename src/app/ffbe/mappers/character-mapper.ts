@@ -5,6 +5,7 @@ import {Personnage} from '../model/personnage.model';
 import {CharacterEntryMapper} from './character-entry-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CategorieObjet} from '../model/objet/categorie-objet.model';
+import {SkillMapper} from './skill-mapper';
 
 export class CharacterMapper {
 
@@ -21,7 +22,8 @@ export class CharacterMapper {
       character.gumi_id,
       equipments
     );
-    perso.unites = CharacterEntryMapper.toUniteArray(character.entries, character);
+    const competences = character.skills.map(characterSkill => SkillMapper.toCompetence(characterSkill.skill));
+    perso.unites = CharacterEntryMapper.toUniteArray(character.entries, character, competences);
     return perso;
   }
 }
