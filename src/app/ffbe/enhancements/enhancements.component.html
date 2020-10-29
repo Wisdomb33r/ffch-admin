@@ -18,6 +18,13 @@
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchEnhancementsInDataMining()">Chercher</button>
 </mat-card>
-<app-enhancements-display *ngIf="areEnhancementsDisplayed()"
-                          [ameliorations]="ameliorations">
-</app-enhancements-display>
+<div *ngIf="areEnhancementsDisplayed()">
+  <app-enhancements-display *ngIf="this.ameliorationsContainer?.baseAmeliorations?.length"
+                            [ameliorations]="this.ameliorationsContainer.baseAmeliorations"
+                            [titre]="'Améliorations'">
+  </app-enhancements-display>
+  <app-enhancements-display *ngIf="this.ameliorationsContainer?.activatedAmeliorations?.length"
+                            [ameliorations]="this.ameliorationsContainer.activatedAmeliorations"
+                            [titre]="'Améliorations activées'">
+  </app-enhancements-display>
+</div>

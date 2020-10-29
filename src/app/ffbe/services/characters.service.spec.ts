@@ -10,9 +10,10 @@ import {SkillsServiceMock} from './skills.service.spec';
 import {ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_TEST_DATA, PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {EnhancementsService} from './enhancements.service';
-import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
+import {ENHANCEMENTS_TEST_DATA} from '../model/enhancement.model.testdata.spec';
 import {LatentSkillsService} from './latent-skills.service';
 import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
+import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -211,7 +212,10 @@ describe('CharactersService', () => {
     enhancement2.gumi_id = 228085002;
     enhancement2.level = 2;
     const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
-      .returnValues([], [], [], [enhancement1, enhancement2]);
+      .returnValues(new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer([enhancement1, enhancement2]));;
 
     const loadedCharacters = service['charactersFromDataMining'];
     loadedCharacters['100010005']['skills'] = [loadedCharacters['100010005']['skills'][4], loadedCharacters['100010005']['skills'][32]];
@@ -260,7 +264,10 @@ describe('CharactersService', () => {
     enhancement2.gumi_id = 228085002;
     enhancement2.level = 2;
     const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
-      .returnValues([], [], [], [enhancement1, enhancement2]);
+      .returnValues(new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer([enhancement1, enhancement2]));
 
     const latentSkills = JSON.parse(LATENT_SKILLS_TEST_DATA);
     const latentSkill1 = latentSkills['8003520'];
@@ -319,7 +326,10 @@ describe('CharactersService', () => {
     enhancement2.level = 2;
     enhancement1.units = [100009105];
     const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
-      .returnValues([], [], [], [enhancement1, enhancement2]);
+      .returnValues(new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer([enhancement1, enhancement2]));
 
     const loadedCharacters = service['charactersFromDataMining'];
     loadedCharacters['100010005']['skills'] = [loadedCharacters['100010005']['skills'][4], loadedCharacters['100010005']['skills'][32]];
@@ -408,7 +418,10 @@ describe('CharactersService', () => {
     enhancement2.gumi_id = 230020001;
     enhancement2.level = 2;
     const myEnhancementsSpy = spyOn(enhancementsService, 'searchForEnhancementsBySkillGumiId').and
-      .returnValues([], [], [], [enhancement1, enhancement2]);
+      .returnValues(new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer(null),
+        new BaseActivatedEnhancementsContainer([enhancement1, enhancement2]));
 
     const loadedCharacters = service['charactersFromDataMining'];
     loadedCharacters['310000105']['skills'] = [loadedCharacters['310000105']['skills'][0], loadedCharacters['310000105']['skills'][16]];

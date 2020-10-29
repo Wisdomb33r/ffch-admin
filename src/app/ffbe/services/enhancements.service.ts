@@ -3,13 +3,18 @@ import {Injectable} from '@angular/core';
 import {Enhancement} from '../model/enhancement.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {BaseActivatedEnhancementsContainer} from '../model/base-activated-enhancements-container.model';
+import {SkillsService} from './skills.service';
+import {Skill} from '../model/skill.model';
+import {EnhancementStrings} from '../model/enhancement-strings.model';
 
 @Injectable()
 export class EnhancementsService {
 
   private enhancementsFromDataMining = null;
 
-  constructor(private dataMiningClientService: DataMiningClientService) {
+  constructor(private dataMiningClientService: DataMiningClientService,
+              private skillsService: SkillsService) {
     this.loadEnhancementsFromDataMining();
   }
 
@@ -20,7 +25,7 @@ export class EnhancementsService {
     }
   }
 
-  public searchForEnhancementsByNames(english: string, french: string): Array<Enhancement> {
+  public searchForEnhancementsByNames(english: string, french: string): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (english && french) {
@@ -41,7 +46,7 @@ export class EnhancementsService {
     return this.createEnhancementsFromMatchingProperties(matchingProperties);
   }
 
-  public searchForEnhancementsBySkillGumiId(skillGumiId: number): Array<Enhancement> {
+  public searchForEnhancementsBySkillGumiId(skillGumiId: number): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (!FfbeUtils.isNullOrUndefined(skillGumiId)) {
@@ -62,7 +67,7 @@ export class EnhancementsService {
     return this.createEnhancementsFromMatchingProperties(matchingProperties);
   }
 
-  public searchForEnhancementsByCharacterGumiId(characterGumiId: number): Array<Enhancement> {
+  public searchForEnhancementsByCharacterGumiId(characterGumiId: number): BaseActivatedEnhancementsContainer {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.enhancementsFromDataMining);
     let matchingProperties: Array<string> = [];
     if (!FfbeUtils.isNullOrUndefined(characterGumiId)) {
@@ -78,17 +83,20 @@ export class EnhancementsService {
     return this.enhancementsFromDataMining != null;
   }
 
-  protected createEnhancementsFromMatchingProperties(matchingProperties: Array<string>): Array<Enhancement> {
-    const enhancements: Array<Enhancement> = [];
+  protected createEnhancementsFromMatchingProperties(matchingProperties: Array<string>): BaseActivatedEnhancementsContainer {
+    const baseEnhancements: Array<Enhancement> = [];
+    // TODO: Change enhancementContainer so that both arrays have length 0 by default
+    const activatedEnhancements: Array<Enhancement> = [];
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
         const enhancement: Enhancement = this.enhancementsFromDataMining[property];
         enhancement.gumi_id = +property;
         this.addBaseSkillAndLevel(enhancement);
-        enhancements.push(enhancement);
+        baseEnhancements.push(enhancement);
+        Array.prototype.push.apply(activatedEnhancements, this.computeActivatedEnhancements(enhancement));
       });
     }
-    return enhancements;
+    return new BaseActivatedEnhancementsContainer(baseEnhancements, activatedEnhancements);
   }
 
   protected addBaseSkillAndLevel(enhancement: Enhancement) {
@@ -115,5 +123,37 @@ export class EnhancementsService {
       parentSkillGumiId = this.enhancementsFromDataMining[matchingProperties[0]].skill_id_old;
     }
     return parentSkillGumiId;
+  }
+
+  protected computeActivatedEnhancements(baseEnhancement: Enhancement): Array<Enhancement> {
+    const activatedEnhancements = [];
+
+    const oldSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_old);
+    const newSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_new);
+    const baseSkill = this.skillsService.searchForSkillByGumiId(baseEnhancement.skill_id_base);
+
+    const skillsActivatedByOldSkill = oldSkill.activatedSkills;
+    const skillsActivatedByNewSkill = newSkill.activatedSkills;
+    const skillsActivatedByBaseSkill = baseSkill.activatedSkills;
+
+    if (skillsActivatedByOldSkill.length > 0 && skillsActivatedByNewSkill.length > 0
+      && skillsActivatedByOldSkill.length === skillsActivatedByNewSkill.length) {
+      skillsActivatedByOldSkill.forEach((skill: Skill, index: number) => {
+        const activatedEnhancement = new Enhancement();
+        activatedEnhancement.units = baseEnhancement.units;
+        activatedEnhancement.skill_id_old = skill.gumi_id;
+        activatedEnhancement.skill_id_new = skillsActivatedByNewSkill[index].gumi_id;
+        activatedEnhancement.skill_id_base = skillsActivatedByBaseSkill[index].gumi_id;
+        activatedEnhancement.level = baseEnhancement.level;
+        activatedEnhancement.strings = new EnhancementStrings(skillsActivatedByBaseSkill[index].names, skillsActivatedByBaseSkill[index].descriptions);
+        activatedEnhancement.cost = {
+          gil: 0,
+          materials: {}
+        };
+        activatedEnhancement.cost.materials[Object.getOwnPropertyNames(baseEnhancement.cost.materials)[0]] = 0;
+        activatedEnhancements.push(activatedEnhancement);
+      });
+    }
+    return activatedEnhancements;
   }
 }
