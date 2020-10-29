@@ -12,6 +12,7 @@ import {Skill} from '../model/skill.model';
 import {SkillsService} from './skills.service';
 import {SkillsServiceMock} from './skills.service.spec';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
+import {Enhancement} from '../model/enhancement.model';
 
 class DataMiningMock {
   public getEnhancements$(): Observable<Object> {
@@ -241,6 +242,15 @@ describe('EnhancementsService', () => {
     return skill;
   }
 
+  function checkCostForActivatedEnhancement(enhancement: Enhancement, awakeningMaterialGumiId: string) {
+    expect(enhancement.cost).toBeTruthy();
+    expect(enhancement.cost.gil).toEqual(0);
+    expect(enhancement.cost.materials).toBeTruthy();
+    expect(enhancement.cost.materials.getOwnPropertyNames.length).toEqual(1);
+    expect(enhancement.cost.materials.getOwnPropertyNames).toContain(awakeningMaterialGumiId);
+    expect(enhancement.cost.materials[awakeningMaterialGumiId]).toEqual(0);
+  }
+
   it('should compute the correct enhancements for skills enabled by innate skills', inject([EnhancementsService], (service: EnhancementsService) => {
       // GIVEN
       service.loadEnhancementsFromDataMining();
@@ -343,6 +353,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[0].level).toEqual(1);
       expect(activatedEnhancements[0].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Berserker Serum');
       expect(activatedEnhancements[0].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de berserker');
+      checkCostForActivatedEnhancement(activatedEnhancements[0], '270001100');
 
       expect(activatedEnhancements[1].gumi_id).toBeUndefined();
       expect(activatedEnhancements[1].skill_id_old).toEqual(501100);
@@ -351,6 +362,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[1].level).toEqual(1);
       expect(activatedEnhancements[1].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Blockade Serum');
       expect(activatedEnhancements[1].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de tank');
+      checkCostForActivatedEnhancement(activatedEnhancements[1], '270001100');
 
       expect(activatedEnhancements[2].gumi_id).toBeUndefined();
       expect(activatedEnhancements[2].skill_id_old).toEqual(501110);
@@ -359,6 +371,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[2].level).toEqual(1);
       expect(activatedEnhancements[2].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Resist Down');
       expect(activatedEnhancements[2].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Réducteur de résistance');
+      checkCostForActivatedEnhancement(activatedEnhancements[2], '270001100');
 
       expect(activatedEnhancements[3].gumi_id).toBeUndefined();
       expect(activatedEnhancements[3].skill_id_old).toEqual(503770);
@@ -367,6 +380,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[3].level).toEqual(2);
       expect(activatedEnhancements[3].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Berserker Serum');
       expect(activatedEnhancements[3].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de berserker');
+      checkCostForActivatedEnhancement(activatedEnhancements[3], '270001100');
 
       expect(activatedEnhancements[4].gumi_id).toBeUndefined();
       expect(activatedEnhancements[4].skill_id_old).toEqual(503780);
@@ -375,6 +389,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[4].level).toEqual(2);
       expect(activatedEnhancements[4].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Blockade Serum');
       expect(activatedEnhancements[4].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Sérum de tank');
+      checkCostForActivatedEnhancement(activatedEnhancements[4], '270001100');
 
       expect(activatedEnhancements[5].gumi_id).toBeUndefined();
       expect(activatedEnhancements[5].skill_id_old).toEqual(503790);
@@ -383,6 +398,7 @@ describe('EnhancementsService', () => {
       expect(activatedEnhancements[5].level).toEqual(2);
       expect(activatedEnhancements[5].strings.names[FFBE_ENGLISH_TABLE_INDEX]).toEqual('Resist Down');
       expect(activatedEnhancements[5].strings.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Réducteur de résistance');
+      checkCostForActivatedEnhancement(activatedEnhancements[5], '270001100');
     })
   );
 

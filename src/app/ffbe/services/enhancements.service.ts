@@ -145,8 +145,12 @@ export class EnhancementsService {
         activatedEnhancement.skill_id_new = skillsActivatedByNewSkill[index].gumi_id;
         activatedEnhancement.skill_id_base = skillsActivatedByBaseSkill[index].gumi_id;
         activatedEnhancement.level = baseEnhancement.level;
-        // TODO: Add cost
         activatedEnhancement.strings = new EnhancementStrings(skillsActivatedByBaseSkill[index].names, skillsActivatedByBaseSkill[index].descriptions);
+        activatedEnhancement.cost = {
+          gil: 0,
+          materials: {}
+        };
+        activatedEnhancement.cost.materials[Object.getOwnPropertyNames(baseEnhancement.cost.materials)[0]] = 0;
         activatedEnhancements.push(activatedEnhancement);
       });
     }
