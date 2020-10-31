@@ -2,6 +2,7 @@ export type ItemCategory =
   'ItemCategory.Consumable' |
   'ItemCategory.Equipment' |
   'ItemCategory.Materia' |
+  'ItemCategory.VisionCard' |
   'ItemCategory.Unknown';
 
 export class ItemCategoryFactory {

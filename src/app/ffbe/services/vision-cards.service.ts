@@ -75,11 +75,11 @@ export class VisionCardsService {
 
   public searchForVisionCardSkills(visionCard: VisionCard) {
     if (visionCard.skills) {
-      const skills: Array<{ level: number, skill: Skill }> = [];
+      const skills: Array<Skill> = [];
       const propertyNames: string[] = Object.getOwnPropertyNames(visionCard.skills);
       propertyNames.forEach(property => {
         const skillId: number = visionCard.skills[property];
-        skills.push({level: +property, skill: this.skillsService.searchForSkillByGumiId(+skillId)});
+        skills.push(this.skillsService.searchForSkillByGumiId(+skillId));
       });
       visionCard.dmSkills = skills;
     }

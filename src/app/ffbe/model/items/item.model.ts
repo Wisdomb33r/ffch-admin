@@ -2,6 +2,7 @@ import {Consumable} from './consumable/consumable.model';
 import {Equipment} from './equipment/equipment.model';
 import {Materia} from './materia/materia.model';
 import {ItemCategory, ItemCategoryFactory} from './item-category.model';
+import {VisionCard} from './vision-cards/vision-card.model';
 
 export class Item {
   public constructor(
@@ -9,24 +10,23 @@ export class Item {
     public consumable: Consumable,
     public equipment: Equipment,
     public materia: Materia,
+    public visionCard: VisionCard,
   ) {
   }
 
   public getGumiId(): number {
 
     switch (this.category) {
-      case 'ItemCategory.Consumable': {
+      case 'ItemCategory.Consumable':
         return this.consumable.gumi_id;
-      }
-      case 'ItemCategory.Equipment': {
+      case 'ItemCategory.Equipment':
         return this.equipment.gumi_id;
-      }
-      case 'ItemCategory.Materia': {
+      case 'ItemCategory.Materia':
         return this.materia.gumi_id;
-      }
-      case 'ItemCategory.Unknown': {
+      case 'ItemCategory.VisionCard':
+        return this.visionCard.gumi_id;
+      default:
         return null;
-      }
     }
   }
 

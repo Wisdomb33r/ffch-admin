@@ -7,5 +7,5 @@ export class VisionCard {
   rarity: number;
   stats: VisionCardStats;
   skills: any;
-  dmSkills: Array<{ level: number, skill: Skill }>;
+  dmSkills: Array<Skill>;
 }

@@ -5,13 +5,15 @@ import {EquipmentsService} from './equipments.service';
 import {MateriasService} from './materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ItemCategory, ItemCategoryFactory} from '../model/items/item-category.model';
+import {VisionCardsService} from './vision-cards.service';
 
 @Injectable()
 export class ItemsService {
 
   constructor(private consumablesService: ConsumablesService,
               private equipmentService: EquipmentsService,
-              private materiaService: MateriasService) {
+              private materiaService: MateriasService,
+              private visionCardsService: VisionCardsService) {
   }
 
   public static extractItemCategory(rawGumiId: string): ItemCategory {
@@ -35,21 +37,28 @@ export class ItemsService {
     const consumables = this.consumablesService.searchForConsumablesByNames(english, french);
     if (Array.isArray(consumables) && consumables.length > 0) {
       consumables.forEach(consumable => {
-        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null, null));
       });
     }
 
     const equipments = this.equipmentService.searchForEquipmentsByNames(english, french);
     if (Array.isArray(equipments) && equipments.length > 0) {
       equipments.forEach(equipment => {
-        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null, null));
       });
     }
 
     const materias = this.materiaService.searchForMateriasByNames(english, french);
     if (Array.isArray(materias) && materias.length > 0) {
       materias.forEach(materia => {
-        items.push(new Item('ItemCategory.Materia', null, null, materia));
+        items.push(new Item('ItemCategory.Materia', null, null, materia, null));
+      });
+    }
+
+    const visionCards = this.visionCardsService.searchForVisionCardsByNames(english, french);
+    if (Array.isArray(visionCards) && visionCards.length > 0) {
+      visionCards.forEach(visionCard => {
+        items.push(new Item('ItemCategory.VisionCard', null, null, null, visionCard));
       });
     }
 
@@ -61,34 +70,19 @@ export class ItemsService {
       const itemCategory = ItemsService.extractItemCategory(extendedGumiId);
       const gumiId = FfbeUtils.extractGumiId(extendedGumiId);
 
-      let item: Item;
-
       switch (itemCategory) {
-        case 'ItemCategory.Consumable': {
+        case 'ItemCategory.Consumable':
           const consumable = this.consumablesService.searchForConsumableByGumiId(gumiId);
-          item = new Item(itemCategory, consumable, null, null);
-          break;
-        }
-
-        case 'ItemCategory.Equipment': {
+          return new Item(itemCategory, consumable, null, null, null);
+        case 'ItemCategory.Equipment':
           const equipment = this.equipmentService.searchForEquipmentByGumiId(gumiId);
-          item = new Item(itemCategory, null, equipment, null);
-          break;
-        }
-
-        case 'ItemCategory.Materia': {
+          return new Item(itemCategory, null, equipment, null, null);
+        case 'ItemCategory.Materia':
           const materia = this.materiaService.searchForMateriaByGumiId(gumiId);
-          item = new Item(itemCategory, null, null, materia);
-          break;
-        }
-
-        case 'ItemCategory.Unknown': {
-          item = new Item(itemCategory, null, null, null);
-          break;
-        }
-
+          return new Item(itemCategory, null, null, materia, null);
+        default:
+          return new Item(itemCategory, null, null, null, null);
       }
-      return item;
     }
     return null;
   }
@@ -100,17 +94,22 @@ export class ItemsService {
 
       const consumable = this.consumablesService.searchForConsumableByGumiId(+gumiId);
       if (!FfbeUtils.isNullOrUndefined(consumable)) {
-        items.push(new Item('ItemCategory.Consumable', consumable, null, null));
+        items.push(new Item('ItemCategory.Consumable', consumable, null, null, null));
       }
 
       const equipment = this.equipmentService.searchForEquipmentByGumiId(+gumiId);
       if (!FfbeUtils.isNullOrUndefined(equipment)) {
-        items.push(new Item('ItemCategory.Equipment', null, equipment, null));
+        items.push(new Item('ItemCategory.Equipment', null, equipment, null, null));
       }
 
       const materia = this.materiaService.searchForMateriaByGumiId(+gumiId);
       if (!FfbeUtils.isNullOrUndefined(materia)) {
-        items.push(new Item('ItemCategory.Materia', null, null, materia));
+        items.push(new Item('ItemCategory.Materia', null, null, materia, null));
+      }
+
+      const visionCard = this.visionCardsService.searchForVisionCardByGumiId(+gumiId);
+      if (!FfbeUtils.isNullOrUndefined(visionCard)) {
+        items.push(new Item('ItemCategory.VisionCard', null, null, null, visionCard));
       }
       return items;
     }
