@@ -24,7 +24,7 @@ describe('CharacterMapper', () => {
       '{"rarity": 5, "level": 39, "type": "ABILITY", "id": 100021},' +
       '{"rarity": 6, "level": 20, "type": "ABILITY", "id": 232639},' +
       '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 707785},' +
-      '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 200270, "brave_ability": 1}' +
+      '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 200270, "ex_level": 0}' +
       ']');
     character.skills[0].skill = Skill.produce(skill1);
     character.skills[1].skill = Skill.produce(skill2);
@@ -82,8 +82,8 @@ describe('CharacterMapper', () => {
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207000327'];
     character.skills = JSON.parse('[' +
-      '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
-      '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 100021, "ex_level": 0},' +
+      '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
       ']');
 
     character.skills[0].skill = Skill.produce(skill1);
@@ -115,8 +115,8 @@ describe('CharacterMapper', () => {
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207002007'];
     character.skills = JSON.parse('[' +
-      '{"rarity": 7, "level": 50, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
-      '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      '{"rarity": "NV", "level": 50, "type": "ABILITY", "id": 100021, "ex_level": 0},' +
+      '{"rarity": "NV", "level": 110, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
       ']');
 
     character.skills[0].skill = Skill.produce(skill1);
@@ -148,8 +148,8 @@ describe('CharacterMapper', () => {
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207002017'];
     character.skills = JSON.parse('[' +
-      '{"rarity": 7, "level": 30, "type": "ABILITY", "id": 100021, "brave_ability": 1},' +
-      '{"rarity": 7, "level": 115, "type": "ABILITY", "id": 232639, "brave_ability": 1}' +
+      '{"rarity": "NV", "level": 30, "type": "ABILITY", "id": 100021, "ex_level": 0},' +
+      '{"rarity": "NV", "level": 115, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
       ']');
 
     character.skills[0].skill = Skill.produce(skill1);

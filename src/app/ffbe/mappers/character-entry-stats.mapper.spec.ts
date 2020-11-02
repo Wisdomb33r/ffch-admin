@@ -171,9 +171,9 @@ describe('CharacterEntryStatsMapper', function () {
       plainSkill3.gumi_id = 702240;
 
       character.skills = JSON.parse('[' +
-        '{"rarity": 7, "level": 24, "type": "ABILITY", "id": 100010, "brave_ability": 1},' +
-        '{"rarity": 7, "level": 100, "type": "ABILITY", "id": 950145, "brave_ability": 1},' +
-        '{"rarity": 7, "level": 120, "type": "ABILITY", "id": 702240, "brave_ability": 1}' +
+        '{"rarity": "NV", "level": 24, "type": "ABILITY", "id": 100010, "ex_level": 0},' +
+        '{"rarity": "NV", "level": 100, "type": "ABILITY", "id": 950145, "ex_level": 0},' +
+        '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 702240, "ex_level": 0}' +
         ']');
       character.skills[0].skill = Skill.produce(plainSkill1);
       character.skills[1].skill = Skill.produce(plainSkill2);
@@ -210,9 +210,9 @@ describe('CharacterEntryStatsMapper', function () {
       plainSkill3.gumi_id = 236037;
 
       character.skills = JSON.parse('[' +
-        '{"rarity": 7, "level": 24, "type": "ABILITY", "id": 100010, "brave_ability": 1},' +
-        '{"rarity": 7, "level": 100, "type": "ABILITY", "id": 950145, "brave_ability": 1},' +
-        '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 914072, "brave_ability": 1}' +
+        '{"rarity": "NV", "level": 24, "type": "ABILITY", "id": 100010, "ex_level": 0},' +
+        '{"rarity": "NV", "level": 100, "type": "ABILITY", "id": 950145, "ex_level": 0},' +
+        '{"rarity": "NV", "level": 110, "type": "ABILITY", "id": 914072, "ex_level": 0}' +
         ']');
       character.skills[0].skill = Skill.produce(plainSkill1);
       character.skills[1].skill = Skill.produce(plainSkill2);
