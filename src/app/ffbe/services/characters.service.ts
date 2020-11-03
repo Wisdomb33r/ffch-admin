@@ -10,6 +10,7 @@ import {ItemCategory, ItemCategoryFactory} from '../model/items/item-category.mo
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {EnhancementsService} from './enhancements.service';
 import {LatentSkillsService} from './latent-skills.service';
+import {CharacterEntryMapper} from '../mappers/character-entry-mapper';
 
 @Injectable()
 export class CharactersService {
@@ -134,7 +135,7 @@ export class CharactersService {
     for (const entryName of entryNames) {
       const entry: CharacterEntry = character.entries[entryName];
       const innateSkills = character.skills.filter(skill =>
-        (skill.rarity <= entry.rarity && (CharactersService.isEightStarUnit(character, entry) || skill.brave_ability !== 1)));
+        (CharacterEntryMapper.computeCharacterSkillRarity(skill) <= CharacterEntryMapper.computeCharacterEntryRarity(entry)));
       entry.characterEntrySkills = innateSkills;
       const enhancedSkills = [];
       innateSkills.forEach(innateSkill =>
@@ -154,11 +155,6 @@ export class CharactersService {
         ? lbEnhancingEffects[lbEnhancingEffects.length - 1][3][0] : null;
       entry.upgraded_lb = this.lbService.searchForLimitBurstByGumiId(entry.upgraded_limitburst_id);
     }
-  }
-
-  private static isEightStarUnit(character: Character, characterEntry: CharacterEntry): boolean {
-    return (character.rarity_min === 7 && character.rarity_max === 7 ||
-      (character.rarity_max === 7 && Array.isArray(characterEntry.nv_upgrade) && characterEntry.nv_upgrade.length > 0));
   }
 
   public isLoaded(): boolean {

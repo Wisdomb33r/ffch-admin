@@ -163,9 +163,20 @@ export class CharacterEntryMapper {
   }
 
   public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
-    let rarity = characterSkill.rarity;
-    if (!FfbeUtils.isNullOrUndefined(characterSkill.brave_ability)) {
-      rarity += characterSkill.brave_ability;
+    if (characterSkill.rarity === 'NV') {
+      return 8;
+    }
+    return +characterSkill.rarity;
+  }
+
+  public static computeCharacterEntryRarity(entry: CharacterEntry): number {
+    let rarity = entry.rarity;
+    if (rarity === 7) {
+      if (!FfbeUtils.isNullOrUndefined(entry.nv_upgrade)) {
+        rarity = 8;
+      } else if (!FfbeUtils.isNullOrUndefined(entry.brave_shift)) {
+        rarity = 81;
+      }
     }
     return rarity;
   }
