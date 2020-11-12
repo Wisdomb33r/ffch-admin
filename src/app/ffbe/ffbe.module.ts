@@ -54,6 +54,7 @@ import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-cont
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
 import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-components/objet-tueurs-physiques-magiques-display/objet-tueurs-physiques-magiques-display.component';
 import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
+import {VisionCardsService} from './services/vision-cards.service';
 
 @NgModule({
   imports: [
@@ -127,6 +128,7 @@ import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tue
     EquipmentsService,
     MateriasService,
     LatentSkillsService,
+    VisionCardsService,
   ]
 })
 export class FfbeModule {

@@ -4,6 +4,7 @@ import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {SkillsService} from './skills.service';
 import {Skill} from '../model/skill.model';
 import {VisionCard} from '../model/items/vision-cards/vision-card.model';
+import {forkJoin} from 'rxjs';
 
 
 @Injectable()
@@ -11,6 +12,7 @@ export class VisionCardsService {
   private static INSTANCE: VisionCardsService;
 
   private visionCardsFromDataMining = null;
+  private visionCardsNamesFromDataMining = null;
 
   public static getInstance(): VisionCardsService {
     return VisionCardsService.INSTANCE;
@@ -24,8 +26,14 @@ export class VisionCardsService {
 
   public loadVisionCardsFromDataMining() {
     if (this.visionCardsFromDataMining == null) {
-      this.dataMiningClientService.getVisionCards$()
-        .subscribe(data => this.visionCardsFromDataMining = data);
+      const observables = [];
+      observables.push(this.dataMiningClientService.getVisionCards$());
+      observables.push(this.dataMiningClientService.getVisionCardsNames$());
+      forkJoin(observables)
+        .subscribe(data => {
+          this.visionCardsFromDataMining = data[0];
+          this.visionCardsNamesFromDataMining = data[1];
+        });
     }
   }
 
@@ -52,6 +60,7 @@ export class VisionCardsService {
       matchingProperties.forEach(property => {
         const visionCard: VisionCard = this.visionCardsFromDataMining[property];
         visionCard.gumi_id = +property;
+        visionCard.names = this.visionCardsNamesFromDataMining[property];
         this.searchForVisionCardSkills(visionCard);
         visionCards.push(visionCard);
       });

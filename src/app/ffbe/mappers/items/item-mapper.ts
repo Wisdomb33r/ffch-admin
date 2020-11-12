@@ -8,6 +8,7 @@ import {ObjetLienTMR} from '../../model/objet/objet-lien-tmr.model';
 import {ItemCategoryFactory} from '../../model/items/item-category.model';
 import {FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 import {FfbeUtils} from '../../utils/ffbe-utils';
+import {VisionCardMapper} from './vision-card-mapper';
 
 export class ItemMapper {
 
@@ -15,20 +16,18 @@ export class ItemMapper {
     let objet: Objet = null;
 
     switch (item.category) {
-      case 'ItemCategory.Consumable': {
+      case 'ItemCategory.Consumable':
         objet = ConsumableMapper.toObjet(item.consumable);
         break;
-      }
-
-      case 'ItemCategory.Equipment': {
+      case 'ItemCategory.Equipment':
         objet = EquipmentMapper.toObjet(item.equipment);
         break;
-      }
-
-      case 'ItemCategory.Materia': {
+      case 'ItemCategory.Materia':
         objet = MateriaMapper.toObjet(item.materia);
         break;
-      }
+      case 'ItemCategory.VisionCard':
+        objet = VisionCardMapper.toObjet(item.visionCard);
+        break;
     }
 
     return objet;
@@ -44,10 +43,10 @@ export class ItemMapper {
 
     let lien = null;
 
-    if (Array.isArray(character.TMR) && character.TMR.length == 2 &&
+    if (Array.isArray(character.TMR) && character.TMR.length === 2 &&
       character.TMR[0] === itemCatetogyName && character.TMR[1] == itemGumiId) {
       lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], false);
-    } else if (Array.isArray(character.sTMR) && character.sTMR.length == 2 &&
+    } else if (Array.isArray(character.sTMR) && character.sTMR.length === 2 &&
       character.sTMR[0] === itemCatetogyName && character.sTMR[1] == itemGumiId) {
       lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], true);
     }
