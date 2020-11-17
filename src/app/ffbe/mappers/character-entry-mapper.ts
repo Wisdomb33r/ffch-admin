@@ -136,9 +136,10 @@ export class CharacterEntryMapper {
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
       skill.activatedSkills?.forEach(activatedSkill => {
-        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSKill => {
-          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSKill.gumi_id)) {
-            unite.competencesActivees.push(new UniteCompetence(SkillMapper.toCompetence(transitiveActivatedSKill), currentActivatedSkillLevel));
+        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {
+          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSkill.gumi_id)) {
+            const competenceActivee = CharacterEntryMapper.searchOrMapCompetence(transitiveActivatedSkill, competences);
+            unite.competencesActivees.push(new UniteCompetence(competenceActivee, currentActivatedSkillLevel));
             currentActivatedSkillLevel += 2;
           }
         });
@@ -160,6 +161,15 @@ export class CharacterEntryMapper {
       }
     }
     return skills;
+  }
+
+  private static searchOrMapCompetence(skill: Skill, competences: Array<Competence>): Competence {
+    let competence = competences.find(existingCompetence => existingCompetence.gumi_id === skill.gumi_id);
+    if (FfbeUtils.isNullOrUndefined(competence)) {
+      competence = SkillMapper.toCompetence(skill);
+      competences.push(competence);
+    }
+    return competence;
   }
 
   public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {

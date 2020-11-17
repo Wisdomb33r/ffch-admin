@@ -3,6 +3,9 @@ import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
 import {PASSIVE_SKILLS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {CharacterMapper} from './character-mapper';
+import {SkillsServiceMock} from '../services/skills.service.spec';
+import {SkillsService} from '../services/skills.service';
+import {Unite} from '../model/unite.model';
 
 describe('CharacterMapper', () => {
 
@@ -168,6 +171,87 @@ describe('CharacterMapper', () => {
     expect(personnage.unites[0].competences[0].niveau).toEqual(30);
     expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
     expect(personnage.unites[0].competences[1].niveau).toEqual(115);
+  });
+
+  function assembleActiveSkill(skillId: string, rawSkills: any): Skill {
+    const skill: Skill = rawSkills[skillId];
+    skill.gumi_id = +skillId;
+    skill.active = true;
+    return skill;
+  }
+
+  function checkActivatedSkillsForUnite(unite: Unite) {
+    expect(unite.competencesActivees.length).toEqual(3);
+    expect(unite.competencesActivees[0].competence.gumi_id).toEqual(501090);
+    expect(unite.competencesActivees[0].competence.id).toEqual(123);
+    expect(unite.competencesActivees[0].niveau).toEqual(-200);
+    expect(unite.competencesActivees[1].competence.gumi_id).toEqual(501100);
+    expect(unite.competencesActivees[1].competence.id).toEqual(456);
+    expect(unite.competencesActivees[1].niveau).toEqual(-198);
+    expect(unite.competencesActivees[2].competence.gumi_id).toEqual(501110);
+    expect(unite.competencesActivees[2].competence.id).toEqual(789);
+    expect(unite.competencesActivees[2].niveau).toEqual(-196);
+  }
+
+  it('should create UniteCompetences correctly for activated skills', () => {
+    // GIVEN
+    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
+    const skill1: Skill = assembleActiveSkill('100021', skills);
+    const skill2: Skill = assembleActiveSkill('208930', skills);
+    const skill3: Skill = assembleActiveSkill('501090', skills);
+    const skill4: Skill = assembleActiveSkill('501100', skills);
+    const skill5: Skill = assembleActiveSkill('501110', skills);
+
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.callFake(input => {
+      switch (input) {
+        case 100021:
+          return Skill.produce(skill1);
+        case 208930:
+          return Skill.produce(skill2);
+        case 501090:
+          return Skill.produce(skill3);
+        case 501100:
+          return Skill.produce(skill4);
+        case 501110:
+          return Skill.produce(skill5);
+        default:
+          console.error('SearchForSkillByGumiId called for non-mocked skill ' + input);
+      }
+    });
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100010005'];
+    character.skills = JSON.parse('[' +
+      '{"rarity": "5", "level": 30, "type": "ABILITY", "id": 100021},' +
+      '{"rarity": "5", "level": 80, "type": "ABILITY", "id": 208930}' +
+      ']');
+
+    character.skills[0].skill = Skill.produce(skill1);
+    character.skills[1].skill = Skill.produce(skill2);
+
+    character.entries['100010005'].characterEntrySkills = character.skills;
+    character.entries['100010006'].characterEntrySkills = character.skills;
+    character.entries['100010007'].characterEntrySkills = character.skills;
+
+    const personnage = CharacterMapper.toPersonnage(character);
+
+    // WHEN
+    personnage.unites[1].competencesActivees[0].competence.id = 123;
+    personnage.unites[1].competencesActivees[1].competence.id = 456;
+    personnage.unites[1].competencesActivees[2].competence.id = 789;
+
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(3);
+    expect(mySpy).toHaveBeenCalledWith(501090);
+    expect(mySpy).toHaveBeenCalledWith(501100);
+    expect(mySpy).toHaveBeenCalledWith(501110);
+    expect(personnage).toBeTruthy();
+    expect(personnage.unites.length === 3);
+    checkActivatedSkillsForUnite(personnage.unites[0]);
+    checkActivatedSkillsForUnite(personnage.unites[1]);
+    checkActivatedSkillsForUnite(personnage.unites[2]);
   });
 
 });
