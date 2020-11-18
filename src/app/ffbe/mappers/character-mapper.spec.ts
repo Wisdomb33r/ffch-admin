@@ -243,7 +243,7 @@ describe('CharacterMapper', () => {
     personnage.unites[1].competencesActivees[2].competence.id = 789;
 
     // THEN
-    expect(mySpy).toHaveBeenCalledTimes(3);
+    expect(mySpy).toHaveBeenCalledTimes(12);
     expect(mySpy).toHaveBeenCalledWith(501090);
     expect(mySpy).toHaveBeenCalledWith(501100);
     expect(mySpy).toHaveBeenCalledWith(501110);
