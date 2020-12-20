@@ -8,7 +8,6 @@ export class LimitBurstsService {
 
   private limitBurstsFromDataMining = null;
   private limitBurstsNamesFromDataMining = null;
-  private limitBurstsDescriptionsFromDataMining = null;
 
   constructor(private dataMiningClientService: DataMiningClientService) {
     this.loadLimitBurstsFromDataMining();
@@ -19,12 +18,10 @@ export class LimitBurstsService {
       const observables = [];
       observables.push(this.dataMiningClientService.getLimitBursts$());
       observables.push(this.dataMiningClientService.getLimitBurstsNames$());
-      observables.push(this.dataMiningClientService.getLimitBurstsDescriptions$());
       forkJoin(observables)
         .subscribe(data => {
           this.limitBurstsFromDataMining = data[0];
           this.limitBurstsNamesFromDataMining = data[1];
-          this.limitBurstsDescriptionsFromDataMining = data[2];
         });
     }
   }
@@ -36,7 +33,6 @@ export class LimitBurstsService {
       if (property) {
         const lb: LimitBurst = this.limitBurstsFromDataMining[property];
         lb.names = this.limitBurstsNamesFromDataMining[property];
-        lb.descriptions = this.limitBurstsDescriptionsFromDataMining[property];
         return lb;
       }
     }
@@ -44,7 +40,7 @@ export class LimitBurstsService {
   }
 
   public isLoaded(): boolean {
-    return this.limitBurstsFromDataMining != null && this.limitBurstsNamesFromDataMining != null && this.limitBurstsDescriptionsFromDataMining != null;
+    return this.limitBurstsFromDataMining != null && this.limitBurstsNamesFromDataMining != null;
   }
 }
 
