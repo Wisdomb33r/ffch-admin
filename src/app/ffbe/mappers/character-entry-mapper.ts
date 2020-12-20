@@ -80,8 +80,6 @@ export class CharacterEntryMapper {
     if (lb) {
       unite.limite = lb.names[FFBE_FRENCH_TABLE_INDEX];
       unite.limite_en = lb.names[FFBE_ENGLISH_TABLE_INDEX];
-      unite.lim_desc = lb.descriptions[FFBE_FRENCH_TABLE_INDEX];
-      unite.lim_desc_en = lb.descriptions[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
       unite.lim_min = CharacterEntryMapper.parseLimitBurstEffect(lb, 0);

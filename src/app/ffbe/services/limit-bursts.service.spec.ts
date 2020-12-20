@@ -19,9 +19,6 @@ class DataMiningMock {
     return of(JSON.parse(LIMIT_BURST_NAMES_TEST_DATA));
   }
 
-  public getLimitBurstsDescriptions$(): Observable<Object> {
-    return of(JSON.parse(LIMIT_BURST_DESCRIPTIONS_TEST_DATA));
-  }
 }
 
 describe('LimitBurstsService', () => {
@@ -40,7 +37,6 @@ describe('LimitBurstsService', () => {
     dataMiningService = service;
     spyOn(dataMiningService, 'getLimitBursts$').and.callThrough();
     spyOn(dataMiningService, 'getLimitBurstsNames$').and.callThrough();
-    spyOn(dataMiningService, 'getLimitBurstsDescriptions$').and.callThrough();
   }));
 
   it('should be created', inject([LimitBurstsService], (service: LimitBurstsService) => {
@@ -72,7 +68,6 @@ describe('LimitBurstsService', () => {
     // THEN
     expect(limite).toBeTruthy();
     expect(limite.names[FFBE_FRENCH_TABLE_INDEX]).toEqual('Entaille pourpre');
-    expect(limite.descriptions[FFBE_FRENCH_TABLE_INDEX]).toEqual('Dégâts de feu sur un ennemi');
     expect(limite.attack_frames[0]).toEqual([3, 59]);
   }));
 

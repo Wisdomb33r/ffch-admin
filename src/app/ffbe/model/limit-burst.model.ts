@@ -8,7 +8,6 @@ export class LimitBurst {
               public min_level: Array<string>,
               public max_level: Array<string>,
               public levels: Array<any>,
-              public names: Array<string>,
-              public descriptions: Array<string>) {
+              public names: Array<string>) {
   }
 }
