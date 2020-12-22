@@ -7,6 +7,7 @@ import {Caracteristiques} from '../caracteristiques.model';
 import {ResistancesElementaires} from '../resistances-elementaires.model';
 import {ResistancesAlterations} from '../resistances-alterations.model';
 import {Tueurs} from '../tueurs.model';
+import {Esper} from '../esper.model';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
@@ -211,6 +212,13 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
       {name: 'Lumière', value: increases[6]},
       {name: 'Ténèbres', value: increases[7]},
     ];
+  }
+
+  public static getEsperLink(esper: Esper): string {
+    if (!esper) {
+      return 'UNKNOWN esper';
+    }
+    return `<a href="ffexvius_espers.php?esperid=${esper.ffchId}">${esper.name}</a>`;
   }
 
   public getDamagesPower(): number {
