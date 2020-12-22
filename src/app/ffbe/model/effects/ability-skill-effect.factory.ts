@@ -20,6 +20,7 @@ import {AbilityDamageDotsEffect} from './abilities/damage/ability-damage-dots-ef
 import {AbilityDamageDrainEffect} from './abilities/damage/ability-damage-drain-effect.model';
 import {AbilityDamageFixedEffect} from './abilities/damage/ability-damage-fixed-effect.model';
 import {AbilityDamageHexEffect} from './abilities/damage/ability-damage-hex-effect.model';
+import {AbilityZombieCureEffect} from './abilities/ability-zombie-cure-effect.model';
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 import {AbilitySkillCooldownEffect} from './abilities/skill/ability-skill-cooldown-effect.model';
@@ -97,6 +98,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 149:
         return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 148:
+        return new AbilityZombieCureEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 153:
       case 154:
         return new AbilityMitigationMonsterTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
