@@ -30,6 +30,7 @@ import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/abil
 import {AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect} from './abilities/damage/ability-damage-physical-increased-modifier-enemy-type-effect.model';
 import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-activation-effect.model';
 import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-effect.model';
+import {AbilityWeaponTypeWielderDamageIncreaseEffect} from './abilities/ability-weapon-type-wielder-damage-increase-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -104,6 +105,8 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillMagnusEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 159:
         return new AbilityDamagePhysicalIncreasedBreakEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 163:
+        return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
