@@ -5,6 +5,7 @@ import {Recette} from '../model/recette.model';
 import {ItemRecipe} from '../model/items/item-recipe.model';
 import {ItemRecipeMapper} from '../mappers/items/item-recipe-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {CharactersService} from '../services/characters.service';
 
 @Component({
   templateUrl: './item-recipes.component.html',
@@ -18,7 +19,9 @@ export class ItemRecipesComponent implements OnInit {
   recipeGumiId: FormControl;
   recettes: Array<Recette>;
 
-  constructor(private itemRecipesService: ItemRecipesService) {
+  constructor(private itemRecipesService: ItemRecipesService,
+              // do not remove the injection of Characters, it serves to load the INSTANCE singletons
+              private charactersService: CharactersService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.resultGumiId = new FormControl('');

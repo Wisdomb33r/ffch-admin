@@ -3,7 +3,7 @@ import {Recette} from '../model/recette.model';
 import {RecettesComparingContainer} from '../model/recettes-comparing-container.model';
 import {Objet} from '../model/objet/objet.model';
 import {FfchClientService} from '../services/ffch-client.service';
-import {forkJoin, Observable, of, Subscription} from 'rxjs';
+import {forkJoin, Observable, Subscription, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {FfbeUtils} from '../utils/ffbe-utils';
 
@@ -33,21 +33,18 @@ export class RecettesDisplayComponent implements OnDestroy, OnChanges {
       this.recettes.forEach(recette => {
         observables.push(this.ffchClientService.getRecette$(recette.recette_gumi_id, recette.resultat_gumi_id)
           .pipe(catchError(error => {
-            this.recettesErrors.push('Erreur lors du traitement de la recette '
-              + recette.resultat_gumi_id + ' (' + recette.recette_gumi_id + ') : ' + error);
-            return of(error);
+            this.recettesErrors.push(`Erreur lors du traitement de la recette de résultat ${recette.resultat_gumi_id} (${recette.recette_gumi_id}) : ${error}`);
+            return throwError(error);
           })));
         observables.push(this.ffchClientService.getObjetByGumiId$(recette.recette_gumi_id)
           .pipe(catchError(error => {
-            this.recettesErrors.push('Erreur lors du traitement de l\'objet'
-              + recette.recette_gumi_id + ' (' + recette.recette_gumi_id + ') : ' + error);
-            return of(error);
+            this.recettesErrors.push(`Erreur lors du traitement de l'objet ${recette.recette_gumi_id} : ${error}`);
+            return throwError(error);
           })));
         observables.push(this.ffchClientService.getObjetByGumiId$(recette.resultat_gumi_id)
           .pipe(catchError(error => {
-            this.recettesErrors.push('Erreur lors du traitement de l\'objet'
-              + recette.resultat_gumi_id + ' (' + recette.resultat_gumi_id + ') : ' + error);
-            return of(error);
+            this.recettesErrors.push(`Erreur lors du traitement de l'objet ${recette.resultat_gumi_id} : ${error}`);
+            return throwError(error);
           })));
       });
       this.subscription = forkJoin(observables).subscribe(results => {
