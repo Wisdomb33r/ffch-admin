@@ -1,6 +1,7 @@
 import {EffectParser} from '../effect-parser';
 import {Skill} from '../../../model/skill.model';
 import {FFBE_ESPERS} from '../../../ffbe.constants';
+import {SkillEffect} from '../../../model/effects/skill-effect.model';
 
 export class PassiveEsperStatsIncreaseParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
@@ -20,7 +21,7 @@ export class PassiveEsperStatsIncreaseParser extends EffectParser {
       {name: 'PSY', value: effect[3][3]},
     ];
     return this.wordEffectJoiningIdenticalValues(increases) + ' obtenues par la chimère'
-      + (esperId > 0 ? ' ' + this.getEsperLink(esper) : '');
+      + (esperId > 0 ? ' ' + SkillEffect.getEsperLink(esper) : '');
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

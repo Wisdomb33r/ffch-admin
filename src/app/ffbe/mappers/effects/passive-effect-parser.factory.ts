@@ -21,7 +21,6 @@ import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
-import {PassiveEsperSummonDamageIncreaseParser} from './passives/passive-esper-summon-damage-increase.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
@@ -127,8 +126,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEsperGroupSummonParser();
       case 63:
         return new PassiveEsperStatsIncreaseParser();
-      case 64:
-        return new PassiveEsperSummonDamageIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
       case 68:
