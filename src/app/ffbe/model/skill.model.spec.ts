@@ -1225,6 +1225,77 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[2, 1, 33, [-50,  -50,  -50,  -50,  -50,  -50,  -50,  -50,  1,  1]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "913625": {
+        "name": "Celestial Destiny",
+        "icon": "global_ability_10101.png",
+        "compendium_id": 86977,
+        "rarity": 10,
+        "cost": {"MP": 200, "EP": 10},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[1,  1]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "None",
+        "element_inflict": null,
+        "effects": [
+            "Increase LB gauge by 100 to the rest of the party",
+            "Unknown active effect type '1014': [913625,2,1,1,1,0]"
+        ],
+        "effects_raw": [[2, 5, 125, [10000,  10000]], [0, 3, 1014, [913625,  2,  1,  1,  1,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "913881": {
+        "name": "Uroboros of Wrath",
+        "icon": "global_ability_10101.png",
+        "compendium_id": 87227,
+        "rarity": 9,
+        "cost": {"MP": 100},
+        "attack_count": [0],
+        "attack_damage": [[]],
+        "attack_frames": [[]],
+        "effect_frames": [[]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Unlock Uroboros of Wrath (913897) on turn 5 [5 turns CD]",
+            "Unknown active effect type '1014': [913881,2,2,2,1,0]"
+        ],
+        "effects_raw": [[0, 3, 130, [913897, 0, [4,  0], 1]], [0, 3, 1014, [913881,  2,  2,  2,  1,  0]]],
+        "requirements": null,
+        "unit_restriction": null
+    },
+    "913897": {
+        "name": "Uroboros of Wrath",
+        "icon": "global_ability_10101.png",
+        "compendium_id": 87243,
+        "rarity": 9,
+        "cost": {"MP": 100},
+        "attack_count": [9, 1],
+        "attack_damage": [[11,  11,  11,  11,  11,  11,  11,  11,  12], [100]],
+        "attack_frames": [[110,  120,  130,  140,  150,  160,  170,  180,  190], [200]],
+        "effect_frames": [[40,  30,  40,  0], [40]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Physical",
+        "element_inflict": null,
+        "effects": [
+            "Sacrifice 51% HP to deal physical damage (20x, ATK) to all enemies",
+            "Physical damage (20x * 2 = 40x, ATK) to all enemies (ignore cover)",
+            "Dodge 10 physical attacks for 3 turns to caster",
+            "100% chance to counter physical attacks (10x, ATK) to caster for 3 turns (max 5 / turn)"
+        ],
+        "effects_raw": [[2, 1, 81, [0,  0,  0,  0,  0,  0,  2000,  51,  2000315,  1]], [2, 1, 21, [0,  0,  2000,  -50]], [0, 3, 54, [10,  3,  1]], [0, 3, 119, [100,  1,  1000,  3,  1,  5]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 
@@ -1442,6 +1513,33 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Lance siphon",
         "Soglanze",
         "Lanza sifón"
+    ],
+    "913625": [
+        "Celestial Destiny",
+        "天之宿命",
+        "천명",
+        "Destiné céleste",
+        "Himmlisches Schicksal",
+        "Destino celestial",
+        "Takdir Surgawi"
+    ],
+    "913881": [
+        "Uroboros of Wrath",
+        "拉斯之銜尾蛇",
+        "분노의 우로보로스",
+        "Ouroboros de Wrath",
+        "Uroboros des Zorns",
+        "Uróboros de Ira",
+        "Uroboros Kemarahan"
+    ],
+    "913897": [
+        "Uroboros of Wrath",
+        "拉斯之銜尾蛇",
+        "분노의 우로보로스",
+        "Ouroboros de Wrath",
+        "Uroboros des Zorns",
+        "Uróboros de Ira",
+        "Uroboros Kemarahan"
     ]
   }`;
 
