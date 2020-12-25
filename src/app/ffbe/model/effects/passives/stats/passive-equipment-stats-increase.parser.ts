@@ -1,7 +1,7 @@
-import {EffectParser} from '../effect-parser';
-import {Skill} from '../../../model/skill.model';
-import {Equipment} from '../../../model/items/equipment/equipment.model';
-import {EquipmentsService} from '../../../services/equipments.service';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {Skill} from '../../../skill.model';
+import {Equipment} from '../../../items/equipment/equipment.model';
+import {EquipmentsService} from '../../../../services/equipments.service';
 
 export class PassiveEquipmentStatsIncreaseParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
