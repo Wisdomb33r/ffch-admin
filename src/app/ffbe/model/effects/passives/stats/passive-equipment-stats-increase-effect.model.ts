@@ -35,10 +35,15 @@ export class PassiveEquipmentStatsIncreaseEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     // TODO critical strikes
-    const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(this.equipmentGumiIds[0]);
-    return this.wordEffectJoiningIdenticalValues(this.increasesCarac.toNameValuePairArray())
-      + ' si l\'unité porte ' + this.getEquipmentNameWithGumiIdentifierLink(equipment);
-    return '';
+    const equipments: Array<Equipment> = this.equipmentGumiIds.map(equipmentGumiId =>
+      EquipmentsService.getInstance().searchForEquipmentByGumiId(equipmentGumiId));
+
+    const equipmentLinks = equipments.map(equipment => this.getEquipmentNameWithGumiIdentifierLink(equipment));
+
+    const equipmentLinksText = equipmentLinks.length === 1 ? equipmentLinks :
+      `${equipmentLinks.slice(0, equipmentLinks.length - 1).join(', ')} ou ${equipmentLinks[equipmentLinks.length - 1]}`;
+
+    return `${this.wordEffectJoiningIdenticalValues(this.increasesCarac.toNameValuePairArray())} si l\'unité porte ${equipmentLinksText}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
