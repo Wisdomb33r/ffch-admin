@@ -24,7 +24,7 @@ import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attac
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
-import {PassiveEquipmentStatsIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-stats-increase.parser';
+import {PassiveEquipmentStatsIncreaseEffect} from '../../model/effects/passives/stats/passive-equipment-stats-increase-effect.model';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDualWieldDamageCapParser} from './passives/passive-dual-wield-damage-cap.parser';
@@ -135,7 +135,7 @@ export class PassiveEffectParserFactory {
       case 73:
         return new PassiveSkillModifierIncreaseParser();
       case 74:
-        return new PassiveEquipmentStatsIncreaseParser();
+        return new PassiveEquipmentStatsIncreaseEffect();
       case 75:
         return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
       case 76:

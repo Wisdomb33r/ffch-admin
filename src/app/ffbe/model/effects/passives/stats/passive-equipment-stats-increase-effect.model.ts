@@ -3,7 +3,7 @@ import {Skill} from '../../../skill.model';
 import {Equipment} from '../../../items/equipment/equipment.model';
 import {EquipmentsService} from '../../../../services/equipments.service';
 
-export class PassiveEquipmentStatsIncreaseParser extends EffectParser {
+export class PassiveEquipmentStatsIncreaseEffect extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
     if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 8) {
       return 'Effet PassiveSpecificItemStatsIncreaseParser inconnu: Mauvaise liste de paramètres';
