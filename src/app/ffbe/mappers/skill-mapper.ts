@@ -51,15 +51,25 @@ export class SkillMapper {
     );
   }
 
+  private static orderSkillEffectsRaw(skill: Skill) {
+    skill.effects_raw?.sort((effect1, effect2) => SkillMapper.compareTwoSkillEffectsByIds(effect1[2], effect2[2]));
+  }
+
   // effect 132 is for delayed skills but might appear in the data mining before another effect which is activated immediately
   // to avoid confusion, need to move the delayed skills at the end of the table
   // effect 1014 is for GLEX magnus skills, whose effect should be stated first
-  private static orderSkillEffectsRaw(skill: Skill) {
-    skill.effects_raw?.sort(
-      (effect1, effect2) => effect1[2] === 132 && effect2[2] !== 132 ? 1 :
-        (effect1[2] !== 132 && effect2[2] === 132 ? -1 :
-          (effect1[2] === 1014 && effect2[2] !== 1014 ? -1 : (effect1[2] !== 1014 && effect2[2] === 1014 ? 1 : 0)
-          )));
+  private static compareTwoSkillEffectsByIds(skillEffectId1: number, skillEffectId2: number): number {
+    let result = 0;
+    if (skillEffectId1 === 132 && skillEffectId2 !== 132) {
+      result = 1;
+    } else if (skillEffectId1 !== 132 && skillEffectId2 === 132) {
+      result = -1;
+    } else if (skillEffectId1 === 1014 && skillEffectId2 !== 1014) {
+      result = -1;
+    } else if (skillEffectId1 !== 1014 && skillEffectId2 === 1014) {
+      result = 1;
+    }
+    return result;
   }
 
   public static mapHitsFramesAndDamages(skill: Skill): { hits: number, frames: string, damages: string } {
