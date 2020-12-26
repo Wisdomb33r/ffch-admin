@@ -336,22 +336,6 @@ describe('PassiveEffectParser', () => {
     expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a>');
   });
 
-  it('should parse equipment stats increase', () => {
-    // GIVEN
-    const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
-    const equipment: Equipment = equipments['301000400'];
-    equipment.gumi_id = 301000400;
-
-    const effect = JSON.parse('[0, 3, 74, [301000400, 20, 20, 10, 10, 30, 30, 50]]');
-    const equipmentsServiceMock = new EquipmentsServiceMock() as EquipmentsService;
-    EquipmentsService['INSTANCE'] = equipmentsServiceMock;
-    spyOn(equipmentsServiceMock, 'searchForEquipmentByGumiId').and.returnValues(equipment);
-    // WHEN
-    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
-    // THEN
-    expect(s).toEqual('+30% PV/PM, +20% ATT/DÉF, +10% MAG/PSY si l\'unité porte <a href="ffexvius_objects.php?gumiid=301000400">Dague</a>');
-  });
-
   it('should parse turn start activation effect when ally alive', () => {
     // GIVEN
     const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);

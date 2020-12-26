@@ -8,6 +8,8 @@ import {ResistancesElementaires} from '../resistances-elementaires.model';
 import {ResistancesAlterations} from '../resistances-alterations.model';
 import {Tueurs} from '../tueurs.model';
 import {Esper} from '../esper.model';
+import {Equipment} from '../items/equipment/equipment.model';
+import {FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
@@ -219,6 +221,13 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
       return 'UNKNOWN esper';
     }
     return `<a href="ffexvius_espers.php?esperid=${esper.ffchId}">${esper.name}</a>`;
+  }
+
+  protected getEquipmentNameWithGumiIdentifierLink(equipment: Equipment): string {
+    if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+      return 'UNKNOWN equipment';
+    }
+    return `<a href="ffexvius_objects.php?gumiid=${equipment.gumi_id}">${equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]}</a>`;
   }
 
   public getDamagesPower(): number {
