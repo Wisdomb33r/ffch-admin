@@ -18,7 +18,7 @@ export class PassiveEquipmentStatsIncreaseEffect extends SkillEffect {
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || parameters.length < 8 ||
-      (Number.isInteger(parameters[0]) && Array.isArray(parameters[0]))) {
+      (!Number.isInteger(parameters[0]) && !Array.isArray(parameters[0]))) {
       this.parameterError = true;
     } else {
       this.equipmentGumiIds = Array.isArray(parameters[0]) ? parameters[0] : [parameters[0]];
@@ -43,11 +43,11 @@ export class PassiveEquipmentStatsIncreaseEffect extends SkillEffect {
     const equipmentLinksText = equipmentLinks.length === 1 ? equipmentLinks :
       `${equipmentLinks.slice(0, equipmentLinks.length - 1).join(', ')} ou ${equipmentLinks[equipmentLinks.length - 1]}`;
 
-    return `${this.wordEffectJoiningIdenticalValues(this.increasesCarac.toNameValuePairArray())} si l\'unité porte ${equipmentLinksText}`;
+    return `${this.wordEffectJoiningIdenticalValues(this.increasesCarac.toNameValuePairArray())} si l'unité porte ${equipmentLinksText}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    return '+' + currentValue + '% ' + accumulatedStats.join('/');
+    return `+${currentValue}% ${accumulatedStats.join('/')}`;
   }
 
   protected get effectName(): string {
