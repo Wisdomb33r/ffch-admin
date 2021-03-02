@@ -100,7 +100,7 @@ function updateObjetWithLienTMR($objet)
 
 }
 
-function createAndValidateObjet($objet)
+function createPropertyArray($objet)
 {
   $values = array();
   $values ['nom'] = $objet->nom;
@@ -173,6 +173,13 @@ function createAndValidateObjet($objet)
   $values ['def_dw'] = $objet->caracpDualwield->def;
   $values ['mag_dw'] = $objet->caracpDualwield->mag;
   $values ['psy_dw'] = $objet->caracpDualwield->psy;
+
+  return $values;
+}
+
+function createAndValidateObjet($objet)
+{
+  $values = createPropertyArray($objet);
 
   $brex_objet = new brex_objet($values);
 
