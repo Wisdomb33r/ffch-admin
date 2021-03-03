@@ -124,4 +124,8 @@ export class Objet implements CaracteristiquesContainer {
   getBonusDualWieldPercent(): Caracteristiques {
     return this.caracpDualwield;
   }
+
+  public isDifferent(other: Objet): boolean {
+    return false;
+  }
 }
