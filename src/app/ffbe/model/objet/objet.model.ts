@@ -126,6 +126,18 @@ export class Objet implements CaracteristiquesContainer {
   }
 
   public isDifferent(other: Objet): boolean {
-    return false;
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.isNomDifferent(other);
+    }
+  }
+
+  public isNomDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.nom !== other.nom;
+    }
   }
 }

@@ -23,11 +23,21 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeFalse();
   });
 
+  it('should analyse Objet as different when the \"nom\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.nom = 'Casque';
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     return new Objet(
       1,
       FfbeUtils.findObjetCategorieByGumiId(1),
-      '',
+      'Casserole',
       '',
       1,
       '',
