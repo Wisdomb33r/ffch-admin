@@ -5,10 +5,19 @@ import {ResistancesElementaires} from '../resistances-elementaires.model';
 import {ResistancesAlterations} from '../resistances-alterations.model';
 
 describe('Objet', () => {
-  it('should not mark null Objet as different', () => {
+  it('should not analyse null Objet as different', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = null;
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeFalse();
+  });
+
+  it('should analyse Objet with same values as equal', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
 
     // WHEN + THEN
     expect(objet1.isDifferent(objet2)).toBeFalse();
