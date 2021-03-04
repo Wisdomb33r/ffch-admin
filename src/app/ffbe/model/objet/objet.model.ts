@@ -129,11 +129,22 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.isNomDifferent(other);
+      return this.isCategorieDifferent(other) ||
+        this.isNomDifferent(other);
     }
   }
 
-  public isNomDifferent(other: Objet): boolean {
+  private isCategorieDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else if (FfbeUtils.isNullOrUndefined(other.categorie)) {
+      return true;
+    } else {
+      return this.categorie.gumiId !== other.categorie.gumiId;
+    }
+  }
+
+  private isNomDifferent(other: Objet): boolean {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
