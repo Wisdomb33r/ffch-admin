@@ -13,14 +13,6 @@ export class ObjetsComparingContainer {
   }
 
   public isDifferentFromFfchDb(): boolean {
-    return this.isNomDifferent();
-  }
-
-  private isNomDifferent(): boolean {
-    if (FfbeUtils.isNullOrUndefined(this.dbObjet)) {
-      return false;
-    } else {
-      return this.objet.nom !== this.dbObjet.nom;
-    }
+    return this.objet.isDifferent(this.dbObjet);
   }
 }
