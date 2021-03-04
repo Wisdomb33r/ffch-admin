@@ -130,7 +130,8 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.isCategorieDifferent(other) ||
-        this.isNomDifferent(other);
+        this.isNomDifferent(other) ||
+        this.isNomEnDifferent(other);
     }
   }
 
@@ -149,6 +150,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.nom !== other.nom;
+    }
+  }
+
+  private isNomEnDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.nom_en !== other.nom_en;
     }
   }
 }
