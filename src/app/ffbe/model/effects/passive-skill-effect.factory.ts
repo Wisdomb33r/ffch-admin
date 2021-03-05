@@ -14,6 +14,8 @@ import {PassiveSkillCounterAttackActivationEffect} from './passives/skill/passiv
 import {PassiveEsperSummonDamageIncreaseEffect} from './passives/passive-esper-summon-damage-increase-effect.parser';
 import {PassiveEquipmentStatsIncreaseEffect} from './passives/stats/passive-equipment-stats-increase-effect.model';
 import {PassiveEquipmentStatsDoublehandShieldIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-shield-increase-effect.model';
+import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-modifier-limit-increase-effect.model';
+import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -45,12 +47,16 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 77:
         return new PassiveMpCostDecreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 81:
+        return new PassiveChainModifierLimitWhileDualWieldingIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 84:
         return new PassiveChainBaseModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 85:
         return new PassiveChainBaseModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 89:
         return new PassiveStatsIncreaseFixedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 98:
+        return new PassiveChainModifierLimitIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 99:
         return new PassiveEquipmentStatsDoublehandShieldIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 10003:

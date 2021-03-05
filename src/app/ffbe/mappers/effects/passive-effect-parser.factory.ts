@@ -26,7 +26,6 @@ import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.pa
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
-import {PassiveDualWieldDamageCapParser} from './passives/passive-dual-wield-damage-cap.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveCounterAttackParser} from './passives/passive-counter-attack.parser';
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
@@ -139,10 +138,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEquipmentCategoryElementsResistanceParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
-      case 81:
-        return new PassiveDualWieldDamageCapParser();
-      case 98:
-        return new PassiveSkillMultipleActivationParser();
       case 136:
         return new PassiveSkillModifierIncreaseParser();
       case 10002:
