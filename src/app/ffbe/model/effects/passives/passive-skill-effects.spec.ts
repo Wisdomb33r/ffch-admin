@@ -65,6 +65,14 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},
     {effect: '[0,3,89,[100,100,0,0,2000,0]]', parsed: '+2000 PV, +100 ATT/DÉF'},
     {
+      effect: '[0, 3, 99, [3, 200, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]]',
+      parsed: '+200% MAG de l\'équipement si l\'unité porte une seule arme avec ou sans bouclier'
+    },
+    {
+      effect: '[0, 3, 99, [2, 50, [8,  16]]]',
+      parsed: '+50% DÉF de l\'équipement si l\'unité porte une seule arme de type <a href="ffexvius_objects.php?categid=29">hache</a> ou <a href="ffexvius_objects.php?categid=18">griffe</a> avec ou sans bouclier'
+    },
+    {
       effect: '[0, 3, 10003, [10, 10, 20, 20, 10, 20]]',
       parsed: '+20% ATT/MAG/PSY de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+10% PV/PM/DÉF de l\'équipement si l\'unité porte une seule arme à une main (DH)'
