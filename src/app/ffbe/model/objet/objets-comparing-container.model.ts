@@ -4,7 +4,8 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 export class ObjetsComparingContainer {
 
   public constructor(public objet: Objet,
-                     public dbObjet: Objet) {
+                     public dbObjet: Objet,
+                     public modifiedObjet: Objet) {
 
   }
 
