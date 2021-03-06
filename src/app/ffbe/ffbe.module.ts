@@ -54,6 +54,7 @@ import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-cont
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
 import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-components/objet-tueurs-physiques-magiques-display/objet-tueurs-physiques-magiques-display.component';
 import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
+import { ObjetsComparingContainerDisplayComponent } from './objets-display-components/objets-comparing-container-display/objets-comparing-container-display.component';
 
 @NgModule({
   imports: [
@@ -103,6 +104,7 @@ import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tue
     CaracteristiquesEXDisplayComponent,
     ObjetTueursPhysiquesMagiquesDisplayComponent,
     ObjetTueursDisplayComponent,
+    ObjetsComparingContainerDisplayComponent,
   ],
   exports: [
     CharactersComponent,
