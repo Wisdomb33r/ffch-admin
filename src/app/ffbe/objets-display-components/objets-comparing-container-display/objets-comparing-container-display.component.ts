@@ -9,10 +9,16 @@ import {ObjetsComparingContainer} from '../../model/objet/objets-comparing-conta
 export class ObjetsComparingContainerDisplayComponent implements OnInit {
 
   @Input() objetsContainer: ObjetsComparingContainer;
+  public modificationPanelDisplayed = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  public switchModificationPanelDisplayed() {
+    this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
   }
 
 }

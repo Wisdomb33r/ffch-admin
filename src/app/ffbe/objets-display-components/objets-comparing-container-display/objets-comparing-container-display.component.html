@@ -15,3 +15,18 @@
 </div>
 
 <div class="objet-clear"></div>
+
+<div *ngIf="objetsContainer.isPresentInFfchDb() && objetsContainer.isDifferentFromFfchDb()">
+  <mat-card>
+    <mat-card-title (click)="switchModificationPanelDisplayed()">
+      Modifier {{objetsContainer.modifiedObjet.nom}}</mat-card-title>
+
+    <div *ngIf="modificationPanelDisplayed">
+      <app-objet-display
+        [objet]="objetsContainer.modifiedObjet"
+        [present]="objetsContainer.isPresentInFfchDb()"
+        [different]="objetsContainer.isDifferentFromFfchDb()">
+        <!--[editable]="true" (skillModifiedEvent)="skillModified($event)"--></app-objet-display>
+    </div>
+  </mat-card>
+</div>

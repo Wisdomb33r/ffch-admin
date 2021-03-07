@@ -29,7 +29,7 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (!FfbeUtils.isNullOrUndefined(this.objet.categorie)) {
+    if (!FfbeUtils.isNullOrUndefined(this.objet?.categorie)) {
       this.categorieFfchId = this.objet.categorie.ffchId;
     }
   }
