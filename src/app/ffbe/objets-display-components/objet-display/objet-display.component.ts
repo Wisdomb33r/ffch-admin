@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {Objet} from '../../model/objet/objet.model';
 import {FfchClientService} from '../../services/ffch-client.service';
 import {FFBE_CATEGORIES_OBJETS} from '../../ffbe.constants';
@@ -15,6 +15,8 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
   @Input() objet: Objet;
   @Input() present: boolean;
   @Input() different: boolean;
+  @Input() editable: boolean;
+  @Output() objetModifiedEvent: EventEmitter<Objet> = new EventEmitter();
 
   public displayed = false;
   public objetErrors: Array<string> = [];
@@ -64,10 +66,19 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
   }
 
   public sendObjetToFfchDb() {
-    this.ffchClientService.postObjet$(this.objet)
-      .subscribe(objet =>
-          this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id),
-        status => this.objetErrors.push('Could not send objet'));
+    if (!this.present) {
+      this.ffchClientService.postObjet$(this.objet)
+        .subscribe(objet =>
+            this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id),
+          status => this.objetErrors.push('Could not send objet'));
+    } else {
+      this.ffchClientService.putObjet$(this.objet)
+        .subscribe(objet => {
+            this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id);
+            this.objetModifiedEvent.emit(objet);
+          },
+          status => this.objetErrors.push('Could not send objet'));
+    }
   }
 
 }

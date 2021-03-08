@@ -25,8 +25,8 @@
       <app-objet-display
         [objet]="objetsContainer.modifiedObjet"
         [present]="objetsContainer.isPresentInFfchDb()"
-        [different]="objetsContainer.isDifferentFromFfchDb()">
-        <!--[editable]="true" (skillModifiedEvent)="skillModified($event)"--></app-objet-display>
+        [different]="objetsContainer.isDifferentFromFfchDb()"
+        [editable]="true" (objetModifiedEvent)="objetModified($event)"></app-objet-display>
     </div>
   </mat-card>
 </div>

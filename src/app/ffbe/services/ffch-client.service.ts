@@ -74,6 +74,10 @@ export class FfchClientService {
     return this.http.post(FFCH_OBJECTS_PATH, objet);
   }
 
+  public putObjet$(objet: Objet): Observable<any> {
+    return this.http.put(FFCH_OBJECTS_PATH, objet);
+  }
+
   public getUniteMateriauxEveilByUniteNumero$(numero: number): Observable<UniteEveil> {
     return this.http.get<UniteEveil>(FFCH_AWAKENING_MATERIALS_PATH + '?numero=' + numero)
       .pipe(catchError(this.analyseError));

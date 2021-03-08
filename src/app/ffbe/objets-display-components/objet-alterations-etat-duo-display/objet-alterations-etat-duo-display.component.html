@@ -8,7 +8,7 @@
     <div [ngClass]="shouldDiplayInflicts() ? 'objet-alterations-etat-left' : ''">
       <app-objet-alterations-etat-display [objetAlterationsEtat]="objet.resistancesAlterations"
                                           [titre]="'Résistances'"
-                                          [estModifiable]="!objet.isPresentInFfchDb()">
+                                          [estModifiable]="!objet.isPresentInFfchDb() || editable">
       </app-objet-alterations-etat-display>
     </div>
 

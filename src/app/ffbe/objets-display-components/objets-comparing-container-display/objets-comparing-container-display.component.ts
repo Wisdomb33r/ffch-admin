@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ObjetsComparingContainer} from '../../model/objet/objets-comparing-container.model';
+import {Objet} from '../../model/objet/objet.model';
 
 @Component({
   selector: 'app-objets-comparing-container-display',
@@ -19,6 +20,11 @@ export class ObjetsComparingContainerDisplayComponent implements OnInit {
 
   public switchModificationPanelDisplayed() {
     this.modificationPanelDisplayed = !this.modificationPanelDisplayed;
+  }
+
+  public objetModified(o: Objet) {
+    this.switchModificationPanelDisplayed();
+    this.objetsContainer.dbObjet = o;
   }
 
 }
