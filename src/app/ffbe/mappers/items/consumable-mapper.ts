@@ -59,6 +59,9 @@ export class ConsumableMapper {
       }
     } else if (type === 'Item') {
       categorie = FfbeUtils.findObjetCategorieByFfchId(59);
+      if (nom?.startsWith('Insigne extrême')) {
+        categorie = FfbeUtils.findObjetCategorieByFfchId(64);
+      }
     }
 
     return categorie;
