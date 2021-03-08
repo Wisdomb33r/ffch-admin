@@ -73,6 +73,13 @@ export class Objet implements CaracteristiquesContainer {
       o.tueurs,
       o.tueurs_m,
       o.competences);
+
+    objet.extended_gumi_id = o.extended_gumi_id;
+    objet.prix_vente = o.prix_vente;
+    objet.resistancesElementaires = o.resistancesElementaires;
+    objet.elementsArme = o.elementsArme;
+    objet.alterationsArme = o.alterationsArme;
+    
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
       objet.two_handed = false;
