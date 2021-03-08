@@ -54,6 +54,11 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
     this.objet.categorie = FfbeUtils.findObjetCategorieByFfchId(this.categorieFfchId);
   }
 
+  public shouldDisplayTueurs(): boolean {
+    return !FfbeUtils.isNullOrUndefined(this.objet.tueursPhysiques) && !FfbeUtils.isNullOrUndefined(this.objet.tueursMagiques);
+  }
+
+
   public hasLienTRM(): boolean {
     return !FfbeUtils.isNullOrUndefined(this.objet.lienTMR);
   }

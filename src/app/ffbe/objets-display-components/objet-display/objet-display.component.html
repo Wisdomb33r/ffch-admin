@@ -73,7 +73,9 @@
 
     <app-objet-alterations-etat-duo-display [objet]="objet"></app-objet-alterations-etat-duo-display>
 
-    <app-objet-tueurs-physiques-magiques-display [objet]="objet"></app-objet-tueurs-physiques-magiques-display>
+    <app-objet-tueurs-physiques-magiques-display *ngIf="shouldDisplayTueurs()"
+                                                 [objet]="objet">
+    </app-objet-tueurs-physiques-magiques-display>
 
     <app-skills-display *ngIf="areObjetCompetencesDisplayed()"
                         [competences]="objet.competences"
