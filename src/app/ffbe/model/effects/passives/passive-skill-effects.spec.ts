@@ -60,10 +60,15 @@ describe('PassiveSkillEffect', () => {
     },
     {effect: '[0, 3, 77, [10, 1, 0]]', parsed: '-10% de PM consommés'},
     {effect: '[0, 3, 77, [30,  1,  4]]', parsed: '-30% de PM consommés'},
+    {
+      effect: '[0,3,81,["n\'importe quoi"]]',
+      parsed: '+200% au coefficient multiplicateur maximal de la chaîne de combo si l\'unité porte deux armes'
+    },
     {effect: '[0,3,84,[75]]', parsed: '+75% au multiplicateur de départ des chaînes de combos physiques'},
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},
     {effect: '[0,3,89,[100,100,0,0,2000,0]]', parsed: '+2000 PV, +100 ATT/DÉF'},
+    {effect: '[0,3,98,[0,50,0,1]]', parsed: '+50% au coefficient multiplicateur maximal de la chaîne de combo'},
     {
       effect: '[0, 3, 99, [3, 200, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]]',
       parsed: '+200% MAG de l\'équipement si l\'unité porte une seule arme avec ou sans bouclier'
