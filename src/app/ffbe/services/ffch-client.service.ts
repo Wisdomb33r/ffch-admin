@@ -75,7 +75,10 @@ export class FfchClientService {
   }
 
   public putObjet$(objet: Objet): Observable<any> {
-    return this.http.put(FFCH_OBJECTS_PATH, objet);
+    return this.http.put<Objet>(FFCH_OBJECTS_PATH, objet)
+      .pipe(
+        map(o => Objet.produce(o))
+      );
   }
 
   public getUniteMateriauxEveilByUniteNumero$(numero: number): Observable<UniteEveil> {
