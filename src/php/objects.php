@@ -39,6 +39,23 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   updateObjetWithLienTMR($stored_objet);
 
   echo json_encode($stored_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+} else if ($_SERVER ['REQUEST_METHOD'] == 'PUT') {
+  $objet = json_decode(file_get_contents('php://input'));
+
+  verifyObjet($objet);
+
+  $brex_objet = findObjetByGumiId($objet->gumi_id);
+
+  updateAndValidateObjet($objet, $brex_objet);
+
+  storeObjet($brex_objet);
+
+  $stored_brex_objet = findObjetByGumiId($objet->gumi_id);
+  $stored_objet = new Objet($stored_brex_objet);
+
+  updateObjetWithLienTMR($stored_objet);
+
+  echo json_encode($stored_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else {
   if (!isset ($_GET ['gumi_id'])) {
     dieWithBadRequest('Format exception: Cannot find object without gumiId');
@@ -182,6 +199,20 @@ function createAndValidateObjet($objet)
   $values = createPropertyArray($objet);
 
   $brex_objet = new brex_objet($values);
+
+  $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
+  $brex_objet->setrelationcategorie($brex_objet_categ);
+
+  $brex_objet->verifyValues();
+
+  return $brex_objet;
+}
+
+function updateAndValidateObjet($objet, $brex_objet)
+{
+  $values = createPropertyArray($objet);
+
+  $brex_objet->updateObject($values);
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
   $brex_objet->setrelationcategorie($brex_objet_categ);
