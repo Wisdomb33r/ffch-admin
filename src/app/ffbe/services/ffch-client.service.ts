@@ -67,11 +67,17 @@ export class FfchClientService {
 
   public getObjetByGumiId$(id: number): Observable<Objet> {
     return this.http.get<Objet>(FFCH_OBJECTS_PATH + '?gumi_id=' + id)
-      .pipe(catchError(this.analyseError));
+      .pipe(
+        map(o => Objet.produce(o)),
+        catchError(this.analyseError)
+      );
   }
 
   public postObjet$(objet: Objet): Observable<any> {
-    return this.http.post(FFCH_OBJECTS_PATH, objet);
+    return this.http.post<Objet>(FFCH_OBJECTS_PATH, objet)
+      .pipe(
+        map(o => Objet.produce(o))
+      );
   }
 
   public putObjet$(objet: Objet): Observable<any> {
