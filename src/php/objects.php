@@ -196,23 +196,23 @@ function createPropertyArray($objet)
 
 function createAndValidateObjet($objet)
 {
-  $values = createPropertyArray($objet);
-
-  $brex_objet = new brex_objet($values);
-
-  $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
-  $brex_objet->setrelationcategorie($brex_objet_categ);
-
-  $brex_objet->verifyValues();
-
-  return $brex_objet;
+  return createOrUpdateAndValidateObjet($objet);
 }
 
 function updateAndValidateObjet($objet, $brex_objet)
 {
+  return createOrUpdateAndValidateObjet($objet, $brex_objet);
+}
+
+function createOrUpdateAndValidateObjet($objet, $brex_objet = null)
+{
   $values = createPropertyArray($objet);
 
-  $brex_objet->updateObject($values);
+  if (is_null($brex_objet)) {
+    $brex_objet = new brex_objet($values);
+  } else {
+    $brex_objet->updateObject($values);
+  }
 
   $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
   $brex_objet->setrelationcategorie($brex_objet_categ);
