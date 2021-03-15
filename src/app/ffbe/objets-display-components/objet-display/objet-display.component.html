@@ -30,7 +30,7 @@
       <input matInput type="text" name="stars" [(ngModel)]="objet.stars" placeholder="Stars">
     </mat-form-field>
 
-    <p *ngIf="present">{{objet.effet}}</p>
+    <p *ngIf="present && !editable">{{objet.effet}}</p>
 
     <table>
       <caption>Informations de base de l'objet</caption>
