@@ -42,8 +42,7 @@ export class ObjetsDisplayComponent implements OnChanges, OnDestroy {
             this.objets[index].id = FfbeUtils.isNullOrUndefined(o) ? undefined : o.id;
             this.objetsContainer.push(
               new ObjetsComparingContainer(this.objets[index],
-                FfbeUtils.isNullOrUndefined(o) ? null : o,
-                Objet.produce(this.objets[index]))
+                FfbeUtils.isNullOrUndefined(o) ? null : o)
             );
           }
         );
