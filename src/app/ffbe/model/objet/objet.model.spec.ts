@@ -113,6 +113,16 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"caracpDoublehand\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.caracpDoublehand.mag = 41;
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     return new Objet(
       1,
@@ -128,7 +138,7 @@ describe('Objet', () => {
       '',
       new Caracteristiques(1, 2, 3, 4, 5, 6),
       new Caracteristiques(11, 12, 13, 14, 15, 16),
-      new Caracteristiques(),
+      new Caracteristiques(21, 22, 23, 24, 25, 26),
       new Caracteristiques(),
       new Caracteristiques(),
       new ResistancesElementaires(),

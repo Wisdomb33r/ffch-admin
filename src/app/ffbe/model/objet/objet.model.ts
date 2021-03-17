@@ -144,7 +144,8 @@ export class Objet implements CaracteristiquesContainer {
         this.isDescriptionDifferent(other) ||
         this.isDescriptionEnDifferent(other) ||
         this.areCaracDifferent(other) ||
-        this.areCaracpDifferent(other);
+        this.areCaracpDifferent(other) ||
+        this.areCaracpDoublehandDifferent(other);
     }
   }
 
@@ -219,6 +220,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.caracp.isDifferent(other.caracp);
+    }
+  }
+
+  private areCaracpDoublehandDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.caracpDoublehand.isDifferent(other.caracpDoublehand);
     }
   }
 }
