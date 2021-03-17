@@ -77,7 +77,17 @@ describe('Objet', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
-    objet2.description = 'Une merveilleuse casserole venue d\'un autre monde';
+    objet2.description = 'Une merveilleuse casserole d\'un autre monde';
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
+  it('should analyse Objet as different when the \"description_en\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.description_en = 'A marvellous saucepan from another world';
 
     // WHEN + THEN
     expect(objet1.isDifferent(objet2)).toBeTrue();
@@ -92,8 +102,8 @@ describe('Objet', () => {
       1,
       '',
       1,
-      'Une magnifique casserole venue d\'un autre monde',
-      '',
+      'Une magnifique casserole d\'un autre monde',
+      'A splendid saucepan from another world',
       '',
       '',
       new Caracteristiques(),

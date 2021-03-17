@@ -141,7 +141,8 @@ export class Objet implements CaracteristiquesContainer {
         this.isNomEnDifferent(other) ||
         this.isStarsDifferent(other) ||
         this.isGumiIdDifferent(other) ||
-        this.isDescriptionDifferent(other);
+        this.isDescriptionDifferent(other) ||
+        this.isDescriptionEnDifferent(other);
     }
   }
 
@@ -192,6 +193,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.description !== other.description;
+    }
+  }
+
+  private isDescriptionEnDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.description_en !== other.description_en;
     }
   }
 }
