@@ -79,7 +79,7 @@ export class Objet implements CaracteristiquesContainer {
     objet.resistancesElementaires = o.resistancesElementaires;
     objet.elementsArme = o.elementsArme;
     objet.alterationsArme = o.alterationsArme;
-    
+
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
       objet.two_handed = false;
@@ -138,7 +138,8 @@ export class Objet implements CaracteristiquesContainer {
     } else {
       return this.isCategorieDifferent(other) ||
         this.isNomDifferent(other) ||
-        this.isNomEnDifferent(other);
+        this.isNomEnDifferent(other) ||
+        this.isStarsDifferent(other);
     }
   }
 
@@ -165,6 +166,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.nom_en !== other.nom_en;
+    }
+  }
+
+  private isStarsDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.stars !== other.stars;
     }
   }
 }
