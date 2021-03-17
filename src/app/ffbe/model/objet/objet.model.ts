@@ -139,7 +139,8 @@ export class Objet implements CaracteristiquesContainer {
       return this.isCategorieDifferent(other) ||
         this.isNomDifferent(other) ||
         this.isNomEnDifferent(other) ||
-        this.isStarsDifferent(other);
+        this.isStarsDifferent(other) ||
+        this.isGumiIdDifferent(other);
     }
   }
 
@@ -174,6 +175,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.stars !== other.stars;
+    }
+  }
+
+  private isGumiIdDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.gumi_id !== other.gumi_id;
     }
   }
 }
