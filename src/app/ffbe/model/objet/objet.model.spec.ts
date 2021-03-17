@@ -103,6 +103,16 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"caracp\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.caracp.def = 52;
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     return new Objet(
       1,
@@ -116,8 +126,8 @@ describe('Objet', () => {
       'A splendid saucepan from another world',
       '',
       '',
-      new Caracteristiques(1,2,3,4,5,6),
-      new Caracteristiques(),
+      new Caracteristiques(1, 2, 3, 4, 5, 6),
+      new Caracteristiques(11, 12, 13, 14, 15, 16),
       new Caracteristiques(),
       new Caracteristiques(),
       new Caracteristiques(),
