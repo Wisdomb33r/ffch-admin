@@ -20,7 +20,6 @@ import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
-import {AbilityDebuffsResistanceParser} from './ability-debuffs-resistance.parser';
 import {AbilityKillerDamageIncreaseParser} from './ability-killer-damage-increase.parser';
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
 import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
@@ -144,8 +143,6 @@ export class AbilityEffectParserFactory {
         return new AbilityMagicReflectParser();
       case 88:
         return new AbilityStopInflictionParser();
-      case 89:
-        return new AbilityDebuffsResistanceParser();
       case 90:
         return new AbilityMagIncreaseNextAction();
       case 92:

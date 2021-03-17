@@ -33,6 +33,7 @@ import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-acti
 import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-effect.model';
 import {AbilityWeaponTypeWielderDamageIncreaseEffect} from './abilities/ability-weapon-type-wielder-damage-increase-effect.model';
 import {AbilitySkillMagnusGlexEffect} from './abilities/skill/ability-skill-magnus-glex-effect.model';
+import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resistance-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -75,6 +76,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new AbilityDamagePhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 89:
+        return new AbilityDebuffsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 99:
         return new AbilitySkillSwitchEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 100:
