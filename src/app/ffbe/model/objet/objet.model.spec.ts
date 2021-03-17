@@ -73,6 +73,16 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"description\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.description = 'Une merveilleuse casserole venue d\'un autre monde';
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     return new Objet(
       1,
@@ -82,7 +92,7 @@ describe('Objet', () => {
       1,
       '',
       1,
-      '',
+      'Une magnifique casserole venue d\'un autre monde',
       '',
       '',
       '',

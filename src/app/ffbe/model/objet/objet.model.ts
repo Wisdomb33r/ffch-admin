@@ -140,7 +140,8 @@ export class Objet implements CaracteristiquesContainer {
         this.isNomDifferent(other) ||
         this.isNomEnDifferent(other) ||
         this.isStarsDifferent(other) ||
-        this.isGumiIdDifferent(other);
+        this.isGumiIdDifferent(other) ||
+        this.isDescriptionDifferent(other);
     }
   }
 
@@ -183,6 +184,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.gumi_id !== other.gumi_id;
+    }
+  }
+
+  private isDescriptionDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.description !== other.description;
     }
   }
 }
