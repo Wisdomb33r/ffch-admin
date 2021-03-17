@@ -20,9 +20,11 @@ export class ObjetsComparingContainer {
 
   private setupModifiedObjet() {
     this.modifiedObjet = Objet.produce(this.objet);
-    this.modifiedObjet.effet = this.dbObjet.effet;
-    if (FfbeUtils.isNullOrUndefined(this.modifiedObjet.stars)) {
-      this.modifiedObjet.stars = this.dbObjet.stars;
+    if (!FfbeUtils.isNullOrUndefined(this.dbObjet)) {
+      this.modifiedObjet.effet = this.dbObjet.effet;
+      if (FfbeUtils.isNullOrUndefined(this.modifiedObjet.stars)) {
+        this.modifiedObjet.stars = this.dbObjet.stars;
+      }
     }
   }
 }
