@@ -104,5 +104,78 @@ describe('Caracteristiques', () => {
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'PSY' && nameValuePair.value === 60)).toEqual(5);
   });
 
+  it('should not analyse Caracteristiques as different when they are the same', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeFalse();
+  });
+
+  it('should analyse Caracteristiques as different when their \"pv\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.pv = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  it('should analyse Caracteristiques as different when their \"pm\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.pm = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  it('should analyse Caracteristiques as different when their \"att\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.att = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  it('should analyse Caracteristiques as different when their \"def\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.def = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  it('should analyse Caracteristiques as different when their \"mag\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.mag = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  it('should analyse Caracteristiques as different when their \"psy\" differ', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = createTestCaracteristiques();
+    carac2.psy = 10;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeTrue();
+  });
+
+  function createTestCaracteristiques(): Caracteristiques {
+    return new Caracteristiques(1, 2, 3, 4, 5, 6);
+  }
+
 });
 

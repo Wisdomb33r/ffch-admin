@@ -44,4 +44,14 @@ export class Caracteristiques {
       new NameValuePair('PSY', this.psy)
     );
   }
+
+  public isDifferent(other: Caracteristiques) {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.pv !== other.pv || this.pm !== other.pm ||
+        this.att !== other.att || this.def !== other.def ||
+        this.mag !== other.mag || this.psy !== other.psy;
+    }
+  }
 }
