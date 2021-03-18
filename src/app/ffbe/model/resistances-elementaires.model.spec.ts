@@ -106,4 +106,25 @@ describe('ResistancesElementaires', () => {
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Ténèbres' && nameValuePair.value === 80)).toEqual(7);
   });
 
+  it('should not analyse null ResistancesElementaires as different', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = null;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeFalse();
+  });
+
+  it('should analyse ResistancesElementaires with same values as equal', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeFalse();
+  });
+
+  function createTestResistancesElementaires(): ResistancesElementaires {
+    return new ResistancesElementaires(1, 2, 3, 4, 5, 6, 7, 8);
+  }
 });

@@ -52,4 +52,11 @@ export class ResistancesElementaires {
     ];
   }
 
+  public isDifferent(other: ResistancesElementaires): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return false;
+    }
+  }
 }
