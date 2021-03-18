@@ -104,6 +104,15 @@ describe('Caracteristiques', () => {
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'PSY' && nameValuePair.value === 60)).toEqual(5);
   });
 
+  it('should not analyse null Caracteristiques as different', () => {
+    // GIVEN
+    const carac1 = createTestCaracteristiques();
+    const carac2 = null;
+
+    // WHEN + THEN
+    expect(carac1.isDifferent(carac2)).toBeFalse();
+  });
+
   it('should not analyse Caracteristiques as different when they are the same', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
