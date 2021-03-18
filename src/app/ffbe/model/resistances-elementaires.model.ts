@@ -56,7 +56,14 @@ export class ResistancesElementaires {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return false;
+      return this.feu !== other.feu ||
+        this.glace !== other.glace ||
+        this.foudre !== other.foudre ||
+        this.eau !== other.eau ||
+        this.air !== other.air ||
+        this.terre !== other.terre ||
+        this.lumiere !== other.lumiere ||
+        this.tenebres !== other.tenebres;
     }
   }
 }

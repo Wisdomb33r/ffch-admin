@@ -124,6 +124,86 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeFalse();
   });
 
+  it('should analyse ResistancesElementaires as different when their \"feu\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.feu = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"glace\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.glace = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"foudre\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.foudre = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"eau\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.eau = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"air\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.air = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"terre\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.terre = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"lumière\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.lumiere = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesElementaires as different when their \"ténèbres\" differ', () => {
+    // GIVEN
+    const elements1 = createTestResistancesElementaires();
+    const elements2 = createTestResistancesElementaires();
+    elements2.tenebres = 10;
+
+    // WHEN + THEN
+    expect(elements1.isDifferent(elements2)).toBeTrue();
+  });
+
   function createTestResistancesElementaires(): ResistancesElementaires {
     return new ResistancesElementaires(1, 2, 3, 4, 5, 6, 7, 8);
   }
