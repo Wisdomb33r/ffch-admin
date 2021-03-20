@@ -39,7 +39,7 @@ export class PassiveEsperSummonDamageIncreaseEffect extends SkillEffect {
       const esperId = this.esperIds;
       const esper = FFBE_ESPERS.find(e => e.gumiId === esperId);
       const esperLink = esper ? SkillEffect.getEsperLink(esper) : 'UNKNOWN esper';
-      esperText = esperId === 0 ? `d'une chimère${HTML_LINE_RETURN}+${this.increase}% aux dégâts des invocateurs` : `de ${esperLink}`;
+      esperText = esperId === 0 ? `d'une chimère${HTML_LINE_RETURN}+${this.increase}% aux dégâts de chimère` : `de ${esperLink}`;
     }
     return `+${this.increase}% de dégâts lors de l\'invocation ${esperText}`;
   }
