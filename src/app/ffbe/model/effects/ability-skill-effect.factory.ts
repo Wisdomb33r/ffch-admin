@@ -34,6 +34,7 @@ import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-e
 import {AbilityWeaponTypeWielderDamageIncreaseEffect} from './abilities/ability-weapon-type-wielder-damage-increase-effect.model';
 import {AbilitySkillMagnusGlexEffect} from './abilities/skill/ability-skill-magnus-glex-effect.model';
 import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resistance-effect.model';
+import {AbilitySkillTagTeamAttackActivationEffect} from './abilities/skill/ability-skill-tag-team-attack-activation-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -114,6 +115,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamagePhysicalIncreasedBreakEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 163:
         return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 165:
+        return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1014:
