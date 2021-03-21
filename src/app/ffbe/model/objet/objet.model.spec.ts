@@ -83,16 +83,6 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"description_en\" differs', () => {
-    // GIVEN
-    const objet1 = createTestObjet();
-    const objet2 = createTestObjet();
-    objet2.description_en = 'A marvellous saucepan from another world';
-
-    // WHEN + THEN
-    expect(objet1.isDifferent(objet2)).toBeTrue();
-  });
-
   it('should analyse Objet as different when the \"carac\" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
