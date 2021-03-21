@@ -47,7 +47,7 @@ describe('PassiveSkillEffect', () => {
     },
     {
       effect: '[0, 3, 64, [30,  0]]',
-      parsed: '+30% de dégâts lors de l\'invocation d\'une chimère<br />+30% aux dégâts des invocateurs'
+      parsed: '+30% de dégâts lors de l\'invocation d\'une chimère<br />+30% aux dégâts de chimère'
     },
     {
       effect: '[0, 3, 64, [30,  [5, 7, 13]]]',
