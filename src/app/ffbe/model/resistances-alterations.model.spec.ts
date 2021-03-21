@@ -106,4 +106,26 @@ describe('ResistancesAlterations', () => {
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Pétrification' && nameValuePair.value === 80)).toEqual(7);
   });
 
+  it('should not analyse null ResistancesAlterations as different', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = null;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeFalse();
+  });
+
+  it('should analyse ResistancesAlterations with same values as equal', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeFalse();
+  });
+
+  function createTestResistancesAlterations(): ResistancesAlterations {
+    return new ResistancesAlterations(1, 2, 3, 4, 5, 6, 7, 8);
+  }
+
 });
