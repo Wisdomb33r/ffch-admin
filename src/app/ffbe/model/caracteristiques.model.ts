@@ -1,5 +1,5 @@
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model'
+import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model';
 
 export class Caracteristiques {
   public constructor(
@@ -49,9 +49,12 @@ export class Caracteristiques {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.pv !== other.pv || this.pm !== other.pm ||
-        this.att !== other.att || this.def !== other.def ||
-        this.mag !== other.mag || this.psy !== other.psy;
+      return FfbeUtils.checkIfNumbersDifferent(this.pv, other.pv) ||
+        FfbeUtils.checkIfNumbersDifferent(this.pm, other.pm) ||
+        FfbeUtils.checkIfNumbersDifferent(this.att, other.att) ||
+        FfbeUtils.checkIfNumbersDifferent(this.def, other.def) ||
+        FfbeUtils.checkIfNumbersDifferent(this.mag, other.mag) ||
+        FfbeUtils.checkIfNumbersDifferent(this.psy, other.psy);
     }
   }
 }
