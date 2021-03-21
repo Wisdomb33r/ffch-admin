@@ -58,16 +58,14 @@ export class ResistancesAlterations {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return false;
-      /*
-      return FfbeUtils.checkIfNumbersDifferent(this.feu, other.feu) ||
-        FfbeUtils.checkIfNumbersDifferent(this.glace, other.glace) ||
-        FfbeUtils.checkIfNumbersDifferent(this.foudre, other.foudre) ||
-        FfbeUtils.checkIfNumbersDifferent(this.eau, other.eau) ||
-        FfbeUtils.checkIfNumbersDifferent(this.air, other.air) ||
-        FfbeUtils.checkIfNumbersDifferent(this.terre, other.terre) ||
-        FfbeUtils.checkIfNumbersDifferent(this.lumiere, other.lumiere) ||
-        FfbeUtils.checkIfNumbersDifferent(this.tenebres, other.tenebres);*/
+      return FfbeUtils.checkIfNumbersDifferent(this.poison, other.poison) ||
+        FfbeUtils.checkIfNumbersDifferent(this.cecite, other.cecite) ||
+      FfbeUtils.checkIfNumbersDifferent(this.sommeil, other.sommeil) ||
+      FfbeUtils.checkIfNumbersDifferent(this.silence, other.silence) ||
+      FfbeUtils.checkIfNumbersDifferent(this.paralysie, other.paralysie) ||
+      FfbeUtils.checkIfNumbersDifferent(this.confusion, other.confusion) ||
+      FfbeUtils.checkIfNumbersDifferent(this.maladie, other.maladie) ||
+      FfbeUtils.checkIfNumbersDifferent(this.petrification, other.petrification);
     }
   }
 }
