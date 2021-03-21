@@ -147,7 +147,8 @@ export class Objet implements CaracteristiquesContainer {
         this.areCaracpDoublehandDifferent(other) ||
         this.areCaracpTrueDoublehandDifferent(other) ||
         this.areCaracpDualwieldDifferent(other) ||
-        this.areElementsDifferent(other);
+        this.areElementsDifferent(other) ||
+        this.areResistancesAlterationsDifferent(other);
     }
   }
 
@@ -246,6 +247,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.elements.isDifferent(other.elements);
+    }
+  }
+
+  private areResistancesAlterationsDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.resistancesAlterations.isDifferent(other.resistancesAlterations);
     }
   }
 }
