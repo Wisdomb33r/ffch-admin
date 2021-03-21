@@ -3,7 +3,7 @@
     <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus" alt="OK">
     <img *ngIf="!present" src="assets/nok.png" class="ffchstatus" alt="Not OK">
     <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
-    {{objet.gumi_id}} {{objet.nom}}
+    {{objet.gumi_id}} {{objet.nom}} / {{objet.nom_en}}
   </mat-card-title>
 
   <div *ngIf="!present || different || displayed">
