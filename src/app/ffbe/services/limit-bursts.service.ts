@@ -32,6 +32,7 @@ export class LimitBurstsService {
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
         const lb: LimitBurst = this.limitBurstsFromDataMining[property];
+        lb.gumi_id = +property;
         lb.names = this.limitBurstsNamesFromDataMining[property];
         return lb;
       }
