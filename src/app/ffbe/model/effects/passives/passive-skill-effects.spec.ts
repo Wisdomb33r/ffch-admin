@@ -68,6 +68,7 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},
     {effect: '[0,3,89,[100,100,0,0,2000,0]]', parsed: '+2000 PV, +100 ATT/DÉF'},
+    {effect: '[0,3,95,[2,70]]', parsed: '+70% de dégâts magiques sur les cibles en état de choc'},
     {effect: '[0,3,98,[0,50,0,1]]', parsed: '+50% au coefficient multiplicateur maximal de la chaîne de combo'},
     {
       effect: '[0, 3, 99, [3, 200, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]]',
