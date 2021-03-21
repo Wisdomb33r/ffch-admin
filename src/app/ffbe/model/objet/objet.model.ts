@@ -157,7 +157,7 @@ export class Objet implements CaracteristiquesContainer {
     } else if (FfbeUtils.isNullOrUndefined(other.categorie)) {
       return true;
     } else {
-      return this.categorie.gumiId !== other.categorie.gumiId;
+      return FfbeUtils.checkIfNumbersDifferent(this.categorie.gumiId, other.categorie.gumiId);
     }
   }
 
@@ -173,7 +173,7 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.nom_en !== other.nom_en;
+      return FfbeUtils.checkIfStringsDifferent(this.nom_en, other.nom_en);
     }
   }
 
@@ -181,7 +181,7 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.stars !== other.stars;
+      return FfbeUtils.checkIfNumbersDifferent(this.stars, other.stars);
     }
   }
 
@@ -189,7 +189,7 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.gumi_id !== other.gumi_id;
+      return FfbeUtils.checkIfNumbersDifferent(this.gumi_id, other.gumi_id);
     }
   }
 
@@ -197,7 +197,7 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.description !== other.description;
+      return FfbeUtils.checkIfStringsDifferent(this.description, other.description);
     }
   }
 
