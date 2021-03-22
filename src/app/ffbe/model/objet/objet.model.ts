@@ -152,7 +152,8 @@ export class Objet implements CaracteristiquesContainer {
         this.isTwoHandedDifferent(other) ||
         this.isVarianceMinDifferent(other) ||
         this.isVarianceMaxDifferent(other) ||
-        this.areTueursDifferent(other);
+        this.areTueursDifferent(other) ||
+        this.areTueursMDifferent(other);
     }
   }
 
@@ -291,6 +292,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return FfbeUtils.checkIfStringsDifferent(this.tueurs, other.tueurs);
+    }
+  }
+
+  private areTueursMDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfStringsDifferent(this.tueurs_m, other.tueurs_m);
     }
   }
 }
