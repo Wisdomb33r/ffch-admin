@@ -183,6 +183,16 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"tueurs\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.tueurs = '0,0,0,0,0,0,55,0,0,0,0,0';
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     const objet = new Objet(
       1,
@@ -203,7 +213,7 @@ describe('Objet', () => {
       new Caracteristiques(41, 42, 43, 44, 45, 46),
       new ResistancesElementaires(101, 102, 103, 104, 105, 106, 107, 108),
       new ResistancesAlterations(201, 202, 203, 204, 205, 206, 207, 208),
-      '',
+      '0,0,0,0,0,0,50,0,0,0,0,0',
       '',
       []
     );
