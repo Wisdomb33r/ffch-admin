@@ -149,7 +149,8 @@ export class Objet implements CaracteristiquesContainer {
         this.areCaracpDualwieldDifferent(other) ||
         this.areElementsDifferent(other) ||
         this.areResistancesAlterationsDifferent(other) ||
-        this.isTwoHandedDifferent(other);
+        this.isTwoHandedDifferent(other) ||
+        this.isVarianceMinDifferent(other);
     }
   }
 
@@ -264,6 +265,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return FfbeUtils.checkIfBooleanDifferent(this.two_handed, other.two_handed);
+    }
+  }
+
+  private isVarianceMinDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.variance_min, other.variance_min);
     }
   }
 }
