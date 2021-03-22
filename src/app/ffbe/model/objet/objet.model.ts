@@ -263,7 +263,7 @@ export class Objet implements CaracteristiquesContainer {
     if (FfbeUtils.isNullOrUndefined(other)) {
       return false;
     } else {
-      return this.two_handed != other.two_handed;
+      return FfbeUtils.checkIfBooleanDifferent(this.two_handed, other.two_handed);
     }
   }
 }
