@@ -173,6 +173,16 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"variance_max\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.variance_max = 1.2;
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
     const objet = new Objet(
       1,
@@ -200,6 +210,7 @@ describe('Objet', () => {
 
     objet.two_handed = false;
     objet.variance_min = 0.9;
+    objet.variance_max = 1.1;
 
     return objet;
   }

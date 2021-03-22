@@ -150,7 +150,8 @@ export class Objet implements CaracteristiquesContainer {
         this.areElementsDifferent(other) ||
         this.areResistancesAlterationsDifferent(other) ||
         this.isTwoHandedDifferent(other) ||
-        this.isVarianceMinDifferent(other);
+        this.isVarianceMinDifferent(other) ||
+        this.isVarianceMaxDifferent(other);
     }
   }
 
@@ -273,6 +274,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return FfbeUtils.checkIfNumbersDifferent(this.variance_min, other.variance_min);
+    }
+  }
+
+  private isVarianceMaxDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.variance_max, other.variance_max);
     }
   }
 }
