@@ -60,4 +60,85 @@ describe('FfbeUtils', () => {
     // THEN
     expect(result).toBeFalsy();
   });
+
+  it('should compare correctly null and undefined booleans', () => {
+    // GIVEN
+    const b1 = null;
+    const b2 = undefined;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
+  it('should compare correctly null and \'false\'', () => {
+    // GIVEN
+    const b1 = null;
+    const b2 = false;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
+  it('should compare correctly undefined and \'false\'', () => {
+    // GIVEN
+    const b1 = undefined;
+    const b2 = false;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
+  it('should compare correctly null and \'true\'', () => {
+    // GIVEN
+    const b1 = null;
+    const b2 = true;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeTruthy();
+  });
+
+  it('should compare correctly undefined and \'true\'', () => {
+    // GIVEN
+    const b1 = undefined;
+    const b2 = true;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeTruthy();
+  });
+
+  it('should compare correctly \'false\' and \'true\'', () => {
+    // GIVEN
+    const b1 = false;
+    const b2 = true;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeTruthy();
+  });
+
+  it('should compare correctly \'false\' and \'false\'', () => {
+    // GIVEN
+    const b1 = false;
+    const b2 = false;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
+  it('should compare correctly \'true\' and \'true\'', () => {
+    // GIVEN
+    const b1 = true;
+    const b2 = true;
+    // WHEN
+    const result = FfbeUtils.checkIfBooleanDifferent(b1, b2);
+    // THEN
+    expect(result).toBeFalsy();
+  });
+
 });
