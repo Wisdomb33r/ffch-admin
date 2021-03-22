@@ -48,6 +48,6 @@ export class AbilitySkillSwitchEffect extends SkillEffect {
   }
 
   public getDamagesPower(): number {
-    return this.normalSkill.calculateSkillPower();
+    return this.parameterError ? 0 : this.normalSkill?.calculateSkillPower();
   }
 }
