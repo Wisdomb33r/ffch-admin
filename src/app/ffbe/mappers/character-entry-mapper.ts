@@ -106,6 +106,7 @@ export class CharacterEntryMapper {
     if (lb.levels.length > limitBurstIndex && lb.levels[limitBurstIndex].length > 1) {
       const rawEffect = lb.levels[limitBurstIndex][1];
       const fakeMinLevelSkill = new Skill();
+      fakeMinLevelSkill.gumi_id = lb.gumi_id;
       fakeMinLevelSkill.effects_raw = rawEffect;
       fakeMinLevelSkill.active = true;
       fakeMinLevelSkill.element_inflict = lb.element_inflict;
