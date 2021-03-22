@@ -148,7 +148,8 @@ export class Objet implements CaracteristiquesContainer {
         this.areCaracpTrueDoublehandDifferent(other) ||
         this.areCaracpDualwieldDifferent(other) ||
         this.areElementsDifferent(other) ||
-        this.areResistancesAlterationsDifferent(other);
+        this.areResistancesAlterationsDifferent(other) ||
+        this.isTwoHandedDifferent(other);
     }
   }
 
@@ -255,6 +256,14 @@ export class Objet implements CaracteristiquesContainer {
       return false;
     } else {
       return this.resistancesAlterations.isDifferent(other.resistancesAlterations);
+    }
+  }
+
+  private isTwoHandedDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.two_handed != other.two_handed;
     }
   }
 }

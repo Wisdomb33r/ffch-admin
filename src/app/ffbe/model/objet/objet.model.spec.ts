@@ -153,8 +153,18 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
+  it('should analyse Objet as different when the \"two_handed\" differs', () => {
+    // GIVEN
+    const objet1 = createTestObjet();
+    const objet2 = createTestObjet();
+    objet2.two_handed = true;
+
+    // WHEN + THEN
+    expect(objet1.isDifferent(objet2)).toBeTrue();
+  });
+
   function createTestObjet(): Objet {
-    return new Objet(
+    const objet = new Objet(
       1,
       FfbeUtils.findObjetCategorieByGumiId(1),
       'Casserole',
@@ -177,5 +187,9 @@ describe('Objet', () => {
       '',
       []
     );
+
+    objet.two_handed = false;
+
+    return objet;
   }
 });
