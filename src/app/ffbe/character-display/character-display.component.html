@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title (click)="switchCharacterDisplay()">{{personnage.nom}}
+  <mat-card-title (click)="switchCharacterDisplay()">{{personnage.nom}} / {{personnage.nom_en}}
     (<img *ngIf="personnage.jeu.isUnknownGame()" src="assets/red/warn.png" alt="Warn"
           class="gamewarn">{{personnage.jeu.name}})
   </mat-card-title>

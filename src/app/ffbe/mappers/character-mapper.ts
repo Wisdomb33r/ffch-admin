@@ -15,8 +15,8 @@ export class CharacterMapper {
     const perso = new Personnage(
       game,
       character.job,
-      character.name,
       character.names[FFBE_FRENCH_TABLE_INDEX],
+      character.name,
       character.rarity_min,
       character.rarity_max,
       character.gumi_id,
