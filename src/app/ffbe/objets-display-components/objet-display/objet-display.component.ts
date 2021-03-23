@@ -60,9 +60,13 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
     return !FfbeUtils.isNullOrUndefined(this.objet.tueursPhysiques) && !FfbeUtils.isNullOrUndefined(this.objet.tueursMagiques);
   }
 
-
   public hasLienTRM(): boolean {
     return !FfbeUtils.isNullOrUndefined(this.objet.lienTMR);
+  }
+
+  public generateLinkToFfch(): string {
+    const query = FfbeUtils.isNullOrUndefined(this.objet.id) ? `gumiid=${this.objet.gumi_id}` : `objetid=${this.objet.id}`;
+    return `<a href="ffexvius_objects.php?${query}">${this.objet.nom}</a>`;
   }
 
   public sendObjetToFfchDb() {
