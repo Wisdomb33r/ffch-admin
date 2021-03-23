@@ -44,6 +44,6 @@ export class AbilitySkillMagnusEffect extends SkillEffect {
   }
 
   public getDamagesPower(): number {
-    return this.activatedSkill.calculateSkillPower();
+    return this.parameterError ? 0 : this.activatedSkill?.calculateSkillPower();
   }
 }
