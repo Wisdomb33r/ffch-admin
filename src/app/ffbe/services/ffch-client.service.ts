@@ -73,14 +73,14 @@ export class FfchClientService {
       );
   }
 
-  public postObjet$(objet: Objet): Observable<any> {
+  public postObjet$(objet: Objet): Observable<Objet> {
     return this.http.post<Objet>(FFCH_OBJECTS_PATH, objet)
       .pipe(
         map(o => Objet.produce(o))
       );
   }
 
-  public putObjet$(objet: Objet): Observable<any> {
+  public putObjet$(objet: Objet): Observable<Objet> {
     return this.http.put<Objet>(FFCH_OBJECTS_PATH, objet)
       .pipe(
         map(o => Objet.produce(o))

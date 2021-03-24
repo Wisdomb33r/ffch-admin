@@ -1,5 +1,5 @@
 <div
-  [ngClass]="objetsContainer.isPresentInFfchDb() && objetsContainer.dbObjet ? 'objet-left' : ''">
+  [class.objet-left]="objetsContainer.isPresentInFfchDb() && objetsContainer.dbObjet">
   <app-objet-display
     [objet]="objetsContainer.objet"
     [present]="objetsContainer.isPresentInFfchDb()"
