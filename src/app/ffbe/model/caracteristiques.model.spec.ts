@@ -122,7 +122,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeFalse();
   });
 
-  it('should analyse Caracteristiques as different when their \"pv\" differ', () => {
+  it('should analyse Caracteristiques as different when their "pv" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();
@@ -132,7 +132,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeTrue();
   });
 
-  it('should analyse Caracteristiques as different when their \"pm\" differ', () => {
+  it('should analyse Caracteristiques as different when their "pm" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();
@@ -142,7 +142,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeTrue();
   });
 
-  it('should analyse Caracteristiques as different when their \"att\" differ', () => {
+  it('should analyse Caracteristiques as different when their "att" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();
@@ -152,7 +152,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeTrue();
   });
 
-  it('should analyse Caracteristiques as different when their \"def\" differ', () => {
+  it('should analyse Caracteristiques as different when their "def" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();
@@ -162,7 +162,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeTrue();
   });
 
-  it('should analyse Caracteristiques as different when their \"mag\" differ', () => {
+  it('should analyse Caracteristiques as different when their "mag" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();
@@ -172,7 +172,7 @@ describe('Caracteristiques', () => {
     expect(carac1.isDifferent(carac2)).toBeTrue();
   });
 
-  it('should analyse Caracteristiques as different when their \"psy\" differ', () => {
+  it('should analyse Caracteristiques as different when their "psy" differ', () => {
     // GIVEN
     const carac1 = createTestCaracteristiques();
     const carac2 = createTestCaracteristiques();

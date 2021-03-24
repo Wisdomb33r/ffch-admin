@@ -124,7 +124,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeFalse();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"poison\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "poison" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -134,7 +134,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"cécité\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "cécité" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -144,7 +144,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"sommeil\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "sommeil" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -154,7 +154,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"silence\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "silence" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -165,7 +165,7 @@ describe('ResistancesAlterations', () => {
   });
 
 
-  it('should analyse ResistancesAlterations as different when their \"paralysie\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "paralysie" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -175,7 +175,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"confusion\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "confusion" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -185,7 +185,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"maladie\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "maladie" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();
@@ -195,7 +195,7 @@ describe('ResistancesAlterations', () => {
     expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
   });
 
-  it('should analyse ResistancesAlterations as different when their \"pétrification\" differ', () => {
+  it('should analyse ResistancesAlterations as different when their "pétrification" differ', () => {
     // GIVEN
     const resAlterations1 = createTestResistancesAlterations();
     const resAlterations2 = createTestResistancesAlterations();

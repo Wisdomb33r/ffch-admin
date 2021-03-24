@@ -23,7 +23,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeFalse();
   });
 
-  it('should analyse Objet as different when the \"Categorie\" differs', () => {
+  it('should analyse Objet as different when the "Categorie" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -33,7 +33,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"nom\" differs', () => {
+  it('should analyse Objet as different when the "nom" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -43,7 +43,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"nom_en\" differs', () => {
+  it('should analyse Objet as different when the "nom_en" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -53,7 +53,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"stars\" differs', () => {
+  it('should analyse Objet as different when the "stars" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -63,7 +63,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"gumi_id\" differs', () => {
+  it('should analyse Objet as different when the "gumi_id" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -73,7 +73,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"description\" differs', () => {
+  it('should analyse Objet as different when the "description" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -83,7 +83,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"carac\" differs', () => {
+  it('should analyse Objet as different when the "carac" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -93,7 +93,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"caracp\" differs', () => {
+  it('should analyse Objet as different when the "caracp" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -103,7 +103,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"caracpDoublehand\" differs', () => {
+  it('should analyse Objet as different when the "caracpDoublehand" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -113,7 +113,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"caracpTrueDoublehand\" differs', () => {
+  it('should analyse Objet as different when the "caracpTrueDoublehand" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -123,7 +123,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"caracpDualwield\" differs', () => {
+  it('should analyse Objet as different when the "caracpDualwield" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -133,7 +133,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"elements\" differs', () => {
+  it('should analyse Objet as different when the "elements" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -143,7 +143,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"resistancesAlterations\" differs', () => {
+  it('should analyse Objet as different when the "resistancesAlterations" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -153,7 +153,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"two_handed\" differs', () => {
+  it('should analyse Objet as different when the "two_handed" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -163,7 +163,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"variance_min\" differs', () => {
+  it('should analyse Objet as different when the "variance_min" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -173,7 +173,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"variance_max\" differs', () => {
+  it('should analyse Objet as different when the "variance_max" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -183,7 +183,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"tueurs\" differs', () => {
+  it('should analyse Objet as different when the "tueurs" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();
@@ -193,7 +193,7 @@ describe('Objet', () => {
     expect(objet1.isDifferent(objet2)).toBeTrue();
   });
 
-  it('should analyse Objet as different when the \"tueurs_m\" differs', () => {
+  it('should analyse Objet as different when the "tueurs_m" differs', () => {
     // GIVEN
     const objet1 = createTestObjet();
     const objet2 = createTestObjet();

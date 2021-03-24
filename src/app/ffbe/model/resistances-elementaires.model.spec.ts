@@ -124,7 +124,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeFalse();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"feu\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "feu" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -134,7 +134,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"glace\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "glace" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -144,7 +144,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"foudre\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "foudre" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -154,7 +154,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"eau\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "eau" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -164,7 +164,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"air\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "air" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -174,7 +174,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"terre\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "terre" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -184,7 +184,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"lumière\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "lumière" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
@@ -194,7 +194,7 @@ describe('ResistancesElementaires', () => {
     expect(elements1.isDifferent(elements2)).toBeTrue();
   });
 
-  it('should analyse ResistancesElementaires as different when their \"ténèbres\" differ', () => {
+  it('should analyse ResistancesElementaires as different when their "ténèbres" differ', () => {
     // GIVEN
     const elements1 = createTestResistancesElementaires();
     const elements2 = createTestResistancesElementaires();
