@@ -31,7 +31,6 @@ import {AbilityDodgesParser} from './ability-dodges.parser';
 import {AbilityProvocationsParser} from './ability-provocations.parser';
 import {AbilityDebuffsCureParser} from './ability-debuffs-cure.parser';
 import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
-import {AbilityCoversParser} from './ability-covers.parser';
 import {AbilityLbDamageIncreaseParser} from './ability-lb-damage-increase.parser';
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
 import {AbilityBarriersParser} from './ability-barriers.parser';
@@ -151,8 +150,6 @@ export class AbilityEffectParserFactory {
         return new AbilityKillerDamageIncreaseParser();
       case 95:
         return new AbilityElementImbueParser();
-      case 96:
-        return new AbilityCoversParser();
       case 97:
         return new AbilityMagicMultipleActivationParser();
       case 98:
