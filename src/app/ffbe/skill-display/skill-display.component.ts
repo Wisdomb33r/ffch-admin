@@ -20,6 +20,7 @@ export class SkillDisplayComponent implements OnInit, OnChanges {
   public displayed = false;
   @Output() skillModifiedEvent: EventEmitter<Competence> = new EventEmitter();
   public elements: Array<Element> = [];
+  public multiLineDisplay = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
