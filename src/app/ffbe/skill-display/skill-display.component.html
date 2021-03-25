@@ -44,7 +44,7 @@
     </mat-form-field>
 
     <mat-form-field *ngIf="(!present || editable) && multiLineDisplay" class="textarea-field">
-      <textarea matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet"></textarea>
+      <textarea matInput name="effet" [(ngModel)]="competence.effet" placeholder="Effet"></textarea>
       <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
         <mat-icon>close_fullscreen</mat-icon>
       </button>

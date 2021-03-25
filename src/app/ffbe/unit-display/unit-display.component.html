@@ -34,8 +34,17 @@
   <div class="line">
     <div class="header-cell">Limite effet min</div>
     <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+        <textarea matInput name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required></textarea>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
       </mat-form-field>
       <ng-container *ngIf="unite.isPresentInFfchDb()">
         {{unite.lim_min}}
@@ -45,8 +54,17 @@
   <div class="line">
     <div class="header-cell">Limite effet max</div>
     <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+        <textarea matInput name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required></textarea>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
       </mat-form-field>
       <ng-container *ngIf="unite.isPresentInFfchDb()">
         {{unite.lim_max}}
@@ -56,8 +74,17 @@
   <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
     <div class="header-cell">Limite améliorée effet min</div>
     <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+        <textarea matInput name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required></textarea>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
       </mat-form-field>
       <ng-container *ngIf="unite.isPresentInFfchDb()">
         {{unite.lim_up_min}}
@@ -67,8 +94,17 @@
   <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
     <div class="header-cell">Limite améliorée effet max</div>
     <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb()">
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
         <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+        <textarea matInput name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required></textarea>
+        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
       </mat-form-field>
       <ng-container *ngIf="unite.isPresentInFfchDb()">
         {{unite.lim_up_max}}
@@ -120,12 +156,14 @@
 
   <h2 *ngIf="unite.competencesActivees?.length">Compétences activées</h2>
   <ul *ngIf="unite.competencesActivees?.length" class="competences">
-    <li *ngFor="let uniteCompetence of unite.competencesActivees">{{uniteCompetence.niveau}} ● {{uniteCompetence.competence.nom}}</li>
+    <li *ngFor="let uniteCompetence of unite.competencesActivees">{{uniteCompetence.niveau}}
+      ● {{uniteCompetence.competence.nom}}</li>
   </ul>
 
   <h2>Compétences</h2>
   <ul *ngIf="unite.competences?.length" class="competences">
-    <li *ngFor="let uniteCompetence of unite.competences">{{uniteCompetence.niveau}} ● {{uniteCompetence.competence.nom}}</li>
+    <li *ngFor="let uniteCompetence of unite.competences">{{uniteCompetence.niveau}}
+      ● {{uniteCompetence.competence.nom}}</li>
   </ul>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
