@@ -73,6 +73,13 @@ export class Objet implements CaracteristiquesContainer {
       o.tueurs,
       o.tueurs_m,
       o.competences);
+
+    objet.extended_gumi_id = o.extended_gumi_id;
+    objet.prix_vente = o.prix_vente;
+    objet.resistancesElementaires = o.resistancesElementaires;
+    objet.elementsArme = o.elementsArme;
+    objet.alterationsArme = o.alterationsArme;
+
     objet.two_handed = o.two_handed;
     if (objet.isWeapon() && FfbeUtils.isNullOrUndefined(objet.two_handed)) {
       objet.two_handed = false;
@@ -123,5 +130,176 @@ export class Objet implements CaracteristiquesContainer {
 
   getBonusDualWieldPercent(): Caracteristiques {
     return this.caracpDualwield;
+  }
+
+  public isDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.isCategorieDifferent(other) ||
+        this.isNomDifferent(other) ||
+        this.isNomEnDifferent(other) ||
+        this.isStarsDifferent(other) ||
+        this.isGumiIdDifferent(other) ||
+        this.isDescriptionDifferent(other) ||
+        this.areCaracDifferent(other) ||
+        this.areCaracpDifferent(other) ||
+        this.areCaracpDoublehandDifferent(other) ||
+        this.areCaracpTrueDoublehandDifferent(other) ||
+        this.areCaracpDualwieldDifferent(other) ||
+        this.areElementsDifferent(other) ||
+        this.areResistancesAlterationsDifferent(other) ||
+        this.isTwoHandedDifferent(other) ||
+        this.isVarianceMinDifferent(other) ||
+        this.isVarianceMaxDifferent(other) ||
+        this.areTueursDifferent(other) ||
+        this.areTueursMDifferent(other);
+    }
+  }
+
+  private isCategorieDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else if (FfbeUtils.isNullOrUndefined(other.categorie)) {
+      return true;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.categorie.gumiId, other.categorie.gumiId);
+    }
+  }
+
+  private isNomDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.nom !== other.nom;
+    }
+  }
+
+  private isNomEnDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfStringsDifferent(this.nom_en, other.nom_en);
+    }
+  }
+
+  private isStarsDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.stars, other.stars);
+    }
+  }
+
+  private isGumiIdDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.gumi_id, other.gumi_id);
+    }
+  }
+
+  private isDescriptionDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfStringsDifferent(this.description, other.description);
+    }
+  }
+
+  private areCaracDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.carac.isDifferent(other.carac);
+    }
+  }
+
+  private areCaracpDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.caracp.isDifferent(other.caracp);
+    }
+  }
+
+  private areCaracpDoublehandDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.caracpDoublehand.isDifferent(other.caracpDoublehand);
+    }
+  }
+
+  private areCaracpTrueDoublehandDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.caracpTrueDoublehand.isDifferent(other.caracpTrueDoublehand);
+    }
+  }
+
+  private areCaracpDualwieldDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.caracpDualwield.isDifferent(other.caracpDualwield);
+    }
+  }
+
+  private areElementsDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.elements.isDifferent(other.elements);
+    }
+  }
+
+  private areResistancesAlterationsDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return this.resistancesAlterations.isDifferent(other.resistancesAlterations);
+    }
+  }
+
+  private isTwoHandedDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfBooleanDifferent(this.two_handed, other.two_handed);
+    }
+  }
+
+  private isVarianceMinDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.variance_min, other.variance_min);
+    }
+  }
+
+  private isVarianceMaxDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.variance_max, other.variance_max);
+    }
+  }
+
+  private areTueursDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfStringsDifferent(this.tueurs, other.tueurs);
+    }
+  }
+
+  private areTueursMDifferent(other: Objet): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfStringsDifferent(this.tueurs_m, other.tueurs_m);
+    }
   }
 }

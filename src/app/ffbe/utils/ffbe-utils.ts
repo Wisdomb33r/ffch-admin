@@ -70,6 +70,13 @@ export class FfbeUtils {
     return false;
   }
 
+  public static checkIfBooleanDifferent(b1: boolean, b2: boolean) {
+    if ((b1 && !b2) || (!b1 && b2)) {
+      return true;
+    }
+    return false;
+  }
+
   public static extractGumiId(rawGumiId: string): number {
     let gumiId: number;
 

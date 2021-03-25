@@ -106,4 +106,108 @@ describe('ResistancesAlterations', () => {
     expect(array.findIndex((nameValuePair: NameValuePair) => nameValuePair.name === 'Pétrification' && nameValuePair.value === 80)).toEqual(7);
   });
 
+  it('should not analyse null ResistancesAlterations as different', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = null;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeFalse();
+  });
+
+  it('should analyse ResistancesAlterations with same values as equal', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeFalse();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "poison" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.poison = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "cécité" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.cecite = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "sommeil" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.sommeil = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "silence" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.silence = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+
+  it('should analyse ResistancesAlterations as different when their "paralysie" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.paralysie = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "confusion" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.confusion = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "maladie" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.maladie = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+  it('should analyse ResistancesAlterations as different when their "pétrification" differ', () => {
+    // GIVEN
+    const resAlterations1 = createTestResistancesAlterations();
+    const resAlterations2 = createTestResistancesAlterations();
+    resAlterations2.petrification = 10;
+
+    // WHEN + THEN
+    expect(resAlterations1.isDifferent(resAlterations2)).toBeTrue();
+  });
+
+
+  function createTestResistancesAlterations(): ResistancesAlterations {
+    return new ResistancesAlterations(1, 2, 3, 4, 5, 6, 7, 8);
+  }
+
 });

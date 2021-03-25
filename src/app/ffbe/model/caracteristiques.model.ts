@@ -1,5 +1,5 @@
 import {FfbeUtils} from '../utils/ffbe-utils';
-import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model'
+import {NameValuePair, NameValuePairArray} from './name-value-pair-array.model';
 
 export class Caracteristiques {
   public constructor(
@@ -43,5 +43,18 @@ export class Caracteristiques {
       new NameValuePair('MAG', this.mag),
       new NameValuePair('PSY', this.psy)
     );
+  }
+
+  public isDifferent(other: Caracteristiques) {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.pv, other.pv) ||
+        FfbeUtils.checkIfNumbersDifferent(this.pm, other.pm) ||
+        FfbeUtils.checkIfNumbersDifferent(this.att, other.att) ||
+        FfbeUtils.checkIfNumbersDifferent(this.def, other.def) ||
+        FfbeUtils.checkIfNumbersDifferent(this.mag, other.mag) ||
+        FfbeUtils.checkIfNumbersDifferent(this.psy, other.psy);
+    }
   }
 }

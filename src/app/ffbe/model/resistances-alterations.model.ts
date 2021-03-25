@@ -53,4 +53,19 @@ export class ResistancesAlterations {
       {name: 'Pétrification', value: this.petrification},
     ];
   }
+
+  public isDifferent(other: ResistancesAlterations): boolean {
+    if (FfbeUtils.isNullOrUndefined(other)) {
+      return false;
+    } else {
+      return FfbeUtils.checkIfNumbersDifferent(this.poison, other.poison) ||
+        FfbeUtils.checkIfNumbersDifferent(this.cecite, other.cecite) ||
+      FfbeUtils.checkIfNumbersDifferent(this.sommeil, other.sommeil) ||
+      FfbeUtils.checkIfNumbersDifferent(this.silence, other.silence) ||
+      FfbeUtils.checkIfNumbersDifferent(this.paralysie, other.paralysie) ||
+      FfbeUtils.checkIfNumbersDifferent(this.confusion, other.confusion) ||
+      FfbeUtils.checkIfNumbersDifferent(this.maladie, other.maladie) ||
+      FfbeUtils.checkIfNumbersDifferent(this.petrification, other.petrification);
+    }
+  }
 }

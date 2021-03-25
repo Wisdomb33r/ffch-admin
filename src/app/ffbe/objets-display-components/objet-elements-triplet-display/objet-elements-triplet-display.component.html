@@ -24,8 +24,7 @@
     <div [ngClass]="shouldDiplayElementsDetails() ? 'objet-elements-right' : ''">
       <app-objet-elements-display [objetElements]="objet.elements"
                                   [titre]="'Total'"
-                                  [titre]="'Inflictions'"
-                                  [estModifiable]="!objet.isPresentInFfchDb()">
+                                  [estModifiable]="!objet.isPresentInFfchDb() || editable">
       </app-objet-elements-display>
     </div>
   </div>
