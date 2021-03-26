@@ -7,148 +7,149 @@
   <ul class="error" *ngIf="isUniteErrorsDisplayed()">
     <li *ngFor="let message of uniteErrors">{{message}}</li>
   </ul>
-  <div class="line">
-    <div class="header-cell">Numéro</div>
-    <div class="cell">{{unite.numero}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite ID</div>
-    <div class="cell">{{unite.limite_gumi_id}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite</div>
-    <div class="cell">{{unite.limite}}<br/>{{unite.lim_desc}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite EN</div>
-    <div class="cell">{{unite.limite_en}}<br/>{{unite.lim_desc_en}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite effet min EN</div>
-    <div class="cell">{{unite.lim_effect_min}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite effet max EN</div>
-    <div class="cell">{{unite.lim_effect_max}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite effet min</div>
-    <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
-          <mat-icon>open_in_full</mat-icon>
+  <div class="table">
+    <div class="line">
+      <div class="header-cell">Numéro</div>
+      <div class="cell">{{unite.numero}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite ID</div>
+      <div class="cell">{{unite.limite_gumi_id}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite</div>
+      <div class="cell">{{unite.limite}}<br/>{{unite.lim_desc}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite EN</div>
+      <div class="cell">{{unite.limite_en}}<br/>{{unite.lim_desc_en}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite effet min EN</div>
+      <div class="cell">{{unite.lim_effect_min}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite effet max EN</div>
+      <div class="cell">{{unite.lim_effect_max}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite effet min</div>
+      <div class="cell">
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
+          <input matInput type="text" name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+            <mat-icon>open_in_full</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+          <textarea matInput name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required></textarea>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+            <mat-icon>close_fullscreen</mat-icon>
+          </button>
+        </mat-form-field>
+        <ng-container *ngIf="unite.isPresentInFfchDb()">
+          {{unite.lim_min}}
+        </ng-container>
+      </div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite effet max</div>
+      <div class="cell">
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
+          <input matInput type="text" name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+            <mat-icon>open_in_full</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+          <textarea matInput name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required></textarea>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+            <mat-icon>close_fullscreen</mat-icon>
+          </button>
+        </mat-form-field>
+        <ng-container *ngIf="unite.isPresentInFfchDb()">
+          {{unite.lim_max}}
+        </ng-container>
+      </div>
+    </div>
+    <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
+      <div class="header-cell">Limite améliorée effet min</div>
+      <div class="cell">
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
+          <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+            <mat-icon>open_in_full</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+          <textarea matInput name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required></textarea>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+            <mat-icon>close_fullscreen</mat-icon>
+          </button>
+        </mat-form-field>
+        <ng-container *ngIf="unite.isPresentInFfchDb()">
+          {{unite.lim_up_min}}
+        </ng-container>
+      </div>
+    </div>
+    <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
+      <div class="header-cell">Limite améliorée effet max</div>
+      <div class="cell">
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
+          <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+            <mat-icon>open_in_full</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
+          <textarea matInput name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required></textarea>
+          <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+            <mat-icon>close_fullscreen</mat-icon>
+          </button>
+        </mat-form-field>
+        <ng-container *ngIf="unite.isPresentInFfchDb()">
+          {{unite.lim_up_max}}
+        </ng-container>
+      </div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite niveaux</div>
+      <div class="cell">{{unite.lim_nb_niv}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite hits</div>
+      <div class="cell">{{unite.lim_hits}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite frames</div>
+      <div class="cell">{{unite.lim_frames}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite damages</div>
+      <div class="cell">{{unite.lim_damages}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite coût niveau min</div>
+      <div class="cell">{{unite.lim_cristals_niv_min}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Limite coût niveau max</div>
+      <div class="cell">{{unite.lim_cristals_niv_max}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Niveau</div>
+      <div class="cell">{{unite.carac.level}}/{{unite.carac.level_max}}</div>
+    </div>
+    <div class="line">
+      <div class="header-cell">Lien vers limite</div>
+      <div class="cell">
+        <button mat-raised-button ngxClipboard [cbContent]="generateLimitLinkToFfch()" color="accent"
+                class="copy-button">Copier
         </button>
-      </mat-form-field>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
-        <textarea matInput name="effet" [(ngModel)]="unite.lim_min" placeholder="Effet" required></textarea>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
-          <mat-icon>close_fullscreen</mat-icon>
-        </button>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_min}}
-      </ng-container>
+        {{generateLimitLinkToFfch()}}
+      </div>
     </div>
   </div>
-  <div class="line">
-    <div class="header-cell">Limite effet max</div>
-    <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
-          <mat-icon>open_in_full</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
-        <textarea matInput name="effet" [(ngModel)]="unite.lim_max" placeholder="Effet" required></textarea>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
-          <mat-icon>close_fullscreen</mat-icon>
-        </button>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_max}}
-      </ng-container>
-    </div>
-  </div>
-  <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
-    <div class="header-cell">Limite améliorée effet min</div>
-    <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
-          <mat-icon>open_in_full</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
-        <textarea matInput name="effet" [(ngModel)]="unite.lim_up_min" placeholder="Effet" required></textarea>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
-          <mat-icon>close_fullscreen</mat-icon>
-        </button>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_up_min}}
-      </ng-container>
-    </div>
-  </div>
-  <div class="line" *ngIf="unite.hasUpgradedLimitBurst()">
-    <div class="header-cell">Limite améliorée effet max</div>
-    <div class="cell">
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && !multiLineDisplay">
-        <input matInput type="text" name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
-          <mat-icon>open_in_full</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field *ngIf="!unite.isPresentInFfchDb() && multiLineDisplay">
-        <textarea matInput name="effet" [(ngModel)]="unite.lim_up_max" placeholder="Effet" required></textarea>
-        <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
-          <mat-icon>close_fullscreen</mat-icon>
-        </button>
-      </mat-form-field>
-      <ng-container *ngIf="unite.isPresentInFfchDb()">
-        {{unite.lim_up_max}}
-      </ng-container>
-    </div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite niveaux</div>
-    <div class="cell">{{unite.lim_nb_niv}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite hits</div>
-    <div class="cell">{{unite.lim_hits}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite frames</div>
-    <div class="cell">{{unite.lim_frames}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite damages</div>
-    <div class="cell">{{unite.lim_damages}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite coût niveau min</div>
-    <div class="cell">{{unite.lim_cristals_niv_min}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Limite coût niveau max</div>
-    <div class="cell">{{unite.lim_cristals_niv_max}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Niveau</div>
-    <div class="cell">{{unite.carac.level}}/{{unite.carac.level_max}}</div>
-  </div>
-  <div class="line">
-    <div class="header-cell">Lien vers limite</div>
-    <div class="cell">
-      <button mat-raised-button ngxClipboard [cbContent]="generateLimitLinkToFfch()" color="accent"
-              class="copy-button">Copier
-      </button>
-      {{generateLimitLinkToFfch()}}
-    </div>
-  </div>
-
   <app-caracteristiques-container-display [container]="unite.carac"></app-caracteristiques-container-display>
 
   <app-caracteristiques-ex-display *ngIf="shouldDisplayCaracEx()"

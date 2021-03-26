@@ -23,7 +23,13 @@ div.neovision {
   list-style-type: none;
 }
 
+div.table {
+  display: table;
+  width: 100%;
+}
+
 div.header-cell {
+  width: 175px;
   white-space: nowrap;
 }
 
