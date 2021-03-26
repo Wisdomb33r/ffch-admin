@@ -20,3 +20,7 @@ button.copy-button {
 img.element {
   height: 24px;
 }
+
+mat-form-field textarea {
+  resize: both;
+}
