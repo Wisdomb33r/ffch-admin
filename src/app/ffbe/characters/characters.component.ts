@@ -10,6 +10,7 @@ import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   templateUrl: './characters.component.html',
@@ -18,9 +19,11 @@ import {ConsumablesService} from '../services/consumables.service';
 export class CharactersComponent implements OnInit {
 
   name: FormControl;
+  characters: Array<Character>;
   personnages: Array<Personnage>;
 
-  constructor(private charactersService: CharactersService,
+  constructor(private route: ActivatedRoute,
+              private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
               private skillsService: SkillsService,
               // do not remove the injection of Equipments, Consumables and Materias services, it serves to load the INSTANCE singletons
@@ -31,13 +34,14 @@ export class CharactersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { characters: Array<Character> }) => this.characters = data.characters);
   }
 
   public searchCharactersInDataMining() {
     this.personnages = null;
-    const characters: Array<Character> = this.charactersService.searchForCharactersByNameOrGumiId(this.name.value);
-    if (characters) {
-      this.personnages = characters.map(character => CharacterMapper.toPersonnage(character));
+    //const characters: Array<Character> = this.charactersService.searchForCharactersByNameOrGumiId(this.name.value);
+    if (this.characters) {
+      this.personnages = this.characters.map(character => CharacterMapper.toPersonnage(character));
     }
   }
 
