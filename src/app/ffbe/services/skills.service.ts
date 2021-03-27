@@ -2,7 +2,8 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {Injectable} from '@angular/core';
 import {Skill} from '../model/skill.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
-import {forkJoin} from 'rxjs';
+import {forkJoin, Observable, of} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class SkillsService {
@@ -17,11 +18,12 @@ export class SkillsService {
   }
 
   constructor(private dataMiningClientService: DataMiningClientService) {
-    this.loadSkillsFromDataMining();
+    // this.loadSkillsFromDataMining();
     SkillsService.INSTANCE = this;
   }
 
-  public loadSkillsFromDataMining() {
+  public loadSkillsFromDataMining(): Observable<any> {
+    console.log('loading DM skills');
     if (this.skillsFromDataMining == null) {
       const observables = [];
       observables.push(this.dataMiningClientService.getSkillsAbility$());
@@ -31,12 +33,15 @@ export class SkillsService {
       observables.push(this.dataMiningClientService.getSkillsMagicNames$());
       observables.push(this.dataMiningClientService.getSkillsDescriptions$());
       observables.push(this.dataMiningClientService.getSkillsMagicDescriptions$());
-      forkJoin(observables)
-        .subscribe((data: any) => {
+      return forkJoin(observables).pipe(
+        tap((data: any) => {console.log('DM loaded');
           this.skillsFromDataMining = {...data[0], ...data[1], ...data[2]};
           this.skillsNamesFromDataMining = {...data[3], ...data[4]};
           this.skillsDescriptionsFromDataMining = {...data[5], ...data[6]};
-        });
+        })
+      );
+    } else {
+      return of(true);
     }
   }
 
@@ -72,6 +77,7 @@ export class SkillsService {
   }
 
   public searchForSkillByGumiId(id: number): Skill {
+    console.log('searching for skill with id ' + id);
     if (this.skillsFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);

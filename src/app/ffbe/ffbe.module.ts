@@ -56,6 +56,7 @@ import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-com
 import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
 import {ObjetsComparingContainerDisplayComponent} from './objets-display-components/objets-comparing-container-display/objets-comparing-container-display.component';
 import {MatIconModule} from '@angular/material/icon';
+import {RoutedSkillComponent} from './routed-skills/routed-skill.component';
 
 @NgModule({
   imports: [
@@ -107,6 +108,7 @@ import {MatIconModule} from '@angular/material/icon';
     ObjetTueursPhysiquesMagiquesDisplayComponent,
     ObjetTueursDisplayComponent,
     ObjetsComparingContainerDisplayComponent,
+    RoutedSkillComponent,
   ],
   exports: [
     CharactersComponent,
@@ -117,6 +119,7 @@ import {MatIconModule} from '@angular/material/icon';
     SkillDisplayComponent,
     CharacterEquipmentsDisplayComponent,
     UnitAwakeningMaterialsDisplayComponent,
+    RoutedSkillComponent,
   ],
   providers: [
     DataMiningClientService,

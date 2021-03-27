@@ -17,10 +17,19 @@ import {EnhancementsComponent} from './ffbe/enhancements/enhancements.component'
 import {ItemRecipesComponent} from './ffbe/item-recipes/item-recipes.component';
 import {ItemsComponent} from './ffbe/items/items.component';
 import {LatentSkillsComponent} from './ffbe/latent-skills/latent-skills.component';
+import {RoutedSkillComponent} from './ffbe/routed-skills/routed-skill.component';
+import {SkillResolver} from './ffbe/resolvers/skill.resolver';
 
 const appRoutes: Routes = [
   {path: 'ffbe/characters', component: CharactersComponent},
   {path: 'ffbe/skills', component: SkillsComponent},
+  {
+    path: 'ffbe/skills/:skillId',
+    component: RoutedSkillComponent,
+    resolve: {
+      skill: SkillResolver,
+    }
+  },
   {path: 'ffbe/enhancements', component: EnhancementsComponent},
   {path: 'ffbe/latent-skills', component: LatentSkillsComponent},
   {path: 'ffbe/items', component: ItemsComponent},

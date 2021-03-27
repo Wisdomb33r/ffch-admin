@@ -9,6 +9,7 @@ import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
 import {ConsumablesService} from '../services/consumables.service';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './skills.component.html',
@@ -21,7 +22,8 @@ export class SkillsComponent implements OnInit {
   gumiId: FormControl;
   competences: Array<Competence>;
 
-  constructor(private skillsService: SkillsService,
+  constructor(private router: Router,
+              private skillsService: SkillsService,
               // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
               private charactersService: CharactersService,
               private consumableService: ConsumablesService,
@@ -41,6 +43,7 @@ export class SkillsComponent implements OnInit {
       this.englishName.patchValue('');
       this.frenchName.patchValue('');
       const skill = this.skillsService.searchForSkillByGumiId(this.gumiId.value);
+      this.router.navigate(['/ffbe', 'skills', skill.gumi_id]);
       if (!FfbeUtils.isNullOrUndefined((skill))) {
         this.competences.push(SkillMapper.toCompetence(skill));
       }
