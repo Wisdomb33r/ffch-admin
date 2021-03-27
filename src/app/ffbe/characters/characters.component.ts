@@ -19,6 +19,7 @@ export class CharactersComponent implements OnInit {
 
   name: FormControl;
   personnages: Array<Personnage>;
+  private localStorageLabel = 'character-search-name';
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
@@ -31,10 +32,12 @@ export class CharactersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.name.patchValue(localStorage.getItem(this.localStorageLabel));
   }
 
   public searchCharactersInDataMining() {
     this.personnages = null;
+    localStorage.setItem(this.localStorageLabel, this.name.value);
     const characters: Array<Character> = this.charactersService.searchForCharactersByNameOrGumiId(this.name.value);
     if (characters) {
       this.personnages = characters.map(character => CharacterMapper.toPersonnage(character));
