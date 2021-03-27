@@ -20,6 +20,9 @@ export class SkillsComponent implements OnInit {
   frenchName: FormControl;
   gumiId: FormControl;
   competences: Array<Competence>;
+  private localStorageEnglishNameLabel = 'skill-search-english-name';
+  private localStorageFrenchNameLabel = 'skill-search-french-name';
+  private localStorageGumiIdLabel = 'skill-search-gumi-id';
 
   constructor(private skillsService: SkillsService,
               // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
@@ -33,9 +36,15 @@ export class SkillsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.englishName.patchValue(localStorage.getItem(this.localStorageEnglishNameLabel));
+    this.frenchName.patchValue(localStorage.getItem(this.localStorageFrenchNameLabel));
+    this.gumiId.patchValue(localStorage.getItem(this.localStorageGumiIdLabel));
   }
 
   public searchSkillsInDataMining() {
+    localStorage.setItem(this.localStorageEnglishNameLabel, this.englishName.value);
+    localStorage.setItem(this.localStorageFrenchNameLabel, this.frenchName.value);
+    localStorage.setItem(this.localStorageGumiIdLabel, this.gumiId.value);
     this.competences = [];
     if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.englishName.patchValue('');
