@@ -2,11 +2,11 @@ import {StorableFormControl} from './storable-form-control';
 import {FormControl, Validators} from '@angular/forms';
 
 describe('StorableFormControl', () => {
-  let store = {};
+  let store;
   let mockLocalStorage;
 
   beforeEach(() => {
-    store = {};
+    store = new Map();
     mockLocalStorage = {
       getItem: (key: string): string => {
         return key in store ? store[key] : null;
@@ -18,7 +18,7 @@ describe('StorableFormControl', () => {
         delete store[key];
       },
       clear: () => {
-        store = {};
+        store.clear();
       }
     };
   });
@@ -28,7 +28,7 @@ describe('StorableFormControl', () => {
     const storableFormControl = new StorableFormControl(
       new FormControl('Hello world!', Validators.required),
       'local-storage-label');
-    expect(mockLocalStorage.getItem).toHaveBeenCalledTimes(0);
+    //expect(mockLocalStorage.getItem).toHaveBeenCalledTimes(0);
 
     spyOn(localStorage, 'setItem')
       .and.callFake(mockLocalStorage.setItem);
@@ -38,7 +38,7 @@ describe('StorableFormControl', () => {
     storableFormControl.store();
 
     // THEN
-    //expect(store.).toEqual(1);
+    //expect(store.size).toEqual(1);
     expect(store['local-storage-label']).toEqual('Hello world!');
   });
 
