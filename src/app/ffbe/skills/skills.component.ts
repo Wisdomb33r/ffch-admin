@@ -38,13 +38,10 @@ export class SkillsComponent implements OnInit {
   ngOnInit() {
     this.englishName.patchValue(localStorage.getItem(this.localStorageEnglishNameLabel));
     this.frenchName.patchValue(localStorage.getItem(this.localStorageFrenchNameLabel));
-    this.gumiId.patchValue(localStorage.getItem(this.localStorageGumiIdLabel));
+    this.gumiId.patchValue(+localStorage.getItem(this.localStorageGumiIdLabel));
   }
 
   public searchSkillsInDataMining() {
-    localStorage.setItem(this.localStorageEnglishNameLabel, this.englishName.value);
-    localStorage.setItem(this.localStorageFrenchNameLabel, this.frenchName.value);
-    localStorage.setItem(this.localStorageGumiIdLabel, this.gumiId.value);
     this.competences = [];
     if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
       this.englishName.patchValue('');
@@ -57,6 +54,9 @@ export class SkillsComponent implements OnInit {
       const skills: Array<Skill> = this.skillsService.searchForSkillsByNames(this.englishName.value, this.frenchName.value);
       skills.forEach(skill => this.competences.push(SkillMapper.toCompetence(skill)));
     }
+    localStorage.setItem(this.localStorageEnglishNameLabel, this.englishName.value);
+    localStorage.setItem(this.localStorageFrenchNameLabel, this.frenchName.value);
+    localStorage.setItem(this.localStorageGumiIdLabel, this.gumiId.value);
   }
 
   public isSkillsDisplayed(): boolean {
