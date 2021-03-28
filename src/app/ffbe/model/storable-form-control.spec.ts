@@ -1,7 +1,13 @@
+import {StorableFormControl} from './storable-form-control';
+import {FormControl, Validators} from '@angular/forms';
+
 describe('StorableFormControl', () => {
+  let store = {};
+  let mockLocalStorage;
+
   beforeEach(() => {
-    let store = {};
-    const mockLocalStorage = {
+    store = {};
+    mockLocalStorage = {
       getItem: (key: string): string => {
         return key in store ? store[key] : null;
       },
@@ -19,13 +25,21 @@ describe('StorableFormControl', () => {
 
   it('should store string value correctly', () => {
     // GIVEN
+    const storableFormControl = new StorableFormControl(
+      new FormControl('Hello world!', Validators.required),
+      'local-storage-label');
+    expect(mockLocalStorage.getItem).toHaveBeenCalledTimes(0);
 
+    spyOn(localStorage, 'setItem')
+      .and.callFake(mockLocalStorage.setItem);
+    spyOn(localStorage, 'getItem').and.throwError('Unexpected call to getItem()');
 
     // WHEN
+    storableFormControl.store();
 
     // THEN
-
-    const localStorageMock =
+    //expect(store.).toEqual(1);
+    expect(store['local-storage-label']).toEqual('Hello world!');
   });
 
 
