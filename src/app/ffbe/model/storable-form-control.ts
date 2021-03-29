@@ -12,6 +12,8 @@ export class StorableFormControl {
   }
 
   public fetch() {
-    this.formControl.patchValue(localStorage.getItem((this.storageLabel)));
+    const storedValue = localStorage.getItem((this.storageLabel));
+    const convertedValue = isNaN(+storedValue) ? storedValue : +storedValue;
+    this.formControl.patchValue(convertedValue);
   }
 }

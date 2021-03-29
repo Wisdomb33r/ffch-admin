@@ -84,4 +84,22 @@ describe('StorableFormControl', () => {
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });
 
+  it('should fetch integer value correctly', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl('label-for-fetching-integer');
+    store.set('label-for-fetching-integer', '654321');
+
+    // WHEN
+    storableFormControl.fetch();
+
+    // THEN
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem).toHaveBeenCalledWith('label-for-fetching-integer');
+    expect(storableFormControl.formControl.value).toEqual(654321);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
+
+
 });
