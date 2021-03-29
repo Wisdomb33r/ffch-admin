@@ -1,9 +1,9 @@
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 
 export class StorableFormControl {
   public constructor(
-    public formControl: FormControl,
-    public storageLabel: string
+    public storageLabel: string,
+    public formControl: FormControl = new FormControl('', Validators.required)
   ) {
   }
 

@@ -34,8 +34,8 @@ describe('StorableFormControl', () => {
   it('should store string value correctly', () => {
     // GIVEN
     const storableFormControl = new StorableFormControl(
-      new FormControl('A hello world message to be stored!', Validators.required),
-      'label-for-storing-string');
+      'label-for-storing-string',
+      new FormControl('A hello world message to be stored!', Validators.required));
 
     // WHEN
     storableFormControl.store();
