@@ -7,6 +7,8 @@ import {Equipment} from '../model/items/equipment/equipment.model';
 import {MateriasService} from '../services/materias.service';
 import {Materia} from '../model/items/materia/materia.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {CharactersService} from '../services/characters.service';
+import {Character} from '../model/character/character.model';
 
 export class SkillMapper {
 
@@ -19,6 +21,11 @@ export class SkillMapper {
     const parsedItemsRequirements: string = SkillMapper.mapRequirements(skill);
     if (parsedItemsRequirements.length) {
       parsedSkillEffects += HTML_LINE_RETURN + parsedItemsRequirements;
+    }
+
+    const parsedUnitRestrictions: string = SkillMapper.mapUnitRestrictions(skill);
+    if (parsedUnitRestrictions.length) {
+      parsedSkillEffects += HTML_LINE_RETURN + parsedUnitRestrictions;
     }
 
     const hitsFramesDamagesObject = SkillMapper.mapHitsFramesAndDamages(skill);
@@ -215,6 +222,24 @@ export class SkillMapper {
         }).join(' ou ');
     }
     return requirementsText;
+  }
+
+  private static mapUnitRestrictions(skill: Skill): string {
+    let restrictionsText = '';
+    if (skill.unit_restriction?.length > 0) {
+      skill.unit_restriction.forEach(unitId => {
+        const unit: Character = CharactersService.getInstance().searchForCharacterByGumiId(unitId);
+        if (unit) {
+          if (restrictionsText) {
+            restrictionsText += ', ';
+          } else {
+            restrictionsText += 'Exclusif à ';
+          }
+          restrictionsText += `<a href="ffexvius_units.php?gumiid=${unit.gumi_id}">${unit.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
+        }
+      });
+    }
+    return restrictionsText;
   }
 
   private static getElementIdFromEnglishName(elementEnglishString: string): number {

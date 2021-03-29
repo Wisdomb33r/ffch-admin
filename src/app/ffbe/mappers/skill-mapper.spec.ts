@@ -18,6 +18,10 @@ import {MATERIAS_TEST_DATA} from '../model/items/materia/materia.model.spec';
 import {MateriasService} from '../services/materias.service';
 import {MateriasServiceMock} from '../services/materias.service.spec';
 import {Materia} from '../model/items/materia/materia.model';
+import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
+import {Character} from '../model/character/character.model';
+import {CharactersServiceMock} from '../services/characters.service.spec';
+import {CharactersService} from '../services/characters.service';
 
 describe('SkillMapper', () => {
   it('should transform ability icon string to number', () => {
@@ -136,6 +140,25 @@ describe('SkillMapper', () => {
     // THEN
     expect(reqText).toEqual('Activé si l\'unité porte <a href="ffexvius_objects.php?gumiid=504100090">Dague</a> '
       + 'ou <a href="ffexvius_objects.php?gumiid=undefined">ATT +30%</a>');
+  });
+
+  it('should map unit restrictions correctly into a text', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100010'];
+    skill.unit_restriction = [100000102, 100000103];
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValues(character, null);
+
+    // WHEN
+    const reqText = SkillMapper['mapUnitRestrictions'](skill);
+    // THEN
+    expect(reqText).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>');
   });
 
   it('should map neutral damages correctly', () => {
