@@ -36,7 +36,7 @@ describe('StorableFormControl', () => {
     // GIVEN
     const storableFormControl = new StorableFormControl(
       'label-for-storing-string',
-      new FormControl('A hello world message to be stored!', Validators.required));
+      new FormControl('A hello world message to be stored!'));
 
     // WHEN
     storableFormControl.store();
@@ -63,6 +63,23 @@ describe('StorableFormControl', () => {
     expect(localStorage.getItem).toHaveBeenCalledWith('label-for-fetching-string');
     expect(storableFormControl.formControl.value).toEqual('A hello world message to be fetched!');
     expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
+
+  it('should store integer value correctly', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl(
+      'label-for-storing-integer',
+      new FormControl(123456));
+
+    // WHEN
+    storableFormControl.store();
+
+    // THEN
+    expect(localStorage.getItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.setItem).toHaveBeenCalledWith('label-for-storing-integer', '123456');
     expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });

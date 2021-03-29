@@ -8,7 +8,7 @@ export class StorableFormControl {
   }
 
   public store() {
-    localStorage.setItem(this.storageLabel, this.formControl.value);
+    localStorage.setItem(this.storageLabel, `${this.formControl.value}`);
   }
 
   public fetch() {
