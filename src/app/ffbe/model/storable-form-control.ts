@@ -12,6 +12,6 @@ export class StorableFormControl {
   }
 
   public fetch() {
-
+    this.formControl.patchValue(localStorage.getItem((this.storageLabel)));
   }
 }

@@ -3,12 +3,13 @@ import {FormControl, Validators} from '@angular/forms';
 
 describe('StorableFormControl', () => {
   let mockLocalStorage;
+  let store;
 
   beforeEach(() => {
-    let store = {};
+    store = new Map();
     mockLocalStorage = {
       getItem: (key: string): string => {
-        return key in store ? store[key] : null;
+        return store.has(key) ? store.get(key) : null;
       },
       setItem: (key: string, value: string) => {
         store[key] = `${value}`;
@@ -17,7 +18,7 @@ describe('StorableFormControl', () => {
         delete store[key];
       },
       clear: () => {
-        store = {};
+        store = new Map();
       }
     };
 
@@ -45,6 +46,23 @@ describe('StorableFormControl', () => {
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     expect(localStorage.setItem).toHaveBeenCalledWith('label-for-storing-string',
       'A hello world message to be stored!');
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
+
+  it('should fetch string value correctly', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl('label-for-fetching-string');
+    store.set('label-for-fetching-string', 'A hello world message to be fetched!');
+
+    // WHEN
+    storableFormControl.fetch();
+
+    // THEN
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem).toHaveBeenCalledWith('label-for-fetching-string');
+    expect(storableFormControl.formControl.value).toEqual('A hello world message to be fetched!');
+    expect(localStorage.setItem).toHaveBeenCalledTimes(0);
     expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });
