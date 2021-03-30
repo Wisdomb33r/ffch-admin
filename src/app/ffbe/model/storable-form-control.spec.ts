@@ -36,6 +36,7 @@ describe('StorableFormControl', () => {
     // GIVEN
     const storableFormControl = new StorableFormControl(
       'label-for-storing-string',
+      false,
       new FormControl('A hello world message to be stored!'));
 
     // WHEN
@@ -71,6 +72,7 @@ describe('StorableFormControl', () => {
     // GIVEN
     const storableFormControl = new StorableFormControl(
       'label-for-storing-integer',
+      true,
       new FormControl(123456));
 
     // WHEN
@@ -86,7 +88,7 @@ describe('StorableFormControl', () => {
 
   it('should fetch integer value correctly', () => {
     // GIVEN
-    const storableFormControl = new StorableFormControl('label-for-fetching-integer');
+    const storableFormControl = new StorableFormControl('label-for-fetching-integer', true);
     store.set('label-for-fetching-integer', '654321');
 
     // WHEN

@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 export class StorableFormControl {
   public constructor(
     public storageLabel: string,
+    public isNumber: boolean = false,
     public formControl: FormControl = new FormControl('')
   ) {
   }
@@ -13,7 +14,7 @@ export class StorableFormControl {
 
   public fetch() {
     const storedValue = localStorage.getItem((this.storageLabel));
-    const convertedValue = isNaN(+storedValue) ? storedValue : +storedValue;
+    const convertedValue = this.isNumber ? +storedValue : storedValue;
     this.formControl.patchValue(convertedValue);
   }
 }
