@@ -9,6 +9,7 @@ import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
 import {ConsumablesService} from '../services/consumables.service';
+import {StorableFormControl} from '../model/storable-form-control';
 
 @Component({
   templateUrl: './skills.component.html',
@@ -16,13 +17,10 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class SkillsComponent implements OnInit {
 
-  englishName: FormControl;
-  frenchName: FormControl;
-  gumiId: FormControl;
+  englishName: StorableFormControl;
+  frenchName: StorableFormControl;
+  gumiId: StorableFormControl;
   competences: Array<Competence>;
-  private localStorageEnglishNameLabel = 'skill-search-english-name';
-  private localStorageFrenchNameLabel = 'skill-search-french-name';
-  private localStorageGumiIdLabel = 'skill-search-gumi-id';
 
   constructor(private skillsService: SkillsService,
               // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
@@ -30,22 +28,22 @@ export class SkillsComponent implements OnInit {
               private consumableService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
-    this.englishName = new FormControl('');
-    this.frenchName = new FormControl('');
-    this.gumiId = new FormControl('');
+    this.englishName = new StorableFormControl('skill-search-english-name');
+    this.frenchName = new StorableFormControl('skill-search-french-name');
+    this.gumiId = new StorableFormControl('skill-search-gumi-id', true);
   }
 
   ngOnInit() {
-    this.englishName.patchValue(localStorage.getItem(this.localStorageEnglishNameLabel));
-    this.frenchName.patchValue(localStorage.getItem(this.localStorageFrenchNameLabel));
-    this.gumiId.patchValue(+localStorage.getItem(this.localStorageGumiIdLabel));
+    this.englishName.fetch();
+    this.frenchName.fetch();
+    this.gumiId.fetch();
   }
 
   public searchSkillsInDataMining() {
     this.competences = [];
     if (!FfbeUtils.isNullOrUndefined(this.gumiId.value) && this.gumiId.value > 0) {
-      this.englishName.patchValue('');
-      this.frenchName.patchValue('');
+      this.englishName.formControl.patchValue('');
+      this.frenchName.formControl.patchValue('');
       const skill = this.skillsService.searchForSkillByGumiId(this.gumiId.value);
       if (!FfbeUtils.isNullOrUndefined((skill))) {
         this.competences.push(SkillMapper.toCompetence(skill));
@@ -54,9 +52,9 @@ export class SkillsComponent implements OnInit {
       const skills: Array<Skill> = this.skillsService.searchForSkillsByNames(this.englishName.value, this.frenchName.value);
       skills.forEach(skill => this.competences.push(SkillMapper.toCompetence(skill)));
     }
-    localStorage.setItem(this.localStorageEnglishNameLabel, this.englishName.value);
-    localStorage.setItem(this.localStorageFrenchNameLabel, this.frenchName.value);
-    localStorage.setItem(this.localStorageGumiIdLabel, this.gumiId.value);
+    this.englishName.store();
+    this.frenchName.store();
+    this.gumiId.store();
   }
 
   public isSkillsDisplayed(): boolean {
