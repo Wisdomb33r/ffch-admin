@@ -103,5 +103,22 @@ describe('StorableFormControl', () => {
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });
 
+  it('should return the value correctly when calling the getter', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl(
+      'label-for-not-storing-anything',
+      false,
+      new FormControl('A hello world message!'));
+
+    // WHEN
+    const result = storableFormControl.value;
+
+    // THEN
+    expect(result).toEqual('A hello world message!');
+    expect(localStorage.getItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
 
 });

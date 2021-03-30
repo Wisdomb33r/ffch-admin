@@ -17,4 +17,8 @@ export class StorableFormControl {
     const convertedValue = this.isNumber ? +storedValue : storedValue;
     this.formControl.patchValue(convertedValue);
   }
+
+  public get value(): any {
+    return this.formControl.value;
+  }
 }
