@@ -10,6 +10,7 @@ import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
+import {StorableFormControl} from '../model/storable-form-control';
 
 @Component({
   templateUrl: './characters.component.html',
@@ -17,9 +18,8 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class CharactersComponent implements OnInit {
 
-  name: FormControl;
+  name: StorableFormControl;
   personnages: Array<Personnage>;
-  private localStorageLabel = 'character-search-name';
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
@@ -28,16 +28,16 @@ export class CharactersComponent implements OnInit {
               private consumablesService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
-    this.name = new FormControl('', Validators.required);
+    this.name = new StorableFormControl('character-search-name', false, new FormControl('', Validators.required));
   }
 
   ngOnInit() {
-    this.name.patchValue(localStorage.getItem(this.localStorageLabel));
+    this.name.fetch();
   }
 
   public searchCharactersInDataMining() {
     this.personnages = null;
-    localStorage.setItem(this.localStorageLabel, this.name.value);
+    this.name.store();
     const characters: Array<Character> = this.charactersService.searchForCharactersByNameOrGumiId(this.name.value);
     if (characters) {
       this.personnages = characters.map(character => CharacterMapper.toPersonnage(character));

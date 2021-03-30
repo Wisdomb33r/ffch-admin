@@ -5,7 +5,7 @@
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer un personnage</mat-card-title>
   <mat-form-field>
-    <input matInput [formControl]="name" placeholder="Nom" required>
+    <input matInput [formControl]="name.formControl" placeholder="Nom" required>
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" (click)="searchCharactersInDataMining()">Chercher</button>
 </mat-card>
