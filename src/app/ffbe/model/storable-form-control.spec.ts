@@ -1,5 +1,5 @@
 import {StorableFormControl} from './storable-form-control';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 describe('StorableFormControl', () => {
   let mockLocalStorage;
