@@ -1,4 +1,5 @@
 import {FormControl} from '@angular/forms';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 export class StorableFormControl {
   public constructor(
@@ -14,8 +15,10 @@ export class StorableFormControl {
 
   public fetch() {
     const storedValue = localStorage.getItem((this.storageLabel));
-    const convertedValue = this.isNumber ? +storedValue : storedValue;
-    this.formControl.patchValue(convertedValue);
+    if (!FfbeUtils.isNullOrUndefined(storedValue)) {
+      const convertedValue = this.isNumber ? +storedValue : storedValue;
+      this.formControl.patchValue(convertedValue);
+    }
   }
 
   public get value(): any {

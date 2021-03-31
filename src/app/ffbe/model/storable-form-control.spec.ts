@@ -121,4 +121,34 @@ describe('StorableFormControl', () => {
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });
 
+  it('should not update the FormControl value when there is no stored string value', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl('label-for-not-storing-anything');
+
+    // WHEN
+    storableFormControl.fetch();
+
+    // THEN
+    expect(storableFormControl.value).toEqual('');
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not update the FormControl value when there is no stored integer value', () => {
+    // GIVEN
+    const storableFormControl = new StorableFormControl('label-for-not-storing-anything', true);
+
+    // WHEN
+    storableFormControl.fetch();
+
+    // THEN
+    expect(storableFormControl.value).toEqual('');
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+    expect(localStorage.clear).toHaveBeenCalledTimes(0);
+  });
+
 });
