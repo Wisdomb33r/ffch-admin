@@ -4,19 +4,21 @@
 </mat-card>
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer une amélioration de compétence</mat-card-title>
-  <mat-form-field>
-    <input matInput [formControl]="characterName" placeholder="Personnage">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="englishName" placeholder="Nom anglais">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="frenchName" placeholder="Nom français">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="gumiId" placeholder="Identifiant Gumi" type="number">
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchEnhancementsInDataMining()">Chercher</button>
+  <form [formGroup]="searchForm" (ngSubmit)="searchEnhancementsInDataMining()">
+    <mat-form-field>
+      <input matInput formControlName="characterName" placeholder="Personnage">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="englishName" placeholder="Nom anglais">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="frenchName" placeholder="Nom français">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="gumiId" placeholder="Identifiant Gumi" type="number">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Chercher</button>
+  </form>
 </mat-card>
 <app-enhancements-display *ngIf="areEnhancementsDisplayed()"
                           [ameliorations]="ameliorations">

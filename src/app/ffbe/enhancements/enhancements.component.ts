@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {EnhancementsService} from '../services/enhancements.service';
 import {EnhancementMapper} from '../mappers/enhancement-mapper.model';
 import {Amelioration} from '../model/amelioration.model';
@@ -16,6 +16,7 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class EnhancementsComponent implements OnInit {
 
+  searchForm: FormGroup;
   characterName: FormControl;
   englishName: FormControl;
   frenchName: FormControl;
@@ -33,6 +34,12 @@ export class EnhancementsComponent implements OnInit {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
+    this.searchForm = new FormGroup({
+      characterName: this.characterName,
+      englishName: this.englishName,
+      frenchName: this.frenchName,
+      gumiId: this.gumiId
+    });
   }
 
   ngOnInit() {
