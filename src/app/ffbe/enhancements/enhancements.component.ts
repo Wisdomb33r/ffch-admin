@@ -23,6 +23,7 @@ export class EnhancementsComponent implements OnInit {
   gumiId: FormControl;
   character: Character;
   ameliorations: Array<Amelioration>;
+  localStorageLabel = 'enhancements-search-form';
 
   constructor(private enhancementsService: EnhancementsService,
               private charactersService: CharactersService,
@@ -43,6 +44,10 @@ export class EnhancementsComponent implements OnInit {
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchEnhancementsInDataMining() {
@@ -72,6 +77,7 @@ export class EnhancementsComponent implements OnInit {
       }
       this.ameliorations.push(amelioration);
     });
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public areEnhancementsDisplayed(): boolean {
