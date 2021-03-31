@@ -150,5 +150,24 @@ describe('StorableFormControl', () => {
     expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
     expect(localStorage.clear).toHaveBeenCalledTimes(0);
   });
+  /*
+    it('should not update the FormControl value when the empty string was stored for an integer value', () => {
+      // GIVEN
+      const storableFormControl = new StorableFormControl('label-for-storing-an-empty-string', true);
+      const mySpy = spyOn(storableFormControl.formControl, 'patchValue').and.callThrough();
 
+      // WHEN
+      storableFormControl.fetch();
+      storableFormControl.store();
+      storableFormControl.fetch();
+
+      // THEN
+      expect(storableFormControl.value).toEqual('');
+      expect(mySpy).toHaveBeenCalledTimes(0);
+      expect(localStorage.getItem).toHaveBeenCalledTimes(2);
+      expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(localStorage.removeItem).toHaveBeenCalledTimes(0);
+      expect(localStorage.clear).toHaveBeenCalledTimes(0);
+    });
+  */
 });

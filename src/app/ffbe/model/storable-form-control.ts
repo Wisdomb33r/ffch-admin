@@ -15,7 +15,7 @@ export class StorableFormControl {
 
   public fetch() {
     const storedValue = localStorage.getItem((this.storageLabel));
-    if (!FfbeUtils.isNullOrUndefined(storedValue)) {
+    if (!FfbeUtils.isNullOrUndefined(storedValue) && storedValue.length > 0) {
       const convertedValue = this.isNumber ? +storedValue : storedValue;
       this.formControl.patchValue(convertedValue);
     }
