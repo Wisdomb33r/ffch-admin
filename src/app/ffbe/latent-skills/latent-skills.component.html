@@ -4,11 +4,13 @@
 </mat-card>
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer une compétence latente</mat-card-title>
-  <mat-form-field>
-    <input matInput [formControl]="characterName" placeholder="Personnage">
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchForLatentSkillsInDataMining()">Chercher
-  </button>
+  <form [formGroup]="searchForm" (ngSubmit)="searchForLatentSkillsInDataMining()">
+    <mat-form-field>
+      <input matInput formControlName="characterName" placeholder="Personnage">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Chercher
+    </button>
+  </form>
 </mat-card>
 <app-enhancements-display *ngIf="areLatentSkillsDisplayed()"
                           [ameliorations]="ameliorations">
