@@ -34,7 +34,6 @@ import {AbilityEsperOrbsParser} from './ability-esper-orbs.parser';
 import {AbilityLbDamageIncreaseParser} from './ability-lb-damage-increase.parser';
 import {AbilitySingleAllyCoversParser} from './ability-single-ally-covers.parser';
 import {AbilityBarriersParser} from './ability-barriers.parser';
-import {AbilityDeathInflictionParser} from './ability-death-infliction.parser';
 import {AbilitySpellNullificationParser} from './ability-spell-nullification.parser';
 import {AbilityEnemyScanParser} from './ability-enemy-scan.parser';
 import {AbilityBerserkInflictionParser} from './ability-berserk-infliction.parser';
@@ -93,8 +92,6 @@ export class AbilityEffectParserFactory {
         return new AbilityElementResistancesParser();
       case 34:
         return new AbilityAilmentsRandomInflictionParser();
-      case 35:
-        return new AbilityDeathInflictionParser();
       case 37:
         return new AbilityItemStealParser();
       case 44:

@@ -36,6 +36,7 @@ import {AbilitySkillMagnusGlexEffect} from './abilities/skill/ability-skill-magn
 import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resistance-effect.model';
 import {AbilitySkillTagTeamAttackActivationEffect} from './abilities/skill/ability-skill-tag-team-attack-activation-effect.model';
 import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
+import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -58,6 +59,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 29:
         return new AbilitySkillRandomEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 35:
+        return new AbilityDeathInflictionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamageHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
