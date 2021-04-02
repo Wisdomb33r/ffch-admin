@@ -53,8 +53,8 @@ export class RecettesDisplayComponent implements OnDestroy, OnChanges {
           const indiceObjetRecette = indiceRecetteFromFfch + 1;
           const indiceObjetResultat = indiceRecetteFromFfch + 2;
           this.recettes[index].id = FfbeUtils.isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : results[indiceRecetteFromFfch].id;
-          this.recettes[index].recette = FfbeUtils.isNullOrUndefined(results[indiceObjetRecette]) ? null : Objet.produce(results[indiceObjetRecette]);
-          this.recettes[index].resultat = FfbeUtils.isNullOrUndefined(results[indiceObjetResultat]) ? null : Objet.produce(results[indiceObjetResultat]);
+          this.recettes[index].recette = FfbeUtils.isNullOrUndefined(results[indiceObjetRecette]) ? null : results[indiceObjetRecette];
+          this.recettes[index].resultat = FfbeUtils.isNullOrUndefined(results[indiceObjetResultat]) ? null : results[indiceObjetResultat];
           const dbRecette = FfbeUtils.isNullOrUndefined(results[indiceRecetteFromFfch]) ? null : Recette.produce(results[indiceRecetteFromFfch]);
           this.recettesContainers.push(new RecettesComparingContainer(this.recettes[index], dbRecette));
         });
