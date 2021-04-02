@@ -161,6 +161,27 @@ describe('SkillMapper', () => {
     expect(reqText).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>');
   });
 
+  it('should map unit restrictions correctly into a text for multiple units', () => {
+    // GIVEN
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills['100010'];
+    skill.unit_restriction = [100000102, 100000103, 207000305, 207000306, 207000307];
+
+    const characters = JSON.parse(CHARACTER_TEST_DATA);
+    const character: Character = characters['100000102'];
+    character.gumi_id = 100000102;
+    const character2: Character = characters['207000305'];
+    character2.gumi_id = 207000305;
+    const charactersServiceMock = new CharactersServiceMock() as CharactersService;
+    CharactersService['INSTANCE'] = charactersServiceMock;
+    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValues(character, null, character2, null, null);
+
+    // WHEN
+    const reqText = SkillMapper['mapUnitRestrictions'](skill);
+    // THEN
+    expect(reqText).toEqual('Exclusif à <a href="ffexvius_units.php?gumiid=100000102">Rain</a>, <a href="ffexvius_units.php?gumiid=207000305">Tifa</a>');
+  });
+
   it('should map neutral damages correctly', () => {
     // GIVEN
     const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
