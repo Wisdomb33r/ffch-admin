@@ -4,16 +4,18 @@
 </mat-card>
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer une compétence</mat-card-title>
-  <mat-form-field>
-    <input matInput [formControl]="englishName.formControl" placeholder="Nom anglais">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="frenchName.formControl" placeholder="Nom français">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="gumiId.formControl" placeholder="Identifiant Gumi" type="number">
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchSkillsInDataMining()">Chercher</button>
+  <form [formGroup]="searchForm" (ngSubmit)="searchSkillsInDataMining()">
+    <mat-form-field>
+      <input matInput formControlName="englishName" placeholder="Nom anglais">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="frenchName" placeholder="Nom français">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="gumiId" placeholder="Identifiant Gumi" type="number">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Chercher</button>
+  </form>
 </mat-card>
 <app-skills-display *ngIf="isSkillsDisplayed()"
                     [competences]="competences">
