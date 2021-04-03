@@ -5,7 +5,7 @@ import {ItemRecipe} from '../model/items/item-recipe.model';
 import {ItemRecipeMapper} from '../mappers/items/item-recipe-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
-import {StorableFormControl} from '../model/storable-form-control';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   templateUrl: './item-recipes.component.html',
@@ -13,41 +13,49 @@ import {StorableFormControl} from '../model/storable-form-control';
 })
 export class ItemRecipesComponent implements OnInit {
 
-  englishName: StorableFormControl;
-  frenchName: StorableFormControl;
-  resultGumiId: StorableFormControl;
-  recipeGumiId: StorableFormControl;
+  searchForm: FormGroup;
+  englishName: FormControl;
+  frenchName: FormControl;
+  resultGumiId: FormControl;
+  recipeGumiId: FormControl;
   recettes: Array<Recette>;
+  localStorageLabel = 'recipes-search-form';
 
   constructor(private itemRecipesService: ItemRecipesService,
               // do not remove the injection of Characters, it serves to load the INSTANCE singletons
               private charactersService: CharactersService) {
-    this.englishName = new StorableFormControl('recipe-search-english-name');
-    this.frenchName = new StorableFormControl('recipe-search-french-name');
-    this.resultGumiId = new StorableFormControl('recipe-search-result-gumi-id', true);
-    this.recipeGumiId = new StorableFormControl('recipe-search-recipe-gumi-id', true);
+    this.englishName = new FormControl('');
+    this.frenchName = new FormControl('');
+    this.resultGumiId = new FormControl('');
+    this.recipeGumiId = new FormControl('');
+    this.searchForm = new FormGroup({
+      englishName: this.englishName,
+      frenchName: this.frenchName,
+      resultGumiId: this.resultGumiId,
+      recipeGumiId: this.recipeGumiId,
+    });
   }
 
   ngOnInit() {
-    this.englishName.fetch();
-    this.frenchName.fetch();
-    this.resultGumiId.fetch();
-    this.recipeGumiId.fetch();
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchItemRecipeInDataMining() {
     this.recettes = [];
     if (!FfbeUtils.isNullOrUndefined(this.recipeGumiId.value) && this.recipeGumiId.value > 0) {
-      this.englishName.formControl.patchValue('');
-      this.frenchName.formControl.patchValue('');
-      this.resultGumiId.formControl.patchValue('');
+      this.englishName.patchValue('');
+      this.frenchName.patchValue('');
+      this.resultGumiId.patchValue('');
       const itemRecipe = this.itemRecipesService.searchForItemRecipeByRecipeGumiId(this.recipeGumiId.value);
       if (!FfbeUtils.isNullOrUndefined((itemRecipe))) {
         this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe));
       }
     } else if (!FfbeUtils.isNullOrUndefined(this.resultGumiId.value) && this.resultGumiId.value > 0) {
-      this.englishName.formControl.patchValue('');
-      this.frenchName.formControl.patchValue('');
+      this.englishName.patchValue('');
+      this.frenchName.patchValue('');
       const itemRecipes: Array<ItemRecipe> =
         this.itemRecipesService.searchForItemRecipeByItemGumiId(this.resultGumiId.value);
       itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
@@ -56,10 +64,7 @@ export class ItemRecipesComponent implements OnInit {
         this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
       itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
     }
-    this.englishName.store();
-    this.frenchName.store();
-    this.resultGumiId.store();
-    this.recipeGumiId.store();
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public isItemRecipeDisplayed(): boolean {

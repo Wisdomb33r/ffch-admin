@@ -4,20 +4,23 @@
 </mat-card>
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer une recette</mat-card-title>
-  <mat-form-field>
-    <input matInput [formControl]="englishName.formControl" placeholder="Nom anglais du résultat">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="frenchName.formControl" placeholder="Nom français du résultat">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="resultGumiId.formControl" placeholder="Identifiant Gumi du résultat" type="number">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [formControl]="recipeGumiId.formControl" placeholder="Identifiant Gumi de la recette" type="number">
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchItemRecipeInDataMining()">Chercher</button>
+  <form [formGroup]="searchForm" (ngSubmit)="searchItemRecipeInDataMining()">
+    <mat-form-field>
+      <input matInput formControlName="englishName" placeholder="Nom anglais du résultat">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="frenchName" placeholder="Nom français du résultat">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="resultGumiId" placeholder="Identifiant Gumi du résultat" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="recipeGumiId" placeholder="Identifiant Gumi de la recette"
+             type="number">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Chercher</button>
+  </form>
 </mat-card>
 <app-recettes-display *ngIf="isItemRecipeDisplayed()"
-                              [recettes]="recettes">
+                      [recettes]="recettes">
 </app-recettes-display>
