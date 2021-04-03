@@ -4,10 +4,12 @@
 </mat-card>
 <mat-card *ngIf="!isDataMiningLoading()">
   <mat-card-title>Importer un personnage</mat-card-title>
-  <mat-form-field>
-    <input matInput [formControl]="name.formControl" placeholder="Nom" required>
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" (click)="searchCharactersInDataMining()">Chercher</button>
+  <form [formGroup]="searchForm" (ngSubmit)="searchCharactersInDataMining()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Nom" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Chercher</button>
+  </form>
 </mat-card>
 <div *ngFor="let personnage of personnages">
   <app-character-display *ngIf="areCharactersDisplayed()" [personnage]="personnage"></app-character-display>
