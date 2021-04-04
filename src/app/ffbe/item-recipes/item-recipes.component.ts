@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
 import {ItemRecipesService} from '../services/item-recipes.service';
 import {Recette} from '../model/recette.model';
 import {ItemRecipe} from '../model/items/item-recipe.model';
 import {ItemRecipeMapper} from '../mappers/items/item-recipe-mapper';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   templateUrl: './item-recipes.component.html',
@@ -13,11 +13,13 @@ import {CharactersService} from '../services/characters.service';
 })
 export class ItemRecipesComponent implements OnInit {
 
+  searchForm: FormGroup;
   englishName: FormControl;
   frenchName: FormControl;
   resultGumiId: FormControl;
   recipeGumiId: FormControl;
   recettes: Array<Recette>;
+  localStorageLabel = 'recipes-search-form';
 
   constructor(private itemRecipesService: ItemRecipesService,
               // do not remove the injection of Characters, it serves to load the INSTANCE singletons
@@ -26,9 +28,19 @@ export class ItemRecipesComponent implements OnInit {
     this.frenchName = new FormControl('');
     this.resultGumiId = new FormControl('');
     this.recipeGumiId = new FormControl('');
+    this.searchForm = new FormGroup({
+      englishName: this.englishName,
+      frenchName: this.frenchName,
+      resultGumiId: this.resultGumiId,
+      recipeGumiId: this.recipeGumiId,
+    });
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchItemRecipeInDataMining() {
@@ -52,6 +64,7 @@ export class ItemRecipesComponent implements OnInit {
         this.itemRecipesService.searchForItemRecipesByNames(this.englishName.value, this.frenchName.value);
       itemRecipes.forEach(itemRecipe => this.recettes.push(ItemRecipeMapper.toRecette(itemRecipe)));
     }
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public isItemRecipeDisplayed(): boolean {

@@ -1,6 +1,6 @@
 import {CharactersService} from '../services/characters.service';
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Personnage} from '../model/personnage.model';
 import {LimitBurstsService} from '../services/limit-bursts.service';
 import {SkillsService} from '../services/skills.service';
@@ -17,8 +17,10 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class CharactersComponent implements OnInit {
 
+  searchForm: FormGroup;
   name: FormControl;
   personnages: Array<Personnage>;
+  localStorageLabel = 'characters-search-form';
 
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
@@ -28,9 +30,16 @@ export class CharactersComponent implements OnInit {
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
     this.name = new FormControl('', Validators.required);
+    this.searchForm = new FormGroup({
+      name: this.name
+    })
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchCharactersInDataMining() {
@@ -39,6 +48,7 @@ export class CharactersComponent implements OnInit {
     if (characters) {
       this.personnages = characters.map(character => CharacterMapper.toPersonnage(character));
     }
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public areCharactersDisplayed(): boolean {
