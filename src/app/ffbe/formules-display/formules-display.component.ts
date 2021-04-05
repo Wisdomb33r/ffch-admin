@@ -32,7 +32,7 @@ export class FormulesDisplayComponent implements OnInit, OnChanges {
       this.formule.ingredients.forEach(ingredient => {
         this.ffchClientService.getObjetByGumiId$(ingredient.gumi_id)
           .subscribe(i => {
-              ingredient.materiau = FfbeUtils.isNullOrUndefined(i) ? null : (Objet.produce(i));
+              ingredient.materiau = FfbeUtils.isNullOrUndefined(i) ? null : i;
             },
             error => this.ingredientsErrors.push('Erreur lors de la recherche de l\'objet' + ingredient.gumi_id + ' : ' + error));
       });
