@@ -36,7 +36,6 @@ import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
 import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
 import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
-import {PassiveEquipmentCategoryElementsResistanceEffect} from '../../model/effects/passives/passive-equipment-category-elements-resistance-effect.model';
 import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items-healing-potency-increase.parser';
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
 import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
@@ -134,8 +133,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillModifierIncreaseParser();
       case 75:
         return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
-      case 76:
-        return new PassiveEquipmentCategoryElementsResistanceEffect();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 136:
