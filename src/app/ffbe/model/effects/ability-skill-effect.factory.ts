@@ -37,6 +37,7 @@ import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resist
 import {AbilitySkillTagTeamAttackActivationEffect} from './abilities/skill/ability-skill-tag-team-attack-activation-effect.model';
 import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
 import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
+import {AbilityAccuracyIncreaseEffect} from './abilities/ability-accuracy-increase-effect.model';
 import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
 
 export class AbilitySkillEffectFactory {
@@ -122,6 +123,8 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillMagnusEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 159:
         return new AbilityDamagePhysicalIncreasedBreakEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 162:
+        return new AbilityAccuracyIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 163:
         return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 165:
