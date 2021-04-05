@@ -37,6 +37,7 @@ import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resist
 import {AbilitySkillTagTeamAttackActivationEffect} from './abilities/skill/ability-skill-tag-team-attack-activation-effect.model';
 import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
 import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
+import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -79,6 +80,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
         return new AbilityDamageMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 76:
+        return new AbilityGilStealEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new AbilityDamagePhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 89:
