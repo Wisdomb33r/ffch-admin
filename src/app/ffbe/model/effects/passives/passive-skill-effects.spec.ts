@@ -62,6 +62,10 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 76, [4, 0, 0, 0, 10, 10, 0, 20, 20]]',
       parsed: '+20% de rés. Lumière, Ténèbres, +10% de rés. Eau, Vent si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
     },
+    {
+      effect: '[0, 3, 76, [[1,  2,  3], 50, 0, 0, 0, 0, 0, 0, 0]]',
+      parsed: '+50% de rés. Feu si l\'unité porte une <a href="ffexvius_objects.php?categid=16">dague</a>, une <a href="ffexvius_objects.php?categid=1">épée</a> ou une <a href="ffexvius_objects.php?categid=27">épée longue</a>'
+    },
     {effect: '[0, 3, 77, [10, 1, 0]]', parsed: '-10% de PM consommés'},
     {effect: '[0, 3, 77, [30,  1,  4]]', parsed: '-30% de PM consommés'},
     {
