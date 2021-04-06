@@ -8,6 +8,11 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class PassiveEquipmentCategoryKillerDamageIncreaseEffect extends SkillEffect {
 
+  private equipmentGumiId: number;
+  private monsterTypeGumiId: number;
+  private physicalDamageIncrease: number;
+  private magicalDamageIncrease: number;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
@@ -16,12 +21,30 @@ export class PassiveEquipmentCategoryKillerDamageIncreaseEffect extends SkillEff
     if (!Array.isArray(parameters) || parameters.length < 4) {
       this.parameterError = true;
     } else {
-
+      this.equipmentGumiId = parameters[0];
+      this.monsterTypeGumiId = parameters[1];
+      this.physicalDamageIncrease = parameters[2];
+      this.magicalDamageIncrease = parameters[3];
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    let text = '';
+    const monsterType = FFBE_MONSTER_TYPES.find(type => type.gumiId === this.monsterTypeGumiId);
+    const monsterTypeText = 'contre les ' + (monsterType ? monsterType.pluralName : 'UNKNOWN');
+    if (this.physicalDamageIncrease > 0) {
+      text += '+' + this.physicalDamageIncrease + '% de dégâts physiques ';
+      if (this.magicalDamageIncrease > 0 && this.physicalDamageIncrease === this.magicalDamageIncrease) {
+        text += 'et magiques ';
+      }
+      text += monsterTypeText;
+    }
+    if (this.magicalDamageIncrease > 0 && this.physicalDamageIncrease !== this.magicalDamageIncrease) {
+      text += (text.length ? HTML_LINE_RETURN : '') + '+' + this.magicalDamageIncrease + '% de dégâts magiques ' + monsterTypeText;
+    }
+
+    return text + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une ' : 'un ')
+      + EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId);
   }
 
   protected get effectName(): string {
