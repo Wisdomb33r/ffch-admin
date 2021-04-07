@@ -17,8 +17,7 @@ export class AbilityDamagePhysicalIncreasedBreakEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length !== 6 || parameters[4] !== 0 || parameters[5] !== 1
-      || (parameters[2] !== 1 && parameters[2] !== 2)) {
+    if (!Array.isArray(parameters) || parameters.length !== 6 || parameters[4] !== 0 || parameters[5] !== 1) {
       this.parameterError = true;
     } else {
       this.basePower = Math.round(parameters[3]);
