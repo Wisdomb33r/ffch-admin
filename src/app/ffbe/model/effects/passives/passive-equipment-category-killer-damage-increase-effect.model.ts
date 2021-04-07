@@ -31,20 +31,19 @@ export class PassiveEquipmentCategoryKillerDamageIncreaseEffect extends SkillEff
   protected wordEffectImpl(skill: Skill): string {
     let text = '';
     const monsterType = FFBE_MONSTER_TYPES.find(type => type.gumiId === this.monsterTypeGumiId);
-    const monsterTypeText = 'contre les ' + (monsterType ? monsterType.pluralName : 'UNKNOWN');
+    const monsterTypeText = `contre les ${(monsterType ? monsterType.pluralName : 'UNKNOWN')}`;
     if (this.physicalDamageIncrease > 0) {
-      text += '+' + this.physicalDamageIncrease + '% de dégâts physiques ';
+      text +=  `+${this.physicalDamageIncrease}% de dégâts physiques `;
       if (this.magicalDamageIncrease > 0 && this.physicalDamageIncrease === this.magicalDamageIncrease) {
         text += 'et magiques ';
       }
       text += monsterTypeText;
     }
     if (this.magicalDamageIncrease > 0 && this.physicalDamageIncrease !== this.magicalDamageIncrease) {
-      text += (text.length ? HTML_LINE_RETURN : '') + '+' + this.magicalDamageIncrease + '% de dégâts magiques ' + monsterTypeText;
+      text += `${(text.length ? HTML_LINE_RETURN : '')} this.magicalDamageIncrease % de dégâts magiques ${monsterTypeText}`;
     }
 
-    return text + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une ' : 'un ')
-      + EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId);
+    return text + ` si l'unité porte ${EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une' : 'un'} ${EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId)}`;
   }
 
   protected get effectName(): string {
