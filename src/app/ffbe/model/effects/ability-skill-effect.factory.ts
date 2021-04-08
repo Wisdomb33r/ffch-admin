@@ -39,10 +39,7 @@ import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
 import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
 import {AbilityAccuracyIncreaseEffect} from './abilities/ability-accuracy-increase-effect.model';
 import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
-import {
-  AbilityKillerDamageIncreaseEffect,
-  AbilityKillerDamageIncreaseParser
-} from './abilities/ability-killer-damage-increase-effect.model';
+import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-damage-increase-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
