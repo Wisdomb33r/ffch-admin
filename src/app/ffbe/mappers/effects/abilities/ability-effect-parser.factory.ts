@@ -20,7 +20,7 @@ import {AbilityEscapeBattleParser} from './ability-escape-battle.parser';
 import {AbilityMitigationsParser} from './ability-mitigations.parser';
 import {AbilityStopInflictionParser} from './ability-stop-infliction.parser';
 import {AbilityMagicMultipleActivationParser} from './ability-magic-multiple-activation.parser';
-import {AbilityKillerDamageIncreaseParser} from '../../../model/effects/abilities/ability-killer-damage-increase.parser';
+import {AbilityKillerDamageIncreaseParser} from '../../../model/effects/abilities/ability-killer-damage-increase-effect.model';
 import {AbilityCharmInflictionParser} from './ability-charm-infliction.parser';
 import {AbilityAilmentsCureParser} from './ability-ailments-cure.parser';
 import {AbilityLbTransferParser} from './ability-lb-transfer.parser';
