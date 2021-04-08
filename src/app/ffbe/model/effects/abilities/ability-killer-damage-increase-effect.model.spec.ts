@@ -132,4 +132,12 @@ describe('AbilityKillerDamageIncreaseEffect', () => {
       + '+50% de dégâts magiques contre les machines aux alliés pour 3 tours');
   });
 
+  it('should parse killer for this turn only', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 93, [[12,  100], -1, -1, -1, -1, -1, -1, -1, 0, 1]]');
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('+100% de dégâts magiques contre les morts-vivants au lanceur pour ce tour');
+  });
 });

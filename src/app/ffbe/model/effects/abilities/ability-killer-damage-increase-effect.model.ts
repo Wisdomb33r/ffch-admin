@@ -61,9 +61,10 @@ export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
 
     const damageType = this.getDamageType(this.effectId);
 
+    const numTurnsText = this.numTurns > 0 ? this.numTurns : 'ce';
     const pluralForm = this.numTurns > 1 ? 's' : '';
 
-    return `+${currentValue}% de dégâts ${damageType} contre ${monsters} ${this.wordTarget()} pour ${this.numTurns} tour${pluralForm}`;
+    return `+${currentValue}% de dégâts ${damageType} contre ${monsters} ${this.wordTarget()} pour ${numTurnsText} tour${pluralForm}`;
   }
 
   protected get effectName(): string {
