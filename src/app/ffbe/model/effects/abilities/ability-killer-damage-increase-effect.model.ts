@@ -3,6 +3,33 @@ import {Skill} from '../../skill.model';
 import {FFBE_MONSTER_TYPES} from '../../../ffbe.constants';
 import {FfbeUtils} from '../../../utils/ffbe-utils';
 import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
+import {SkillEffect} from '../skill-effect.model';
+import {TargetNumberEnum} from '../target-number.enum';
+import {TargetTypeEnum} from '../target-type.enum';
+
+export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
+
+  constructor(protected targetNumber: TargetNumberEnum,
+              protected targetType: TargetTypeEnum,
+              protected effectId: number,
+              protected parameters: Array<any>) {
+    super(targetNumber, targetType, effectId);
+    if (!Array.isArray(parameters) || parameters.length < 10
+      || !Array.isArray(parameters[0]) || parameters[0].length < 2) {
+      this.parameterError = true;
+    } else {
+
+    }
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    return '';
+  }
+
+  protected get effectName(): string {
+    return 'AbilityKillerDamageIncreaseEffect';
+  }
+}
 
 export class AbilityKillerDamageIncreaseParser extends EffectParser {
   private target: string;
