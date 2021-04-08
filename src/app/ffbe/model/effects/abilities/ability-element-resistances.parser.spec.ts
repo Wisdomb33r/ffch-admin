@@ -1,4 +1,4 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
+import {AbilityEffectParserFactory} from '../../../mappers/effects/abilities/ability-effect-parser.factory';
 
 describe('AbilityElementResistancesParser', () => {
 
