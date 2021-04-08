@@ -9,12 +9,7 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
 
-  private target: string;
-  private damageType: string;
-
   private numTurns: number;
-  private pluralForm: string;
-
   private rawKillers: Array<number>;
 
   constructor(protected targetNumber: TargetNumberEnum,
@@ -26,10 +21,7 @@ export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
       || !Array.isArray(parameters[0]) || parameters[0].length < 2) {
       this.parameterError = true;
     } else {
-      this.target = this.wordTarget();
-      this.damageType = this.getDamageType(effectId);
       this.numTurns = parameters[8];
-      this.pluralForm = parameters[8] > 1 ? 's' : '';
       this.rawKillers = parameters.slice(0, 8);
     }
   }
@@ -67,7 +59,11 @@ export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
     const monsterArray = accumulatedStats.map(monster => 'les ' + monster);
     const monsters = FfbeUtils.replaceLastOccurenceInString(monsterArray.join(', '), ',', ' et');
 
-    return `+${currentValue}% de dégâts ${this.damageType} contre ${monsters} ${this.target} pour ${this.numTurns} tour${this.pluralForm}`;
+    const damageType = this.getDamageType(this.effectId);
+
+    const pluralForm = this.numTurns > 1 ? 's' : '';
+
+    return `+${currentValue}% de dégâts ${damageType} contre ${monsters} ${this.wordTarget()} pour ${this.numTurns} tour${pluralForm}`;
   }
 
   protected get effectName(): string {
