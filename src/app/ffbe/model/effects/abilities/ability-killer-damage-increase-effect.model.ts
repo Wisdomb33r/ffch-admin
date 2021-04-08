@@ -9,6 +9,14 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
 
+  private target: string;
+  private damageType: string;
+
+  private numTurns: number;
+  private pluralForm: string;
+
+  private rawKillers: Array<number>;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
@@ -18,12 +26,48 @@ export class AbilityKillerDamageIncreaseEffect extends SkillEffect {
       || !Array.isArray(parameters[0]) || parameters[0].length < 2) {
       this.parameterError = true;
     } else {
-
+      this.target = this.wordTarget();
+      this.damageType = this.getDamageType(effectId);
+      this.numTurns = parameters[8];
+      this.pluralForm = parameters[8] > 1 ? 's' : '';
+      this.rawKillers = parameters.slice(0, 8);
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    const increases = [];
+
+    this.rawKillers.forEach(rawKiller => {
+      if (Array.isArray(rawKiller) && rawKiller.length >= 2) {
+        const monsterTypeGumiId = rawKiller[0];
+        const monsterType = FFBE_MONSTER_TYPES.find(type => type.gumiId === monsterTypeGumiId);
+        const monsterName = monsterType ? monsterType.pluralName : 'UNKNOWN';
+        const increase = rawKiller[1];
+
+        increases.push({name: monsterName, value: increase});
+      }
+    });
+
+    return this.wordEffectJoiningIdenticalValues(increases, HTML_LINE_RETURN);
+  }
+
+  private getDamageType(effectId: number): string {
+    let damageType = ' UNKNOWN';
+
+    if (effectId === 92) {
+      damageType = 'physiques';
+    } else if (effectId === 93) {
+      damageType = 'magiques';
+    }
+
+    return damageType;
+  }
+
+  protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
+    const monsterArray = accumulatedStats.map(monster => 'les ' + monster);
+    const monsters = FfbeUtils.replaceLastOccurenceInString(monsterArray.join(', '), ',', ' et');
+
+    return `+${currentValue}% de dégâts ${this.damageType} contre ${monsters} ${this.target} pour ${this.numTurns} tour${this.pluralForm}`;
   }
 
   protected get effectName(): string {
