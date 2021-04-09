@@ -129,14 +129,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
-      effect: '[0, 3, 76, [4, 0, 0, 0, 10, 10, 0, 20, 20]]',
-      parsed: '+20% de rés. Lumière, Ténèbres, +10% de rés. Eau, Vent si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
-    },
-    {
-      effect: '[0, 3, 75, [4, 5, 50, 50]]',
-      parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
-    },
-    {
       effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
       parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
     },
