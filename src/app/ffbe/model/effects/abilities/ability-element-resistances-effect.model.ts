@@ -29,7 +29,8 @@ export class AbilityElementResistancesEffect extends SkillEffect {
 
     const statModifier = this.wordEffectJoiningIdenticalValues(this.increases);
     const target = this.wordTarget();
-    const turns = ` pour ${this.numTurns} tour`;
+    const numTurnsText = this.numTurns > 0 ? this.numTurns : 'ce';
+    const turns = ` pour ${numTurnsText} tour`;
     const pluralForm = (this.numTurns > 1) ? 's' : '';
 
     return `${statModifier} ${target}${turns}${pluralForm}`;

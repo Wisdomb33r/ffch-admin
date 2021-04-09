@@ -1,15 +1,15 @@
 import {AbilitySkillEffectFactory} from '../ability-skill-effect.factory';
 
-describe('AbilityElementResistancesParser', () => {
+describe('AbilityElementResistancesEffect', () => {
 
-    it('should parse element resistance increase for caster', () => {
-      // GIVEN
-      const effect = JSON.parse('[0, 3, 33, [30,  0,  0,  0,  0,  0,  0,  0,  1,  3]]');
-      // WHEN
-      const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
-      // THEN
-      expect(s).toEqual('+30% de rés. Feu au lanceur pour 3 tours');
-    });
+  it('should parse element resistance increase for caster', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 33, [30,  0,  0,  0,  0,  0,  0,  0,  1,  3]]');
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('+30% de rés. Feu au lanceur pour 3 tours');
+  });
 
   it('should parse element resistance buffs for an ally', () => {
     // GIVEN
@@ -74,13 +74,21 @@ describe('AbilityElementResistancesParser', () => {
     expect(s).toEqual('-80% de rés. Glace aux adversaires pour 1 tour');
   });
 
-  it('should parse resistance debuffs to all elements for all enemies', () => {
+  it('should parse resistance debuffs to all elements for 2 turns', () => {
     // GIVEN
     const effect = JSON.parse('[2, 1, 33, [-100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  1,  2]]');
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('-100% de rés. aux éléments aux adversaires pour 2 tours');
+  });
+
+  it('should parse resistance debuffs to all elements for this turn only', () => {
+    const effect = JSON.parse('[2, 1, 33, [0,  0,  0,  0,  0,  0,  0,  -120,  1,  0]]');
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('-120% de rés. Ténèbres aux adversaires pour ce tour');
   });
 
 });
