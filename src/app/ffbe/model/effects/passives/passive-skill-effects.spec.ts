@@ -59,6 +59,14 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
     },
     {
+      effect: '[0, 3, 75, [4, 5, 50, 50]]',
+      parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
+    },
+    {
+      effect: '[0, 3, 75, [[8,  9,  15], 10, 100, 100]]',
+      parsed: '+100% de dégâts physiques et magiques contre les pierres si l\'unité porte une <a href="ffexvius_objects.php?categid=29">hache</a>, un <a href="ffexvius_objects.php?categid=13">marteau</a> ou une <a href="ffexvius_objects.php?categid=26">masse</a>'
+    },
+    {
       effect: '[0, 3, 76, [4, 0, 0, 0, 10, 10, 0, 20, 20]]',
       parsed: '+20% de rés. Lumière, Ténèbres, +10% de rés. Eau, Vent si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
     },

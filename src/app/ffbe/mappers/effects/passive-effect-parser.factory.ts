@@ -16,7 +16,6 @@ import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resista
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
-import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
@@ -131,8 +130,6 @@ export class PassiveEffectParserFactory {
         return new PassiveLbUpgradeParser();
       case 73:
         return new PassiveSkillModifierIncreaseParser();
-      case 75:
-        return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 136:
