@@ -39,6 +39,7 @@ import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
 import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
 import {AbilityAccuracyIncreaseEffect} from './abilities/ability-accuracy-increase-effect.model';
 import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
+import {AbilityElementResistancesEffect} from './abilities/ability-element-resistances-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -61,6 +62,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 29:
         return new AbilitySkillRandomEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 33:
+        return new AbilityElementResistancesEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new AbilityDeathInflictionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
