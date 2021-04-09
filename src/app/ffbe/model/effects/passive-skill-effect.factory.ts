@@ -7,6 +7,7 @@ import {PassiveEquipmentStatsDoublehandIncreaseEffect} from './passives/stats/pa
 import {PassiveEquipmentStatsDoublehandGlexIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-glex-increase-effect.model';
 import {PassiveMpCostDecreaseEffect} from './passives/passive-mp-cost-decrease-effect.model';
 import {PassiveElementsResistanceEffect} from './passives/passive-elements-resistance-effect.model';
+import {PassiveEquipmentCategoryElementsResistanceEffect} from './passives/passive-equipment-category-elements-resistance-effect.model';
 import {PassiveAilmentsResistanceEffect} from './passives/passive-ailments-resistance-effect.model';
 import {PassiveKillerDamageIncreaseEffect} from './passives/passive-killer-damage-increase-effect.model';
 import {PassiveEquipmentCategoryKillerDamageIncreaseEffect} from './passives/passive-equipment-category-killer-damage-increase-effect.model';
@@ -50,6 +51,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 75:
         return new PassiveEquipmentCategoryKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 76:
+        return new PassiveEquipmentCategoryElementsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 77:
         return new PassiveMpCostDecreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
