@@ -26,7 +26,7 @@ import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-mul
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
-import {PassiveCounterAttackParser} from './passives/passive-counter-attack.parser';
+import {PassiveCounterAttackParser} from '../../model/effects/passives/passive-counter-attack.parser';
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
