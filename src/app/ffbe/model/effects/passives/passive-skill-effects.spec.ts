@@ -33,9 +33,17 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les humains'
     },
     {
+      effect: '[0, 3, 12, [50, 200, 4]]',
+      parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'
+    },
+    {
       effect: '[1, 3, 13, [25,  25,  0]]',
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
+    },
+    {
+      effect: '[0, 3, 41, [50, 0, 0]]',
+      parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
     },
     {
       effect: '[0, 3, 64, [50, 5]]',
