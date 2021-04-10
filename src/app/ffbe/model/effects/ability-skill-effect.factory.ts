@@ -27,6 +27,7 @@ import {AbilitySkillCooldownEffect} from './abilities/skill/ability-skill-cooldo
 import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-effect.model';
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
+import {AbilityMagIncreaseNextActionEffect} from './abilities/ability-mag-increase-next-action-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
 import {AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect} from './abilities/damage/ability-damage-physical-increased-modifier-enemy-type-effect.model';
 import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-activation-effect.model';
@@ -91,6 +92,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamagePhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 89:
         return new AbilityDebuffsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 90:
+        return new AbilityMagIncreaseNextActionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 92:
       case 93:
         return new AbilityKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);

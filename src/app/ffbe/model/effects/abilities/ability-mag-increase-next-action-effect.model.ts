@@ -6,6 +6,9 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class AbilityMagIncreaseNextActionEffect extends SkillEffect {
 
+  private magIncrease: number;
+  private magIncreaseMax: number;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
@@ -15,12 +18,15 @@ export class AbilityMagIncreaseNextActionEffect extends SkillEffect {
       || targetNumber !== 0 || targetType !== 3 || parameters[2] !== 0) {
       this.parameterError = true;
     } else {
-
+      this.magIncrease = parameters[0];
+      this.magIncreaseMax = parameters[1];
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    const increaseMaxText = this.magIncreaseMax > this.magIncrease ? ` (cumulable, +${this.magIncreaseMax}% max)` : '';
+
+    return `+${this.magIncrease}% MAG pour la prochaine action du lanceur${increaseMaxText}`;
   }
 
   protected get effectName(): string {
