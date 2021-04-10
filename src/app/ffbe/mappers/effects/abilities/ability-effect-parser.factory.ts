@@ -1,7 +1,6 @@
 import {EffectParser} from '../effect-parser';
 import {UnknownEffectParser} from '../unknown-effect-parser';
 import {AbilityStatsModificationParser} from './ability-stats-modification.parser';
-import {AbilityElementResistancesParser} from './ability-element-resistances.parser';
 import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.parser';
 import {AbilityAilmentsRandomInflictionParser} from './ability-ailments-random-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
@@ -87,8 +86,6 @@ export class AbilityEffectParserFactory {
         return new AbilityLbTransferParser();
       case 32:
         return new AbilityEsperOrbsParser();
-      case 33:
-        return new AbilityElementResistancesParser();
       case 34:
         return new AbilityAilmentsRandomInflictionParser();
       case 37:
