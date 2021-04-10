@@ -33,7 +33,10 @@
       <mat-checkbox [(ngModel)]="competence.esper" class="damage-type">Invocateurs</mat-checkbox>
     </p>
 
-    <p *ngIf="competence.effet_fr" [innerHTML]="competence.effet_fr"></p>
+    <div class="competence-effet">
+      <p *ngIf="competence.effet_fr" [innerHTML]="competence.effet_fr"></p>
+      <mat-icon matPrefix *ngIf="competence.parameterWarning">warning_amber</mat-icon>
+    </div>
     <p *ngIf="competence.effet_en" [innerHTML]="competence.effet_en"></p>
 
     <mat-form-field *ngIf="(!present || editable) && !multiLineDisplay">

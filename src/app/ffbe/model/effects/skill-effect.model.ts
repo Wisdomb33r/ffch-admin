@@ -13,6 +13,7 @@ import {FFBE_FRENCH_TABLE_INDEX} from '../../ffbe.constants';
 
 export abstract class SkillEffect extends EffectIdenticalValuesWording {
   protected parameterError = false;
+  protected parameterWarning = false;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -38,6 +39,10 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
 
   public wordBadParameterText(): string {
     return `Effet ${this.effectName} inconnu: Mauvaise liste de paramètres`;
+  }
+
+  public hasParameterWarning(): boolean {
+    return this.parameterWarning;
   }
 
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
