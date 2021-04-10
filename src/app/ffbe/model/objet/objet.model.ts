@@ -72,7 +72,7 @@ export class Objet implements CaracteristiquesContainer {
       ResistancesAlterations.produce(o.resistancesAlterations),
       o.tueurs,
       o.tueurs_m,
-      o.competences);
+      o.competences.map(competence => Competence.produce(competence)));
 
     objet.extended_gumi_id = o.extended_gumi_id;
     objet.prix_vente = o.prix_vente;
