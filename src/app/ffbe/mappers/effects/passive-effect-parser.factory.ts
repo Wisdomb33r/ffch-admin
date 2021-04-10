@@ -16,7 +16,6 @@ import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resista
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
-import {PassiveEquipmentCategoryKillerDamageIncreaseParser} from './passives/passive-equipment-category-killer-damage-increase.parser';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
@@ -36,7 +35,6 @@ import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
 import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
 import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
-import {PassiveEquipmentCategoryElementsResistanceParser} from './passives/passive-equipment-category-elements-resistance.parser';
 import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items-healing-potency-increase.parser';
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
 import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
@@ -132,10 +130,6 @@ export class PassiveEffectParserFactory {
         return new PassiveLbUpgradeParser();
       case 73:
         return new PassiveSkillModifierIncreaseParser();
-      case 75:
-        return new PassiveEquipmentCategoryKillerDamageIncreaseParser();
-      case 76:
-        return new PassiveEquipmentCategoryElementsResistanceParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
       case 136:
