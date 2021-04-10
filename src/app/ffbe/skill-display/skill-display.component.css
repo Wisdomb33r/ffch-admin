@@ -24,3 +24,9 @@ img.element {
 mat-form-field textarea {
   resize: both;
 }
+
+.competenceEffet {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+}

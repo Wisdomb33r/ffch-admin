@@ -54,7 +54,8 @@ export class SkillMapper {
       hitsFramesDamagesObject.hits,
       hitsFramesDamagesObject.frames,
       hitsFramesDamagesObject.damages,
-      SkillMapper.mapElementInflict(skill)
+      SkillMapper.mapElementInflict(skill),
+      skill.hasParameterWarning()
     );
   }
 
