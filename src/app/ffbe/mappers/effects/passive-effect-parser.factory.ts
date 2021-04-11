@@ -26,7 +26,6 @@ import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-mul
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
-import {PassiveCounterAttackParser} from '../../model/effects/passives/passive-counter-attack-effect.model';
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
@@ -56,8 +55,6 @@ export class PassiveEffectParserFactory {
         return new PassiveCoverParser();
       case 9:
         return new PassiveItemsHealingPotencyIncreaseParser();
-      case 12:
-        return new PassiveCounterAttackParser();
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockParser();
       case 16:
@@ -90,8 +87,6 @@ export class PassiveEffectParserFactory {
         return new PassiveLbPerTurnParser();
       case 37:
         return new PassiveGilsRateParser();
-      case 41:
-        return new PassiveCounterAttackParser();
       case 42:
         return new PassiveElementsAbsorbParser();
       case 43:
