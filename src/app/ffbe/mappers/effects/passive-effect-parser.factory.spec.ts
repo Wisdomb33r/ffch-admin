@@ -48,10 +48,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {
-      effect: '[0, 3, 12, [50, 200, 4]]',
-      parsed: '50% de chance de contrer les dégâts physiques par une attaque normale de puissance 200% (max 4 fois par tour)'
-    },
-    {
       effect: '[0, 3, 14, [4, 5, 6]]',
       parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
     },
@@ -83,10 +79,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
-    {
-      effect: '[0, 3, 41, [50, 0, 0]]',
-      parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
-    },
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
