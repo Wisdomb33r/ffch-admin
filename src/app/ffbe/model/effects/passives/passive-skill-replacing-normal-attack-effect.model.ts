@@ -15,9 +15,12 @@ export class PassiveSkillReplacingNormalAttackEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 4 || parameters[1] !== 1 || parameters[2] !== 1 || parameters[3] !== 0) {
+    if (!Array.isArray(parameters) || parameters.length < 4 || parameters[1] !== 1 || parameters[2] !== 1) {
       this.parameterError = true;
     } else {
+      if (parameters[3] !== 0) {
+        this.parameterWarning = true;
+      }
       this.activatedSkillId = parameters[0];
       this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.activatedSkillId);
     }
@@ -32,6 +35,6 @@ export class PassiveSkillReplacingNormalAttackEffect extends SkillEffect {
   }
 
   public getActivatedSkills(): Array<Skill> {
-    return [this.activatedSkill];
+    return this.activatedSkill ? [this.activatedSkill] : [];
   }
 }
