@@ -20,6 +20,10 @@ describe('PassiveSkillEffect', () => {
     },
     {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
     {
+      effect: '[0, 3, 3, [30,  30,  0,  0,  0,  0,  0]]',
+      parsed: '+30% de rés. Feu, Glace'
+    },
+    {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
     },
