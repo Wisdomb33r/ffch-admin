@@ -38,4 +38,17 @@ describe('AbilityDamagePhysicalJumpDelayEffect', () => {
     // THEN
     expect(s).toEqual('Dégâts physiques neutres sautés à activation manuelle de puissance 850% avec délai de 1 tour à un adversaire');
   });
+
+  it('should parse physical elemental timed jump damages with garbage in parameters', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 134, [0,  0,  1,  1,  8800,  "-400|400|0|20%-400|-400|0|20%1040|-400|0|20%1040|300|0|20"]]');
+    const fakeSkill: Skill = new Skill();
+    fakeSkill.element_inflict = undefined;
+    fakeSkill.attack_type = 'Physical';
+    fakeSkill.element_inflict = ['Light'];
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
+    // THEN
+    expect(s).toEqual('Dégâts physiques de Lumière sautés à activation manuelle de puissance 8800% avec délai de 1 tour à un adversaire');
+  });
 });
