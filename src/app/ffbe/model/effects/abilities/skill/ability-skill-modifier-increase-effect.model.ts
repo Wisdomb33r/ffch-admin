@@ -1,6 +1,32 @@
 import {Skill} from '../../../skill.model';
 import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
 import {SkillModifierIncreaseParser} from '../../../../mappers/effects/skill-modifier-increase.parser';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+
+export class AbilitySkillModifierIncreaseEffect extends SkillEffect {
+
+  constructor(protected targetNumber: TargetNumberEnum,
+              protected targetType: TargetTypeEnum,
+              protected effectId: number,
+              protected parameters: Array<any>) {
+    super(targetNumber, targetType, effectId);
+    if (!Array.isArray(parameters) || parameters.length < 5 || parameters[1] !== 0 || parameters[2] !== 0) {
+      this.parameterError = true;
+    } else {
+
+    }
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    return '';
+  }
+
+  protected get effectName(): string {
+    return 'AbilitySkillModifierIncreaseEffect';
+  }
+}
 
 export class AbilitySkillModifierIncreaseParser extends SkillModifierIncreaseParser {
 
