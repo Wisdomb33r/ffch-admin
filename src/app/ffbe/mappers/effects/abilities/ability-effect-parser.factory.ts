@@ -5,7 +5,7 @@ import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.par
 import {AbilityAilmentsRandomInflictionParser} from './ability-ailments-random-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 import {AbilityCountersParser} from './ability-counters.parser';
-import {AbilitySkillModifierIncreaseParser} from '../../../model/effects/abilities/skill/ability-skill-modifier-increase.parser';
+import {AbilitySkillModifierIncreaseParser} from '../../../model/effects/abilities/skill/ability-skill-modifier-increase-effect.model';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
