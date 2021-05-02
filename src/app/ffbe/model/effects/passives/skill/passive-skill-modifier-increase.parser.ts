@@ -1,6 +1,6 @@
-import {Skill} from '../../../model/skill.model';
-import {HTML_LINE_RETURN} from '../skill-effects.mapper';
-import {SkillModifierIncreaseParser} from '../skill-modifier-increase.parser';
+import {Skill} from '../../../skill.model';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {SkillModifierIncreaseParser} from '../../../../mappers/effects/skill-modifier-increase.parser';
 
 export class PassiveSkillModifierIncreaseParser extends SkillModifierIncreaseParser {
 
