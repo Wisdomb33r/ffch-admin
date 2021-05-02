@@ -15,7 +15,7 @@ import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dua
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
-import {PassiveSkillModifierIncreaseParser} from '../../model/effects/passives/skill/passive-skill-modifier-increase.parser';
+import {PassiveSkillModifierIncreaseParser} from '../../model/effects/passives/skill/passive-skill-modifier-increase-effect.model';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
