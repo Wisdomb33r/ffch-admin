@@ -6,8 +6,8 @@ import {
 import {Skill} from '../../../skill.model';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 import {SkillsService} from '../../../../services/skills.service';
-import {PassiveEffectParserFactory} from '../../../../mappers/effects/passive-effect-parser.factory';
 import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
+import {PassiveSkillEffectFactory} from '../../passive-skill-effect.factory';
 
 describe('PassiveSkillModifierIncreaseEffect', () => {
 
@@ -32,7 +32,7 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
     // WHEN
-    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+200% de puissance à <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a>'
       + HTML_LINE_RETURN + '+100% de puissance à <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
@@ -54,7 +54,7 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
     // WHEN
-    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+350% de puissance à <a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
   });
@@ -75,7 +75,7 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
     // WHEN
-    const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a>');
   });

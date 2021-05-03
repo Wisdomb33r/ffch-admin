@@ -1,4 +1,3 @@
-import {AbilityEffectParserFactory} from '../../../../mappers/effects/abilities/ability-effect-parser.factory';
 import {
   ABILITY_SKILLS_NAMES_TEST_DATA,
   ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
@@ -11,8 +10,9 @@ import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
-describe('AbilitySkillModifierIncreaseParser', () => {
+describe('AbilitySkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for caster', () => {
     // GIVEN
@@ -38,7 +38,7 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> au lanceur pour 5 tours (ID #1214)'
       + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> au lanceur pour 5 tours (ID #1214)');
@@ -68,7 +68,7 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+600% de puissance à <a href="ffexvius_skills.php?gumiid=509024">Météore X</a> à un allié pour 5 tours (ID #1214)'
       + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> à un allié pour 5 tours (ID #1214)');
@@ -90,7 +90,7 @@ describe('AbilitySkillModifierIncreaseParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('+1.5x la PSY + 0.3x la MAG de puissance à <a href="ffexvius_skills.php?gumiid=10020">Soin</a> à un allié pour 1 tour (ID #1214)');
   });
