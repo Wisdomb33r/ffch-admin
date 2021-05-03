@@ -6,9 +6,9 @@ import {SkillEffect} from '../../model/effects/skill-effect.model';
 export abstract class SkillModifierIncreaseEffect extends SkillEffect {
   protected modifiedSkillsIncreases: Array<{ name: string, value: number, isHeal: boolean }> = [];
 
-  protected initializeSkillIncreasesValues(effect: Array<any>) {
-    const modifiedSkills = !Array.isArray(effect[3][0]) ? [effect[3][0]] : effect[3][0];
-    const skillModifierIncrease = effect[3][3];
+  protected initializeSkillIncreasesValues(parameters: Array<any>) {
+    const modifiedSkills = !Array.isArray(parameters[0]) ? [parameters[0]] : parameters[0];
+    const skillModifierIncrease = parameters[3];
 
     modifiedSkills.forEach(skillId => {
       const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
@@ -34,10 +34,10 @@ export abstract class SkillModifierIncreaseEffect extends SkillEffect {
     }
     const displayedValue = (currentValue > 0 ? valueText : 'UNKNOWN');
     const skillsText = accumulatedStats.join(', ');
-    return this.wordEffectForSkillModIncrase(displayedValue, percentText, skillsText);
+    return this.wordEffectForSkillModIncrease(displayedValue, percentText, skillsText);
   }
 
-  protected abstract wordEffectForSkillModIncrase(displayedValue: string, percentText: string, skillsText: string);
+  protected abstract wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string);
 }
 
 export abstract class SkillModifierIncreaseParser extends EffectParser {

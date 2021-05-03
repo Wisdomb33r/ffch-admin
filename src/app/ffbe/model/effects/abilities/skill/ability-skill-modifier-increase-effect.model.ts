@@ -24,7 +24,7 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
       this.duration = `pour ${numTurns} tour${pluralForm}`;
       this.target = this.wordTarget();
 
-      this.initializeSkillIncreasesValues([targetNumber, targetType, effectId, parameters]);
+      this.initializeSkillIncreasesValues(parameters);
     }
   }
 
@@ -38,7 +38,7 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     return `${modIncreaseText}${modIncreasesJoiningText}${healingModIncreaseText}`;
   }
 
-  protected wordEffectForSkillModIncrase(displayedValue: string, percentText: string, skillsText: string) {
+  protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
     return `+${displayedValue}${percentText} de puissance à ${skillsText} ${this.target} ${this.duration} (ID #${this.stackId})`;
   }
 

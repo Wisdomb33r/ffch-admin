@@ -14,7 +14,7 @@ export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     if (!Array.isArray(parameters) || parameters.length < 4 || parameters[1] !== 0 || parameters[2] !== 0) {
       this.parameterError = true;
     } else {
-      this.initializeSkillIncreasesValues([targetNumber, targetType, effectId, parameters]);
+      this.initializeSkillIncreasesValues(parameters);
     }
   }
 
@@ -27,7 +27,7 @@ export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     return `${modIncreaseText}${modIncreasesJoiningText}${healingModIncreaseText}`;
   }
 
-  protected wordEffectForSkillModIncrase(displayedValue: string, percentText: string, skillsText: string) {
+  protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
     return `+${displayedValue}${percentText} de puissance à ${skillsText}`;
   }
 
