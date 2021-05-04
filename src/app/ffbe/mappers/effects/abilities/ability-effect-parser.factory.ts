@@ -5,7 +5,6 @@ import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.par
 import {AbilityAilmentsRandomInflictionParser} from './ability-ailments-random-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 import {AbilityCountersParser} from './ability-counters.parser';
-import {AbilitySkillModifierIncreaseParser} from '../../../model/effects/abilities/skill/ability-skill-modifier-increase-effect.model';
 import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
@@ -158,8 +157,6 @@ export class AbilityEffectParserFactory {
         return new AbilityBarriersParser();
       case 133:
         return new AbilityDebuffsStealParser();
-      case 136:
-        return new AbilitySkillModifierIncreaseParser();
       case 1005:
         return new AbilityCopyEffectsParser();
       case 1006:

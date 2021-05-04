@@ -15,7 +15,6 @@ import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dua
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
-import {PassiveSkillModifierIncreaseParser} from '../../model/effects/passives/skill/passive-skill-modifier-increase-effect.model';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
@@ -123,12 +122,8 @@ export class PassiveEffectParserFactory {
         return new PassiveLbDamageIncreaseParser();
       case 72:
         return new PassiveLbUpgradeParser();
-      case 73:
-        return new PassiveSkillModifierIncreaseParser();
       case 80:
         return new PassiveLbUpgradeHpThresholdParser();
-      case 136:
-        return new PassiveSkillModifierIncreaseParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
       case 10004:
