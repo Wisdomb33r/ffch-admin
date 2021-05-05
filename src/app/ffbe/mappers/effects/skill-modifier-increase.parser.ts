@@ -2,6 +2,7 @@ import {EffectParser} from './effect-parser';
 import {Skill} from '../../model/skill.model';
 import {SkillsService} from '../../services/skills.service';
 import {SkillEffect} from '../../model/effects/skill-effect.model';
+import {HTML_LINE_RETURN} from './skill-effects.mapper';
 
 export abstract class SkillModifierIncreaseEffect extends SkillEffect {
   protected modifiedSkillsIncreases: Array<{ name: string, value: number, isHeal: boolean }> = [];
@@ -20,6 +21,15 @@ export abstract class SkillModifierIncreaseEffect extends SkillEffect {
         isHeal: modIncrease === 0 && healingModIncrease > 0,
       });
     });
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    const modIncreaseText = this.wordEffectJoiningIdenticalValues(
+      this.modifiedSkillsIncreases.filter(increase => !increase.isHeal), HTML_LINE_RETURN, true);
+    const healingModIncreaseText = this.wordEffectJoiningIdenticalValues(
+      this.modifiedSkillsIncreases.filter(increase => increase.isHeal), HTML_LINE_RETURN, true);
+    const modIncreasesJoiningText = modIncreaseText.length && healingModIncreaseText.length ? HTML_LINE_RETURN : '';
+    return `${modIncreaseText}${modIncreasesJoiningText}${healingModIncreaseText}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

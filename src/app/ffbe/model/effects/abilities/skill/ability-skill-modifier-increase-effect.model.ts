@@ -1,5 +1,3 @@
-import {Skill} from '../../../skill.model';
-import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
 import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-modifier-increase.parser';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
@@ -26,16 +24,6 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
 
       this.initializeSkillIncreasesValues(parameters);
     }
-  }
-
-  protected wordEffectImpl(skill: Skill): string {
-
-    const modIncreaseText = this.wordEffectJoiningIdenticalValues(
-      this.modifiedSkillsIncreases.filter(increase => !increase.isHeal), HTML_LINE_RETURN, true);
-    const healingModIncreaseText = this.wordEffectJoiningIdenticalValues(
-      this.modifiedSkillsIncreases.filter(increase => increase.isHeal), HTML_LINE_RETURN, true);
-    const modIncreasesJoiningText = modIncreaseText.length && healingModIncreaseText.length ? HTML_LINE_RETURN : '';
-    return `${modIncreaseText}${modIncreasesJoiningText}${healingModIncreaseText}`;
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
