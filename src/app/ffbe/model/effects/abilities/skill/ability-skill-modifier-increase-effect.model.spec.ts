@@ -74,6 +74,17 @@ describe('AbilitySkillModifierIncreaseEffect', () => {
       + HTML_LINE_RETURN + '+400% de puissance à <a href="ffexvius_skills.php?gumiid=20430">Météore</a> à un allié pour 5 tours (ID #1214)');
   });
 
+
+  it('should parse general physical skill modifier increase for all allies', () => {
+    // GIVEN
+    const effect = JSON.parse('[2, 2, 136, [0,  1,  0,  1000,  6,  1,  111289,  0]]');
+
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('+1000% de puissance aux attaques physiques hors limites aux alliés pour 6 tours (ID #111289)');
+  });
+
   it('should parse skill modifier increase for healing', () => {
     // GIVEN
     const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);

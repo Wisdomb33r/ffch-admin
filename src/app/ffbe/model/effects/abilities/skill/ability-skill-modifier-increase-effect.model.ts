@@ -13,11 +13,11 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 5 || parameters[1] !== 0 || parameters[2] !== 0) {
+    if (!Array.isArray(parameters) || parameters.length < 5) {
       this.parameterError = true;
     } else {
       this.stackId = parameters.length >= 7 ? parameters[6] : 0;
-      const numTurns =  parameters[4] >= 0 ? parameters[4] : 9999;
+      const numTurns = parameters[4] >= 0 ? parameters[4] : 9999;
       const pluralForm = numTurns > 1 ? 's' : '';
       this.duration = `pour ${numTurns} tour${pluralForm}`;
       this.target = this.wordTarget();
@@ -27,7 +27,8 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
-    return `+${displayedValue}${percentText} de puissance à ${skillsText} ${this.target} ${this.duration} (ID #${this.stackId})`;
+    const preposition = this.isGeneralPhysicalModIncrease ? 'aux' : 'à';
+    return `+${displayedValue}${percentText} de puissance ${preposition} ${skillsText} ${this.target} ${this.duration} (ID #${this.stackId})`;
   }
 
   protected get effectName(): string {

@@ -9,7 +9,7 @@ export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEff
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 4 || parameters[1] !== 0 || parameters[2] !== 0) {
+    if (!Array.isArray(parameters) || parameters.length < 4) {
       this.parameterError = true;
     } else {
       this.initializeSkillIncreasesValues(parameters);
