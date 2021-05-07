@@ -4,8 +4,7 @@ import {TargetTypeEnum} from '../../target-type.enum';
 
 export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEffect {
 
-  private duration: string;
-  private target: string;
+  private numTurns: number;
   private stackId: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
@@ -16,19 +15,18 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     if (!Array.isArray(parameters) || parameters.length < 5) {
       this.parameterError = true;
     } else {
+      this.numTurns = parameters[4] >= 0 ? parameters[4] : 9999;
       this.stackId = parameters.length >= 7 ? parameters[6] : 0;
-      const numTurns = parameters[4] >= 0 ? parameters[4] : 9999;
-      const pluralForm = numTurns > 1 ? 's' : '';
-      this.duration = `pour ${numTurns} tour${pluralForm}`;
-      this.target = this.wordTarget();
 
       this.initializeSkillIncreasesValues(parameters);
     }
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
+    const pluralForm = this.numTurns > 1 ? 's' : '';
+    const duration = `pour ${this.numTurns} tour${pluralForm}`;
     const preposition = this.isGeneralPhysicalModIncrease ? 'aux' : 'à';
-    return `+${displayedValue}${percentText} de puissance ${preposition} ${skillsText} ${this.target} ${this.duration} (ID #${this.stackId})`;
+    return `+${displayedValue}${percentText} de puissance ${preposition} ${skillsText} ${this.wordTarget()} ${duration} (ID #${this.stackId})`;
   }
 
   protected get effectName(): string {
