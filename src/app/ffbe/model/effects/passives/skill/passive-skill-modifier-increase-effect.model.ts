@@ -1,4 +1,4 @@
-import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-modifier-increase.parser';
+import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-modifier-increase-effect.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 
