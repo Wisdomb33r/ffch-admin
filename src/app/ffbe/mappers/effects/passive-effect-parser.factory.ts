@@ -16,7 +16,6 @@ import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-in
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
-import {PassiveEsperStatsIncreaseParser} from '../../model/effects/passives/esper/passive-esper-stats-increase-effect.model';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
@@ -109,8 +108,6 @@ export class PassiveEffectParserFactory {
         return new PassiveDebuffsResistanceParser();
       case 59:
         return new PassiveCoverParser();
-      case 63:
-        return new PassiveEsperStatsIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
       case 68:

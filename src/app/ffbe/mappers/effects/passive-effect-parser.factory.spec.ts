@@ -104,18 +104,6 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
-    {
-      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
-      parsed: '+10% aux caractéristiques obtenues par la chimère'
-    },
-    {
-      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 5]]',
-      parsed: '+10% aux caractéristiques obtenues par la chimère <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
-    },
-    {
-      effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
-      parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
-    },
     {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
