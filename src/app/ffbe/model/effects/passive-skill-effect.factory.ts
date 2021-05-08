@@ -22,6 +22,7 @@ import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-
 import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
 import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-replacing-normal-attack-effect.model';
+import {PassiveEsperGroupSummonEffect} from './passives/esper/passive-esper-group-summon-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -49,6 +50,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 56:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 61:
+        return new PassiveEsperGroupSummonEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 64:
         return new PassiveEsperSummonDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 69:

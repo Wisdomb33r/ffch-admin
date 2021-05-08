@@ -58,6 +58,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
+    {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
     {
       effect: '[0, 3, 64, [50, 5]]',
       parsed: '+50% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
