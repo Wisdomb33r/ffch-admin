@@ -11,6 +11,7 @@ import {PassiveEquipmentCategoryElementsResistanceEffect} from './passives/passi
 import {PassiveAilmentsResistanceEffect} from './passives/passive-ailments-resistance-effect.model';
 import {PassiveKillerDamageIncreaseEffect} from './passives/passive-killer-damage-increase-effect.model';
 import {PassiveEquipmentCategoryKillerDamageIncreaseEffect} from './passives/passive-equipment-category-killer-damage-increase-effect.model';
+import {PassiveJumpDamageIncreaseEffect} from './passives/passive-jump-damage-increase-effect.model';
 import {PassiveSkillBattleStartActivationEffect} from './passives/skill/passive-skill-battle-start-activation-effect.model';
 import {PassiveCounterAttackEffect} from './passives/passive-counter-attack-effect.model';
 import {PassiveSkillCounterAttackActivationEffect} from './passives/skill/passive-skill-counter-attack-activation-effect.model';
@@ -21,7 +22,6 @@ import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-
 import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
 import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-replacing-normal-attack-effect.model';
-import {PassiveJumpDamageIncreaseEffect} from './passives/passive-jump-damage-increase-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
