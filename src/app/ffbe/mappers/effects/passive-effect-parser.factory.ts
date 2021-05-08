@@ -14,7 +14,7 @@ import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
-import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
+import {PassiveJumpDamageIncreaseParser} from '../../model/effects/passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
 import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
