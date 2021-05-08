@@ -1,6 +1,5 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
-import {PassiveEsperDamageIncreaseParser} from '../../model/effects/passives/esper/passive-esper-damage-increase-effect.model';
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
@@ -67,8 +66,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 21:
-        return new PassiveEsperDamageIncreaseParser();
       case 22:
         return new PassiveEvasionPhysicalParser();
       case 24:
