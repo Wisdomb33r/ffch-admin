@@ -104,7 +104,6 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
-    {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
     {
       effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
       parsed: '+10% aux caractéristiques obtenues par la chimère'
