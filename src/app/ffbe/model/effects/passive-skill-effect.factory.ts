@@ -14,6 +14,7 @@ import {PassiveEquipmentCategoryKillerDamageIncreaseEffect} from './passives/pas
 import {PassiveSkillBattleStartActivationEffect} from './passives/skill/passive-skill-battle-start-activation-effect.model';
 import {PassiveCounterAttackEffect} from './passives/passive-counter-attack-effect.model';
 import {PassiveSkillCounterAttackActivationEffect} from './passives/skill/passive-skill-counter-attack-activation-effect.model';
+import {PassiveEsperDamageIncreaseEffect} from './passives/esper/passive-esper-damage-increase-effect.model';
 import {PassiveEsperSummonDamageIncreaseEffect} from './passives/esper/passive-esper-summon-damage-increase-effect.model';
 import {PassiveEquipmentStatsIncreaseEffect} from './passives/stats/passive-equipment-stats-increase-effect.model';
 import {PassiveEquipmentStatsDoublehandShieldIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-shield-increase-effect.model';
@@ -37,6 +38,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 21:
+        return new PassiveEsperDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
