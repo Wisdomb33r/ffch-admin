@@ -6,6 +6,8 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class PassiveJumpDamageIncreaseEffect extends SkillEffect {
 
+  private increase: number;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
@@ -14,11 +16,12 @@ export class PassiveJumpDamageIncreaseEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
+      this.increase = parameters[0];
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    return `+${this.increase}% aux dégâts des sauts`;
   }
 
   protected get effectName(): string {
