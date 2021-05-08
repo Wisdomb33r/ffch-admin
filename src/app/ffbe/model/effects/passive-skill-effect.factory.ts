@@ -21,6 +21,7 @@ import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-
 import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
 import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-replacing-normal-attack-effect.model';
+import {PassiveJumpDamageIncreaseEffect} from './passives/passive-jump-damage-increase-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -37,6 +38,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 17:
+        return new PassiveJumpDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:

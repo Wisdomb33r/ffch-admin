@@ -49,6 +49,7 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
+    {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {
       effect: '[0, 3, 41, [50, 0, 0]]',
       parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
