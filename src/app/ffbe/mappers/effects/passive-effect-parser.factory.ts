@@ -8,7 +8,6 @@ import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveLbPerTurnParser} from '../../model/effects/passives/limitburst/passive-lb-per-turn-effect.model';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
-import {PassiveLbDamageIncreaseParser} from '../../model/effects/passives/limitburst/passive-lb-damage-increase-effect.model';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveLbSpeedIncreaseParser} from '../../model/effects/passives/limitburst/passive-lb-speed-increase-effect.model';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
@@ -119,8 +118,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEsperStatsIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
-      case 68:
-        return new PassiveLbDamageIncreaseParser();
       case 72:
         return new PassiveLbUpgradeParser();
       case 73:

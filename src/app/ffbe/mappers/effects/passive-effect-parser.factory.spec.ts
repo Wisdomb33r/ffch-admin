@@ -118,7 +118,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
       parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
     },
-    {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
       effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
