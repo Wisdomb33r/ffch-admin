@@ -20,6 +20,7 @@ import {PassiveEquipmentStatsDoublehandShieldIncreaseEffect} from './passives/st
 import {PassiveLbDamageIncreaseEffect} from './passives/limitburst/passive-lb-damage-increase-effect.model';
 import {PassiveLbPerTurnEffect} from './passives/limitburst/passive-lb-per-turn-effect.model';
 import {PassiveLbSpeedIncreaseEffect} from './passives/limitburst/passive-lb-speed-increase-effect.model';
+import {PassiveLbUpgradeEffect} from './passives/limitburst/passive-lb-upgrade-effect.model';
 import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-modifier-limit-increase-effect.model';
 import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
@@ -61,6 +62,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDualwieldIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 70:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 72:
+        return new PassiveLbUpgradeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 74:
         return new PassiveEquipmentStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 75:

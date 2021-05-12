@@ -14,12 +14,14 @@ export class PassiveLbUpgradeEffect extends SkillEffect {
     if (!Array.isArray(parameters)) {
       this.parameterError = true;
     } else {
-
+      if (parameters.length < 1) {
+        this.parameterWarning = true;
+      }
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    return 'Améliore la limite de l\'unité';
   }
 
   protected get effectName(): string {

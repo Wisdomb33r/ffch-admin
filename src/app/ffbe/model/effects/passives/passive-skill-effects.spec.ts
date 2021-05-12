@@ -82,6 +82,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 70, [25,  0,  2]]',
       parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
     },
+    {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
       effect: '[0, 3, 75, [4, 5, 50, 50]]',
       parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
