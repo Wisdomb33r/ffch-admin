@@ -8,7 +8,6 @@ import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
-import {PassiveLbSpeedIncreaseParser} from '../../model/effects/passives/limitburst/passive-lb-speed-increase-effect.model';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
@@ -77,8 +76,6 @@ export class PassiveEffectParserFactory {
         return new PassiveExplorationStepRegenParser();
       case 30:
         return new PassiveMpAbsorbParser();
-      case 31:
-        return new PassiveLbSpeedIncreaseParser();
       case 32:
         return new PassiveMpRecoveryParser();
       case 37:
