@@ -6,7 +6,6 @@ import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-in
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveLbPerTurnParser} from '../../model/effects/passives/limitburst/passive-lb-per-turn-effect.model';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveLbSpeedIncreaseParser} from '../../model/effects/passives/limitburst/passive-lb-speed-increase-effect.model';
@@ -82,8 +81,6 @@ export class PassiveEffectParserFactory {
         return new PassiveLbSpeedIncreaseParser();
       case 32:
         return new PassiveMpRecoveryParser();
-      case 33:
-        return new PassiveLbPerTurnParser();
       case 37:
         return new PassiveGilsRateParser();
       case 42:
