@@ -6,20 +6,22 @@ import {TargetTypeEnum} from '../../target-type.enum';
 
 export class PassiveLbDamageIncreaseEffect extends SkillEffect {
 
+  private increase: number;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters)) {
+    if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
-
+      this.increase = parameters[0];
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    return `+${this.increase}% aux dégâts de la limite`;
   }
 
   protected get effectName(): string {
