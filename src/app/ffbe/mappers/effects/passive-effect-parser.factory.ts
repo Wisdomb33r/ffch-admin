@@ -13,7 +13,6 @@ import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resista
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
-import {PassiveLbUpgradeParser} from '../../model/effects/passives/limitburst/passive-lb-upgrade-effect.model';
 import {PassiveLbUpgradeHpThresholdParser} from '../../model/effects/passives/limitburst/passive-lb-upgrade-hp-threshold-effect.model';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
@@ -112,8 +111,6 @@ export class PassiveEffectParserFactory {
         return new PassiveEsperStatsIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
-      case 72:
-        return new PassiveLbUpgradeParser();
       case 73:
         return new PassiveSkillModifierIncreaseParser();
       case 80:
