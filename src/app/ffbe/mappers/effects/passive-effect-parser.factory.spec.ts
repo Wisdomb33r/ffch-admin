@@ -116,10 +116,6 @@ describe('PassiveEffectParser', () => {
       parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
     },
     {
-      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
-      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
-    },
-    {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
       parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
     },
