@@ -21,6 +21,7 @@ import {PassiveLbDamageIncreaseEffect} from './passives/limitburst/passive-lb-da
 import {PassiveLbPerTurnEffect} from './passives/limitburst/passive-lb-per-turn-effect.model';
 import {PassiveLbSpeedIncreaseEffect} from './passives/limitburst/passive-lb-speed-increase-effect.model';
 import {PassiveLbUpgradeEffect} from './passives/limitburst/passive-lb-upgrade-effect.model';
+import {PassiveLbUpgradeHpThresholdEffect} from './passives/limitburst/passive-lb-upgrade-hp-threshold-effect.model';
 import {PassiveChainModifierLimitIncreaseEffect} from './passives/passive-chain-modifier-limit-increase-effect.model';
 import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passives/passive-chain-modifier-limit-while-dual-wielding-increase-effect.model';
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
@@ -72,6 +73,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentCategoryElementsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 77:
         return new PassiveMpCostDecreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 80:
+        return new PassiveLbUpgradeHpThresholdEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new PassiveChainModifierLimitWhileDualWieldingIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 84:

@@ -102,6 +102,18 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 77, [10, 1, 0]]', parsed: '-10% de PM consommés'},
     {effect: '[0, 3, 77, [30,  1,  4]]', parsed: '-30% de PM consommés'},
     {
+      effect: '[0, 3, 80, [123456, 0, 15, 0, 0]]',
+      parsed: 'Améliore la limite de l\'unité quand les PV passent sous 15%'
+    },
+    {
+      effect: '[0, 3, 80, [123456, 0, 20, 0, 1]]',
+      parsed: 'Améliore la limite de l\'unité pour 1 tour quand les PV passent sous 20%'
+    },
+    {
+      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
+      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
+    },
+    {
       effect: '[0,3,81,["n\'importe quoi"]]',
       parsed: '+200% au coefficient multiplicateur maximal de la chaîne de combo si l\'unité porte deux armes'
     },
