@@ -100,7 +100,6 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
-    },
     {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
       parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
