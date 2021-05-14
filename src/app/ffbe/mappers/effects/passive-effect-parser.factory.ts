@@ -6,17 +6,12 @@ import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-in
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveLbPerTurnParser} from './passives/passive-lb-per-turn.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
-import {PassiveLbDamageIncreaseParser} from './passives/passive-lb-damage-increase.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
-import {PassiveLbSpeedIncreaseParser} from './passives/passive-lb-speed-increase.parser';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
-import {PassiveLbUpgradeParser} from './passives/passive-lb-upgrade.parser';
-import {PassiveLbUpgradeHpThresholdParser} from './passives/passive-lb-upgrade-hp-threshold.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
@@ -76,12 +71,8 @@ export class PassiveEffectParserFactory {
         return new PassiveExplorationStepRegenParser();
       case 30:
         return new PassiveMpAbsorbParser();
-      case 31:
-        return new PassiveLbSpeedIncreaseParser();
       case 32:
         return new PassiveMpRecoveryParser();
-      case 33:
-        return new PassiveLbPerTurnParser();
       case 37:
         return new PassiveGilsRateParser();
       case 42:
@@ -116,14 +107,8 @@ export class PassiveEffectParserFactory {
         return new PassiveEsperStatsIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
-      case 68:
-        return new PassiveLbDamageIncreaseParser();
-      case 72:
-        return new PassiveLbUpgradeParser();
       case 73:
         return new PassiveSkillModifierIncreaseParser();
-      case 80:
-        return new PassiveLbUpgradeHpThresholdParser();
       case 136:
         return new PassiveSkillModifierIncreaseParser();
       case 10002:

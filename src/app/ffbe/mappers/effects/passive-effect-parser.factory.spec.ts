@@ -72,11 +72,8 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 30, [50]]',
       parsed: 'Absorbe 50% des PM utilisés par l\'adversaire lors de dégâts magiques encaissés'
     },
-    {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
-    {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
-    {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
@@ -116,12 +113,6 @@ describe('PassiveEffectParser', () => {
     {
       effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
       parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
-    },
-    {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
-    {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
-    {
-      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
-      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
     },
     {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
