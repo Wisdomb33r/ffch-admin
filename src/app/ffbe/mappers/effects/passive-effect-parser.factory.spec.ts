@@ -53,7 +53,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
-    {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {
       effect: '[0, 3, 18, [1,  1,  1,  1,  1,  1,  1,  1]]',
       parsed: 'Soigne toutes les altérations au lanceur après le combat'
@@ -72,11 +71,8 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 30, [50]]',
       parsed: 'Absorbe 50% des PM utilisés par l\'adversaire lors de dégâts magiques encaissés'
     },
-    {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
-    {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
-    {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
@@ -104,11 +100,6 @@ describe('PassiveEffectParser', () => {
       effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
-    {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
-    {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
-    {
-      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
-      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
     },
     {
       effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
