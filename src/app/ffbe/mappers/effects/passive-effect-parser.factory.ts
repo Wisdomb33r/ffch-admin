@@ -11,7 +11,6 @@ import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
 import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
-import {PassiveJumpDamageIncreaseParser} from './passives/passive-jump-damage-increase.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
@@ -54,8 +53,6 @@ export class PassiveEffectParserFactory {
         return new PassiveDualWieldWeaponCategoryUnlockParser();
       case 16:
         return new PassiveItemsStealRateParser();
-      case 17:
-        return new PassiveJumpDamageIncreaseParser();
       case 18:
         return new PassiveAilmentsCureAfterBattleParser();
       case 19:
