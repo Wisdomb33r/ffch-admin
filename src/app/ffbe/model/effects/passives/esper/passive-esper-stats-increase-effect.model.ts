@@ -34,9 +34,9 @@ export class PassiveEsperStatsIncreaseEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     const esper = FFBE_ESPERS.find(e => e.gumiId === this.esperId);
-
-    return this.wordEffectJoiningIdenticalValues(this.increases) + ' obtenues par la chimère'
-      + (this.esperId > 0 ? ' ' + SkillEffect.getEsperLink(esper) : '');
+    const increaseText = this.wordEffectJoiningIdenticalValues(this.increases);
+    const esperText = this.esperId > 0 ? ` ${SkillEffect.getEsperLink(esper)}` : '';
+    return `${increaseText} obtenues par la chimère${esperText}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
