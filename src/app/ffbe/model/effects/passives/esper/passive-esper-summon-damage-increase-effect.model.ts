@@ -1,10 +1,10 @@
-import {Skill} from '../../skill.model';
-import {FFBE_ESPERS} from '../../../ffbe.constants';
-import {FfbeUtils} from '../../../utils/ffbe-utils';
-import {SkillEffect} from '../skill-effect.model';
-import {TargetNumberEnum} from '../target-number.enum';
-import {TargetTypeEnum} from '../target-type.enum';
-import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
+import {Skill} from '../../../skill.model';
+import {FFBE_ESPERS} from '../../../../ffbe.constants';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
 
 export class PassiveEsperSummonDamageIncreaseEffect extends SkillEffect {
 

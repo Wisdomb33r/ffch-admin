@@ -50,6 +50,7 @@ describe('PassiveSkillEffect', () => {
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
+    {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
@@ -60,6 +61,20 @@ describe('PassiveSkillEffect', () => {
     {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
+    },
+    {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
+
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère'
+    },
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 5]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
+    },
+    {
+      effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
+      parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
     },
     {
       effect: '[0, 3, 64, [50, 5]]',

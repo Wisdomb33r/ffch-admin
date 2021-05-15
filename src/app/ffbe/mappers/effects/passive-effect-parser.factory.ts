@@ -1,6 +1,5 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
-import {PassiveEsperDamageIncreaseParser} from './passives/passive-esper-damage-increase.parser';
 import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
@@ -10,9 +9,7 @@ import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
-import {PassiveEsperGroupSummonParser} from './passives/passive-esper-group-summon.parser';
 import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
-import {PassiveEsperStatsIncreaseParser} from './passives/passive-esper-stats-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
@@ -59,8 +56,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 21:
-        return new PassiveEsperDamageIncreaseParser();
       case 22:
         return new PassiveEvasionPhysicalParser();
       case 24:
@@ -101,10 +96,6 @@ export class PassiveEffectParserFactory {
         return new PassiveDebuffsResistanceParser();
       case 59:
         return new PassiveCoverParser();
-      case 61:
-        return new PassiveEsperGroupSummonParser();
-      case 63:
-        return new PassiveEsperStatsIncreaseParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
       case 73:
