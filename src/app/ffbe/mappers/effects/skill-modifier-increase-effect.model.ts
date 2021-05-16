@@ -6,7 +6,6 @@ import {HTML_LINE_RETURN} from './skill-effects.mapper';
 
 export abstract class SkillModifierIncreaseEffect extends SkillEffect {
   protected modifiedSkillsIncreases: Array<{ name: string, value: number, isHeal: boolean }> = [];
-  protected isGeneralPhysicalModIncrease = false;
 
   protected initializeSkillIncreasesValues(parameters: Array<any>) {
     if (parameters[1] !== 0 || parameters[2] !== 0) {
@@ -14,28 +13,18 @@ export abstract class SkillModifierIncreaseEffect extends SkillEffect {
     }
 
     const skillModifierIncrease = parameters[3];
+    const modifiedSkills = !Array.isArray(parameters[0]) ? [parameters[0]] : parameters[0];
 
-    if (!Array.isArray(parameters[0]) && parameters[0] === 0) {
-      this.isGeneralPhysicalModIncrease = true;
+    modifiedSkills.forEach(skillId => {
+      const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
+      const modIncrease = !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(skillModifierIncrease);
+      const healingModIncrease = !activatedSkill ? 0 : activatedSkill.calculateHealingTotalModIncrease(skillModifierIncrease);
       this.modifiedSkillsIncreases.push({
-        name: 'attaques physiques hors limites',
-        value: skillModifierIncrease,
-        isHeal: false
+        name: EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill),
+        value: modIncrease > 0 ? modIncrease : healingModIncrease,
+        isHeal: modIncrease === 0 && healingModIncrease > 0,
       });
-    } else {
-      const modifiedSkills = !Array.isArray(parameters[0]) ? [parameters[0]] : parameters[0];
-
-      modifiedSkills.forEach(skillId => {
-        const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
-        const modIncrease = !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(skillModifierIncrease);
-        const healingModIncrease = !activatedSkill ? 0 : activatedSkill.calculateHealingTotalModIncrease(skillModifierIncrease);
-        this.modifiedSkillsIncreases.push({
-          name: EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill),
-          value: modIncrease > 0 ? modIncrease : healingModIncrease,
-          isHeal: modIncrease === 0 && healingModIncrease > 0,
-        });
-      });
-    }
+    });
   }
 
   protected wordEffectImpl(skill: Skill): string {

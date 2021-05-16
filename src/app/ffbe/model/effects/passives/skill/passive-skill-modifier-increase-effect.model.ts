@@ -1,6 +1,7 @@
 import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-modifier-increase-effect.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
+import {Skill} from '../../../skill.model';
 
 export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEffect {
 
@@ -12,8 +13,13 @@ export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     if (!Array.isArray(parameters) || parameters.length < 4) {
       this.parameterError = true;
     } else {
-      this.initializeSkillIncreasesValues(parameters);
     }
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    this.initializeSkillIncreasesValues(this.parameters);
+
+    return super.wordEffectImpl(skill);
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {

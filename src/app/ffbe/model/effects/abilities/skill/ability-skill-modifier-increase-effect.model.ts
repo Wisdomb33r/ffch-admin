@@ -1,11 +1,13 @@
 import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-modifier-increase-effect.model';
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
+import {Skill} from '../../../skill.model';
 
 export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEffect {
 
   private numTurns: number;
   private stackId: number;
+  private isGeneralPhysicalModIncrease = false;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -17,9 +19,21 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     } else {
       this.numTurns = parameters[4] >= 0 ? parameters[4] : 9999;
       this.stackId = parameters.length >= 7 ? parameters[6] : 0;
-
-      this.initializeSkillIncreasesValues(parameters);
     }
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    if (!Array.isArray(this.parameters[0]) && this.parameters[0] === 0) {
+      this.isGeneralPhysicalModIncrease = true;
+      const skillModifierIncrease = this.parameters[3];
+      const displayedValue = (skillModifierIncrease > 0 ? skillModifierIncrease : 'UNKNOWN');
+
+      return this.wordEffectForSkillModIncrease(displayedValue, '%', 'attaques physiques hors limites');
+    }
+
+    this.initializeSkillIncreasesValues(this.parameters);
+
+    return super.wordEffectImpl(skill);
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
