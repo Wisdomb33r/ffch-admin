@@ -2,12 +2,12 @@ import {SkillModifierIncreaseEffect} from '../../../../mappers/effects/skill-mod
 import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {Skill} from '../../../skill.model';
+import {TargetPrepositionEnum} from '../../target-preposition.enum';
 
 export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEffect {
 
   private numTurns: number;
   private stackId: number;
-  private isGeneralPhysicalModIncrease = false;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -24,23 +24,21 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
 
   protected wordEffectImpl(skill: Skill): string {
     if (!Array.isArray(this.parameters[0]) && this.parameters[0] === 0) {
-      this.isGeneralPhysicalModIncrease = true;
       const skillModifierIncrease = this.parameters[3];
       const displayedValue = (skillModifierIncrease > 0 ? skillModifierIncrease : 'UNKNOWN');
-
-      return this.wordEffectForSkillModIncrease(displayedValue, '%', 'attaques physiques hors limites');
+      const pluralForm = this.numTurns > 1 ? 's' : '';
+      const duration = `pour ${this.numTurns} tour${pluralForm}`;
+      return `+${displayedValue}% de puissance aux attaques physiques (sauf les limites) ${this.wordTarget(TargetPrepositionEnum.De)} ${duration} (ID #${this.stackId})`;
+    } else {
+      this.initializeSkillIncreasesValues(this.parameters);
+      return super.wordEffectImpl(skill);
     }
-
-    this.initializeSkillIncreasesValues(this.parameters);
-
-    return super.wordEffectImpl(skill);
   }
 
   protected wordEffectForSkillModIncrease(displayedValue: string, percentText: string, skillsText: string) {
     const pluralForm = this.numTurns > 1 ? 's' : '';
     const duration = `pour ${this.numTurns} tour${pluralForm}`;
-    const preposition = this.isGeneralPhysicalModIncrease ? 'aux' : 'à';
-    return `+${displayedValue}${percentText} de puissance ${preposition} ${skillsText} ${this.wordTarget()} ${duration} (ID #${this.stackId})`;
+    return `+${displayedValue}${percentText} de puissance à ${skillsText} ${this.wordTarget()} ${duration} (ID #${this.stackId})`;
   }
 
   protected get effectName(): string {

@@ -82,7 +82,17 @@ describe('AbilitySkillModifierIncreaseEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+1000% de puissance aux attaques physiques hors limites aux alliés pour 6 tours (ID #111289)');
+    expect(s).toEqual('+1000% de puissance aux attaques physiques (sauf les limites) des alliés pour 6 tours (ID #111289)');
+  });
+
+  it('should parse general physical skill modifier increase for caster', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 136, [0,  1,  0,  1000,  1,  1,  111288,  0]]');
+
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('+1000% de puissance aux attaques physiques (sauf les limites) du lanceur pour 1 tour (ID #111288)');
   });
 
   it('should parse skill modifier increase for healing', () => {
