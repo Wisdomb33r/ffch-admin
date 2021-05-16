@@ -49,6 +49,11 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
+    {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
+    {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
+    {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
+    {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
+    {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {
       effect: '[0, 3, 41, [50, 0, 0]]',
       parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
@@ -56,6 +61,20 @@ describe('PassiveSkillEffect', () => {
     {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
+    },
+    {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
+
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère'
+    },
+    {
+      effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 5]]',
+      parsed: '+10% aux caractéristiques obtenues par la chimère <a href="ffexvius_espers.php?esperid=6">Diabolos</a>'
+    },
+    {
+      effect: '[0, 3, 63, [20, 20, 20, 30, 30, 30, 555]]',
+      parsed: '+30% PV/PM/PSY, +20% ATT/DÉF/MAG obtenues par la chimère UNKNOWN esper'
     },
     {
       effect: '[0, 3, 64, [50, 5]]',
@@ -73,11 +92,13 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 64, [30,  [5, 7, 13]]]',
       parsed: '+30% de dégâts lors de l\'invocation de <a href="ffexvius_espers.php?esperid=6">Diabolos</a>, <a href="ffexvius_espers.php?esperid=5">Ramuh</a> et <a href="ffexvius_espers.php?esperid=16">Alexandre</a>'
     },
+    {effect: '[0, 3, 68, [50]]', parsed: '+50% aux dégâts de la limite'},
     {effect: '[0, 3, 69, [2, 50]]', parsed: '+50% à la DÉF de l\'équipement si l\'unité porte deux armes (TDW)'},
     {
       effect: '[0, 3, 70, [25,  0,  2]]',
       parsed: '+25% à la MAG de l\'équipement si l\'unité porte une seule arme (TDH)'
     },
+    {effect: '[0, 3, 72, [123456]]', parsed: 'Améliore la limite de l\'unité'},
     {
       effect: '[0, 3, 75, [4, 5, 50, 50]]',
       parsed: '+50% de dégâts physiques et magiques contre les humains si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
@@ -96,6 +117,18 @@ describe('PassiveSkillEffect', () => {
     },
     {effect: '[0, 3, 77, [10, 1, 0]]', parsed: '-10% de PM consommés'},
     {effect: '[0, 3, 77, [30,  1,  4]]', parsed: '-30% de PM consommés'},
+    {
+      effect: '[0, 3, 80, [123456, 0, 15, 0, 0]]',
+      parsed: 'Améliore la limite de l\'unité quand les PV passent sous 15%'
+    },
+    {
+      effect: '[0, 3, 80, [123456, 0, 20, 0, 1]]',
+      parsed: 'Améliore la limite de l\'unité pour 1 tour quand les PV passent sous 20%'
+    },
+    {
+      effect: '[0, 3, 80, [123456, 0, 40, 0, 3]]',
+      parsed: 'Améliore la limite de l\'unité pour 3 tours quand les PV passent sous 40%'
+    },
     {
       effect: '[0,3,81,["n\'importe quoi"]]',
       parsed: '+200% au coefficient multiplicateur maximal de la chaîne de combo si l\'unité porte deux armes'
