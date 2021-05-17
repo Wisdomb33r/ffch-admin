@@ -5,6 +5,7 @@ import {SkillEffect} from '../../model/effects/skill-effect.model';
 import {HTML_LINE_RETURN} from './skill-effects.mapper';
 
 export abstract class SkillModifierIncreaseEffect extends SkillEffect {
+  protected skillModifierIncrease: number;
   protected modifiedSkillsIncreases: Array<{ name: string, value: number, isHeal: boolean }> = [];
 
   protected initializeSkillIncreasesValues(parameters: Array<any>) {
@@ -12,13 +13,12 @@ export abstract class SkillModifierIncreaseEffect extends SkillEffect {
       this.parameterWarning = true;
     }
 
-    const skillModifierIncrease = parameters[3];
     const modifiedSkills = !Array.isArray(parameters[0]) ? [parameters[0]] : parameters[0];
 
     modifiedSkills.forEach(skillId => {
       const activatedSkill: Skill = SkillsService.getInstance().searchForSkillByGumiId(skillId);
-      const modIncrease = !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(skillModifierIncrease);
-      const healingModIncrease = !activatedSkill ? 0 : activatedSkill.calculateHealingTotalModIncrease(skillModifierIncrease);
+      const modIncrease = !activatedSkill ? 0 : activatedSkill.calculateTotalModIncrease(this.skillModifierIncrease);
+      const healingModIncrease = !activatedSkill ? 0 : activatedSkill.calculateHealingTotalModIncrease(this.skillModifierIncrease);
       this.modifiedSkillsIncreases.push({
         name: EffectParser.getSkillNameWithGumiIdentifierLink(activatedSkill),
         value: modIncrease > 0 ? modIncrease : healingModIncrease,

@@ -13,6 +13,7 @@ export class PassiveSkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     if (!Array.isArray(parameters) || parameters.length < 4) {
       this.parameterError = true;
     } else {
+      this.skillModifierIncrease = parameters[3];
     }
   }
 

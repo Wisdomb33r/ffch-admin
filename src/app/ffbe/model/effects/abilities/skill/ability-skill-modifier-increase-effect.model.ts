@@ -17,6 +17,7 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
     if (!Array.isArray(parameters) || parameters.length < 5) {
       this.parameterError = true;
     } else {
+      this.skillModifierIncrease = parameters[3];
       this.numTurns = parameters[4] >= 0 ? parameters[4] : 9999;
       this.stackId = parameters.length >= 7 ? parameters[6] : 0;
     }
@@ -24,8 +25,7 @@ export class AbilitySkillModifierIncreaseEffect extends SkillModifierIncreaseEff
 
   protected wordEffectImpl(skill: Skill): string {
     if (!Array.isArray(this.parameters[0]) && this.parameters[0] === 0) {
-      const skillModifierIncrease = this.parameters[3];
-      const displayedValue = (skillModifierIncrease > 0 ? skillModifierIncrease : 'UNKNOWN');
+      const displayedValue = (this.skillModifierIncrease > 0 ? this.skillModifierIncrease : 'UNKNOWN');
       const pluralForm = this.numTurns > 1 ? 's' : '';
       const duration = `pour ${this.numTurns} tour${pluralForm}`;
       return `+${displayedValue}% de puissance aux attaques physiques (sauf les limites) ${this.wordTarget(TargetPrepositionEnum.De)} ${duration} (ID #${this.stackId})`;
