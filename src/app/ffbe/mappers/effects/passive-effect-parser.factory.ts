@@ -9,7 +9,6 @@ import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
-import {PassiveSkillModifierIncreaseParser} from './passives/passive-skill-modifier-increase.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
@@ -98,10 +97,6 @@ export class PassiveEffectParserFactory {
         return new PassiveCoverParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
-      case 73:
-        return new PassiveSkillModifierIncreaseParser();
-      case 136:
-        return new PassiveSkillModifierIncreaseParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
       case 10004:

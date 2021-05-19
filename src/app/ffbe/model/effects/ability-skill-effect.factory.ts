@@ -42,6 +42,7 @@ import {AbilityAccuracyIncreaseEffect} from './abilities/ability-accuracy-increa
 import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
 import {AbilityElementResistancesEffect} from './abilities/ability-element-resistances-effect.model';
 import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-damage-increase-effect.model';
+import {AbilitySkillModifierIncreaseEffect} from './abilities/skill/ability-skill-modifier-increase-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -120,6 +121,8 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillDelayedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 134:
         return new AbilityDamagePhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 136:
+        return new AbilitySkillModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 139:
         return new AbilityDamageDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 149:
