@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {SkillsService} from '../services/skills.service';
 import {Competence} from '../model/competence.model';
 import {Skill} from '../model/skill.model';
@@ -16,10 +16,12 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class SkillsComponent implements OnInit {
 
+  searchForm: FormGroup;
   englishName: FormControl;
   frenchName: FormControl;
   gumiId: FormControl;
   competences: Array<Competence>;
+  localStorageLabel = 'skills-search-form';
 
   constructor(private skillsService: SkillsService,
               // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
@@ -30,9 +32,18 @@ export class SkillsComponent implements OnInit {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
+    this.searchForm = new FormGroup({
+      englishName: this.englishName,
+      frenchName: this.frenchName,
+      gumiId: this.gumiId
+    });
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchSkillsInDataMining() {
@@ -48,6 +59,7 @@ export class SkillsComponent implements OnInit {
       const skills: Array<Skill> = this.skillsService.searchForSkillsByNames(this.englishName.value, this.frenchName.value);
       skills.forEach(skill => this.competences.push(SkillMapper.toCompetence(skill)));
     }
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public isSkillsDisplayed(): boolean {

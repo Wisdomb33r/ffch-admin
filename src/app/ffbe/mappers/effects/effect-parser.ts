@@ -325,20 +325,6 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
     return consumables.map((consumable: Consumable) => this.getConsumableNameWithGumiIdentifierLink(consumable)).join(separator);
   }
 
-  protected getEquipmentNameWithGumiIdentifierLink(equipment: Equipment): string {
-    if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
-      return 'UNKNOWN equipment';
-    }
-    return `<a href="ffexvius_objects.php?gumiid=${equipment.gumi_id}">${equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]}</a>`;
-  }
-
-  protected getEsperLink(esper: Esper): string {
-    if (!esper) {
-      return 'UNKNOWN esper';
-    }
-    return `<a href="ffexvius_espers.php?esperid=${esper.ffchId}">${esper.name}</a>`;
-  }
-
   public static fillSkillWithTransitiveActivatedSkillInformation(skill: Skill, activatedSKill: Skill) {
     skill.gumiIdActivatedSkill = activatedSKill.gumi_id;
     skill.attack_count = activatedSKill.attack_count;

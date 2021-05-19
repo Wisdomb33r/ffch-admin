@@ -10,6 +10,7 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 export class ObjetAlterationsEtatDuoDisplayComponent implements OnInit {
 
   @Input() objet: Objet;
+  @Input() editable: boolean;
 
   public displayed = false;
 

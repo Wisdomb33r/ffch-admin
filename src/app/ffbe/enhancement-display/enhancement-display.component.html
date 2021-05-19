@@ -24,7 +24,7 @@
                   [disabled]="isSingleCharacter()">
         <mat-option>----------</mat-option>
         <mat-option *ngFor="let personnage of personnages" [value]="personnage.gumi_id">
-          {{personnage.gumi_id}} {{personnage.nom}}
+          {{personnage.gumi_id}} {{personnage.nom}} / {{personnage.nom_en}}
         </mat-option>
       </mat-select>
     </mat-form-field>

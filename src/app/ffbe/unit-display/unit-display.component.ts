@@ -13,6 +13,7 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
 
   @Input() unite: Unite;
   public uniteErrors: Array<string> = [];
+  public multiLineDisplay = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }

@@ -54,6 +54,8 @@ import {CaracteristiquesContainerDisplayComponent} from './caracteristiques-cont
 import {CaracteristiquesEXDisplayComponent} from './caracteristiques-ex-display/caracteristiques-ex-display.component';
 import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-components/objet-tueurs-physiques-magiques-display/objet-tueurs-physiques-magiques-display.component';
 import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
+import {ObjetsComparingContainerDisplayComponent} from './objets-display-components/objets-comparing-container-display/objets-comparing-container-display.component';
+import {MatIconModule} from '@angular/material/icon';
 import {VisionCardsService} from './services/vision-cards.service';
 
 @NgModule({
@@ -72,6 +74,7 @@ import {VisionCardsService} from './services/vision-cards.service';
     MatSelectModule,
     MatCheckboxModule,
     ClipboardModule,
+    MatIconModule,
   ],
   declarations: [
     CharactersComponent,
@@ -104,6 +107,7 @@ import {VisionCardsService} from './services/vision-cards.service';
     CaracteristiquesEXDisplayComponent,
     ObjetTueursPhysiquesMagiquesDisplayComponent,
     ObjetTueursDisplayComponent,
+    ObjetsComparingContainerDisplayComponent,
   ],
   exports: [
     CharactersComponent,

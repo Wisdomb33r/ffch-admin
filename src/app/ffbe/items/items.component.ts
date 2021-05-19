@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Item} from '../model/items/item.model';
 import {ItemsService} from '../services/items.service';
 import {ItemMapper} from '../mappers/items/item-mapper';
@@ -13,18 +13,29 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 })
 export class ItemsComponent implements OnInit {
 
+  searchForm: FormGroup;
   englishName: FormControl;
   frenchName: FormControl;
   gumiId: FormControl;
   objets: Array<Objet>;
+  localStorageLabel = 'items-search-form';
 
   constructor(private itemsService: ItemsService, private charactersService: CharactersService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
+    this.searchForm = new FormGroup({
+      englishName: this.englishName,
+      frenchName: this.frenchName,
+      gumiId: this.gumiId
+    });
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public searchItemsInDataMining() {
@@ -43,6 +54,7 @@ export class ItemsComponent implements OnInit {
       objet.lienTMR = ItemMapper.mapLienTRM(item, character);
       this.objets.push(objet);
     });
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public isDataMiningLoading(): boolean {

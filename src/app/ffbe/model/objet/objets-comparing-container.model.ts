@@ -3,9 +3,11 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 
 export class ObjetsComparingContainer {
 
+  public modifiedObjet: Objet;
+
   public constructor(public objet: Objet,
                      public dbObjet: Objet) {
-
+    this.setupModifiedObjet();
   }
 
   public isPresentInFfchDb(): boolean {
@@ -13,14 +15,16 @@ export class ObjetsComparingContainer {
   }
 
   public isDifferentFromFfchDb(): boolean {
-    return this.isNomDifferent();
+    return this.objet.isDifferent(this.dbObjet);
   }
 
-  private isNomDifferent(): boolean {
-    if (FfbeUtils.isNullOrUndefined(this.dbObjet)) {
-      return false;
-    } else {
-      return this.objet.nom !== this.dbObjet.nom;
+  private setupModifiedObjet() {
+    this.modifiedObjet = Objet.produce(this.objet);
+    if (!FfbeUtils.isNullOrUndefined(this.dbObjet)) {
+      this.modifiedObjet.effet = this.dbObjet.effet;
+      if (FfbeUtils.isNullOrUndefined(this.modifiedObjet.stars)) {
+        this.modifiedObjet.stars = this.dbObjet.stars;
+      }
     }
   }
 }

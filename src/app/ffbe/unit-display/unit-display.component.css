@@ -22,3 +22,17 @@ div.neovision {
 .competences li {
   list-style-type: none;
 }
+
+div.table {
+  display: table;
+  width: 100%;
+}
+
+div.header-cell {
+  width: 175px;
+  white-space: nowrap;
+}
+
+mat-form-field textarea {
+  resize: both;
+}

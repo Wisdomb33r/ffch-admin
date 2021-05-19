@@ -7,23 +7,9 @@
 
   <form>
     <div *ngFor="let objetsContainer of objetsContainer">
-      <div
-        [ngClass]="objetsContainer.isPresentInFfchDb() && objetsContainer.dbObjet ? 'objet-left' : ''">
-        <app-objet-display
-          [objet]="objetsContainer.objet"
-          [present]="objetsContainer.isPresentInFfchDb()"
-          [different]="objetsContainer.isDifferentFromFfchDb()">
-        </app-objet-display>
-      </div>
-      <div *ngIf="objetsContainer.isPresentInFfchDb() && objetsContainer.dbObjet" class="objet-right">
-        <app-objet-display
-          [objet]="objetsContainer.dbObjet"
-          [present]="true"
-          [different]="objetsContainer.isDifferentFromFfchDb()">
-        </app-objet-display>
-      </div>
-
-      <div class="objet-clear"></div>
+      <app-objets-comparing-container-display
+        [objetsContainer]="objetsContainer">
+      </app-objets-comparing-container-display>
     </div>
   </form>
 </mat-card>

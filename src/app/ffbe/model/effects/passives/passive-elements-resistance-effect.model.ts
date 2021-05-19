@@ -13,11 +13,14 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 8) {
+    if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
-      this.increases = new ResistancesElementaires(parameters[0], parameters[1], parameters[2], parameters[3],
-        parameters[4], parameters[5], parameters[6], parameters[7]);
+      if (parameters.length < 8 || parameters.every(parameter => parameter === 0)) {
+        this.parameterWarning = true;
+      }
+      const filler = new Array<number>(8 - parameters.length).fill(0);
+      this.increases = new ResistancesElementaires(... parameters, ... filler);
     }
   }
 

@@ -3,7 +3,7 @@
     <img *ngIf="present && !different" src="assets/ok.png" class="ffchstatus" alt="OK">
     <img *ngIf="!present" src="assets/nok.png" class="ffchstatus" alt="Not OK">
     <img *ngIf="present && different" src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
-    {{objet.gumi_id}} {{objet.nom}}
+    {{objet.gumi_id}} {{objet.nom}} / {{objet.nom_en}}
   </mat-card-title>
 
   <div *ngIf="!present || different || displayed">
@@ -22,19 +22,19 @@
     <p>{{objet.description}}</p>
     <p>{{objet.effet_en}}</p>
 
-    <mat-form-field *ngIf="!present">
+    <mat-form-field *ngIf="!present || editable">
       <input matInput type="text" name="effet" [(ngModel)]="objet.effet" placeholder="Effet">
     </mat-form-field>
 
-    <mat-form-field *ngIf="!present">
+    <mat-form-field *ngIf="!present || editable">
       <input matInput type="text" name="stars" [(ngModel)]="objet.stars" placeholder="Stars">
     </mat-form-field>
 
-    <p *ngIf="present">{{objet.effet}}</p>
+    <p *ngIf="present && !editable">{{objet.effet}}</p>
 
     <table>
       <caption>Informations de base de l'objet</caption>
-      <tr *ngIf="present">
+      <tr *ngIf="present && !editable">
         <th>Stars</th>
         <td>{{objet.stars}}</td>
       </tr>
@@ -65,17 +65,29 @@
           </span>
         </td>
       </tr>
+      <tr>
+        <th>Lien</th>
+        <td>
+          <button mat-raised-button ngxClipboard [cbContent]="generateLinkToFfch()" color="accent" class="copy-button">
+            Copier
+          </button>
+          {{generateLinkToFfch()}}
+        </td>
+      </tr>
     </table>
 
     <app-objet-carac-display [container]="objet"></app-objet-carac-display>
 
-    <app-objet-elements-triplet-display [objet]="objet" *ngIf="objet.resistancesElementaires">
+    <app-objet-elements-triplet-display [objet]="objet" *ngIf="objet.resistancesElementaires"
+                                        [editable]="editable">
     </app-objet-elements-triplet-display>
 
-    <app-objet-alterations-etat-duo-display [objet]="objet" *ngIf="objet.resistancesAlterations">
+    <app-objet-alterations-etat-duo-display [objet]="objet" *ngIf="objet.resistancesAlterations"
+                                            [editable]="editable">
     </app-objet-alterations-etat-duo-display>
 
-    <app-objet-tueurs-physiques-magiques-display [objet]="objet" *ngIf="objet.tueursMagiques && objet.tueursPhysiques">
+    <app-objet-tueurs-physiques-magiques-display *ngIf="shouldDisplayTueurs()"
+                                                 [objet]="objet">
     </app-objet-tueurs-physiques-magiques-display>
 
     <app-skills-display *ngIf="areObjetCompetencesDisplayed()"
@@ -84,7 +96,7 @@
     </app-skills-display>
 
     <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendObjetToFfchDb()"
-            *ngIf="!areObjetErrorsDiplayed() && !present">
+            *ngIf="!areObjetErrorsDiplayed() && (!present  || editable)">
       Envoyer
     </button>
 

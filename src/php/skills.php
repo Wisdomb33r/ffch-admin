@@ -79,8 +79,7 @@ function createPropertyArray($competence) {
     $values ['description'] = '';
   if (isset ( $competence->effet ))
     $values ['effet'] = $competence->effet;
-  if (isset ( $competence->puissance ))
-    $values ['puissance'] = $competence->puissance;
+  $values ['puissance'] = isset ( $competence->puissance ) && $competence->puissance > 0 ? $competence->puissance : '';
   if (isset ( $competence->physique ) && $competence->physique)
     $values ['physique'] = '1';
   else
@@ -101,20 +100,13 @@ function createPropertyArray($competence) {
     $values ['esper'] = '1';
   else
     $values ['esper'] = '0';
-  if (isset ( $competence->pm ))
-    $values ['pm'] = $competence->pm;
-  if (isset ( $competence->lb ))
-    $values ['lb'] = $competence->lb;
-  if (isset ( $competence->ep ))
-    $values ['ep'] = $competence->ep;
-  if (isset ( $competence->hits ))
-    $values ['hits'] = $competence->hits;
-  if (isset ( $competence->frames ))
-    $values ['frames'] = $competence->frames;
-  if (isset ( $competence->damages ))
-    $values ['damages'] = $competence->damages;
-  if (isset ($competence->elements))
-    $values ['elements'] = $competence->elements;
+  $values ['pm'] = isset ( $competence->pm ) && $competence->pm > 0 ? $competence->pm : '';
+  $values ['lb'] = isset ( $competence->lb ) && $competence->lb > 0 ? $competence->lb : '';
+  $values ['ep'] = isset ( $competence->ep ) && $competence->ep > 0 ? $competence->ep : '';
+  $values ['hits'] = isset ( $competence->hits ) && $competence->hits > 0 ? $competence->hits : '';
+  $values ['frames'] = isset ( $competence->frames ) && $competence->frames ? $competence->frames : '';
+  $values ['damages'] = isset ( $competence->damages ) && $competence->damages ? $competence->damages : '';
+  $values ['elements'] = isset ( $competence->elements ) ? $competence->elements : '';
   $values ['gumi_id'] = $competence->gumi_id;
   if (isset ( $competence->gumi_id_lie )) {
     $values ['gumi_id_lie'] = $competence->gumi_id_lie;

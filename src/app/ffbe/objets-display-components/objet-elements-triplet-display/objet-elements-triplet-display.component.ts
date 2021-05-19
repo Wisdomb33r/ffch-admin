@@ -10,6 +10,7 @@ import {FfbeUtils} from '../../utils/ffbe-utils';
 export class ObjetElementsTripletDisplayComponent implements OnInit {
 
   @Input() objet: Objet;
+  @Input() editable: boolean;
 
   public displayed = false;
 

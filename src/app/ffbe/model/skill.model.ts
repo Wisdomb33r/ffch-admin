@@ -315,4 +315,8 @@ export class Skill {
   public hasUnitRestriction(): boolean {
     return Array.isArray(this.unit_restriction) && this.unit_restriction.length > 0;
   }
+
+  public hasParameterWarning(): boolean {
+    return this.effets.some(effect => effect.hasParameterWarning());
+  }
 }

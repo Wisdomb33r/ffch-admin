@@ -33,11 +33,24 @@
       <mat-checkbox [(ngModel)]="competence.esper" class="damage-type">Invocateurs</mat-checkbox>
     </p>
 
-    <p *ngIf="competence.effet_fr" [innerHTML]="competence.effet_fr"></p>
+    <div class="competence-effet">
+      <p *ngIf="competence.effet_fr" [innerHTML]="competence.effet_fr"></p>
+      <mat-icon matPrefix *ngIf="competence.parameterWarning">warning_amber</mat-icon>
+    </div>
     <p *ngIf="competence.effet_en" [innerHTML]="competence.effet_en"></p>
 
-    <mat-form-field *ngIf="!present || editable">
+    <mat-form-field *ngIf="(!present || editable) && !multiLineDisplay">
       <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">
+      <button mat-icon-button matSuffix (click)="multiLineDisplay = true">
+        <mat-icon>open_in_full</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(!present || editable) && multiLineDisplay" class="textarea-field">
+      <textarea matInput name="effet" [(ngModel)]="competence.effet" placeholder="Effet"></textarea>
+      <button mat-icon-button matSuffix (click)="multiLineDisplay = false">
+        <mat-icon>close_fullscreen</mat-icon>
+      </button>
     </mat-form-field>
 
     <mat-form-field *ngIf="!present || editable">

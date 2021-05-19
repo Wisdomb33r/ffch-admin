@@ -14,5 +14,6 @@ export class CharacterEntry {
   public upgraded_lb: LimitBurst;
   public awakening: any;
   public nv_upgrade: Array<NeoVisionUpgradeEntry>;
+  public brave_shift: number;
   public characterEntrySkills: Array<CharacterSkill>;
 }

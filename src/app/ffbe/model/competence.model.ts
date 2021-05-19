@@ -27,7 +27,8 @@ export class Competence {
               public hits: number,
               public frames: string,
               public damages: string,
-              public elements: string) {
+              public elements: string,
+              public parameterWarning: boolean) {
   }
 
   public static produce(competence: Competence): Competence {
@@ -55,7 +56,8 @@ export class Competence {
       competence.hits,
       competence.frames,
       competence.damages,
-      FfbeUtils.isNullOrUndefined(competence.elements) || competence.elements === 'null' ? null : `${competence.elements}`);
+      FfbeUtils.isNullOrUndefined(competence.elements) || competence.elements === 'null' ? null : `${competence.elements}`,
+      competence.parameterWarning);
 
     copy.id = competence.id;
     copy.enhanced = competence.enhanced;

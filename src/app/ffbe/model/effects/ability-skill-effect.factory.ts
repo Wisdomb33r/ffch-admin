@@ -20,16 +20,29 @@ import {AbilityDamageDotsEffect} from './abilities/damage/ability-damage-dots-ef
 import {AbilityDamageDrainEffect} from './abilities/damage/ability-damage-drain-effect.model';
 import {AbilityDamageFixedEffect} from './abilities/damage/ability-damage-fixed-effect.model';
 import {AbilityDamageHexEffect} from './abilities/damage/ability-damage-hex-effect.model';
+import {AbilityZombieCureEffect} from './abilities/ability-zombie-cure-effect.model';
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
 import {AbilitySkillCooldownEffect} from './abilities/skill/ability-skill-cooldown-effect.model';
 import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-effect.model';
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
+import {AbilityMagIncreaseNextActionEffect} from './abilities/ability-mag-increase-next-action-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
 import {AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect} from './abilities/damage/ability-damage-physical-increased-modifier-enemy-type-effect.model';
 import {AbilitySkillActivationEffect} from './abilities/skill/ability-skill-activation-effect.model';
 import {AbilitySkillRandomEffect} from './abilities/skill/ability-skill-random-effect.model';
+import {AbilityWeaponTypeWielderDamageIncreaseEffect} from './abilities/ability-weapon-type-wielder-damage-increase-effect.model';
+import {AbilitySkillMagnusGlexEffect} from './abilities/skill/ability-skill-magnus-glex-effect.model';
+import {AbilityDebuffsResistanceEffect} from './abilities/ability-debuffs-resistance-effect.model';
+import {AbilitySkillTagTeamAttackActivationEffect} from './abilities/skill/ability-skill-tag-team-attack-activation-effect.model';
+import {AbilityCoversEffect} from './abilities/ability-covers-effect.model';
+import {AbilityDeathInflictionEffect} from './abilities/ability-death-infliction-effect.model';
+import {AbilityAccuracyIncreaseEffect} from './abilities/ability-accuracy-increase-effect.model';
+import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model';
+import {AbilityElementResistancesEffect} from './abilities/ability-element-resistances-effect.model';
+import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-damage-increase-effect.model';
+import {AbilitySkillModifierIncreaseEffect} from './abilities/skill/ability-skill-modifier-increase-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -52,6 +65,10 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageDrainEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 29:
         return new AbilitySkillRandomEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 33:
+        return new AbilityElementResistancesEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 35:
+        return new AbilityDeathInflictionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 40:
         return new AbilityDamageHybridEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
@@ -70,8 +87,19 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
         return new AbilityDamageMagicConsecutiveIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 76:
+        return new AbilityGilStealEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new AbilityDamagePhysicalHpSacrificeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 89:
+        return new AbilityDebuffsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 90:
+        return new AbilityMagIncreaseNextActionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 92:
+      case 93:
+        return new AbilityKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 96:
+        return new AbilityCoversEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 99:
         return new AbilitySkillSwitchEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 100:
@@ -93,10 +121,14 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillDelayedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 134:
         return new AbilityDamagePhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 136:
+        return new AbilitySkillModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 139:
         return new AbilityDamageDotsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 149:
         return new AbilityElementDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 148:
+        return new AbilityZombieCureEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 153:
       case 154:
         return new AbilityMitigationMonsterTypeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
@@ -104,8 +136,16 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillMagnusEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 159:
         return new AbilityDamagePhysicalIncreasedBreakEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 162:
+        return new AbilityAccuracyIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 163:
+        return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 165:
+        return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 1014:
+        return new AbilitySkillMagnusGlexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }

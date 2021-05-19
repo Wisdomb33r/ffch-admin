@@ -23,7 +23,7 @@ import {UniteCarac} from '../model/unite-carac.model';
 
 export class CharacterEntryMapper {
 
-  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character): Unite {
+  public static toUnite(entry: CharacterEntry, gumiId: number, character: Character, competences: Array<Competence>): Unite {
     const unite = new Unite(
       CharacterEntryMapper.convertCompendiumId(entry, character),
       CharacterEntryMapper.convertRarity(entry, character),
@@ -34,17 +34,17 @@ export class CharacterEntryMapper {
     CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
     CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
-    CharacterEntryMapper.convertUniteCompetences(unite, character, entry);
+    CharacterEntryMapper.convertUniteCompetences(unite, character, entry, competences);
     CharacterEntryMapper.convertEXCaracteristiques(unite, entry.nv_upgrade);
     return unite;
   }
 
-  public static toUniteArray(entries: any, character: Character): Array<Unite> {
+  public static toUniteArray(entries: any, character: Character, competences: Array<Competence>): Array<Unite> {
     const unites: Array<Unite> = [];
     if (entries) {
       const entryNames: string[] = Object.getOwnPropertyNames(entries);
       for (const entryName of entryNames) {
-        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character));
+        unites.push(CharacterEntryMapper.toUnite(entries[entryName], +entryName, character, competences));
       }
     }
     return unites;
@@ -80,8 +80,6 @@ export class CharacterEntryMapper {
     if (lb) {
       unite.limite = lb.names[FFBE_FRENCH_TABLE_INDEX];
       unite.limite_en = lb.names[FFBE_ENGLISH_TABLE_INDEX];
-      unite.lim_desc = lb.descriptions[FFBE_FRENCH_TABLE_INDEX];
-      unite.lim_desc_en = lb.descriptions[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
       unite.lim_min = CharacterEntryMapper.parseLimitBurstEffect(lb, 0);
@@ -108,6 +106,7 @@ export class CharacterEntryMapper {
     if (lb.levels.length > limitBurstIndex && lb.levels[limitBurstIndex].length > 1) {
       const rawEffect = lb.levels[limitBurstIndex][1];
       const fakeMinLevelSkill = new Skill();
+      fakeMinLevelSkill.gumi_id = lb.gumi_id;
       fakeMinLevelSkill.effects_raw = rawEffect;
       fakeMinLevelSkill.active = true;
       fakeMinLevelSkill.element_inflict = lb.element_inflict;
@@ -126,19 +125,20 @@ export class CharacterEntryMapper {
     }
   }
 
-  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry) {
+  private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
     unite.competences = [];
     let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = Skill.produce(characterSkill.skill);
-      const competence: Competence = SkillMapper.toCompetence(skill);
+      const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
       unite.competences.push(new UniteCompetence(competence, niveau));
       skill.activatedSkills?.forEach(activatedSkill => {
-        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSKill => {
-          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSKill.gumi_id)) {
-            unite.competencesActivees.push(new UniteCompetence(SkillMapper.toCompetence(transitiveActivatedSKill), currentActivatedSkillLevel));
+        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {
+          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSkill.gumi_id)) {
+            const competenceActivee = CharacterEntryMapper.searchOrMapCompetence(transitiveActivatedSkill, competences);
+            unite.competencesActivees.push(new UniteCompetence(competenceActivee, currentActivatedSkillLevel));
             currentActivatedSkillLevel += 2;
           }
         });
@@ -162,10 +162,30 @@ export class CharacterEntryMapper {
     return skills;
   }
 
+  private static searchOrMapCompetence(skill: Skill, competences: Array<Competence>): Competence {
+    let competence = competences.find(existingCompetence => existingCompetence.gumi_id === skill.gumi_id);
+    if (FfbeUtils.isNullOrUndefined(competence)) {
+      competence = SkillMapper.toCompetence(skill);
+      competences.push(competence);
+    }
+    return competence;
+  }
+
   public static computeCharacterSkillRarity(characterSkill: CharacterSkill): number {
-    let rarity = characterSkill.rarity;
-    if (!FfbeUtils.isNullOrUndefined(characterSkill.brave_ability)) {
-      rarity += characterSkill.brave_ability;
+    if (characterSkill.rarity === 'NV') {
+      return 8;
+    }
+    return +characterSkill.rarity;
+  }
+
+  public static computeCharacterEntryRarity(entry: CharacterEntry): number {
+    let rarity = entry.rarity;
+    if (rarity === 7) {
+      if (!FfbeUtils.isNullOrUndefined(entry.nv_upgrade)) {
+        rarity = 8;
+      } else if (!FfbeUtils.isNullOrUndefined(entry.brave_shift)) {
+        rarity = 81;
+      }
     }
     return rarity;
   }

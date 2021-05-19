@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LatentSkillsService} from '../services/latent-skills.service';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {CharactersService} from '../services/characters.service';
 import {Character} from '../model/character/character.model';
 import {Amelioration} from '../model/amelioration.model';
@@ -16,9 +16,11 @@ import {ConsumablesService} from '../services/consumables.service';
 })
 export class LatentSkillsComponent implements OnInit {
 
+  searchForm: FormGroup;
   characterName: FormControl;
   character: Character;
   ameliorations: Array<Amelioration>;
+  localStorageLabel = 'latent-skills-search-form';
 
   constructor(private latentSkillsService: LatentSkillsService,
               private charactersService: CharactersService,
@@ -27,9 +29,16 @@ export class LatentSkillsComponent implements OnInit {
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService) {
     this.characterName = new FormControl('');
+    this.searchForm = new FormGroup({
+      characterName: this.characterName
+    });
   }
 
   ngOnInit() {
+    const storedValue = localStorage.getItem(this.localStorageLabel);
+    if (storedValue) {
+      this.searchForm.patchValue(JSON.parse(storedValue));
+    }
   }
 
   public isDataMiningLoading(): boolean {
@@ -54,6 +63,7 @@ export class LatentSkillsComponent implements OnInit {
         }
         this.ameliorations.push(amelioration);
       });
+    localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));
   }
 
   public areLatentSkillsDisplayed(): boolean {
