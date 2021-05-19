@@ -11,7 +11,7 @@ export class VisionCardMapper extends ItemWithSkillsMapper {
 
   public static toObjet(visionCard: VisionCard): Objet {
     const objet = new Objet(null,
-      FfbeUtils.findObjetCategorieByFfchId(111), // TODO define
+      FfbeUtils.findObjetCategorieByFfchId(67),
       visionCard.names[FFBE_FRENCH_TABLE_INDEX],
       visionCard.names[FFBE_ENGLISH_TABLE_INDEX],
       visionCard.rarity,

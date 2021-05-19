@@ -75,6 +75,7 @@ export class VisionCardsService {
       if (property) {
         const visionCard: VisionCard = this.visionCardsFromDataMining[property];
         visionCard.gumi_id = +property;
+        visionCard.names = this.visionCardsNamesFromDataMining[property];
         this.searchForVisionCardSkills(visionCard);
         return visionCard;
       }

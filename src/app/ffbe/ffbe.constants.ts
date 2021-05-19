@@ -77,6 +77,7 @@ export const FFBE_CATEGORIES_OBJETS = [
   new CategorieObjet(53, 14, 'Robes', 'robe', 'robes.png'),
   new CategorieObjet(60, 25, 'Accessoires', 'accessoire', 'accessoires.png'),
   new CategorieObjet(null, 57, 'Aptitudes', 'aptitude', null),
+  new CategorieObjet(null, 67, 'Atouts-visions', 'atouts-visions', null),
 
   new CategorieObjet(null, 19, 'Recettes de dagues', 'recette de dague', null),
   new CategorieObjet(null, 3, 'Recettes d\'épées', 'recette d\'épée', null),
