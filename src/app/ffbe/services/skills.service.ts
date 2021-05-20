@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Skill} from '../model/skill.model';
 import {FFBE_ENGLISH_TABLE_INDEX, FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {forkJoin} from 'rxjs';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 @Injectable()
 export class SkillsService {
@@ -11,6 +12,8 @@ export class SkillsService {
   private skillsFromDataMining = null;
   private skillsNamesFromDataMining = null;
   private skillsDescriptionsFromDataMining = null;
+
+  private cachedSkills = {};
 
   public static getInstance(): SkillsService {
     return SkillsService.INSTANCE;
@@ -73,6 +76,11 @@ export class SkillsService {
 
   public searchForSkillByGumiId(id: number): Skill {
     if (this.skillsFromDataMining != null) {
+
+      if (!FfbeUtils.isNullOrUndefined(this.cachedSkills[id])) {
+        return this.cachedSkills[id];
+      }
+
       const propertyNames: string[] = Object.getOwnPropertyNames(this.skillsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
@@ -80,6 +88,7 @@ export class SkillsService {
         skill.gumi_id = +property;
         skill.names = this.skillsNamesFromDataMining[property];
         skill.descriptions = this.skillsDescriptionsFromDataMining[property];
+        this.cachedSkills[id] = skill;
         return skill;
       }
     }
