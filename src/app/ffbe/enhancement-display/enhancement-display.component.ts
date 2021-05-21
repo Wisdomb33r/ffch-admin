@@ -2,8 +2,8 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Amelioration} from '../model/amelioration.model';
 import {FfchClientService} from '../services/ffch-client.service';
 import {CharactersService} from '../services/characters.service';
-import {CharacterMapper} from '../mappers/character-mapper';
-import {Personnage} from '../model/personnage.model';
+import {Character} from '../model/character/character.model';
+import {FFBE_FRENCH_TABLE_INDEX} from '../ffbe.constants';
 import {Competence} from '../model/competence.model';
 import {SkillsService} from '../services/skills.service';
 import {SkillMapper} from '../mappers/skill-mapper';
@@ -19,7 +19,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
 
   @Input() amelioration: Amelioration;
   public displayed = false;
-  public personnages: Array<Personnage>;
+  public characters: Array<Character>;
   public competences: Array<Competence>;
   public ameliorationFromFfch: Amelioration;
   public ameliorationErrors = [];
@@ -33,7 +33,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.getPersonnages();
+    this.getCharacters();
     this.getCompetences();
     this.getAmelioration();
   }
@@ -60,7 +60,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   public isSingleCharacter(): boolean {
-    return this.personnages.length === 1;
+    return this.characters.length === 1;
   }
 
   public isAnyCharacterSelected(): boolean {
@@ -75,11 +75,11 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
     }
   }
 
-  protected getPersonnages() {
-    this.personnages = this.amelioration.units.map(unit => this.charactersService.searchForCharacterByGumiId(unit))
-      .filter(character => !FfbeUtils.isNullOrUndefined(character)).map(character => CharacterMapper.toPersonnage(character));
-    if (this.personnages.length === 1) {
-      this.amelioration.perso_gumi_id = this.personnages[0].gumi_id;
+  protected getCharacters() {
+    this.characters = this.amelioration.units.map(unit => this.charactersService.searchForCharacterByGumiId(unit))
+      .filter(character => !FfbeUtils.isNullOrUndefined(character));
+    if (this.characters.length === 1) {
+      this.amelioration.perso_gumi_id = this.characters[0].gumi_id;
     }
   }
 
@@ -134,5 +134,22 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
       nom = this.competences[0].nom;
     }
     return nom;
+  }
+
+  public getNom(character: Character): string {
+    if (!Array.isArray(character.names) || character.names.length <= FFBE_FRENCH_TABLE_INDEX ||
+      FfbeUtils.isNullOrUndefined(character.names[FFBE_FRENCH_TABLE_INDEX]) || character.names[FFBE_FRENCH_TABLE_INDEX].length === 0) {
+      return 'Personnage Inconnu';
+    }
+
+    return character.names[FFBE_FRENCH_TABLE_INDEX];
+  }
+
+  public getName(character: Character): string {
+    if (FfbeUtils.isNullOrUndefined(character.name) || character.name.length === 0) {
+      return 'Unknown Character';
+    }
+
+    return character.name;
   }
 }
