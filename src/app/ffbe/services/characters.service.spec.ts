@@ -499,6 +499,7 @@ describe('CharactersService', () => {
   it('should not load nested properties when loading a shallow character', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
     service.loadCharactersFromDataMining();
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callThrough();
 
     // WHEN
     const character: Character = service.searchForShallowCharacterByGumiId(207002017);
@@ -506,9 +507,9 @@ describe('CharactersService', () => {
     // THEN
     expect(character).toBeTruthy();
     expect(character.entries.length === 1);
-    expect(character.skills.length).toEqual(20);
-    expect(character.skills.every(skill => FfbeUtils.isNullOrUndefined(skill.skill))).toBeTrue();
     expect(character.entries['207002017'].characterEntrySkills).toBeFalsy();
+    expect(character.skills.length).toEqual(20);
+    expect(mySpy).toHaveBeenCalledTimes(0);
   }));
 
 });
