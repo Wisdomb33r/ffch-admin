@@ -46,6 +46,10 @@ export class CharactersServiceMock {
     return CharactersServiceMock.INSTANCE;
   }
 
+  public searchForShallowCharacterByGumiId(id: number): Character {
+    return null;
+  }
+
   public searchForCharacterByGumiId(id: number): Character {
     return null;
   }

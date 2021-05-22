@@ -180,7 +180,7 @@ export class EquipmentMapper extends ItemWithSkillsMapper {
     let first = true;
     const identifiers = Array.isArray(requirements[1]) ? requirements[1] : [requirements[1]];
     identifiers.forEach(identifier => {
-      const character: Character = CharactersService.getInstance().searchForCharacterByGumiId(identifier);
+      const character: Character = CharactersService.getInstance().searchForShallowCharacterByGumiId(identifier);
       const separator = !first ? ', ' : '';
       if (!character || !character.names || !character.names[FFBE_FRENCH_TABLE_INDEX]) {
         parsedRequirements += `${separator}UNKNOWN character`;

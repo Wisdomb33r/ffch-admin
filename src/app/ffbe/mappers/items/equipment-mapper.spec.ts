@@ -85,7 +85,7 @@ describe('EquipmentMapper', () => {
     character.gumi_id = 100000102;
     const charactersServiceMock = new CharactersServiceMock() as CharactersService;
     CharactersService['INSTANCE'] = charactersServiceMock;
-    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(character);
+    spyOn(charactersServiceMock, 'searchForShallowCharacterByGumiId').and.returnValue(character);
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
@@ -106,7 +106,7 @@ describe('EquipmentMapper', () => {
     character2.gumi_id = 100016205;
     const charactersServiceMock = new CharactersServiceMock() as CharactersService;
     CharactersService['INSTANCE'] = charactersServiceMock;
-    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValues(character, character2);
+    spyOn(charactersServiceMock, 'searchForShallowCharacterByGumiId').and.returnValues(character, character2);
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
@@ -122,7 +122,7 @@ describe('EquipmentMapper', () => {
 
     const charactersServiceMock = new CharactersServiceMock() as CharactersService;
     CharactersService['INSTANCE'] = charactersServiceMock;
-    spyOn(charactersServiceMock, 'searchForCharacterByGumiId').and.returnValue(null);
+    spyOn(charactersServiceMock, 'searchForShallowCharacterByGumiId').and.returnValue(null);
     // WHEN
     const objet: Objet = EquipmentMapper.toObjet(equipment);
     // THEN
