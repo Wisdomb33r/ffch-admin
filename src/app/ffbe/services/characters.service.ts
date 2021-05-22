@@ -68,6 +68,7 @@ export class CharactersService {
         return character;
       }
     }
+    return null;
   }
 
   public searchForCharacterByGumiId(id: number): Character {
