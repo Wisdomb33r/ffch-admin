@@ -23,6 +23,7 @@ const skillsDescriptionsFile = dataMiningStringsBaseURL + 'MST_ABILITY_SHORTDESC
 const skillsMagicDescriptionsFile = dataMiningStringsBaseURL + 'MST_MAGIC_SHORTDESCRIPTION.json';
 const lbNamesFile = dataMiningStringsBaseURL + 'MST_LIMITBURST_NAME.json';
 const visionCardsNamesFile = dataMiningStringsBaseURL + 'MST_VISION_CARD_NAME.json';
+const visionCardsDescriptionsFile = dataMiningStringsBaseURL + 'MST_VISION_CARD_EXPLAIN_SHORT.json';
 
 @Injectable()
 export class DataMiningClientService {
@@ -124,5 +125,9 @@ export class DataMiningClientService {
 
   public getVisionCardsNames$(): Observable<Object> {
     return this.http.get(visionCardsNamesFile);
+  }
+
+  public getVisionCardsDescriptions$(): Observable<Object> {
+    return this.http.get(visionCardsDescriptionsFile);
   }
 }

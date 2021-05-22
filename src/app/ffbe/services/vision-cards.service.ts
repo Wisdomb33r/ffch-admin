@@ -13,6 +13,7 @@ export class VisionCardsService {
 
   private visionCardsFromDataMining = null;
   private visionCardsNamesFromDataMining = null;
+  private visionCardsDescriptionsFromDataMining = null;
 
   public static getInstance(): VisionCardsService {
     return VisionCardsService.INSTANCE;
@@ -29,10 +30,12 @@ export class VisionCardsService {
       const observables = [];
       observables.push(this.dataMiningClientService.getVisionCards$());
       observables.push(this.dataMiningClientService.getVisionCardsNames$());
+      observables.push(this.dataMiningClientService.getVisionCardsDescriptions$());
       forkJoin(observables)
         .subscribe(data => {
           this.visionCardsFromDataMining = data[0];
           this.visionCardsNamesFromDataMining = data[1];
+          this.visionCardsDescriptionsFromDataMining = data[2];
         });
     }
   }
@@ -61,6 +64,7 @@ export class VisionCardsService {
         const visionCard: VisionCard = this.visionCardsFromDataMining[property];
         visionCard.gumi_id = +property;
         visionCard.names = this.visionCardsNamesFromDataMining[property];
+        visionCard.desc_short = this.visionCardsDescriptionsFromDataMining[property];
         this.searchForVisionCardSkills(visionCard);
         visionCards.push(visionCard);
       });
@@ -76,6 +80,7 @@ export class VisionCardsService {
         const visionCard: VisionCard = this.visionCardsFromDataMining[property];
         visionCard.gumi_id = +property;
         visionCard.names = this.visionCardsNamesFromDataMining[property];
+        visionCard.desc_short = this.visionCardsDescriptionsFromDataMining[property];
         this.searchForVisionCardSkills(visionCard);
         return visionCard;
       }

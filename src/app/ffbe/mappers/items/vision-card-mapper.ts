@@ -6,6 +6,8 @@ import {Caracteristiques} from '../../model/caracteristiques.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {VisionCard} from '../../model/items/vision-cards/vision-card.model';
 import {VisionCardStats} from '../../model/items/vision-cards/vision-card-stats.model';
+import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
+import {ResistancesAlterations} from '../../model/resistances-alterations.model';
 
 export class VisionCardMapper extends ItemWithSkillsMapper {
 
@@ -17,8 +19,8 @@ export class VisionCardMapper extends ItemWithSkillsMapper {
       visionCard.rarity,
       null,
       visionCard.gumi_id,
-      null,
-      null,
+      visionCard.desc_short[FFBE_FRENCH_TABLE_INDEX],
+      visionCard.desc_short[FFBE_ENGLISH_TABLE_INDEX],
       null,
       null,
       VisionCardMapper.mapVisionCardStats(visionCard.stats),
@@ -26,8 +28,8 @@ export class VisionCardMapper extends ItemWithSkillsMapper {
       new Caracteristiques(),
       new Caracteristiques(),
       new Caracteristiques(),
-      null,
-      null,
+      new ResistancesElementaires(),
+      new ResistancesAlterations(),
       null,
       null,
       Array.isArray(visionCard.dmSkills) ? visionCard.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null

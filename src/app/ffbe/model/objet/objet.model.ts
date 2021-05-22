@@ -68,8 +68,8 @@ export class Objet implements CaracteristiquesContainer {
       Caracteristiques.produce(o.caracpDoublehand),
       Caracteristiques.produce(o.caracpTrueDoublehand),
       Caracteristiques.produce(o.caracpDualwield),
-      o.elements ? ResistancesElementaires.produce(o.elements) : null,
-      o.resistancesAlterations ? ResistancesAlterations.produce(o.resistancesAlterations) : null,
+      ResistancesElementaires.produce(o.elements),
+      ResistancesAlterations.produce(o.resistancesAlterations),
       o.tueurs,
       o.tueurs_m,
       o.competences?.map(competence => Competence.produce(competence)));
