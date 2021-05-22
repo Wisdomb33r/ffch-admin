@@ -72,11 +72,8 @@ export class CharactersService {
 
   public searchForCharacterByGumiId(id: number): Character {
     if (this.charactersFromDataMining != null) {
-      const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
-      const property = propertyNames.find(propertyName => +propertyName === id);
-      if (property) {
-        const character: Character = this.charactersFromDataMining[property];
-        character.gumi_id = +property;
+      const character = this.searchForShallowCharacterByGumiId(id);
+      if (character) {
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
         this.loadEnhancedLimitBurst(character);
