@@ -23,8 +23,8 @@
                   (selectionChange)="getAmelioration()"
                   [disabled]="isSingleCharacter()">
         <mat-option>----------</mat-option>
-        <mat-option *ngFor="let personnage of personnages" [value]="personnage.gumi_id">
-          {{personnage.gumi_id}} {{personnage.nom}} / {{personnage.nom_en}}
+        <mat-option *ngFor="let character of characters" [value]="character.gumi_id">
+          {{character.gumi_id}} {{getNom(character)}} / {{getName(character)}}
         </mat-option>
       </mat-select>
     </mat-form-field>
