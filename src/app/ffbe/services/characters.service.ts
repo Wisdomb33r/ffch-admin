@@ -17,7 +17,6 @@ export class CharactersService {
   private static INSTANCE: CharactersService;
 
   private charactersFromDataMining = null;
-  private cachedCharacters = {};
 
   public static getInstance(): CharactersService {
     return CharactersService.INSTANCE;
@@ -73,11 +72,6 @@ export class CharactersService {
 
   public searchForCharacterByGumiId(id: number): Character {
     if (this.charactersFromDataMining != null) {
-
-      if (!FfbeUtils.isNullOrUndefined(this.cachedCharacters[id])) {
-        return this.cachedCharacters[id];
-      }
-
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
@@ -86,7 +80,6 @@ export class CharactersService {
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
         this.loadEnhancedLimitBurst(character);
-        this.cachedCharacters[character.gumi_id] = character;
         return character;
       }
     }
