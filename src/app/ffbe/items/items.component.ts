@@ -49,7 +49,7 @@ export class ItemsComponent implements OnInit {
       items = this.itemsService.searchForItemsByNames(this.englishName.value, this.frenchName.value);
     }
     items.forEach(item => {
-      const character = this.charactersService.searchForCharacterByTrustMasterReward(item.category, item.getGumiId());
+      const character = this.charactersService.searchForShallowCharacterByTrustMasterReward(item.category, item.getGumiId());
       const objet = ItemMapper.toObjet(item);
       objet.lienTMR = ItemMapper.mapLienTRM(item, character);
       this.objets.push(objet);

@@ -95,7 +95,7 @@ export class CharactersService {
     return null;
   }
 
-  public searchForCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
+  public searchForShallowCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
     if (this.charactersFromDataMining != null) {
       const categoryName = ItemCategoryFactory.getName(rewardType);
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
@@ -112,9 +112,6 @@ export class CharactersService {
       if (property) {
         const character: Character = this.charactersFromDataMining[property];
         character.gumi_id = +property;
-        this.loadCharacterSkills(character.skills);
-        this.loadLimitBurst(character.entries);
-        this.loadEnhancedLimitBurst(character);
         return character;
       }
     }
