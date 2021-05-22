@@ -503,7 +503,7 @@ describe('CharactersService', () => {
     expect(character).toBeTruthy();
     expect(character.entries.length === 1);
     expect(character.skills.length).toEqual(20);
-    expect(character.skills.every(skill => FfbeUtils.isNullOrUndefined(skill.skill)));
+    expect(character.skills.every(skill => FfbeUtils.isNullOrUndefined(skill.skill))).toBeTrue();
     expect(character.entries['207002017'].characterEntrySkills).toBeFalsy();
   }));
 
