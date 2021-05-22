@@ -76,7 +76,7 @@ export class EnhancementDisplayComponent implements OnInit, OnChanges {
   }
 
   protected getCharacters() {
-    this.characters = this.amelioration.units.map(unit => this.charactersService.searchForCharacterByGumiId(unit))
+    this.characters = this.amelioration.units.map(unit => this.charactersService.searchForShallowCharacterByGumiId(unit))
       .filter(character => !FfbeUtils.isNullOrUndefined(character));
     if (this.characters.length === 1) {
       this.amelioration.perso_gumi_id = this.characters[0].gumi_id;

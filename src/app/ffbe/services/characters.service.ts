@@ -59,6 +59,18 @@ export class CharactersService {
     return null;
   }
 
+  public searchForShallowCharacterByGumiId(id: number): Character {
+    if (this.charactersFromDataMining != null) {
+      const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
+      const property = propertyNames.find(propertyName => +propertyName === id);
+      if (property) {
+        const character: Character = this.charactersFromDataMining[property];
+        character.gumi_id = +property;
+        return character;
+      }
+    }
+  }
+
   public searchForCharacterByGumiId(id: number): Character {
     if (this.charactersFromDataMining != null) {
 
