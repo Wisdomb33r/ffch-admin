@@ -37,6 +37,10 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $brex_perso_trust = createAndValidateObjetLienTMR($objet, $stored_brex_objet);
   storeLienTMR($brex_perso_trust);
   updateObjetWithLienTMR($stored_objet);
+  
+  if($objet->categorie->ffchId == 67){
+    saveAndRelateObjectSkills($objet, $brex_objet);
+  }
 
   echo json_encode($stored_objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 } else if ($_SERVER ['REQUEST_METHOD'] == 'PUT') {
@@ -66,6 +70,25 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   updateObjetWithCompetences($objet);
   updateObjetWithLienTMR($objet);
   echo json_encode($objet, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+}
+
+function saveAndRelateObjectSkills($objet, $brex_objet) {
+  if ($objet->competences && count ( $objet->competences )) {
+    foreach ( $objet->competences as $competence ) {
+      updateObjectSkillsRelations ( $brex_competences [0], $brex_objet );
+    }
+  }
+}
+
+function updateObjectSkillsRelations($brex_competence, $brex_objet) {
+  $values = array ();
+  $values ['creation_datedate'] = date ( 'Y-m-d' );
+  $values ['creation_datehour'] = date ( 'H' );
+  $values ['creation_datemins'] = date ( 'i' );
+  $brex_obj_comp = new brex_obj_comp ( $values );
+  $brex_obj_comp->setrelationobjet ( $brex_objet );
+  $brex_obj_comp->setrelationcompetence ( $brex_competence );
+  $brex_obj_comp->store ();
 }
 
 function verifyObjet($objet)
@@ -143,7 +166,7 @@ function createPropertyArray($objet)
   $values ['defp'] = $objet->caracp->def;
   $values ['magp'] = $objet->caracp->mag;
   $values ['psyp'] = $objet->caracp->psy;
-
+  
   $values ['res_feu'] = $objet->elements->feu;
   $values ['res_glace'] = $objet->elements->glace;
   $values ['res_foudre'] = $objet->elements->foudre;
@@ -152,7 +175,7 @@ function createPropertyArray($objet)
   $values ['res_terre'] = $objet->elements->terre;
   $values ['res_lumiere'] = $objet->elements->lumiere;
   $values ['res_tenebres'] = $objet->elements->tenebres;
-
+  
   $values ['res_poison'] = $objet->resistancesAlterations->poison;
   $values ['res_cecite'] = $objet->resistancesAlterations->cecite;
   $values ['res_sommeil'] = $objet->resistancesAlterations->sommeil;
@@ -204,21 +227,30 @@ function updateAndValidateObjet($objet, $brex_objet)
   return createOrUpdateAndValidateObjet($objet, $brex_objet);
 }
 
-function createOrUpdateAndValidateObjet($objet, $brex_objet = null)
-{
-  $values = createPropertyArray($objet);
-
-  if (is_null($brex_objet)) {
-    $brex_objet = new brex_objet($values);
+function createOrUpdateAndValidateObjet($objet, $brex_objet = null) {
+  $values = createPropertyArray ( $objet );
+  
+  if (is_null ( $brex_objet )) {
+    $brex_objet = new brex_objet ( $values );
+    if ($objet->categorie->ffchid == 67) {
+      if ($objet->competences && count ( $objet->competences )) {
+        foreach ( $objet->competences as $competence ) {
+          $brex_competences = brex_competence::finderParGumiId ( $competence->gumi_id );
+          if (count ( $brex_competences ) == 0) {
+            dieWithBadRequest ( 'Storage exception : Skill ' . $competence->gumi_id . ' not found' );
+          }
+        }
+      }
+    }
   } else {
-    $brex_objet->updateObject($values);
+    $brex_objet->updateObject ( $values );
   }
-
-  $brex_objet_categ = brex_objet_categ::findByPrimaryId($objet->categorie->ffchId);
-  $brex_objet->setrelationcategorie($brex_objet_categ);
-
-  $brex_objet->verifyValues();
-
+  
+  $brex_objet_categ = brex_objet_categ::findByPrimaryId ( $objet->categorie->ffchId );
+  $brex_objet->setrelationcategorie ( $brex_objet_categ );
+  
+  $brex_objet->verifyValues ();
+  
   return $brex_objet;
 }
 
