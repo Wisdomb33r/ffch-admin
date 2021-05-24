@@ -68,8 +68,8 @@ describe('PassiveSkillEffect', () => {
       parsed: '+30% de rés. aux baisses de DÉF/PSY, +20% de rés. aux baisses de ATT/MAG'
         + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
     },
+    {effect: '[0, 3, 55, [0,  0,  0,  0,  100]]', parsed: '+100% de rés. à Stop'},
     {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
-
     {
       effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
       parsed: '+10% aux caractéristiques obtenues par la chimère'
