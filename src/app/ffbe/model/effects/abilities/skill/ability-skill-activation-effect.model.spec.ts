@@ -233,6 +233,7 @@ describe('AbilitySkillActivationEffect', () => {
     skill.gumi_id = 512170;
     skill.names = names['512170'];
     skill.descriptions = descriptions['512170'];
+    skill.active = true;
     skill.isActivatedByPassiveSkill = true;
 
     const effect = JSON.parse('[0, 3, 100, [2,  512170,  99999,  1,  1,  5]]');

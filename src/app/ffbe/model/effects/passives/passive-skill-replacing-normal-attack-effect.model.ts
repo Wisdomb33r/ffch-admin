@@ -15,10 +15,10 @@ export class PassiveSkillReplacingNormalAttackEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 4 || parameters[1] !== 1 || parameters[2] !== 1) {
+    if (!Array.isArray(parameters) || parameters.length < 4) {
       this.parameterError = true;
     } else {
-      if (parameters[3] !== 0) {
+      if (parameters[1] !== 1 || parameters[2] !== 1 || parameters[3] !== 0) {
         this.parameterWarning = true;
       }
       this.activatedSkillId = parameters[0];
