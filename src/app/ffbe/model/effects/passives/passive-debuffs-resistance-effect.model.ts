@@ -34,19 +34,19 @@ export class PassiveDebuffsResistanceEffect extends SkillEffect {
   protected wordEffectImpl(skill: Skill): string {
     let text = this.wordEffectJoiningIdenticalValues(this.statsResists);
     if (this.stopResist > 0) {
-      text += (text && text.length ? HTML_LINE_RETURN : '') + '+' + this.stopResist + '% de rés. à Stop';
+      text += (text && text.length ? HTML_LINE_RETURN : '') + `+${this.stopResist}% de rés. à Stop`;
       if (this.charmResist > 0 && this.stopResist === this.charmResist) {
         text += ' et Charme';
       }
     }
     if (this.charmResist > 0 && this.stopResist !== this.charmResist) {
-      text += (text && text.length ? HTML_LINE_RETURN : '') + '+' + this.charmResist + '% de rés. à Charme';
+      text += (text && text.length ? HTML_LINE_RETURN : '') + `+${this.charmResist}% de rés. à Charme`;
     }
     return text;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
-    return '+' + currentValue + '% de rés. aux baisses de ' + accumulatedStats.join('/');
+    return `+${currentValue}% de rés. aux baisses de ${accumulatedStats.join('/')}`;
   }
 
   protected get effectName(): string {
