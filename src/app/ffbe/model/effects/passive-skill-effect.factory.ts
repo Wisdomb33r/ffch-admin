@@ -1,6 +1,7 @@
 import {SkillEffect} from './skill-effect.model';
 import {PassiveStatsIncreaseFixedEffect} from './passives/stats/passive-stats-increase-fixed-effect.model';
 import {PassiveStatsIncreaseEffect} from './passives/stats/passive-stats-increase-effect.model';
+import {PassiveDebuffsResistanceEffect} from './passives/passive-debuffs-resistance-effect.model';
 import {PassiveChainBaseModifierIncreaseEffect} from './passives/passive-chain-base-modifier-increase-effect.model';
 import {PassiveEquipmentStatsDualwieldIncreaseEffect} from './passives/stats/passive-equipment-stats-dualwield-increase-effect.model';
 import {PassiveEquipmentStatsDoublehandIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-increase-effect.model';
@@ -62,6 +63,8 @@ export class PassiveSkillEffectFactory {
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 55:
+        return new PassiveDebuffsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 56:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 61:
