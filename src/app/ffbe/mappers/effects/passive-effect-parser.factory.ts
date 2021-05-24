@@ -8,7 +8,7 @@ import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
-import {PassiveDebuffsResistanceParser} from './passives/passive-debuffs-resistance.parser';
+import {PassiveDebuffsResistanceParser} from '../../model/effects/passives/passive-debuffs-resistance.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
