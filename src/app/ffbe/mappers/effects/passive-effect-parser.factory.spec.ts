@@ -90,12 +90,6 @@ describe('PassiveEffectParser', () => {
       parsed: '80% de chance d\'éviter la mort avec 10% PV lors d\'une attaque fatale si les PV étaient supérieurs à 20% (max 3 fois)'
     },
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
-    {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
-    {
-      effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
-      parsed: '+30% de rés. aux baisses de DÉF/PSY, +20% de rés. aux baisses de ATT/MAG'
-        + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
-    },
     {
       effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
