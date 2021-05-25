@@ -1,5 +1,31 @@
 import {EffectParser} from '../../../../mappers/effects/effect-parser';
 import {Skill} from '../../../skill.model';
+import {SkillEffect} from '../../skill-effect.model';
+import {TargetNumberEnum} from '../../target-number.enum';
+import {TargetTypeEnum} from '../../target-type.enum';
+
+export class PassiveDualWieldWeaponCategoryUnlockEffect extends SkillEffect {
+
+  constructor(protected targetNumber: TargetNumberEnum,
+              protected targetType: TargetTypeEnum,
+              protected effectId: number,
+              protected parameters: Array<any>) {
+    super(targetNumber, targetType, effectId);
+    if (!Array.isArray(parameters) || parameters.length < 1) {
+      this.parameterError = true;
+    } else {
+
+    }
+  }
+
+  protected wordEffectImpl(skill: Skill): string {
+    return '';
+  }
+
+  protected get effectName(): string {
+    return 'PassiveDualWieldWeaponCategoryUnlockEffect';
+  }
+}
 
 export class PassiveDualWieldWeaponCategoryUnlockParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
