@@ -29,14 +29,3 @@ export class PassiveEquipmentCategoryUnlockEffect extends SkillEffect {
   }
 
 }
-
-export class PassiveEquipmentCategoryUnlockParser extends EffectParser {
-  public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 1) {
-      return 'Effet EquipmentCategoryUnlockParser inconnu: Mauvaise liste de paramètres';
-    }
-
-    return 'Permet d\'équiper les ' + EffectParser.getEquipmentCategoryNameWithLink(effect[3][0]);
-  }
-}
-

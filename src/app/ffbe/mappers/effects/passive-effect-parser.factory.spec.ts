@@ -36,8 +36,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
-    {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
-    {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
       effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
       parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
