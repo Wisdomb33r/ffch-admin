@@ -23,6 +23,8 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 3, [30,  30,  0,  0,  0,  0,  0]]',
       parsed: '+30% de rés. Feu, Glace'
     },
+    {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
+    {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'

@@ -6,6 +6,8 @@ import {TargetTypeEnum} from '../target-type.enum';
 
 export class PassiveEquipmentCategoryUnlockEffect extends SkillEffect {
 
+  private equipmentCategory: number;
+
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
@@ -13,11 +15,13 @@ export class PassiveEquipmentCategoryUnlockEffect extends SkillEffect {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
+    } else {
+      this.equipmentCategory = parameters[0];
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    return 'Permet d\'équiper les ' + EffectParser.getEquipmentCategoryNameWithLink(this.equipmentCategory);
   }
 
   protected get effectName(): string {
