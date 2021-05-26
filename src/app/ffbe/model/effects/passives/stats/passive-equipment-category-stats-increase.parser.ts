@@ -1,6 +1,6 @@
-import {EffectParser} from '../effect-parser';
-import {Skill} from '../../../model/skill.model';
-import {FfbeUtils} from '../../../utils/ffbe-utils';
+import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {Skill} from '../../../skill.model';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
 
 export class PassiveEquipmentCategoryStatsIncreaseParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
