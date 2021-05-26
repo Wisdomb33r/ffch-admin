@@ -20,6 +20,7 @@ import {PassiveEsperDamageIncreaseEffect} from './passives/esper/passive-esper-d
 import {PassiveEsperSummonDamageIncreaseEffect} from './passives/esper/passive-esper-summon-damage-increase-effect.model';
 import {PassiveEquipmentStatsIncreaseEffect} from './passives/stats/passive-equipment-stats-increase-effect.model';
 import {PassiveEquipmentStatsDoublehandShieldIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-shield-increase-effect.model';
+import {PassiveDualWieldWeaponCategoryUnlockEffect} from './passives/equipment/passive-dual-wield-weapon-category-unlock-effect.model';
 import {PassiveLbDamageIncreaseEffect} from './passives/limitburst/passive-lb-damage-increase-effect.model';
 import {PassiveLbPerTurnEffect} from './passives/limitburst/passive-lb-per-turn-effect.model';
 import {PassiveLbSpeedIncreaseEffect} from './passives/limitburst/passive-lb-speed-increase-effect.model';
@@ -48,6 +49,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 13:
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 14:
+        return new PassiveDualWieldWeaponCategoryUnlockEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 17:
         return new PassiveJumpDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:

@@ -281,7 +281,7 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
     return mod > 0 ? `+ ${mod / 200}x la PSY + ${(mod / 1000)}x la MAG du lanceur ` : '';
   }
 
-  protected getEquipmentCategoryNameWithLink(equipmentId: number): string {
+  public static getEquipmentCategoryNameWithLink(equipmentId: number): string {
     const categorie = FFBE_CATEGORIES_OBJETS.find((categ: CategorieObjet) => categ.gumiId === +equipmentId);
     return categorie ? `<a href="ffexvius_objects.php?categid=${categorie.ffchId}">${categorie.name}</a>` : 'UNKNOWN';
   }

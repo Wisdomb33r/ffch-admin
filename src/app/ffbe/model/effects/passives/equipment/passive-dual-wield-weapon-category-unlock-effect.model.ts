@@ -13,13 +13,15 @@ export class PassiveDualWieldWeaponCategoryUnlockEffect extends SkillEffect {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
-    } else {
-
     }
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return '';
+    if (this.parameters.length === 1 && this.parameters[0] === 'none') {
+      return 'Permet d\'équiper deux armes';
+    }
+
+    return 'Permet d\'équiper deux ' + this.parameters.map(categorie => EffectParser.getEquipmentCategoryNameWithLink(categorie)).join(', ');
   }
 
   protected get effectName(): string {
@@ -37,6 +39,6 @@ export class PassiveDualWieldWeaponCategoryUnlockParser extends EffectParser {
       return 'Permet d\'équiper deux armes';
     }
 
-    return 'Permet d\'équiper deux ' + effect[3].map(categorie => this.getEquipmentCategoryNameWithLink(categorie)).join(', ');
+    return 'Permet d\'équiper deux ' + effect[3].map(categorie => EffectParser.getEquipmentCategoryNameWithLink(categorie)).join(', ');
   }
 }

@@ -49,6 +49,11 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
+    {
+      effect: '[0, 3, 14, [4, 5, 6]]',
+      parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
+    },
+    {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
