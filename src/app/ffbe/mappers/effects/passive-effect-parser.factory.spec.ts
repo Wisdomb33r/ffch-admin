@@ -37,10 +37,6 @@ describe('PassiveEffectParser', () => {
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
     {
-      effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
-      parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
-    },
-    {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },

@@ -1,7 +1,6 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
-import {PassiveEquipmentCategoryStatsIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-category-stats-increase-effect.model';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
@@ -34,8 +33,6 @@ export class PassiveEffectParserFactory {
     switch (effectId3) {
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
-      case 6:
-        return new PassiveEquipmentCategoryStatsIncreaseParser();
       case 8:
         return new PassiveCoverParser();
       case 9:
