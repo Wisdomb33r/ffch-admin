@@ -33,9 +33,10 @@ export class PassiveEquipmentCategoryStatsIncreaseEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     // TODO critical strikes
-    return FfbeUtils.replaceLastOccurenceInString(this.wordEffectJoiningIdenticalValues(this.increases), ', ', ' et ')
-      + ' si l\'unité porte ' + (EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une ' : 'un ')
-      + EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId);
+    const increaseText = FfbeUtils.replaceLastOccurenceInString(this.wordEffectJoiningIdenticalValues(this.increases), ', ', ' et ');
+    const determinant = (EffectParser.isEquipmentCategoryFeminine(this.equipmentGumiId) ? 'une' : 'un');
+    const equipmentCategoryLink = EffectParser.getEquipmentCategoryTypeWithLink(this.equipmentGumiId);
+    return `${increaseText} si l'unité porte ${determinant} ${equipmentCategoryLink}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {
