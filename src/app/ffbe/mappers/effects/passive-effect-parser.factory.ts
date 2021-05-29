@@ -10,7 +10,6 @@ import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-fo
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
-import {PassiveEquipmentWeaponElementStatsIncreaseParser} from '../../model/effects/passives/stats/passive-equipment-weapon-element-stats-increase-effect.model';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
@@ -87,8 +86,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillTurnStartActivationParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
-      case 10004:
-        return new PassiveEquipmentWeaponElementStatsIncreaseParser();
       case 10006:
         return new PassiveStatsIncreaseHpThresholdParser();
       default:
