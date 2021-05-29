@@ -175,6 +175,10 @@ describe('PassiveSkillEffect', () => {
       parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
         + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
     },
+    {
+      effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
+      parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
+    },
   ];
 
   passiveEffectParserTestMappings.forEach(testParams => {

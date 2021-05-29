@@ -186,7 +186,7 @@ export abstract class EffectParser extends EffectIdenticalValuesWording {
     }
   }
 
-  protected getElementFromId(elementId: number): string {
+  public static getElementFromId(elementId: number): string {
     const element: Element = FFBE_ELEMENTS.find(e => e.id === elementId);
     return element ? element.nom : 'UNKNOWN element';
   }
