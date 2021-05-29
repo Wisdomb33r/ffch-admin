@@ -47,7 +47,7 @@ export class AbilitySkillCooldownEffect extends SkillEffect {
   }
 
   protected get effectName(): string {
-    return 'AbilityCooldownEffect';
+    return 'AbilitySkillCooldownEffect';
   }
 
   public getDamagesPower(): number {
@@ -55,6 +55,6 @@ export class AbilitySkillCooldownEffect extends SkillEffect {
   }
 
   public getActivatedSkills(): Array<Skill> {
-    return this.activatedSkill.activatedSkills;
+    return this.activatedSkill ? this.activatedSkill.activatedSkills : [];
   }
 }
