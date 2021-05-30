@@ -20,10 +20,13 @@ export class AbilitySkillCooldownEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 3 || parameters.length > 4 || (parameters[1] !== 0 && parameters[1] !== 1)
-      || !Array.isArray(parameters[2]) || parameters[2].length !== 2 || (parameters[3] && parameters[3] !== 0 && parameters[3] !== 1)) {
+    if (!Array.isArray(parameters) || parameters.length < 3 || !Array.isArray(parameters[2]) ||
+      parameters[2].length !== 2 || (parameters[3] && parameters[3] !== 0 && parameters[3] !== 1)) {
       this.parameterError = true;
     } else {
+      if ((parameters[1] !== 0 && parameters[1] !== 1) || parameters.length > 4) {
+        this.parameterWarning = true;
+      }
       this.activatedSkillId = parameters[0];
       this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.activatedSkillId);
       this.turnsCooldown = parameters[2][0] + 1;
