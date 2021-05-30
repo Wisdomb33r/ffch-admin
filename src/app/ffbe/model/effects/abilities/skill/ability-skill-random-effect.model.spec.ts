@@ -45,4 +45,16 @@ describe('AbilitySkillRandomEffect', () => {
       '20%: Lance <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a><br />' +
       '10%: Lance <a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>');
   });
+
+  it('should return empty activated skills array upon parameterError in random skill', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 29, []]');
+    const skillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
 });

@@ -157,4 +157,16 @@ describe('AbilityCooldownEffect', () => {
       'Dégâts physiques neutres de puissance 500% (ignore 50% DÉF, 1000% total) à un adversaire (ignore les couvertures)<br />' +
       'Ne s\'active qu\'<strong>une fois</strong> si l\'unité porte deux armes');
   });
+
+  it('should return empty activated skills array upon parameterError in cooldown skill', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 130, []]');
+    const skillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
 });

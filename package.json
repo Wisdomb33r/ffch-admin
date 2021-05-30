@@ -1,6 +1,6 @@
 {
   "name": "ffch-admin",
-  "version": "8.1.7",
+  "version": "8.1.8",
   "license": "GPL-3.0",
   "scripts": {
     "ng": "ng",
