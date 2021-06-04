@@ -491,4 +491,17 @@ describe('CharactersService', () => {
     expect(character.entries['207002017'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236047).length).toEqual(1);
   }));
 
+  it('should find a character by vision card reward', () => {
+    // GIVEN
+    const service: CharactersService = TestBed.inject(CharactersService);
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character = service.searchForCharacterByTrustMasterReward('ItemCategory.VisionCard', 207000101);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.gumi_id).toEqual(207002007);
+    expect(character.name).toEqual('Cloud (FFVII REMAKE)');
+  });
 });

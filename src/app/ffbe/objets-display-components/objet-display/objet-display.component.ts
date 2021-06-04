@@ -60,7 +60,7 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
     return !FfbeUtils.isNullOrUndefined(this.objet.tueursPhysiques) && !FfbeUtils.isNullOrUndefined(this.objet.tueursMagiques);
   }
 
-  public hasLienTRM(): boolean {
+  public hasLienTMR(): boolean {
     return !FfbeUtils.isNullOrUndefined(this.objet.lienTMR);
   }
 

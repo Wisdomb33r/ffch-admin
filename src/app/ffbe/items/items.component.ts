@@ -51,7 +51,9 @@ export class ItemsComponent implements OnInit {
     items.forEach(item => {
       const character = this.charactersService.searchForCharacterByTrustMasterReward(item.category, item.getGumiId());
       const objet = ItemMapper.toObjet(item);
-      objet.lienTMR = ItemMapper.mapLienTRM(item, character);
+      if (character) {
+        objet.lienTMR = ItemMapper.mapLienTMR(item, character);
+      }
       this.objets.push(objet);
     });
     localStorage.setItem(this.localStorageLabel, JSON.stringify(this.searchForm.value));

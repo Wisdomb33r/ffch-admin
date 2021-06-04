@@ -33,7 +33,7 @@ export class ItemMapper {
     return objet;
   }
 
-  public static mapLienTRM(item: Item, character: Character): ObjetLienTMR {
+  public static mapLienTMR(item: Item, character: Character): ObjetLienTMR {
     if (FfbeUtils.isNullOrUndefined(item) || FfbeUtils.isNullOrUndefined(character)) {
       return null;
     }
@@ -45,10 +45,12 @@ export class ItemMapper {
 
     if (Array.isArray(character.TMR) && character.TMR.length === 2 &&
       character.TMR[0] === itemCatetogyName && character.TMR[1] == itemGumiId) {
-      lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], false);
+      lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], false, false);
     } else if (Array.isArray(character.sTMR) && character.sTMR.length === 2 &&
       character.sTMR[0] === itemCatetogyName && character.sTMR[1] == itemGumiId) {
-      lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], true);
+      lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], true, false);
+    } else {
+      lien = new ObjetLienTMR(character.gumi_id, character.names[FFBE_FRENCH_TABLE_INDEX], false, true);
     }
 
     return lien;
