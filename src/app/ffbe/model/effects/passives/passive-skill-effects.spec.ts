@@ -66,6 +66,8 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
+    {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
+    {effect: '[0, 3, 25, [30]]', parsed: '-30% de chance d\'être ciblé'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},

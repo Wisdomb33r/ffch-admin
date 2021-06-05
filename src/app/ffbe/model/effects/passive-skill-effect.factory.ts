@@ -37,6 +37,7 @@ import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-
 import {PassiveSkillModifierIncreaseEffect} from './passives/skill/passive-skill-modifier-increase-effect.model';
 import {PassiveEsperGroupSummonEffect} from './passives/esper/passive-esper-group-summon-effect.model';
 import {PassiveEsperStatsIncreaseEffect} from './passives/esper/passive-esper-stats-increase-effect.model';
+import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance-changes-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -65,6 +66,9 @@ export class PassiveSkillEffectFactory {
         return new PassiveJumpDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
         return new PassiveEsperDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 24:
+      case 25:
+        return new PassiveTargetChanceChangesEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 31:
         return new PassiveLbSpeedIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 33:
