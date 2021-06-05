@@ -29,4 +29,15 @@ describe('PassiveSkillBattleStartActivationEffect', () => {
     expect(s).toEqual('Effet activé en début de combat ou après résurrection: +20% PV');
   });
 
+  it('should return empty activated skills array upon parameterError in battle start activator skill', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 35, []]');
+    const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
 });

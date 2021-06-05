@@ -233,6 +233,7 @@ describe('AbilitySkillActivationEffect', () => {
     skill.gumi_id = 512170;
     skill.names = names['512170'];
     skill.descriptions = descriptions['512170'];
+    skill.active = true;
     skill.isActivatedByPassiveSkill = true;
 
     const effect = JSON.parse('[0, 3, 100, [2,  512170,  99999,  1,  1,  5]]');
@@ -245,6 +246,18 @@ describe('AbilitySkillActivationEffect', () => {
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(512170);
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=512170">Point faible + : Feu</a> au lanceur pour 1 tour');
+  });
+
+  it('should return empty activated skills array upon parameterError in activator skill', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 100, []]');
+    const skillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
   });
 });
 

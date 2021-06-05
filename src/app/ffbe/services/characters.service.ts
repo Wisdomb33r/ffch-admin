@@ -58,13 +58,23 @@ export class CharactersService {
     return null;
   }
 
-  public searchForCharacterByGumiId(id: number): Character {
+  public searchForShallowCharacterByGumiId(id: number): Character {
     if (this.charactersFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
         const character: Character = this.charactersFromDataMining[property];
         character.gumi_id = +property;
+        return character;
+      }
+    }
+    return null;
+  }
+
+  public searchForCharacterByGumiId(id: number): Character {
+    if (this.charactersFromDataMining != null) {
+      const character = this.searchForShallowCharacterByGumiId(id);
+      if (character) {
         this.loadCharacterSkills(character.skills);
         this.loadLimitBurst(character.entries);
         this.loadEnhancedLimitBurst(character);
@@ -98,7 +108,7 @@ export class CharactersService {
     return false;
   }
 
-  public searchForCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
+  public searchForShallowCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
     if (this.charactersFromDataMining != null) {
       const categoryName = ItemCategoryFactory.getName(rewardType);
       const propertyNames: string[] = Object.getOwnPropertyNames(this.charactersFromDataMining);
@@ -117,9 +127,6 @@ export class CharactersService {
       if (property) {
         const character: Character = this.charactersFromDataMining[property];
         character.gumi_id = +property;
-        this.loadCharacterSkills(character.skills);
-        this.loadLimitBurst(character.entries);
-        this.loadEnhancedLimitBurst(character);
         return character;
       }
     }

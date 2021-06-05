@@ -30,4 +30,15 @@ describe('PassiveSkillReplacingNormalAttackEffect', () => {
     expect(s).toEqual('Remplace les attaques normales par <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>');
   });
 
+  it('should return empty activated skills array upon parameterError in cooldown skill', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 100, []]');
+    const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
 });

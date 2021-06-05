@@ -62,8 +62,14 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
+    {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
+    {
+      effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
+      parsed: '+30% de rés. aux baisses de DÉF/PSY, +20% de rés. aux baisses de ATT/MAG'
+        + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
+    },
+    {effect: '[0, 3, 55, [0,  0,  0,  0,  100]]', parsed: '+100% de rés. à Stop'},
     {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
-
     {
       effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',
       parsed: '+10% aux caractéristiques obtenues par la chimère'
@@ -137,6 +143,7 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},
     {effect: '[0,3,89,[100,100,0,0,2000,0]]', parsed: '+2000 PV, +100 ATT/DÉF'},
+    {effect: '[0, 3, 89, [200,  0,  0,  0,  0]]', parsed: '+200 ATT'},
     {effect: '[0,3,95,[2,70]]', parsed: '+70% de dégâts magiques sur les cibles en état de choc'},
     {effect: '[0,3,98,[0,50,0,1]]', parsed: '+50% au coefficient multiplicateur maximal de la chaîne de combo'},
     {

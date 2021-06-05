@@ -69,4 +69,28 @@ describe('PassiveCounterAttackWithSkillEffect', () => {
     expect(s).toEqual('15% de chance de contrer les dégâts physiques par: ' +
       '<a href="ffexvius_skills.php?gumiid=509624">Lame des braves (FFV)</a>');
   });
+
+  it('should return empty activated skills array upon parameterError for physical counterattack', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 49, []]');
+    const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
+
+  it('should return empty activated skills array upon parameterError for magical counterattack', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 1, 50, []]');
+    const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
+
+    // WHEN
+    const activatedSkills = skillEffect.getActivatedSkills();
+
+    // THEN
+    expect(activatedSkills).toEqual([]);
+  });
 });

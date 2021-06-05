@@ -13,6 +13,7 @@ import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
 import {LatentSkillsService} from './latent-skills.service';
 import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
+import {FfbeUtils} from '../utils/ffbe-utils';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -43,6 +44,10 @@ export class CharactersServiceMock {
 
   public static getInstance() {
     return CharactersServiceMock.INSTANCE;
+  }
+
+  public searchForShallowCharacterByGumiId(id: number): Character {
+    return null;
   }
 
   public searchForCharacterByGumiId(id: number): Character {
@@ -489,6 +494,22 @@ describe('CharactersService', () => {
     expect(character.entries.length === 1);
     expect(character.entries['207002017'].characterEntrySkills.length).toEqual(20);
     expect(character.entries['207002017'].characterEntrySkills.filter(characterEntrySkill => characterEntrySkill.id === 236047).length).toEqual(1);
+  }));
+
+  it('should not load nested properties when loading a shallow character', inject([CharactersService], (service: CharactersService) => {
+    // GIVEN
+    service.loadCharactersFromDataMining();
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.callThrough();
+
+    // WHEN
+    const character: Character = service.searchForShallowCharacterByGumiId(207002017);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.entries.length === 1);
+    expect(character.entries['207002017'].characterEntrySkills).toBeFalsy();
+    expect(character.skills.length).toEqual(20);
+    expect(mySpy).toHaveBeenCalledTimes(0);
   }));
 
   it('should find a character by vision card reward', () => {
