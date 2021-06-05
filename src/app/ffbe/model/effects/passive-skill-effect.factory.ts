@@ -1,4 +1,5 @@
 import {SkillEffect} from './skill-effect.model';
+import {PassiveCoverEffect} from './passives/passive-cover-effect.model';
 import {PassiveStatsIncreaseFixedEffect} from './passives/stats/passive-stats-increase-fixed-effect.model';
 import {PassiveStatsIncreaseEffect} from './passives/stats/passive-stats-increase-effect.model';
 import {PassiveDebuffsResistanceEffect} from './passives/passive-debuffs-resistance-effect.model';
@@ -50,6 +51,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentCategoryUnlockEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 6:
         return new PassiveEquipmentCategoryStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 8:
+        return new PassiveCoverEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 11:
         return new PassiveKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 12:
@@ -77,6 +80,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveDebuffsResistanceEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 56:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 59:
+        return new PassiveCoverEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 61:
         return new PassiveEsperGroupSummonEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 63:
