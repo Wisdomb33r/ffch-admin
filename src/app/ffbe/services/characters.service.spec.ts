@@ -13,7 +13,6 @@ import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
 import {LatentSkillsService} from './latent-skills.service';
 import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
-import {FfbeUtils} from '../utils/ffbe-utils';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -518,7 +517,7 @@ describe('CharactersService', () => {
     service.loadCharactersFromDataMining();
 
     // WHEN
-    const character = service.searchForCharacterByTrustMasterReward('ItemCategory.VisionCard', 207000101);
+    const character = service.searchForShallowCharacterByTrustMasterReward('ItemCategory.VisionCard', 207000101);
 
     // THEN
     expect(character).toBeTruthy();
