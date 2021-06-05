@@ -66,6 +66,7 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
+    {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
     {effect: '[0, 3, 25, [30]]', parsed: '-30% de chance d\'être ciblé'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
@@ -79,6 +80,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
+    {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {
       effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
