@@ -3,7 +3,7 @@ import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
-import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
+import {PassiveTargetChanceChangesParser} from '../../model/effects/passives/passive-target-chance-changes-effect.model';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
