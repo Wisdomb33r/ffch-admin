@@ -35,15 +35,14 @@ export class PassiveCoverEffect extends SkillEffect {
 
     let mitigation = '';
     if (this.dmgReductionMin > 0 && this.dmgReductionMax > 0) {
-      mitigation = ' avec mitigation de ' + this.dmgReductionMin + '%';
+      mitigation = ` avec mitigation de ${this.dmgReductionMin}%`;
       if (this.dmgReductionMin !== this.dmgReductionMax) {
-        mitigation += '-' + this.dmgReductionMax + '%';
+        mitigation += `-${this.dmgReductionMax}%`;
       }
     }
+    const allyRestrictionText = (this.allyRestriction === 1 ? ' féminin' : '');
 
-    return this.procChance + '% de chance de protéger un allié '
-      + (this.allyRestriction === 1 ? 'féminin ' : '')
-      + 'des attaques' + dmgType + mitigation;
+    return `${this.procChance}% de chance de protéger un allié${allyRestrictionText} des attaques${dmgType}${mitigation}`;
   }
 
   protected get effectName(): string {
