@@ -49,8 +49,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
-    {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
-    {effect: '[0, 3, 25, [20]]', parsed: '-20% de chance d\'être ciblé'},
     {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
     {
       effect: '[0, 3, 30, [50]]',
