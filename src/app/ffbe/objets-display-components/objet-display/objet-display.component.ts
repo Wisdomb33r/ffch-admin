@@ -74,14 +74,14 @@ export class ObjetDisplayComponent implements OnInit, OnChanges {
       this.ffchClientService.postObjet$(this.objet)
         .subscribe(objet =>
             this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id),
-          status => this.objetErrors.push('Could not send objet'));
+          error => this.objetErrors.push('Could not send objet: ' + error.error));
     } else {
       this.ffchClientService.putObjet$(this.objet)
         .subscribe(objet => {
             this.objet.id = (FfbeUtils.isNullOrUndefined(objet) ? null : objet.id);
             this.objetModifiedEvent.emit(objet);
           },
-          status => this.objetErrors.push('Could not send objet'));
+          error => this.objetErrors.push('Could not send objet: ' + error.error));
     }
   }
 

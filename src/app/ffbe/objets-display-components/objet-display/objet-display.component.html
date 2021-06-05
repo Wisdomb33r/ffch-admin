@@ -6,6 +6,8 @@
     {{objet.gumi_id}} {{objet.nom}} / {{objet.nom_en}}
   </mat-card-title>
 
+  <mat-error *ngFor="let error of objetErrors">{{error}}</mat-error>
+
   <div *ngIf="!present || different || displayed">
     <mat-form-field>
       <mat-select placeholder="Catégorie"
@@ -47,7 +49,7 @@
         <td>{{objet.variance_min}}% - {{objet.variance_max}}%</td>
       </tr>
       <tr *ngIf="hasLienTMR()">
-        <th>{{objet.lienTMR.isSTMR ? 'STMR' : ''}}{{objet.lienTMR.isVc ? 'VC' : ''}}{{!objet.lienTMR.isVc && !objet.lienTMR.isSTMR ? 'TMR' : ''}}</th>
+        <th>{{objet.lienTMR.isSTMR ? 'STMR' : ''}}{{objet.lienTMR.isVC ? 'VC' : ''}}{{!objet.lienTMR.isVC && !objet.lienTMR.isSTMR ? 'TMR' : ''}}</th>
         <td>{{objet.lienTMR.nom_perso}}</td>
       </tr>
       <tr *ngIf="present">

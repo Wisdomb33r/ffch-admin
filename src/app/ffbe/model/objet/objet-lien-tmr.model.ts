@@ -6,7 +6,7 @@ export class ObjetLienTMR {
     public perso_gumi_id: number,
     public nom_perso: string,
     public isSTMR: boolean,
-    public isVc: boolean
+    public isVC: boolean
   ) {
   }
 
@@ -20,11 +20,11 @@ export class ObjetLienTMR {
       isSTMR = true;
     }
 
-    let isVc = false;
-    if (lien.isVc) {
-      isVc = true;
+    let isVC = false;
+    if (lien.isVC) {
+      isVC = true;
     }
-    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, isSTMR, isVc);
+    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, isSTMR, isVC);
   }
 
 }

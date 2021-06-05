@@ -75,6 +75,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 function saveAndRelateObjectSkills($objet, $brex_objet) {
   if ($objet->competences && count ( $objet->competences )) {
     foreach ( $objet->competences as $competence ) {
+      $brex_competences = brex_competence::finderParGumiId ( $competence->gumi_id );
       updateObjectSkillsRelations ( $brex_competences [0], $brex_objet );
     }
   }
@@ -232,7 +233,7 @@ function createOrUpdateAndValidateObjet($objet, $brex_objet = null) {
   
   if (is_null ( $brex_objet )) {
     $brex_objet = new brex_objet ( $values );
-    if ($objet->categorie->ffchid == 67) {
+    if ($objet->categorie->ffchId == 67) {
       if ($objet->competences && count ( $objet->competences )) {
         foreach ( $objet->competences as $competence ) {
           $brex_competences = brex_competence::finderParGumiId ( $competence->gumi_id );
@@ -262,32 +263,32 @@ function storeObjet($brex_objet)
   }
 }
 
-function createAndValidateObjetLienTMR($objet, $brex_objet)
-{
-  if (is_null($objet->lienTMR)) {
+function createAndValidateObjetLienTMR($objet, $brex_objet) {
+  if (is_null ( $objet->lienTMR )) {
     return null;
   }
-
-  $brex_persos = brex_perso::finderParGumiId($objet->lienTMR->perso_gumi_id);
-
-  if (is_null($brex_persos) || count($brex_persos) != 1) {
+  
+  $brex_persos = brex_perso::finderParGumiId ( $objet->lienTMR->perso_gumi_id );
+  
+  if (is_null ( $brex_persos ) || count ( $brex_persos ) != 1) {
     return null;
   }
-
-  $brex_perso = $brex_persos[0];
-
-  $values = array();
-  $values['super'] = $objet->lienTMR->isSTMR ? '1' : '0';
-  $values['creation_datedate'] = date('Y-m-d');
-  $values['creation_datehour'] = date('H');
-  $values['creation_datemins'] = date('i');
-
-  $brex_perso_trust = new brex_perso_trust($values);
-  $brex_perso_trust->setrelationperso($brex_perso);
-  $brex_perso_trust->setrelationreward($brex_objet);
-
-  $brex_perso_trust->verifyValues();
-
+  
+  $brex_perso = $brex_persos [0];
+  
+  $values = array ();
+  $values ['super'] = $objet->lienTMR->isSTMR ? '1' : '0';
+  $values ['vc'] = $objet->lienTMR->isVC ? '1' : '0';
+  $values ['creation_datedate'] = date ( 'Y-m-d' );
+  $values ['creation_datehour'] = date ( 'H' );
+  $values ['creation_datemins'] = date ( 'i' );
+  
+  $brex_perso_trust = new brex_perso_trust ( $values );
+  $brex_perso_trust->setrelationperso ( $brex_perso );
+  $brex_perso_trust->setrelationreward ( $brex_objet );
+  
+  $brex_perso_trust->verifyValues ();
+  
   return $brex_perso_trust;
 }
 
