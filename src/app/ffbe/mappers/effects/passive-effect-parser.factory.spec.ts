@@ -36,10 +36,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
-    {
-      effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
-      parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
-    },
     {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {
@@ -79,10 +75,6 @@ describe('PassiveEffectParser', () => {
       parsed: '80% de chance d\'éviter la mort avec 10% PV lors d\'une attaque fatale si les PV étaient supérieurs à 20% (max 3 fois)'
     },
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
-    {
-      effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
-      parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
-    },
     {
       effect: '[0, 3, 10006, [[23, 24], 40, 9999, 30, 0, 2]]',
       parsed: '+40% rés. Feu, rés. Glace pour 2 tours quand les PV passent sous 30% (max 9999 fois)'
