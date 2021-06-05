@@ -1,4 +1,3 @@
-import {EffectParser} from '../../../mappers/effects/effect-parser';
 import {Skill} from '../../skill.model';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetNumberEnum} from '../target-number.enum';

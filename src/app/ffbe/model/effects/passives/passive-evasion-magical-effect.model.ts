@@ -1,4 +1,3 @@
-import {EffectParser} from '../../../mappers/effects/effect-parser';
 import {Skill} from '../../skill.model';
 import {SkillEffect} from '../skill-effect.model';
 import {TargetNumberEnum} from '../target-number.enum';
@@ -33,17 +32,5 @@ export class PassiveEvasionMagicalEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'PassiveEvasionMagicalEffect';
-  }
-}
-
-export class PassiveEvasionMagicalParser extends EffectParser {
-  public parse(effect: Array<any>, skill: Skill): string {
-    if (effect.length < 4 || !Array.isArray(effect[3]) || effect[3].length < 2) {
-      return 'Effet PassiveEvasionMagicalParser inconnu: Mauvaise liste de paramètres';
-    }
-
-    const noCumulativeText: string = effect[3][0] === -1 ? ' (effet passif non cumulable)' : ' (UNKNOWN parameter)';
-
-    return '+' + effect[3][1] + '% d\'esquive magique' + noCumulativeText;
   }
 }

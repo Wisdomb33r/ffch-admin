@@ -2,10 +2,8 @@ import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveEvasionPhysicalParser} from '../../model/effects/passives/passive-evasion-physical-effect.model';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
-import {PassiveEvasionMagicalParser} from '../../model/effects/passives/passive-evasion-magical-effect.model';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
@@ -40,8 +38,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 22:
-        return new PassiveEvasionPhysicalParser();
       case 29:
         return new PassiveExplorationStepRegenParser();
       case 30:
@@ -70,8 +66,6 @@ export class PassiveEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 53:
         return new PassiveSkillMultipleActivationParser();
-      case 54:
-        return new PassiveEvasionMagicalParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
       case 10002:
