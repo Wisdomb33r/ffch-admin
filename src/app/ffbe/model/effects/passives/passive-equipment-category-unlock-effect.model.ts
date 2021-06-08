@@ -25,7 +25,7 @@ export class PassiveEquipmentCategoryUnlockEffect extends SkillEffect {
   }
 
   protected get effectName(): string {
-    return 'export class PassiveEquipmentCategoryUnlockEffect extends SkillEffect {\n';
+    return 'PassiveEquipmentCategoryUnlockEffect';
   }
 
 }
