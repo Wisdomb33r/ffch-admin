@@ -23,6 +23,12 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 3, [30,  30,  0,  0,  0,  0,  0]]',
       parsed: '+30% de rés. Feu, Glace'
     },
+    {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
+    {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
+    {
+      effect: '[0, 3, 6, [11, 10, 20, 10, 30, 20, 30]]',
+      parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
+    },
     {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
@@ -49,6 +55,11 @@ describe('PassiveSkillEffect', () => {
       parsed: '+25% à l\'ATT de l\'équipement si l\'unité porte une seule arme à une main (DH)'
         + HTML_LINE_RETURN + '+25% précision si l\'unité porte une seule arme à une main (DH)'
     },
+    {
+      effect: '[0, 3, 14, [4, 5, 6]]',
+      parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
+    },
+    {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
@@ -163,6 +174,10 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 10003, [0, 0, 100, 0, 50, 0, 1]]',
       parsed: '+100% ATT de l\'équipement si l\'unité porte une seule arme (TDH)'
         + HTML_LINE_RETURN + '+50% DÉF de l\'équipement si l\'unité porte une seule arme (TDH)'
+    },
+    {
+      effect: '[0, 3, 10004, [2, 10, 10, 20, 10, 10, 20]]',
+      parsed: '+20% ATT/PSY, +10% PV/PM/DÉF/MAG si l\'unité porte une arme d\'élément Glace'
     },
   ];
 

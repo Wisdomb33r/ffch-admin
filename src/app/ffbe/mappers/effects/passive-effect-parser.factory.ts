@@ -1,19 +1,15 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
-import {PassiveEquipmentCategoryUnlockParser} from './passives/passive-equipment-category-unlock.parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
-import {PassiveEquipmentCategoryStatsIncreaseParser} from './passives/passive-equipment-category-stats-increase.parser';
 import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
 import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
-import {PassiveDualWieldWeaponCategoryUnlockParser} from './passives/passive-dual-wield-weapon-category-unlock.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
-import {PassiveEquipmentWeaponElementStatsIncreaseParser} from './passives/passive-equipment-weapon-element-stats-increase.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveElementsAbsorbParser} from './passives/passive-elements-absorb.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
@@ -36,16 +32,10 @@ export class PassiveEffectParserFactory {
     switch (effectId3) {
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
-      case 5:
-        return new PassiveEquipmentCategoryUnlockParser();
-      case 6:
-        return new PassiveEquipmentCategoryStatsIncreaseParser();
       case 8:
         return new PassiveCoverParser();
       case 9:
         return new PassiveItemsHealingPotencyIncreaseParser();
-      case 14:
-        return new PassiveDualWieldWeaponCategoryUnlockParser();
       case 16:
         return new PassiveItemsStealRateParser();
       case 18:
@@ -96,8 +86,6 @@ export class PassiveEffectParserFactory {
         return new PassiveSkillTurnStartActivationParser();
       case 10002:
         return new PassiveSkillAliveAllyActivationParser();
-      case 10004:
-        return new PassiveEquipmentWeaponElementStatsIncreaseParser();
       case 10006:
         return new PassiveStatsIncreaseHpThresholdParser();
       default:
