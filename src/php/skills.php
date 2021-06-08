@@ -103,9 +103,9 @@ function createPropertyArray($competence) {
   $values ['pm'] = isset ( $competence->pm ) && $competence->pm > 0 ? $competence->pm : '';
   $values ['lb'] = isset ( $competence->lb ) && $competence->lb > 0 ? $competence->lb : '';
   $values ['ep'] = isset ( $competence->ep ) && $competence->ep > 0 ? $competence->ep : '';
-  $values ['hits'] = isset ( $competence->hits ) && $competence->hits > 0 ? $competence->hits : '';
-  $values ['frames'] = isset ( $competence->frames ) && $competence->frames ? $competence->frames : '';
-  $values ['damages'] = isset ( $competence->damages ) && $competence->damages ? $competence->damages : '';
+  $values ['hits'] = isset ($competence->hits) && $competence->hits > 0 ? $competence->hits : '';
+  $values ['frames'] = isset ($competence->frames) && ($competence->frames || $competence->frames == '0') ? $competence->frames : '';
+  $values ['damages'] = isset ($competence->damages) && $competence->damages ? $competence->damages : '';
   $values ['elements'] = isset ( $competence->elements ) ? $competence->elements : '';
   $values ['gumi_id'] = $competence->gumi_id;
   if (isset ( $competence->gumi_id_lie )) {
