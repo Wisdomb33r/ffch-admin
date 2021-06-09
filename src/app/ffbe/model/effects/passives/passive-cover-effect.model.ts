@@ -18,7 +18,7 @@ export class PassiveCoverEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 5) {
       this.parameterError = true;
     } else {
-      if (parameters[1] !== 100) {
+      if (parameters[1] !== 100 || (parameters[0] !== 0 && parameters[0] !== 1)) {
         this.parameterWarning = true;
       }
 
