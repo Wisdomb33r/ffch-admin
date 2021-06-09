@@ -30,6 +30,10 @@ describe('PassiveSkillEffect', () => {
       parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
     },
     {
+      effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
+      parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
+    },
+    {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
     },
@@ -62,6 +66,9 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
+    {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
+    {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
+    {effect: '[0, 3, 25, [30]]', parsed: '-30% de chance d\'être ciblé'},
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
@@ -73,6 +80,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
+    {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {
       effect: '[0, 3, 55, [20, 30, 20, 30, 20, 100]]',
@@ -80,6 +88,10 @@ describe('PassiveSkillEffect', () => {
         + HTML_LINE_RETURN + '+20% de rés. à Stop' + HTML_LINE_RETURN + '+100% de rés. à Charme'
     },
     {effect: '[0, 3, 55, [0,  0,  0,  0,  100]]', parsed: '+100% de rés. à Stop'},
+    {
+      effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
+      parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
+    },
     {effect: '[0, 3, 61, ["none"]]', parsed: 'Permet l\'invocation des chimères associées aux alliés'},
     {
       effect: '[0, 3, 63, [10, 10, 10, 10, 10, 10, 0]]',

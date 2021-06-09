@@ -36,10 +36,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
-    {
-      effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
-      parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
-    },
     {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {
@@ -52,9 +48,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
-    {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
-    {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
-    {effect: '[0, 3, 25, [20]]', parsed: '-20% de chance d\'être ciblé'},
     {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
     {
       effect: '[0, 3, 30, [50]]',
@@ -77,11 +70,6 @@ describe('PassiveEffectParser', () => {
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',
       parsed: '80% de chance d\'éviter la mort avec 10% PV lors d\'une attaque fatale si les PV étaient supérieurs à 20% (max 3 fois)'
-    },
-    {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
-    {
-      effect: '[1, 2, 59, [1, 100, 40, 60, 50]]',
-      parsed: '50% de chance de protéger un allié féminin des attaques magiques avec mitigation de 40%-60%'
     },
     {
       effect: '[0, 3, 10006, [[23, 24], 40, 9999, 30, 0, 2]]',

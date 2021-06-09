@@ -1,13 +1,9 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
-import {PassiveCoverParser} from './passives/passive-cover.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
-import {PassiveEvasionPhysicalParser} from './passives/passive-evasion-physical.parser';
-import {PassiveTargetChanceChangesParser} from './passives/passive-target-chance-changes.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
-import {PassiveEvasionMagicalParser} from './passives/passive-evasion-magical.parser';
 import {PassiveSkillMultipleActivationParser} from './passives/passive-skill-multiple-activation.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
@@ -32,8 +28,6 @@ export class PassiveEffectParserFactory {
     switch (effectId3) {
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
-      case 8:
-        return new PassiveCoverParser();
       case 9:
         return new PassiveItemsHealingPotencyIncreaseParser();
       case 16:
@@ -44,12 +38,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 22:
-        return new PassiveEvasionPhysicalParser();
-      case 24:
-        return new PassiveTargetChanceChangesParser();
-      case 25:
-        return new PassiveTargetChanceChangesParser();
       case 29:
         return new PassiveExplorationStepRegenParser();
       case 30:
@@ -78,10 +66,6 @@ export class PassiveEffectParserFactory {
         return new AbilityMagicMultipleActivationParser();
       case 53:
         return new PassiveSkillMultipleActivationParser();
-      case 54:
-        return new PassiveEvasionMagicalParser();
-      case 59:
-        return new PassiveCoverParser();
       case 66:
         return new PassiveSkillTurnStartActivationParser();
       case 10002:
