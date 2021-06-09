@@ -56,6 +56,7 @@ import {ObjetTueursPhysiquesMagiquesDisplayComponent} from './objets-display-com
 import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tueurs-display/objet-tueurs-display.component';
 import {ObjetsComparingContainerDisplayComponent} from './objets-display-components/objets-comparing-container-display/objets-comparing-container-display.component';
 import {MatIconModule} from '@angular/material/icon';
+import {VisionCardsService} from './services/vision-cards.service';
 
 @NgModule({
   imports: [
@@ -131,6 +132,7 @@ import {MatIconModule} from '@angular/material/icon';
     EquipmentsService,
     MateriasService,
     LatentSkillsService,
+    VisionCardsService,
   ]
 })
 export class FfbeModule {

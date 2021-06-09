@@ -5,7 +5,8 @@ export class ObjetLienTMR {
   public constructor(
     public perso_gumi_id: number,
     public nom_perso: string,
-    public isSTMR: boolean
+    public isSTMR: boolean,
+    public isVC: boolean
   ) {
   }
 
@@ -18,7 +19,12 @@ export class ObjetLienTMR {
     if (lien.isSTMR) {
       isSTMR = true;
     }
-    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, isSTMR);
+
+    let isVC = false;
+    if (lien.isVC) {
+      isVC = true;
+    }
+    return new ObjetLienTMR(lien.perso_gumi_id, lien.nom_perso, isSTMR, isVC);
   }
 
 }

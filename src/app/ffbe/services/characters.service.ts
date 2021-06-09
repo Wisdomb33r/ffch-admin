@@ -96,6 +96,18 @@ export class CharactersService {
     return null;
   }
 
+  private isCharacterVisionCardMatchingReward(character: Character, characterId, rewardId: number): boolean {
+    if (character.entries) {
+      const entry: CharacterEntry = character.entries[characterId];
+      if (entry?.nv_upgrade?.length && entry.nv_upgrade[0].reward?.length) {
+        return entry.nv_upgrade[0].reward.some(
+          (reward: Array<any>) => reward.length > 2 && reward[0] === 'VISIONCARD' && reward[1] === rewardId
+        );
+      }
+    }
+    return false;
+  }
+
   public searchForShallowCharacterByTrustMasterReward(rewardType: ItemCategory, rewardGumiId: number): Character {
     if (this.charactersFromDataMining != null) {
       const categoryName = ItemCategoryFactory.getName(rewardType);
@@ -108,7 +120,9 @@ export class CharactersService {
         (Array.isArray(this.charactersFromDataMining[propertyName].sTMR) &&
           this.charactersFromDataMining[propertyName].sTMR.length === 2 &&
           this.charactersFromDataMining[propertyName].sTMR[0] === categoryName &&
-          this.charactersFromDataMining[propertyName].sTMR[1] === rewardGumiId)
+          this.charactersFromDataMining[propertyName].sTMR[1] === rewardGumiId) ||
+        (rewardType === 'ItemCategory.VisionCard'
+          && this.isCharacterVisionCardMatchingReward(this.charactersFromDataMining[propertyName], propertyName, rewardGumiId))
       ));
       if (property) {
         const character: Character = this.charactersFromDataMining[property];

@@ -13,7 +13,6 @@ import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
 import {LatentSkillsService} from './latent-skills.service';
 import {LATENT_SKILLS_TEST_DATA} from './latent-skills.service.spec';
-import {FfbeUtils} from '../utils/ffbe-utils';
 
 class DataMiningMock {
   public getCharacters$(): Observable<Object> {
@@ -512,4 +511,17 @@ describe('CharactersService', () => {
     expect(mySpy).toHaveBeenCalledTimes(0);
   }));
 
+  it('should find a character by vision card reward', () => {
+    // GIVEN
+    const service: CharactersService = TestBed.inject(CharactersService);
+    service.loadCharactersFromDataMining();
+
+    // WHEN
+    const character = service.searchForShallowCharacterByTrustMasterReward('ItemCategory.VisionCard', 207000101);
+
+    // THEN
+    expect(character).toBeTruthy();
+    expect(character.gumi_id).toEqual(207002007);
+    expect(character.name).toEqual('Cloud (FFVII REMAKE)');
+  });
 });
