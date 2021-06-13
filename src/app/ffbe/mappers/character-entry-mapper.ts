@@ -84,13 +84,25 @@ export class CharacterEntryMapper {
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
       unite.lim_min = CharacterEntryMapper.parseLimitBurstEffect(lb, 0);
       unite.lim_max = CharacterEntryMapper.parseLimitBurstEffect(lb, lb.levels.length - 1);
-      unite.lim_hits = lb.attack_count.length > 0 ? lb.attack_count[0] : null;
-      unite.lim_frames = lb.attack_frames.length > 0 ? lb.attack_frames[0].join(' ') : null;
-      unite.lim_damages = lb.attack_damage.length > 0 ? lb.attack_damage[0].join(' ') : null;
+      const hitsFramesDamages = CharacterEntryMapper.mapHitsFramesAndDamages(lb);
+      unite.lim_hits = hitsFramesDamages.hits;
+      unite.lim_frames = hitsFramesDamages.frames;
+      unite.lim_damages = hitsFramesDamages.damages;
       unite.lim_cristals_niv_min = lb.levels.length > 0 && lb.levels[0].length > 0 ? lb.levels[0][0] : null;
       unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length - 1].length > 0 ? lb.levels[lb.levels.length - 1][0] : null;
       unite.lim_nb_niv = lb.levels.length;
     }
+  }
+
+  private static mapHitsFramesAndDamages(lb: LimitBurst): { hits: number, frames: string, damages: string } {
+    const fakeMinLevelSkill = new Skill();
+    fakeMinLevelSkill.gumi_id = lb.gumi_id;
+    fakeMinLevelSkill.effects_raw = lb.levels[0][1];
+    fakeMinLevelSkill.active = true;
+    fakeMinLevelSkill.attack_count = lb.attack_count;
+    fakeMinLevelSkill.attack_damage = lb.attack_damage;
+    fakeMinLevelSkill.attack_frames = lb.attack_frames;
+    return SkillMapper.mapHitsFramesAndDamages(fakeMinLevelSkill);
   }
 
   private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
