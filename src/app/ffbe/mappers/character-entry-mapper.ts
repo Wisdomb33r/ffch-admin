@@ -78,13 +78,15 @@ export class CharacterEntryMapper {
 
   private static convertLimitBurst(unite: Unite, lb: LimitBurst) {
     if (lb) {
+      const minLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, 0);
+      const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, lb.levels.length - 1);
       unite.limite = lb.names[FFBE_FRENCH_TABLE_INDEX];
       unite.limite_en = lb.names[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
-      unite.lim_min = CharacterEntryMapper.parseLimitBurstEffect(lb, 0);
-      unite.lim_max = CharacterEntryMapper.parseLimitBurstEffect(lb, lb.levels.length - 1);
-      const hitsFramesDamages = CharacterEntryMapper.mapHitsFramesAndDamages(lb);
+      unite.lim_min = SkillEffectsMapper.mapAbilitySkillEffects(minLevelFakeSkill);
+      unite.lim_max = SkillEffectsMapper.mapAbilitySkillEffects(maxLevelFakeSkill);
+      const hitsFramesDamages = SkillMapper.mapHitsFramesAndDamages(minLevelFakeSkill);
       unite.lim_hits = hitsFramesDamages.hits;
       unite.lim_frames = hitsFramesDamages.frames;
       unite.lim_damages = hitsFramesDamages.damages;
@@ -94,39 +96,27 @@ export class CharacterEntryMapper {
     }
   }
 
-  private static mapHitsFramesAndDamages(lb: LimitBurst): { hits: number, frames: string, damages: string } {
+  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
+    if (upgradedLb) {
+      const minLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(upgradedLb, 0);
+      const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(upgradedLb, upgradedLb.levels.length - 1);
+      unite.lim_up_min = SkillEffectsMapper.mapAbilitySkillEffects(minLevelFakeSkill);
+      unite.lim_up_max = SkillEffectsMapper.mapAbilitySkillEffects(maxLevelFakeSkill);
+    }
+  }
+
+  private static createFakeSkillForLb(lb: LimitBurst, limitBurstIndex: number): Skill {
+    const rawEffect = lb.levels[limitBurstIndex][1];
     const fakeMinLevelSkill = new Skill();
     fakeMinLevelSkill.gumi_id = lb.gumi_id;
-    fakeMinLevelSkill.effects_raw = lb.levels[0][1];
+    fakeMinLevelSkill.effects_raw = rawEffect;
     fakeMinLevelSkill.active = true;
+    fakeMinLevelSkill.element_inflict = lb.element_inflict;
+    fakeMinLevelSkill.attack_type = lb.damage_type;
     fakeMinLevelSkill.attack_count = lb.attack_count;
     fakeMinLevelSkill.attack_damage = lb.attack_damage;
     fakeMinLevelSkill.attack_frames = lb.attack_frames;
-    return SkillMapper.mapHitsFramesAndDamages(fakeMinLevelSkill);
-  }
-
-  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
-    if (upgradedLb) {
-      unite.lim_up_min = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, 0);
-      unite.lim_up_max = CharacterEntryMapper.parseLimitBurstEffect(upgradedLb, upgradedLb.levels.length - 1);
-    }
-  }
-
-  private static parseLimitBurstEffect(lb: LimitBurst, limitBurstIndex: number): string {
-    let limitBurstEffect: string = null;
-
-    if (lb.levels.length > limitBurstIndex && lb.levels[limitBurstIndex].length > 1) {
-      const rawEffect = lb.levels[limitBurstIndex][1];
-      const fakeMinLevelSkill = new Skill();
-      fakeMinLevelSkill.gumi_id = lb.gumi_id;
-      fakeMinLevelSkill.effects_raw = rawEffect;
-      fakeMinLevelSkill.active = true;
-      fakeMinLevelSkill.element_inflict = lb.element_inflict;
-      fakeMinLevelSkill.attack_type = lb.damage_type;
-      limitBurstEffect = SkillEffectsMapper.mapAbilitySkillEffects(fakeMinLevelSkill);
-    }
-
-    return limitBurstEffect;
+    return fakeMinLevelSkill;
   }
 
   private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
