@@ -107,16 +107,16 @@ export class CharacterEntryMapper {
 
   private static createFakeSkillForLb(lb: LimitBurst, limitBurstIndex: number): Skill {
     const rawEffect = lb.levels[limitBurstIndex][1];
-    const fakeMinLevelSkill = new Skill();
-    fakeMinLevelSkill.gumi_id = lb.gumi_id;
-    fakeMinLevelSkill.effects_raw = rawEffect;
-    fakeMinLevelSkill.active = true;
-    fakeMinLevelSkill.element_inflict = lb.element_inflict;
-    fakeMinLevelSkill.attack_type = lb.damage_type;
-    fakeMinLevelSkill.attack_count = lb.attack_count;
-    fakeMinLevelSkill.attack_damage = lb.attack_damage;
-    fakeMinLevelSkill.attack_frames = lb.attack_frames;
-    return fakeMinLevelSkill;
+    const fakeSkill = new Skill();
+    fakeSkill.gumi_id = lb.gumi_id;
+    fakeSkill.effects_raw = rawEffect;
+    fakeSkill.active = true;
+    fakeSkill.element_inflict = lb.element_inflict;
+    fakeSkill.attack_type = lb.damage_type;
+    fakeSkill.attack_count = lb.attack_count;
+    fakeSkill.attack_damage = lb.attack_damage;
+    fakeSkill.attack_frames = lb.attack_frames;
+    return fakeSkill;
   }
 
   private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
