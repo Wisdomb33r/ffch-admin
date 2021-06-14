@@ -4,6 +4,9 @@ import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
 import {Character} from '../model/character/character.model';
 import {CharacterEntryMapper} from './character-entry-mapper';
 import {Caracteristiques} from '../model/caracteristiques.model';
+import {Unite} from '../model/unite.model';
+import {LIMIT_BURST_NAMES_TEST_DATA, LIMIT_BURST_TEST_DATA} from '../model/limit-burst.model.spec';
+import {LimitBurst} from '../model/limit-burst.model';
 
 describe('CharacterEntryMapper', function () {
   it('should parse EX stats of non-NeoVision unit correctly', () => {
@@ -69,4 +72,22 @@ describe('CharacterEntryMapper', function () {
     expect(unite.caracEX[2].base).toEqual(new Caracteristiques(333, 17, 14, 12, 11, 13));
   });
 
+  it('should parse LB correctly', () => {
+    // GIVEN
+    const lbs = JSON.parse(LIMIT_BURST_TEST_DATA);
+    const lbsNames = JSON.parse(LIMIT_BURST_NAMES_TEST_DATA);
+    const lb: LimitBurst = lbs['100031607'];
+    lb.names = lbsNames['100031607'];
+    const fakeUnite = new Unite(2185, 8, 100032707, 100032707);
+
+    // WHEN
+    CharacterEntryMapper['convertLimitBurst'](fakeUnite, lb);
+
+    // THEN
+    expect(fakeUnite.lim_min).toEqual('-120% de rés. Ténèbres aux adversaires pour ce tour<br />-75% PSY aux adversaires pour ce tour<br />Dégâts magiques de Ténèbres de puissance 6100% aux adversaires');
+    expect(fakeUnite.lim_max).toEqual('-120% de rés. Ténèbres aux adversaires pour ce tour<br />-75% PSY aux adversaires pour ce tour<br />Dégâts magiques de Ténèbres de puissance 10000% aux adversaires');
+    expect(fakeUnite.lim_hits).toEqual(24);
+    expect(fakeUnite.lim_frames).toEqual('11 18 25 32 39 46 53 60 67 74 81 88 95 102 109 116 123 130 137 144 151 158 165 172');
+    expect(fakeUnite.lim_damages).toEqual('2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 54');
+  });
 });
