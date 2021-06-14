@@ -16,10 +16,10 @@ export class PassiveElementsResistanceEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
-      if (parameters.length < 8 || parameters.every(parameter => parameter === 0)) {
+      if (parameters.length < 8 || parameters.length > 8 || parameters.every(parameter => parameter === 0)) {
         this.parameterWarning = true;
       }
-      const filler = new Array<number>(8 - parameters.length).fill(0);
+      const filler =  parameters.length < 8 ? new Array<number>(8 - parameters.length).fill(0) : [];
       this.increases = new ResistancesElementaires(... parameters, ... filler);
     }
   }
