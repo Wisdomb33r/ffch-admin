@@ -6,12 +6,16 @@ import {Caracteristiques} from '../../model/caracteristiques.model';
 import {ItemWithSkillsMapper} from './item-with-skills-mapper';
 import {VisionCard} from '../../model/items/vision-cards/vision-card.model';
 import {VisionCardStats} from '../../model/items/vision-cards/vision-card-stats.model';
-import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
 import {ResistancesAlterations} from '../../model/resistances-alterations.model';
+import {TueursMapper} from '../tueurs-mapper';
 
 export class VisionCardMapper extends ItemWithSkillsMapper {
 
   public static toObjet(visionCard: VisionCard): Objet {
+    const resistancesElementaires = ItemWithSkillsMapper.mapElementResistances(visionCard.dmSkills);
+    const tueursPhysiques = ItemWithSkillsMapper.mapPhysicalKillers(visionCard.dmSkills);
+    const tueursMagiques = ItemWithSkillsMapper.mapMagicalKillers(visionCard.dmSkills);
+
     const objet = new Objet(null,
       FfbeUtils.findObjetCategorieByFfchId(67),
       visionCard.names[FFBE_FRENCH_TABLE_INDEX],
@@ -25,16 +29,19 @@ export class VisionCardMapper extends ItemWithSkillsMapper {
       null,
       VisionCardMapper.mapVisionCardStats(visionCard.stats),
       new Caracteristiques(),
-      new Caracteristiques(),
-      new Caracteristiques(),
-      new Caracteristiques(),
-      new ResistancesElementaires(),
+      ItemWithSkillsMapper.mapEquipmentDoublehandIncreasesPercent(visionCard.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentTrueDoublehandIncreasesPercent(visionCard.dmSkills),
+      ItemWithSkillsMapper.mapEquipmentDualwieldIncreasesPercent(visionCard.dmSkills),
+      resistancesElementaires,
       new ResistancesAlterations(),
-      null,
-      null,
+      TueursMapper.toDataBaseRepresentation(tueursPhysiques),
+      TueursMapper.toDataBaseRepresentation(tueursMagiques),
       Array.isArray(visionCard.dmSkills) ? visionCard.dmSkills.map(skill => SkillMapper.toCompetence(skill)) : null
     );
 
+    objet.resistancesElementaires = resistancesElementaires;
+    objet.tueursPhysiques = tueursPhysiques;
+    objet.tueursMagiques = tueursMagiques;
     return objet;
   }
 
