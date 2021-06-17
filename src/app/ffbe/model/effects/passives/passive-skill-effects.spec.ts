@@ -28,6 +28,10 @@ describe('PassiveSkillEffect', () => {
       parsed: '+30% PM/PSY, +20% PV/DÉF et +10% ATT/MAG si l\'unité porte une <a href="ffexvius_objects.php?categid=33">harpe</a>'
     },
     {
+      effect: '[1, 3, 6, [4,  50,  0,  0,  0]]',
+      parsed: '+50% ATT si l\'unité porte un <a href="ffexvius_objects.php?categid=28">katana</a>'
+    },
+    {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },
