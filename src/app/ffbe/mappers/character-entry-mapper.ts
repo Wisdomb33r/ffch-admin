@@ -132,9 +132,15 @@ export class CharacterEntryMapper {
     let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = Skill.produce(characterSkill.skill);
-      const competence = competences.find(competence => competence.gumi_id === characterSkill.id);
+      const competence = competences.find(c => c.gumi_id === characterSkill.id);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
-      const niveau = (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) ? 1 : characterSkill.level;
+      let niveau = characterSkill.level;
+      if (unite.stars > characterSkillRarity && Object.getOwnPropertyNames(character.entries).length > 1) {
+        niveau = 1;
+      }
+      if (characterSkill.ex_level && characterSkill.ex_level > 0) {
+        niveau = -(+`${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}`);
+      }
       unite.competences.push(new UniteCompetence(competence, niveau));
       skill.activatedSkills?.forEach(activatedSkill => {
         CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {

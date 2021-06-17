@@ -86,7 +86,7 @@ describe('CharacterMapper', () => {
     const character: Character = characters['207000327'];
     character.skills = JSON.parse('[' +
       '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 100021, "ex_level": 0},' +
-      '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
+      '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 232639, "ex_level": 2}' +
       ']');
 
     character.skills[0].skill = Skill.produce(skill1);
@@ -104,7 +104,7 @@ describe('CharacterMapper', () => {
     expect(personnage.unites[0].competences[0].competence.gumi_id).toEqual(100021);
     expect(personnage.unites[0].competences[0].niveau).toEqual(120);
     expect(personnage.unites[0].competences[1].competence.gumi_id).toEqual(232639);
-    expect(personnage.unites[0].competences[1].niveau).toEqual(120);
+    expect(personnage.unites[0].competences[1].niveau).toEqual(-2222);
   });
 
   it('should create UniteCompetences correctly when mapping an native Neo-Vision Character', () => {
