@@ -16,7 +16,7 @@ export class PassiveEquipmentCategoryStatsIncreaseEffect extends SkillEffect {
               protected effectId: number,
               protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
-    if (!Array.isArray(parameters) || parameters.length < 6) {
+    if (!Array.isArray(parameters) || parameters.length < 5) {
       this.parameterError = true;
     } else {
       this.equipmentGumiId = parameters[0];
