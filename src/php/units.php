@@ -2,6 +2,7 @@
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
 require_once "classes.php";
+require_once "skill_class.php";
 
 class Unite
 {
@@ -90,7 +91,7 @@ class UniteCompetence
   function __construct($brex_unit_comp)
   {
     $this->id = $brex_unit_comp->id;
-    $this->competence = $brex_unit_comp->competence->id;
+    $this->competence = new Competence( $brex_unit_comp->competence );
     $this->niveau = $brex_unit_comp->niveau;
   }
 }
