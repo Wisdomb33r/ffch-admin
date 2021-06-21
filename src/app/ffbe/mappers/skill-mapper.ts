@@ -215,7 +215,7 @@ export class SkillMapper {
             }
 
             const vc: VisionCard = VisionCardsService.getInstance().searchForVisionCardByGumiId(reqId);
-            if (vc.names && vc.names[FFBE_FRENCH_TABLE_INDEX]) {
+            if (vc?.names && vc.names[FFBE_FRENCH_TABLE_INDEX]) {
               return `<a href="ffexvius_objects.php?gumiid=${vc.gumi_id}">${vc.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
             }
 
