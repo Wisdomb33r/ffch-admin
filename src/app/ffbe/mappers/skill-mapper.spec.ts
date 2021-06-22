@@ -22,6 +22,14 @@ import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
 import {Character} from '../model/character/character.model';
 import {CharactersServiceMock} from '../services/characters.service.spec';
 import {CharactersService} from '../services/characters.service';
+import {
+  VISION_CARDS_DESCRIPTION_TEST_DATA,
+  VISION_CARDS_NAMES_TEST_DATA,
+  VISION_CARDS_TEST_DATA
+} from '../model/items/vision-cards/vision-card.model.spec';
+import {VisionCard} from '../model/items/vision-cards/vision-card.model';
+import {VisionCardsService} from '../services/vision-cards.service';
+import {VisionCardsServiceMock} from '../services/vision-cards.service.spec';
 
 describe('SkillMapper', () => {
   it('should transform ability icon string to number', () => {
@@ -119,27 +127,41 @@ describe('SkillMapper', () => {
     skill.names = names['100010'];
     const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
     skill.descriptions = descriptions['100010'];
-    skill.requirements = [['EQUIP', '301000400'], ['EQUIP', '504231141']];
+    skill.requirements = [['EQUIP', '301000400'], ['EQUIP', '504231141'], ['EQUIP', '401001101']];
 
     const equipments = JSON.parse(EQUIPMENTS_TEST_DATA);
     const equipment: Equipment = equipments['301000400'];
     equipment.gumi_id = 301000400;
     const equipmentsServiceMock = new EquipmentsServiceMock() as EquipmentsService;
     EquipmentsService['INSTANCE'] = equipmentsServiceMock;
-    spyOn(equipmentsServiceMock, 'searchForEquipmentByGumiId').and.returnValues(equipment);
+    spyOn(equipmentsServiceMock, 'searchForEquipmentByGumiId').and.returnValues(equipment, null, null);
 
     const materias = JSON.parse(MATERIAS_TEST_DATA);
     const materia: Materia = materias['504100090'];
-    equipment.gumi_id = 504100090;
+    materia.gumi_id = 504100090;
     const materiasServiceMock = new MateriasServiceMock() as MateriasService;
     MateriasService['INSTANCE'] = materiasServiceMock;
-    spyOn(materiasServiceMock, 'searchForMateriaByGumiId').and.returnValues(materia);
+    spyOn(materiasServiceMock, 'searchForMateriaByGumiId').and.returnValues(materia, null);
+
+    const vcs = JSON.parse(VISION_CARDS_TEST_DATA);
+    const vcsNames = JSON.parse(VISION_CARDS_NAMES_TEST_DATA);
+    const vcsDescriptions = JSON.parse(VISION_CARDS_DESCRIPTION_TEST_DATA);
+    const vc: VisionCard = vcs['401001101'];
+    vc.gumi_id = 401001101;
+    vc.names = vcsNames['401001101'];
+    vc.desc_short = vcsNames['401001101'];
+    const vcsServiceMock = new VisionCardsServiceMock() as VisionCardsService;
+    VisionCardsService['INSTANCE'] = vcsServiceMock;
+    spyOn(vcsServiceMock, 'searchForVisionCardByGumiId').and.returnValues(vc);
 
     // WHEN
     const reqText = SkillMapper['mapRequirements'](skill);
     // THEN
-    expect(reqText).toEqual('Activé si l\'unité porte <a href="ffexvius_objects.php?gumiid=504100090">Dague</a> '
-      + 'ou <a href="ffexvius_objects.php?gumiid=undefined">ATT +30%</a>');
+    expect(reqText).toEqual('Activé si l\'unité porte <a href="ffexvius_objects.php?gumiid=301000400">Dague</a> '
+      + 'ou <a href="ffexvius_objects.php?gumiid=504100090">ATT +30%</a> ou <a href="ffexvius_objects.php?gumiid=401001101">Une famille réunie</a>');
+    expect(equipmentsServiceMock.searchForEquipmentByGumiId).toHaveBeenCalledTimes(3);
+    expect(materiasServiceMock.searchForMateriaByGumiId).toHaveBeenCalledTimes(2);
+    expect(vcsServiceMock.searchForVisionCardByGumiId).toHaveBeenCalledTimes(1);
   });
 
   it('should map unit restrictions correctly into a text', () => {

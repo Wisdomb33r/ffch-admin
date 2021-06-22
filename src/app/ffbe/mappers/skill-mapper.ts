@@ -9,6 +9,8 @@ import {Materia} from '../model/items/materia/materia.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
 import {Character} from '../model/character/character.model';
+import {VisionCard} from '../model/items/vision-cards/vision-card.model';
+import {VisionCardsService} from '../services/vision-cards.service';
 
 export class SkillMapper {
 
@@ -202,22 +204,22 @@ export class SkillMapper {
           const reqId: number = +requirement[1];
 
           if (reqType === 'EQUIP') {
-            if ((reqId >= 300000000 && reqId < 500000000) || (reqId >= 1100000000 && reqId < 1200000000)) {
-              const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(reqId);
-              if (!equipment || !equipment.strings || !equipment.strings.name || !equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
-                return 'UNKNOWN equipment';
-              }
-              return '<a href="ffexvius_objects.php?gumiid=' + equipment.gumi_id + '">'
-                + equipment.strings.name[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+            const equipment: Equipment = EquipmentsService.getInstance().searchForEquipmentByGumiId(reqId);
+            if (equipment?.strings?.name && equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]) {
+              return `<a href="ffexvius_objects.php?gumiid=${equipment.gumi_id}">${equipment.strings.name[FFBE_FRENCH_TABLE_INDEX]}</a>`;
             }
-            if ((reqId >= 500000000 && reqId < 600000000) || (reqId >= 1500000000 && reqId < 1600000000)) {
-              const materia: Materia = MateriasService.getInstance().searchForMateriaByGumiId(reqId);
-              if (!materia || !materia.strings || !materia.strings.names || !materia.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
-                return 'UNKNOWN equipment';
-              }
-              return '<a href="ffexvius_objects.php?gumiid=' + materia.gumi_id + '">'
-                + materia.strings.names[FFBE_FRENCH_TABLE_INDEX] + '</a>';
+
+            const materia: Materia = MateriasService.getInstance().searchForMateriaByGumiId(reqId);
+            if (materia?.strings?.names && materia.strings.names[FFBE_FRENCH_TABLE_INDEX]) {
+              return `<a href="ffexvius_objects.php?gumiid=${materia.gumi_id}">${materia.strings.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
             }
+
+            const vc: VisionCard = VisionCardsService.getInstance().searchForVisionCardByGumiId(reqId);
+            if (vc?.names && vc.names[FFBE_FRENCH_TABLE_INDEX]) {
+              return `<a href="ffexvius_objects.php?gumiid=${vc.gumi_id}">${vc.names[FFBE_FRENCH_TABLE_INDEX]}</a>`;
+            }
+
+            return 'UNKNOWN equipment';
           }
           return 'UNKNOWN requirement';
         }).join(' ou ');

@@ -9,6 +9,7 @@ import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
 import {ConsumablesService} from '../services/consumables.service';
+import {VisionCardsService} from '../services/vision-cards.service';
 
 @Component({
   templateUrl: './skills.component.html',
@@ -24,11 +25,12 @@ export class SkillsComponent implements OnInit {
   localStorageLabel = 'skills-search-form';
 
   constructor(private skillsService: SkillsService,
-              // do not remove the injection of Characters, Consumables, Equipments and Materias services, it serves to load the INSTANCE singletons
+              // do not remove the injection of following services, it serves to load the INSTANCE singletons
               private charactersService: CharactersService,
               private consumableService: ConsumablesService,
               private equipmentsService: EquipmentsService,
-              private materiasService: MateriasService) {
+              private materiasService: MateriasService,
+              private visionsCardsService: VisionCardsService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');
