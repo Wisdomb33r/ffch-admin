@@ -9,13 +9,14 @@ describe('UniteCompetenceArray', () => {
     const dbUniteCompetences = createUniteCompetenceArray();
 
     // WHEN
-    const result = dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
 
     // THEN
-    expect(Array.isArray(result)).toBeTrue();
-    expect(result.length).toEqual(0);
-    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dmUniteCompetences.length).toEqual(4);
     expect(dmUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
+    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dbUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
+
   });
 
   it('should compare shuffled identical UniteCompetenceArray correctly', () => {
@@ -25,13 +26,13 @@ describe('UniteCompetenceArray', () => {
     shuffleArray(dbUniteCompetences);
 
     // WHEN
-    const result = dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
 
     // THEN
-    expect(Array.isArray(result)).toBeTrue();
-    expect(result.length).toEqual(0);
-    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dmUniteCompetences.length).toEqual(4);
     expect(dmUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
+    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dbUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
   });
 
 
