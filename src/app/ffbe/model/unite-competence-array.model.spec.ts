@@ -57,7 +57,28 @@ describe('UniteCompetenceArray', () => {
     expect(dbUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
   });
 
-  
+  it('should mark UniteCompetences in DB that are not found in DM correctly', () => {
+    // GIVEN
+    const dmUniteCompetences = createUniteCompetenceArray();
+    dmUniteCompetences.splice(1, 1);
+    const dbUniteCompetences = createUniteCompetenceArray();
+    shuffleArray(dbUniteCompetences);
+
+    // WHEN
+    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+
+    // THEN
+    expect(dmUniteCompetences.length).toEqual(3);
+    expect(dmUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
+
+    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 123).status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 456).status).toEqual(UniteCompetenceStatus.NotFoundInCounterPart);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 789).status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 321).status).toEqual(UniteCompetenceStatus.Correct);
+  });
+
+
   /*
     it('should compare UniteCompetenceArrays with level mismatch correctly', () => {
       // GIVEN
