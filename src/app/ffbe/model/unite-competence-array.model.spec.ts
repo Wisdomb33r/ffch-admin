@@ -35,6 +35,31 @@ describe('UniteCompetenceArray', () => {
     expect(dbUniteCompetences.every(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.Correct)).toBeTrue();
   });
 
+/*
+  it('should compare UniteCompetenceArrays with level mismatch correctly', () => {
+    // GIVEN
+    const dmUniteCompetences = createUniteCompetenceArray();
+    const dbUniteCompetences = createUniteCompetenceArray();
+    dbUniteCompetences[2].niveau = 99;
+    shuffleArray(dbUniteCompetences);
+
+    // WHEN
+    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+
+    // THEN
+    expect(dmUniteCompetences.length).toEqual(4);
+    expect(dmUniteCompetences[0].status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dmUniteCompetences[1].status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dmUniteCompetences[2].status).toEqual(UniteCompetenceStatus.LevelMismatch);
+    expect(dmUniteCompetences[3].status).toEqual(UniteCompetenceStatus.Correct);
+
+    expect(dbUniteCompetences.length).toEqual(4);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 123).status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 456).status).toEqual(UniteCompetenceStatus.Correct);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 789).status).toEqual(UniteCompetenceStatus.LevelMismatch);
+    expect(dbUniteCompetences.find(uniteCompetence => uniteCompetence.competence.gumi_id === 321).status).toEqual(UniteCompetenceStatus.Correct);
+  });
+  */
 
   function createUniteCompetenceArray(): UniteCompetenceArray {
     return new UniteCompetenceArray(
