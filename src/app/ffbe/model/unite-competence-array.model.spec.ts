@@ -3,7 +3,7 @@ import {Competence} from './competence.model';
 import {UniteCompetence, UniteCompetenceStatus} from './unite-competence.model';
 
 describe('UniteCompetenceArray', () => {
-  it('should compare identical UniteCompetenceArray correctly', () => {
+  it('should compare identical UniteCompetenceArrays correctly', () => {
     // GIVEN
     const dmUniteCompetences = createUniteCompetenceArray();
     const dbUniteCompetences = createUniteCompetenceArray();
@@ -19,7 +19,7 @@ describe('UniteCompetenceArray', () => {
 
   });
 
-  it('should compare shuffled identical UniteCompetenceArray correctly', () => {
+  it('should compare shuffled identical UniteCompetenceArrays correctly', () => {
     // GIVEN
     const dmUniteCompetences = createUniteCompetenceArray();
     const dbUniteCompetences = createUniteCompetenceArray();
