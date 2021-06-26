@@ -19,15 +19,16 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
       }
     });
 
-    this.forEach(uniteCompetence => {
-      const counterPart = other.find(dbUniteCompetence =>
-        dbUniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart &&
-        dbUniteCompetence.competence.gumi_id === uniteCompetence.competence.gumi_id);
+    this.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart)
+      .forEach(uniteCompetence => {
+        const counterPart = other.find(dbUniteCompetence =>
+          dbUniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart &&
+          dbUniteCompetence.competence.gumi_id === uniteCompetence.competence.gumi_id);
 
-      if (counterPart) {
-        uniteCompetence.status = UniteCompetenceStatus.LevelMismatch;
-        counterPart.status = UniteCompetenceStatus.LevelMismatch;
-      }
-    });
+        if (counterPart) {
+          uniteCompetence.status = UniteCompetenceStatus.LevelMismatch;
+          counterPart.status = UniteCompetenceStatus.LevelMismatch;
+        }
+      });
   }
 }
