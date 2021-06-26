@@ -9,7 +9,7 @@ describe('UniteCompetenceArray', () => {
     const dbUniteCompetences = createUniteCompetenceArray();
 
     // WHEN
-    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compare(dbUniteCompetences);
 
     // THEN
     expect(dmUniteCompetences.length).toEqual(4);
@@ -26,7 +26,7 @@ describe('UniteCompetenceArray', () => {
     shuffleArray(dbUniteCompetences);
 
     // WHEN
-    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compare(dbUniteCompetences);
 
     // THEN
     expect(dmUniteCompetences.length).toEqual(4);
@@ -44,7 +44,7 @@ describe('UniteCompetenceArray', () => {
     shuffleArray(dbUniteCompetences);
 
     // WHEN
-    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compare(dbUniteCompetences);
 
     // THEN
     expect(dmUniteCompetences.length).toEqual(4);
@@ -65,7 +65,7 @@ describe('UniteCompetenceArray', () => {
     shuffleArray(dbUniteCompetences);
 
     // WHEN
-    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compare(dbUniteCompetences);
 
     // THEN
     expect(dmUniteCompetences.length).toEqual(3);
@@ -86,7 +86,7 @@ describe('UniteCompetenceArray', () => {
     shuffleArray(dbUniteCompetences);
 
     // WHEN
-    dmUniteCompetences.compareWithDatabase(dbUniteCompetences);
+    dmUniteCompetences.compare(dbUniteCompetences);
 
     // THEN
     expect(dmUniteCompetences.length).toEqual(4);

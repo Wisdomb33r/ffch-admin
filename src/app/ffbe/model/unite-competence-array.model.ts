@@ -3,12 +3,12 @@ import {UniteCompetence, UniteCompetenceStatus} from './unite-competence.model';
 
 export class UniteCompetenceArray extends Array<UniteCompetence> {
 
-  public compareWithDatabase(databaseVersion: Array<UniteCompetence>) {
-    databaseVersion.forEach(uniteCompetence => uniteCompetence.status = UniteCompetenceStatus.NotFoundInCounterPart);
-
+  public compare(other: Array<UniteCompetence>) {
+    other.forEach(uniteCompetence => uniteCompetence.status = UniteCompetenceStatus.NotFoundInCounterPart);
     this.forEach(uniteCompetence => uniteCompetence.status = UniteCompetenceStatus.NotFoundInCounterPart);
+
     this.forEach(uniteCompetence => {
-      const counterPart = databaseVersion.find(dbUniteCompetence =>
+      const counterPart = other.find(dbUniteCompetence =>
         dbUniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart &&
         dbUniteCompetence.competence.gumi_id === uniteCompetence.competence.gumi_id &&
         dbUniteCompetence.niveau === uniteCompetence.niveau);
@@ -20,7 +20,7 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
     });
 
     this.forEach(uniteCompetence => {
-      const counterPart = databaseVersion.find(dbUniteCompetence =>
+      const counterPart = other.find(dbUniteCompetence =>
         dbUniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart &&
         dbUniteCompetence.competence.gumi_id === uniteCompetence.competence.gumi_id);
 
@@ -30,5 +30,4 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
       }
     });
   }
-
 }
