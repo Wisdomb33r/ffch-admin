@@ -1,9 +1,9 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {Unite} from '../model/unite.model';
-import {FfchClientService} from '../services/ffch-client.service';
-import {UniteEveil} from '../model/unite-eveil.model';
-import {Formule} from '../model/formule.model';
-import {FfbeUtils} from '../utils/ffbe-utils';
+import {Unite} from '../../model/unite.model';
+import {FfchClientService} from '../../services/ffch-client.service';
+import {UniteEveil} from '../../model/unite-eveil.model';
+import {Formule} from '../../model/formule.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 @Component({
   selector: 'app-unit-awakening-materials-display',

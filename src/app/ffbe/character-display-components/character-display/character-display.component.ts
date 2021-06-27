@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {Personnage} from '../model/personnage.model';
-import {Competence} from '../model/competence.model';
+import {Personnage} from '../../model/personnage.model';
+import {Competence} from '../../model/competence.model';
 
 @Component({
   selector: 'app-character-display',

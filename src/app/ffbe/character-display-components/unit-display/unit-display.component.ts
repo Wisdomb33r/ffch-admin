@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Unite} from '../model/unite.model';
-import {FfchClientService} from '../services/ffch-client.service';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {FFBE_UNITE_BRAVE_SHIFT_RANK, FFBE_UNITE_NEO_VISION_RANK} from '../ffbe.constants';
+import {Unite} from '../../model/unite.model';
+import {FfchClientService} from '../../services/ffch-client.service';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {FFBE_UNITE_BRAVE_SHIFT_RANK, FFBE_UNITE_NEO_VISION_RANK} from '../../ffbe.constants';
 
 @Component({
   selector: 'app-unit-display',
