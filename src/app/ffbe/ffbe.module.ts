@@ -6,6 +6,7 @@ import {CharactersService} from './services/characters.service';
 import {DataMiningClientService} from './services/data-mining-client.service';
 import {CharacterDisplayComponent} from './character-display-components/character-display/character-display.component';
 import {UniteCompetencesDisplayComponent} from './character-display-components/unite-competences-display/unite-competences-display.component';
+import {UniteCompetencesArrayDisplayComponent} from './character-display-components/unite-competences-array-display/unite-competences-array-display.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -110,6 +111,7 @@ import {VisionCardsService} from './services/vision-cards.service';
     ObjetTueursDisplayComponent,
     ObjetsComparingContainerDisplayComponent,
     UniteCompetencesDisplayComponent,
+    UniteCompetencesArrayDisplayComponent,
   ],
   exports: [
     CharactersComponent,
