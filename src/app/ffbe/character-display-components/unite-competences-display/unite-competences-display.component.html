@@ -1,3 +1,9 @@
-<p>unite-competences-display works!</p>
+<div *ngIf="unite.competencesActivees?.length">
+  <app-unite-competences-array-display [uniteCompetences]="unite.competencesActivees"
+                                       [titre]="'Compétences activées'">
+  </app-unite-competences-array-display>
+</div>
 
-<app-unite-competences-array-display></app-unite-competences-array-display>
+<app-unite-competences-array-display [uniteCompetences]="unite.competences"
+                                     [titre]="'Compétences'">
+</app-unite-competences-array-display>

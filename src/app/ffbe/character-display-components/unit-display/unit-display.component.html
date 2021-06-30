@@ -167,7 +167,7 @@
       ● {{uniteCompetence.competence.nom}}</li>
   </ul>
 
-  <app-unite-competences-display></app-unite-competences-display>
+  <app-unite-competences-display [unite]="unite"></app-unite-competences-display>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
           [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">
