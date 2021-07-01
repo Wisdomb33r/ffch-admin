@@ -1,1 +1,5 @@
 <h2>{{titre}}</h2>
+<ul *ngIf="uniteCompetences?.length" class="competences">
+  <li *ngFor="let uniteCompetence of uniteCompetences">{{uniteCompetence.niveau}}
+    ● {{uniteCompetence.competence.nom}}</li>
+</ul>
