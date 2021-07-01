@@ -155,18 +155,6 @@
   <app-caracteristiques-ex-display *ngIf="shouldDisplayCaracEx()"
                                    [caracEX]="unite.caracEX"></app-caracteristiques-ex-display>
 
-  <h2 *ngIf="unite.competencesActivees?.length">Compétences activées</h2>
-  <ul *ngIf="unite.competencesActivees?.length" class="competences">
-    <li *ngFor="let uniteCompetence of unite.competencesActivees">{{uniteCompetence.niveau}}
-      ● {{uniteCompetence.competence.nom}}</li>
-  </ul>
-
-  <h2>Compétences</h2>
-  <ul *ngIf="unite.competences?.length" class="competences">
-    <li *ngFor="let uniteCompetence of unite.competences">{{uniteCompetence.niveau}}
-      ● {{uniteCompetence.competence.nom}}</li>
-  </ul>
-
   <app-unite-competences-display [unite]="unite"></app-unite-competences-display>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
