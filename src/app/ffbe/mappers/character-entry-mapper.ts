@@ -20,6 +20,7 @@ import {SkillMapper} from './skill-mapper';
 import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {UniteCarac} from '../model/unite-carac.model';
+import {UniteCompetenceArray} from '../model/unite-competence-array.model';
 
 export class CharacterEntryMapper {
 
@@ -128,7 +129,7 @@ export class CharacterEntryMapper {
   }
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
-    unite.competences = [];
+    unite.competences = new UniteCompetenceArray();
     let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = Skill.produce(characterSkill.skill);
@@ -144,6 +145,9 @@ export class CharacterEntryMapper {
       unite.competences.push(new UniteCompetence(competence, niveau));
       skill.activatedSkills?.forEach(activatedSkill => {
         CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {
+          if (FfbeUtils.isNullOrUndefined(unite.competencesActivees)) {
+            unite.competencesActivees = new UniteCompetenceArray();
+          }
           if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSkill.gumi_id)) {
             const competenceActivee = CharacterEntryMapper.searchOrMapCompetence(transitiveActivatedSkill, competences);
             unite.competencesActivees.push(new UniteCompetence(competenceActivee, currentActivatedSkillLevel));
