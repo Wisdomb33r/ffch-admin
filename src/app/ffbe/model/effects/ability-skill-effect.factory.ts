@@ -43,6 +43,7 @@ import {AbilityGilStealEffect} from './abilities/ability-gil-steal-effect.model'
 import {AbilityElementResistancesEffect} from './abilities/ability-element-resistances-effect.model';
 import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-damage-increase-effect.model';
 import {AbilitySkillModifierIncreaseEffect} from './abilities/skill/ability-skill-modifier-increase-effect.model';
+import {AbilityMoraleJaugeEffect} from './abilities/ability-morale-jauge-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -146,6 +147,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1014:
         return new AbilitySkillMagnusGlexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 1015:
+        return new AbilityMoraleJaugeEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
