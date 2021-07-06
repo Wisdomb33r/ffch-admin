@@ -30,9 +30,9 @@ export class AbilityMoraleJaugeEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     const moraleSign = this.moraleIncrease >= 0 ? '+' : '';
-    const moraleText = `${moraleSign}${this.moraleIncrease}% à la jauge de moral`;
+    const moraleText = `${moraleSign}${this.moraleIncrease}% au moral des alliés`;
     const moralePerAllySign = this.moraleIncreasePerAlly >= 0 ? '+' : '';
-    const moralePerAllyText = `${moralePerAllySign}${this.moraleIncreasePerAlly}% à la jauge de moral par allié actif`;
+    const moralePerAllyText = `${moralePerAllySign}${this.moraleIncreasePerAlly}% de moral par allié actif`;
     if (this.moraleIncrease !== 0 && this.moraleIncreasePerAlly !== 0) {
       return `${moraleText}${HTML_LINE_RETURN}${moralePerAllyText}`;
     } else if (this.moraleIncreasePerAlly !== 0) {

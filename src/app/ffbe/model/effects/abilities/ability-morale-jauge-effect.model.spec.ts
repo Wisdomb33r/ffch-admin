@@ -8,7 +8,7 @@ describe('AbilityMoraleJaugeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+6.5% à la jauge de moral');
+    expect(s).toEqual('+6.5% au moral des alliés');
   });
 
   it('should parse morale jauge decrease correctly', () => {
@@ -17,7 +17,7 @@ describe('AbilityMoraleJaugeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('-3% à la jauge de moral');
+    expect(s).toEqual('-3% au moral des alliés');
   });
 
   it('should parse morale jauge increase per active ally correctly', () => {
@@ -26,7 +26,7 @@ describe('AbilityMoraleJaugeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('+2% à la jauge de moral par allié actif');
+    expect(s).toEqual('+2% de moral par allié actif');
   });
 
   it('should parse morale jauge decrease per active ally correctly', () => {
@@ -35,7 +35,7 @@ describe('AbilityMoraleJaugeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('-0.5% à la jauge de moral par allié actif');
+    expect(s).toEqual('-0.5% de moral par allié actif');
   });
 
   it('should parse combined morale jauge changes correctly', () => {
@@ -44,6 +44,6 @@ describe('AbilityMoraleJaugeEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
-    expect(s).toEqual('-3.5% à la jauge de moral<br />+4% à la jauge de moral par allié actif');
+    expect(s).toEqual('-3.5% au moral des alliés<br />+4% de moral par allié actif');
   });
 });
