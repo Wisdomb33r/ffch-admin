@@ -17,8 +17,9 @@ export class AbilityMoraleJaugeEffect extends SkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
-      if (parameters.length !== 7 || parameters[2] !== 0 || parameters[3] !== 0 ||
-        parameters[4] !== 0 || (parameters[5] !== 0 && parameters[5] !== 1) || parameters[6] !== 0) {
+      if (parameters.length !== 7 || parameters[2] !== 0 || parameters[3] !== 0 || parameters[4] !== 0 ||
+        (parameters[5] !== 0 && parameters[5] !== 1 && parameters[5] !== 2) || parameters[6] !== 0 ||
+        targetNumber !== 0 || targetType !== 3) {
         this.parameterWarning = true;
       }
       this.moraleIncrease = parameters[0] / 100;
