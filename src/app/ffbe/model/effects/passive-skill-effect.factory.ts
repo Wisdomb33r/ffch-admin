@@ -35,6 +35,7 @@ import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passiv
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
 import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-replacing-normal-attack-effect.model';
 import {PassiveSkillModifierIncreaseEffect} from './passives/skill/passive-skill-modifier-increase-effect.model';
+import {PassiveSkillMoraleJaugeActivationEffect} from './passives/skill/passive-skill-morale-jauge-activation-effect.model';
 import {PassiveEsperGroupSummonEffect} from './passives/esper/passive-esper-group-summon-effect.model';
 import {PassiveEsperStatsIncreaseEffect} from './passives/esper/passive-esper-stats-increase-effect.model';
 import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance-changes-effect.model';
@@ -138,6 +139,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandGlexIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 10004:
         return new PassiveEquipmentWeaponElementStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 10007:
+        return new PassiveSkillMoraleJaugeActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
