@@ -20,6 +20,7 @@ import {AbilityDamageDotsEffect} from './abilities/damage/ability-damage-dots-ef
 import {AbilityDamageDrainEffect} from './abilities/damage/ability-damage-drain-effect.model';
 import {AbilityDamageFixedEffect} from './abilities/damage/ability-damage-fixed-effect.model';
 import {AbilityDamageHexEffect} from './abilities/damage/ability-damage-hex-effect.model';
+import {AbilityDamageMoraleScalingEffect} from './abilities/damage/ability-damage-morale-scaling-effect.model';
 import {AbilityZombieCureEffect} from './abilities/ability-zombie-cure-effect.model';
 import {AbilityElementDamageIncreaseEffect} from './abilities/ability-element-damage-increase-effect.model';
 import {AbilityMitigationMonsterTypeEffect} from './abilities/ability-mitigation-monster-type-effect.model';
@@ -44,7 +45,6 @@ import {AbilityElementResistancesEffect} from './abilities/ability-element-resis
 import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-damage-increase-effect.model';
 import {AbilitySkillModifierIncreaseEffect} from './abilities/skill/ability-skill-modifier-increase-effect.model';
 import {AbilityMoraleJaugeEffect} from './abilities/ability-morale-jauge-effect.model';
-import {AbilityDamageMoraleScalingEffect} from './abilities/damage/ability-damage-morale-scaling-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
