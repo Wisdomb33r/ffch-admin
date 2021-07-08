@@ -17,7 +17,7 @@ describe('AbilityDamageMoraleScalingEffect', () => {
 
   it('should parse hybrid morale-scaling damage', () => {
     // GIVEN
-    const effect = JSON.parse('[1, 1, 1016, [7500,  3,  0,  2700,  5,  100,  1]]');
+    const effect = JSON.parse('[1, 1, 1016, [7500,  3,  0,  2700,  10,  100,  0]]');
     const fakeSkill: Skill = new Skill();
     fakeSkill.element_inflict = undefined;
     fakeSkill.attack_type = 'Hybrid';
@@ -25,7 +25,7 @@ describe('AbilityDamageMoraleScalingEffect', () => {
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(fakeSkill);
     // THEN
-    expect(s).toEqual('Dégâts hybrides de Feu de puissance 7500% (+2700% par tranche de 5% de moral au-dessus de 100%, max 61500%) à un adversaire');
+    expect(s).toEqual('Dégâts hybrides de Feu de puissance 7500% (+2700% par tranche de 10% de moral au-dessus de 100%, max 34500%) à un adversaire');
   });
 
 });

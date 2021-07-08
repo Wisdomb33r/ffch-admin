@@ -50,7 +50,7 @@ export class AbilityDamageMoraleScalingEffect extends SkillEffect {
       skill.hybride = true;
     }
     const target = this.wordTarget();
-    const incrementsText = `(+${this.damageIncrement}% par tranche de 5% de moral au-dessus de 100%, max ${this.power}%)`;
+    const incrementsText = `(+${this.damageIncrement}% par tranche de ${this.moraleIncrement}% de moral au-dessus de 100%, max ${this.power}%)`;
     return `${attackTypeText} ${elementsText} de puissance ${this.basePower}% ${incrementsText} ${target}`;
   }
 
