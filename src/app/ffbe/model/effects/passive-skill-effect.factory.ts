@@ -40,6 +40,7 @@ import {PassiveEsperStatsIncreaseEffect} from './passives/esper/passive-esper-st
 import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance-changes-effect.model';
 import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-effect.model';
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
+import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -120,6 +121,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveLbUpgradeHpThresholdEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new PassiveChainModifierLimitWhileDualWieldingIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 82:
+        return new PassiveDamagesAbsorptionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 84:
         return new PassiveChainBaseModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 85:
