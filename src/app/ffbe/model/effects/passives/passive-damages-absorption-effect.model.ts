@@ -27,6 +27,6 @@ export class PassiveDamagesAbsorptionEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    return `Absorbe ${this.absorptionPercent}% des dégâts physiques infligés (au max tous les PV de l\'adversaire)}`;
+    return `Absorbe ${this.absorptionPercent}% des dégâts infligés par les attaques de type physique`;
   }
 }
