@@ -21,6 +21,7 @@ export class SkillDisplayComponent implements OnInit, OnChanges {
   @Output() skillModifiedEvent: EventEmitter<Competence> = new EventEmitter();
   public elements: Array<Element> = [];
   public multiLineDisplay = false;
+  public rawEffectDisplay = false;
 
   constructor(private ffchClientService: FfchClientService) {
   }
@@ -68,5 +69,9 @@ export class SkillDisplayComponent implements OnInit, OnChanges {
 
   public shouldDisplayElements(): boolean {
     return !FfbeUtils.isNullOrUndefined(this.elements) && this.elements.length > 0;
+  }
+
+  public shouldDisplayRawEffectsButton(): boolean {
+    return this.competence.rawEffects?.length > 0;
   }
 }
