@@ -1,3 +1,8 @@
 .competences li {
   list-style-type: none;
 }
+
+img.ffchstatus {
+  vertical-align: middle;
+  margin-right: 10px;
+}

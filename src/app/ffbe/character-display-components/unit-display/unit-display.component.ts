@@ -12,6 +12,7 @@ import {FFBE_UNITE_BRAVE_SHIFT_RANK, FFBE_UNITE_NEO_VISION_RANK} from '../../ffb
 export class UnitDisplayComponent implements OnInit, OnChanges {
 
   @Input() unite: Unite;
+  public dbUnite: Unite;
   public uniteErrors: Array<string> = [];
   public multiLineDisplay = false;
 
@@ -24,7 +25,10 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.uniteErrors = [];
     this.ffchClientService.getUniteByNumero$(this.unite.numero)
-      .subscribe(u => this.unite.id = (FfbeUtils.isNullOrUndefined(u) ? null : u.id),
+      .subscribe(u => {
+          this.dbUnite = u;
+          this.unite.id = (FfbeUtils.isNullOrUndefined(u) ? null : u.id);
+        },
         error => this.uniteErrors.push('Erreur lors du traitement de l\'unité ' + this.unite.numero + ' : ' + error));
   }
 
@@ -34,7 +38,10 @@ export class UnitDisplayComponent implements OnInit, OnChanges {
 
   public sendUniteToFfch(unite: Unite) {
     this.ffchClientService.postUnite$(unite)
-      .subscribe(u => unite.id = (FfbeUtils.isNullOrUndefined(u) ? null : u.id));
+      .subscribe(u => {
+        this.dbUnite = u;
+        unite.id = (FfbeUtils.isNullOrUndefined(u) ? null : u.id);
+      });
   }
 
   public generateLimitLinkToFfch(): string {

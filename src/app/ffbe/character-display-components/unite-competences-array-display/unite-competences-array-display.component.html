@@ -1,5 +1,10 @@
 <h2>{{titre}}</h2>
 <ul *ngIf="uniteCompetences?.length" class="competences">
   <li *ngFor="let uniteCompetence of uniteCompetences">{{uniteCompetence.niveau}}
-    ● {{uniteCompetence.competence.nom}}</li>
+    ● {{uniteCompetence.competence.nom}}
+    <img *ngIf="hasLevelMismatch(uniteCompetence)"
+         src="assets/grey/warn.png" class="ffchstatus" alt="Warn">
+    <img *ngIf="isNotFoundInCounterPart(uniteCompetence)"
+         src="assets/nok.png" class="ffchstatus" alt="Not OK">
+  </li>
 </ul>

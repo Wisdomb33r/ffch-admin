@@ -155,7 +155,9 @@
   <app-caracteristiques-ex-display *ngIf="shouldDisplayCaracEx()"
                                    [caracEX]="unite.caracEX"></app-caracteristiques-ex-display>
 
-  <app-unite-competences-display [unite]="unite"></app-unite-competences-display>
+  <app-unite-competences-display [unite]="unite"
+                                 [dbUnite]="dbUnite"
+  ></app-unite-competences-display>
 
   <button mat-raised-button color="accent" class="ffchSendButton" (click)="sendUniteToFfch(unite)"
           [disabled]="isUniteErrorsDisplayed() || unite.isPresentInFfchDb() || !unite.areAllCompetencesPresentInFfchDb()">
