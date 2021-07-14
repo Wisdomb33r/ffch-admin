@@ -250,6 +250,7 @@ export class Skill {
       || effectId === 134 // physical damages with 1 turn timed jump delay
       || effectId === 139 // physical / magic DOT's
       || effectId === 159 // physical damages with BREAK bonus
+      || effectId === 1016 // damages scaling on morale
     );
   }
 

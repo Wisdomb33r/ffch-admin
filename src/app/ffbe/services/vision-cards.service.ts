@@ -48,7 +48,8 @@ export class VisionCardsService {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.visionCardsFromDataMining[propertyName].name === english
-          && this.visionCardsFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
+          && this.visionCardsNamesFromDataMining[propertyName]
+          && this.visionCardsNamesFromDataMining[propertyName][FFBE_FRENCH_TABLE_INDEX] === french
       );
     } else if (english) {
       matchingProperties = propertyNames.filter(
@@ -56,7 +57,8 @@ export class VisionCardsService {
       );
     } else if (french) {
       matchingProperties = propertyNames.filter(
-        propertyName => this.visionCardsFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
+        propertyName => this.visionCardsNamesFromDataMining[propertyName]
+          && this.visionCardsNamesFromDataMining[propertyName][FFBE_FRENCH_TABLE_INDEX] === french
       );
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {

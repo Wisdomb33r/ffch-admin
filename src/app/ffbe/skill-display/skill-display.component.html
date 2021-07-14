@@ -37,7 +37,17 @@
       <p *ngIf="competence.effet_fr" [innerHTML]="competence.effet_fr"></p>
       <mat-icon matPrefix *ngIf="competence.parameterWarning">warning_amber</mat-icon>
     </div>
-    <p *ngIf="competence.effet_en" [innerHTML]="competence.effet_en"></p>
+
+    <div class="competence-effet">
+      <p *ngIf="competence.effet_en" [innerHTML]="competence.effet_en"></p>
+      <button *ngIf="shouldDisplayRawEffectsButton()" mat-icon-button matSuffix (click)="rawEffectDisplay = !rawEffectDisplay">
+        <mat-icon>{{rawEffectDisplay ? "close_fullscreen" : "open_in_full"}}</mat-icon>
+      </button>
+    </div>
+
+    <div class="competence-effet">
+      <p *ngIf="rawEffectDisplay" [innerHTML]="competence.rawEffects"></p>
+    </div>
 
     <mat-form-field *ngIf="(!present || editable) && !multiLineDisplay">
       <input matInput type="text" name="effet" [(ngModel)]="competence.effet" placeholder="Effet">

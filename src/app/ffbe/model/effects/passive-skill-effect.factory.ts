@@ -9,6 +9,7 @@ import {PassiveEquipmentStatsDoublehandIncreaseEffect} from './passives/stats/pa
 import {PassiveEquipmentStatsDoublehandGlexIncreaseEffect} from './passives/stats/passive-equipment-stats-doublehand-glex-increase-effect.model';
 import {PassiveMpCostDecreaseEffect} from './passives/passive-mp-cost-decrease-effect.model';
 import {PassiveElementsResistanceEffect} from './passives/passive-elements-resistance-effect.model';
+import {PassiveElementsAbsorbEffect} from './passives/passive-elements-absorb-effect.model';
 import {PassiveEquipmentCategoryElementsResistanceEffect} from './passives/passive-equipment-category-elements-resistance-effect.model';
 import {PassiveAilmentsResistanceEffect} from './passives/passive-ailments-resistance-effect.model';
 import {PassiveKillerDamageIncreaseEffect} from './passives/passive-killer-damage-increase-effect.model';
@@ -35,11 +36,13 @@ import {PassiveChainModifierLimitWhileDualWieldingIncreaseEffect} from './passiv
 import {PassiveBrokenTargetDamageIncreaseEffect} from './passives/passive-broken-target-damage-increase-effect.model';
 import {PassiveSkillReplacingNormalAttackEffect} from './passives/passive-skill-replacing-normal-attack-effect.model';
 import {PassiveSkillModifierIncreaseEffect} from './passives/skill/passive-skill-modifier-increase-effect.model';
+import {PassiveSkillMoraleJaugeActivationEffect} from './passives/skill/passive-skill-morale-jauge-activation-effect.model';
 import {PassiveEsperGroupSummonEffect} from './passives/esper/passive-esper-group-summon-effect.model';
 import {PassiveEsperStatsIncreaseEffect} from './passives/esper/passive-esper-stats-increase-effect.model';
 import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance-changes-effect.model';
 import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-effect.model';
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
+import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -81,6 +84,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 42:
+        return new PassiveElementsAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
@@ -120,6 +125,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveLbUpgradeHpThresholdEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 81:
         return new PassiveChainModifierLimitWhileDualWieldingIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 82:
+        return new PassiveDamagesAbsorptionEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 84:
         return new PassiveChainBaseModifierIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 85:
@@ -138,6 +145,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandGlexIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 10004:
         return new PassiveEquipmentWeaponElementStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 10007:
+        return new PassiveSkillMoraleJaugeActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       default:
         return null;
     }
