@@ -1,7 +1,7 @@
 <?php
 require_once "../gestion/genscripts/object_brex_perso_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
-require_once "classes.php";
+require_once "includes/classes.php";
 require_once "../gestion/genscripts/object_brex_obtention.class.php";
 
 class UniteEveil

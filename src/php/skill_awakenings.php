@@ -6,7 +6,7 @@ require_once "../gestion/genscripts/object_brex_competence.class.php";
 require_once "../gestion/genscripts/object_brex_unit.class.php";
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 
-require_once "classes.php";
+require_once "includes/classes.php";
 
 class Amelioration
 {

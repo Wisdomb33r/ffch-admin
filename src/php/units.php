@@ -1,7 +1,7 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
-require_once "classes.php";
+require_once "includes/classes.php";
 
 class Unite
 {

@@ -3,7 +3,7 @@ require_once "../gestion/genscripts/object_brex_craft.class.php";
 require_once "../gestion/genscripts/object_brex_craft_compo.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
 
-require_once "classes.php";
+require_once "includes/classes.php";
 
 
 class Recette
