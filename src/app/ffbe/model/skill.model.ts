@@ -8,6 +8,7 @@ import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory'
 import {ResistancesElementaires} from './resistances-elementaires.model';
 import {ResistancesAlterations} from './resistances-alterations.model';
 import {Tueurs} from './tueurs.model';
+import {Type} from 'class-transformer';
 
 export class Skill {
   public gumi_id: number;
@@ -16,6 +17,7 @@ export class Skill {
   public rarity: number;
   public active: boolean;
   public magic_type: string;
+  @Type(() => SkillCost)
   public cost: SkillCost;
   public attack_count: Array<number>;
   public attack_damage: Array<Array<number>>;
@@ -38,6 +40,7 @@ export class Skill {
   public hybride = false;
   public fixe = false;
   public esper = false;
+  @Type(() => SkillEffect)
   public effets: Array<SkillEffect> = [];
 
   public static produce(s: Skill): Skill {
@@ -61,8 +64,14 @@ export class Skill {
     skill.descriptions = s.descriptions;
     skill.requirements = s.requirements;
     skill.unit_restriction = s.unit_restriction;
-    skill.effets = s.effects_raw?.map(raw => s.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : PassiveSkillEffectFactory.getSkillEffect(raw)).filter(effect => !!effect);
-    return skill;
+    return skill.initializeSkillEffects();
+  }
+
+  public initializeSkillEffects(): Skill {
+    this.effets = this.effects_raw?.map(
+      raw => this.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : PassiveSkillEffectFactory.getSkillEffect(raw)
+    ).filter(effect => !!effect);
+    return this;
   }
 
   public get activatedSkills(): Array<Skill> {

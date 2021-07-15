@@ -1,6 +1,6 @@
 import {Character} from '../model/character/character.model';
 import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
-import {PASSIVE_SKILLS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../model/skill.model.spec';
+import {SkillMockDataHelper} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {CharacterMapper} from './character-mapper';
 import {SkillsServiceMock} from '../services/skills.service.spec';
@@ -11,15 +11,10 @@ describe('CharacterMapper', () => {
 
   it('should create UniteCompetences correctly when mapping an awakened Neo-Vision Character', () => {
     // GIVEN
-    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
-    const skill1: Skill = skills['100021'];
-    skill1.gumi_id = 100021;
-    const skill2: Skill = skills['232639'];
-    skill2.gumi_id = 232639;
-    const skill3: Skill = skills['707785'];
-    skill3.gumi_id = 707785;
-    const skill4: Skill = skills['200270'];
-    skill4.gumi_id = 200270;
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
+    const skill4: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207000305'];
@@ -29,10 +24,10 @@ describe('CharacterMapper', () => {
       '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 707785},' +
       '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 200270, "ex_level": 0}' +
       ']');
-    character.skills[0].skill = Skill.produce(skill1);
-    character.skills[1].skill = Skill.produce(skill2);
-    character.skills[2].skill = Skill.produce(skill3);
-    character.skills[3].skill = Skill.produce(skill4);
+    character.skills[0].skill = skill1;
+    character.skills[1].skill = skill2;
+    character.skills[2].skill = skill3;
+    character.skills[3].skill = skill4;
 
     character.entries['207000305'].characterEntrySkills = character.skills.slice(0, 1);
     character.entries['207000306'].characterEntrySkills = character.skills.slice(0, 2);
@@ -76,11 +71,8 @@ describe('CharacterMapper', () => {
 
   it('should create UniteCompetences correctly when mapping an awakened Brave-Shift Character', () => {
     // GIVEN
-    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
-    const skill1: Skill = skills['100021'];
-    skill1.gumi_id = 100021;
-    const skill2: Skill = skills['232639'];
-    skill2.gumi_id = 232639;
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207000327'];
@@ -89,8 +81,8 @@ describe('CharacterMapper', () => {
       '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 232639, "ex_level": 2}' +
       ']');
 
-    character.skills[0].skill = Skill.produce(skill1);
-    character.skills[1].skill = Skill.produce(skill2);
+    character.skills[0].skill = skill1;
+    character.skills[1].skill = skill2;
 
     character.entries['207000327'].characterEntrySkills = character.skills;
 
@@ -109,11 +101,8 @@ describe('CharacterMapper', () => {
 
   it('should create UniteCompetences correctly when mapping an native Neo-Vision Character', () => {
     // GIVEN
-    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
-    const skill1: Skill = skills['100021'];
-    skill1.gumi_id = 100021;
-    const skill2: Skill = skills['232639'];
-    skill2.gumi_id = 232639;
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207002007'];
@@ -122,8 +111,8 @@ describe('CharacterMapper', () => {
       '{"rarity": "NV", "level": 110, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
       ']');
 
-    character.skills[0].skill = Skill.produce(skill1);
-    character.skills[1].skill = Skill.produce(skill2);
+    character.skills[0].skill = skill1;
+    character.skills[1].skill = skill2;
 
     character.entries['207002007'].characterEntrySkills = character.skills;
 
@@ -142,11 +131,8 @@ describe('CharacterMapper', () => {
 
   it('should create UniteCompetences correctly when mapping an native Brave-Shift Character', () => {
     // GIVEN
-    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
-    const skill1: Skill = skills['100021'];
-    skill1.gumi_id = 100021;
-    const skill2: Skill = skills['232639'];
-    skill2.gumi_id = 232639;
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['207002017'];
@@ -155,8 +141,8 @@ describe('CharacterMapper', () => {
       '{"rarity": "NV", "level": 115, "type": "ABILITY", "id": 232639, "ex_level": 0}' +
       ']');
 
-    character.skills[0].skill = Skill.produce(skill1);
-    character.skills[1].skill = Skill.produce(skill2);
+    character.skills[0].skill = skill1;
+    character.skills[1].skill = skill2;
 
     character.entries['207002017'].characterEntrySkills = character.skills;
 
@@ -173,13 +159,6 @@ describe('CharacterMapper', () => {
     expect(personnage.unites[0].competences[1].niveau).toEqual(115);
   });
 
-  function assembleActiveSkill(skillId: string, rawSkills: any): Skill {
-    const skill: Skill = rawSkills[skillId];
-    skill.gumi_id = +skillId;
-    skill.active = true;
-    return skill;
-  }
-
   function checkActivatedSkillsForUnite(unite: Unite) {
     expect(unite.competencesActivees.length).toEqual(3);
     expect(unite.competencesActivees[0].competence.gumi_id).toEqual(501090);
@@ -195,27 +174,26 @@ describe('CharacterMapper', () => {
 
   it('should create UniteCompetences correctly for activated skills', () => {
     // GIVEN
-    const skills = {...(JSON.parse(PASSIVE_SKILLS_TEST_DATA)), ...(JSON.parse(ABILITY_SKILLS_TEST_DATA))};
-    const skill1: Skill = assembleActiveSkill('100021', skills);
-    const skill2: Skill = assembleActiveSkill('208930', skills);
-    const skill3: Skill = assembleActiveSkill('501090', skills);
-    const skill4: Skill = assembleActiveSkill('501100', skills);
-    const skill5: Skill = assembleActiveSkill('501110', skills);
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(208930);
+    const skill3: Skill = SkillMockDataHelper.mockAbilitySkill(501090);
+    const skill4: Skill = SkillMockDataHelper.mockAbilitySkill(501100);
+    const skill5: Skill = SkillMockDataHelper.mockAbilitySkill(501110);
 
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.callFake(input => {
       switch (input) {
         case 100021:
-          return Skill.produce(skill1);
+          return skill1;
         case 208930:
-          return Skill.produce(skill2);
+          return skill2;
         case 501090:
-          return Skill.produce(skill3);
+          return skill3;
         case 501100:
-          return Skill.produce(skill4);
+          return skill4;
         case 501110:
-          return Skill.produce(skill5);
+          return skill5;
         default:
           console.error('SearchForSkillByGumiId called for non-mocked skill ' + input);
       }
@@ -228,8 +206,8 @@ describe('CharacterMapper', () => {
       '{"rarity": "5", "level": 80, "type": "ABILITY", "id": 208930}' +
       ']');
 
-    character.skills[0].skill = Skill.produce(skill1);
-    character.skills[1].skill = Skill.produce(skill2);
+    character.skills[0].skill = skill1;
+    character.skills[1].skill = skill2;
 
     character.entries['100010005'].characterEntrySkills = character.skills;
     character.entries['100010006'].characterEntrySkills = character.skills;
