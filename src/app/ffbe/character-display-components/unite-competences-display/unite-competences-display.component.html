@@ -8,3 +8,9 @@
 <app-unite-competences-array-display [uniteCompetences]="unite.competences"
                                      [titre]="'Compétences'">
 </app-unite-competences-array-display>
+
+<div *ngIf="getOrphanedSkills().length">
+  <app-unite-competences-array-display [uniteCompetences]="getOrphanedSkills()"
+                                       [titre]="'Compétences orphelines'">
+  </app-unite-competences-array-display>
+</div>

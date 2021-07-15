@@ -1,8 +1,8 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Unite} from '../../model/unite.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {UniteCompetenceArray} from '../../model/unite-competence-array.model';
-import {UniteCompetence} from '../../model/unite-competence.model';
+import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competence.model';
 
 @Component({
   selector: 'app-unite-competences-display',
@@ -30,6 +30,16 @@ export class UniteCompetencesDisplayComponent implements OnInit {
       this.unite.competences.compare(this.dbUniteCompetences);
       this.unite.competencesActivees?.compare(this.dbUniteCompetencesActives);
     }
+  }
+
+  public getOrphanedSkills(): UniteCompetenceArray {
+    if (this.unite.isPresentInFfchDb() && !FfbeUtils.isNullOrUndefined(this.dbUnite)) {
+      return new UniteCompetenceArray(
+        ...this.dbUniteCompetences.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart),
+        ...this.dbUniteCompetencesActives.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart)
+      );
+    }
+    return new UniteCompetenceArray();
   }
 
 }
