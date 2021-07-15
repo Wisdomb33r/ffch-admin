@@ -4,7 +4,7 @@ require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
 require_once "../gestion/genscripts/object_brex_obj_comp.class.php";
 require_once "../gestion/genscripts/object_brex_perso_trust.class.php";
 require_once "includes/classes.php";
-require_once "skill_class.php";
+require_once "includes/skill_class.php";
 
 function dieWithBadRequest($errorMessages)
 {

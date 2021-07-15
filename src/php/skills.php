@@ -1,6 +1,6 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
-require_once "./skill_class.php";
+require_once "./includes/skill_class.php";
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $competence = json_decode ( file_get_contents ( 'php://input' ) );
@@ -113,7 +113,7 @@ function createPropertyArray($competence) {
   }
   if (isset ( $competence->enhanced ))
     $values ['enhanced'] = ($competence->enhanced == true) ? '1' : '0';
-  
+
   return $values;
 }
 function updateRelations($brex_competence, $competence) {
