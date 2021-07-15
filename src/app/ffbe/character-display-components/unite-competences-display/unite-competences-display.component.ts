@@ -14,7 +14,8 @@ export class UniteCompetencesDisplayComponent implements OnInit {
   @Input() unite: Unite;
   @Input() dbUnite: Unite;
   public dbUniteCompetences: UniteCompetenceArray;
-  public dbUniteCompetencesActives: UniteCompetenceArray;
+  public dbUniteCompetencesActivees: UniteCompetenceArray;
+  public dbUniteCompetencesOrphelines: UniteCompetenceArray;
 
 
   constructor() {
@@ -26,20 +27,14 @@ export class UniteCompetencesDisplayComponent implements OnInit {
   ngOnChanges(): void {
     if (this.unite.isPresentInFfchDb() && !FfbeUtils.isNullOrUndefined(this.dbUnite)) {
       this.dbUniteCompetences = new UniteCompetenceArray(...this.dbUnite.competences.filter(uniteCompetence => !UniteCompetence.isActivatedCompetence(uniteCompetence)));
-      this.dbUniteCompetencesActives = new UniteCompetenceArray(...this.dbUnite.competences.filter(uniteCompetence => UniteCompetence.isActivatedCompetence(uniteCompetence)));
+      this.dbUniteCompetencesActivees = new UniteCompetenceArray(...this.dbUnite.competences.filter(uniteCompetence => UniteCompetence.isActivatedCompetence(uniteCompetence)));
       this.unite.competences.compare(this.dbUniteCompetences);
-      this.unite.competencesActivees?.compare(this.dbUniteCompetencesActives);
-    }
-  }
-
-  public getOrphanedSkills(): UniteCompetenceArray {
-    if (this.unite.isPresentInFfchDb() && !FfbeUtils.isNullOrUndefined(this.dbUnite)) {
-      return new UniteCompetenceArray(
+      this.unite.competencesActivees?.compare(this.dbUniteCompetencesActivees);
+      this.dbUniteCompetencesOrphelines = new UniteCompetenceArray(
         ...this.dbUniteCompetences.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart),
-        ...this.dbUniteCompetencesActives.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart)
+        ...this.dbUniteCompetencesActivees.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart)
       );
     }
-    return new UniteCompetenceArray();
   }
 
 }
