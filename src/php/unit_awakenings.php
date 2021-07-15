@@ -1,30 +1,16 @@
 <?php
 require_once "../gestion/genscripts/object_brex_perso_eveil.class.php";
 require_once "../gestion/genscripts/object_brex_objet.class.php";
-require_once "includes/classes.php";
 require_once "../gestion/genscripts/object_brex_obtention.class.php";
+
+require_once "includes/classes.php";
+require_once "includes/die_with.php";
 
 class UniteEveil
 {
   public $unite_numero;
   public $formule;
   public $ajoute_obtention;
-}
-
-function dieWithBadRequest($errorMessages)
-{
-  http_response_code(400);
-  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
-  ));
-  die ();
-}
-
-function dieWithNotFound($errorMessages)
-{
-  http_response_code(404);
-  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
-  ));
-  die ();
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {

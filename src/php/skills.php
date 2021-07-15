@@ -1,6 +1,8 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
+
 require_once "./includes/skill_class.php";
+require_once "includes/die_with.php";
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   $competence = json_decode ( file_get_contents ( 'php://input' ) );
@@ -57,16 +59,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     http_response_code ( 400 );
   }
 }
-function dieWithBadRequest($errorMessages) {
-  http_response_code ( 400 );
-  echo json_encode ( is_array ( $errorMessages ) ? $errorMessages : array ($errorMessages) );
-  die ();
-}
-function dieWithNotFound($errorMessages) {
-  http_response_code ( 404 );
-  echo json_encode ( is_array ( $errorMessages ) ? $errorMessages : array ($errorMessages) );
-  die ();
-}
+
 function createPropertyArray($competence) {
   $values = array ();
   if (isset ( $competence->nom ))
