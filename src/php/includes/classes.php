@@ -1,7 +1,7 @@
 <?php
 
-require_once "../gestion/genscripts/object_brex_objet.class.php";
-require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
+require_once "../../gestion/genscripts/object_brex_objet.class.php";
+require_once "../../gestion/genscripts/object_brex_objet_categ.class.php";
 
 class ObjetCategorie
 {
