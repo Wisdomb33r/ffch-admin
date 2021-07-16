@@ -1,7 +1,4 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
@@ -10,12 +7,7 @@ import {SkillMapper} from '../../../../mappers/skill-mapper';
 describe('AbilitySkillMagnusGlexEffect', () => {
   it('should parse GLEX magnus skills', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-
-    const rawMagnusSkill: Skill = skills['913625'];
-    rawMagnusSkill.gumi_id = 913625;
-    rawMagnusSkill.active = true;
-    const magnusSkill = Skill.produce(rawMagnusSkill);
+    const magnusSkill: Skill = SkillMockDataHelper.mockAbilitySkill(913625);
 
     // WHEN
     const competence = SkillMapper.toCompetence(magnusSkill);
@@ -26,24 +18,12 @@ describe('AbilitySkillMagnusGlexEffect', () => {
 
   it('should parse GLEX magnus skills with per-turn usage restriction', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-
-    const rawMagnusSkill: Skill = skills['913881'];
-    rawMagnusSkill.gumi_id = 913881;
-    rawMagnusSkill.names = names['913881'];
-    rawMagnusSkill.active = true;
-
-    const activatedSkill: Skill = skills['913897'];
-    activatedSkill.gumi_id = 913897;
-    activatedSkill.names = names['913897'];
-    activatedSkill.active = true;
+    const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(913897);
 
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(activatedSkill), Skill.produce(activatedSkill));
-
-    const magnusSkill = Skill.produce(rawMagnusSkill);
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(activatedSkill, activatedSkill);
+    const magnusSkill: Skill = SkillMockDataHelper.mockAbilitySkill(913881);
 
     // WHEN
     const competence = SkillMapper.toCompetence(magnusSkill);

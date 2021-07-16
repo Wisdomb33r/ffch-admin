@@ -32,7 +32,7 @@ export class SkillMapper {
 
     const hitsFramesDamagesObject = SkillMapper.mapHitsFramesAndDamages(skill);
 
-    return new Competence(
+    const c = new Competence(
       skill.gumi_id,
       skill.gumiIdActivatedSkill,
       SkillMapper.determineCategorieCompetence(skill),
@@ -57,9 +57,10 @@ export class SkillMapper {
       hitsFramesDamagesObject.hits,
       hitsFramesDamagesObject.frames,
       hitsFramesDamagesObject.damages,
-      SkillMapper.mapElementInflict(skill),
       skill.hasParameterWarning()
     );
+    c.elements = SkillMapper.mapElementInflict(skill);
+    return c;
   }
 
   private static orderSkillEffectsRaw(skill: Skill) {

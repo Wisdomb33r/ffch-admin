@@ -3,7 +3,7 @@ import {MateriaMapper} from './materia-mapper';
 import {MATERIAS_TEST_DATA} from '../../model/items/materia/materia.model.spec';
 import {Materia} from '../../model/items/materia/materia.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
-import {PASSIVE_SKILLS_TEST_DATA} from '../../model/skill.model.spec';
+import {SkillMockDataHelper} from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
 import {Caracteristiques} from '../../model/caracteristiques.model';
 import {ResistancesElementaires} from '../../model/resistances-elementaires.model';
@@ -50,9 +50,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504100090'];
     materia.gumi_id = 504100090;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['100090'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(100090);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -66,9 +65,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504231562'];
     materia.gumi_id = 504231562;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['231562'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(231562);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -82,9 +80,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504232511'];
     materia.gumi_id = 504232511;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['232511'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(232511);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -98,9 +95,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504232511'];
     materia.gumi_id = 504232511;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['232511'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(232511);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -115,9 +111,8 @@ describe('MateriaMapper', () => {
     materia.gumi_id = 504232511;
     materia.skills = [232511, 232511];
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['232511'];
-    materia.dmSkills = [Skill.produce(skill), Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(232511);
+    materia.dmSkills = [skill, skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -131,9 +126,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504204030'];
     materia.gumi_id = 504204030;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['204030'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(204030);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -147,9 +141,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504204030'];
     materia.gumi_id = 504204030;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['204030'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(204030);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -163,9 +156,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504230563'];
     materia.gumi_id = 504230563;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['230563'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(230563);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);
@@ -179,9 +171,8 @@ describe('MateriaMapper', () => {
     const materia: Materia = materias['504230563'];
     materia.gumi_id = 504230563;
 
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['230563'];
-    materia.dmSkills = [Skill.produce(skill)];
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(230563);
+    materia.dmSkills = [skill];
 
     // WHEN
     const objet: Objet = MateriaMapper.toObjet(materia);

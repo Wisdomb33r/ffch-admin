@@ -1,11 +1,10 @@
 import {CHARACTER_TEST_DATA} from '../model/character/character.model.spec';
 import {Character} from '../model/character/character.model';
 import {Unite} from '../model/unite.model';
-import {UniteCarac} from '../model/unite-carac.model';
 import {CharacterEntryStatsMapper} from './character-entry-stats.mapper';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {Skill} from '../model/skill.model';
-import {PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
+import {SkillMockDataHelper} from '../model/skill.model.spec';
 
 describe('CharacterEntryStatsMapper', function () {
   it('should parse stats correctly', () => {
@@ -42,25 +41,18 @@ describe('CharacterEntryStatsMapper', function () {
 
       const unite = new Unite(1, 2, 100000102, 100000102);
 
-      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-      const plainSkill1: Skill = skills['100010'];
-      plainSkill1.gumi_id = 100010;
-
-      const plainSkill2: Skill = skills['230020'];
-      plainSkill2.gumi_id = 230020;
-
-      const plainSkill3: Skill = skills['234232'];
-      plainSkill3.gumi_id = 234232;
+      const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100010);
+      const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(230020);
+      const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(234232);
 
       character.skills = JSON.parse('[' +
         '{"rarity": 2, "level": 3, "type": "ABILITY", "id": 100010},' +
         '{"rarity": 2, "level": 8, "type": "MAGIC", "id": 230020},' +
         '{"rarity": 2, "level": 17, "type": "ABILITY", "id": 234232}' +
         ']');
-      character.skills[0].skill = Skill.produce(plainSkill1);
-      character.skills[1].skill = Skill.produce(plainSkill2);
-      character.skills[2].skill = Skill.produce(plainSkill3);
+      character.skills[0].skill = skill1;
+      character.skills[1].skill = skill2;
+      character.skills[2].skill = skill3;
 
       character.entries['100000102'].characterEntrySkills = character.skills;
 
@@ -81,25 +73,18 @@ describe('CharacterEntryStatsMapper', function () {
 
       const unite = new Unite(1033, 7, 100009105, 100009105);
 
-      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-      const plainSkill1: Skill = skills['100010'];
-      plainSkill1.gumi_id = 100010;
-
-      const plainSkill2: Skill = skills['950145'];
-      plainSkill2.gumi_id = 950145;
-
-      const plainSkill3: Skill = skills['707785'];
-      plainSkill3.gumi_id = 707785;
+      const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100010);
+      const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(950145);
+      const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
 
       character.skills = JSON.parse('[' +
         '{"rarity": 5, "level": 3, "type": "ABILITY", "id": 100010},' +
         '{"rarity": 7, "level": 101, "type": "ABILITY", "id": 950145},' +
         '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 707785}' +
         ']');
-      character.skills[0].skill = Skill.produce(plainSkill1);
-      character.skills[1].skill = Skill.produce(plainSkill2);
-      character.skills[2].skill = Skill.produce(plainSkill3);
+      character.skills[0].skill = skill1;
+      character.skills[1].skill = skill2;
+      character.skills[2].skill = skill3;
 
       character.entries['100009105'].characterEntrySkills = character.skills;
 
@@ -120,25 +105,18 @@ describe('CharacterEntryStatsMapper', function () {
 
       const unite = new Unite(1033, 7, 100009105, 100009105);
 
-      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-      const plainSkill1: Skill = skills['100010'];
-      plainSkill1.gumi_id = 100010;
-
-      const plainSkill2: Skill = skills['227160'];
-      plainSkill2.gumi_id = 227160;
-
-      const plainSkill3: Skill = skills['707785'];
-      plainSkill3.gumi_id = 707785;
+      const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100010);
+      const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(227160);
+      const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
 
       character.skills = JSON.parse('[' +
         '{"rarity": 5, "level": 3, "type": "ABILITY", "id": 100010},' +
         '{"rarity": 7, "level": 101, "type": "ABILITY", "id": 227160},' +
         '{"rarity": 7, "level": 110, "type": "ABILITY", "id": 707785}' +
         ']');
-      character.skills[0].skill = Skill.produce(plainSkill1);
-      character.skills[1].skill = Skill.produce(plainSkill2);
-      character.skills[2].skill = Skill.produce(plainSkill3);
+      character.skills[0].skill = skill1;
+      character.skills[1].skill = skill2;
+      character.skills[2].skill = skill3;
 
       character.entries['100009105'].characterEntrySkills = character.skills;
 
@@ -159,25 +137,18 @@ describe('CharacterEntryStatsMapper', function () {
 
       const unite = new Unite(2080, 8, 207002007, 207002007);
 
-      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-      const plainSkill1: Skill = skills['100010'];
-      plainSkill1.gumi_id = 100010;
-
-      const plainSkill2: Skill = skills['950145'];
-      plainSkill2.gumi_id = 950145;
-
-      const plainSkill3: Skill = skills['702240'];
-      plainSkill3.gumi_id = 702240;
+      const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100010);
+      const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(950145);
+      const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(702240);
 
       character.skills = JSON.parse('[' +
         '{"rarity": "NV", "level": 24, "type": "ABILITY", "id": 100010, "ex_level": 0},' +
         '{"rarity": "NV", "level": 100, "type": "ABILITY", "id": 950145, "ex_level": 0},' +
         '{"rarity": "NV", "level": 120, "type": "ABILITY", "id": 702240, "ex_level": 0}' +
         ']');
-      character.skills[0].skill = Skill.produce(plainSkill1);
-      character.skills[1].skill = Skill.produce(plainSkill2);
-      character.skills[2].skill = Skill.produce(plainSkill3);
+      character.skills[0].skill = skill1;
+      character.skills[1].skill = skill2;
+      character.skills[2].skill = skill3;
 
       character.entries['207002007'].characterEntrySkills = character.skills;
 
@@ -198,25 +169,18 @@ describe('CharacterEntryStatsMapper', function () {
 
       const unite = new Unite(2080, 8, 207002007, 207002007);
 
-      const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-      const plainSkill1: Skill = skills['100010'];
-      plainSkill1.gumi_id = 100010;
-
-      const plainSkill2: Skill = skills['950145'];
-      plainSkill2.gumi_id = 950145;
-
-      const plainSkill3: Skill = skills['236037'];
-      plainSkill3.gumi_id = 236037;
+      const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100010);
+      const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(950145);
+      const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(236037);
 
       character.skills = JSON.parse('[' +
         '{"rarity": "NV", "level": 24, "type": "ABILITY", "id": 100010, "ex_level": 0},' +
         '{"rarity": "NV", "level": 100, "type": "ABILITY", "id": 950145, "ex_level": 0},' +
         '{"rarity": "NV", "level": 110, "type": "ABILITY", "id": 914072, "ex_level": 0}' +
         ']');
-      character.skills[0].skill = Skill.produce(plainSkill1);
-      character.skills[1].skill = Skill.produce(plainSkill2);
-      character.skills[2].skill = Skill.produce(plainSkill3);
+      character.skills[0].skill = skill1;
+      character.skills[1].skill = skill2;
+      character.skills[2].skill = skill3;
 
       character.entries['207002007'].characterEntrySkills = character.skills;
 

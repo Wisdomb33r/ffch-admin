@@ -1,8 +1,4 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
@@ -11,26 +7,13 @@ import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 describe('AbilitySkillMagnusEffect', () => {
   it('should parse NV magnus skills', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const magnusSkill: Skill = skills['912380'];
-    magnusSkill.gumi_id = 912380;
-    magnusSkill.names = names['912380'];
-    magnusSkill.descriptions = descriptions['912380'];
-    magnusSkill.active = true;
-
-    const activatedSkill: Skill = skills['200200'];
-    activatedSkill.gumi_id = 200200;
-    activatedSkill.names = names['200200'];
-    activatedSkill.descriptions = descriptions['200200'];
-    activatedSkill.active = true;
+    const magnusSkill: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
+    const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
 
     const effect = JSON.parse('[1, 1, 157, [200200,  1,  1,  1,  1,  1,  1,  1,  0]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(activatedSkill));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(activatedSkill);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(magnusSkill);
     // THEN
@@ -52,26 +35,13 @@ describe('AbilitySkillMagnusEffect', () => {
 
   it('should parse NV magnus skills with per-turn usage restriction', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const magnusSkill: Skill = skills['912380'];
-    magnusSkill.gumi_id = 912380;
-    magnusSkill.names = names['912380'];
-    magnusSkill.descriptions = descriptions['912380'];
-    magnusSkill.active = true;
-
-    const activatedSkill: Skill = skills['200200'];
-    activatedSkill.gumi_id = 200200;
-    activatedSkill.names = names['200200'];
-    activatedSkill.descriptions = descriptions['200200'];
-    activatedSkill.active = true;
+    const magnusSkill: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
+    const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
 
     const effect = JSON.parse('[1, 1, 157, [200200,  1,  3,  3,  1,  1,  1,  0,  0]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(activatedSkill));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(activatedSkill);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(magnusSkill);
     // THEN

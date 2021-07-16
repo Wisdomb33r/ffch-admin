@@ -5,6 +5,7 @@ import {CompetencesComparingContainer} from '../model/competences-comparing-cont
 import {forkJoin, Observable, of, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {classToClass} from 'class-transformer';
 
 @Component({
   selector: 'app-skills-display',
@@ -47,7 +48,7 @@ export class SkillsDisplayComponent implements OnDestroy, OnChanges {
               new CompetencesComparingContainer(
                 this.competences[index],
                 FfbeUtils.isNullOrUndefined(c) ? undefined : c,
-                Competence.produce(this.competences[index]))
+                classToClass(this.competences[index]))
             );
           }
         );

@@ -7,7 +7,7 @@ import {SkillsService} from './skills.service';
 import {Character} from '../model/character/character.model';
 import {LimitBurstsService} from './limit-bursts.service';
 import {SkillsServiceMock} from './skills.service.spec';
-import {ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_TEST_DATA, PASSIVE_SKILLS_TEST_DATA} from '../model/skill.model.spec';
+import {SkillMockDataHelper} from '../model/skill.model.spec';
 import {Skill} from '../model/skill.model';
 import {EnhancementsService} from './enhancements.service';
 import {ENHANCEMENTS_TEST_DATA} from './enhancements.service.spec';
@@ -142,13 +142,9 @@ describe('CharactersService', () => {
 
   it('should find the correct enhanced-by-passive-skill limit burst ID  when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['227160'];
-    skill2.gumi_id = 227160;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(227160);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
 
     const loadedCharacters = service['charactersFromDataMining'];
     loadedCharacters['100009105']['skills'] = [loadedCharacters['100009105']['skills'][4], loadedCharacters['100009105']['skills'][27]];
@@ -168,13 +164,9 @@ describe('CharactersService', () => {
 
   it('should find the correct enhanced-when-low-HP limit burst ID  when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['234232'];
-    skill1.gumi_id = 234232;
-    const skill2: Skill = skills['100020'];
-    skill2.gumi_id = 100020;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(234232);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
 
     service.loadCharactersFromDataMining();
 
@@ -194,17 +186,11 @@ describe('CharactersService', () => {
 
   it('should find the correct enhanced-by-enhanced-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['100021'];
-    skill2.gumi_id = 100021;
-    const skill3: Skill = skills['707785'];
-    skill3.gumi_id = 707785;
-    const skill4: Skill = skills['707786'];
-    skill4.gumi_id = 707786;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
+    const skill4: Skill = SkillMockDataHelper.mockPassiveSkill(707786);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3, skill4);
 
     const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
 
@@ -240,20 +226,14 @@ describe('CharactersService', () => {
 
   it('should find the correct enhanced-by-latent-skill limit burst ID when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['100021'];
-    skill2.gumi_id = 100021;
-    const skill3: Skill = skills['950144'];
-    skill3.gumi_id = 950144;
-    const skill4: Skill = skills['950145'];
-    skill4.gumi_id = 950145;
-    const skill5: Skill = skills['800352'];
-    skill5.gumi_id = 800352;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1),
-      Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4), Skill.produce(skill5));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(950144);
+    const skill4: Skill = SkillMockDataHelper.mockPassiveSkill(950145);
+    const skill5: Skill = SkillMockDataHelper.mockPassiveSkill(800352);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(
+      skill1, skill2, skill3, skill4, skill5
+    );
 
     const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
 
@@ -299,18 +279,11 @@ describe('CharactersService', () => {
 
   it('should filter out enhanced skills for other characters when searching if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['100021'];
-    skill2.gumi_id = 100021;
-    const skill3: Skill = skills['707785'];
-    skill3.gumi_id = 707785;
-    const skill4: Skill = skills['707786'];
-    skill4.gumi_id = 707786;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and
-      .returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(100021);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
+    const skill4: Skill = SkillMockDataHelper.mockPassiveSkill(707786);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3, skill4);
 
     const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
 
@@ -346,27 +319,11 @@ describe('CharactersService', () => {
 
   it('should filter out active skills when searching for enhanced limit burst ID if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = {
-      ...JSON.parse(PASSIVE_SKILLS_TEST_DATA),
-      ...(JSON.parse(ABILITY_SKILLS_TEST_DATA)),
-      ...(JSON.parse(MAGIC_SKILLS_TEST_DATA))
-    };
-
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['232639'];
-    skill2.gumi_id = 232639;
-    skill2.active = true;
-    skill2.type = 'ABILITY';
-    const skill3: Skill = skills['227160'];
-    skill3.gumi_id = 227160;
-    const skill4: Skill = skills['20300'];
-    skill4.gumi_id = 20300;
-    skill4.active = true;
-    skill4.type = 'MAGIC';
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and
-      .returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(227160);
+    const skill4: Skill = SkillMockDataHelper.mockMagicSkill(20300);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3, skill4);
 
     const loadedCharacters = service['charactersFromDataMining'];
     loadedCharacters['100009105']['skills'] = [loadedCharacters['100009105']['skills'][4],
@@ -391,17 +348,11 @@ describe('CharactersService', () => {
 
   it('should find the all enhanced-by-enhanced-skill limit burst IDs when searched if present in data mining', inject([CharactersService], (service: CharactersService) => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const skill1: Skill = skills['100020'];
-    skill1.gumi_id = 100020;
-    const skill2: Skill = skills['230020'];
-    skill2.gumi_id = 230020;
-    const skill3: Skill = skills['914071'];
-    skill3.gumi_id = 914071;
-    const skill4: Skill = skills['914072'];
-    skill4.gumi_id = 914072;
-    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3), Skill.produce(skill4));
+    const skill1: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
+    const skill2: Skill = SkillMockDataHelper.mockPassiveSkill(230020);
+    const skill3: Skill = SkillMockDataHelper.mockPassiveSkill(914071);
+    const skill4: Skill = SkillMockDataHelper.mockPassiveSkill(914072);
+    const mySpy = spyOn(skillsService, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3, skill4);
 
     const enhancements = JSON.parse(ENHANCEMENTS_TEST_DATA);
 
