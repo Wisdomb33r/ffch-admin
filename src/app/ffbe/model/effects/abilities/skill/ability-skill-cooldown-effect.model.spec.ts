@@ -8,19 +8,17 @@ import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 describe('AbilityCooldownEffect', () => {
   it('should parse cooldown skills available on turn 1', () => {
     // GIVEN
-    const cooldownActivator: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
     const cooldownActivated: Skill = SkillMockDataHelper.mockAbilitySkill(509014);
     const multiSkillActivated: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
 
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
-      .and.returnValues(cooldownActivated, multiSkillActivated);
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(cooldownActivated, multiSkillActivated);
 
     const effect = JSON.parse('[0, 3, 130, [509014, 1, [7,  7], 0]]');
 
     // WHEN
-    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(cooldownActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(2);
     expect(mySpy).toHaveBeenCalledWith(509014);
@@ -35,7 +33,7 @@ describe('AbilityCooldownEffect', () => {
 
   it('should parse cooldown skills available on turn N, same as cooldown N', () => {
     // GIVEN
-    const cooldownActivator: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const cooldownActivator: Skill = new Skill();
     const cooldownActivated: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
 
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
@@ -61,7 +59,7 @@ describe('AbilityCooldownEffect', () => {
 
   it('should parse cooldowns skills available on turn M, less than cooldown N', () => {
     // GIVEN
-    const cooldownActivator: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const cooldownActivator: Skill = new Skill();
     const cooldownActivated: Skill = SkillMockDataHelper.mockAbilitySkill(509624);
 
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
@@ -91,7 +89,7 @@ describe('AbilityCooldownEffect', () => {
 
   it('should parse cooldowns skills that trigger only once when dual-wielding', () => {
     // GIVEN
-    const cooldownActivator: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const cooldownActivator: Skill = new Skill();
     cooldownActivator.attack_type = 'Hybrid';
     const cooldownActivated: Skill = SkillMockDataHelper.mockAbilitySkill(509624);
 

@@ -1,30 +1,18 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, ABILITY_SKILLS_TEST_DATA,
-  PASSIVE_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 import {SkillsService} from '../../../../services/skills.service';
 import {PassiveSkillEffectFactory} from '../../passive-skill-effect.factory';
-import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 
 describe('PassiveSkillMoraleJaugeActivationEffect', () => {
 
   it('should parse activation effect when morale jauge is above threshold', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const skill: Skill = skills['200200'];
-    skill.gumi_id = 200200;
-    skill.names = names['200200'];
-    skill.descriptions = descriptions['200200'];
+    const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
     const effect = JSON.parse('[0, 3, 10007, [200200,  150,  1,  1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill);
 
     // WHEN
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
@@ -41,18 +29,11 @@ describe('PassiveSkillMoraleJaugeActivationEffect', () => {
 
   it('should parse activation effect when morale jauge is below threshold', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const skill: Skill = skills['200270'];
-    skill.gumi_id = 200270;
-    skill.names = names['200270'];
-    skill.descriptions = descriptions['200270'];
+    const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
     const effect = JSON.parse('[0, 3, 10007, [200270,  50,  0,  1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill);
 
     // WHEN
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);

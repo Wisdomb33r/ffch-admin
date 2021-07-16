@@ -1,11 +1,4 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA,
-  MAGIC_SKILLS_NAMES_TEST_DATA,
-  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  MAGIC_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper';
@@ -16,27 +9,13 @@ describe('AbilitySkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for caster', () => {
     // GIVEN
-    const skills = {...(JSON.parse(ABILITY_SKILLS_TEST_DATA)), ...(JSON.parse(MAGIC_SKILLS_TEST_DATA))};
-    const names = {...(JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA)), ...(JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA))};
-    const descriptions = {
-      ...(JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA)),
-      ...(JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA))
-    };
-    const skill1: Skill = skills['20430'];
-    skill1.gumi_id = 20430;
-    skill1.active = true;
-    skill1.names = names['20430'];
-    skill1.descriptions = descriptions['20430'];
-    const skill2: Skill = skills['509024'];
-    skill2.gumi_id = 509024;
-    skill2.active = true;
-    skill2.names = names['509024'];
-    skill2.descriptions = descriptions['509024'];
+    const skill1: Skill = SkillMockDataHelper.mockMagicSkill(20430);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(509024);
 
     const effect = JSON.parse('[0, 3, 136, [[20430,  509024], 0, 0, 300, 5, 1, 1214, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
@@ -46,27 +25,13 @@ describe('AbilitySkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for one ally', () => {
     // GIVEN
-    const skills = {...(JSON.parse(ABILITY_SKILLS_TEST_DATA)), ...(JSON.parse(MAGIC_SKILLS_TEST_DATA))};
-    const names = {...(JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA)), ...(JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA))};
-    const descriptions = {
-      ...(JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA)),
-      ...(JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA))
-    };
-    const skill1: Skill = skills['20430'];
-    skill1.gumi_id = 20430;
-    skill1.active = true;
-    skill1.names = names['20430'];
-    skill1.descriptions = descriptions['20430'];
-    const skill2: Skill = skills['509024'];
-    skill2.gumi_id = 509024;
-    skill2.active = true;
-    skill2.names = names['509024'];
-    skill2.descriptions = descriptions['509024'];
+    const skill1: Skill = SkillMockDataHelper.mockMagicSkill(20430);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(509024);
 
     const effect = JSON.parse('[1, 2, 136, [[20430,  509024], 0, 0, 300, 5, 1, 1214, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
@@ -97,19 +62,12 @@ describe('AbilitySkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for healing', () => {
     // GIVEN
-    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
-    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['10020'];
-    skill1.gumi_id = 10020;
-    skill1.active = true;
-    skill1.names = names['10020'];
-    skill1.descriptions = descriptions['10020'];
+    const skill1: Skill = SkillMockDataHelper.mockMagicSkill(10020);
 
     const effect = JSON.parse('[1, 2, 136, [[10020], 0, 0, 300, 1, 1, 1214, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN

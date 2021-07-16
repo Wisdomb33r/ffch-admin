@@ -40,32 +40,7 @@ export class Skill {
   public hybride = false;
   public fixe = false;
   public esper = false;
-  @Type(() => SkillEffect)
   public effets: Array<SkillEffect> = [];
-
-  public static produce(s: Skill): Skill {
-    const skill: Skill = new Skill();
-    skill.gumi_id = s.gumi_id;
-    skill.name = s.name;
-    skill.type = s.type;
-    skill.rarity = s.rarity;
-    skill.active = s.active;
-    skill.magic_type = s.magic_type;
-    skill.cost = s.cost;
-    skill.attack_count = s.attack_count;
-    skill.attack_damage = s.attack_damage;
-    skill.attack_frames = s.attack_frames;
-    skill.attack_type = s.attack_type;
-    skill.element_inflict = s.element_inflict;
-    skill.effects = s.effects;
-    skill.effects_raw = s.effects_raw;
-    skill.icon = s.icon;
-    skill.names = s.names;
-    skill.descriptions = s.descriptions;
-    skill.requirements = s.requirements;
-    skill.unit_restriction = s.unit_restriction;
-    return skill.initializeSkillEffects();
-  }
 
   public initializeSkillEffects(): Skill {
     this.effets = this.effects_raw?.map(

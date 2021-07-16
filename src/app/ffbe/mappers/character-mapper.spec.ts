@@ -226,7 +226,7 @@ describe('CharacterMapper', () => {
     expect(mySpy).toHaveBeenCalledWith(501100);
     expect(mySpy).toHaveBeenCalledWith(501110);
     expect(personnage).toBeTruthy();
-    expect(personnage.unites.length === 3);
+    expect(personnage.unites.length).toEqual(3);
     checkActivatedSkillsForUnite(personnage.unites[0]);
     checkActivatedSkillsForUnite(personnage.unites[1]);
     checkActivatedSkillsForUnite(personnage.unites[2]);
