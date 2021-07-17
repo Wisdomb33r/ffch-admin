@@ -228,11 +228,12 @@ function updateAndValidateObjet($objet, $brex_objet)
   return createOrUpdateAndValidateObjet($objet, $brex_objet);
 }
 
-function createOrUpdateAndValidateObjet($objet, $brex_objet = null) {
-  $values = createPropertyArray ( $objet );
-  
-  if (is_null ( $brex_objet )) {
-    $brex_objet = new brex_objet ( $values );
+function createOrUpdateAndValidateObjet($objet, $brex_objet = null)
+{
+  $values = createPropertyArray($objet);
+
+  if (!isset ($brex_objet)) {
+    $brex_objet = new brex_objet ($values);
     if ($objet->categorie->ffchId == 67) {
       if ($objet->competences && count ( $objet->competences )) {
         foreach ( $objet->competences as $competence ) {
@@ -263,14 +264,15 @@ function storeObjet($brex_objet)
   }
 }
 
-function createAndValidateObjetLienTMR($objet, $brex_objet) {
-  if (is_null ( $objet->lienTMR )) {
+function createAndValidateObjetLienTMR($objet, $brex_objet)
+{
+  if (!isset($objet->lienTMR)) {
     return null;
   }
-  
-  $brex_persos = brex_perso::finderParGumiId ( $objet->lienTMR->perso_gumi_id );
-  
-  if (is_null ( $brex_persos ) || count ( $brex_persos ) != 1) {
+
+  $brex_persos = brex_perso::finderParGumiId($objet->lienTMR->perso_gumi_id);
+
+  if (!isset ($brex_persos) || count($brex_persos) != 1) {
     return null;
   }
   
@@ -294,7 +296,7 @@ function createAndValidateObjetLienTMR($objet, $brex_objet) {
 
 function storeLienTMR($brex_perso_trust)
 {
-  if (is_null($brex_perso_trust)) {
+  if (!isset($brex_perso_trust)) {
     return;
   }
 
