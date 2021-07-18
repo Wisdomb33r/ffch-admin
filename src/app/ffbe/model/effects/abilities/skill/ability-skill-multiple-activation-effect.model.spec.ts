@@ -1,16 +1,16 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {SkillMockDataHelper} from '../../../model/skill.model.spec';
-import {Skill} from '../../../model/skill.model';
-import {SkillsService} from '../../../services/skills.service';
-import {SkillsServiceMock} from '../../../services/skills.service.spec';
+import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
+import {Skill} from '../../../skill.model';
+import {SkillsService} from '../../../../services/skills.service';
+import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 
-describe('AbilitySkillMultipleActivationParser', () => {
+describe('AbilitySkillMultipleActivationEffect', () => {
 
   it('should parse removal of caster from fight for one turn', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 53, [1,  1]]');
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('Retire le lanceur du combat pour 1 tour');
   });
@@ -19,7 +19,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 53, [2,  2]]');
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('Retire le lanceur du combat pour 2 tours');
   });
@@ -28,7 +28,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 53, [3,  5]]');
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(s).toEqual('Retire le lanceur du combat pour 3 à 5 tours');
   });
@@ -42,7 +42,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(multiSkillActivated);
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, multiSkillActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(multiSkillActivator);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(912380);
@@ -60,7 +60,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(multiSkillActivated);
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, multiSkillActivator);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(multiSkillActivator);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(912380);
@@ -78,7 +78,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, multiSkillActivated);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(multiSkillActivated);
     // THEN
     expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
   });
@@ -90,7 +90,7 @@ describe('AbilitySkillMultipleActivationParser', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(SkillMockDataHelper.mockAbilitySkill(912380));
     // WHEN
-    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(912380);

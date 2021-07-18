@@ -28,6 +28,8 @@ import {AbilitySkillCooldownEffect} from './abilities/skill/ability-skill-cooldo
 import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-effect.model';
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
+import {AbilitySkillMultipleActivationEffect} from './abilities/skill/ability-skill-multiple-activation-effect.model';
+import {AbilityTemporaryRemovalFromFightEffect} from './abilities/ability-temporary-removal-from-fight-effect.model';
 import {AbilityMagIncreaseNextActionEffect} from './abilities/ability-mag-increase-next-action-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
 import {AbilityDamagePhysicalIncreasedModifierEnemyTypeEffect} from './abilities/damage/ability-damage-physical-increased-modifier-enemy-type-effect.model';
@@ -86,6 +88,12 @@ export class AbilitySkillEffectFactory {
           return new AbilityDamagePhysicalJumpDelayEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
         }
         break;
+      case 53:
+        if (effectRaw[3].length === 2) {
+          return new AbilityTemporaryRemovalFromFightEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        } else {
+          return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        }
       case 70:
         return new AbilityDamageMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 72:
@@ -103,6 +111,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 96:
         return new AbilityCoversEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 98:
+        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 99:
         return new AbilitySkillSwitchEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 100:
@@ -145,6 +155,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 165:
         return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 1006:
+        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1014:
