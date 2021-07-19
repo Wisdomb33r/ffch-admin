@@ -16,7 +16,8 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
-              protected parameters: Array<any>) {
+              protected parameters: Array<any>,
+              protected skill: Skill) {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || (effectId === 1006 && parameters.length < 2) || (effectId !== 1006 && parameters.length < 5)) {
       this.parameterError = true;
@@ -37,7 +38,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    if (this.effectId === 1006) {
+    if (this.isGlexEffect) {
       return this.wordGlexEffect();
     } else {
       return this.wordGeneralEffect(skill);
@@ -56,20 +57,28 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
       target = ' à un allié';
     }
 
-    if (!this.isSkillFreeToCast(skill.cost) || skill.isActivatedByPassiveSkill || skill.effects_raw.length > 1) {
+    if (this.isWordingAsMultiskillLink(skill)) {
       if (this.numTurns < 1) {
         return `Effet ${this.effectName} wrong parameter: Nombre de tours incorrect (${this.numTurns})`;
       }
       const numTurnsCalculated: number = skill.isActivatedByPassiveSkill || target.length > 0 ? this.numTurns : this.numTurns - 1;
       const pluralForm = numTurnsCalculated > 1 ? 's' : '';
-      const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
-      const skillLink = EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated);
-      return `Donne accès à ${skillLink}${target} pour ${numTurnsCalculated} tour${pluralForm}`;
+      const multiskill: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
+      const multiskillText = EffectParser.getSkillNameWithGumiIdentifierLink(multiskill);
+      return `Donne accès à ${multiskillText}${target} pour ${numTurnsCalculated} tour${pluralForm}`;
     } else {
       const skills = this.skillIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       const skillsText = EffectParser.getSkillsNamesWithGumiIdentifierLinks(skills);
       return `Permet l'utilisation de ${skillsText} ${this.nbTimes}x par tour`;
     }
+  }
+
+  private isWordingAsMultiskillLink(skill: Skill): boolean {
+    return !this.isSkillFreeToCast(skill.cost) || skill.isActivatedByPassiveSkill || skill.effects_raw.length > 1;
+  }
+
+  private get isGlexEffect(): boolean {
+    return this.effectId === 1006;
   }
 
   private isSkillFreeToCast(cost: SkillCost): boolean {
@@ -78,5 +87,12 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
 
   protected get effectName(): string {
     return 'AbilitySkillMultipleActivationEffect';
+  }
+
+  public getActivatedSkills(): Array<Skill> {
+    if (this.isGlexEffect || this.isWordingAsMultiskillLink(this.skill)) {
+      return [SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId)];
+    }
+    return [];
   }
 }

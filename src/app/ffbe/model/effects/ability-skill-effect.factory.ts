@@ -1,3 +1,4 @@
+import {Skill} from '../skill.model';
 import {SkillEffect} from './skill-effect.model';
 import {AbilityDamagePhysicalEffect} from './abilities/damage/ability-damage-physical-effect.model';
 import {AbilityDamageMagicEffect} from './abilities/damage/ability-damage-magic-effect.model';
@@ -50,7 +51,7 @@ import {AbilityMoraleJaugeEffect} from './abilities/ability-morale-jauge-effect.
 import {AbilityElementsAbsorbEffect} from './abilities/ability-elements-absorb-effect.model';
 
 export class AbilitySkillEffectFactory {
-  public static getSkillEffect(effectRaw): SkillEffect {
+  public static getSkillEffect(effectRaw, skill?: Skill): SkillEffect {
     switch (effectRaw[2]) {
       case 1:
         return new AbilityDamagePhysicalEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
@@ -92,7 +93,7 @@ export class AbilitySkillEffectFactory {
         if (effectRaw[3].length === 2) {
           return new AbilityTemporaryRemovalFromFightEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
         } else {
-          return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+          return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3], skill);
         }
       case 70:
         return new AbilityDamageMagicIgnoreSprEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
@@ -112,7 +113,7 @@ export class AbilitySkillEffectFactory {
       case 96:
         return new AbilityCoversEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 98:
-        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3], skill);
       case 99:
         return new AbilitySkillSwitchEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 100:
@@ -156,7 +157,7 @@ export class AbilitySkillEffectFactory {
       case 165:
         return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1006:
-        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+        return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3], skill);
       case 1012:
         return new AbilityDamageHexEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1014:

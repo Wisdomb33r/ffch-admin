@@ -1,3 +1,4 @@
+import {Skill} from '../skill.model';
 import {SkillEffect} from './skill-effect.model';
 import {PassiveCoverEffect} from './passives/passive-cover-effect.model';
 import {PassiveStatsIncreaseFixedEffect} from './passives/stats/passive-stats-increase-fixed-effect.model';
@@ -45,7 +46,7 @@ import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-ef
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 
 export class PassiveSkillEffectFactory {
-  public static getSkillEffect(effectRaw): SkillEffect {
+  public static getSkillEffect(effectRaw, skill?: Skill): SkillEffect {
     switch (effectRaw[2]) {
       case 1:
         return new PassiveStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);

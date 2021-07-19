@@ -44,7 +44,7 @@ export class Skill {
 
   public initializeSkillEffects(): Skill {
     this.effets = this.effects_raw?.map(
-      raw => this.active ? AbilitySkillEffectFactory.getSkillEffect(raw) : PassiveSkillEffectFactory.getSkillEffect(raw)
+      raw => this.active ? AbilitySkillEffectFactory.getSkillEffect(raw, this) : PassiveSkillEffectFactory.getSkillEffect(raw, this)
     ).filter(effect => !!effect);
     return this;
   }
