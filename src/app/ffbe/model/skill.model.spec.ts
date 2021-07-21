@@ -1410,6 +1410,15 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Ernst machen",
         "Pongámonos serios"
     ],
+    "232639": [
+        "Mystic Cross",
+        "奧秘十字",
+        "신비로운 공중 레이드",
+        "Croix mystique",
+        "Mystisches Kreuz",
+        "Cruz mística",
+        "Salib Mistis"
+    ],
     "509014": [
         "Get Serious",
         "認真",
@@ -1661,6 +1670,15 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "(Une fois tous les 8 tours) Augmente l'ATT, dissipe les réductions de l'ATT, la DEF, la MAGIE et la PSY, augmente la résistance du lanceur à ces réductions, et permet d'utiliser Fouet triple pendant 4 tours",
         "(Einmal in 8 Runden) Erhöht ANG, entfernt und erhöht dann Resistenz gegen ANG-, ABW-, MAG- und PSY-Verringerungen für Benutzer + ermöglicht 4 Runden lang Dreifachpeitsche.",
         "(Un uso cada 8 turnos) Aumenta el ATQ, elimina las reducciones de ATQ, DEF, MAG y ESP, aumenta la resistencia propia a los mismos, y aprende Látigo triple durante 4 turnos"
+    ],
+    "232639": [
+        "Deal wind damage to all enemies two times and power up with consecutive use",
+        "對全體敵人發動2次風屬性攻擊+連續使用時威力提升",
+        "적 전체에 2회 바람속성 피해+연속 사용 시 위력 상승",
+        "Inflige des dégâts de vent à tous les ennemis à 2 reprises et gagne en puissance à chaque utilisation consécutive",
+        "Fügt allen Gegnern zweimal Windschaden zu und wird mit jeder Anwendung stärker.",
+        "Daño de viento a todos los enemigos 2 veces y aumenta el daño con cada uso",
+        "Memberikan damage angin 2 kali pada semua musuh dan meningkatkan damage apabila digunakan secara beruntun"
     ],
     "509014": [
         "(One use every 8 turns) Boost ATK, and remove and boost resistance to ATK, DEF, MAG, and SPR reductions for self and enable triple whip for four turns",
