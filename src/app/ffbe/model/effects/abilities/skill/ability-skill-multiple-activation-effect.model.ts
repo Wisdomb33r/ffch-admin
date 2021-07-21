@@ -16,8 +16,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
               protected effectId: number,
-              protected parameters: Array<any>,
-              protected skill: Skill) {
+              protected parameters: Array<any>) {
     super(targetNumber, targetType, effectId);
     if (!Array.isArray(parameters) || (effectId === 1006 && parameters.length < 2) || (effectId !== 1006 && parameters.length < 5)) {
       this.parameterError = true;
@@ -89,8 +88,8 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
     return 'AbilitySkillMultipleActivationEffect';
   }
 
-  public getActivatedSkills(): Array<Skill> {
-    if (this.isGlexEffect || this.isWordingAsMultiskillLink(this.skill)) {
+  public getActivatedSkills(skill: Skill): Array<Skill> {
+    if (this.isGlexEffect || this.isWordingAsMultiskillLink(skill)) {
       return [SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId)];
     }
     return [];

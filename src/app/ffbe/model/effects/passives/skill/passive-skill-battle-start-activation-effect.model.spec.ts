@@ -2,6 +2,7 @@ import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 import {SkillsService} from '../../../../services/skills.service';
 import {PassiveSkillEffectFactory} from '../../passive-skill-effect.factory';
+import {Skill} from '../../../skill.model';
 
 describe('PassiveSkillBattleStartActivationEffect', () => {
 
@@ -23,7 +24,7 @@ describe('PassiveSkillBattleStartActivationEffect', () => {
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
 
     // WHEN
-    const activatedSkills = skillEffect.getActivatedSkills();
+    const activatedSkills = skillEffect.getActivatedSkills(new Skill());
 
     // THEN
     expect(activatedSkills).toEqual([]);
