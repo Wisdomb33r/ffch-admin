@@ -9,6 +9,7 @@ import {Observable, of, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Amelioration} from '../model/amelioration.model';
 import {Recette} from '../model/recette.model';
+import {plainToClass} from 'class-transformer';
 
 const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
@@ -26,25 +27,22 @@ export class FfchClientService {
   }
 
   public postCompetence$(competence: Competence): Observable<Competence> {
-    return this.http.post<Competence>(FFCH_COMPETENCE_PATH, competence)
-      .pipe(
-        map(c => Competence.produce(c))
-      );
+    return this.http.post<Competence>(FFCH_COMPETENCE_PATH, competence).pipe(
+      map(c => plainToClass(Competence, c))
+    );
   }
 
   public putCompetence$(competence: Competence): Observable<Competence> {
-    return this.http.put<Competence>(`${FFCH_COMPETENCE_PATH}?id=${competence.gumi_id}`, competence)
-      .pipe(
-        map(c => Competence.produce(c))
-      );
+    return this.http.put<Competence>(`${FFCH_COMPETENCE_PATH}?id=${competence.gumi_id}`, competence).pipe(
+      map(c => plainToClass(Competence, c))
+    );
   }
 
   public getCompetenceByGumiId$(id: number): Observable<Competence> {
-    return this.http.get<Competence>(`${FFCH_COMPETENCE_PATH}?id=${id}`)
-      .pipe(
-        map(c => Competence.produce(c)),
-        catchError(this.analyseError),
-      );
+    return this.http.get<Competence>(`${FFCH_COMPETENCE_PATH}?id=${id}`).pipe(
+      map(c => plainToClass(Competence, c)),
+      catchError(this.analyseError),
+    );
   }
 
   public getUniteByNumero$(numero: number): Observable<Unite> {

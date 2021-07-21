@@ -3,6 +3,7 @@ import {Caracteristiques} from './caracteristiques.model';
 import {ResistancesElementaires} from './resistances-elementaires.model';
 import {ResistancesAlterations} from './resistances-alterations.model';
 import {Tueurs} from './tueurs.model';
+import {plainToClass} from 'class-transformer';
 
 export const MAGIC_SKILLS_TEST_DATA =
   `{
@@ -1409,6 +1410,15 @@ export const ABILITY_SKILLS_NAMES_TEST_DATA =
         "Ernst machen",
         "Pongámonos serios"
     ],
+    "232639": [
+        "Mystic Cross",
+        "奧秘十字",
+        "신비로운 공중 레이드",
+        "Croix mystique",
+        "Mystisches Kreuz",
+        "Cruz mística",
+        "Salib Mistis"
+    ],
     "509014": [
         "Get Serious",
         "認真",
@@ -1661,6 +1671,15 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
         "(Einmal in 8 Runden) Erhöht ANG, entfernt und erhöht dann Resistenz gegen ANG-, ABW-, MAG- und PSY-Verringerungen für Benutzer + ermöglicht 4 Runden lang Dreifachpeitsche.",
         "(Un uso cada 8 turnos) Aumenta el ATQ, elimina las reducciones de ATQ, DEF, MAG y ESP, aumenta la resistencia propia a los mismos, y aprende Látigo triple durante 4 turnos"
     ],
+    "232639": [
+        "Deal wind damage to all enemies two times and power up with consecutive use",
+        "對全體敵人發動2次風屬性攻擊+連續使用時威力提升",
+        "적 전체에 2회 바람속성 피해+연속 사용 시 위력 상승",
+        "Inflige des dégâts de vent à tous les ennemis à 2 reprises et gagne en puissance à chaque utilisation consécutive",
+        "Fügt allen Gegnern zweimal Windschaden zu und wird mit jeder Anwendung stärker.",
+        "Daño de viento a todos los enemigos 2 veces y aumenta el daño con cada uso",
+        "Memberikan damage angin 2 kali pada semua musuh dan meningkatkan damage apabila digunakan secara beruntun"
+    ],
     "509014": [
         "(One use every 8 turns) Boost ATK, and remove and boost resistance to ATK, DEF, MAG, and SPR reductions for self and enable triple whip for four turns",
         "【每8回合可使用1次】提高自身攻擊+解除降低攻擊防禦魔力精神的效果+提高降低攻擊防禦魔力精神的耐性+4回合內可使用「T鞭打」",
@@ -1760,6 +1779,47 @@ export const ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA =
     ]
   }`;
 
+export class SkillMockDataHelper {
+  public static mockPassiveSkill(gumiId: number): Skill {
+    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
+    const skill: Skill = skills[`${gumiId}`];
+    skill.gumi_id = gumiId;
+    skill.type = 'ABILITY';
+    skill.active = false;
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names[`${gumiId}`];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions[`${gumiId}`];
+    return plainToClass(Skill, skill).initializeSkillEffects();
+  }
+
+  public static mockAbilitySkill(gumiId: number): Skill {
+    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
+    const skill: Skill = skills[`${gumiId}`];
+    skill.gumi_id = gumiId;
+    skill.type = 'ABILITY';
+    skill.active = true;
+    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
+    skill.names = names[`${gumiId}`];
+    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions[`${gumiId}`];
+    return plainToClass(Skill, skill).initializeSkillEffects();
+  }
+
+  public static mockMagicSkill(gumiId: number): Skill {
+    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
+    const skill: Skill = skills[`${gumiId}`];
+    skill.gumi_id = gumiId;
+    skill.type = 'MAGIC';
+    skill.active = true;
+    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
+    skill.names = names[`${gumiId}`];
+    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    skill.descriptions = descriptions[`${gumiId}`];
+    return plainToClass(Skill, skill).initializeSkillEffects();
+  }
+}
+
 describe('Skill', () => {
   it('should not consider effect as damaging for HP percent damages to caster', () => {
     // GIVEN
@@ -1807,12 +1867,12 @@ describe('Skill', () => {
 
   it('should calculate total power for multiple damaging effects', () => {
     // GIVEN
-    const skill: Skill = Skill.produce(JSON.parse(`{
+    const skill: Skill = plainToClass(Skill, JSON.parse(`{
       "name": "Fake Skill",
       "active": true,
       "attack_type": "Physical",
       "effects_raw": [[1, 1, 21, [0,  0,  25,  -50]], [1, 1, 25, [20,  80,  100]], [2, 1, 1, [0,  0,  0,  0,  0,  0,  1000,  0]]]
-    }`));
+    }`)).initializeSkillEffects();
     // WHEN
     const result = skill.calculateSkillPower();
     // THEN
@@ -1821,12 +1881,12 @@ describe('Skill', () => {
 
   it('should calculate total power for multiple non-damaging effects', () => {
     // GIVEN
-    const skill: Skill = Skill.produce(JSON.parse(`{
+    const skill: Skill = plainToClass(Skill, JSON.parse(`{
       "name": "Fake Skill",
       "active": true,
       "attack_type": "Physical",
       "effects_raw": [[0, 3, 100, [2,  512170,  99999,  3,  1,  5]], [0, 3, 132, [510756,  0,  5,  100,  0,  510756]], [0, 3, 111, [1,  1,  1,  1,  0,  0]]]
-    }`));
+    }`)).initializeSkillEffects();
     // WHEN
     const result = skill.calculateSkillPower();
     // THEN
@@ -1835,11 +1895,7 @@ describe('Skill', () => {
 
   it('should compute passive increases to Caracteristiques correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['707786'];
-    plainSkill.gumi_id = 707786;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(707786);
 
     // WHEN
     const carac = skill.calculateBaseIncreasesPercent();
@@ -1850,11 +1906,7 @@ describe('Skill', () => {
 
   it('should classify skills without equipment requirements correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['707785'];
-    plainSkill.gumi_id = 707785;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(707785);
 
     // WHEN
     const isTrustAbility = skill.hasEquipmentRequirements();
@@ -1865,11 +1917,7 @@ describe('Skill', () => {
 
   it('should classify skills with equipment requirement correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['230020'];
-    plainSkill.gumi_id = 230020;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(230020);
 
     // WHEN
     const isTrustAbility = skill.hasEquipmentRequirements();
@@ -1880,11 +1928,7 @@ describe('Skill', () => {
 
   it('should compute passive increases to DualWield Caracteristiques correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['227160'];
-    plainSkill.gumi_id = 227160;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(227160);
 
     // WHEN
     const carac = skill.calculateDualwieldIncreasesPercent();
@@ -1895,11 +1939,7 @@ describe('Skill', () => {
 
   it('should classify skills without unit restriction correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['911268'];
-    plainSkill.gumi_id = 911268;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(911268);
 
     // WHEN
     const hasUnitRestriction = skill.hasUnitRestriction();
@@ -1910,11 +1950,7 @@ describe('Skill', () => {
 
   it('should classify skills with unit restriction correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['912847'];
-    plainSkill.gumi_id = 912847;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(912847);
 
     // WHEN
     const hasUnitRestriction = skill.hasUnitRestriction();
@@ -1925,11 +1961,7 @@ describe('Skill', () => {
 
   it('should compute passive increases to DoubleHand Caracteristiques correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['702240'];
-    plainSkill.gumi_id = 702240;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(702240);
 
     // WHEN
     const carac = skill.calculateDoublehandIncreasesPercent();
@@ -1940,11 +1972,7 @@ describe('Skill', () => {
 
   it('should compute passive increases to TrueDoubleHand Caracteristiques correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['914072'];
-    plainSkill.gumi_id = 914072;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(914072);
 
     // WHEN
     const carac = skill.calculateTrueDoubleHandIncreasesPercent();
@@ -2039,11 +2067,7 @@ describe('Skill', () => {
 
   it('should compute passive increases to element resistances correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['228512'];
-    plainSkill.gumi_id = 228512;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(228512);
 
     // WHEN
     const carac = skill.calculateElementResistances();
@@ -2054,11 +2078,7 @@ describe('Skill', () => {
 
   it('should compute passive increases ailment resistances correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['232511'];
-    plainSkill.gumi_id = 232511;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(232511);
 
     // WHEN
     const carac = skill.calculeAilmentResistances();
@@ -2069,11 +2089,7 @@ describe('Skill', () => {
 
   it('should compute passive physical killers correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['213190'];
-    plainSkill.gumi_id = 213190;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(213190);
 
     // WHEN
     const killers = skill.calculatePhysicalKillers();
@@ -2084,11 +2100,7 @@ describe('Skill', () => {
 
   it('should compute passive magical killers correctly', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-
-    const plainSkill: Skill = skills['230563'];
-    plainSkill.gumi_id = 230563;
-    const skill = Skill.produce(plainSkill);
+    const skill: Skill = SkillMockDataHelper.mockPassiveSkill(230563);
 
     // WHEN
     const killers = skill.calculateMagicalKillers();
