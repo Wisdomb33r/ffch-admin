@@ -1,7 +1,10 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
-require_once "classes.php";
+require_once "../gestion/genscripts/object_brex_obtention.class.php";
+
+require_once "./includes/classes.php";
+require_once "./includes/die_with.php";
 
 class Unite
 {
@@ -93,14 +96,6 @@ class UniteCompetence
     $this->competence = $brex_unit_comp->competence->id;
     $this->niveau = $brex_unit_comp->niveau;
   }
-}
-
-function dieWithBadRequest($errorMessages)
-{
-  http_response_code(400);
-  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
-  ));
-  die ();
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {

@@ -4,29 +4,18 @@ require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
 require_once "../gestion/genscripts/object_brex_objet_categ.class.php";
 require_once "../gestion/genscripts/object_brex_perso.class.php";
 
-class UniteEquipements {
+require_once "includes/die_with.php";
+
+class UniteEquipements
+{
   public $unite_numero;
   public $equipements_ffch_ids;
 }
 
-function dieWithBadRequest($errorMessages) {
-  http_response_code ( 400 );
-  echo json_encode ( is_array ( $errorMessages ) ? $errorMessages : array ($errorMessages
-) );
-die ();
-}
-
-function dieWithNotFound($errorMessages) {
-  http_response_code ( 404 );
-  echo json_encode ( is_array ( $errorMessages ) ? $errorMessages : array ($errorMessages
-) );
-die ();
-}
-
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
-  $uniteEquipements = json_decode ( file_get_contents ( 'php://input' ) );
-  if (! isset ( $uniteEquipements->unite_numero ) || ! $uniteEquipements->unite_numero) {
+  $uniteEquipements = json_decode(file_get_contents('php://input'));
+  if (!isset ($uniteEquipements->unite_numero) || !$uniteEquipements->unite_numero) {
     dieWithBadRequest ( 'Format exception : cannot save without unit number' );
   }
 
