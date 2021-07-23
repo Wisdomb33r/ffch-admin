@@ -19,6 +19,7 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
       this.parameterError = true;
     } else {
       this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(parameters[0]);
+      this.activatedSkill.isActivatedByPassiveSkill = true;
     }
   }
 
@@ -31,7 +32,6 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
     if (!this.activatedSkill) {
       return `${baseText}UNKNOWN skill`;
     }
-    this.activatedSkill.isActivatedByPassiveSkill = true;
     return SkillMapper.toCompetence(this.activatedSkill).effet_fr
       .split(HTML_LINE_RETURN)
       .map(effet => baseText + effet)

@@ -8,6 +8,7 @@ import {ObjetLienTMR} from './objet-lien-tmr.model';
 import {CaracteristiquesContainer} from '../caracteristiques-container.model';
 import {Tueurs} from '../tueurs.model';
 import {TueursMapper} from '../../mappers/tueurs-mapper';
+import {plainToClass} from 'class-transformer';
 
 export class Objet implements CaracteristiquesContainer {
 
@@ -72,7 +73,7 @@ export class Objet implements CaracteristiquesContainer {
       ResistancesAlterations.produce(o.resistancesAlterations),
       o.tueurs,
       o.tueurs_m,
-      o.competences?.map(competence => Competence.produce(competence)));
+      o.competences?.map(competence => plainToClass(Competence, competence)));
 
     objet.extended_gumi_id = o.extended_gumi_id;
     objet.prix_vente = o.prix_vente;
