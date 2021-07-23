@@ -16,7 +16,7 @@ export class UniteCompetence {
   public status: UniteCompetenceStatus;
 
   /*
-  // TODO: Replace static implementation with this methods once #477 is done
+  // TODO: Replace static implementation with this methods during #507
   public isActivatedCompetence(): boolean {
     return Number.isInteger(this.niveau) && this.niveau > -1000 && this.niveau < 0;
   }*/
