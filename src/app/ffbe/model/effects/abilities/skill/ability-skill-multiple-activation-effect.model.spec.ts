@@ -56,6 +56,22 @@ describe('AbilitySkillMultipleActivationEffect', () => {
     expect(s).toEqual('Permet l\'utilisation de <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
   });
 
+  it('should parse multi-skill of unique abilities effect', () => {
+    // GIVEN
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
+    const multiSkillActivated: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
+
+    const effect = JSON.parse('[0, 3, 98, [3, 229421, -1, [200200, 200270], 5, 1, 1, 0]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(multiSkillActivated);
+    // THEN
+    expect(s).toEqual('Permet l\'utilisation d\'aptitudes <strong>distinctes</strong> parmi <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 3x par tour');
+  });
+
   it('should parse multi-skill activation GLEX effect', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 1006, [3, [912380]]]');
