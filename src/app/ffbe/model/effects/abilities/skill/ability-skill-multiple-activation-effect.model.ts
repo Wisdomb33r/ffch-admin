@@ -12,6 +12,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
   private numTurns: number;
   private skillIds: Array<number>;
   private multiskillId: number;
+  private noDuplicates: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -32,6 +33,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
         this.multiskillId = parameters[1];
         this.skillIds = !Array.isArray(parameters[3]) ? [parameters[3]] : parameters[3];
         this.numTurns = parameters[4];
+        this.noDuplicates = parameters[6] ? parameters[6] : 0;
       }
     }
   }
@@ -68,7 +70,8 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
     } else {
       const skills = this.skillIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       const skillsText = EffectParser.getSkillsNamesWithGumiIdentifierLinks(skills);
-      return `Permet l'utilisation de ${skillsText} ${this.nbTimes}x par tour`;
+      const noDuplicatesText: string = this.noDuplicates === 1 ? `d'aptitudes <strong>distinctes</strong> parmi` : 'de';
+      return `Permet l'utilisation ${noDuplicatesText} ${skillsText} ${this.nbTimes}x par tour`;
     }
   }
 
