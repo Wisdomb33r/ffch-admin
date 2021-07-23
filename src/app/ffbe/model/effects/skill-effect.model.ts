@@ -271,7 +271,7 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     return null;
   }
 
-  public getActivatedSkills(): Array<Skill> {
+  public getActivatedSkills(skill: Skill): Array<Skill> {
     return [];
   }
 }

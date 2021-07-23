@@ -6,7 +6,8 @@ require_once "../gestion/genscripts/object_brex_competence.class.php";
 require_once "../gestion/genscripts/object_brex_unit.class.php";
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 
-require_once "classes.php";
+require_once "includes/classes.php";
+require_once "includes/die_with.php";
 
 class Amelioration
 {
@@ -16,22 +17,6 @@ class Amelioration
   public $formule;
   public $niveau;
   public $released;
-}
-
-function dieWithBadRequest($errorMessages)
-{
-  http_response_code(400);
-  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
-  ));
-  die ();
-}
-
-function dieWithNotFound($errorMessages)
-{
-  http_response_code(404);
-  echo json_encode(is_array($errorMessages) ? $errorMessages : array($errorMessages
-  ));
-  die ();
 }
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {

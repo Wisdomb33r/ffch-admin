@@ -21,6 +21,7 @@ import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {UniteCarac} from '../model/unite-carac.model';
 import {UniteCompetenceArray} from '../model/unite-competence-array.model';
+import {classToClass} from 'class-transformer';
 
 export class CharacterEntryMapper {
 
@@ -132,7 +133,7 @@ export class CharacterEntryMapper {
     unite.competences = new UniteCompetenceArray();
     let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
-      const skill: Skill = Skill.produce(characterSkill.skill);
+      const skill: Skill = classToClass(characterSkill.skill).initializeSkillEffects();
       const competence = competences.find(c => c.gumi_id === characterSkill.id);
       const characterSkillRarity = CharacterEntryMapper.computeCharacterSkillRarity(characterSkill);
       let niveau = characterSkill.level;

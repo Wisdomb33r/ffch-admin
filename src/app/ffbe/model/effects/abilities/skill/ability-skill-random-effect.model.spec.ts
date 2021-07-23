@@ -1,8 +1,4 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
@@ -11,29 +7,14 @@ import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 describe('AbilitySkillRandomEffect', () => {
   it('should parse random skills', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const skill1: Skill = skills['200200'];
-    skill1.gumi_id = 200200;
-    skill1.names = names['200200'];
-    skill1.descriptions = descriptions['200200'];
-    const skill2: Skill = skills['200270'];
-    skill2.gumi_id = 200270;
-    skill2.names = names['200270'];
-    skill2.descriptions = descriptions['200270'];
-    const skill3: Skill = skills['202340'];
-    skill3.gumi_id = 202340;
-    skill3.names = names['202340'];
-    skill3.descriptions = descriptions['202340'];
-
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
+    const skill3: Skill = SkillMockDataHelper.mockAbilitySkill(202340);
 
     const effect = JSON.parse('[2, 2, 29, [[200200,  70], [200270,  20], [202340,  10], 0, 0]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId')
-      .and.returnValues(Skill.produce(skill1), Skill.produce(skill2), Skill.produce(skill3));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
@@ -52,7 +33,7 @@ describe('AbilitySkillRandomEffect', () => {
     const skillEffect = AbilitySkillEffectFactory.getSkillEffect(effect);
 
     // WHEN
-    const activatedSkills = skillEffect.getActivatedSkills();
+    const activatedSkills = skillEffect.getActivatedSkills(new Skill());
 
     // THEN
     expect(activatedSkills).toEqual([]);

@@ -1,14 +1,6 @@
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
 import {SkillsService} from '../../services/skills.service';
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA,
-  MAGIC_SKILLS_NAMES_TEST_DATA,
-  MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  MAGIC_SKILLS_TEST_DATA,
-  PASSIVE_SKILLS_TEST_DATA
-} from '../../model/skill.model.spec';
+import {SkillMockDataHelper} from '../../model/skill.model.spec';
 import {Skill} from '../../model/skill.model';
 import {HTML_LINE_RETURN} from './skill-effects.mapper';
 import {CHARACTER_TEST_DATA} from '../../model/character/character.model.spec';
@@ -56,7 +48,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
-    {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
@@ -95,22 +86,11 @@ describe('PassiveEffectParser', () => {
 
   it('should parse multi-skill when effect is the only one', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['200200'];
-    skill1.gumi_id = 200200;
-    skill1.names = names['200200'];
-    skill1.descriptions = descriptions['200200'];
-    const skill2: Skill = skills['200270'];
-    skill2.gumi_id = 200270;
-    skill2.names = names['200270'];
-    skill2.descriptions = descriptions['200270'];
-
     const effect = JSON.parse('[0, 3, 53, [3, 123456, -1, [200200, 200270], 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId')
+      .and.returnValues(SkillMockDataHelper.mockAbilitySkill(200200), SkillMockDataHelper.mockAbilitySkill(200270));
     const fakeSkill: Skill = new Skill();
     fakeSkill.effects_raw = [effect]; // single effect in the skill
     // WHEN
@@ -121,18 +101,10 @@ describe('PassiveEffectParser', () => {
 
   it('should parse multi-skill without duplicates', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['200200'];
-    skill1.gumi_id = 200200;
-    skill1.names = names['200200'];
-    skill1.descriptions = descriptions['200200'];
-
     const effect = JSON.parse('[0, 3, 53, [3, 123456, -1, [200200], 1, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(SkillMockDataHelper.mockAbilitySkill(200200));
     const fakeSkill: Skill = new Skill();
     fakeSkill.effects_raw = [effect]; // single effect in the skill
     // WHEN
@@ -143,22 +115,11 @@ describe('PassiveEffectParser', () => {
 
   it('should parse multi-skill when there is multiple effects', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['200200'];
-    skill1.gumi_id = 200200;
-    skill1.names = names['200200'];
-    skill1.descriptions = descriptions['200200'];
-    const skill2: Skill = skills['200270'];
-    skill2.gumi_id = 200270;
-    skill2.names = names['200270'];
-    skill2.descriptions = descriptions['200270'];
-
     const effect = JSON.parse('[0, 3, 53, [3, 200200, -1, [200270], 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId')
+      .and.returnValues(SkillMockDataHelper.mockAbilitySkill(200200), SkillMockDataHelper.mockAbilitySkill(200270));
     const fakeSkill: Skill = new Skill();
     fakeSkill.effects_raw = [effect, effect]; // multiple effects in the skill
     // WHEN
@@ -169,17 +130,10 @@ describe('PassiveEffectParser', () => {
 
   it('should parse turn start activation effect', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['100020'];
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    skill.names = names['100020'];
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    skill.descriptions = descriptions['100020'];
-
     const effect = JSON.parse('[0, 3, 66, [100020, 50]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(SkillMockDataHelper.mockPassiveSkill(100020));
     // WHEN
     const s = PassiveEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
     // THEN
@@ -188,16 +142,9 @@ describe('PassiveEffectParser', () => {
 
   it('should parse turn start activation effect when ally alive', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['100020'];
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    skill.names = names['100020'];
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    skill.descriptions = descriptions['100020'];
-
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(SkillMockDataHelper.mockPassiveSkill(100020));
 
     const characters = JSON.parse(CHARACTER_TEST_DATA);
     const character: Character = characters['100000102'];
@@ -215,16 +162,9 @@ describe('PassiveEffectParser', () => {
 
   it('should parse turn start activation effect when genre ally alive', () => {
     // GIVEN
-    const skills = JSON.parse(PASSIVE_SKILLS_TEST_DATA);
-    const skill: Skill = skills['100020'];
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    skill.names = names['100020'];
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    skill.descriptions = descriptions['100020'];
-
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(Skill.produce(skill));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(SkillMockDataHelper.mockPassiveSkill(100020));
 
     const effect = JSON.parse('[0, 3, 10002, [0, 1, 100020, 0]]');
     // WHEN

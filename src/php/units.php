@@ -1,7 +1,10 @@
 <?php
 require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 require_once "../gestion/genscripts/object_brex_unit_carac.class.php";
-require_once "classes.php";
+require_once "../gestion/genscripts/object_brex_obtention.class.php";
+
+require_once "./includes/classes.php";
+require_once "./includes/die_with.php";
 require_once "skill_class.php";
 
 

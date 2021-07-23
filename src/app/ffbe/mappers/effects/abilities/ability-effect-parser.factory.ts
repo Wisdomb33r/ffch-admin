@@ -5,7 +5,6 @@ import {AbilityAilmentsInflictionParser} from './ability-ailments-infliction.par
 import {AbilityAilmentsRandomInflictionParser} from './ability-ailments-random-infliction.parser';
 import {AbilityAilmentsResistanceParser} from './ability-ailments-resistance.parser';
 import {AbilityCountersParser} from './ability-counters.parser';
-import {AbilitySkillMultipleActivationParser} from './ability-skill-multiple-activation.parser';
 import {AbilityHealingParser} from './ability-healing.parser';
 import {AbilityHealingTurnSplitParser} from './ability-healing-turn-split.parser';
 import {AbilityHealingPercentParser} from './ability-healing-percent.parser';
@@ -103,8 +102,6 @@ export class AbilityEffectParserFactory {
           return new AbilityMagicMultipleActivationParser();
         }
         break;
-      case 53:
-        return new AbilitySkillMultipleActivationParser();
       case 54:
         return new AbilityDodgesParser();
       case 56:
@@ -137,8 +134,6 @@ export class AbilityEffectParserFactory {
         return new AbilityElementImbueParser();
       case 97:
         return new AbilityMagicMultipleActivationParser();
-      case 98:
-        return new AbilitySkillMultipleActivationParser();
       case 101:
         return new AbilityMitigationsParser();
       case 111:
@@ -159,8 +154,6 @@ export class AbilityEffectParserFactory {
         return new AbilityDebuffsStealParser();
       case 1005:
         return new AbilityCopyEffectsParser();
-      case 1006:
-        return new AbilitySkillMultipleActivationParser();
       default:
         return new UnknownEffectParser();
     }

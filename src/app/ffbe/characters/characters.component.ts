@@ -10,6 +10,7 @@ import {EquipmentsService} from '../services/equipments.service';
 import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
+import {VisionCardsService} from '../services/vision-cards.service';
 
 @Component({
   templateUrl: './characters.component.html',
@@ -25,10 +26,11 @@ export class CharactersComponent implements OnInit {
   constructor(private charactersService: CharactersService,
               private limitBurstsService: LimitBurstsService,
               private skillsService: SkillsService,
-              // do not remove the injection of Equipments, Consumables and Materias services, it serves to load the INSTANCE singletons
+              // do not remove the injection of services, it serves to load the INSTANCE singletons
               private consumablesService: ConsumablesService,
               private equipmentsService: EquipmentsService,
-              private materiasService: MateriasService) {
+              private materiasService: MateriasService,
+              private visionsCardsService: VisionCardsService) {
     this.name = new FormControl('', Validators.required);
     this.searchForm = new FormGroup({
       name: this.name

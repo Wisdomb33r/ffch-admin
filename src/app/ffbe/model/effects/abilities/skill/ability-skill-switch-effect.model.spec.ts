@@ -1,4 +1,4 @@
-import {ABILITY_SKILLS_NAMES_TEST_DATA, ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, ABILITY_SKILLS_TEST_DATA} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsService} from '../../../../services/skills.service';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
@@ -7,38 +7,15 @@ import {AbilitySkillEffectFactory} from '../../ability-skill-effect.factory';
 describe('AbilitySkillSwitchEffect', () => {
   it('should parse skill switch after single skill', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-
-    const switchSkill: Skill = skills['912380'];
-    switchSkill.gumi_id = 912380;
-    switchSkill.names = names['912380'];
-    switchSkill.descriptions = descriptions['912380'];
-    switchSkill.active = true;
-
-    const skill: Skill = skills['200200'];
-    skill.gumi_id = 200200;
-    skill.names = names['200200'];
-    skill.descriptions = descriptions['200200'];
-    skill.active = true;
-
-    const activatorSkill: Skill = skills['229425'];
-    activatorSkill.gumi_id = 229425;
-    activatorSkill.names = names['229425'];
-    activatorSkill.descriptions = descriptions['229425'];
-
-    const activatedSkill: Skill = skills['200270'];
-    activatedSkill.gumi_id = 200270;
-    activatedSkill.names = names['200270'];
-    activatedSkill.descriptions = descriptions['200270'];
-    activatedSkill.active = true;
+    const switchSkill: Skill = new Skill();
+    const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
+    const activatorSkill: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
     const effect = JSON.parse('[1, 1, 99, [2,  229425,  2,  200270,  2,  200200]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill),
-      Skill.produce(activatedSkill), Skill.produce(activatorSkill));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill, activatedSkill, activatorSkill);
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
@@ -65,59 +42,30 @@ describe('AbilitySkillSwitchEffect', () => {
 
   it('should parse skill switch after several skills', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
+    const switchSkill: Skill = new Skill();
+    const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
+    const activatorSkill1: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
+    const activatorSkill2: Skill = SkillMockDataHelper.mockAbilitySkill(510754);
+    const activatorSkill3: Skill = SkillMockDataHelper.mockAbilitySkill(202340);
+    const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
-    const switchSkill: Skill = skills['912380'];
-    switchSkill.gumi_id = 912380;
-    switchSkill.names = names['912380'];
-    switchSkill.descriptions = descriptions['912380'];
-    switchSkill.active = true;
-
-    const skill: Skill = skills['200200'];
-    skill.gumi_id = 200200;
-    skill.names = names['200200'];
-    skill.descriptions = descriptions['200200'];
-    skill.active = true;
-
-    const activatorSkill1: Skill = skills['229425'];
-    activatorSkill1.gumi_id = 229425;
-    activatorSkill1.names = names['229425'];
-    activatorSkill1.descriptions = descriptions['229425'];
-    const activatorSkill2: Skill = skills['510754'];
-    activatorSkill2.gumi_id = 510754;
-    activatorSkill2.names = names['510754'];
-    activatorSkill2.descriptions = descriptions['510754'];
-    const activatorSkill3: Skill = skills['202340'];
-    activatorSkill3.gumi_id = 202340;
-    activatorSkill3.names = names['202340'];
-    activatorSkill3.descriptions = descriptions['202340'];
-
-    const activatedSkill: Skill = skills['200270'];
-    activatedSkill.gumi_id = 200270;
-    activatedSkill.names = names['200270'];
-    activatedSkill.descriptions = descriptions['200270'];
-    activatedSkill.active = true;
-
-    const effect = JSON.parse('[1, 1, 99, [[2,  2,  2], [229425, 510754, 202340], 2, 200270, 2, 200200]]');
-
+    const effect = JSON.parse('[1, 1, 99, [[2,  2,  2], [232639, 510754, 202340], 2, 200270, 2, 200200]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill),
-      Skill.produce(activatedSkill), Skill.produce(activatorSkill1), Skill.produce(activatorSkill2),
-      Skill.produce(activatorSkill3));
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(
+      skill, activatedSkill, activatorSkill1, activatorSkill2, activatorSkill3
+    );
     // WHEN
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(switchSkill);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(5);
     expect(mySpy).toHaveBeenCalledWith(200200);
     expect(mySpy).toHaveBeenCalledWith(200270);
-    expect(mySpy).toHaveBeenCalledWith(229425);
+    expect(mySpy).toHaveBeenCalledWith(232639);
     expect(mySpy).toHaveBeenCalledWith(510754);
     expect(mySpy).toHaveBeenCalledWith(202340);
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
-      'Si utilisé après <a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>, ' +
+      'Si utilisé après <a href="ffexvius_skills.php?gumiid=232639">Croix mystique</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=510754">Sauveur d\'Elréa</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>:<br />' +
       'Dégâts physiques neutres de puissance 80% avec absorption de 20% des dégâts infligés à un adversaire<br />' +

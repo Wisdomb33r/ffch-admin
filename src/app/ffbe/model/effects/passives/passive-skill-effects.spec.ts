@@ -82,6 +82,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 3, 41, [30,  100]]',
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
+    {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {
@@ -164,6 +165,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[0,3,81,["n\'importe quoi"]]',
       parsed: '+200% au coefficient multiplicateur maximal de la chaîne de combo si l\'unité porte deux armes'
     },
+    {effect: '[0, 3, 82, [10,  1]]', parsed: 'Absorbe 10% des dégâts infligés par les attaques de type physique'},
     {effect: '[0,3,84,[75]]', parsed: '+75% au multiplicateur de départ des chaînes de combos physiques'},
     {effect: '[0,3,85,[100]]', parsed: '+100% au multiplicateur de départ des chaînes de combos magiques'},
     {effect: '[0,3,89,[0,0,0,0,2000,0]]', parsed: '+2000 PV'},

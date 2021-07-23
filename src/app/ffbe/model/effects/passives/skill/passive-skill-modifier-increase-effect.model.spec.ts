@@ -1,8 +1,4 @@
-import {
-  ABILITY_SKILLS_NAMES_TEST_DATA,
-  ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA,
-  ABILITY_SKILLS_TEST_DATA, MAGIC_SKILLS_NAMES_TEST_DATA, MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA, MAGIC_SKILLS_TEST_DATA
-} from '../../../skill.model.spec';
+import {SkillMockDataHelper} from '../../../skill.model.spec';
 import {Skill} from '../../../skill.model';
 import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 import {SkillsService} from '../../../../services/skills.service';
@@ -13,24 +9,13 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['200200'];
-    skill1.gumi_id = 200200;
-    skill1.active = true;
-    skill1.names = names['200200'];
-    skill1.descriptions = descriptions['200200'];
-    const skill2: Skill = skills['200270'];
-    skill2.gumi_id = 200270;
-    skill2.active = true;
-    skill2.names = names['200270'];
-    skill2.descriptions = descriptions['200270'];
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
     const effect = JSON.parse('[0, 3, 73, [[200200, 200270], 0, 0, 100]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1), Skill.produce(skill2));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
     // WHEN
     const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
@@ -40,19 +25,12 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for physical combos', () => {
     // GIVEN
-    const skills = JSON.parse(ABILITY_SKILLS_TEST_DATA);
-    const names = JSON.parse(ABILITY_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(ABILITY_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['202340'];
-    skill1.gumi_id = 202340;
-    skill1.active = true;
-    skill1.names = names['202340'];
-    skill1.descriptions = descriptions['202340'];
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(202340);
 
     const effect = JSON.parse('[0, 3, 73, [202340, 0, 0, 100]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1);
     // WHEN
     const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
@@ -61,19 +39,12 @@ describe('PassiveSkillModifierIncreaseEffect', () => {
 
   it('should parse skill modifier increase for healing', () => {
     // GIVEN
-    const skills = JSON.parse(MAGIC_SKILLS_TEST_DATA);
-    const names = JSON.parse(MAGIC_SKILLS_NAMES_TEST_DATA);
-    const descriptions = JSON.parse(MAGIC_SKILLS_SHORTDESCRIPTIONS_TEST_DATA);
-    const skill1: Skill = skills['10020'];
-    skill1.gumi_id = 10020;
-    skill1.active = true;
-    skill1.names = names['10020'];
-    skill1.descriptions = descriptions['10020'];
+    const skill1: Skill = SkillMockDataHelper.mockMagicSkill(10020);
 
     const effect = JSON.parse('[0, 3, 73, [10020, 0, 0, 300]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
-    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(Skill.produce(skill1));
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1);
     // WHEN
     const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
     // THEN
