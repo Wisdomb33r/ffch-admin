@@ -44,12 +44,12 @@ describe('AbilitySkillSwitchEffect', () => {
     // GIVEN
     const switchSkill: Skill = new Skill();
     const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
-    const activatorSkill1: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const activatorSkill1: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
     const activatorSkill2: Skill = SkillMockDataHelper.mockAbilitySkill(510754);
     const activatorSkill3: Skill = SkillMockDataHelper.mockAbilitySkill(202340);
     const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
-    const effect = JSON.parse('[1, 1, 99, [[2,  2,  2], [229425, 510754, 202340], 2, 200270, 2, 200200]]');
+    const effect = JSON.parse('[1, 1, 99, [[2,  2,  2], [232639, 510754, 202340], 2, 200270, 2, 200200]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(
@@ -61,11 +61,11 @@ describe('AbilitySkillSwitchEffect', () => {
     expect(mySpy).toHaveBeenCalledTimes(5);
     expect(mySpy).toHaveBeenCalledWith(200200);
     expect(mySpy).toHaveBeenCalledWith(200270);
-    expect(mySpy).toHaveBeenCalledWith(229425);
+    expect(mySpy).toHaveBeenCalledWith(232639);
     expect(mySpy).toHaveBeenCalledWith(510754);
     expect(mySpy).toHaveBeenCalledWith(202340);
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
-      'Si utilisé après <a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>, ' +
+      'Si utilisé après <a href="ffexvius_skills.php?gumiid=232639">Croix mystique</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=510754">Sauveur d\'Elréa</a>, ' +
       '<a href="ffexvius_skills.php?gumiid=202340">Tir rapide</a>:<br />' +
       'Dégâts physiques neutres de puissance 80% avec absorption de 20% des dégâts infligés à un adversaire<br />' +
