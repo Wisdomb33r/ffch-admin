@@ -13,6 +13,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
   private skillIds: Array<number>;
   private multiskillId: number;
   private noDuplicates: number;
+  private nbUses: number;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -34,6 +35,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
         this.skillIds = !Array.isArray(parameters[3]) ? [parameters[3]] : parameters[3];
         this.numTurns = parameters[4];
         this.noDuplicates = parameters[7] ? parameters[7] : 0;
+        this.nbUses = parameters[9] ? parameters[9] : 99999;
       }
     }
   }
@@ -62,11 +64,12 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
       if (this.numTurns < 1) {
         return `Effet ${this.effectName} wrong parameter: Nombre de tours incorrect (${this.numTurns})`;
       }
-      const numTurnsCalculated: number = skill.isActivatedByPassiveSkill || target.length > 0 ? this.numTurns : this.numTurns - 1;
-      const pluralForm = numTurnsCalculated > 1 ? 's' : '';
+      const nbUsesText = this.numTurns > 1 && this.nbUses > 0 && this.nbUses < 999 ? ` pour ${this.nbUses} utilisation${this.nbUses > 1 ? 's' : ''}` : '';
+      const nbTurns: number = skill.isActivatedByPassiveSkill || target.length > 0 ? this.numTurns : this.numTurns - 1;
+      const nbTurnsText = nbTurns > 0 && nbTurns < 999 ? ` pour ${nbTurns} tour${nbTurns > 1 ? 's' : ''}` : '';
       const multiskill: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
       const multiskillText = EffectParser.getSkillNameWithGumiIdentifierLink(multiskill);
-      return `Donne accès à ${multiskillText}${target} pour ${numTurnsCalculated} tour${pluralForm}`;
+      return `Donne accès à ${multiskillText}${target}${nbUsesText}${nbTurnsText}`;
     } else {
       const skills = this.skillIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       const skillsText = EffectParser.getSkillsNamesWithGumiIdentifierLinks(skills);

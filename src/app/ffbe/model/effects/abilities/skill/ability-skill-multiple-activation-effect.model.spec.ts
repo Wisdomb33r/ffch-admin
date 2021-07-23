@@ -22,6 +22,22 @@ describe('AbilitySkillMultipleActivationEffect', () => {
     expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 4 tours');
   });
 
+  it('should parse multi-skill activation with number of uses restriction effect', () => {
+    // GIVEN
+    const multiSkillActivator: Skill = SkillMockDataHelper.mockAbilitySkill(509014);
+    const multiSkillActivated: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
+    const effect = JSON.parse('[0, 3, 98, [3, 912380, -1, 509014, 99999, 1, 1, 0, 1, 1]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(multiSkillActivated);
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(multiSkillActivator);
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(912380);
+    expect(s).toEqual('Donne accès à <a href="ffexvius_skills.php?gumiid=912380">Fouet triple</a> pour 1 utilisation');
+  });
+
   it('should parse multi-skill activation effect when activated by a passive skill', () => {
     // GIVEN
     const multiSkillActivator: Skill = SkillMockDataHelper.mockAbilitySkill(510754);
