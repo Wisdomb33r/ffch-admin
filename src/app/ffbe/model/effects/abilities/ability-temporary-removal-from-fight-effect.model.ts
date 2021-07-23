@@ -23,7 +23,7 @@ export class AbilityTemporaryRemovalFromFightEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     const maxTurnsText = this.minTurns === this.maxTurns ? '' : ` à ${this.maxTurns}`;
-    const turnsText = this.minTurns > 1 ? ' tours' : ' tour';
+    const turnsText = this.maxTurns > 1 ? ' tours' : ' tour';
     return `Retire le lanceur du combat pour ${this.minTurns}${maxTurnsText}${turnsText}`;
   }
 

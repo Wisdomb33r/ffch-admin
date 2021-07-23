@@ -29,4 +29,13 @@ describe('AbilityTemporaryRemovalFromFightEffect', () => {
     expect(s).toEqual('Retire le lanceur du combat pour 3 à 5 tours');
   });
 
+  it('should parse removal of caster from fight for one to a variable number of turns', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 53, [1,  2]]');
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('Retire le lanceur du combat pour 1 à 2 tours');
+  });
+
 });
