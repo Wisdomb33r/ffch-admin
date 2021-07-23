@@ -26,7 +26,7 @@ describe('PassiveSkillReplacingNormalAttackEffect', () => {
     const skillEffect = PassiveSkillEffectFactory.getSkillEffect(effect);
 
     // WHEN
-    const activatedSkills = skillEffect.getActivatedSkills();
+    const activatedSkills = skillEffect.getActivatedSkills(new Skill());
 
     // THEN
     expect(activatedSkills).toEqual([]);

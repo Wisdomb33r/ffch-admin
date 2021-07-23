@@ -8,7 +8,7 @@ import {PassiveSkillEffectFactory} from './effects/passive-skill-effect.factory'
 import {ResistancesElementaires} from './resistances-elementaires.model';
 import {ResistancesAlterations} from './resistances-alterations.model';
 import {Tueurs} from './tueurs.model';
-import {Type} from 'class-transformer';
+import {Exclude, Type} from 'class-transformer';
 
 export class Skill {
   public gumi_id: number;
@@ -40,6 +40,7 @@ export class Skill {
   public hybride = false;
   public fixe = false;
   public esper = false;
+  @Exclude()
   public effets: Array<SkillEffect> = [];
 
   public initializeSkillEffects(): Skill {
@@ -50,7 +51,7 @@ export class Skill {
   }
 
   public get activatedSkills(): Array<Skill> {
-    return this.effets?.map(effet => effet.getActivatedSkills()).reduce((accumulator, value) => accumulator.concat(value), []);
+    return this.effets?.map(effet => effet.getActivatedSkills(this)).reduce((accumulator, value) => accumulator.concat(value), []);
   }
 
   public calculateSkillPower(): number {
