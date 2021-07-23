@@ -33,7 +33,7 @@ export class AbilitySkillMultipleActivationEffect extends SkillEffect {
         this.multiskillId = parameters[1];
         this.skillIds = !Array.isArray(parameters[3]) ? [parameters[3]] : parameters[3];
         this.numTurns = parameters[4];
-        this.noDuplicates = parameters[6] ? parameters[6] : 0;
+        this.noDuplicates = parameters[7] ? parameters[7] : 0;
       }
     }
   }

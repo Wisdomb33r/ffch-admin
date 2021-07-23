@@ -62,7 +62,7 @@ describe('AbilitySkillMultipleActivationEffect', () => {
     const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
     const multiSkillActivated: Skill = SkillMockDataHelper.mockAbilitySkill(912380);
 
-    const effect = JSON.parse('[0, 3, 98, [3, 229421, -1, [200200, 200270], 5, 1, 1, 0]]');
+    const effect = JSON.parse('[0, 3, 98, [3, 229421, -1, [200200, 200270], 5, 1, 1, 1]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2);
