@@ -95,8 +95,12 @@ export class VisionCardsService {
       const skills: Array<Skill> = [];
       const propertyNames: string[] = Object.getOwnPropertyNames(visionCard.skills);
       propertyNames.forEach(property => {
-        const skillId: number = visionCard.skills[property];
-        skills.push(this.skillsService.searchForSkillByGumiId(+skillId));
+        const skillIds: Array<number> = visionCard.skills[property];
+        if (skillIds && skillIds.length) {
+          skillIds.forEach(skillId => {
+            skills.push(this.skillsService.searchForSkillByGumiId(+skillId));
+          });
+        }
       });
       visionCard.dmSkills = skills;
     }
