@@ -75,7 +75,7 @@ describe('CharacterEntryMapper', function () {
     const fakeUnite = new Unite(2185, 8, 100032707, 100032707);
 
     // WHEN
-    CharacterEntryMapper['convertLimitBurst'](fakeUnite, lb);
+    CharacterEntryMapper['convertLimitBurst'](fakeUnite, lb, []);
 
     // THEN
     expect(fakeUnite.lim_min).toEqual('-120% de rés. Ténèbres aux adversaires pour ce tour<br />-75% PSY aux adversaires pour ce tour<br />Dégâts magiques de Ténèbres de puissance 6100% aux adversaires');
