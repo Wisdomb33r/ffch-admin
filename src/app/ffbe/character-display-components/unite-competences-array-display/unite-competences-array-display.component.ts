@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
+import {Unite} from '../../model/unite.model';
 
 @Component({
   selector: 'app-unite-competences-array-display',
@@ -13,7 +14,8 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   @Input() titre: string;
   @Input() showLevelMismatch = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -24,6 +26,10 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
 
   public isNotFoundInCounterPart(uniteCompetence: UniteCompetence) {
     return !FfbeUtils.isNullOrUndefined(UniteCompetence) && uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart;
+  }
+
+  public sendUniteCompetenceToFfch(uniteCompetence: UniteCompetence) {
+    console.log('Mise à jour!');
   }
 
 }

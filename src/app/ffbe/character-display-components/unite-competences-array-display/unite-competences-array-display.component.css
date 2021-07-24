@@ -10,3 +10,7 @@ img.ffchstatus {
 li.allright {
   padding-left: 32px;
 }
+
+button.ffchSendButton {
+  margin-top: 16px;
+}

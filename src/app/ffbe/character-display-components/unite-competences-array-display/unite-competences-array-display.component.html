@@ -7,5 +7,10 @@
     <img *ngIf="isNotFoundInCounterPart(uniteCompetence)"
          src="assets/nok.png" class="ffchstatus" alt="Not OK">
     {{uniteCompetence.niveau}} ● {{uniteCompetence.competence.nom}}
+
+    <button *ngIf="hasLevelMismatch(uniteCompetence)" mat-raised-button color="accent" class="ffchSendButton"
+            (click)="sendUniteCompetenceToFfch(uniteCompetence)">
+      Mettre à jour
+    </button>
   </li>
 </ul>
