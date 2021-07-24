@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {Unite} from '../../model/unite.model';
+import {FfchClientService} from '../../services/ffch-client.service';
 
 @Component({
   selector: 'app-unite-competences-array-display',
@@ -14,7 +15,7 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   @Input() titre: string;
   @Input() showLevelMismatch = true;
 
-  constructor() {
+  constructor(private ffchClientService: FfchClientService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,10 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   }
 
   public sendUniteCompetenceToFfch(uniteCompetence: UniteCompetence) {
-    console.log('Mise à jour!');
+    this.ffchClientService.putUniteCompetence$(uniteCompetence)
+      .subscribe(uC => {
+        uniteCompetence = uC;
+      });
   }
 
 }
