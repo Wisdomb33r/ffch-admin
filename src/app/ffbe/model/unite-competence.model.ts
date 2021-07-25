@@ -13,6 +13,7 @@ export class UniteCompetence {
   ) {
   }
 
+  public id;
   public status: UniteCompetenceStatus;
 
   /*

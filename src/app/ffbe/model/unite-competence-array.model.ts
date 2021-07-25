@@ -16,6 +16,7 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
       if (counterPart) {
         uniteCompetence.status = UniteCompetenceStatus.Correct;
         counterPart.status = UniteCompetenceStatus.Correct;
+        uniteCompetence.id = counterPart.id;
       }
     });
 
@@ -28,6 +29,7 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
         if (counterPart) {
           uniteCompetence.status = UniteCompetenceStatus.LevelMismatch;
           counterPart.status = UniteCompetenceStatus.LevelMismatch;
+          uniteCompetence.id = counterPart.id;
         }
       });
   }
