@@ -40,7 +40,13 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   }
 
   public sendUniteCompetenceToFfch(uniteCompetence: UniteCompetence) {
-    console.log('Sent!');
+    this.ffchClientService.postUniteCompetence$(uniteCompetence)
+      .subscribe(uC => {
+        if (uC.niveau === uniteCompetence.niveau) {
+          uniteCompetence.id = uC.id;
+          uniteCompetence.status = UniteCompetenceStatus.Correct;
+        }
+      });
   }
 
   public updateUniteCompetenceInFfch(uniteCompetence: UniteCompetence) {

@@ -65,6 +65,11 @@ export class FfchClientService {
     return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
   }
 
+  public postUniteCompetence$(uniteCompetence: UniteCompetence): Observable<UniteCompetence> {
+    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence)
+      .pipe(catchError(this.analyseError));
+  }
+
   public putUniteCompetence$(uniteCompetence: UniteCompetence): Observable<UniteCompetence> {
     return this.http.put<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence)
       .pipe(catchError(this.analyseError));
