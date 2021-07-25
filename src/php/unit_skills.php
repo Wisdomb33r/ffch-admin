@@ -3,21 +3,7 @@ require_once "../gestion/genscripts/object_brex_unit_comp.class.php";
 
 require_once "includes/die_with.php";
 require_once "includes/skill_class.php";
-
-class UniteCompetence
-{
-  // variables of the class
-  public $id;
-  public $competence;
-  public $niveau;
-
-  function __construct($brex_unit_comp)
-  {
-    $this->id = $brex_unit_comp->id;
-    $this->competence = new Competence($brex_unit_comp->competence);
-    $this->niveau = $brex_unit_comp->niveau;
-  }
-}
+require_once "includes/unit_skill_class.php";
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   dieWithBadRequest('Not implemented yet');
