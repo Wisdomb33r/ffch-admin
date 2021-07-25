@@ -11,6 +11,7 @@ li.allright {
   padding-left: 32px;
 }
 
-button.ffchSendButton {
-  margin-top: 16px;
+button.mat-raised-button {
+  line-height: 24px;
+  margin-left: 16px;
 }

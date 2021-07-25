@@ -8,7 +8,7 @@
          src="assets/nok.png" class="ffchstatus" alt="Not OK">
     {{uniteCompetence.niveau}} ● {{uniteCompetence.competence.nom}}
 
-    <button *ngIf="hasLevelMismatch(uniteCompetence)" mat-raised-button color="accent" class="ffchSendButton"
+    <button *ngIf="hasLevelMismatch(uniteCompetence)" mat-raised-button color="accent"
             (click)="updateUniteCompetenceInFfch(uniteCompetence)">
       Mettre à jour
     </button>
