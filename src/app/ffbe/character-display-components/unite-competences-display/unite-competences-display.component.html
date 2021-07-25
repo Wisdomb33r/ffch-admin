@@ -11,6 +11,7 @@
 
 <div *ngIf="dbUniteCompetencesOrphelines?.length">
   <app-unite-competences-array-display [uniteCompetences]="dbUniteCompetencesOrphelines"
-                                       [titre]="'Compétences orphelines'">
+                                       [titre]="'Compétences orphelines'"
+                                       [allowPosting]="false">
   </app-unite-competences-array-display>
 </div>
