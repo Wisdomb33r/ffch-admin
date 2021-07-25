@@ -32,7 +32,6 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
     this.ffchClientService.putUniteCompetence$(uniteCompetence)
       .subscribe(uC => {
         if (uC.niveau === uniteCompetence.niveau) {
-          uniteCompetence = uC;
           uniteCompetence.status = UniteCompetenceStatus.Correct;
         }
       });

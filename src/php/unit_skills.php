@@ -18,7 +18,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
           dieWithBadRequest ( 'Storage exception : UniteCompetence with id ' . $uniteCompetence->id . ' is linked to Competence with id ' . $brex_unit_comp->competence->id . ', not '. $uniteCompetence->competence->id);
         } else {
           $brex_unit_comp->niveau = $uniteCompetence->niveau;
-          storeAndRespond ( $brex_unit_comp, $competence, 200 );
+          storeAndRespond ( $brex_unit_comp, 200 );
         }
 
   } else {
