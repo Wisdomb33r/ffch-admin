@@ -3,6 +3,7 @@ import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competen
 import {Competence} from '../../model/competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {FfchClientService} from '../../services/ffch-client.service';
+import {Unite} from '../../model/unite.model';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
 
   @Input() uniteCompetences: Array<UniteCompetence>;
   @Input() titre: string;
+  @Input() unite: Unite;
   @Input() allowPosting = true;
   @Input() showLevelMismatch = true;
 
@@ -40,7 +42,7 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   }
 
   public sendUniteCompetenceToFfch(uniteCompetence: UniteCompetence) {
-    this.ffchClientService.postUniteCompetence$(uniteCompetence)
+    this.ffchClientService.postUniteCompetence$(uniteCompetence, this.unite?.id)
       .subscribe(uC => {
         if (uC.niveau === uniteCompetence.niveau) {
           uniteCompetence.id = uC.id;

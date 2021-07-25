@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
@@ -65,8 +65,10 @@ export class FfchClientService {
     return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
   }
 
-  public postUniteCompetence$(uniteCompetence: UniteCompetence): Observable<UniteCompetence> {
-    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence)
+  public postUniteCompetence$(uniteCompetence: UniteCompetence, uniteId: number): Observable<UniteCompetence> {
+    let params = new HttpParams();
+    params = params.append('uniteId', `${uniteId}`);
+    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence, {params: params})
       .pipe(catchError(this.analyseError));
   }
 
