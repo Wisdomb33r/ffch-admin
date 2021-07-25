@@ -9,7 +9,7 @@
     {{uniteCompetence.niveau}} ● {{uniteCompetence.competence.nom}}
 
     <button *ngIf="hasLevelMismatch(uniteCompetence)" mat-raised-button color="accent" class="ffchSendButton"
-            (click)="sendUniteCompetenceToFfch(uniteCompetence)">
+            (click)="updateUniteCompetenceInFfch(uniteCompetence)">
       Mettre à jour
     </button>
   </li>

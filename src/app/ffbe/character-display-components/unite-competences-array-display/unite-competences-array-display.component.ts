@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competence.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
-import {Unite} from '../../model/unite.model';
 import {FfchClientService} from '../../services/ffch-client.service';
 
 @Component({
@@ -29,10 +28,13 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
     return !FfbeUtils.isNullOrUndefined(UniteCompetence) && uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart;
   }
 
-  public sendUniteCompetenceToFfch(uniteCompetence: UniteCompetence) {
+  public updateUniteCompetenceInFfch(uniteCompetence: UniteCompetence) {
     this.ffchClientService.putUniteCompetence$(uniteCompetence)
       .subscribe(uC => {
-        uniteCompetence = uC;
+        if (uC.niveau === uniteCompetence.niveau) {
+          uniteCompetence = uC;
+          uniteCompetence.status = UniteCompetenceStatus.Correct;
+        }
       });
   }
 
