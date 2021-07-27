@@ -27,8 +27,13 @@ export class UniteCompetenceArray extends Array<UniteCompetence> {
           dbUniteCompetence.competence.gumi_id === uniteCompetence.competence.gumi_id);
 
         if (counterPart) {
-          uniteCompetence.status = UniteCompetenceStatus.LevelMismatch;
-          counterPart.status = UniteCompetenceStatus.LevelMismatch;
+          if (UniteCompetence.isActivatedCompetence(uniteCompetence) === UniteCompetence.isActivatedCompetence(counterPart)) {
+            uniteCompetence.status = UniteCompetenceStatus.LevelMismatch;
+            counterPart.status = UniteCompetenceStatus.LevelMismatch;
+          } else {
+            uniteCompetence.status = UniteCompetenceStatus.LevelAndActivationMismatch;
+            counterPart.status = UniteCompetenceStatus.LevelAndActivationMismatch;
+          }
           uniteCompetence.id = counterPart.id;
         }
       });

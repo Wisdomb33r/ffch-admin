@@ -3,6 +3,7 @@ import {Competence} from './competence.model';
 export enum UniteCompetenceStatus {
   Correct = 'Correct',
   LevelMismatch = 'LevelMismatch',
+  LevelAndActivationMismatch = 'LevelAndActivationMismatch',
   NotFoundInCounterPart = 'NotFoundInCounterPart',
 }
 

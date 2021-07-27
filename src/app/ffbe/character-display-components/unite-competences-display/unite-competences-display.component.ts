@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Unite} from '../../model/unite.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {UniteCompetenceArray} from '../../model/unite-competence-array.model';
-import {UniteCompetence, UniteCompetenceStatus} from '../../model/unite-competence.model';
+import {UniteCompetenceStatus} from '../../model/unite-competence.model';
 
 @Component({
   selector: 'app-unite-competences-display',
@@ -25,15 +25,17 @@ export class UniteCompetencesDisplayComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    this.updateUniteCompetencesStatuses();
+  }
+
+  public updateUniteCompetencesStatuses() {
     if (this.unite.isPresentInFfchDb() && !FfbeUtils.isNullOrUndefined(this.dbUnite)) {
-      this.dbUniteCompetences = new UniteCompetenceArray(...this.dbUnite.competences.filter(uniteCompetence => !UniteCompetence.isActivatedCompetence(uniteCompetence)));
-      this.dbUniteCompetencesActivees = new UniteCompetenceArray(...this.dbUnite.competences.filter(uniteCompetence => UniteCompetence.isActivatedCompetence(uniteCompetence)));
-      this.unite.competences.compare(this.dbUniteCompetences);
-      this.unite.competencesActivees?.compare(this.dbUniteCompetencesActivees);
-      this.dbUniteCompetencesOrphelines = new UniteCompetenceArray(
-        ...this.dbUniteCompetences.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart),
-        ...this.dbUniteCompetencesActivees.filter(uniteCompetence => uniteCompetence.status === UniteCompetenceStatus.NotFoundInCounterPart)
-      );
+      this.unite.competences.compare(this.dbUnite.competences);
+      this.dbUniteCompetences = new UniteCompetenceArray(...this.dbUnite.competences.filter(uC => uC.status !== UniteCompetenceStatus.NotFoundInCounterPart));
+      const dbUniteCompetencesRestantes = new UniteCompetenceArray(...this.dbUnite.competences.filter(uC => uC.status === UniteCompetenceStatus.NotFoundInCounterPart));
+      this.unite.competencesActivees?.compare(dbUniteCompetencesRestantes);
+      this.dbUniteCompetencesActivees = new UniteCompetenceArray(...dbUniteCompetencesRestantes.filter(uC => uC.status !== UniteCompetenceStatus.NotFoundInCounterPart));
+      this.dbUniteCompetencesOrphelines = new UniteCompetenceArray(...dbUniteCompetencesRestantes.filter(uC => uC.status === UniteCompetenceStatus.NotFoundInCounterPart));
     }
   }
 

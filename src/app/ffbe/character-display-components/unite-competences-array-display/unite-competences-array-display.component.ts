@@ -26,7 +26,9 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   }
 
   public hasLevelMismatch(uniteCompetence: UniteCompetence): boolean {
-    return this.showLevelMismatch && !FfbeUtils.isNullOrUndefined(UniteCompetence) && uniteCompetence.status === UniteCompetenceStatus.LevelMismatch;
+    return !FfbeUtils.isNullOrUndefined(UniteCompetence) &&
+      (this.showLevelMismatch && uniteCompetence.status === UniteCompetenceStatus.LevelMismatch
+        || uniteCompetence.status === UniteCompetenceStatus.LevelAndActivationMismatch);
   }
 
   public isNotFoundInCounterPart(uniteCompetence: UniteCompetence): boolean {
