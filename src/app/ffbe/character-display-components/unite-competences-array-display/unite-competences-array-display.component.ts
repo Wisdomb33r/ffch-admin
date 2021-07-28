@@ -25,6 +25,7 @@ export class UniteCompetencesArrayDisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // TODO: Replace with instance methods in UniteCompetence when #507 is implemented
   public hasLevelMismatch(uniteCompetence: UniteCompetence): boolean {
     return !FfbeUtils.isNullOrUndefined(UniteCompetence) &&
       (this.showLevelMismatch && uniteCompetence.status === UniteCompetenceStatus.LevelMismatch

@@ -32,4 +32,6 @@ export class UniteCompetence {
   public static isActivatedCompetence(uniteCompetence): boolean {
     return Number.isInteger(uniteCompetence.niveau) && uniteCompetence.niveau > -1000 && uniteCompetence.niveau < 0;
   }
+
+  // TODO: Add instance methods like isLevelMismatch() in UniteCompetence when #507 is implemented
 }

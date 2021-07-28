@@ -39,13 +39,13 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   if (isset($uniteCompetence->id) && $uniteCompetence->id) {
     $brex_unit_comp = brex_unit_comp::findByPrimaryId($uniteCompetence->id);
 
-        if (count ( $brex_unit_comp ) == 0) {
-          dieWithBadRequest ( 'Missing target exception : UniteCompetence with id ' . $uniteCompetence->id . ' does not exists' );
+        if (!$brex_unit_comp) {
+          dieWithBadRequest('Missing target exception : UniteCompetence with id ' . $uniteCompetence->id . ' does not exists');
         } else if ($brex_unit_comp->competence->id != $uniteCompetence->competence->id) {
-          dieWithBadRequest ( 'Storage exception : UniteCompetence with id ' . $uniteCompetence->id . ' is linked to Competence with id ' . $brex_unit_comp->competence->id . ', not '. $uniteCompetence->competence->id);
+          dieWithBadRequest('Storage exception : UniteCompetence with id ' . $uniteCompetence->id . ' is linked to Competence with id ' . $brex_unit_comp->competence->id . ', not ' . $uniteCompetence->competence->id);
         } else {
           $brex_unit_comp->niveau = $uniteCompetence->niveau;
-          storeAndRespond ( $brex_unit_comp, 200 );
+          storeAndRespond($brex_unit_comp, 200);
         }
 
   } else {
