@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Unite} from '../../model/unite.model';
 import {FfbeUtils} from '../../utils/ffbe-utils';
 import {UniteCompetenceArray} from '../../model/unite-competence-array.model';
@@ -9,7 +9,7 @@ import {UniteCompetenceStatus} from '../../model/unite-competence.model';
   templateUrl: './unite-competences-display.component.html',
   styleUrls: ['./unite-competences-display.component.css']
 })
-export class UniteCompetencesDisplayComponent implements OnInit {
+export class UniteCompetencesDisplayComponent implements OnChanges {
 
   @Input() unite: Unite;
   @Input() dbUnite: Unite;
@@ -19,9 +19,6 @@ export class UniteCompetencesDisplayComponent implements OnInit {
 
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnChanges(): void {

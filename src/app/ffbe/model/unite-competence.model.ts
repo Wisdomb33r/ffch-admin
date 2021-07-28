@@ -8,14 +8,20 @@ export enum UniteCompetenceStatus {
 }
 
 export class UniteCompetence {
-  constructor(
-    public competence: Competence,
-    public niveau: number
-  ) {
-  }
 
   public id;
+  public competence: Competence;
+  public niveau: number;
   public status: UniteCompetenceStatus;
+
+  constructor(
+    competence: Competence,
+    niveau: number
+  ) {
+    this.competence = competence;
+    this.niveau = niveau;
+  }
+
 
   /*
   // TODO: Replace static implementation with this methods during #507

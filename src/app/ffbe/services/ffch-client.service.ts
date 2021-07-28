@@ -68,7 +68,7 @@ export class FfchClientService {
   public postUniteCompetence$(uniteCompetence: UniteCompetence, uniteId: number): Observable<UniteCompetence> {
     let params = new HttpParams();
     params = params.append('uniteId', `${uniteId}`);
-    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence, {params: params})
+    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence, {params})
       .pipe(catchError(this.analyseError));
   }
 
