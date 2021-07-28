@@ -9,6 +9,7 @@ import {TargetTypeEnum} from '../../target-type.enum';
 export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
 
   private activatedSkill: Skill;
+  private activatedByRaising = false;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -20,6 +21,9 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
     } else {
       this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(parameters[0]);
       this.activatedSkill.isActivatedByPassiveSkill = true;
+      if (this.effectId === 35) {
+        this.activatedByRaising = true;
+      }
     }
   }
 
@@ -28,7 +32,8 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    const baseText = 'Effet activé en début de combat ou après résurrection: ';
+    const raisingText = this.activatedByRaising ? ' ou après résurrection' : '';
+    const baseText = `Effet activé en début de combat${raisingText}: `;
     if (!this.activatedSkill) {
       return `${baseText}UNKNOWN skill`;
     }
