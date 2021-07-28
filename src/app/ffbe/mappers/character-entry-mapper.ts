@@ -32,8 +32,8 @@ export class CharacterEntryMapper {
       gumiId
     );
     unite.carac = CharacterEntryStatsMapper.toUniteCarac(entry.stats, unite, entry.characterEntrySkills);
-    CharacterEntryMapper.convertLimitBurst(unite, entry.lb);
-    CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb);
+    CharacterEntryMapper.convertLimitBurst(unite, entry.lb, competences);
+    CharacterEntryMapper.convertUpgradedLimitBurst(unite, entry.upgraded_lb, competences);
     CharacterEntryMapper.convertAwakeningMaterials(unite, entry);
     CharacterEntryMapper.convertUniteCompetences(unite, character, entry, competences);
     CharacterEntryMapper.convertEXCaracteristiques(unite, entry.nv_upgrade);
@@ -77,10 +77,10 @@ export class CharacterEntryMapper {
     return character.rarity_min === 7 && character.rarity_max === 7 && FfbeUtils.isNullOrUndefined(entry.nv_upgrade);
   }
 
-  private static convertLimitBurst(unite: Unite, lb: LimitBurst) {
+  private static convertLimitBurst(unite: Unite, lb: LimitBurst, competences: Array<Competence>) {
     if (lb) {
       const minLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, 0);
-      const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, lb.levels.length - 1);
+      const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, lb.levels.length - 1).initializeSkillEffects();
       unite.limite = lb.names[FFBE_FRENCH_TABLE_INDEX];
       unite.limite_en = lb.names[FFBE_ENGLISH_TABLE_INDEX];
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
@@ -94,15 +94,20 @@ export class CharacterEntryMapper {
       unite.lim_cristals_niv_min = lb.levels.length > 0 && lb.levels[0].length > 0 ? lb.levels[0][0] : null;
       unite.lim_cristals_niv_max = lb.levels.length > 0 && lb.levels[lb.levels.length - 1].length > 0 ? lb.levels[lb.levels.length - 1][0] : null;
       unite.lim_nb_niv = lb.levels.length;
+
+      this.extractActivatedSkillsFromSkill(maxLevelFakeSkill, unite, competences, -300);
     }
   }
 
-  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst) {
+  private static convertUpgradedLimitBurst(unite: Unite, upgradedLb: LimitBurst, competences: Array<Competence>) {
     if (upgradedLb) {
       const minLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(upgradedLb, 0);
-      const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(upgradedLb, upgradedLb.levels.length - 1);
+      const maxLevelFakeSkill: Skill =
+        CharacterEntryMapper.createFakeSkillForLb(upgradedLb, upgradedLb.levels.length - 1).initializeSkillEffects();
       unite.lim_up_min = SkillEffectsMapper.mapAbilitySkillEffects(minLevelFakeSkill);
       unite.lim_up_max = SkillEffectsMapper.mapAbilitySkillEffects(maxLevelFakeSkill);
+
+      this.extractActivatedSkillsFromSkill(maxLevelFakeSkill, unite, competences, -250);
     }
   }
 
@@ -130,7 +135,6 @@ export class CharacterEntryMapper {
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
     unite.competences = [];
-    let currentActivatedSkillLevel = -200;
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = classToClass(characterSkill.skill).initializeSkillEffects();
       const competence = competences.find(c => c.gumi_id === characterSkill.id);
@@ -143,14 +147,20 @@ export class CharacterEntryMapper {
         niveau = -(+`${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}`);
       }
       unite.competences.push(new UniteCompetence(competence, niveau));
-      skill.activatedSkills?.forEach(activatedSkill => {
-        CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {
-          if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSkill.gumi_id)) {
-            const competenceActivee = CharacterEntryMapper.searchOrMapCompetence(transitiveActivatedSkill, competences);
-            unite.competencesActivees.push(new UniteCompetence(competenceActivee, currentActivatedSkillLevel));
-            currentActivatedSkillLevel += 2;
-          }
-        });
+      CharacterEntryMapper.extractActivatedSkillsFromSkill(skill, unite, competences, -200);
+    });
+  }
+
+  private static extractActivatedSkillsFromSkill(
+    skill: Skill, unite: Unite, competences: Array<Competence>, currentActivatedSkillLevel: number
+  ) {
+    skill.activatedSkills?.forEach(activatedSkill => {
+      CharacterEntryMapper.searchTransitiveActivatedSkills(activatedSkill)?.forEach(transitiveActivatedSkill => {
+        if (!unite.competencesActivees.find(c => c.competence.gumi_id === transitiveActivatedSkill.gumi_id)) {
+          const competenceActivee = CharacterEntryMapper.searchOrMapCompetence(transitiveActivatedSkill, competences);
+          unite.competencesActivees.push(new UniteCompetence(competenceActivee, currentActivatedSkillLevel));
+          currentActivatedSkillLevel += 2;
+        }
       });
     });
   }
