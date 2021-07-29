@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {Personnage} from '../model/personnage.model';
-import {Competence} from '../model/competence.model';
+import {Personnage} from '../../model/personnage.model';
+import {Competence} from '../../model/competence.model';
 
 @Component({
   selector: 'app-character-display',
@@ -21,7 +21,7 @@ export class CharacterDisplayComponent implements OnChanges {
     this.competences = this.personnage.unites[this.personnage.unites.length - 1].competences
       .map(uniteCompetence => uniteCompetence.competence);
     this.competencesActivees = this.personnage.unites[this.personnage.unites.length - 1].competencesActivees
-      .map(uniteCompetence => uniteCompetence.competence);
+      ?.map(uniteCompetence => uniteCompetence.competence);
   }
 
   public switchCharacterDisplay() {

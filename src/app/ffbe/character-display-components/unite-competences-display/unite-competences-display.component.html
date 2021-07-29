@@ -1,0 +1,20 @@
+<div *ngIf="unite.competencesActivees?.length">
+  <app-unite-competences-array-display [uniteCompetences]="unite.competencesActivees"
+                                       [titre]="'Compétences activées'"
+                                       [unite]="unite"
+                                       [showLevelMismatch]="false">
+  </app-unite-competences-array-display>
+</div>
+
+<app-unite-competences-array-display [uniteCompetences]="unite.competences"
+                                     [titre]="'Compétences'"
+                                     [unite]="unite">
+</app-unite-competences-array-display>
+
+<div *ngIf="dbUniteCompetencesOrphelines?.length">
+  <app-unite-competences-array-display [uniteCompetences]="dbUniteCompetencesOrphelines"
+                                       [titre]="'Compétences orphelines'"
+                                       [unite]="unite"
+                                       [allowPosting]="false">
+  </app-unite-competences-array-display>
+</div>

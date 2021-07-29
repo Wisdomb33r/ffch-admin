@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Competence} from '../model/competence.model';
 import {Unite} from '../model/unite.model';
 import {UniteEquipements} from '../model/unite-equipements.model';
@@ -10,10 +10,12 @@ import {catchError, map} from 'rxjs/operators';
 import {Amelioration} from '../model/amelioration.model';
 import {Recette} from '../model/recette.model';
 import {plainToClass} from 'class-transformer';
+import {UniteCompetence} from '../model/unite-competence.model';
 
 const FFCH_BASE_URL = '/admin/';
 const FFCH_COMPETENCE_PATH = FFCH_BASE_URL + 'skills.php';
 const FFCH_UNITE_PATH = FFCH_BASE_URL + 'units.php';
+const FFCH_UNITE_SKILLS_PATH = FFCH_BASE_URL + 'unit_skills.php';
 const FFCH_EQUIPMENTS_PATH = FFCH_BASE_URL + 'equipments.php';
 const FFCH_OBJECTS_PATH = FFCH_BASE_URL + 'objects.php';
 const FFCH_AWAKENING_MATERIALS_PATH = FFCH_BASE_URL + 'unit_awakenings.php';
@@ -61,6 +63,18 @@ export class FfchClientService {
 
   public postUniteEquipements$(uniteEquipements: UniteEquipements): Observable<any> {
     return this.http.post(FFCH_EQUIPMENTS_PATH, uniteEquipements);
+  }
+
+  public postUniteCompetence$(uniteCompetence: UniteCompetence, uniteId: number): Observable<UniteCompetence> {
+    let params = new HttpParams();
+    params = params.append('uniteId', `${uniteId}`);
+    return this.http.post<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence, {params})
+      .pipe(catchError(this.analyseError));
+  }
+
+  public putUniteCompetence$(uniteCompetence: UniteCompetence): Observable<UniteCompetence> {
+    return this.http.put<UniteCompetence>(FFCH_UNITE_SKILLS_PATH, uniteCompetence)
+      .pipe(catchError(this.analyseError));
   }
 
   public getObjetByGumiId$(id: number): Observable<Objet> {

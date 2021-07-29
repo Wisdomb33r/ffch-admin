@@ -1,0 +1,17 @@
+.competences li {
+  list-style-type: none;
+}
+
+img.ffchstatus {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+li.allright {
+  padding-left: 32px;
+}
+
+button.mat-raised-button {
+  line-height: 24px;
+  margin-left: 16px;
+}
