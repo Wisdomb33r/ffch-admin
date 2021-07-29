@@ -136,6 +136,8 @@ export class CharacterEntryMapper {
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
     unite.competences = new UniteCompetenceArray();
+    unite.competencesActivees = new UniteCompetenceArray();
+
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = classToClass(characterSkill.skill).initializeSkillEffects();
       const competence = competences.find(c => c.gumi_id === characterSkill.id);
@@ -148,9 +150,7 @@ export class CharacterEntryMapper {
         niveau = -(+`${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}${characterSkill.ex_level}`);
       }
       unite.competences.push(new UniteCompetence(competence, niveau));
-      if (FfbeUtils.isNullOrUndefined(unite.competencesActivees) && skill.activatedSkills?.length > 0) {
-        unite.competencesActivees = new UniteCompetenceArray();
-      }
+
       CharacterEntryMapper.extractActivatedSkillsFromSkill(skill, unite, competences, -200);
     });
   }
