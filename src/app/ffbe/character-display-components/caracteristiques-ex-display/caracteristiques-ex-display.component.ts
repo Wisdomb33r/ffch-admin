@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FfbeUtils} from '../utils/ffbe-utils';
-import {UniteCarac} from '../model/unite-carac.model';
+import {FfbeUtils} from '../../utils/ffbe-utils';
+import {UniteCarac} from '../../model/unite-carac.model';
 
 @Component({
   selector: 'app-caracteristiques-ex-display',

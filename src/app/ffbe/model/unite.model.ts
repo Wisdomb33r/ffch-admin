@@ -2,6 +2,7 @@ import {UniteCarac} from './unite-carac.model';
 import {UniteCompetence} from './unite-competence.model';
 import {Formule} from './formule.model';
 import {FfbeUtils} from '../utils/ffbe-utils';
+import {UniteCompetenceArray} from './unite-competence-array.model';
 
 export class Unite {
   public id: number;
@@ -21,8 +22,8 @@ export class Unite {
   public lim_damages: string;
   public lim_cristals_niv_min: number;
   public lim_cristals_niv_max: number;
-  public competences: Array<UniteCompetence> = [];
-  public competencesActivees: Array<UniteCompetence> = [];
+  public competences: UniteCompetenceArray;
+  public competencesActivees: UniteCompetenceArray;
   public carac: UniteCarac;
   public materiauxEveil: Formule;
   public caracEX: Array<UniteCarac>;

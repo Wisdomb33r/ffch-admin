@@ -1,9 +1,9 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Personnage} from '../model/personnage.model';
-import {CategorieObjet} from '../model/objet/categorie-objet.model';
-import {UniteEquipements} from '../model/unite-equipements.model';
-import {FfchClientService} from '../services/ffch-client.service';
-import {FfbeUtils} from '../utils/ffbe-utils';
+import {Personnage} from '../../model/personnage.model';
+import {CategorieObjet} from '../../model/objet/categorie-objet.model';
+import {UniteEquipements} from '../../model/unite-equipements.model';
+import {FfchClientService} from '../../services/ffch-client.service';
+import {FfbeUtils} from '../../utils/ffbe-utils';
 
 @Component({
   selector: 'app-character-equipments-display',

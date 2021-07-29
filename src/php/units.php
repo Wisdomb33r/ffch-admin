@@ -5,6 +5,8 @@ require_once "../gestion/genscripts/object_brex_obtention.class.php";
 
 require_once "./includes/classes.php";
 require_once "./includes/die_with.php";
+require_once "./includes/skill_class.php";
+require_once "./includes/unit_skill_class.php";
 
 class Unite
 {
@@ -80,21 +82,6 @@ class UniteCarac
       $brex_unit_carac->def_tdh, $brex_unit_carac->mag_tdh, $brex_unit_carac->psy_tdh);
     $this->bonusDualwieldPercent = new Caracteristiques($brex_unit_carac->pv_dw, $brex_unit_carac->pm_dw, $brex_unit_carac->att_dw,
       $brex_unit_carac->def_dw, $brex_unit_carac->mag_dw, $brex_unit_carac->psy_dw);
-  }
-}
-
-class UniteCompetence
-{
-  // variables of the class
-  public $id;
-  public $competence;
-  public $niveau;
-
-  function __construct($brex_unit_comp)
-  {
-    $this->id = $brex_unit_comp->id;
-    $this->competence = $brex_unit_comp->competence->id;
-    $this->niveau = $brex_unit_comp->niveau;
   }
 }
 

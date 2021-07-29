@@ -19,10 +19,6 @@ div.neovision {
   -webkit-text-stroke: 1px black; /* width and color */
 }
 
-.competences li {
-  list-style-type: none;
-}
-
 div.table {
   display: table;
   width: 100%;
