@@ -141,6 +141,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandShieldIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 100:
         return new PassiveSkillReplacingNormalAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 103:
+        return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 10003:
         return new PassiveEquipmentStatsDoublehandGlexIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 10004:
