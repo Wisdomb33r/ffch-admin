@@ -22,7 +22,7 @@ class Recette
     $this->id = $brex_craft->id;
     $this->craft_time = $brex_craft->craft_time;
     $this->nb_resultat = $brex_craft->nb_resultat;
-    if (is_null($this->nb_resultat)) {
+    if (!isset($this->nb_resultat)) {
       $this->nb_resultat = 1;
     }
   }
@@ -77,11 +77,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
     dieWithBadRequest('Format exception: Cannot find recette without recette_gumi_id');
   }
 
-  if (!isset ($_GET ['recette_gumi_id'])) {
-    dieWithBadRequest('Format exception: Cannot find recette eveil without resultat_gumi_id');
+  if (!isset ($_GET ['resultat_gumi_id'])) {
+    dieWithBadRequest('Format exception: Cannot find recette without resultat_gumi_id');
   }
 
-  $brex_objet_recette = findOptionalRecetteByGumiId($_GET ['recette_gumi_id']);
+  $brex_objet_recette = findRecetteByGumiId($_GET ['recette_gumi_id']);
   $brex_objet_resultat = findObjetByGumiId($_GET ['resultat_gumi_id']);
 
   $brex_craft = findCraft($brex_objet_recette, $brex_objet_resultat);
@@ -92,29 +92,23 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   echo json_encode($recette, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 }
 
-function findOptionalRecetteByGumiId($gumi_id)
+function findRecetteByGumiId($gumi_id)
 {
   $brex_objets = brex_objet::finderParGumiId($gumi_id);
   if (count($brex_objets) > 1) {
     dieWithBadRequest('Storage exception : several recettes found with gumiId: ' . $gumi_id);
   } else if (count($brex_objets) == 0) {
-    return null;
+    dieWithNotFound('Storage exception : no recette found with gumiId: ' . $gumi_id);
   }
   return $brex_objets[0];
 }
 
 function findCraft($brex_objet_recette, $brex_objet_resultat)
 {
-  $brex_craft = null;
-
-  if (!is_null($brex_objet_recette)) {
-    $brex_craft = brex_craft::findByRelation1N(array('recette' => $brex_objet_recette->id, 'resultat' => $brex_objet_resultat->id));
-  } else {
-    $brex_craft = brex_craft::findByRelation1N(array('resultat' => $brex_objet_resultat->id));
-  }
+  $brex_craft = brex_craft::findByRelation1N(array('recette' => $brex_objet_recette->id, 'resultat' => $brex_objet_resultat->id));;
 
   if (count($brex_craft) > 1) {
-    dieWithBadRequest('Storage exception : several recettes found with recette gumi ID: ' . (is_null($brex_objet_recette) ? '?' : $brex_objet_recette->gumi_id) . ' and resultat gumi ID' . $brex_objet_resultat->gumi_id);
+    dieWithBadRequest('Storage exception : several recettes found with recette gumi ID: ' . $brex_objet_recette->gumi_id . ' and resultat gumi ID: ' . $brex_objet_resultat->gumi_id);
   } else if (count($brex_craft) == 0) {
     dieWithNotFound('Storage exception : recette not found');
   }
@@ -159,7 +153,7 @@ function createRecette($brex_craft, $brex_craft_compos, $brex_recette, $brex_res
   $recette->resultat_gumi_id = $brex_resultat->gumi_id;
   $recette->resultat = new Objet($brex_resultat);
 
-  if (!is_null($brex_recette)) {
+  if (isset($brex_recette)) {
     $recette->recette_gumi_id = $brex_recette->gumi_id;
     $recette->recette = new Objet($brex_recette);
   } else {
@@ -184,7 +178,7 @@ function checkThatNoCraftExists($brex_objet_recette, $brex_objet_resultat)
 function checkThatAllIngredientsExist($formule)
 {
   foreach ($formule->ingredients as $ingredient) {
-    if (is_null($ingredient->gumi_id)) {
+    if (!isset($ingredient->gumi_id)) {
       dieWithBadRequest('Storage exception : cannot use ingredient with missing gumi ID');
     }
     findObjetByGumiId($ingredient->gumi_id);
