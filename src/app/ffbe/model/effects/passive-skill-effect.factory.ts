@@ -43,6 +43,7 @@ import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance
 import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-effect.model';
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
+import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -89,6 +90,8 @@ export class PassiveSkillEffectFactory {
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 53:
+        return new PassiveSkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 54:
         return new PassiveEvasionMagicalEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 55:
