@@ -4,6 +4,7 @@ import {TargetNumberEnum} from '../../target-number.enum';
 import {TargetTypeEnum} from '../../target-type.enum';
 import {SkillsService} from '../../../../services/skills.service';
 import {EffectParser} from '../../../../mappers/effects/effect-parser';
+import {FfbeUtils} from '../../../../utils/ffbe-utils';
 
 export class PassiveSkillOrMagicMultipleActivationEffectModel extends SkillEffect {
 
@@ -40,21 +41,22 @@ export class PassiveSkillOrMagicMultipleActivationEffectModel extends SkillEffec
       const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
       return `Donne accès à ${EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;
     } else {
-      const multiActivationTypesText = this.multiActivationTypes.map(type => this.fromTypeToText(type)).join(', ');
+      let multiActivationTypesText = this.multiActivationTypes.map(type => this.fromTypeToText(type)).join(', ');
+      multiActivationTypesText = FfbeUtils.replaceLastOccurenceInString(multiActivationTypesText, ', ', ' et ');
       let additionalSkillsText = '';
       if (this.additionalSkillsIds?.length) {
         const additionalSkills = this.additionalSkillsIds
           .map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-        additionalSkillsText = `ainsi que ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(additionalSkills)}`;
+        additionalSkillsText = ` ainsi que ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(additionalSkills)}`;
       }
       let excludedSkillsText = '';
       if (this.excludedSkillsIds?.length) {
         const excludedSkills = this.excludedSkillsIds
           .map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
-        excludedSkillsText = `excepté ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(excludedSkills)}`;
+        excludedSkillsText = ` excepté ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(excludedSkills)}`;
       }
       const noDuplicatesText: string = this.noDuplicates === 1 ? `d'aptitudes <strong>distinctes</strong> parmi les` : 'des';
-      return `Permet l'utilisation ${noDuplicatesText} ${multiActivationTypesText} ${additionalSkillsText}${excludedSkillsText} ${this.nbTimes}x par tour`;
+      return `Permet l'utilisation ${noDuplicatesText} ${multiActivationTypesText}${additionalSkillsText}${excludedSkillsText} ${this.nbTimes}x par tour`;
     }
   }
 
