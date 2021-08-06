@@ -51,7 +51,7 @@ describe('PassiveSkillOrMagicMultipleActivationEffectModel', () => {
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledTimes(2);
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledWith(200200);
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledWith(200270);
-    expect(s).toEqual('Permet l\'utilisation des magies blanches, magies noires et magies vertes ainsi que <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 5x par tour');
+    expect(s).toEqual('Permet l\'utilisation des magies blanches, magies noires et magies vertes natives ainsi que <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 5x par tour');
   });
 
   it('should parse unique multi-skill of UNKNOWN type with excluded skills', () => {
@@ -69,7 +69,7 @@ describe('PassiveSkillOrMagicMultipleActivationEffectModel', () => {
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledTimes(2);
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledWith(200200);
     expect(skillsServiceMock.searchForSkillByGumiId).toHaveBeenCalledWith(200270);
-    expect(s).toEqual('Permet l\'utilisation d\'aptitudes <strong>distinctes</strong> parmi les UNKNOWN TYPE excepté <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 4x par tour');
+    expect(s).toEqual('Permet l\'utilisation d\'aptitudes <strong>distinctes</strong> parmi les UNKNOWN TYPE natives excepté <a href="ffexvius_skills.php?gumiid=200200">Coup de pied</a>, <a href="ffexvius_skills.php?gumiid=200270">Transpercer</a> 4x par tour');
   });
 
   it('should return the multi-skill as activated skill if worded as link', () => {

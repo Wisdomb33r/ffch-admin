@@ -56,7 +56,7 @@ export class PassiveSkillOrMagicMultipleActivationEffectModel extends SkillEffec
         excludedSkillsText = ` excepté ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(excludedSkills)}`;
       }
       const noDuplicatesText: string = this.noDuplicates === 1 ? `d'aptitudes <strong>distinctes</strong> parmi les` : 'des';
-      return `Permet l'utilisation ${noDuplicatesText} ${multiActivationTypesText}${additionalSkillsText}${excludedSkillsText} ${this.nbTimes}x par tour`;
+      return `Permet l'utilisation ${noDuplicatesText} ${multiActivationTypesText} natives${additionalSkillsText}${excludedSkillsText} ${this.nbTimes}x par tour`;
     }
   }
 
@@ -69,7 +69,7 @@ export class PassiveSkillOrMagicMultipleActivationEffectModel extends SkillEffec
       case 3:
         return 'magies vertes';
       case 5:
-        return 'compétences spéciales natives';
+        return 'compétences spéciales';
       default:
         return 'UNKNOWN TYPE';
     }
