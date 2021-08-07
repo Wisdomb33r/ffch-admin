@@ -30,12 +30,11 @@ export class AbilityCoversEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill) {
     const targetText = this.wordTarget(TargetPrepositionEnum.None);
-    const turnsText = ` pour ${this.numTurns} tour${this.numTurns > 1 ? 's' : ''}`;
     let mitigationText = `${this.mitigationMin}%`;
     if (this.mitigationMax > this.mitigationMin) {
       mitigationText += ` à ${this.mitigationMax}%`;
     }
-    return `${this.coverChance}% de chance pour ${targetText} de protéger les alliés des dégâts ${this.damageTypeText} avec mitigation de ${mitigationText} des dégâts reçus${turnsText}`;
+    return `${this.coverChance}% de chance pour ${targetText} de protéger les alliés des dégâts ${this.damageTypeText} avec mitigation de ${mitigationText} des dégâts reçus ${this.wordForTurns(this.numTurns)}`;
   }
 
   private get damageTypeText() {
