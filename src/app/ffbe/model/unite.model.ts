@@ -22,8 +22,8 @@ export class Unite {
   public lim_damages: string;
   public lim_cristals_niv_min: number;
   public lim_cristals_niv_max: number;
-  public competences: UniteCompetenceArray;
-  public competencesActivees: UniteCompetenceArray;
+  public competences: UniteCompetenceArray = new UniteCompetenceArray();
+  public competencesActivees: UniteCompetenceArray = new UniteCompetenceArray();
   public carac: UniteCarac;
   public materiauxEveil: Formule;
   public caracEX: Array<UniteCarac>;
