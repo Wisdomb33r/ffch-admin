@@ -100,9 +100,9 @@ export class CharactersService {
     if (character.entries) {
       const entry: CharacterEntry = character.entries[characterId];
       if (entry?.nv_upgrade?.length && entry.nv_upgrade[0].reward?.length) {
-        return entry.nv_upgrade[0].reward.some(
+        return entry.nv_upgrade.some(nv_up => nv_up.reward.some(
           (reward: Array<any>) => reward.length > 2 && reward[0] === 'VISIONCARD' && reward[1] === rewardId
-        );
+        ));
       }
     }
     return false;
