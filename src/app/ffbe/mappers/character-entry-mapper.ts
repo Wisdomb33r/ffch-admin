@@ -20,7 +20,6 @@ import {SkillMapper} from './skill-mapper';
 import {NeoVisionUpgradeEntry} from '../model/character/neovision-upgrade-entry.model';
 import {Caracteristiques} from '../model/caracteristiques.model';
 import {UniteCarac} from '../model/unite-carac.model';
-import {UniteCompetenceArray} from '../model/unite-competence-array.model';
 import {classToClass} from 'class-transformer';
 
 export class CharacterEntryMapper {
@@ -135,9 +134,6 @@ export class CharacterEntryMapper {
   }
 
   private static convertUniteCompetences(unite: Unite, character: Character, entry: CharacterEntry, competences: Array<Competence>) {
-    unite.competences = new UniteCompetenceArray();
-    unite.competencesActivees = new UniteCompetenceArray();
-
     entry.characterEntrySkills.forEach(characterSkill => {
       const skill: Skill = classToClass(characterSkill.skill).initializeSkillEffects();
       const competence = competences.find(c => c.gumi_id === characterSkill.id);
