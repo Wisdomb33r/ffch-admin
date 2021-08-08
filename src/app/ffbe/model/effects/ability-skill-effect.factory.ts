@@ -29,6 +29,7 @@ import {AbilitySkillSwitchEffect} from './abilities/skill/ability-skill-switch-e
 import {AbilitySkillMagnusEffect} from './abilities/skill/ability-skill-magnus-effect.model';
 import {AbilitySkillDelayedEffect} from './abilities/skill/ability-skill-delayed-effect.model';
 import {AbilitySkillMultipleActivationEffect} from './abilities/skill/ability-skill-multiple-activation-effect.model';
+import {AbilitySkillOrMagicMultipleActivationEffect} from './abilities/skill/ability-skill-or-magic-multiple-activation-effect.model';
 import {AbilityTemporaryRemovalFromFightEffect} from './abilities/ability-temporary-removal-from-fight-effect.model';
 import {AbilityMagIncreaseNextActionEffect} from './abilities/ability-mag-increase-next-action-effect.model';
 import {AbilityDamagePhysicalIncreasedBreakEffect} from './abilities/damage/ability-damage-physical-increased-break-effect.model';
@@ -155,6 +156,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityWeaponTypeWielderDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 165:
         return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 168:
+        return new AbilitySkillOrMagicMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1006:
         return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:

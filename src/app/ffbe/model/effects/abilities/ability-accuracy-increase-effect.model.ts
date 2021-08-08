@@ -25,10 +25,9 @@ export class AbilityAccuracyIncreaseEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill) {
-    const pluralTurnsSuffix = this.numTurns > 1 ? 's' : '';
     const dispellableWording = this.dispellable ? ' (bonus non-dissipable)' : '';
     const increaseSign = this.increase >= 0 ? '+' : '';
-    return `${increaseSign}${this.increase}% précision ${this.wordTarget(TargetPrepositionEnum.A)} pour ${this.numTurns} tour${pluralTurnsSuffix}${dispellableWording}`;
+    return `${increaseSign}${this.increase}% précision ${this.wordTarget(TargetPrepositionEnum.A)} ${this.wordForTurns(this.numTurns)}${dispellableWording}`;
   }
 
   protected get effectName(): string {

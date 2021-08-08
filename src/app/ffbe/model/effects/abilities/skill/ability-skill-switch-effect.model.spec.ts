@@ -9,10 +9,10 @@ describe('AbilitySkillSwitchEffect', () => {
     // GIVEN
     const switchSkill: Skill = new Skill();
     const skill: Skill = SkillMockDataHelper.mockAbilitySkill(200200);
-    const activatorSkill: Skill = SkillMockDataHelper.mockAbilitySkill(229425);
+    const activatorSkill: Skill = SkillMockDataHelper.mockAbilitySkill(232639);
     const activatedSkill: Skill = SkillMockDataHelper.mockAbilitySkill(200270);
 
-    const effect = JSON.parse('[1, 1, 99, [2,  229425,  2,  200270,  2,  200200]]');
+    const effect = JSON.parse('[1, 1, 99, [2,  232639,  2,  200270,  2,  200200]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill, activatedSkill, activatorSkill);
@@ -22,9 +22,9 @@ describe('AbilitySkillSwitchEffect', () => {
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(200200);
     expect(mySpy).toHaveBeenCalledWith(200270);
-    expect(mySpy).toHaveBeenCalledWith(229425);
+    expect(mySpy).toHaveBeenCalledWith(232639);
     expect(s).toEqual('Dégâts physiques neutres de puissance 110% aux adversaires<br /><br />' +
-      'Si utilisé après <a href="ffexvius_skills.php?gumiid=229425">Fini de jouer</a>:<br />' +
+      'Si utilisé après <a href="ffexvius_skills.php?gumiid=232639">Croix mystique</a>:<br />' +
       'Dégâts physiques neutres de puissance 80% avec absorption de 20% des dégâts infligés à un adversaire<br />' +
       'Dégâts physiques neutres sur les PM de puissance 30% avec absorption de 10% des dégâts infligés à un adversaire');
     expect(switchSkill.attack_count[0]).toEqual(3);

@@ -30,10 +30,9 @@ export class AbilityElementDamageIncreaseEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill) {
     const target = `infligés par ${this.wordTarget(TargetPrepositionEnum.None)}`;
-    const turnsText = `pour ${this.turns} tour${this.turns > 1 ? 's' : ''}`;
     const damageIncreaseText = this.wordEffectJoiningIdenticalValues(SkillEffect.getElementNameValueTableFromNumberArray(this.increases));
     const dispelableText = this.dispelable ? '' : ' (bonus non-dissipable)';
-    return `${damageIncreaseText} ${target} ${turnsText}${dispelableText}`;
+    return `${damageIncreaseText} ${target} ${this.wordForTurns(this.turns)}${dispelableText}`;
   }
 
   protected wordEffectForIdenticalValues(currentValue, accumulatedStats: Array<string>): string {

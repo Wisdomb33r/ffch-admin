@@ -45,6 +45,10 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
     return this.parameterWarning;
   }
 
+  protected wordForTurns(nbTurns: number): string {
+    return `pour ${nbTurns} tour${nbTurns > 1 ? 's' : ''}`;
+  }
+
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
 
     if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Enemy) {
