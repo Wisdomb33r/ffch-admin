@@ -49,6 +49,8 @@ import {AbilityKillerDamageIncreaseEffect} from './abilities/ability-killer-dama
 import {AbilitySkillModifierIncreaseEffect} from './abilities/skill/ability-skill-modifier-increase-effect.model';
 import {AbilityMoraleJaugeEffect} from './abilities/ability-morale-jauge-effect.model';
 import {AbilityElementsAbsorbEffect} from './abilities/ability-elements-absorb-effect.model';
+import {AbilityDamageMagicMpIncreasedEffect} from './abilities/damage/ability-damage-magic-mp-increased-effect.model';
+import {AbilityDamageMagicMpScalingEffect} from './abilities/damage/ability-damage-magic-mp-scaling-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -122,6 +124,8 @@ export class AbilitySkillEffectFactory {
         return new AbilityDamagePhysicalDefScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 103:
         return new AbilityDamageMagicSprScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 105:
+        return new AbilityDamageMagicMpScalingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 112:
       case 113:
         return new AbilityDamageOrDeathEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
@@ -158,6 +162,8 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillTagTeamAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 168:
         return new AbilitySkillOrMagicMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 169:
+        return new AbilityDamageMagicMpIncreasedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1006:
         return new AbilitySkillMultipleActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 1012:

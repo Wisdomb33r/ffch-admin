@@ -227,6 +227,7 @@ export class Skill {
       || effectId === 72 // magic damages with consecutive damage increase
       || effectId === 81 // physical damages with HP sacrifice
       || effectId === 102 // physical damages scaling on DEF
+      || effectId === 105 // magic damages scaling on MP
       || effectId === 112 // death or physical damages
       || effectId === 113 // death or magical damages
       || effectId === 103 // magic damages scaling on SPR
@@ -235,6 +236,7 @@ export class Skill {
       || effectId === 134 // physical damages with 1 turn timed jump delay
       || effectId === 139 // physical / magic DOT's
       || effectId === 159 // physical damages with BREAK bonus
+      || effectId === 169 // magic damages power-increased by MP used
       || effectId === 1016 // damages scaling on morale
     );
   }
