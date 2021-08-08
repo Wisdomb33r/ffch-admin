@@ -21,7 +21,7 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
     } else {
       this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(parameters[0]);
       this.activatedSkill.isActivatedByPassiveSkill = true;
-      if (this.effectId === 35) {
+      if (this.effectId !== 103) {
         this.activatedByRaising = true;
       }
     }

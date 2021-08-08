@@ -7,9 +7,21 @@ import {HTML_LINE_RETURN} from '../../../../mappers/effects/skill-effects.mapper
 
 describe('PassiveSkillBattleStartActivationEffect', () => {
 
-  it('should parse battle start or raising activation effect', () => {
+  it('should parse battle start or raising activation effect (effectId 35)', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 35, [100020]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(SkillMockDataHelper.mockPassiveSkill(100020));
+    // WHEN
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('Effet activé en début de combat ou après résurrection: +20% PV');
+  });
+
+  it('should parse battle start or raising activation effect (effectId 56)', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 56, [100020]]');
     const skillsServiceMock = new SkillsServiceMock() as SkillsService;
     SkillsService['INSTANCE'] = skillsServiceMock;
     spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(SkillMockDataHelper.mockPassiveSkill(100020));
