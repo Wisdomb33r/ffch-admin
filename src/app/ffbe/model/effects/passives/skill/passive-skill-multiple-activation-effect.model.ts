@@ -31,21 +31,25 @@ export class PassiveSkillMultipleActivationEffect extends SkillEffect {
   }
 
   protected wordEffectImpl(skill: Skill): string {
-    if (skill.effects_raw.length === 1 && !skill.isActivatedByPassiveSkill) {
+    if (this.isWordingAsMultiskillLink(skill)) {
+      const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
+      return `Donne accès à ${EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;
+    } else {
       const noDuplicatesText: string = this.noDuplicates === 1 ? `d'aptitudes <strong>distinctes</strong> parmi` : 'de';
       const modifiedSkills = this.skillIds.map((skillId: number) => SkillsService.getInstance().searchForSkillByGumiId(skillId));
       return `Permet l'utilisation ${noDuplicatesText} ${EffectParser.getSkillsNamesWithGumiIdentifierLinks(modifiedSkills)} ${this.nbTimes}x par tour`;
-    } else {
-      const doubleSkillAbilityActivated: Skill = SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId);
-      return `Donne accès à ${EffectParser.getSkillNameWithGumiIdentifierLink(doubleSkillAbilityActivated)}`;
     }
   }
 
   public getActivatedSkills(skill: Skill): Array<Skill> {
-    if (skill.effects_raw.length !== 1 || skill.isActivatedByPassiveSkill) {
+    if (this.isWordingAsMultiskillLink(skill)) {
       return [SkillsService.getInstance().searchForSkillByGumiId(this.multiskillId)];
     }
     return [];
+  }
+
+  protected isWordingAsMultiskillLink(skill: Skill): boolean {
+    return skill.effects_raw.length !== 1 || skill.isActivatedByPassiveSkill;
   }
 
   protected get effectName(): string {
