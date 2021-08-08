@@ -31,6 +31,36 @@ describe('PassiveSkillBattleStartActivationEffect', () => {
     expect(s).toEqual('Effet activé en début de combat ou après résurrection: +20% PV');
   });
 
+  it('should parse battle start or raising activation effect with delayed activated effect', () => {
+    // GIVEN
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(512175);
+    const skill2: Skill = SkillMockDataHelper.mockAbilitySkill(512176);
+
+    const effect = JSON.parse('[0, 3, 56, [512175]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill2, skill2);
+
+    // WHEN
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
+
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(4);
+    expect(mySpy).toHaveBeenCalledWith(512175);
+    expect(mySpy).toHaveBeenCalledWith(512176);
+    expect(s).toEqual('Effet activé en début de combat ou après résurrection: +1 esquive physique aux alliés pour 1 tour<br />'
+      + '<br />'
+      + 'Effet activé en début de combat ou après résurrection: Activation <strong>1 tour plus tard</strong>:<br />'
+      + 'Effet activé en début de combat ou après résurrection: +1 esquive physique aux alliés pour 1 tour<br />'
+      + '<br />'
+      + 'Effet activé en début de combat ou après résurrection: Activation <strong>2 tours plus tard</strong>:<br />'
+      + 'Effet activé en début de combat ou après résurrection: +1 esquive physique aux alliés pour 1 tour<br />'
+      + '<br />'
+      + 'Effet activé en début de combat ou après résurrection: Activation <strong>3 tours plus tard</strong>:<br />'
+      + 'Effet activé en début de combat ou après résurrection: +1 esquive physique aux alliés pour 1 tour');
+  });
+
+
   it('should parse battle start activation effect', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 103, [501090,  0,  0]]');

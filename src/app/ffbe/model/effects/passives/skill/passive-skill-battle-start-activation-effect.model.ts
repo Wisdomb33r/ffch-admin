@@ -39,7 +39,7 @@ export class PassiveSkillBattleStartActivationEffect extends SkillEffect {
     }
     return SkillMapper.toCompetence(this.activatedSkill).effet_fr
       .split(HTML_LINE_RETURN)
-      .map(effet => baseText + effet)
+      .map(effet => effet.length > 0 ? baseText + effet : effet)
       .join(HTML_LINE_RETURN);
   }
 
