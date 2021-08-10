@@ -83,6 +83,12 @@ describe('PassiveSkillEffect', () => {
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 47, [30, 0]]', parsed: '+30% de chance d\'obtenir un butin normal'},
+    {effect: '[0, 3, 47, [0, 80]]', parsed: '+80% de chance de recevoir un butin rare'},
+    {
+      effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
+        + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
+    },
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {

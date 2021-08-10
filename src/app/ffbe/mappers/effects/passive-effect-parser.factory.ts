@@ -8,7 +8,6 @@ import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-tu
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
-import {PassiveItemsDropRateParser} from './passives/passive-items-drop-rate.parser';
 import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
 import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
@@ -52,8 +51,6 @@ export class PassiveEffectParserFactory {
         return new PassiveExperienceRateParser();
       case 46:
         return new PassiveGilsWhileStealingParser();
-      case 47:
-        return new PassiveItemsDropRateParser();
       case 48:
         return new PassiveMpDecreaseForSongsParser();
       case 51:

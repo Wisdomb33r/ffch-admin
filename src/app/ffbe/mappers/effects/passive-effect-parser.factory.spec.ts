@@ -1,7 +1,6 @@
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
 import {SkillsService} from '../../services/skills.service';
 import {SkillMockDataHelper} from '../../model/skill.model.spec';
-import {HTML_LINE_RETURN} from './skill-effects.mapper';
 import {CHARACTER_TEST_DATA} from '../../model/character/character.model.spec';
 import {Character} from '../../model/character/character.model';
 import {CharactersService} from '../../services/characters.service';
@@ -52,10 +51,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
     {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
     {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
-    {
-      effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
-        + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
-    },
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',
