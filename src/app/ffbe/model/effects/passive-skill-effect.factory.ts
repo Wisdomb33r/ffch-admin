@@ -44,7 +44,7 @@ import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 import {PassiveItemsDropRateEffect} from './passives/passive-items-drop-rate-effect.model';
-import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase.parser';
+import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase-effect.model';
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
 
