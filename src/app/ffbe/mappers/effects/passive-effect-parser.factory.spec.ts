@@ -26,7 +26,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
-    {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {
       effect: '[0, 3, 18, [1,  1,  1,  1,  1,  1,  1,  1]]',

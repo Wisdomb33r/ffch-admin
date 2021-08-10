@@ -35,6 +35,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },
+    {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'

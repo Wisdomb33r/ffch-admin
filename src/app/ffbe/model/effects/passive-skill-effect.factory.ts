@@ -44,6 +44,7 @@ import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 import {PassiveItemsDropRateEffect} from './passives/passive-items-drop-rate-effect.model';
+import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase.parser';
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
 
@@ -62,6 +63,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentCategoryStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 8:
         return new PassiveCoverEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 9:
+        return new PassiveItemsHealingPotencyIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 11:
         return new PassiveKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 12:
