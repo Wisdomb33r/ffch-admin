@@ -45,6 +45,7 @@ import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-ef
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
 import {PassiveItemsDropRateEffect} from './passives/passive-items-drop-rate-effect.model';
 import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase-effect.model';
+import {PassiveItemsStealRateEffect} from './passives/passive-items-steal-rate-effect.model';
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
 
@@ -73,6 +74,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 16:
+        return new PassiveItemsStealRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 17:
         return new PassiveJumpDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
