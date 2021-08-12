@@ -49,6 +49,7 @@ import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items
 import {PassiveItemsStealRateEffect} from './passives/passive-items-steal-rate-effect.model';
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
+import {PassiveGilsWhileStealingEffect} from './passives/passive-gils-while-stealing-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -98,6 +99,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:
         return new PassiveElementsAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 46:
+        return new PassiveGilsWhileStealingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 47:
         return new PassiveItemsDropRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 49:

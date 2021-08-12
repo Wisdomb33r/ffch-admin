@@ -12,7 +12,6 @@ import {PassiveExperienceRateParser} from './passives/passive-experience-rate.pa
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
 import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
-import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
 import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
 import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-cure-after-battle.parser';
@@ -40,8 +39,6 @@ export class PassiveEffectParserFactory {
         return new PassiveNormalAttacksMultipleStrikesParser();
       case 45:
         return new PassiveExperienceRateParser();
-      case 46:
-        return new PassiveGilsWhileStealingParser();
       case 48:
         return new PassiveMpDecreaseForSongsParser();
       case 51:

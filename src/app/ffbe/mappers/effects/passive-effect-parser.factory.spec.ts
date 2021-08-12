@@ -46,8 +46,6 @@ describe('PassiveEffectParser', () => {
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
-    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
-    {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',

@@ -86,6 +86,8 @@ describe('PassiveSkillEffect', () => {
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
+    {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
     {effect: '[0, 3, 47, [30, 0]]', parsed: '+30% de chance d\'obtenir un butin normal'},
     {effect: '[0, 3, 47, [0, 80]]', parsed: '+80% de chance de recevoir un butin rare'},
     {
