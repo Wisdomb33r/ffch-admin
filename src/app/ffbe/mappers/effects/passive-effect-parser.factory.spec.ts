@@ -43,7 +43,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
-    {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},

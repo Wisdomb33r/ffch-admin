@@ -43,6 +43,7 @@ import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance
 import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-effect.model';
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
+import {PassiveGilsRateEffect} from './passives/passive-gils-rate-effect.model';
 import {PassiveItemsDropRateEffect} from './passives/passive-items-drop-rate-effect.model';
 import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase-effect.model';
 import {PassiveItemsStealRateEffect} from './passives/passive-items-steal-rate-effect.model';
@@ -91,6 +92,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveLbPerTurnEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 37:
+        return new PassiveGilsRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:

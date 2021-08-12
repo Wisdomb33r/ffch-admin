@@ -76,6 +76,7 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {
       effect: '[0, 3, 41, [50, 0, 0]]',
       parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
