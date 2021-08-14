@@ -52,6 +52,7 @@ import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill
 import {PassiveGilsWhileStealingEffect} from './passives/passive-gils-while-stealing-effect.model';
 import {PassiveCombatRateDecreaseEffect} from './passives/passive-combat-rate-decrease-effect.model';
 import {PassiveExperienceRateEffect} from './passives/passive-experience-rate-effect.model';
+import {PassiveExplorationStepRegenEffect} from './passives/passive-exploration-step-regen-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -89,6 +90,8 @@ export class PassiveSkillEffectFactory {
       case 24:
       case 25:
         return new PassiveTargetChanceChangesEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 29:
+        return new PassiveExplorationStepRegenEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 31:
         return new PassiveLbSpeedIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 33:
