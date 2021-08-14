@@ -10,7 +10,6 @@ import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increa
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
 import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
-import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
 import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-cure-after-battle.parser';
 
 export class PassiveEffectParserFactory {
@@ -24,8 +23,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 30:
-        return new PassiveMpAbsorbParser();
       case 32:
         return new PassiveMpRecoveryParser();
       case 44:
