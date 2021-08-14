@@ -54,6 +54,7 @@ import {PassiveCombatRateDecreaseEffect} from './passives/passive-combat-rate-de
 import {PassiveExperienceRateEffect} from './passives/passive-experience-rate-effect.model';
 import {PassiveExplorationStepRegenEffect} from './passives/passive-exploration-step-regen-effect.model';
 import {PassiveMpAbsorbEffect} from './passives/passive-mp-absorb-effect.model';
+import {PassiveMpDecreaseForSongsEffect} from './passives/passive-mp-decrease-for-songs-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -115,6 +116,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveGilsWhileStealingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 47:
         return new PassiveItemsDropRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 48:
+        return new PassiveMpDecreaseForSongsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);

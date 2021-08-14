@@ -3,7 +3,6 @@ import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
 import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
-import {PassiveMpDecreaseForSongsParser} from './passives/passive-mp-decrease-for-songs.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
@@ -27,8 +26,6 @@ export class PassiveEffectParserFactory {
         return new PassiveMpRecoveryParser();
       case 44:
         return new PassiveNormalAttacksMultipleStrikesParser();
-      case 48:
-        return new PassiveMpDecreaseForSongsParser();
       case 51:
         return new PassiveDeceivesDeathParser();
       case 52:
