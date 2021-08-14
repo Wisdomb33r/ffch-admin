@@ -55,6 +55,7 @@ import {PassiveExperienceRateEffect} from './passives/passive-experience-rate-ef
 import {PassiveExplorationStepRegenEffect} from './passives/passive-exploration-step-regen-effect.model';
 import {PassiveMpAbsorbEffect} from './passives/passive-mp-absorb-effect.model';
 import {PassiveMpDecreaseForSongsEffect} from './passives/passive-mp-decrease-for-songs-effect.model';
+import {PassiveMpRecoveryEffect} from './passives/passive-mp-recovery-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -98,6 +99,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveMpAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 31:
         return new PassiveLbSpeedIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 32:
+        return new PassiveMpRecoveryEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 33:
         return new PassiveLbPerTurnEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:

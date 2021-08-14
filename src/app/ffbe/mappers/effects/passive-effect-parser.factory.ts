@@ -1,7 +1,6 @@
 import {EffectParser} from './effect-parser';
 import {UnknownEffectParser} from './unknown-effect-parser';
 import {PassiveStatsIncreaseHpThresholdParser} from './passives/passive-stats-increase-hp-threshold.parser';
-import {PassiveMpRecoveryParser} from './passives/passive-mp-recovery.parser';
 import {PassiveCounterAttackChanceParser} from './passives/passive-counter-attack-chance.parser';
 import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-turn-start-activation.parser';
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
@@ -22,8 +21,6 @@ export class PassiveEffectParserFactory {
         return new PassiveStatsIncreaseUnarmedParser();
       case 20:
         return new PassiveCounterAttackChanceParser();
-      case 32:
-        return new PassiveMpRecoveryParser();
       case 44:
         return new PassiveNormalAttacksMultipleStrikesParser();
       case 51:

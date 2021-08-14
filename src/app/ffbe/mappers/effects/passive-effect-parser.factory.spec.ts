@@ -36,8 +36,6 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
-    {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
-    {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',
