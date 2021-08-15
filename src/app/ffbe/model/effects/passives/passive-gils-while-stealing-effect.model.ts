@@ -27,7 +27,8 @@ export class PassiveGilsWhileStealingEffect extends SkillEffect {
       tauxText = ` ${this.tauxMax}%`;
     }
 
-    return `Permet de voler${tauxText} des gils en plus des objets`;  }
+    return `Permet de voler${tauxText} des gils en plus des objets`;
+  }
 
   protected get effectName(): string {
     return 'PassiveGilsWhileStealingEffect';
