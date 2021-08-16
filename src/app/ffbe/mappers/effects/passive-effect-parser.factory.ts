@@ -8,15 +8,10 @@ import {PassiveSkillTurnStartActivationParser} from './passives/passive-skill-tu
 import {PassiveDeceivesDeathParser} from './passives/passive-deceives-death.parser';
 import {PassiveStatsIncreaseUnarmedParser} from './passives/passive-stats-increase-unarmed.parser';
 import {PassiveNormalAttacksMultipleStrikesParser} from './passives/passive-normal-attacks-multiple-strikes.parser';
-import {PassiveItemsDropRateParser} from './passives/passive-items-drop-rate.parser';
-import {PassiveGilsRateParser} from './passives/passive-gils-rate.parser';
 import {PassiveExperienceRateParser} from './passives/passive-experience-rate.parser';
 import {PassiveCombatRateDecreaseParser} from './passives/passive-combat-rate-decrease.parser';
 import {PassiveSkillAliveAllyActivationParser} from './passives/passive-skill-alive-ally-activation.parser';
-import {PassiveItemsHealingPotencyIncreaseParser} from './passives/passive-items-healing-potency-increase.parser';
 import {PassiveExplorationStepRegenParser} from './passives/passive-exploration-step-regen.parser';
-import {PassiveGilsWhileStealingParser} from './passives/passive-gils-while-stealing.parser';
-import {PassiveItemsStealRateParser} from './passives/passive-items-steal-rate.parser';
 import {AbilityMagicMultipleActivationParser} from './abilities/ability-magic-multiple-activation.parser';
 import {PassiveMpAbsorbParser} from './passives/passive-mp-absorb.parser';
 import {PassiveAilmentsCureAfterBattleParser} from './passives/passive-ailments-cure-after-battle.parser';
@@ -26,10 +21,6 @@ export class PassiveEffectParserFactory {
     switch (effectId3) {
       case 4:
         return new PassiveStatsIncreaseHpThresholdParser();
-      case 9:
-        return new PassiveItemsHealingPotencyIncreaseParser();
-      case 16:
-        return new PassiveItemsStealRateParser();
       case 18:
         return new PassiveAilmentsCureAfterBattleParser();
       case 19:
@@ -42,18 +33,12 @@ export class PassiveEffectParserFactory {
         return new PassiveMpAbsorbParser();
       case 32:
         return new PassiveMpRecoveryParser();
-      case 37:
-        return new PassiveGilsRateParser();
       case 43:
         return new PassiveCombatRateDecreaseParser();
       case 44:
         return new PassiveNormalAttacksMultipleStrikesParser();
       case 45:
         return new PassiveExperienceRateParser();
-      case 46:
-        return new PassiveGilsWhileStealingParser();
-      case 47:
-        return new PassiveItemsDropRateParser();
       case 48:
         return new PassiveMpDecreaseForSongsParser();
       case 51:

@@ -1,7 +1,6 @@
 import {PassiveEffectParserFactory} from './passive-effect-parser.factory';
 import {SkillsService} from '../../services/skills.service';
 import {SkillMockDataHelper} from '../../model/skill.model.spec';
-import {HTML_LINE_RETURN} from './skill-effects.mapper';
 import {CHARACTER_TEST_DATA} from '../../model/character/character.model.spec';
 import {Character} from '../../model/character/character.model';
 import {CharactersService} from '../../services/characters.service';
@@ -27,8 +26,6 @@ describe('PassiveEffectParser', () => {
       effect: '[0, 3, 4, [204,  40,  9000,  65,  0,  3]]',
       parsed: '+40% mitigation générale pour 3 tours quand les PV passent sous 65% (max 9000 fois)'
     },
-    {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
-    {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {
       effect: '[0, 3, 18, [1,  1,  1,  1,  1,  1,  1,  1]]',
       parsed: 'Soigne toutes les altérations au lanceur après le combat'
@@ -46,16 +43,9 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
-    {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
     {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
-    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
-    {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
-    {
-      effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
-        + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
-    },
     {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',

@@ -35,6 +35,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[1, 2, 8, [1, 100, 40, 60, 50]]',
       parsed: '50% de chance de protéger un allié féminin des attaques physiques avec mitigation de 40%-60%'
     },
+    {effect: '[0, 3, 9, [100]]', parsed: '+100% d\'efficacité des objets de soin en combat'},
     {
       effect: '[0, 3, 11, [[4,  6], 50, 0]]',
       parsed: '+50% de dégâts physiques contre les démons' + HTML_LINE_RETURN + '+50% de dégâts physiques contre les machines'
@@ -66,6 +67,7 @@ describe('PassiveSkillEffect', () => {
       parsed: 'Permet d\'équiper deux <a href="ffexvius_objects.php?categid=28">Katanas</a>, <a href="ffexvius_objects.php?categid=17">Bâtons</a>, <a href="ffexvius_objects.php?categid=2">Sceptres</a>'
     },
     {effect: '[0, 3, 14, ["none"]]', parsed: 'Permet d\'équiper deux armes'},
+    {effect: '[0, 3, 16, [100, 0]]', parsed: '+100% de chance de réussir à voler un objet'},
     {effect: '[0, 3, 17, [20]]', parsed: '+20% aux dégâts des sauts'},
     {effect: '[0, 3, 21, [20]]', parsed: '+20% INV'},
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
@@ -74,6 +76,7 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
+    {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
     {
       effect: '[0, 3, 41, [50, 0, 0]]',
       parsed: '50% de chance de contrer les dégâts magiques par une attaque normale'
@@ -83,6 +86,14 @@ describe('PassiveSkillEffect', () => {
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
+    {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
+    {effect: '[0, 3, 47, [30, 0]]', parsed: '+30% de chance d\'obtenir un butin normal'},
+    {effect: '[0, 3, 47, [0, 80]]', parsed: '+80% de chance de recevoir un butin rare'},
+    {
+      effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
+        + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
+    },
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {

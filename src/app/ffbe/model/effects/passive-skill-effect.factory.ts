@@ -43,8 +43,13 @@ import {PassiveTargetChanceChangesEffect} from './passives/passive-target-chance
 import {PassiveEvasionPhysicalEffect} from './passives/passive-evasion-physical-effect.model';
 import {PassiveEvasionMagicalEffect} from './passives/passive-evasion-magical-effect.model';
 import {PassiveDamagesAbsorptionEffect} from './passives/passive-damages-absorption-effect.model';
+import {PassiveGilsRateEffect} from './passives/passive-gils-rate-effect.model';
+import {PassiveItemsDropRateEffect} from './passives/passive-items-drop-rate-effect.model';
+import {PassiveItemsHealingPotencyIncreaseEffect} from './passives/passive-items-healing-potency-increase-effect.model';
+import {PassiveItemsStealRateEffect} from './passives/passive-items-steal-rate-effect.model';
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
+import {PassiveGilsWhileStealingEffect} from './passives/passive-gils-while-stealing-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -61,6 +66,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentCategoryStatsIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 8:
         return new PassiveCoverEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 9:
+        return new PassiveItemsHealingPotencyIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 11:
         return new PassiveKillerDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 12:
@@ -69,6 +76,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveEquipmentStatsDoublehandIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 14:
         return new PassiveDualWieldWeaponCategoryUnlockEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 16:
+        return new PassiveItemsStealRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 17:
         return new PassiveJumpDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 21:
@@ -84,10 +93,16 @@ export class PassiveSkillEffectFactory {
         return new PassiveLbPerTurnEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
         return new PassiveSkillBattleStartActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 37:
+        return new PassiveGilsRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 41:
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:
         return new PassiveElementsAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 46:
+        return new PassiveGilsWhileStealingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 47:
+        return new PassiveItemsDropRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
