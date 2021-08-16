@@ -27,9 +27,9 @@ export class PassiveExplorationStepRegenEffect extends SkillEffect {
     const hpText = this.hpRegen > 0 ?  `+${this.hpRegen} PV` : '';
     const linkText = this.hpRegen > 0 && this.mpRegen > 0 ? ' et ' : '';
     const mpText = this.mpRegen > 0 ? `+${this.mpRegen} PM` : '';
-    const stepsText = `${this.steps === 1 ? ` chaque` : ` tous les ${this.steps}`} pas en exploration`;
+    const stepsCountText = this.steps === 1 ? ` chaque` : ` tous les ${this.steps}`;
 
-    return `${hpText}${linkText}${mpText}${stepsText}`;
+    return `${hpText}${linkText}${mpText}${stepsCountText} pas en exploration`;
   }
 
   protected get effectName(): string {
