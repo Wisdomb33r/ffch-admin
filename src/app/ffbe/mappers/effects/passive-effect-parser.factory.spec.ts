@@ -36,17 +36,7 @@ describe('PassiveEffectParser', () => {
     },
     {effect: '[0, 3, 19, [200]]', parsed: '+200% ATT si l\'unité ne porte rien dans les deux mains'},
     {effect: '[0, 3, 20, [20]]', parsed: '+20% de chance d\'activation des contre-attaques'},
-    {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
-    {
-      effect: '[0, 3, 30, [50]]',
-      parsed: 'Absorbe 50% des PM utilisés par l\'adversaire lors de dégâts magiques encaissés'
-    },
-    {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
-    {effect: '[0, 3, 32, [3, 3]]', parsed: '+3 sphères de chimère'},
-    {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
     {effect: '[0, 3, 44, [7]]', parsed: 'Les attaques normales s\'exécutent 7 fois'},
-    {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
-    {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {
       effect: '[0, 3, 51, [20, 80, 10, 3]]',
       parsed: '80% de chance d\'éviter la mort avec 10% PV lors d\'une attaque fatale si les PV étaient supérieurs à 20% (max 3 fois)'

@@ -73,7 +73,15 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 22, [20]]', parsed: '+20% d\'esquive physique'},
     {effect: '[0, 3, 24, [20]]', parsed: '+20% de chance d\'être ciblé'},
     {effect: '[0, 3, 25, [30]]', parsed: '-30% de chance d\'être ciblé'},
+    {effect: '[1, 3, 29, [3,  5,  0,  0,  3]]', parsed: '+5 PV tous les 3 pas en exploration'},
+    {effect: '[0, 3, 29, [0,  0,  1,  2,  1]]', parsed: '+2 PM chaque pas en exploration'},
+    {effect: '[0, 3, 29, [8, 20, 5, 4, 6]]', parsed: '+20 PV et +4 PM tous les 6 pas en exploration'},
+    {
+      effect: '[0, 3, 30, [50]]',
+      parsed: 'Absorbe 50% des PM utilisés par l\'adversaire lors de dégâts magiques encaissés'
+    },
     {effect: '[0, 3, 31, [50]]', parsed: '+50% à la vitesse de la jauge de limite'},
+    {effect: '[0, 3, 32, [7]]', parsed: '+7% de PM soignés chaque tour'},
     {effect: '[0, 3, 33, [100]]', parsed: '+1 cristal de limite chaque tour'},
     {effect: '[0, 3, 33, [500]]', parsed: '+5 cristaux de limite chaque tour'},
     {effect: '[0, 3, 37, [500]]', parsed: '+500% de gils reçus en combat'},
@@ -86,6 +94,8 @@ describe('PassiveSkillEffect', () => {
       parsed: '30% de chance de contrer les dégâts magiques par une attaque normale'
     },
     {effect: '[0, 3, 42, [0, 0, 0, 1, 0, 0, 1, 0]]', parsed: 'Absorbe les dégâts d\'élément Eau ou Lumière'},
+    {effect: '[0, 3, 43, [-20]]', parsed: '-20% de chance de combat en exploration'},
+    {effect: '[0, 3, 45, [50]]', parsed: '+50% d\'expérience reçue en combat'},
     {effect: '[0, 3, 46, [100, 100]]', parsed: 'Permet de voler 100% des gils en plus des objets'},
     {effect: '[0, 3, 46, [50, 100]]', parsed: 'Permet de voler 50% à 100% des gils en plus des objets'},
     {effect: '[0, 3, 47, [30, 0]]', parsed: '+30% de chance d\'obtenir un butin normal'},
@@ -94,6 +104,7 @@ describe('PassiveSkillEffect', () => {
       effect: '[0, 3, 47, [50, 100]]', parsed: '+50% de chance d\'obtenir un butin normal'
         + HTML_LINE_RETURN + '+100% de chance de recevoir un butin rare'
     },
+    {effect: '[0, 3, 48, [20]]', parsed: '-20% de PM consommés par les compétences chantées'},
     {effect: '[0, 3, 54, [-1, 20]]', parsed: '+20% d\'esquive magique (effet passif non cumulable)'},
     {effect: '[0, 3, 55, [0, 0, 0, 0, 50, 50]]', parsed: '+50% de rés. à Stop et Charme'},
     {

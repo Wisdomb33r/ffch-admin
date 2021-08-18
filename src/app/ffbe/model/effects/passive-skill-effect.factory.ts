@@ -50,6 +50,12 @@ import {PassiveItemsStealRateEffect} from './passives/passive-items-steal-rate-e
 import {PassiveSkillMultipleActivationEffect} from './passives/skill/passive-skill-multiple-activation-effect.model';
 import {PassiveSkillOrMagicMultipleActivationEffectModel} from './passives/skill/passive-skill-or-magic-multiple-activation-effect.model';
 import {PassiveGilsWhileStealingEffect} from './passives/passive-gils-while-stealing-effect.model';
+import {PassiveCombatRateDecreaseEffect} from './passives/passive-combat-rate-decrease-effect.model';
+import {PassiveExperienceRateEffect} from './passives/passive-experience-rate-effect.model';
+import {PassiveExplorationStepRegenEffect} from './passives/passive-exploration-step-regen-effect.model';
+import {PassiveMpAbsorbEffect} from './passives/passive-mp-absorb-effect.model';
+import {PassiveMpDecreaseForSongsEffect} from './passives/passive-mp-decrease-for-songs-effect.model';
+import {PassiveMpRecoveryEffect} from './passives/passive-mp-recovery-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -87,8 +93,14 @@ export class PassiveSkillEffectFactory {
       case 24:
       case 25:
         return new PassiveTargetChanceChangesEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 29:
+        return new PassiveExplorationStepRegenEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 30:
+        return new PassiveMpAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 31:
         return new PassiveLbSpeedIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 32:
+        return new PassiveMpRecoveryEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 33:
         return new PassiveLbPerTurnEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 35:
@@ -99,10 +111,16 @@ export class PassiveSkillEffectFactory {
         return new PassiveCounterAttackEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 42:
         return new PassiveElementsAbsorbEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 43:
+        return new PassiveCombatRateDecreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 45:
+        return new PassiveExperienceRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 46:
         return new PassiveGilsWhileStealingEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 47:
         return new PassiveItemsDropRateEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 48:
+        return new PassiveMpDecreaseForSongsEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 49:
       case 50:
         return new PassiveSkillCounterAttackActivationEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
