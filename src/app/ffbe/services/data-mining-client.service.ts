@@ -16,6 +16,7 @@ const consumableFile = dataMiningBaseURL + 'items.json';
 const equipmentFile = dataMiningBaseURL + 'equipment.json';
 const materiaFile = dataMiningBaseURL + 'materia.json';
 const visionCardsFile = dataMiningBaseURL + 'vision_cards.json';
+const fieldEffectsFile = dataMiningBaseURL + 'field_effects.json';
 const dataMiningStringsBaseURL = 'https://raw.githubusercontent.com/aEnigmatic/ffbe-gl-strings/master/';
 const skillsNamesFile = dataMiningStringsBaseURL + 'MST_ABILITY_NAME.json';
 const skillsMagicNamesFile = dataMiningStringsBaseURL + 'MST_MAGIC_NAME.json';
@@ -129,5 +130,9 @@ export class DataMiningClientService {
 
   public getVisionCardsDescriptions$(): Observable<Object> {
     return this.http.get(visionCardsDescriptionsFile);
+  }
+
+  public getFieldEffects$(): Observable<Object> {
+    return this.http.get(fieldEffectsFile);
   }
 }
