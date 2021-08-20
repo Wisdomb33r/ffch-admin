@@ -48,6 +48,31 @@ describe('PassiveCounterAttackWithSkillEffect', () => {
       '<a href="ffexvius_skills.php?gumiid=509624">Lame des braves (FFV)</a>');
   });
 
+  it('should parse counter physical attack with normal attack', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 49, [30,  1,  0,  0]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(null);
+    // WHEN
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('30% de chance de contrer les dégâts physiques par une attaque normale de puissance 100%');
+  });
+
+
+  it('should parse counter magical attack with normal attack', () => {
+    // GIVEN
+    const effect = JSON.parse('[0, 3, 50, [30,  1,  0,  0]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(null);
+    // WHEN
+    const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    // THEN
+    expect(s).toEqual('30% de chance de contrer les dégâts magiques par une attaque normale de puissance 100%');
+  });
+
   it('should return empty activated skills array upon parameterError for physical counterattack', () => {
     // GIVEN
     const effect = JSON.parse('[1, 1, 49, []]');
