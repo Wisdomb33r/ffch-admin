@@ -48,6 +48,22 @@ describe('PassiveCounterAttackWithSkillEffect', () => {
       '<a href="ffexvius_skills.php?gumiid=509624">Lame des braves (FFV)</a>');
   });
 
+  it('should store activated skill for effects worded with a link', () => {
+    // GIVEN
+    const skill: Skill = SkillMockDataHelper.mockAbilitySkill(509624);
+
+    const effect = JSON.parse('[0, 3, 49, [15, 3, 509624]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValue(skill);
+    // WHEN
+    const activatedSkills = PassiveSkillEffectFactory.getSkillEffect(effect).getActivatedSkills(new Skill());
+
+    // THEN
+    expect(activatedSkills.length).toEqual(1);
+    expect(activatedSkills[0].gumi_id).toEqual(509624);
+  });
+
   it('should parse counter physical attack with normal attack', () => {
     // GIVEN
     const effect = JSON.parse('[0, 3, 49, [30,  1,  0,  0]]');
