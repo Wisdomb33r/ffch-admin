@@ -4,7 +4,7 @@ import {SkillsServiceMock} from '../../../../services/skills.service.spec';
 import {SkillsService} from '../../../../services/skills.service';
 import {PassiveSkillEffectFactory} from '../../passive-skill-effect.factory';
 
-describe('PassiveCounterAttackWithSkillEffect', () => {
+describe('PassiveSkillCounterAttackActivationEffect', () => {
   it('should parse counter attack with skill effect with max per turn', () => {
     // GIVEN
     const skill: Skill = SkillMockDataHelper.mockPassiveSkill(100020);
