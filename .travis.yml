@@ -11,6 +11,9 @@ addons:
 node_js:
   - '14'
 
+git:
+  depth: false
+
 before_script:
   - npm -v
   - node -v

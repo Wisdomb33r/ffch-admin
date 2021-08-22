@@ -14,6 +14,7 @@ export class PassiveSkillCounterAttackActivationEffect extends SkillEffect {
   private counterChance: number;
   private activatedSkill: Skill;
   private maxActivationNumber: number;
+  private counterWithSkill: boolean;
 
   constructor(protected targetNumber: TargetNumberEnum,
               protected targetType: TargetTypeEnum,
@@ -25,8 +26,13 @@ export class PassiveSkillCounterAttackActivationEffect extends SkillEffect {
     } else {
       this.counterChance = parameters[0];
       // TODO how to integrate parameters[1], which represents the target, into the description of the activated skill ? -_-
-      this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(parameters[2]);
-      this.activatedSkill.isActivatedByPassiveSkill = true;
+      this.counterWithSkill = parameters[2] > 0;
+      if (this.counterWithSkill) {
+        this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(parameters[2]);
+        if (this.activatedSkill) {
+          this.activatedSkill.isActivatedByPassiveSkill = true;
+        }
+      }
       this.maxActivationNumber = parameters[3];
     }
   }
@@ -37,20 +43,23 @@ export class PassiveSkillCounterAttackActivationEffect extends SkillEffect {
 
   protected wordEffectImpl(skill: Skill): string {
     const damageTypeText = this.effectId === 49 ? 'physiques' : 'magiques';
-    const prefixText = `${this.counterChance}% de chance de contrer les dégâts ${damageTypeText} par: `;
+    const prefixText = `${this.counterChance}% de chance de contrer les dégâts ${damageTypeText} par`;
+    const separatorText = ': ';
     const suffixText = this.maxActivationNumber ? ` (max ${this.maxActivationNumber} par tour)` : '';
 
-    if (!this.activatedSkill) {
-      return `${prefixText} UNKNOWN skill ${suffixText}`;
+    if (!this.counterWithSkill) {
+      return `${prefixText} une attaque normale de puissance 100%${suffixText}`;
+    } else if (!this.activatedSkill) {
+      return `${prefixText}${separatorText} UNKNOWN skill ${suffixText}`;
     }
 
     const activatedCompetence: Competence = SkillMapper.toCompetence(this.activatedSkill);
     if (this.shouldActivatedSkillBeDisplayedAsLink(activatedCompetence)) {
-      return `${prefixText}${EffectParser.getSkillNameWithGumiIdentifierLink(this.activatedSkill)}${suffixText}`;
+      return `${prefixText}${separatorText}${EffectParser.getSkillNameWithGumiIdentifierLink(this.activatedSkill)}${suffixText}`;
     } else {
       return activatedCompetence.effet_fr
         .split(HTML_LINE_RETURN)
-        .map(effet => `${prefixText}${effet}${suffixText}`)
+        .map(effet => `${prefixText}${separatorText}${effet}${suffixText}`)
         .join(HTML_LINE_RETURN);
     }
   }
