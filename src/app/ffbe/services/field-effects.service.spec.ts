@@ -68,12 +68,12 @@ describe('FieldEffectsService', () => {
     // GIVEN
     service.loadFieldEffectsFromDataMining();
     // WHEN
-    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(100000004);
+    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(200000027);
 
     // THEN
     expect(fieldEffect).toBeTruthy();
-    expect(fieldEffect.duration).toEqual(3);
-    expect(fieldEffect.gumi_id).toBe(100000004);
+    expect(fieldEffect.duration).toEqual(4);
+    expect(fieldEffect.gumi_id).toBe(200000027);
   }));
 
   it('should find null when searched if field effect not present', inject([FieldEffectsService], (service: FieldEffectsService) => {
