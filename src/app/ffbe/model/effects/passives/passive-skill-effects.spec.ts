@@ -21,6 +21,8 @@ describe('PassiveSkillEffect', () => {
     {effect: '[0, 3, 3, [20, 20, 20, 20, 20, 20, 20, 20]]', parsed: '+20% de rés. aux éléments'},
     {effect: '[0, 3, 3, [30, 30, 0, 0, 0, 0, 0]]', parsed: '+30% de rés. Feu, Glace'},
     {effect: '[0, 3, 3, [10, 0, 0, 10, 10, 10, 0, 0, 0]]', parsed: '+10% de rés. Feu, Eau, Vent, Terre'},
+    {effect: '[0, 3, 3, [30,  -50,  0,  0,  0,  0,  0,  0]]', parsed: '+30% de rés. Feu, -50% de rés. Glace'},
+    {effect: '[0, 3, 3, [-10, -10, -10, -10, -10, -10, -10, -10]]', parsed: '-10% de rés. aux éléments'},
     {effect: '[0, 3, 5, [11]]', parsed: 'Permet d\'équiper les <a href="ffexvius_objects.php?categid=33">Harpes</a>'},
     {effect: '[0, 3, 5, [666]]', parsed: 'Permet d\'équiper les UNKNOWN'},
     {
