@@ -11,6 +11,7 @@ import {MateriasService} from '../services/materias.service';
 import {FfbeUtils} from '../utils/ffbe-utils';
 import {ConsumablesService} from '../services/consumables.service';
 import {VisionCardsService} from '../services/vision-cards.service';
+import {FieldEffectsService} from '../services/field-effects.service';
 
 @Component({
   templateUrl: './characters.component.html',
@@ -30,7 +31,8 @@ export class CharactersComponent implements OnInit {
               private consumablesService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService,
-              private visionsCardsService: VisionCardsService) {
+              private visionsCardsService: VisionCardsService,
+              private fieldEffectsService: FieldEffectsService) {
     this.name = new FormControl('', Validators.required);
     this.searchForm = new FormGroup({
       name: this.name
