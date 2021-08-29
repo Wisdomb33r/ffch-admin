@@ -51,6 +51,7 @@ import {AbilityMoraleJaugeEffect} from './abilities/ability-morale-jauge-effect.
 import {AbilityElementsAbsorbEffect} from './abilities/ability-elements-absorb-effect.model';
 import {AbilityDamageMagicMpIncreasedEffect} from './abilities/damage/ability-damage-magic-mp-increased-effect.model';
 import {AbilityDamageMagicMpScalingEffect} from './abilities/damage/ability-damage-magic-mp-scaling-effect.model';
+import {AbilityFieldEffect} from './abilities/ability-field-effect.model';
 
 export class AbilitySkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -154,6 +155,8 @@ export class AbilitySkillEffectFactory {
         return new AbilitySkillMagnusEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 159:
         return new AbilityDamagePhysicalIncreasedBreakEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 160:
+        return new AbilityFieldEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 162:
         return new AbilityAccuracyIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 163:
