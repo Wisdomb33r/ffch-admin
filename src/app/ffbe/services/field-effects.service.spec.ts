@@ -2,10 +2,7 @@ import {inject, TestBed} from '@angular/core/testing';
 import {Observable, of} from 'rxjs';
 import {DataMiningClientService} from './data-mining-client.service';
 import {FieldEffectsService} from './field-effects.service';
-import {Skill} from '../model/skill.model';
-import {
-  FIELD_EFFECTS_TEST_DATA
-} from '../model/effects/field-effect.model.spec';
+import {FIELD_EFFECTS_TEST_DATA} from '../model/effects/field-effect.model.spec';
 import {FieldEffect} from '../model/effects/field-effect.model';
 
 export class FieldEffectsServiceMock {
@@ -15,7 +12,7 @@ export class FieldEffectsServiceMock {
     return FieldEffectsServiceMock.INSTANCE;
   }
 
-  public searchForFieldEffectByGumiId(gumiId: number): Skill {
+  public searchForFieldEffectByGumiId(gumiId: number): FieldEffect {
     return null;
   }
 }
