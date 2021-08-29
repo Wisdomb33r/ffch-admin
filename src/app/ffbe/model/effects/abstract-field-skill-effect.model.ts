@@ -14,7 +14,9 @@ export abstract class AbstractFieldSkillEffect extends SkillEffect {
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
 
     // TODO: Handle other cases!
-    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Enemy) {
+    if (this.targetNumber === TargetNumberEnum.Self && this.targetType === TargetTypeEnum.Caster) {
+      return SkillEffect.getTargetAlliesAndEnemiesText(preposition);
+    } else if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Enemy) {
       return SkillEffect.getTargetEnemiesText(preposition);
     }
 

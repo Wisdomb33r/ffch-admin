@@ -56,6 +56,7 @@ import {PassiveExplorationStepRegenEffect} from './passives/passive-exploration-
 import {PassiveMpAbsorbEffect} from './passives/passive-mp-absorb-effect.model';
 import {PassiveMpDecreaseForSongsEffect} from './passives/passive-mp-decrease-for-songs-effect.model';
 import {PassiveMpRecoveryEffect} from './passives/passive-mp-recovery-effect.model';
+import {PassiveEsperSummonFieldEffect} from './passives/esper/passive-esper-summon-field-effect.model';
 
 export class PassiveSkillEffectFactory {
   public static getSkillEffect(effectRaw): SkillEffect {
@@ -172,6 +173,8 @@ export class PassiveSkillEffectFactory {
         return new PassiveStatsIncreaseFixedEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 95:
         return new PassiveBrokenTargetDamageIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
+      case 97:
+        return new PassiveEsperSummonFieldEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 98:
         return new PassiveChainModifierLimitIncreaseEffect(effectRaw[0], effectRaw[1], effectRaw[2], effectRaw[3]);
       case 99:
