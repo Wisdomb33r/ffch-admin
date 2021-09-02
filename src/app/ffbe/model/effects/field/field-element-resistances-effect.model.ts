@@ -17,7 +17,7 @@ export class FieldElementResistancesEffect extends AbstractFieldSkillEffect {
     if (!Array.isArray(parameters) || parameters.length < 1) {
       this.parameterError = true;
     } else {
-      this.passiveEffect = new PassiveElementsResistanceEffect(targetNumber, targetType, effectId, parameters);
+      this.passiveEffect = new PassiveElementsResistanceEffect(this.convertedTarget[0], this.convertedTarget[1], effectId, parameters);
       this.parameterWarning = this.passiveEffect.hasParameterWarning();
     }
   }
