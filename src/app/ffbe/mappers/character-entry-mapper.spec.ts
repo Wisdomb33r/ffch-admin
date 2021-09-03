@@ -84,4 +84,20 @@ describe('CharacterEntryMapper', function () {
     expect(fakeUnite.lim_frames).toEqual('11 18 25 32 39 46 53 60 67 74 81 88 95 102 109 116 123 130 137 144 151 158 165 172');
     expect(fakeUnite.lim_damages).toEqual('2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 54');
   });
+
+  it('should parse LB correctly when names are missing', () => {
+    // GIVEN
+    const lbs = JSON.parse(LIMIT_BURST_TEST_DATA);
+    const lbsNames = JSON.parse(LIMIT_BURST_NAMES_TEST_DATA);
+    const lb: LimitBurst = lbs['100031607'];
+    lb.names = lbsNames['1234'];
+    const fakeUnite = new Unite(2185, 8, 100032707, 100032707);
+
+    // WHEN
+    CharacterEntryMapper['convertLimitBurst'](fakeUnite, lb, []);
+
+    // THEN
+    expect(fakeUnite.limite).toEqual('WARN:Veracious Moon');
+    expect(fakeUnite.limite_en).toEqual('WARN:Veracious Moon');
+  });
 });
