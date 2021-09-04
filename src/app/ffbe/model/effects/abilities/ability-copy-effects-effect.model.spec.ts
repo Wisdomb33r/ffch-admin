@@ -1,7 +1,7 @@
-import {AbilityEffectParserFactory} from './ability-effect-parser.factory';
-import {HTML_LINE_RETURN} from '../skill-effects.mapper';
+import {AbilityEffectParserFactory} from '../../../mappers/effects/abilities/ability-effect-parser.factory';
+import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
 
-describe('AbilityCopyEffectsParser', () => {
+describe('AbilityCopyEffectsEffect', () => {
 
   it('should parse effect copy from one enemy to the caster (inspired from "Grand Reversal")',
     () => {

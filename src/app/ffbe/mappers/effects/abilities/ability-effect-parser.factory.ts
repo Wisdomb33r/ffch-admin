@@ -38,7 +38,7 @@ import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
 import {AbilityMagicReflectParser} from './ability-magic-reflect.parser';
 import {AbilityItemAllAlliesEffectParser} from './ability-item-all-allies-effect.parser';
-import {AbilityCopyEffectsParser} from './ability-copy-effects.parser';
+import {AbilityCopyEffectsParser} from '../../../model/effects/abilities/ability-copy-effects-effect.model';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {

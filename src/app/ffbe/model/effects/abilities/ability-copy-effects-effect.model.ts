@@ -1,7 +1,7 @@
-import {EffectParser} from '../effect-parser';
-import {Skill} from '../../../model/skill.model';
-import {HTML_LINE_RETURN} from '../skill-effects.mapper';
-import {TargetPrepositionEnum} from '../../../model/effects/target-preposition.enum';
+import {EffectParser} from '../../../mappers/effects/effect-parser';
+import {Skill} from '../../skill.model';
+import {HTML_LINE_RETURN} from '../../../mappers/effects/skill-effects.mapper';
+import {TargetPrepositionEnum} from '../target-preposition.enum';
 
 export class AbilityCopyEffectsParser extends EffectParser {
   public parse(effect: Array<any>, skill: Skill): string {
