@@ -27,7 +27,7 @@ export class PassiveEsperSummonFieldEffect extends SkillEffect {
       }
       this.esperId = parameters[0];
       this.fieldEffectId = parameters[2];
-      this.fieldEffect = FieldEffectsService.getInstance().searchForFieldEffectByGumiId(this.fieldEffectId);
+      this.fieldEffect = FieldEffectsService.getInstance().searchForFieldEffectByGumiId(this.fieldEffectId, this.targetNumber, this.targetType);
     }
   }
 

@@ -3,6 +3,8 @@ import {Injectable} from '@angular/core';
 import {DataMiningClientService} from './data-mining-client.service';
 import {forkJoin} from 'rxjs';
 import {plainToClass} from 'class-transformer';
+import {TargetNumberEnum} from '../model/effects/target-number.enum';
+import {TargetTypeEnum} from '../model/effects/target-type.enum';
 
 @Injectable()
 export class FieldEffectsService {
@@ -31,20 +33,21 @@ export class FieldEffectsService {
     }
   }
 
-  public searchForFieldEffectByGumiId(id: number): FieldEffect {
+  public searchForFieldEffectByGumiId(id: number, targetNumber: TargetNumberEnum, targetType: TargetTypeEnum): FieldEffect {
     if (this.fieldEffectsFromDataMining != null) {
       const propertyNames: string[] = Object.getOwnPropertyNames(this.fieldEffectsFromDataMining);
       const property = propertyNames.find(propertyName => +propertyName === id);
       if (property) {
-        return this.convertPlainDataMiningObjectToFieldEffect(property);
+        return this.convertPlainDataMiningObjectToFieldEffect(property, targetNumber, targetType);
       }
     }
     return null;
   }
 
-  private convertPlainDataMiningObjectToFieldEffect(property: string): FieldEffect {
+  private convertPlainDataMiningObjectToFieldEffect(property: string, targetNumber: TargetNumberEnum, targetType: TargetTypeEnum): FieldEffect {
     const fieldEffect: FieldEffect = plainToClass(FieldEffect, this.fieldEffectsFromDataMining[property]);
     fieldEffect.gumi_id = +property;
+    fieldEffect.initializeFieldSkillEffects(targetNumber, targetType);
     return fieldEffect;
   }
 

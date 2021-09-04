@@ -20,7 +20,7 @@ export class AbilityFieldEffect extends SkillEffect {
       this.parameterError = true;
     } else {
       this.fieldEffectId = parameters[0];
-      this.fieldEffect = FieldEffectsService.getInstance().searchForFieldEffectByGumiId(this.fieldEffectId);
+      this.fieldEffect = FieldEffectsService.getInstance().searchForFieldEffectByGumiId(this.fieldEffectId, this.targetNumber, this.targetType);
     }
   }
 

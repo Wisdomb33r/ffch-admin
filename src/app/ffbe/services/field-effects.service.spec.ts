@@ -4,6 +4,8 @@ import {DataMiningClientService} from './data-mining-client.service';
 import {FieldEffectsService} from './field-effects.service';
 import {FIELD_EFFECTS_TEST_DATA} from '../model/effects/field-effect.model.spec';
 import {FieldEffect} from '../model/effects/field-effect.model';
+import {TargetNumberEnum} from '../model/effects/target-number.enum';
+import {TargetTypeEnum} from '../model/effects/target-type.enum';
 
 export class FieldEffectsServiceMock {
   private static INSTANCE: FieldEffectsServiceMock = new FieldEffectsServiceMock();
@@ -12,7 +14,7 @@ export class FieldEffectsServiceMock {
     return FieldEffectsServiceMock.INSTANCE;
   }
 
-  public searchForFieldEffectByGumiId(gumiId: number): FieldEffect {
+  public searchForFieldEffectByGumiId(gumiId: number, targetNumber: TargetNumberEnum, targetType: TargetTypeEnum): FieldEffect {
     return null;
   }
 }
@@ -65,7 +67,7 @@ describe('FieldEffectsService', () => {
     // GIVEN
     service.loadFieldEffectsFromDataMining();
     // WHEN
-    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(200000027);
+    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(200000027, null, null);
 
     // THEN
     expect(fieldEffect).toBeTruthy();
@@ -77,7 +79,7 @@ describe('FieldEffectsService', () => {
     // GIVEN
     service.loadFieldEffectsFromDataMining();
     // WHEN
-    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(125);
+    const fieldEffect: FieldEffect = service.searchForFieldEffectByGumiId(125, null, null);
     // THEN
     expect(fieldEffect).toBeFalsy();
   }));
