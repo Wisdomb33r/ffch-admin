@@ -138,13 +138,17 @@ export class AbilityCopyEffectsParser extends EffectParser {
       this.removeElements(limitBurstDamagesRange, copiedEffectsIds);
     }
 
-    if (copiedEffectsIds.length > 0) {
-      return `Effet AbilityCopyEffectsParser inconnu: Eléments inconnus: ${copiedEffectsIds.join(', ')}`;
-    }
 
     const stringJoinSeparator = `${HTML_LINE_RETURN} • `;
-    return `Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
-      `${stringJoinSeparator}${copiedEffects.join(stringJoinSeparator)}`;
+    const copiedEffectsText = copiedEffects.length > 0 ?
+      (`Copie les effets suivants ${sourceOfEffect} ${targetOfEffect} pour ${numTurns} tour${pluralFormTurns}:` +
+        `${stringJoinSeparator}${copiedEffects.join(stringJoinSeparator)}`) : '';
+
+    const separatorText = copiedEffects.length > 0 && copiedEffectsIds.length > 0 ? `${HTML_LINE_RETURN}` : '';
+    const leftoverText = copiedEffectsIds.length > 0 ?
+      `Effet AbilityCopyEffectsParser inconnu: Eléments inconnus: ${copiedEffectsIds.join(', ')}` : '';
+
+    return `${copiedEffectsText}${separatorText}${leftoverText}`;
   }
 
 

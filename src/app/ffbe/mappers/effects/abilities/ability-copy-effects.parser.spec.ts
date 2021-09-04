@@ -201,4 +201,16 @@ describe('AbilityCopyEffectsParser', () => {
       `${HTML_LINE_RETURN} • Bonus aux dégâts de la limite`);
   });
 
+  it('should indicate which effects could not be parsed after wording the successful ones', () => {
+    // GIVEN
+    const effect = JSON.parse('[1, 2, 1005, [0, 5, 100, "23;24;25;26;27;-101;28;29;30;87;88;-45;89;90;91;-21;92;93;94"]]');
+    // WHEN
+    const s = AbilityEffectParserFactory.getParser(effect[0], effect[1], effect[2]).parse(effect, null);
+    // THEN
+    expect(s).toEqual(`Copie les effets suivants d\'un allié au lanceur pour 5 tours:` +
+      `${HTML_LINE_RETURN} • Bonus aux rés. élémentaires${HTML_LINE_RETURN}` +
+      ` • Éléments ajoutés aux attaques physiques et hybrides${HTML_LINE_RETURN}` +
+      `Effet AbilityCopyEffectsParser inconnu: Eléments inconnus: -101, -45, -21`);
+  });
+
 });
