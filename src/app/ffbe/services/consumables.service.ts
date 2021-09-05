@@ -32,7 +32,8 @@ export class ConsumablesService {
       matchingProperties = propertyNames.filter(
         propertyName =>
           this.consumablesFromDataMining[propertyName].name === english
-          && this.consumablesFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
+          && this.consumablesFromDataMining[propertyName].strings?.names
+          && this.consumablesFromDataMining[propertyName].strings?.names[FFBE_FRENCH_TABLE_INDEX] === french
       );
     } else if (english) {
       matchingProperties = propertyNames.filter(
@@ -40,7 +41,8 @@ export class ConsumablesService {
       );
     } else if (french) {
       matchingProperties = propertyNames.filter(
-        propertyName => this.consumablesFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
+        propertyName => this.consumablesFromDataMining[propertyName].strings?.names
+          && this.consumablesFromDataMining[propertyName].strings?.names[FFBE_FRENCH_TABLE_INDEX] === french
       );
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {

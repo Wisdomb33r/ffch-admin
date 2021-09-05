@@ -34,19 +34,21 @@ export class MateriasService {
     const propertyNames: string[] = Object.getOwnPropertyNames(this.materiasFromDataMining);
     let matchingProperties: Array<string> = [];
     if (english && french) {
-      matchingProperties = propertyNames.filter(
-        propertyName =>
-          this.materiasFromDataMining[propertyName].name === english
-          && this.materiasFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
-      );
+      matchingProperties = propertyNames
+        .filter(
+          propertyName =>
+            this.materiasFromDataMining[propertyName].name === english
+            && this.materiasFromDataMining[propertyName].strings?.names
+            && this.materiasFromDataMining[propertyName].strings?.names[FFBE_FRENCH_TABLE_INDEX] === french
+        );
     } else if (english) {
       matchingProperties = propertyNames.filter(
         propertyName => this.materiasFromDataMining[propertyName].name === english
       );
     } else if (french) {
       matchingProperties = propertyNames.filter(
-        propertyName => this.materiasFromDataMining[propertyName].strings.names[FFBE_FRENCH_TABLE_INDEX] === french
-      );
+        propertyName => this.materiasFromDataMining[propertyName].strings?.names
+          && this.materiasFromDataMining[propertyName].strings?.names[FFBE_FRENCH_TABLE_INDEX] === french);
     }
     if (Array.isArray(matchingProperties) && matchingProperties.length > 0) {
       matchingProperties.forEach(property => {
