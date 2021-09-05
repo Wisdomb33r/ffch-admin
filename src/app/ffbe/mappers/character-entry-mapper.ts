@@ -81,8 +81,8 @@ export class CharacterEntryMapper {
     if (lb) {
       const minLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, 0);
       const maxLevelFakeSkill: Skill = CharacterEntryMapper.createFakeSkillForLb(lb, lb.levels.length - 1).initializeSkillEffects();
-      unite.limite = lb.names[FFBE_FRENCH_TABLE_INDEX];
-      unite.limite_en = lb.names[FFBE_ENGLISH_TABLE_INDEX];
+      unite.limite = CharacterEntryMapper.getLocalisedName(lb, FFBE_FRENCH_TABLE_INDEX);
+      unite.limite_en = CharacterEntryMapper.getLocalisedName(lb, FFBE_ENGLISH_TABLE_INDEX);
       unite.lim_effect_min = lb.min_level.length > 0 ? lb.min_level.join('<br />') : null;
       unite.lim_effect_max = lb.max_level.length > 0 ? lb.max_level.join('<br />') : null;
       unite.lim_min = SkillEffectsMapper.mapAbilitySkillEffects(minLevelFakeSkill);
@@ -123,6 +123,11 @@ export class CharacterEntryMapper {
     fakeSkill.attack_damage = lb.attack_damage;
     fakeSkill.attack_frames = lb.attack_frames;
     return fakeSkill;
+  }
+
+  private static getLocalisedName(lb: LimitBurst, languageIndex: number) {
+    return lb.names && lb.names[languageIndex] ? lb.names[languageIndex] : `WARN:${lb.name}`;
+
   }
 
   private static convertAwakeningMaterials(unite: Unite, entry: CharacterEntry) {
