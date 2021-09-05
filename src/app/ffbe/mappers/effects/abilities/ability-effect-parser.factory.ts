@@ -38,7 +38,6 @@ import {AbilityThrowItemsParser} from './ability-throw-items.parser';
 import {AbilityDebuffsStealParser} from './ability-debuffs-steal.parser';
 import {AbilityMagicReflectParser} from './ability-magic-reflect.parser';
 import {AbilityItemAllAlliesEffectParser} from './ability-item-all-allies-effect.parser';
-import {AbilityCopyEffectsParser} from '../../../model/effects/abilities/ability-copy-effects-effect.model';
 
 export class AbilityEffectParserFactory {
   public static getParser(effectId1: number, effectId2: number, effectId3: number): EffectParser {
@@ -152,8 +151,6 @@ export class AbilityEffectParserFactory {
         return new AbilityBarriersParser();
       case 133:
         return new AbilityDebuffsStealParser();
-      case 1005:
-        return new AbilityCopyEffectsParser();
       default:
         return new UnknownEffectParser();
     }
