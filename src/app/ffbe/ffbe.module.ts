@@ -59,6 +59,7 @@ import {ObjetTueursDisplayComponent} from './objets-display-components/objet-tue
 import {ObjetsComparingContainerDisplayComponent} from './objets-display-components/objets-comparing-container-display/objets-comparing-container-display.component';
 import {MatIconModule} from '@angular/material/icon';
 import {VisionCardsService} from './services/vision-cards.service';
+import {FieldEffectsService} from './services/field-effects.service';
 
 @NgModule({
   imports: [
@@ -137,6 +138,7 @@ import {VisionCardsService} from './services/vision-cards.service';
     MateriasService,
     LatentSkillsService,
     VisionCardsService,
+    FieldEffectsService,
   ]
 })
 export class FfbeModule {

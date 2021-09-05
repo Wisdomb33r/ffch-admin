@@ -10,6 +10,7 @@ import {FfbeUtils} from '../utils/ffbe-utils';
 import {CharactersService} from '../services/characters.service';
 import {ConsumablesService} from '../services/consumables.service';
 import {VisionCardsService} from '../services/vision-cards.service';
+import {FieldEffectsService} from '../services/field-effects.service';
 
 @Component({
   templateUrl: './skills.component.html',
@@ -30,7 +31,8 @@ export class SkillsComponent implements OnInit {
               private consumableService: ConsumablesService,
               private equipmentsService: EquipmentsService,
               private materiasService: MateriasService,
-              private visionsCardsService: VisionCardsService) {
+              private visionsCardsService: VisionCardsService,
+              private fieldEffectsService: FieldEffectsService) {
     this.englishName = new FormControl('');
     this.frenchName = new FormControl('');
     this.gumiId = new FormControl('');

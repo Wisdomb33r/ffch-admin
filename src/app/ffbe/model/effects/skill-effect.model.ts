@@ -50,42 +50,46 @@ export abstract class SkillEffect extends EffectIdenticalValuesWording {
   }
 
   protected wordTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A): string {
+    return this.wordSpecificTarget(preposition, this.targetNumber, this.targetType);
+  }
 
-    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Enemy) {
+  protected wordSpecificTarget(preposition: TargetPrepositionEnum = TargetPrepositionEnum.A, targetNumber: TargetNumberEnum, targetType: TargetTypeEnum): string {
+
+    if (targetNumber === TargetNumberEnum.Single && targetType === TargetTypeEnum.Enemy) {
       return SkillEffect.getTargetEnemyText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Random && this.targetType === TargetTypeEnum.Enemy) {
+    if (targetNumber === TargetNumberEnum.Random && targetType === TargetTypeEnum.Enemy) {
       return SkillEffect.getTargetRandomEnemyText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Enemy) {
+    if (targetNumber === TargetNumberEnum.Multiple && targetType === TargetTypeEnum.Enemy) {
       return SkillEffect.getTargetEnemiesText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Ally) {
+    if (targetNumber === TargetNumberEnum.Single && targetType === TargetTypeEnum.Ally) {
       return SkillEffect.getTargetAllyText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.AllyButCaster) {
+    if (targetNumber === TargetNumberEnum.Single && targetType === TargetTypeEnum.AllyButCaster) {
       return SkillEffect.getTargetAllyButCasterText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Random && this.targetType === TargetTypeEnum.Ally) {
+    if (targetNumber === TargetNumberEnum.Random && targetType === TargetTypeEnum.Ally) {
       return SkillEffect.getTargetRandomAllyText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Single && this.targetType === TargetTypeEnum.Any) {
+    if (targetNumber === TargetNumberEnum.Single && targetType === TargetTypeEnum.Any) {
       return SkillEffect.getTargetAnyTargetText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Any) {
+    if (targetNumber === TargetNumberEnum.Multiple && targetType === TargetTypeEnum.Any) {
       return SkillEffect.getTargetAnyGroupText(preposition);
     }
-    if ((this.targetNumber === TargetNumberEnum.Self || this.targetNumber === TargetNumberEnum.Single)
-      && this.targetType === TargetTypeEnum.Caster) {
+    if ((targetNumber === TargetNumberEnum.Self || targetNumber === TargetNumberEnum.Single)
+      && targetType === TargetTypeEnum.Caster) {
       return SkillEffect.getTargetCasterText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.Ally) {
+    if (targetNumber === TargetNumberEnum.Multiple && targetType === TargetTypeEnum.Ally) {
       return SkillEffect.getTargetAlliesText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.AllyButCaster) {
+    if (targetNumber === TargetNumberEnum.Multiple && targetType === TargetTypeEnum.AllyButCaster) {
       return SkillEffect.getTargetAlliesButCasterText(preposition);
     }
-    if (this.targetNumber === TargetNumberEnum.Multiple && this.targetType === TargetTypeEnum.AllyAndEnemy) {
+    if (targetNumber === TargetNumberEnum.Multiple && targetType === TargetTypeEnum.AllyAndEnemy) {
       return SkillEffect.getTargetAlliesAndEnemiesText(preposition);
     }
 
