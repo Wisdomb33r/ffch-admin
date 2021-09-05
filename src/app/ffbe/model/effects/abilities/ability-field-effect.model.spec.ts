@@ -17,7 +17,7 @@ describe('AbilityFieldEffect', () => {
     const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
-    expect(mySpy).toHaveBeenCalledWith(200000027);
+    expect(mySpy).toHaveBeenCalledWith(200000027, 1, 1);
     expect(s).toEqual('-25% de rés. Vent aux adversaires pour 4 tours (effet de terrain)');
   });
 

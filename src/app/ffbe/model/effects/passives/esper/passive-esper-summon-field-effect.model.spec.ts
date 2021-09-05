@@ -17,7 +17,7 @@ describe('PassiveEsperSummonFieldEffect', () => {
     const s = PassiveSkillEffectFactory.getSkillEffect(effect).wordEffect(null);
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
-    expect(mySpy).toHaveBeenCalledWith(200000026);
+    expect(mySpy).toHaveBeenCalledWith(200000026, 0, 3);
     expect(s).toEqual('-25% de rés. Eau aux alliés et adversaires pour 10 tours lors de l\'invocation de <a href="ffexvius_espers.php?esperid=14">Léviathan</a> (effet de terrain)');
   });
 
