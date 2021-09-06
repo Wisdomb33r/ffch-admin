@@ -52,7 +52,12 @@ export class AbilityCopyEffectsEffect extends SkillEffect {
   }
 
   private classifyEffects() {
-    this.wordCopiedEffectsRange([1, 2, 3, 4], `Bonus d'ATT/DÉF/MAGIE/PSY`, [39, 40, 41, 42]);
+    const wasRangeFound = this.wordCopiedEffectsRange([1, 2, 3, 4], `Bonus d'ATT/DÉF/MAGIE/PSY`);
+    // Up to now, this extra range was only found in combination with the previous one, with no visible effect
+    const extraRange = [39, 40, 41, 42];
+    if (wasRangeFound && this.containsAllElements(extraRange, this.copiedEffectsIds)) {
+      this.removeElements(extraRange, this.copiedEffectsIds);
+    }
     this.wordCopiedEffectsRange([9], `Rés. aux dégâts magiques`);
     this.wordCopiedEffectsRange([12, 13, 14, 15, 16, 17, 18, 19], `Rés. aux altérations`);
     this.wordCopiedEffectsRange([20], `Régénération de PV par tour`);
@@ -73,13 +78,13 @@ export class AbilityCopyEffectsEffect extends SkillEffect {
     this.wordCopiedEffectsRange([221], `Bonus aux dégâts de la limite`);
   }
 
-  private wordCopiedEffectsRange(range: Array<number>, wording: string, otherRangeToRemove: Array<number> = []) {
-    if (this.containsAllElements(range, this.copiedEffectsIds)) {
+  private wordCopiedEffectsRange(range: Array<number>, wording: string): boolean {
+    const wasRangeFound = this.containsAllElements(range, this.copiedEffectsIds);
+    if (wasRangeFound) {
       this.copiedEffects.push(wording);
       this.removeElements(range, this.copiedEffectsIds);
-      // TODO: Fix this line, it shouldn't try to remove evelent that are not there
-      this.removeElements(otherRangeToRemove, this.copiedEffectsIds);
     }
+    return wasRangeFound;
   }
 
   private getTargetOfCopiedEffect(targetId: number): string {
