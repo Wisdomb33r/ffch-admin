@@ -32,7 +32,6 @@ export class AbilityCopyEffectsEffect extends SkillEffect {
 
     this.copiedEffects = [];
     this.classifyEffects();
-
   }
 
   protected wordEffectImpl(skill: Skill): string {
@@ -53,123 +52,34 @@ export class AbilityCopyEffectsEffect extends SkillEffect {
   }
 
   private classifyEffects() {
+    this.wordCopiedEffectsRange([1, 2, 3, 4], `Bonus d'ATT/DÉF/MAGIE/PSY`, [39, 40, 41, 42]);
+    this.wordCopiedEffectsRange([9], `Rés. aux dégâts magiques`);
+    this.wordCopiedEffectsRange([12, 13, 14, 15, 16, 17, 18, 19], `Rés. aux altérations`);
+    this.wordCopiedEffectsRange([20], `Régénération de PV par tour`);
+    this.wordCopiedEffectsRange([21], `Auréole`);
+    this.wordCopiedEffectsRange([22], `Régénération de PM par tour`);
+    this.wordCopiedEffectsRange([23, 24, 25, 26, 27, 28, 29, 30], `Bonus aux rés. élémentaires`);
+    this.wordCopiedEffectsRange([47], `Bonus à la vitesse de la jauge de limite`);
+    this.wordCopiedEffectsRange([56], `Esquive d\'attaques physiques`);
+    this.wordCopiedEffectsRange([57], `Mitigation physique`);
+    this.wordCopiedEffectsRange([58], `Mitigation magique`);
+    this.wordCopiedEffectsRange([60], `Renvoi des magies`);
+    this.wordCopiedEffectsRange([62], `Bonus aux dégâts`);
+    this.wordCopiedEffectsRange([63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74], `Tueurs physiques`);
+    this.wordCopiedEffectsRange([75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86], `Tueurs magiques`);
+    this.wordCopiedEffectsRange([87, 88, 89, 90, 91, 92, 93, 94], `Éléments ajoutés aux attaques physiques et hybrides`);
+    this.wordCopiedEffectsRange([95, 96, 97, 98, 99, 100], `Rés. aux baisses de caractéristiques, à Stop et à Charme`);
+    this.wordCopiedEffectsRange([101], `Rés. à Berserk`);
+    this.wordCopiedEffectsRange([221], `Bonus aux dégâts de la limite`);
+  }
 
-    const caracsRange = [1, 2, 3, 4];
-    const otherCaracsRange = [39, 40, 41, 42];
-    if (this.containsAllElements(caracsRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Bonus d'ATT/DÉF/MAGIE/PSY`);
-      this.removeElements(caracsRange, this.copiedEffectsIds);
-      this.removeElements(otherCaracsRange, this.copiedEffectsIds);
+  private wordCopiedEffectsRange(range: Array<number>, wording: string, otherRangeToRemove: Array<number> = []) {
+    if (this.containsAllElements(range, this.copiedEffectsIds)) {
+      this.copiedEffects.push(wording);
+      this.removeElements(range, this.copiedEffectsIds);
+      // TODO: Fix this line, it shouldn't try to remove evelent that are not there
+      this.removeElements(otherRangeToRemove, this.copiedEffectsIds);
     }
-
-    const magicResRange = [9];
-    if (this.containsAllElements(magicResRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Rés. aux dégâts magiques`);
-      this.removeElements(magicResRange, this.copiedEffectsIds);
-    }
-
-    const ailmentsResistancesRange = [12, 13, 14, 15, 16, 17, 18, 19];
-    if (this.containsAllElements(ailmentsResistancesRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Rés. aux altérations`);
-      this.removeElements(ailmentsResistancesRange, this.copiedEffectsIds);
-    }
-
-    const healthRegenRange = [20];
-    if (this.containsAllElements(healthRegenRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Régénération de PV par tour`);
-      this.removeElements(healthRegenRange, this.copiedEffectsIds);
-    }
-
-    const autoReviveRange = [21];
-    if (this.containsAllElements(autoReviveRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Auréole`);
-      this.removeElements(autoReviveRange, this.copiedEffectsIds);
-    }
-
-    const manaRegenRange = [22];
-    if (this.containsAllElements(manaRegenRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Régénération de PM par tour`);
-      this.removeElements(manaRegenRange, this.copiedEffectsIds);
-    }
-
-    const elementalResistancesRange = [23, 24, 25, 26, 27, 28, 29, 30];
-    if (this.containsAllElements(elementalResistancesRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Bonus aux rés. élémentaires`);
-      this.removeElements(elementalResistancesRange, this.copiedEffectsIds);
-    }
-
-    const limitBurstFillRateRange = [47];
-    if (this.containsAllElements(limitBurstFillRateRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Bonus à la vitesse de la jauge de limite`);
-      this.removeElements(limitBurstFillRateRange, this.copiedEffectsIds);
-    }
-
-    const physicalDodgeRange = [56];
-    if (this.containsAllElements(physicalDodgeRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Esquive d\'attaques physiques`);
-      this.removeElements(physicalDodgeRange, this.copiedEffectsIds);
-    }
-
-    const physicalMitigationRange = [57];
-    if (this.containsAllElements(physicalMitigationRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Mitigation physique`);
-      this.removeElements(physicalMitigationRange, this.copiedEffectsIds);
-    }
-
-    const magicalMitigationRange = [58];
-    if (this.containsAllElements(magicalMitigationRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Mitigation magique`);
-      this.removeElements(magicalMitigationRange, this.copiedEffectsIds);
-    }
-
-    const magicReflectsRange = [60];
-    if (this.containsAllElements(magicReflectsRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Renvoi des magies`);
-      this.removeElements(magicReflectsRange, this.copiedEffectsIds);
-    }
-
-    const damageBoostRange = [62];
-    if (this.containsAllElements(damageBoostRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Bonus aux dégâts`);
-      this.removeElements(damageBoostRange, this.copiedEffectsIds);
-    }
-
-    const physicalKillersRange = [63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74];
-    if (this.containsAllElements(physicalKillersRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Tueurs physiques`);
-      this.removeElements(physicalKillersRange, this.copiedEffectsIds);
-    }
-
-    const magicalKillersRange = [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86];
-    if (this.containsAllElements(magicalKillersRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Tueurs magiques`);
-      this.removeElements(magicalKillersRange, this.copiedEffectsIds);
-    }
-
-    const imbuesRange = [87, 88, 89, 90, 91, 92, 93, 94];
-    if (this.containsAllElements(imbuesRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Éléments ajoutés aux attaques physiques et hybrides`);
-      this.removeElements(imbuesRange, this.copiedEffectsIds);
-    }
-
-    const statsBreaksResistancesRange = [95, 96, 97, 98, 99, 100];
-    if (this.containsAllElements(statsBreaksResistancesRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Rés. aux baisses de caractéristiques, à Stop et à Charme`);
-      this.removeElements(statsBreaksResistancesRange, this.copiedEffectsIds);
-    }
-
-    const berserkResRange = [101];
-    if (this.containsAllElements(berserkResRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Rés. à Berserk`);
-      this.removeElements(berserkResRange, this.copiedEffectsIds);
-    }
-
-    const limitBurstDamagesRange = [221];
-    if (this.containsAllElements(limitBurstDamagesRange, this.copiedEffectsIds)) {
-      this.copiedEffects.push(`Bonus aux dégâts de la limite`);
-      this.removeElements(limitBurstDamagesRange, this.copiedEffectsIds);
-    }
-
   }
 
   private getTargetOfCopiedEffect(targetId: number): string {
