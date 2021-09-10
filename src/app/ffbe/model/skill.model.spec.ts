@@ -1297,6 +1297,31 @@ export const ABILITY_SKILLS_TEST_DATA =
         "effects_raw": [[2, 1, 81, [0,  0,  0,  0,  0,  0,  2000,  51,  2000315,  1]], [2, 1, 21, [0,  0,  2000,  -50]], [0, 3, 54, [10,  3,  1]], [0, 3, 119, [100,  1,  1000,  3,  1,  5]]],
         "requirements": null,
         "unit_restriction": null
+    },
+    "915467": {
+        "name": "Oxidation Effect",
+        "icon": "ability_91.png",
+        "compendium_id": 88537,
+        "rarity": 7,
+        "cost": {},
+        "attack_count": [1, 1, 1],
+        "attack_damage": [[100], [100], [100]],
+        "attack_frames": [[10], [10], [30]],
+        "effect_frames": [[10], [10]],
+        "move_type": 4,
+        "motion_type": 2,
+        "effect_type": "Default",
+        "attack_type": "Magic",
+        "element_inflict": ["Light"],
+        "effects": [
+            ["Increase resistance to all elements by 60% for one turn to all allies"],
+            ["Magic light damage (60x, SPR) per turn to all enemies for one turn"],
+            ["Fixed* light damage (500) to caster"],
+            ["Use Oxidation Effect (915467) next turn on caster"]
+        ],
+        "effects_raw": [[2, 2, 33, [60,  60,  60,  60,  60,  60,  60,  60,  1,  1]], [2, 1, 139, [4,  6000,  0,  1,  1,  1,  915456]], [0, 3, 41, [500]], [0, 3, 132, [915467,  1,  1,  100,  0,  915467]]],
+        "requirements": null,
+        "unit_restriction": null
     }
   }`;
 

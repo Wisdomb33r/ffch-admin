@@ -12,7 +12,7 @@ describe('AbilitySkillDelayedEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(SkillMockDataHelper.mockAbilitySkill(200190));
     // WHEN
-    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200190);
@@ -26,7 +26,7 @@ describe('AbilitySkillDelayedEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(SkillMockDataHelper.mockAbilitySkill(200190));
     // WHEN
-    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(1);
     expect(mySpy).toHaveBeenCalledWith(200190);
@@ -44,7 +44,7 @@ describe('AbilitySkillDelayedEffect', () => {
     SkillsService['INSTANCE'] = skillsServiceMock;
     const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1, skill2, skill3);
     // WHEN
-    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(undefined);
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
     // THEN
     expect(mySpy).toHaveBeenCalledTimes(3);
     expect(mySpy).toHaveBeenCalledWith(912791);
@@ -92,4 +92,23 @@ describe('AbilitySkillDelayedEffect', () => {
       + '+1 esquive physique aux alliés pour 1 tour');
   });
 
+  it('should parse delayed skills activating itself', () => {
+    // GIVEN
+    const skill1: Skill = SkillMockDataHelper.mockAbilitySkill(915467);
+
+    const effect = JSON.parse('[0, 3, 132, [915467, 1, 1, 100, 0, 915467]]');
+    const skillsServiceMock = new SkillsServiceMock() as SkillsService;
+    SkillsService['INSTANCE'] = skillsServiceMock;
+    const mySpy = spyOn(skillsServiceMock, 'searchForSkillByGumiId').and.returnValues(skill1);
+    // WHEN
+    const s = AbilitySkillEffectFactory.getSkillEffect(effect).wordEffect(new Skill());
+    // THEN
+    expect(mySpy).toHaveBeenCalledTimes(1);
+    expect(mySpy).toHaveBeenCalledWith(915467);
+    expect(s).toEqual('<br />Activation <strong>1 tour plus tard</strong>:'
+      + '<br />+60% de rés. aux éléments aux alliés pour 1 tour'
+      + '<br />Dégâts magiques de Lumière calculés sur la PSY de puissance 6000% chaque tour aux adversaires pour 1 tour (ID #915456)'
+      + '<br />Attaque magique à dégâts fixes de Lumière de 500 PV au lanceur'
+      + '<br /><strong>Réactivation automatique</strong> chaque tour');
+  });
 });
