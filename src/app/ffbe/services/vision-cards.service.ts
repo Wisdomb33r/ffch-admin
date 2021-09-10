@@ -102,7 +102,7 @@ export class VisionCardsService {
           });
         }
       });
-      visionCard.dmSkills = skills;
+      visionCard.dmSkills = skills.filter(s => !!s);
     }
   }
 
