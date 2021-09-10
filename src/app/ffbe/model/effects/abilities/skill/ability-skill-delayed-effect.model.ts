@@ -50,6 +50,9 @@ export class AbilitySkillDelayedEffect extends SkillEffect {
   }
 
   public wordEffectForDelayedSkill(skill: Skill): Array<{ delay: number, wordedEffect: string }> {
+    if (this.activatedSkillId === skill.gumi_id) {
+      return [{delay: 0, wordedEffect: '<strong>Réactivation automatique</strong> chaque tour'}];
+    }
     this.activatedSkill = SkillsService.getInstance().searchForSkillByGumiId(this.activatedSkillId);
     let delayedEffects: Array<{ delay: number, wordedEffect: string }> = [];
     this.activatedSkill.effects_raw?.forEach((effect: Array<any>) => {
