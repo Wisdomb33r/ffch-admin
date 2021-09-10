@@ -79,7 +79,7 @@ export class MateriasService {
     if (Array.isArray(materia.skills) && materia.skills.length > 0) {
       const skills: Array<Skill> = [];
       materia.skills.forEach(id => skills.push(this.skillsService.searchForSkillByGumiId(id)));
-      materia.dmSkills = skills;
+      materia.dmSkills = skills.filter(s => !!s);
     }
   }
 

@@ -78,7 +78,7 @@ export class EquipmentsService {
     if (Array.isArray(equipment.skills) && equipment.skills.length > 0) {
       const skills: Array<Skill> = [];
       equipment.skills.forEach(id => skills.push(this.skillsService.searchForSkillByGumiId(id)));
-      equipment.dmSkills = skills;
+      equipment.dmSkills = skills.filter(s => !!s);
     }
   }
 
